@@ -1,13 +1,17 @@
 # Word Association Game Requirements
 
 **Functional behavior, technical requirements, and acceptance criteria**  
-Version 1.9 · 26 October 2026 · Draft for product approval
+Version 2.0 · 26 October 2026 · Draft for product approval
 
 ## Purpose and scope
 
 This document defines a real-time word-pair game for 2–25 players who join one room from their own devices. Each curated prompt belongs to a relationship category with a predefined background. Players submit guesses through a sequence of hint stages, with more points awarded for solving earlier. Players who solve before any hint can nominate candidate answers for future curated content.
 
 The requirements record confirmed gameplay and identify proposed defaults or unresolved choices. The document is ready to guide implementation after the open decisions are approved. It does not select a hosting provider, programming language, database, or networking library.
+
+## Game landing page
+
+The game provides a landing page that introduces Wordpairs, displays a leaderboard, shows public lobby information, and explains the gameplay rules. Visitors can view this information before authenticating or joining a room. Public lobby details must follow the approved discoverability and privacy policy; the page does not expose private room state, non-public profile data, or private player-specific game data. The leaderboard metric, time window, player labels, guest inclusion, and tie behavior remain decisions to approve before its data contract is implemented.
 
 ## Status labels
 
@@ -162,6 +166,8 @@ Provisioning is run manually from a developer workstation with authenticated Sup
 
 **FR-21 Emoji reactions — Confirmed.** During any active round, a player can open an emoji menu and display a selected emoji reaction to the room in real time. Reactions do not submit an answer, change round state, or affect scoring. Observers see reactions displayed by the player they are following and reactions broadcast to the room.
 
+**FR-22 Public landing page — Confirmed.** An unauthenticated visitor can open the game landing page and view an approved leaderboard, public lobby information, and the gameplay rules. Lobby information is limited to approved public metadata for discoverable, joinable rooms and cannot expose private room codes, hidden answers, guesses, observer-only views, or credentials. The exact leaderboard metric, time window, tie order, display labels, and guest inclusion, plus the public lobby fields and refresh behavior, must be approved before implementation.
+
 ### Presentation
 
 **FR-15 Responsive screens — Confirmed.** Profile, lobby, active round, hint stage, scorecard, round summary, category picker, and final standings remain usable on phone-sized screens in portrait and landscape orientation.
@@ -234,6 +240,8 @@ Exact compatible versions are selected and locked when implementation begins. Ma
 
 **TR-29 Project license.** License Wordpairs source and the game under GNU GPL version 2 only (`GPL-2.0-only`). Include the complete license text in the root `LICENSE` file and include that file in each source release archive. Preserve independent third-party license notices and check compatibility before redistributing any third-party code or asset as part of the game.
 
+**TR-30 Public landing data boundary.** Serve the landing page and its gameplay rules without requiring authentication. Retrieve leaderboard and lobby display data through a read-only, server-controlled public projection that returns only approved fields. Restrict lobby results to discoverable, joinable rooms; exclude room codes, non-public profile fields and identifiers, observer perspective data, guesses, targets, moderation records, and secrets. Use bounded pagination, a documented refresh/cache policy, and recoverable empty/unavailable states. Do not expose service-role credentials or allow the public query to mutate game state.
+
 ## Acceptance criteria
 
 Criteria that depend on an unresolved decision are provisional until that decision is approved.
@@ -282,6 +290,7 @@ Criteria that depend on an unresolved decision are provisional until that decisi
 | AC-40 Per-deployment SWBOM | Given a Vercel Preview or Production deployment completes successfully, when its deployment URL is opened at `/sbom/<git-commit-sha>.cdx.json`, then a valid CycloneDX JSON 1.6 SWBOM for that exact lockfile is available with runtime and development components, license metadata, dependency relationships, commit SHA, build timestamp, environment, and deployment URL, and it contains no secret values. |
 | AC-41 SWBOM release archive | Given a production build is selected for release, when its downloadable release archive is prepared, then the archive includes the SWBOM at `sbom/<git-commit-sha>.cdx.json`; publication is blocked if the report is missing, invalid, or identifies a different commit. |
 | AC-42 GPL-2.0-only release | Given a source release is published, when its release archive is inspected, then it contains the root `LICENSE` file with the complete GPL-2.0-only text, and every bundled third-party component retains its required attribution and license notice. |
+| AC-43 Public game landing page | Given an unauthenticated visitor opens the game landing page, when the page loads, then it presents the approved leaderboard, public information for discoverable joinable lobbies, and the gameplay rules without requiring sign-in; it excludes private room/game data and provides usable empty or unavailable states when no public data is available. |
 
 ## Decision register
 
@@ -307,6 +316,9 @@ Resolve these items before treating the acceptance criteria as final.
 | Lobby discovery policy | Confirm whether rooms are discoverable by default or require owner opt-in, what lobby details appear in search, and whether quick match uses any preferences beyond availability. | Proposed |
 | Observer limits and invite context | Set an observer limit per room and define how the inviter is identified when an invitee enters a manually shared room code without a deep-link invitation context. | Open |
 | Emoji display duration | Define how long an in-round emoji reaction remains visible and whether reactions are rate-limited. | Open |
+| Landing-page leaderboard | Define ranking metric and period, guest inclusion, display labels or aliases, privacy/opt-out behavior, stable tie ordering, and handling of players with no eligible results. | Open |
+| Landing-page lobby information | Define public fields, whether counts are exact or bucketed, refresh interval, join action, and how room discoverability/started/full state is represented. Do not expose room codes or private player details by default. | Proposed |
+| Landing-page rules source | Confirm whether the public rules are a concise summary or the complete rules, and how a rules revision is reflected in the page. | Proposed |
 | Host controls and countdown duration | Confirm whether the room creator has additional controls and set the game start countdown duration. The five-second warning shown to a sole holdout is confirmed. | Open |
 | Minimum roster after holdout removal | If the sole unready player is removed from a two-player room, only one player remains. Decide whether to cancel the start countdown, allow a one-player game, or apply another rule; the current minimum is two players. | Open |
 | Free-tier capacity target | Set the expected peak number of concurrent players and rooms and decide the user-facing behavior when Supabase Free connection, message, database, or egress limits are reached. The app must not incur paid usage. | Open |
