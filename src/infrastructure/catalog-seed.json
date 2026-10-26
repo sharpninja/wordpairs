@@ -1,0 +1,960 @@
+{
+  "categories": [
+    {
+      "id": "heroes",
+      "version": 0,
+      "name": "Heroes and Villains",
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "colors",
+      "version": 0,
+      "name": "Colors",
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "years",
+      "version": 0,
+      "name": "Year and Event",
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "directors",
+      "version": 0,
+      "name": "Director and Movie",
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "singers",
+      "version": 0,
+      "name": "Singer and Song",
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "opposites",
+      "version": 0,
+      "name": "Opposites",
+      "backgroundId": "opposites",
+      "approved": true
+    }
+  ],
+  "pairs": [
+    {
+      "id": "heroes-01",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Batman",
+      "target": "Joker",
+      "acceptedAnswers": ["The Joker"],
+      "hints": [
+        "A Gotham criminal with a clown motif.",
+        "The answer starts with “J”.",
+        "The answer has 1 word and 5 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-02",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Superman",
+      "target": "Lex Luthor",
+      "acceptedAnswers": [],
+      "hints": [
+        "A billionaire adversary from Metropolis.",
+        "The answer starts with “L”.",
+        "The answer has 2 words and 9 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-03",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Spider-Man",
+      "target": "Green Goblin",
+      "acceptedAnswers": ["The Green Goblin"],
+      "hints": [
+        "This foe flies on a glider.",
+        "The answer starts with “G”.",
+        "The answer has 2 words and 11 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-04",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Captain America",
+      "target": "Red Skull",
+      "acceptedAnswers": ["The Red Skull"],
+      "hints": [
+        "A villain whose name describes his face.",
+        "The answer starts with “R”.",
+        "The answer has 2 words and 8 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-05",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Harry Potter",
+      "target": "Voldemort",
+      "acceptedAnswers": ["Lord Voldemort"],
+      "hints": [
+        "A dark wizard who fears death.",
+        "The answer starts with “V”.",
+        "The answer has 1 word and 9 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-06",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Luke Skywalker",
+      "target": "Darth Vader",
+      "acceptedAnswers": ["Vader"],
+      "hints": [
+        "A masked Sith Lord.",
+        "The answer starts with “D”.",
+        "The answer has 2 words and 10 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-07",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Sherlock Holmes",
+      "target": "Moriarty",
+      "acceptedAnswers": ["Professor Moriarty"],
+      "hints": [
+        "A criminal professor.",
+        "The answer starts with “M”.",
+        "The answer has 1 word and 8 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-08",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "He-Man",
+      "target": "Skeletor",
+      "acceptedAnswers": [],
+      "hints": [
+        "A villain with a skull for a face.",
+        "The answer starts with “S”.",
+        "The answer has 1 word and 8 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-09",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Mario",
+      "target": "Bowser",
+      "acceptedAnswers": ["King Bowser"],
+      "hints": [
+        "A fire-breathing king of the Koopas.",
+        "The answer starts with “B”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "heroes-10",
+      "version": 0,
+      "categoryId": "heroes",
+      "prompt": "Wonder Woman",
+      "target": "Cheetah",
+      "acceptedAnswers": ["The Cheetah"],
+      "hints": [
+        "A feline-themed adversary.",
+        "The answer starts with “C”.",
+        "The answer has 1 word and 7 non-space characters."
+      ],
+      "backgroundId": "heroes",
+      "approved": true
+    },
+    {
+      "id": "colors-01",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Red (RYB paint wheel)",
+      "target": "Green",
+      "acceptedAnswers": [],
+      "hints": [
+        "Use the traditional red-yellow-blue paint wheel.",
+        "The answer starts with “G”.",
+        "The answer has 1 word and 5 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-02",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Yellow (RYB paint wheel)",
+      "target": "Violet",
+      "acceptedAnswers": ["Purple"],
+      "hints": [
+        "Use the traditional red-yellow-blue paint wheel.",
+        "The answer starts with “V”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-03",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Blue (RYB paint wheel)",
+      "target": "Orange",
+      "acceptedAnswers": [],
+      "hints": [
+        "Use the traditional red-yellow-blue paint wheel.",
+        "The answer starts with “O”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-04",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Red orange (RYB paint wheel)",
+      "target": "Blue green",
+      "acceptedAnswers": ["Blue-green"],
+      "hints": [
+        "Use opposite tertiary hues on the traditional paint wheel.",
+        "The answer starts with “B”.",
+        "The answer has 2 words and 9 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-05",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Red (RGB light wheel)",
+      "target": "Cyan",
+      "acceptedAnswers": [],
+      "hints": [
+        "Use additive RGB light: the opposite mixes green and blue.",
+        "The answer starts with “C”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-06",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Green (RGB light wheel)",
+      "target": "Magenta",
+      "acceptedAnswers": [],
+      "hints": [
+        "Use additive RGB light: the opposite mixes red and blue.",
+        "The answer starts with “M”.",
+        "The answer has 1 word and 7 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-07",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Blue (RGB light wheel)",
+      "target": "Yellow",
+      "acceptedAnswers": [],
+      "hints": [
+        "Use additive RGB light: the opposite mixes red and green.",
+        "The answer starts with “Y”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-08",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Orange (RGB light wheel)",
+      "target": "Azure",
+      "acceptedAnswers": [],
+      "hints": [
+        "On the RGB wheel, the opposite sits between blue and cyan.",
+        "The answer starts with “A”.",
+        "The answer has 1 word and 5 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-09",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Violet (RGB light wheel)",
+      "target": "Chartreuse",
+      "acceptedAnswers": [],
+      "hints": [
+        "On the RGB wheel, the opposite sits between yellow and green.",
+        "The answer starts with “C”.",
+        "The answer has 1 word and 10 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "colors-10",
+      "version": 0,
+      "categoryId": "colors",
+      "prompt": "Rose (RGB light wheel)",
+      "target": "Spring green",
+      "acceptedAnswers": ["Spring-green"],
+      "hints": [
+        "On the RGB wheel, the opposite sits between green and cyan.",
+        "The answer starts with “S”.",
+        "The answer has 2 words and 11 non-space characters."
+      ],
+      "backgroundId": "colors",
+      "approved": true
+    },
+    {
+      "id": "years-01",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1969",
+      "target": "Apollo 11 Moon Landing",
+      "acceptedAnswers": ["Moon Landing", "Apollo 11", "First Moon Landing"],
+      "hints": [
+        "The event took astronauts to the lunar surface.",
+        "The answer starts with “A”.",
+        "The answer has 4 words and 19 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-02",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1989",
+      "target": "Fall of the Berlin Wall",
+      "acceptedAnswers": ["Berlin Wall Falls", "Berlin Wall"],
+      "hints": [
+        "A barrier dividing a German city opened.",
+        "The answer starts with “F”.",
+        "The answer has 5 words and 19 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-03",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1776",
+      "target": "Declaration of Independence",
+      "acceptedAnswers": [
+        "US Declaration of Independence",
+        "American Declaration of Independence"
+      ],
+      "hints": [
+        "Thirteen American colonies declared a new nation.",
+        "The answer starts with “D”.",
+        "The answer has 3 words and 25 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-04",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1914",
+      "target": "World War I Begins",
+      "acceptedAnswers": ["Start of World War I", "First World War Begins"],
+      "hints": [
+        "A global conflict began in Europe.",
+        "The answer starts with “W”.",
+        "The answer has 4 words and 15 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-05",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1939",
+      "target": "World War II Begins",
+      "acceptedAnswers": ["Start of World War II", "Second World War Begins"],
+      "hints": [
+        "The invasion of Poland marked this beginning.",
+        "The answer starts with “W”.",
+        "The answer has 4 words and 16 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-06",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1912",
+      "target": "Titanic Sinks",
+      "acceptedAnswers": ["Sinking of the Titanic", "Titanic"],
+      "hints": [
+        "An ocean liner struck an iceberg.",
+        "The answer starts with “T”.",
+        "The answer has 2 words and 12 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-07",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1903",
+      "target": "First Powered Flight",
+      "acceptedAnswers": [
+        "Wright Brothers First Flight",
+        "Wright Brothers Flight"
+      ],
+      "hints": [
+        "The Wright brothers flew at Kitty Hawk.",
+        "The answer starts with “F”.",
+        "The answer has 3 words and 18 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-08",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1789",
+      "target": "French Revolution Begins",
+      "acceptedAnswers": [
+        "Start of the French Revolution",
+        "French Revolution"
+      ],
+      "hints": [
+        "Political upheaval began in France.",
+        "The answer starts with “F”.",
+        "The answer has 3 words and 22 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-09",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "1957",
+      "target": "Sputnik 1 Launch",
+      "acceptedAnswers": ["Launch of Sputnik 1", "Sputnik 1", "Sputnik"],
+      "hints": [
+        "The first artificial Earth satellite reached orbit.",
+        "The answer starts with “S”.",
+        "The answer has 3 words and 14 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "years-10",
+      "version": 0,
+      "categoryId": "years",
+      "prompt": "2000",
+      "target": "Sydney Olympics",
+      "acceptedAnswers": ["Sydney Olympic Games", "2000 Summer Olympics"],
+      "hints": [
+        "Australia hosted the Summer Games.",
+        "The answer starts with “S”.",
+        "The answer has 2 words and 14 non-space characters."
+      ],
+      "backgroundId": "years",
+      "approved": true
+    },
+    {
+      "id": "directors-01",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Steven Spielberg",
+      "target": "Jaws",
+      "acceptedAnswers": [],
+      "hints": [
+        "A shark threatens a seaside community.",
+        "The answer starts with “J”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-02",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Alfred Hitchcock",
+      "target": "Psycho",
+      "acceptedAnswers": [],
+      "hints": [
+        "A thriller featuring the Bates Motel.",
+        "The answer starts with “P”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-03",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Christopher Nolan",
+      "target": "Inception",
+      "acceptedAnswers": [],
+      "hints": [
+        "A team enters layered dreams.",
+        "The answer starts with “I”.",
+        "The answer has 1 word and 9 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-04",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Hayao Miyazaki",
+      "target": "Spirited Away",
+      "acceptedAnswers": [],
+      "hints": [
+        "A girl finds herself in a spirit world.",
+        "The answer starts with “S”.",
+        "The answer has 2 words and 12 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-05",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Stanley Kubrick",
+      "target": "The Shining",
+      "acceptedAnswers": ["Shining"],
+      "hints": [
+        "A family stays at an isolated hotel.",
+        "The answer starts with “T”.",
+        "The answer has 2 words and 10 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-06",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Francis Ford Coppola",
+      "target": "The Godfather",
+      "acceptedAnswers": ["Godfather"],
+      "hints": [
+        "A story about the Corleone family.",
+        "The answer starts with “T”.",
+        "The answer has 2 words and 12 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-07",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "James Cameron",
+      "target": "Titanic",
+      "acceptedAnswers": [],
+      "hints": [
+        "A romance aboard an ill-fated ocean liner.",
+        "The answer starts with “T”.",
+        "The answer has 1 word and 7 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-08",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Peter Jackson",
+      "target": "The Fellowship of the Ring",
+      "acceptedAnswers": [
+        "The Lord of the Rings: The Fellowship of the Ring",
+        "Fellowship of the Ring"
+      ],
+      "hints": [
+        "A hobbit sets out with a company of companions.",
+        "The answer starts with “T”.",
+        "The answer has 5 words and 22 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-09",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Martin Scorsese",
+      "target": "Goodfellas",
+      "acceptedAnswers": [],
+      "hints": [
+        "A crime film following Henry Hill.",
+        "The answer starts with “G”.",
+        "The answer has 1 word and 10 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "directors-10",
+      "version": 0,
+      "categoryId": "directors",
+      "prompt": "Greta Gerwig",
+      "target": "Barbie",
+      "acceptedAnswers": [],
+      "hints": [
+        "A doll travels beyond her pink world.",
+        "The answer starts with “B”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "directors",
+      "approved": true
+    },
+    {
+      "id": "singers-01",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Adele",
+      "target": "Hello",
+      "acceptedAnswers": [],
+      "hints": [
+        "A ballad whose title is a greeting.",
+        "The answer starts with “H”.",
+        "The answer has 1 word and 5 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-02",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "The Beatles",
+      "target": "Hey Jude",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song addressing someone named Jude.",
+        "The answer starts with “H”.",
+        "The answer has 2 words and 7 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-03",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Elvis Presley",
+      "target": "Jailhouse Rock",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song about dancing behind bars.",
+        "The answer starts with “J”.",
+        "The answer has 2 words and 13 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-04",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Michael Jackson",
+      "target": "Thriller",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song with a horror-themed music video.",
+        "The answer starts with “T”.",
+        "The answer has 1 word and 8 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-05",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Queen",
+      "target": "Bohemian Rhapsody",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song mixing ballad, opera and rock.",
+        "The answer starts with “B”.",
+        "The answer has 2 words and 16 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-06",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Whitney Houston",
+      "target": "I Will Always Love You",
+      "acceptedAnswers": [],
+      "hints": [
+        "A declaration of enduring affection.",
+        "The answer starts with “I”.",
+        "The answer has 5 words and 18 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-07",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Taylor Swift",
+      "target": "Shake It Off",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song about brushing off criticism.",
+        "The answer starts with “S”.",
+        "The answer has 3 words and 10 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-08",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Louis Armstrong",
+      "target": "What a Wonderful World",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song celebrating beauty in everyday life.",
+        "The answer starts with “W”.",
+        "The answer has 4 words and 19 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-09",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "Dolly Parton",
+      "target": "Jolene",
+      "acceptedAnswers": [],
+      "hints": [
+        "A plea addressed to another woman.",
+        "The answer starts with “J”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "singers-10",
+      "version": 0,
+      "categoryId": "singers",
+      "prompt": "ABBA",
+      "target": "Dancing Queen",
+      "acceptedAnswers": [],
+      "hints": [
+        "A song about a young dancer.",
+        "The answer starts with “D”.",
+        "The answer has 2 words and 12 non-space characters."
+      ],
+      "backgroundId": "singers",
+      "approved": true
+    },
+    {
+      "id": "opposites-01",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Hot",
+      "target": "Cold",
+      "acceptedAnswers": [],
+      "hints": [
+        "Think of the other temperature extreme.",
+        "The answer starts with “C”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-02",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Day",
+      "target": "Night",
+      "acceptedAnswers": [],
+      "hints": [
+        "The dark part of a daily cycle.",
+        "The answer starts with “N”.",
+        "The answer has 1 word and 5 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-03",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Up",
+      "target": "Down",
+      "acceptedAnswers": [],
+      "hints": [
+        "The reverse vertical direction.",
+        "The answer starts with “D”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-04",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Open",
+      "target": "Closed",
+      "acceptedAnswers": ["Shut"],
+      "hints": [
+        "The state of a shut door.",
+        "The answer starts with “C”.",
+        "The answer has 1 word and 6 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-05",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Fast",
+      "target": "Slow",
+      "acceptedAnswers": [],
+      "hints": [
+        "The other end of the speed scale.",
+        "The answer starts with “S”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-06",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Light",
+      "target": "Dark",
+      "acceptedAnswers": [],
+      "hints": [
+        "The opposite of brightly lit.",
+        "The answer starts with “D”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-07",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Happy",
+      "target": "Sad",
+      "acceptedAnswers": [],
+      "hints": [
+        "An unhappy emotional state.",
+        "The answer starts with “S”.",
+        "The answer has 1 word and 3 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-08",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Full",
+      "target": "Empty",
+      "acceptedAnswers": [],
+      "hints": [
+        "Containing nothing.",
+        "The answer starts with “E”.",
+        "The answer has 1 word and 5 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-09",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Near",
+      "target": "Far",
+      "acceptedAnswers": [],
+      "hints": [
+        "At a great distance.",
+        "The answer starts with “F”.",
+        "The answer has 1 word and 3 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    },
+    {
+      "id": "opposites-10",
+      "version": 0,
+      "categoryId": "opposites",
+      "prompt": "Early",
+      "target": "Late",
+      "acceptedAnswers": [],
+      "hints": [
+        "After the expected time.",
+        "The answer starts with “L”.",
+        "The answer has 1 word and 4 non-space characters."
+      ],
+      "backgroundId": "opposites",
+      "approved": true
+    }
+  ]
+}

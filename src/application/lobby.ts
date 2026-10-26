@@ -162,11 +162,14 @@ export interface DeadlineQueue {
   ): Promise<Result<Deadline[]>>;
   complete(id: string, leaseId: string): Promise<Result<undefined>>;
 }
+export interface DeadlineProcessor {
+  expire(job: Deadline): Promise<Result<unknown>>;
+}
 /** A crash after commit replays the canonical job command before acknowledging its lease. */
 export class LobbyDispatcher {
   constructor(
     private queue: DeadlineQueue,
-    private lobby: LobbyService,
+    private lobby: DeadlineProcessor,
     private clock: Clock,
     private ids: IdSource,
   ) {}

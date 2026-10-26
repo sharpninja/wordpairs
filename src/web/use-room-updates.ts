@@ -46,7 +46,10 @@ export function useRoomUpdates(
             if (seen.size >= 256)
               seen.delete(seen.values().next().value as string);
             seen.add(event.eventId);
-            if (event.aggregateType === "room" && event.aggregateId === roomId)
+            if (
+              ["room", "match"].includes(event.aggregateType) &&
+              event.aggregateId === roomId
+            )
               void refresh();
           })
           .subscribe((status) => {

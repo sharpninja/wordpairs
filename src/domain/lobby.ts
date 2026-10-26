@@ -8,6 +8,13 @@ export const COUNTDOWN_MS = 10000;
 export const RECONNECT_MS = 120000;
 export const PRESENCE_TIMEOUT_MS = 45000;
 export const EMPTY_ROOM_MS = 1800000;
+export function playerGraceEndsAt(player: Room["players"][number]): number {
+  return (
+    (player.disconnectedAt ??
+      (player.lastSeenAt ?? player.joinedAt) + PRESENCE_TIMEOUT_MS) +
+    RECONNECT_MS
+  );
+}
 
 /** Called only after a membership/readiness change, at the transaction's clock. */
 export function reconcileLobby(room: Room, now: number): Room {
@@ -127,13 +134,7 @@ export function presence(
   const player = room.players.find((p) => p.profileId === actorId);
   if (!player) return failure("NOT_AUTHORIZED");
   // A late reconnect cannot revive membership whose authoritative lease expired.
-  if (
-    now >=
-    (player.disconnectedAt ??
-      (player.lastSeenAt ?? player.joinedAt) + PRESENCE_TIMEOUT_MS) +
-      RECONNECT_MS
-  )
-    return failure("CONFLICT");
+  if (now >= playerGraceEndsAt(player)) return failure("CONFLICT");
   return success({
     ...room,
     version: room.version + 1,
@@ -300,6 +301,9 @@ function applyDeadline(room: Room, job: Deadline, now: number): Result<Room> {
       status: closed ? "closed" : "playing",
       closedAt: closed ? now : null,
       countdownDueAt: null,
+      ...(!closed
+        ? { startedRoster: original.map((p) => p.profileId), startedAt: now }
+        : {}),
     });
   }
   if (

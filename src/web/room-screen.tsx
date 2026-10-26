@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { OwnProfile } from "../application/identity";
 import type { RoomView } from "../application/rooms";
+import { GamePanel } from "./game-panel";
 import { IdentityPanel, ProfileIcon } from "./identity-panel";
 import { useRoomUpdates } from "./use-room-updates";
 
@@ -37,14 +38,20 @@ function RoomSession({
   const [busy, setBusy] = useState(false);
   const [selected, setSelected] = useState("");
   const [link, setLink] = useState("");
+  const [gameRefresh, setGameRefresh] = useState(0);
   const [displayNow, setDisplayNow] = useState(0);
   const serverOffset = useRef(0);
   const sequence = useRef(0);
   const fetching = useRef(false);
+  const refreshAgain = useRef(false);
   const pending = useRef<Record<string, unknown> | null>(null);
   const endpoint = `/api/rooms/${encodeURIComponent(activeRef)}${activeRef === reference && invitation ? `?invite=${encodeURIComponent(invitation)}` : ""}`;
-  const refresh = useCallback(async () => {
-    if (!profile || fetching.current) return;
+  const refresh = useCallback(async (): Promise<void> => {
+    if (!profile) return;
+    if (fetching.current) {
+      refreshAgain.current = true;
+      return;
+    }
     fetching.current = true;
     const generation = ++sequence.current;
     try {
@@ -91,6 +98,7 @@ function RoomSession({
         setDisplayNow(result.serverNow);
       }
       setError("");
+      setGameRefresh((value) => value + 1);
       if (result.role) setActiveRef(result.roomId);
     } catch (problem) {
       if (generation === sequence.current)
@@ -100,7 +108,13 @@ function RoomSession({
             : "Room information is unavailable.",
         );
     } finally {
-      if (generation === sequence.current) fetching.current = false;
+      if (generation === sequence.current) {
+        fetching.current = false;
+        if (refreshAgain.current) {
+          refreshAgain.current = false;
+          void refresh();
+        }
+      }
     }
   }, [endpoint, profile]);
   useEffect(() => {
@@ -113,6 +127,7 @@ function RoomSession({
     return () => {
       sequence.current++;
       fetching.current = false;
+      refreshAgain.current = false;
       clearInterval(timer);
     };
   }, [refresh, room?.status, room?.holdoutDueAt]);
@@ -311,8 +326,9 @@ function RoomSession({
               )}
               {room.status === "closed" && (
                 <p role="status">
-                  This room closed. The game cannot start with fewer than two
-                  original players.
+                  {room.matchAvailable
+                    ? "This game is complete. View the final standings below."
+                    : "This room closed. The game cannot start with fewer than two original players."}
                 </p>
               )}
               <ol className="roster">
@@ -475,6 +491,15 @@ function RoomSession({
             </button>
           )}
         </section>
+      )}
+      {room?.role && room.matchAvailable && (
+        <GamePanel
+          key={`${profile.id}:${room.roomId}`}
+          roomId={room.roomId}
+          profileId={profile.id}
+          refreshKey={gameRefresh}
+          onFinished={refresh}
+        />
       )}
     </>
   );

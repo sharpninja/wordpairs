@@ -641,3 +641,74 @@ select {
 .invite-link input {
   width: 100%;
 }
+.game-panel {
+  max-width: 54rem;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-size: cover;
+}
+.game-surface {
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: 0.6rem;
+  background: #fffef9f5;
+}
+.game-surface .panel-heading {
+  padding: 0 0 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+}
+.game-prompt {
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  overflow-wrap: anywhere;
+  margin-top: 1.5rem;
+}
+.game-hints {
+  padding-left: 1.5rem;
+  line-height: 1.8;
+}
+.category-choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+}
+.answer-entry {
+  display: flex;
+  align-items: end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.answer-entry label {
+  flex: 1 1 12rem;
+  margin: 0;
+}
+.answer-reveal {
+  background: var(--mint);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.score-table {
+  table-layout: fixed;
+  margin: 1.5rem 0;
+}
+.score-table caption {
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75rem 0;
+}
+.score-table :where(th, td) {
+  padding: 0.75rem 0.35rem;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 520px) {
+  .game-panel {
+    padding: 0.4rem;
+  }
+  .game-surface {
+    padding: 0.75rem;
+  }
+  .score-table {
+    font-size: 0.75rem;
+  }
+}

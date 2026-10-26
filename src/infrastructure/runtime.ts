@@ -1,12 +1,16 @@
 import { IdentityService } from "../application/identity";
 import { LobbyDispatcher, LobbyService } from "../application/lobby";
+import { MatchService } from "../application/matches";
 import { OutboxRelay } from "../application/outbox";
 import { PublicLandingService } from "../application/public-service";
 import { RoomService } from "../application/rooms";
 import type { Profile } from "../domain/model";
+import { success } from "../domain/result";
+import { PostgresCatalogRepository } from "./catalog-repository";
 import { PostgresLobbyQueue } from "./deadlines";
 import { PostgresIdentityRepository } from "./identity-repository";
 import { InvitationSigner } from "./invitations";
+import { PostgresMatchRepository } from "./match-repository";
 import { OpenAiOidcProvider } from "./oidc";
 import { PostgresOutbox } from "./outbox";
 import { createSupabasePool } from "./postgres-pool";
@@ -44,10 +48,49 @@ export async function advanceLobbyDeadlines() {
     { now: () => Date.now() },
     ids,
   );
-  dispatching = dispatcher.drain(25).finally(() => {
+  dispatching = (async () => {
+    const lobby = await dispatcher.drain(25);
+    if (!lobby.ok) return lobby;
+    const matches = getMatchServices();
+    if (!matches) return lobby;
+    const starts = await matches.repository.starts(25);
+    if (!starts.ok) return starts;
+    for (const roomId of starts.value) {
+      const started = await matches.service.open(roomId);
+      if (
+        !started.ok &&
+        !["NOT_FOUND", "CONFLICT"].includes(started.error.code)
+      )
+        return started;
+    }
+    const stages = await new LobbyDispatcher(
+      new PostgresLobbyQueue(pool, "match"),
+      matches.service,
+      { now: () => Date.now() },
+      ids,
+    ).drain(25);
+    return stages.ok ? success(lobby.value + stages.value) : stages;
+  })().finally(() => {
     dispatching = null;
   });
   return dispatching;
+}
+let catalog: PostgresCatalogRepository | undefined;
+export function getMatchServices() {
+  const pool = getDatabasePool();
+  if (!pool) return null;
+  catalog ??= new PostgresCatalogRepository(pool);
+  const repository = new PostgresMatchRepository(pool, ids);
+  return {
+    repository,
+    service: new MatchService(
+      repository,
+      catalog,
+      { now: () => Date.now() },
+      ids,
+      random,
+    ),
+  };
 }
 export function getRealtimeSettings() {
   const url = process.env.WORDPAIRS_SUPABASE_URL;

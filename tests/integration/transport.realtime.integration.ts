@@ -69,3 +69,29 @@ it('TR committed room/observer transitions reach their actual private recipients
   const view=await service.view(room.value,profiles[2]);expect(view.ok&&view.value.followedPlayerId).toBe(profiles[1]);
   expect((await admin.query("select count(*)::int as count from wordpairs.outbox_events where aggregate_id='transport-room' and published_at is null")).rows[0].count).toBe(0);
 });
+
+it('TR committed match changes notify players and their observer without sending private answers or hints',async()=>{
+  const {LobbyService}=await import('../../src/application/lobby');
+  const {MatchService}=await import('../../src/application/matches');
+  const {PostgresCatalogRepository}=await import('../../src/infrastructure/catalog-repository');
+  const {PostgresMatchRepository}=await import('../../src/infrastructure/match-repository');
+  const {lobbyDeadlines}=await import('../../src/domain/lobby');
+  let now=Date.now();let serial=0;const clock={now:()=>now};const ids={next:()=>`transport-match-event-${++serial}`};
+  const repository=new PostgresRoomRepository(pool);const lobby=new LobbyService(repository,clock,ids);
+  const getRoom=async()=>{const result=await repository.get('transport-room');if(!result.ok)throw new Error('Missing room');return result.value;};
+  for(const actorId of profiles.slice(0,2)){const room=await getRoom();expect((await lobby.act({aggregateId:room.id,actorId,commandId:`transport-ready-${actorId}`,expectedVersion:room.version,requestDigest:'ready'},{type:'ready',ready:true})).ok).toBe(true);}
+  const room=await getRoom();const countdown=lobbyDeadlines(room,()=> 'transport-start').find(j=>j.kind==='countdown');if(!countdown)throw new Error('Missing countdown');now=countdown.dueAt;expect((await lobby.expire(countdown)).ok).toBe(true);
+  const matches=new PostgresMatchRepository(pool,ids,clock);const content=new PostgresCatalogRepository(pool);const service=new MatchService(matches,content,clock,ids,{integer:a=>a});
+  const observations:Record<string,unknown[]>={};for(const id of profiles){observations[id]=[];expect((await listen(id,id,value=>observations[id].push(value))).status).toBe('SUBSCRIBED');}
+  const opened=await service.open(room.id);if(!opened.ok)throw new Error('Missing match');let match=opened.value;
+  expect((await service.act({aggregateId:room.id,actorId:profiles[0],commandId:'transport-choose',expectedVersion:match.version,requestDigest:'choose'},{type:'choose',categoryId:'opposites'})).ok).toBe(true);
+  const loaded=await matches.get(room.id);if(!loaded.ok)throw new Error('Missing match');match=loaded.value;const round=match.rounds[0];const pair=await content.pair(round.pairId,round.pairVersion);if(!pair.ok)throw new Error('Missing pair');now+=100;
+  expect((await service.act({aggregateId:room.id,actorId:profiles[0],commandId:'transport-solve',expectedVersion:match.version,requestDigest:'solve'},{type:'answer',roundId:round.id,stage:0,answer:pair.value.target})).ok).toBe(true);
+  const solved=await matches.get(room.id);if(!solved.ok)throw new Error('Missing match');now=round.stageDueAt;expect((await service.expire({id:'transport-stage',aggregateId:room.id,expectedVersion:solved.value.version,kind:'stage',dueAt:round.stageDueAt})).ok).toBe(true);
+  const current=await matches.get(room.id);if(!current.ok)throw new Error('Missing match');
+  await admin.query("update wordpairs.outbox_events set payload=payload||'{\"target\":\"PRIVATE-TARGET\",\"hints\":[\"PRIVATE-HINT\"]}'::jsonb where aggregate_kind='match' and aggregate_id='transport-room'");
+  const relay=new OutboxRelay(new PostgresOutbox(pool),new SupabaseRealtimePublisher(settings),()=>Date.now());for(let n=0;n<5;n++)expect((await relay.drain(25)).ok).toBe(true);
+  for(const profile of profiles)await expect.poll(()=>observations[profile].some(event=>Boolean(event&&typeof event==='object'&&'aggregateType' in event&&event.aggregateType==='match'&&'aggregateId' in event&&event.aggregateId===room.id&&'version' in event&&event.version===current.value.version))).toBe(true);
+  expect(JSON.stringify(observations)).not.toContain('PRIVATE');expect(JSON.stringify(observations)).not.toContain(pair.value.target);
+  const owner=await service.view(await getRoom(),profiles[0]);const unsolved=await service.view(await getRoom(),profiles[1]);const observer=await service.view(await getRoom(),profiles[2]);expect(owner.ok&&owner.value.round?.hints).toEqual([]);expect(unsolved.ok&&unsolved.value.round?.hints).toEqual([pair.value.hints[0]]);expect(observer.ok&&observer.value.round?.hints).toEqual(unsolved.ok&&unsolved.value.round?.hints);
+});

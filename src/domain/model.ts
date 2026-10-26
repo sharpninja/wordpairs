@@ -53,6 +53,8 @@ export interface Room extends Versioned {
   holdoutDueAt: number | null;
   countdownDueAt: number | null;
   emptySince?: number | null;
+  startedRoster?: string[];
+  startedAt?: number;
 }
 
 export interface Pair extends Versioned {
@@ -91,6 +93,13 @@ export interface Round {
   submittedPlayerIds: string[];
   solves: Solve[];
   revealed: boolean;
+  endedAt?: number;
+  attempts?: {
+    profileId: string;
+    stage: number;
+    acceptedAt: number;
+    correct: boolean;
+  }[];
 }
 
 export interface Match extends Versioned {
@@ -101,6 +110,17 @@ export interface Match extends Versioned {
   status: "choosing" | "playing" | "summary" | "finished";
   rounds: Round[];
   usedPairIds: string[];
+  autoCategoryId?: string | null;
+  startedAt?: number;
+  finishedAt?: number | null;
+  finalStandings?: {
+    profileId: string;
+    position: number;
+    points: number;
+    totalTimeMs: number;
+    rank: number;
+  }[];
+  finalAwards?: { profileId: string; points: number; winner: boolean }[];
 }
 
 export interface DomainEvent {
