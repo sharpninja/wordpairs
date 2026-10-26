@@ -1,13 +1,13 @@
 # Wordpairs Content Moderation Plan
 
 **Status:** Proposed moderation design; policies and implementation are not approved  
-**Requirements baseline:** `word_association_game_requirements.md` v2.0  
+**Requirements baseline:** `word_association_game_requirements.md` v2.2  
 **Implementation sequence:** `implementation_plan.md`  
 **Current scope:** player nominations and category/pair suggestions; no public chat
 
 ## 1. Purpose and scope
 
-This plan defines the proposed policy, workflow, data boundaries, reviewer experience, audit trail, and test coverage for user-submitted candidate answers and category/pair suggestions. It supports FR-14 through FR-17 and AC-16 through AC-19 in the requirements. The new public landing page (FR-22/AC-43) may show leaderboard labels and lobby summaries; this plan treats those as a separate public projection, not moderation data. It does not silently decide the currently open moderation questions, publish user submissions, or introduce a public chat feature.
+This plan defines the proposed policy, workflow, data boundaries, reviewer experience, audit trail, and test coverage for user-submitted candidate answers and category/pair suggestions. It supports FR-14 through FR-17 and AC-16 through AC-19 and AC-47 in the requirements. AC-47 now establishes the baseline authorization, auditability, and catalog activation gate; the detailed moderation roles, states, reasons, appeals, and retention choices in this plan remain proposed until approved. The new public landing page (FR-22/AC-43/AC-50) may show leaderboard labels and lobby summaries; this plan treats those as a separate public projection, not moderation data. It does not publish user submissions or introduce a public chat feature.
 
 There are two related but different flows:
 
