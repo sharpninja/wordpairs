@@ -1,7 +1,7 @@
 # Wordpairs Implementation Plan
 
 **Status:** Phase 0 planning closure started; application implementation is gated  
-**Planning baseline:** Requirements v2.3, 26 October 2026
+**Planning baseline:** Requirements v2.4, 26 October 2026
 **Process:** Byrd Development Process draft v4  
 **Target repository:** `sharpninja/wordpairs`  
 **Execution tracker:** [`implementation_phase0_execution.md`](implementation_phase0_execution.md)
@@ -34,7 +34,7 @@ The current requirements call out unresolved or proposed decisions. Before Phase
 | Nominations and moderation | Define unique-voter counting, duplicate nomination limits, moderation roles/states, review timing, appeals/removal, and 10-win scope. | Eligibility rules, audit model, moderation interface (AC-17–19). |
 | Identity and player labels | Confirm display name behavior, guest persistence, and account-linking behavior. Verify the OpenAI OIDC issuer/discovery, scopes, callback, and token-validation contract before committing to an auth adapter. | Identity model and session lifecycle (AC-03, AC-20–21). |
 | Lobby discovery and invitations | Approve default discoverability, searchable fields, quick-match policy, observer limit, and inviter attribution for manually shared room codes. | Lobby query privacy and observer authorization (AC-22–28). |
-| Readiness and host controls | Approve countdown duration and creator/host powers. The confirmed holdout removal/countdown behavior, including a one-player locked remainder, is fixed. Separately decide what happens when that locked countdown expires below two players; FR-03 forbids starting a game below two, and the no-replacement rule remains in force. | Readiness state machine, roster lock, match-start boundary (AC-30–33; FR-03). |
+| Readiness and host controls | Approve countdown duration and creator/host powers. Preserve the confirmed split: a timeout boots the holdout and starts the countdown for rooms over two players; an exactly two-player lobby keeps the holdout and waits for both to be ready. | Readiness state machine, roster lock and timeout boundary (AC-30–33). |
 | Public landing page | Approve leaderboard metric/period, guest inclusion, public labels/privacy/opt-out, tie order, lobby fields/count precision/refresh/join behavior, and rules-summary source. | Anonymous read model, public data privacy, landing page behavior (AC-43). |
 | Reactions | Approve reaction display duration and rate limit. | Realtime event and UI policy (AC-29). |
 | Operations | Define room expiry/reconnection/creator disconnect behavior, expected concurrency, and exact recoverable free-quota behavior. Confirm free-tier configuration remains non-commercial/personal. | Persistence, scaling, operational limits (AC-35–37). |
@@ -92,7 +92,7 @@ This is the initial allocation of every criterion to its first implementation ph
 | AC-24–26 | Phase 2 | Capacity lower/upper/invalid boundaries; code/deep-link destination; deep link bypasses browse; open-slot and full-room outcomes. |
 | AC-27–28 | Phase 2 | Observer consumes no player slot; inviter binding; realtime perspective; rejected commands and no score/state mutation. |
 | AC-29 | Phase 5 | Allowed emoji broadcast to players/observers; arbitrary payload and state/score mutation rejected; display/rate rules after approval. |
-| AC-30–33 | Phase 3 | Oldest observer selected; player relative order retained; no-observer vacancy; fake-clock 30s idle; 5s holdout warning; ready-before-expiry; boot-at-expiry starts and locks with one remaining player; lock and no replacement after countdown. The later countdown-expiry outcome for a roster below two remains a separate FR-03 decision. |
+| AC-30–33 | Phase 3 | Oldest observer selected; player relative order retained; no-observer vacancy; fake-clock 30s idle; 5s holdout warning; ready-before-expiry; timeout boot/countdown for rooms over two players; exactly two-player timeout keeps holdout and waits; lock and no replacement after countdown. |
 | AC-34–37 | Phase 1 | Vercel branch-to-environment mapping; no Actions dependency; free plan configuration; rerunnable provisioning/migrations/secrets masking; recoverable quota response without paid fallback. |
 | AC-38 | Phases 0–7 | [`ac_test_inventory.md`](ac_test_inventory.md) links all 51 active ACs to planned test IDs; it does not mean test code has been authored or passed. After Phase 0 approval, every active AC test must be authored and mock-validated before the first project implementation code; thereafter the test command blocks the application build on failure. |
 | AC-39 | Phase 1 and any dependency/asset change | Lockfile consistency; attribution row/license/source for every direct package and external asset; unreviewed dependency/asset blocks release. |
@@ -165,7 +165,7 @@ Finalize exact module and route names during architecture approval. This is a pr
 - Active player count never exceeds room capacity (2–25); assignment is atomic under concurrency.
 - A player appears once in an active roster; order is explicit and stable except the confirmed pre-countdown compaction rule.
 - Promotion only occurs before countdown start, selects the earliest observer, places them last, shifts other players up without reordering them, and preserves remaining observers.
-- Start countdown and roster lock happen atomically on all-ready or expired-holdout removal. After lock, departures create a vacancy and never trigger replacement.
+- Start countdown and roster lock happen atomically when all players are ready, or when an expired holdout is removed from a room with more than two players. In an exactly two-player room, expiry leaves the holdout in place and does not start the countdown. After lock, departures create a vacancy and never trigger replacement.
 - A 30-second idle readiness prompt and 5-second holdout warning are driven from authoritative state/version timestamps, so stale timer callbacks cannot mutate a changed lobby.
 - One accepted score per player per round; stage score is fixed at acceptance. Hints go only to players unsolved at the current transition.
 - The target answer is never sent before reveal; incorrect guess text is never broadcast to other players or observers.
