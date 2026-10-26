@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { forbiddenImports } from "./import-boundary";
 
 const root = process.cwd();
 const packageJson = JSON.parse(
@@ -67,11 +68,54 @@ describe("Phase 1A application skeleton and module boundaries", () => {
   });
 
   it("keeps domain modules free of UI, framework, and infrastructure imports", () => {
-    const forbidden =
-      /(?:from\s+|import\s*(?:\(\s*)?)['"](?:next(?:\/[^'"]*)?|react(?:-dom)?(?:\/[^'"]*)?|@supabase\/[^'"]+|openid-client|node:fs)['"]/;
-    const domainFiles = sourceFiles(resolve(root, "src/domain"));
+    const domainFiles = [
+      ...sourceFiles(resolve(root, "src/domain")),
+      ...sourceFiles(resolve(root, "src/application")),
+    ];
     expect(domainFiles.length).toBeGreaterThan(0);
     for (const file of domainFiles)
-      expect(readFileSync(file, "utf8"), file).not.toMatch(forbidden);
+      expect(
+        forbiddenImports(file, readFileSync(file, "utf8"), root),
+        file,
+      ).toEqual([]);
+  });
+
+  it("rejects infrastructure/framework imports through relative paths, aliases, and dynamic syntax", () => {
+    for (const layer of ["domain", "application"]) {
+      const file = resolve(root, "src", layer, "example.ts");
+      for (const specifier of [
+        "next/server",
+        "react",
+        "node:fs",
+        "../infrastructure",
+        "@/infrastructure/db",
+        "../app/page",
+      ]) {
+        for (const statement of [
+          `import x from '${specifier}'`,
+          `export * from '${specifier}'`,
+          `import('${specifier}')`,
+          `require('${specifier}')`,
+        ])
+          expect(forbiddenImports(file, statement, root)).toEqual([specifier]);
+      }
+      expect(forbiddenImports(file, "import(computed)", root)).toEqual([
+        "<computed module>",
+      ]);
+      expect(
+        forbiddenImports(
+          file,
+          "import type { Room } from '../domain/model'",
+          root,
+        ),
+      ).toEqual([]);
+    }
+    expect(
+      forbiddenImports(
+        resolve(root, "src/domain/example.ts"),
+        "import x from '../application/ports'",
+        root,
+      ),
+    ).toEqual(["../application/ports"]);
   });
 });

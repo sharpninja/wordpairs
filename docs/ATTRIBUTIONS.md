@@ -9,6 +9,7 @@ Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only
 | `next` | Vercel application framework and routing | 16.4.3 | [npm registry](https://www.npmjs.com/package/next/v/16.4.3) | MIT | [Next.js](https://nextjs.org/) |
 | `react` | User interface components | 19.3.1 | [npm registry](https://www.npmjs.com/package/react/v/19.3.1) | MIT | [React](https://react.dev/) |
 | `react-dom` | Browser rendering for React | 19.3.1 | [npm registry](https://www.npmjs.com/package/react-dom/v/19.3.1) | MIT | [React](https://react.dev/) |
+| `pg` | Server-only PostgreSQL connections to Supabase with one checked-out client per transaction | 8.23.1 | [npm registry](https://www.npmjs.com/package/pg/v/8.23.1) | MIT | [node-postgres](https://github.com/brianc/node-postgres) |
 | `@supabase/supabase-js` | Supabase Postgres API, Auth, and Realtime client | 2.118.0 | [npm registry](https://www.npmjs.com/package/@supabase%2Fsupabase-js/v/2.118.0) | MIT | [Supabase JS](https://github.com/supabase/supabase-js) |
 | `@supabase/ssr` | Supabase session handling with server-rendered routes | 0.12.7 | [npm registry](https://www.npmjs.com/package/@supabase%2Fssr/v/0.12.7) | MIT | [Supabase SSR](https://github.com/supabase/ssr) |
 | `openid-client` | Server-side OpenID Connect client | 6.8.8 | [npm registry](https://www.npmjs.com/package/openid-client/v/6.8.8) | MIT | [openid-client](https://github.com/panva/openid-client) |
@@ -23,6 +24,7 @@ Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only
 | `@types/react` | React type declarations | 19.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Freact/v/19.3.0) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) |
 | `@types/react-dom` | React DOM type declarations | 19.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Freact-dom/v/19.3.0) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom) |
 | `@types/node` | Node.js type declarations | 26.6.5 | [npm registry](https://www.npmjs.com/package/@types%2Fnode/v/26.6.5) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node) |
+| `@types/pg` | Type declarations for the server-only PostgreSQL driver | 8.23.1 | [npm registry](https://www.npmjs.com/package/@types%2Fpg/v/8.23.1) | MIT | [DefinitelyTyped pg](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg) |
 | `vitest` | Unit and integration test runner | 5.0.5 | [npm registry](https://www.npmjs.com/package/vitest/v/5.0.5) | MIT | [Vitest](https://vitest.dev/) |
 | `@testing-library/react` | Component behavior tests | 16.3.3 | [npm registry](https://www.npmjs.com/package/@testing-library%2Freact/v/16.3.3) | MIT | [React Testing Library](https://github.com/testing-library/react-testing-library) |
 | `@testing-library/user-event` | User interaction simulation | 14.6.8 | [npm registry](https://www.npmjs.com/package/@testing-library%2Fuser-event/v/14.6.8) | MIT | [user-event](https://github.com/testing-library/user-event) |
