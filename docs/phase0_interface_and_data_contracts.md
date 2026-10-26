@@ -9,7 +9,7 @@
 
 This Phase 0-approved document defines module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is the contract baseline for executable mock-first tests; product decisions affecting AC expected results are resolved in requirements v2.6.
 
-The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. The current test-only candidate passes 315 tests across 67 primary AC cases and 27 supplemental scenarios, with four separate TR-19 cases. The latest hostile review scored 96/94.6 before these corrections. The global mock-validation gate remains pending a new exact-commit review at 98/98; the same reusable assertions must exercise real behavior during each implementation increment.
+The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. The current test-only candidate passes 316 tests across 67 primary AC cases and 27 supplemental scenarios, with four separate TR-19 cases. The latest exact-commit hostile review at `afd3371913e44ee0cf8eeb8a61a7880c6fc57405` scored 97/99 and found AC-38 accepted planned mock records; the pending candidate now rejects those records. The global mock-validation gate remains pending a new exact-commit review at 98/98; the same reusable assertions must exercise real behavior during each implementation increment.
 
 Deployment, provider/account configuration, branch topology, and deployed-artifact checks are outside AC coverage. Deployment execution and deployment tooling follow completion of coding Phases 1–6; topology is finalized at Phase 7 entry. Mockable operational command contracts remain TR work and follow their own test-first gate.
 
@@ -158,7 +158,7 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 - [x] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
 - [x] Approve server clock and durable deadline-scheduler contract for lobby timers.
 - [x] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
-- [x] Map all 67 AC case IDs to oracle entries and evidence tiers. **Phase 0A gate status:** the latest exact-commit review scored 96/94.6 before the corrections now in the candidate; the global gate remains incomplete until fresh independent review reaches 98/98.
+- [x] Map all 67 AC case IDs to oracle entries and evidence tiers. **Phase 0A gate status:** the latest exact-commit review scored 97/99 and found AC-38 accepted planned mock records; that and bounded evidence-label issues are corrected in the pending candidate, and the global gate remains incomplete until fresh independent review reaches 98/98.
 - [x] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
 - [x] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 

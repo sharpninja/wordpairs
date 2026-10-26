@@ -42,14 +42,18 @@ describe('AC test inventory traceability (AC-38)', () => {
       existingTestIds: ['AC-01-T01', 'AC-02-T01'],
       mockValidationRecords: [
         { testId: 'AC-01-T01', setup: { room: 'open' }, actions: [{ type: 'join' }], observation: { result: 'joined' }, assertions: ['membership is player'], status: 'passing' },
-        { testId: 'AC-02-T01', setup: { room: 'full' }, actions: [{ type: 'join' }], observation: { result: 'no-slot' }, assertions: ['roster unchanged'], status: 'planned' },
+        { testId: 'AC-02-T01', setup: { room: 'full' }, actions: [{ type: 'join' }], observation: { result: 'no-slot' }, assertions: ['roster unchanged'], status: 'passing' },
       ],
     };
     expect(validateTraceabilityManifest(complete)).toEqual({ valid: true });
+    const planned = structuredClone(complete);
+    planned.mockValidationRecords[1].status = 'planned';
+    expect(validateTraceabilityManifest(planned)).toEqual({ valid: false, code: 'incomplete-record' });
     expect(validateTraceabilityManifest({ ...complete, mappings: complete.mappings.slice(0, 1) })).toEqual({ valid: false, code: 'missing-ac' });
     expect(validateTraceabilityManifest({ ...complete, mappings: [{ acId: 'AC-01', testIds: ['AC-01-T99'] }, complete.mappings[1]] })).toEqual({ valid: false, code: 'missing-test' });
     expect(validateTraceabilityManifest({ ...complete, mockValidationRecords: complete.mockValidationRecords.slice(0, 1) })).toEqual({ valid: false, code: 'missing-record' });
     expect(validateTraceabilityManifest({ ...complete, mockValidationRecords: [{ ...complete.mockValidationRecords[0], assertions: [] }, complete.mockValidationRecords[1]] })).toEqual({ valid: false, code: 'incomplete-record' });
+    expect(validateTraceabilityManifest({ activeAcIds: [], mappings: [], existingTestIds: [], mockValidationRecords: [] })).toEqual({ valid: false, code: 'empty-active-set' });
   });
 });
 
