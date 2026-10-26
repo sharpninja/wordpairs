@@ -9,7 +9,7 @@
 
 This Phase 0-approved document defines module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is the contract baseline for executable mock-first tests; product decisions affecting AC expected results are resolved in requirements v2.6.
 
-The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. Executable tests may now be authored; all active-AC tests must pass the global mock-validation gate before any production implementation code is written.
+The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. The 67 active-AC test oracles pass scripted conforming/violating mock-trace validation before production implementation. This validates assertion sensitivity only. The same oracles must exercise real behavior during each implementation increment.
 
 Deployment, provider/account configuration, branch topology, and deployed-artifact checks are outside AC coverage. Deployment execution and deployment tooling follow completion of coding Phases 1–6; topology is finalized at Phase 7 entry. Mockable operational command contracts remain TR work and follow their own test-first gate.
 
@@ -148,7 +148,7 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 | Public interfaces | Finalize application command/query schemas, stable error codes, event versions/audiences and authorization derivation. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
 | Persistence/security | Approve schema, RLS, transactions/versioning, idempotency/outbox, role source, retention, and server-only secret handling. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
 | Timer adapter | Approve durable deadline-job contract and Postgres transaction semantics. Supabase Cron/pg_cron is selected; actual free-plan eligibility is checked in Phase 7. | AC-30–33; TR-22 |
-| Test specification | Refine all 67 planned AC cases into exact assertions, mocks and evidence tiers. Verify every active AC has a mockable contract before any implementation. | AC-01–33, AC-37–39, AC-41–47, AC-50–51 |
+| Test specification | 67 AC oracles are authored and pass conforming/violating mock-trace checks; verify real application conformance incrementally. | AC-01–33, AC-37–39, AC-41–47, AC-50–51 |
 | Deployment contract planning | Keep Vercel, provisioning, build/SWBOM and source archive checks TR-only; do not execute deployment during coding Phases 1–6. | TR-20–29; AC-41/42 use local archive fixtures only |
 
 ## 10. Phase 0 completion record
@@ -158,8 +158,8 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 - [x] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
 - [x] Approve server clock and durable deadline-scheduler contract for lobby timers.
 - [x] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
-- [x] Refine all 67 planned AC case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
+- [x] Refine all 67 AC case IDs into executable oracles and evidence tiers; validate each oracle with conforming/violating scripted traces before production implementation.
 - [x] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
 - [x] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 
-**Phase 0 exit:** Approved by the user on 26 October 2026 after a remote-anchored hostile review scoring 99.5% accuracy and 99% completeness. Test authoring is authorized. The global mock-validation gate must pass before production implementation code. Deployment and release operations begin only after coding Phases 1–6 are complete.
+**Phase 0 exit:** Approved by the user on 26 October 2026 after a remote-anchored hostile review scoring 99.5% accuracy and 99% completeness. The 67 AC oracle assertions pass scripted conforming/violating mock-trace checks; this validates sensitivity, not product behavior. Phase 1A begins after the exact-commit hostile review meets the 98/98 target; the same assertions must then test real behavior incrementally. Deployment and release operations begin only after coding Phases 1–6 are complete.
