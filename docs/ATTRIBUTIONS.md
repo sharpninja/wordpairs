@@ -4,32 +4,32 @@ Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only
 
 ## Runtime dependencies
 
-| Package | Planned use | Reviewed version | License | Upstream |
-|---|---|---:|---|---|
-| `next` | Vercel application framework and routing | 16.4.3 | MIT | [Next.js](https://nextjs.org/) |
-| `react` | User interface components | 19.3.1 | MIT | [React](https://react.dev/) |
-| `react-dom` | Browser rendering for React | 19.3.1 | MIT | [React](https://react.dev/) |
-| `@supabase/supabase-js` | Supabase Postgres API, Auth, and Realtime client | 2.118.0 | MIT | [Supabase JS](https://github.com/supabase/supabase-js) |
-| `@supabase/ssr` | Supabase session handling with server-rendered routes | 0.12.7 | MIT | [Supabase SSR](https://github.com/supabase/ssr) |
-| `openid-client` | Server-side OpenID Connect client | 6.8.8 | MIT | [openid-client](https://github.com/panva/openid-client) |
-| `zod` | Runtime validation of untrusted application input | 4.6.7 | MIT | [Zod](https://zod.dev/) |
+| Package | Planned use | Reviewed version | Registry version record | License | Upstream |
+|---|---|---:|---|---|---|
+| `next` | Vercel application framework and routing | 16.4.3 | [npm registry](https://www.npmjs.com/package/next/v/16.4.3) | MIT | [Next.js](https://nextjs.org/) |
+| `react` | User interface components | 19.3.1 | [npm registry](https://www.npmjs.com/package/react/v/19.3.1) | MIT | [React](https://react.dev/) |
+| `react-dom` | Browser rendering for React | 19.3.1 | [npm registry](https://www.npmjs.com/package/react-dom/v/19.3.1) | MIT | [React](https://react.dev/) |
+| `@supabase/supabase-js` | Supabase Postgres API, Auth, and Realtime client | 2.118.0 | [npm registry](https://www.npmjs.com/package/@supabase%2Fsupabase-js/v/2.118.0) | MIT | [Supabase JS](https://github.com/supabase/supabase-js) |
+| `@supabase/ssr` | Supabase session handling with server-rendered routes | 0.12.7 | [npm registry](https://www.npmjs.com/package/@supabase%2Fssr/v/0.12.7) | MIT | [Supabase SSR](https://github.com/supabase/ssr) |
+| `openid-client` | Server-side OpenID Connect client | 6.8.8 | [npm registry](https://www.npmjs.com/package/openid-client/v/6.8.8) | MIT | [openid-client](https://github.com/panva/openid-client) |
+| `zod` | Runtime validation of untrusted application input | 4.6.7 | [npm registry](https://www.npmjs.com/package/zod/v/4.6.7) | MIT | [Zod](https://zod.dev/) |
 
 ## Development and test dependencies
 
-| Package | Planned use | Reviewed version | License | Upstream |
-|---|---|---:|---|---|
-| `typescript` | Static type checking | 7.0.2 | Apache-2.0 | [TypeScript](https://www.typescriptlang.org/) |
-| `@types/react` | React type declarations | 19.3.0 | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) |
-| `@types/react-dom` | React DOM type declarations | 19.3.0 | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom) |
-| `@types/node` | Node.js type declarations | 26.6.5 | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node) |
-| `vitest` | Unit and integration test runner | 5.0.5 | MIT | [Vitest](https://vitest.dev/) |
-| `@testing-library/react` | Component behavior tests | 16.3.3 | MIT | [React Testing Library](https://github.com/testing-library/react-testing-library) |
-| `@testing-library/user-event` | User interaction simulation | 14.6.8 | MIT | [user-event](https://github.com/testing-library/user-event) |
-| `@testing-library/jest-dom` | DOM accessibility and state matchers | 7.0.1 | MIT | [jest-dom](https://github.com/testing-library/jest-dom) |
-| `jsdom` | Browser-like DOM test environment | 30.1.3 | MIT | [jsdom](https://github.com/jsdom/jsdom) |
-| `msw` | Mock HTTP and WebSocket service boundaries in tests | 3.0.3 | MIT | [Mock Service Worker](https://mswjs.io/) |
-| `@playwright/test` | Browser-level acceptance tests | 1.64.1 | Apache-2.0 | [Playwright](https://playwright.dev/) |
-| `@cyclonedx/cyclonedx-npm` | Generate a CycloneDX SWBOM from the npm lockfile for each deployment | 6.0.1 | Apache-2.0 | [CycloneDX npm generator](https://github.com/CycloneDX/cyclonedx-node-npm) |
+| Package | Planned use | Reviewed version | Registry version record | License | Upstream |
+|---|---|---:|---|---|---|
+| `typescript` | Static type checking | 7.0.2 | [npm registry](https://www.npmjs.com/package/typescript/v/7.0.2) | Apache-2.0 | [TypeScript](https://www.typescriptlang.org/) |
+| `@types/react` | React type declarations | 19.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Freact/v/19.3.0) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) |
+| `@types/react-dom` | React DOM type declarations | 19.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Freact-dom/v/19.3.0) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom) |
+| `@types/node` | Node.js type declarations | 26.6.5 | [npm registry](https://www.npmjs.com/package/@types%2Fnode/v/26.6.5) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node) |
+| `vitest` | Unit and integration test runner | 5.0.5 | [npm registry](https://www.npmjs.com/package/vitest/v/5.0.5) | MIT | [Vitest](https://vitest.dev/) |
+| `@testing-library/react` | Component behavior tests | 16.3.3 | [npm registry](https://www.npmjs.com/package/@testing-library%2Freact/v/16.3.3) | MIT | [React Testing Library](https://github.com/testing-library/react-testing-library) |
+| `@testing-library/user-event` | User interaction simulation | 14.6.8 | [npm registry](https://www.npmjs.com/package/@testing-library%2Fuser-event/v/14.6.8) | MIT | [user-event](https://github.com/testing-library/user-event) |
+| `@testing-library/jest-dom` | DOM accessibility and state matchers | 7.0.1 | [npm registry](https://www.npmjs.com/package/@testing-library%2Fjest-dom/v/7.0.1) | MIT | [jest-dom](https://github.com/testing-library/jest-dom) |
+| `jsdom` | Browser-like DOM test environment | 30.1.3 | [npm registry](https://www.npmjs.com/package/jsdom/v/30.1.3) | MIT | [jsdom](https://github.com/jsdom/jsdom) |
+| `msw` | Mock HTTP and WebSocket service boundaries in tests | 3.0.3 | [npm registry](https://www.npmjs.com/package/msw/v/3.0.3) | MIT | [Mock Service Worker](https://mswjs.io/) |
+| `@playwright/test` | Browser-level acceptance tests | 1.64.1 | [npm registry](https://www.npmjs.com/package/@playwright%2Ftest/v/1.64.1) | Apache-2.0 | [Playwright](https://playwright.dev/) |
+| `@cyclonedx/cyclonedx-npm` | Generate a CycloneDX SWBOM from the npm lockfile for each deployment | 6.0.1 | [npm registry](https://www.npmjs.com/package/@cyclonedx%2Fcyclonedx-npm/v/6.0.1) | Apache-2.0 | [CycloneDX npm generator](https://github.com/CycloneDX/cyclonedx-node-npm) |
 
 ## License compatibility policy
 
