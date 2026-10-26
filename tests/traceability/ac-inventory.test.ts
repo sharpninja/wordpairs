@@ -1,31 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { validateRows, validateTraceabilityManifest, type TraceabilityManifest } from './inventory-validator.js';
 
 const inventoryPath = resolve(process.cwd(), 'docs/ac_test_inventory.md');
 const inventory = readFileSync(inventoryPath, 'utf8');
 const rows = inventory.split(/\r?\n/).filter((line) => /^\| AC-\d{2} \|/.test(line));
 const activeAcIds = new Set(rows.map((line) => line.split('|')[1].trim()));
 const caseIds = rows.map((line) => line.match(/`(AC-\d{2}-T\d{2})`/)?.[1]).filter((id): id is string => Boolean(id));
-
-function validateRows(inputRows: string[]): string[] {
-  const ids: string[] = [];
-  for (const row of inputRows) {
-    const columns = row.split('|').map((column) => column.trim());
-    if (columns.length !== 9) throw new Error('Expected exactly seven inventory fields');
-    for (const index of [1, 2, 3, 4, 5, 6, 7]) {
-      if (typeof columns[index] !== 'string' || columns[index].length === 0) {
-        throw new Error(`Missing inventory field ${index}`);
-      }
-    }
-    const caseMatch = columns[3].match(/^`(AC-\d{2}-T\d{2})`$/);
-    if (!caseMatch) throw new Error('Malformed active-AC test ID');
-    if (!caseMatch[1].startsWith(`${columns[1]}-T`)) throw new Error('Test ID does not belong to its AC row');
-    ids.push(caseMatch[1]);
-  }
-  if (new Set(ids).size !== ids.length) throw new Error('Duplicate active-AC test ID');
-  return ids;
-}
 
 const expectedActiveAcIds = [
   ...Array.from({ length: 33 }, (_, index) => `AC-${String(index + 1).padStart(2, '0')}`),
@@ -51,6 +33,23 @@ describe('AC test inventory traceability (AC-38)', () => {
     expect(() => validateRows([valid.slice(0, -10)])).toThrow('Expected exactly seven inventory fields');
     expect(() => validateRows([valid.replace('AC-01-T01', 'AC-02-T01')])).toThrow('Test ID does not belong to its AC row');
     expect(() => validateRows([valid, valid])).toThrow('Duplicate active-AC test ID');
+  });
+
+  it('validates concrete manifest mappings and mock-validation records', () => {
+    const complete: TraceabilityManifest = {
+      activeAcIds: ['AC-01', 'AC-02'],
+      mappings: [{ acId: 'AC-01', testIds: ['AC-01-T01'] }, { acId: 'AC-02', testIds: ['AC-02-T01'] }],
+      existingTestIds: ['AC-01-T01', 'AC-02-T01'],
+      mockValidationRecords: [
+        { testId: 'AC-01-T01', setup: { room: 'open' }, actions: [{ type: 'join' }], observation: { result: 'joined' }, assertions: ['membership is player'], status: 'passing' },
+        { testId: 'AC-02-T01', setup: { room: 'full' }, actions: [{ type: 'join' }], observation: { result: 'no-slot' }, assertions: ['roster unchanged'], status: 'planned' },
+      ],
+    };
+    expect(validateTraceabilityManifest(complete)).toEqual({ valid: true });
+    expect(validateTraceabilityManifest({ ...complete, mappings: complete.mappings.slice(0, 1) })).toEqual({ valid: false, code: 'missing-ac' });
+    expect(validateTraceabilityManifest({ ...complete, mappings: [{ acId: 'AC-01', testIds: ['AC-01-T99'] }, complete.mappings[1]] })).toEqual({ valid: false, code: 'missing-test' });
+    expect(validateTraceabilityManifest({ ...complete, mockValidationRecords: complete.mockValidationRecords.slice(0, 1) })).toEqual({ valid: false, code: 'missing-record' });
+    expect(validateTraceabilityManifest({ ...complete, mockValidationRecords: [{ ...complete.mockValidationRecords[0], assertions: [] }, complete.mockValidationRecords[1]] })).toEqual({ valid: false, code: 'incomplete-record' });
   });
 });
 

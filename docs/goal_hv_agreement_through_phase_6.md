@@ -14,7 +14,7 @@ Deliver Wordpairs through coding Phase 6 and obtain independent hostile-validati
 - Phase 0 was approved by the user on 26 October 2026.
 - The detailed Phase 1–6 plan is documented and remote-reviewed at commit `fb9225b931b262c74fbf03ad52503a1a3a5b43b0` with 99% accuracy and 99% completeness; the complete output is in `repo_review_receipt.jsonl`.
 - The current plan covers 45 active ACs. Its inventory has 67 planned AC test IDs; two TR-30 and six TR-31 cases are separately identified. The original Phase 0 approval receipt's count of 65 records the inventory at approval time, before two appeal-coverage cases were added.
-- The test-only Node/Vitest candidate passes 306 tests: 67 primary AC scenarios, 26 supplemental assertion scenarios, and 106 named semantic controls. The latest exact-commit review (`9c759e87adad4ff92d600da2ccac9315f0ada0d8`) scored 92% accuracy and 89.9% completeness; its case-level findings have been corrected locally and await a new exact-commit review. The global test gate is incomplete; no production implementation has been created.
+- The test-only Node/Vitest candidate passes 315 tests: 67 primary AC scenarios, 27 supplemental scenarios, four separate TR-19 reaction cases, and 111 named AC semantic controls. The latest exact-commit review (`eb5aba2111d5581b4b88f615165ec8d7c1e34060`) scored 96% accuracy and 94.6% completeness before these fixes; a fresh exact-commit review is pending. The global test gate remains incomplete; no production implementation has been created.
 - Deployment remains Phase 7, after coding Phases 1–6. No AC depends on deployed artifacts, and deployment checks do not count as AC evidence.
 
 ## Non-negotiable constraints

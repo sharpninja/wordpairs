@@ -84,3 +84,31 @@ it('rejects the hostile-review semantic controls that summary flags previously m
     expect(() => scenario!.assertObservation(structuredClone(violation!.observation))).toThrow();
   }
 });
+
+it('snapshots scripts and rejects every in-place request alias mutation', async () => {
+  const scenario = acOracleScenarios.find(({ id }) => id === 'AC-30-T01')!;
+  const configuredRequest = structuredClone(scenario.request);
+  const configuredObservation = structuredClone(scenario.conformingObservation);
+  const scriptMap = new Map([[scenario.id, { request: configuredRequest, observation: configuredObservation }]]);
+  const driver = new ScriptedObservationDriver(scriptMap);
+
+  configuredRequest.setup.players = [];
+  configuredRequest.actions[0].payload!.playerId = 'mutated-configured-payload';
+  configuredRequest.actions.length = 0;
+  configuredObservation.players = [];
+  scriptMap.clear();
+
+  const independentRequest = structuredClone(scenario.request);
+  await expect(driver.execute(scenario.id, independentRequest)).resolves.toStrictEqual(scenario.conformingObservation);
+
+  independentRequest.actions.length = 0;
+  await expect(driver.execute(scenario.id, independentRequest)).rejects.toThrow('Unexpected setup or ordered actions');
+
+  const setupMutation = structuredClone(scenario.request);
+  setupMutation.setup.players = [];
+  await expect(driver.execute(scenario.id, setupMutation)).rejects.toThrow('Unexpected setup or ordered actions');
+
+  const payloadMutation = structuredClone(scenario.request);
+  payloadMutation.actions[0].payload!.playerId = 'different-player';
+  await expect(driver.execute(scenario.id, payloadMutation)).rejects.toThrow('Unexpected setup or ordered actions');
+});
