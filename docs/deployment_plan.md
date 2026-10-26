@@ -53,7 +53,7 @@ Supabase Free currently permits two free projects across an owner's/admin's orga
 
 ### 4.2 Repeatable provisioning command
 
-Implement one manually invoked provisioning entry point, backed by pinned Supabase CLI and Vercel CLI versions. Select a shell or Node-based wrapper during Phase 0; declare the tools as direct development/build dependencies or provide a pinned documented installation mechanism, and add their purpose, license, and upstream source to `ATTRIBUTIONS.md`.
+Implement one manually invoked provisioning entry point, backed by pinned Supabase CLI and Vercel CLI versions. Select a shell or Node-based wrapper during Phase 1 foundation design, before provisioning scripts are implemented; declare the tools as direct development/build dependencies or provide a pinned documented installation mechanism, and add their purpose, license, and upstream source to `ATTRIBUTIONS.md`. Final branch/project topology and account-capacity confirmation are also Phase 1 provisioning decisions, not Phase 0 exit gates.
 
 The command has explicit subcommands, a safe default dry-run/plan mode, and confirmation for destructive changes:
 
