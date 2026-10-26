@@ -1,7 +1,7 @@
 # Word Association Game Requirements
 
 **Functional behavior, technical requirements, and acceptance criteria**  
-Version 1.6 · 26 October 2026 · Draft for product approval
+Version 1.9 · 26 October 2026 · Draft for product approval
 
 ## Purpose and scope
 
@@ -108,6 +108,12 @@ The three submitted pairs are suggestions and do not become playable automatical
 
 The nomination and moderation path is separate from live round progression. A candidate must satisfy both the nomination threshold and moderation approval; neither condition alone is sufficient.
 
+## Deployment workflow
+
+![Vercel deployment and provisioning workflow](word_association_vercel_deployment.svg)
+
+Provisioning is run manually from a developer workstation with authenticated Supabase and Vercel CLIs. The script creates or links the Supabase and Vercel projects, applies versioned database migrations, and configures environment variables without committing credentials. A one-time Git integration connects `sharpninja/wordpairs` to Vercel. Subsequent branch pushes create preview deployments; merges to `main` create production deployments. GitHub Actions is not used or required.
+
 ## Functional requirements
 
 ### Player access and identity
@@ -160,6 +166,14 @@ The nomination and moderation path is separate from live round progression. A ca
 
 **FR-15 Responsive screens — Confirmed.** Profile, lobby, active round, hint stage, scorecard, round summary, category picker, and final standings remain usable on phone-sized screens in portrait and landscape orientation.
 
+## Direct dependency set
+
+The game is licensed under GNU GPL version 2 only (`GPL-2.0-only`), with the complete license text in the repository root `LICENSE` file. The planned runtime dependencies are Next.js, React, React DOM, `@supabase/supabase-js`, `@supabase/ssr`, `openid-client`, and Zod. Next.js provides the Vercel application framework; Supabase packages provide database and Realtime access plus server-rendered session handling; `openid-client` implements the OpenID Connect flow; Zod validates untrusted input at application boundaries.
+
+The planned development and test dependencies are TypeScript and its Node/React type packages, Vitest, React Testing Library, `@testing-library/user-event`, `@testing-library/jest-dom`, jsdom, Mock Service Worker (MSW), Playwright, and `@cyclonedx/cyclonedx-npm` for build-specific software bills of materials. Vitest, Testing Library, and MSW support the required mock-first unit and component tests; Playwright covers browser-level acceptance flows with network calls intercepted or mocked where applicable. Every acceptance criterion must map to tests before production code is written. The test command must pass before the Vercel build command proceeds.
+
+Exact compatible versions are selected and locked when implementation begins. Maintain package purposes, license identifiers, and upstream links in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); refresh it whenever a direct dependency or external asset changes. Before distributing code or assets as part of the game, verify their licenses are compatible with `GPL-2.0-only` and preserve their notices. Build and test tools are not bundled into the game. Follow the per-deployment artifact contract in [`SWBOM.md`](SWBOM.md).
+
 ## Technical requirements
 
 **TR-01 Authoritative room state.** A server-side game service owns room membership, round state, accepted answers, hint stage, scoring, solve timestamps, category choice, and match completion. Clients cannot award points or change a target answer.
@@ -200,6 +214,26 @@ The nomination and moderation path is separate from live round progression. A ca
 
 **TR-14 Candidate nomination and moderation.** The service permits nomination submission only for a player who solved the current round before any hint. It stores each nomination against a normalized candidate word and records its nominating player and timestamp. Candidate eligibility requires both at least 10 nominations and an approved moderation status. Moderation status, nomination count, and eligibility state must be auditable. An eligible candidate cannot be played until a complete curated word-pair record exists.
 
+**TR-20 Vercel deployment target.** Deploy the web application from the `sharpninja/wordpairs` GitHub repository to Vercel. Use Vercel’s Git integration: pushes to non-production branches create Preview deployments, and changes merged to `main` create Production deployments. Select the framework preset, project root, build command, and output directory to match the implementation once its framework is approved.
+
+**TR-21 Free-tier operation.** The deployment must remain on free tiers: Vercel Hobby and Supabase Free. Do not enable paid add-ons, metered upgrades, or paid external services. The product is personal and non-commercial while using Vercel Hobby. Current Supabase Free constraints include a 500 MB database, 200 concurrent Realtime connections, 100 Realtime messages per second, 2 million Realtime messages per month, and automatic pause after one week of inactivity. Treat these as capacity limits and provide graceful handling when service quotas are reached.
+
+**TR-22 Persistence and real-time room state.** Use Supabase Postgres as the durable source of truth for profiles, curated pairs, nominations, moderation records, completed matches, and scores. Use Supabase Realtime for active-room presence and event delivery within its free-tier limits. Do not rely on a Vercel Function’s process memory as shared or durable room state. Keep category background assets in the repository unless a future requirement needs uploaded files.
+
+**TR-23 Provisioning and schema changes.** Provide a manually invoked, repeatable provisioning script using the Supabase and Vercel CLIs. It must create or link the projects, apply version-controlled database migrations, and set required Vercel environment variables for Preview and Production. The script must accept authenticated credentials from the operator’s environment, never commit or print secret values, and avoid configuring paid resources.
+
+**TR-24 GitHub Actions availability.** Build and deployment automation must not depend on GitHub Actions. Use Vercel’s Git integration for automatic branch Preview and `main` Production deployments. Run infrastructure provisioning scripts manually from an authenticated developer workstation.
+
+**TR-25 Direct dependencies and attribution.** Declare the approved runtime and test packages as direct dependencies in `package.json`; pin compatible resolved versions through the package manager lockfile. Maintain `docs/ATTRIBUTIONS.md` with each direct package’s purpose, license, and upstream source, plus attribution for any externally sourced visual, audio, or content assets. Update it when dependencies or assets change.
+
+**TR-26 Mock-first test gate.** Before writing implementation code for an increment, define tests for every applicable acceptance criterion, validate the tests against mocks, and then implement the smallest behavior that makes them pass. The Vercel build must run the test suite before the production build. No GitHub Actions workflow is assumed or required.
+
+**TR-27 Per-build software bill of materials.** Generate one CycloneDX JSON 1.6 software bill of materials (SWBOM) from the exact npm lockfile for every Vercel Preview or Production deployment. Include direct and transitive runtime and development components, declared licenses, package URLs, dependency relationships, build timestamp, Git commit SHA, deployment environment, and Vercel deployment URL. Generate it after the mock-first test gate and before the application build, then bundle it into that same immutable deployment at `public/sbom/<git-commit-sha>.cdx.json`. Never include secrets or environment-variable values. Document the artifact contract in `docs/SWBOM.md`.
+
+**TR-28 SWBOM in release archive.** Every release must include a downloadable archive containing the release contents and the SWBOM generated for the exact release commit and published build. Place the report at `sbom/<git-commit-sha>.cdx.json` inside the archive. The release packaging step must verify that the SWBOM exists and that its commit SHA matches the release before publication. Do not depend on GitHub Actions for packaging or publication.
+
+**TR-29 Project license.** License Wordpairs source and the game under GNU GPL version 2 only (`GPL-2.0-only`). Include the complete license text in the root `LICENSE` file and include that file in each source release archive. Preserve independent third-party license notices and check compatibility before redistributing any third-party code or asset as part of the game.
+
 ## Acceptance criteria
 
 Criteria that depend on an unresolved decision are provisional until that decision is approved.
@@ -239,6 +273,15 @@ Criteria that depend on an unresolved decision are provisional until that decisi
 | AC-31 Ready countdown and roster lock | Given every player in the room has marked ready, when the final ready state is received, then the game start countdown begins immediately and the player roster locks. If a player leaves after the countdown begins, then no observer or other player is promoted or substituted into that player’s place. |
 | AC-32 Holdout warning and removal | Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready, they are removed from the room and the start countdown begins with the remaining roster locked. |
 | AC-33 Idle lobby readiness prompt | Given the game start countdown has not begun, when the lobby state remains unchanged for 30 seconds, then the game prompts all players in the lobby to mark themselves ready. |
+| AC-34 Vercel branch deployments | Given the Vercel Git integration is connected to `sharpninja/wordpairs`, when a non-production branch is pushed, then Vercel creates a Preview deployment; when a change is merged to `main`, then Vercel creates a Production deployment. No GitHub Actions workflow is required. |
+| AC-35 Free-tier deployment | Given the project is provisioned, when deployment and storage resources are inspected, then Vercel Hobby and Supabase Free are used, no paid add-on or metered upgrade is enabled, and the project is configured for personal non-commercial use. |
+| AC-36 Repeatable provisioning | Given valid authenticated Supabase and Vercel CLI sessions, when the provisioning script is run, then it creates or links the required projects, applies version-controlled database migrations, and configures Preview and Production environment variables without placing secret values in repository files or logs. |
+| AC-37 Free-tier quota handling | Given a Supabase Free quota is reached, when a room or database operation cannot be served, then the game reports a recoverable service-limit state and does not silently switch to a paid resource. |
+| AC-38 Mock-first acceptance coverage | Given an implementation increment is ready to begin, when its test plan is reviewed, then every applicable acceptance criterion maps to at least one test and those tests pass against mocks before implementation code is written. The Vercel build runs the test suite before building the application. |
+| AC-39 Dependency attribution | Given a direct dependency or externally sourced asset is added or changed, when the change is prepared, then `docs/ATTRIBUTIONS.md` records its purpose, license, and upstream source, and dependency versions are locked in the package manager lockfile. |
+| AC-40 Per-deployment SWBOM | Given a Vercel Preview or Production deployment completes successfully, when its deployment URL is opened at `/sbom/<git-commit-sha>.cdx.json`, then a valid CycloneDX JSON 1.6 SWBOM for that exact lockfile is available with runtime and development components, license metadata, dependency relationships, commit SHA, build timestamp, environment, and deployment URL, and it contains no secret values. |
+| AC-41 SWBOM release archive | Given a production build is selected for release, when its downloadable release archive is prepared, then the archive includes the SWBOM at `sbom/<git-commit-sha>.cdx.json`; publication is blocked if the report is missing, invalid, or identifies a different commit. |
+| AC-42 GPL-2.0-only release | Given a source release is published, when its release archive is inspected, then it contains the root `LICENSE` file with the complete GPL-2.0-only text, and every bundled third-party component retains its required attribution and license notice. |
 
 ## Decision register
 
@@ -266,6 +309,7 @@ Resolve these items before treating the acceptance criteria as final.
 | Emoji display duration | Define how long an in-round emoji reaction remains visible and whether reactions are rate-limited. | Open |
 | Host controls and countdown duration | Confirm whether the room creator has additional controls and set the game start countdown duration. The five-second warning shown to a sole holdout is confirmed. | Open |
 | Minimum roster after holdout removal | If the sole unready player is removed from a two-player room, only one player remains. Decide whether to cancel the start countdown, allow a one-player game, or apply another rule; the current minimum is two players. | Open |
+| Free-tier capacity target | Set the expected peak number of concurrent players and rooms and decide the user-facing behavior when Supabase Free connection, message, database, or egress limits are reached. The app must not incur paid usage. | Open |
 | Reconnect and room expiry | Define reconnection behavior, room-code lifetime, and what happens if the creator disconnects. | Open |
 
 ## Initial content record
