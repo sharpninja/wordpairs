@@ -7,28 +7,28 @@
 
 ## 1. Current status
 
-Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 65 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. This is traceability planning, not authored or passing coverage. Phase 0 remains planning-only: no executable tests, project scripts, migrations, or implementation code may be authored until Phase 0 passes. After Phase 0, every active-AC contract test must be authored and validated against mocks before any project implementation code begins.
+Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 65 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. This is traceability planning, not authored or passing coverage. Phase 0 was approved on 26 October 2026. Test authoring and mock validation are now authorized; they are not yet complete. No production implementation code may begin until every active-AC contract test is executable and passes against mocks.
 
 No AC depends on deployed artifacts. Deployment, provisioning, environment topology, build gates, and deployed SWBOM checks are TR-only or operational evidence. Deployment execution and its tooling occur after coding Phases 1–6, in Phase 7; topology/account eligibility is assessed at Phase 7 entry. AC-39/41/42 are mockable document/archive contracts using local fixtures, and AC-37 is mockable application behavior. AC-38 is a traceability/process contract.
 
 Lobby behavior is fixed: pre-countdown departure from a full room promotes the oldest observer into the last player position and compacts the remaining roster. After countdown begins, the roster is locked and no replacement occurs. If fewer than two original roster members remain at countdown expiry, start is aborted and the room closes. An exactly two-player holdout is retained after the five-second warning expires; the lobby waits until both players are ready. In rooms with more than two players, an expired unready holdout is removed and countdown begins. A 30-second unchanged lobby prompts all players once for that aggregate version.
 
-## 2. Remaining Phase 0 work
+## 2. Phase 0 closure and next gate
 
-There are no unresolved product decisions affecting active AC expected outcomes. Phase 0 remains open for review and approval of technical design and test specifications:
+There are no unresolved product decisions affecting active AC expected outcomes. The user approved the v2.6 baseline, architecture, interfaces, and technical contracts in Phase 0. The next gate is completing and mock-validating the full active-AC test suite before production implementation:
 
-| Work item | Phase 0 completion evidence | Related scope |
+| Approved Phase 0 decision | Recorded contract/design baseline | Related scope |
 |---|---|---|
-| Baseline and architecture ADR | Approve requirements v2.6, selected stack, DDD boundaries, dependency/license versions and pattern contracts. | AC-38/39; TR-26–31 |
-| Application interfaces | Approve commands, queries, typed errors, event schemas/audiences, server-derived identity and role checks. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
-| Persistence and security | Approve logical schema, RLS, transaction/locking, idempotency, outbox, audit, retention and secret boundaries. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
-| Timer contract | Approve versioned durable deadline semantics and stale/duplicate delivery handling. Actual Free-plan platform availability is a post-coding Phase 7 TR integration check. | AC-30–33; TR-22 |
-| Test specification | Expand all 65 planned AC cases into concrete assertions, fake behavior and evidence tiers; preserve a mockable contract for every active AC. | All active ACs |
+| Baseline and architecture ADR | Approved requirements v2.6, selected stack, DDD boundaries, dependency/license versions and pattern contracts. | AC-38/39; TR-26–31 |
+| Application interfaces | Approved commands, queries, typed errors, event schemas/audiences, server-derived identity and role checks. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
+| Persistence and security | Approved logical schema, RLS, transaction/locking, idempotency, outbox, audit, retention and secret boundaries. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
+| Timer contract | Approved versioned durable deadline semantics and stale/duplicate delivery handling. Actual Free-plan platform availability is a post-coding Phase 7 TR integration check. | AC-30–33; TR-22 |
+| Test authoring and mock-validation gate | Replace all 65 planned AC cases with executable test names, exact assertions, fake behavior and evidence tiers; validate every active AC against mocks before production code. | All active ACs |
 | Post-coding deployment planning | Keep Vercel, account, branch/project, provisioning, deployed build and operational SWBOM evidence outside AC coverage. | TR-20–29; AC-41/42 use only local fixtures |
 
 ## 3. Traceability and evidence gaps to close
 
-| Requirement area | Current mapping | Phase 0 specification action |
+| Requirement area | Current mapping | Test-authoring/mock-validation action |
 |---|---|---|
 | Server authority, answers, privacy | AC-09, AC-28, AC-45; TR-01–05 | Give adversarial client payloads explicit assertions for score, roster, category choice, results and event order. |
 | Timing and concurrency | AC-10–14, AC-30–33, AC-51 | Define equal-time event ordering and timer invalidation assertions with deterministic clocks/schedulers. Database locking/durability remains separate TR integration evidence. |
@@ -53,13 +53,12 @@ There are no unresolved product decisions affecting active AC expected outcomes.
 | Deployed artifacts used as AC evidence | Resolved: no AC depends on deployed artifacts. Mockable behavior and local fixtures provide AC evidence. |
 | SWBOM archive behavior conflated with deployment | Resolved: AC-41/42 check temporary source archives and fixtures; deployment SWBOM behavior is TR-only. |
 
-## 5. Phase 0 exit actions
+## 5. Post-approval actions
 
-1. Approve the v2.6 baseline and technical architecture/interface/schema/security contracts.
-2. Refine all 65 planned AC cases into exact assertions, fake interactions and evidence tiers; verify all 45 active ACs have mockable contract coverage.
+1. Replace all 65 planned AC case IDs with exact executable test names/paths, assertions, fake interactions and evidence tiers.
+2. Verify all 45 active ACs have executable, mockable contract coverage and validate the complete suite against mocks before any production implementation code.
 3. Keep real database/provider/deployment checks in separate TR integration or operations records. They cannot establish or substitute for AC coverage.
-4. Obtain hostile review at 98% or higher accuracy and completeness on the exact repository commit, with complete reviewer output recorded in the JSONL receipt.
-5. Only after Phase 0 passes, author executable tests; validate the complete active-AC suite against mocks before any project implementation code.
+4. Record test outputs and hostile review against the exact repository commit; no planned test ID is represented as passing coverage before execution.
 
 ## 6. Review limits
 
