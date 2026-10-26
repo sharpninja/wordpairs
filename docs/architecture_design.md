@@ -19,15 +19,15 @@ This document maps every functional requirement (FR-01–FR-22) and technical re
 
 ![Wordpairs DDD bounded contexts and adapter boundary](architecture_ddd_components.svg)
 
-The room and game contexts are separate domain modules with their own aggregates and repositories. Shared identity is referenced by stable `PlayerId` values. Content review produces approved catalog records consumed by gameplay through a read-only catalog port. The public landing context reads curated projections and cannot query private room or answer state.
+The component view places identity, room/lobby, gameplay, content/moderation, and public read models behind the application boundary. The domain class map shows representative core classes and their relationships in each context, including identity, catalog/moderation, reactions, and public/player projections. The traceability tables below are the complete requirement-to-class index; the class diagrams show the design-pattern structures and principal relationships rather than repeating every class name from every row. The room and game contexts are separate domain modules with their own aggregates and repositories. Shared identity is referenced by stable `PlayerId` values. Content review produces approved catalog records consumed by gameplay through a read-only catalog port. The public landing context reads curated projections and cannot query private room or answer state.
 
 ## Design-pattern class diagrams
 
-### Domain model and policy strategies
+### Cross-context domain class map and policy strategies
 
 ![Domain aggregates, entities, value objects, and policies](architecture_domain_classes.svg)
 
-The diagram separates aggregate roots from entities and value objects. Policy interfaces isolate choices that must remain configurable or unresolved, such as answer matching, match length, tiebreak treatment, and public leaderboard contract. Domain rules do not depend on persistence.
+The diagram includes central classes from Identity & Profile, Room & Lobby, Gameplay, Content & Moderation, and Read Models/Room Events, along with pure policies and infrastructure ports. Policy interfaces isolate choices that must remain configurable or unresolved, such as answer matching, match length, tiebreak treatment, and public leaderboard contract. Domain rules do not depend on persistence.
 
 ### Transactional command, idempotency, and outbox patterns
 
