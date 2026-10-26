@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Wordpairs modular monolith and adapter boundaries</title>
+  <desc id="desc">Browser and Next.js presentation call application use cases and pure domain contexts. Domain ports connect to Supabase transactions and outbox, identity verification, time and scheduling, and realtime projections.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { fill:#f8fafc; stroke:#334155; stroke-width:2; rx:14; }
+      .domain { fill:#e0f2fe; stroke:#0369a1; stroke-width:2.5; rx:14; }
+      .port { fill:#fef3c7; stroke:#a16207; stroke-width:2; rx:14; }
+      .adapter { fill:#ecfdf5; stroke:#047857; stroke-width:2; rx:14; }
+      .edge { fill:none; stroke:#334155; stroke-width:2.3; marker-end:url(#arrow); }
+      .title { font:700 27px Arial,sans-serif; fill:#0f172a; }
+      .label { font:700 18px Arial,sans-serif; fill:#0f172a; text-anchor:middle; }
+      .small { font:14px Arial,sans-serif; fill:#334155; text-anchor:middle; }
+      .boundary { fill:none; stroke:#94a3b8; stroke-width:1.5; stroke-dasharray:8 6; rx:18; }
+    </style>
+  </defs>
+  <rect width="1200" height="650" fill="#ffffff"/>
+  <text x="600" y="38" class="title" text-anchor="middle">Wordpairs: DDD modular monolith and ports/adapters</text>
+
+  <rect x="38" y="78" width="205" height="95" class="box"/>
+  <text x="140" y="116" class="label"><tspan x="140">Browser</tspan><tspan x="140" dy="24">client</tspan></text>
+  <text x="140" y="160" class="small">untrusted presentation</text>
+
+  <rect x="306" y="78" width="220" height="95" class="box"/>
+  <text x="416" y="116" class="label"><tspan x="416">Next.js routes</tspan><tspan x="416" dy="24">and views</tspan></text>
+  <text x="416" y="160" class="small">auth · validate · map</text>
+
+  <rect x="590" y="78" width="220" height="95" class="box"/>
+  <text x="700" y="116" class="label"><tspan x="700">Application</tspan><tspan x="700" dy="24">use cases</tspan></text>
+  <text x="700" y="160" class="small">commands · orchestration</text>
+
+  <rect x="865" y="68" width="292" height="120" class="domain"/>
+  <text x="1011" y="100" class="label">Pure domain model</text>
+  <text x="1011" y="128" class="small"><tspan x="1011">Rooms/Lobby · Gameplay</tspan><tspan x="1011" dy="21">Identity/Profiles · Content/Moderation</tspan></text>
+  <text x="1011" y="177" class="small">policies · value objects · invariants</text>
+
+  <path d="M243 125 H298" class="edge"/>
+  <path d="M526 125 H582" class="edge"/>
+  <path d="M810 125 H857" class="edge"/>
+
+  <rect x="450" y="260" width="300" height="90" class="port"/>
+  <text x="600" y="297" class="label">Ports / interfaces</text>
+  <text x="600" y="326" class="small">store · identity · clock · scheduler · outbox</text>
+  <path d="M1011 188 V222 H750" class="edge"/>
+  <path d="M750 222 V250" class="edge"/>
+
+  <rect x="25" y="454" width="255" height="125" class="adapter"/>
+  <text x="152" y="486" class="label"><tspan x="152">Supabase adapter</tspan><tspan x="152" dy="24">Postgres transaction</tspan></text>
+  <text x="152" y="548" class="small"><tspan x="152">room lock · idempotency</tspan><tspan x="152" dy="20">state + outbox commit</tspan></text>
+
+  <rect x="320" y="454" width="245" height="125" class="adapter"/>
+  <text x="442" y="486" class="label"><tspan x="442">Identity adapter</tspan><tspan x="442" dy="24">OIDC verification</tspan></text>
+  <text x="442" y="548" class="small">provider claims · session</text>
+
+  <rect x="605" y="454" width="260" height="125" class="adapter"/>
+  <text x="735" y="486" class="label"><tspan x="735">Deterministic inputs</tspan><tspan x="735" dy="24">clock · random · deadlines</tspan></text>
+  <text x="735" y="548" class="small">fakeable ports in unit tests</text>
+
+  <rect x="905" y="454" width="270" height="125" class="adapter"/>
+  <text x="1040" y="486" class="label"><tspan x="1040">Realtime / read models</tspan><tspan x="1040" dy="24">committed events only</tspan></text>
+  <text x="1040" y="548" class="small">recipient-specific projections</text>
+
+  <path d="M520 350 V405 H152 V444" class="edge"/>
+  <path d="M560 350 V415 H442 V444" class="edge"/>
+  <path d="M640 350 V444" class="edge"/>
+  <path d="M680 350 V405 H1040 V444" class="edge"/>
+
+  <rect x="18" y="432" width="1164" height="165" class="boundary"/>
+  <text x="600" y="624" class="small">Infrastructure adapters are replaceable; domain policies remain framework-independent.</text>
+</svg>
