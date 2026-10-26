@@ -66,7 +66,7 @@ The command path validates the command key, locks/reloads the aggregate in one t
 
 | Requirement | Component / pattern | Primary logical classes, ports, and safeguards |
 |---|---|---|
-| TR-01 Authoritative room state | Room & Lobby / aggregate | `Room` aggregate; `RoomRepository`; server-side command handlers |
+| TR-01 Authoritative room state | Room & Lobby and Gameplay / aggregate roots | `Room` and `Match`/`Round` aggregates; `RoomRepository` and `MatchRepository`; server-side room/game command handlers |
 | TR-02 Real-time synchronization | Realtime delivery / outbox | `OutboxEvent`, `OutboxPublisher`, `RoomEventPort`, authorized projection mappers |
 | TR-03 Submission ordering | Gameplay / deterministic domain service | `SubmitAnswer`, `AcceptedSubmission`, `AcceptanceSequence`, `SubmissionOrderingPolicy`, `Clock` |
 | TR-04 Answer validation | Gameplay / strategy policy | `AnswerMatchingPolicy`, `AcceptedAnswerSet`, `NormalizeAnswer`, `SubmitAnswer` |
