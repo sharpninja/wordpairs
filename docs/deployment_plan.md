@@ -10,7 +10,7 @@
 
 This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. It turns TR-20 through TR-24 and TR-27 through TR-30, plus AC-34 through AC-37 and AC-40 through AC-43 and AC-48 through AC-50, into an operational sequence. It covers delivery of the new anonymous landing page and its public data projection. It does not provision accounts or infrastructure and does not change the game's approved requirements.
 
-The system uses Vercel Git integration for deployment from `sharpninja/wordpairs`, Next.js for the application, and Supabase Postgres/Realtime for durable and live room data. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
+The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the proposed application stack pending its architecture decision record. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
 
 ![Vercel deployment workflow](word_association_vercel_deployment.svg)
 
