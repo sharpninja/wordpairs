@@ -20,7 +20,8 @@ The requirements contain 22 functional requirements, 31 technical requirements, 
 | Test traceability | 45 active ACs map to 64 planned case IDs; deployment-only IDs are retired and mapped to TR-only verification | Planning/specification only; no executable tests permitted before Phase 0 approval | Fix expected outcomes for every active AC. After Phase 0 approval, author and mock-validate every active-AC contract test before any project implementation code. Mockable TR contract tests are also test-first; deployed-artifact checks are TR integration/operational evidence and never count as AC coverage. |
 | Dependency/license review | Planned direct dependencies and attribution are listed in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); GPL-2.0-only license exists | Preliminary | Select framework/package-manager versions, verify current licenses and compatibility, create lockfile only after stack approval. |
 | Deployment topology | Vercel Hobby + Supabase Free, no GitHub Actions, manual provisioning, SWBOM/release gates documented | Constraints accepted; proposed layout is documented and is not a Phase 0 gate | Finalize branch/project mapping and verify account capacity at Phase 1 provisioning entry, before provisioning/configuration implementation or deployment. AC contract tests validate isolation behavior generically and do not depend on branch names or project IDs. |
-| Data/security design | DDD ownership and projection boundaries are documented | Incomplete | Define schema, RLS, transaction procedures, retention, secret names, role model and failure behavior for the Foundation increment. |
+| Data/security design | DDD ownership, projection boundaries, and candidate persistence/security contracts are documented | Drafted; approval pending | Review schema, RLS, transaction procedures, retention, secret names, role model, and failure behavior for the Foundation increment. |
+| Public interfaces and data contracts | Candidate commands, queries, typed failures, event audiences, logical relations, RLS and transaction invariants are drafted in [`phase0_interface_and_data_contracts.md`](phase0_interface_and_data_contracts.md) | Draft; approval pending | Review the proposed contracts, resolve open policy dependencies, then baseline the approved version before test authoring. |
 | Delivery order | Phases 0–7 and AC allocation are in [`implementation_plan.md`](implementation_plan.md) | Documented | Assign test-file IDs/owners and evidence types for all ACs; retain decision-blocked expectations at their later phase. |
 
 ## 3. Proposed architecture decision for approval
@@ -42,6 +43,18 @@ This is a concrete proposal, not an approved technology decision. Requirements a
 ## 4. Decisions to resolve before Phase 0 exit
 
 Every decision that affects an active AC's expected result must be resolved before Phase 0 exits. If a behavior is intentionally deferred, formally revise the requirement and remove or re-scope its AC from the active baseline before approval. An active AC may not enter the global mock gate without fixed expected behavior. Decisions that do not affect any active AC may remain informational/open with an owner and rationale.
+
+### Accountable roles and approval order
+
+The product owner is accountable for decisions that change user-visible behavior and for approving the requirements baseline and Phase 0 exit. The implementation owner prepares the ADR, interfaces, schema/security contract, dependency review, and test specifications; the product owner approves those artifacts. The implementation owner also records the final evidence and review receipt. This assigns responsibility without implying that any proposed policy below is already approved.
+
+Close decisions in this order so architectural work does not bake in unresolved behavior:
+
+1. **Feasibility and game outcomes:** confirm identity-provider feasibility; approve match length, answer normalization, stage deadlines, no-response behavior, and tie calculations. The 2-player holdout exception is already confirmed.
+2. **Lobby and content policy:** approve quick-match and discovery behavior, invitation/observer lifecycle, readiness timer reset and countdown authority, nomination/moderation rules, and suggestion eligibility.
+3. **Public and operational contracts:** approve landing-page fields/ranking/freshness, reactions, quota behavior, room lifecycle, and retention/privacy details.
+4. **Technical design:** approve framework/runtime/test stack, command/event interfaces, schema/RLS/transactions/idempotency/outbox, deadline scheduler, and direct dependency/licenses.
+5. **Baseline closure:** refine all planned AC test cases and evidence tiers, run hostile validation, then approve Phase 0. Only after this approval may executable tests be authored; all active AC tests must pass against mocks before project implementation code.
 
 | Decision group | Required disposition | First affected phase | Gate effect |
 |---|---|---:|---|
@@ -87,7 +100,7 @@ While Phase 0 is open, refine only the written test specifications; do not creat
 - [ ] Approve the ADR proposal or record replacements.
 - [ ] Assign every active AC (45 total) to an increment, test IDs, expected outcome, evidence type, owner and blocked decision; keep retired deployment IDs in TR-only verification records.
 - [ ] Approve public interfaces for provisioning, migration, environment validation, quota reporting, build gates and artifact verification.
-- [ ] Document database schema, idempotency, transaction/locking, outbox, RLS and secret boundaries for the foundation slice.
+- [ ] Approve [`phase0_interface_and_data_contracts.md`](phase0_interface_and_data_contracts.md), including logical schema, idempotency, transaction/locking, outbox, RLS and secret boundaries for the foundation slice.
 - [ ] Review current direct dependency versions/licenses and update `ATTRIBUTIONS.md`; commit a lockfile only after toolchain approval.
 - [ ] Complete all planning/design/decision work; keep this checklist free of executable test or implementation tasks.
 
