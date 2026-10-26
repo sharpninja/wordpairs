@@ -748,25 +748,25 @@ export const contractExpectations = {
     "results": [
       {
         "name": "valid.tar",
-        "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "src/index.ts", "sbom/abc123.cdx.json"],
-        "bom": {"bomFormat":"CycloneDX","specVersion":"1.6","version":1,"metadata":{"component":{"type":"application","name":"wordpairs","version":"abc123"}}},
+        "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "src/index.ts", "sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json"],
+        "bom": {"bomFormat":"CycloneDX","specVersion":"1.6","serialNumber":"urn:uuid:550e8400-e29b-41d4-a716-446655440000","version":1,"metadata":{"component":{"type":"application","name":"wordpairs","version":"9c759e87adad4ff92d600da2ccac9315f0ada0d8"}},"components":[]},
         "decision": "accepted"
       },
       {
         "name": "missing-source.tar",
-        "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "sbom/abc123.cdx.json"],
+        "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json"],
         "decision": "incomplete-source"
       },
       {
         "name": "missing-license.tar",
-        "entries": ["docs/ATTRIBUTIONS.md", "src/index.ts", "sbom/abc123.cdx.json"],
+        "entries": ["docs/ATTRIBUTIONS.md", "src/index.ts", "sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json"],
         "decision": "missing-license"
       },
       {
         "name": "missing-sbom.tar", "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "src/index.ts"], "decision": "missing-sbom"
       },
       {"name":"wrong.tar","entries":["LICENSE","docs/ATTRIBUTIONS.md","src/index.ts","sbom/def456.cdx.json"],"decision":"commit-mismatch"},
-      {"name":"invalid.tar","entries":["LICENSE","docs/ATTRIBUTIONS.md","src/index.ts","sbom/abc123.cdx.json"],"decision":"invalid-sbom"},
+      {"name":"invalid.tar","entries":["LICENSE","docs/ATTRIBUTIONS.md","src/index.ts","sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json"],"decision":"invalid-sbom"},
       {"name":"empty.tar","entries":[],"decision":"empty-archive"}
     ]
   },
@@ -779,8 +779,15 @@ export const contractExpectations = {
       },
       {
         "path": "docs/ATTRIBUTIONS.md",
-        "sha256": "259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a",
-        "includes": ["Recursive font", "SIL Open Font License 1.1", "Copyright"]
+        "sha256": "7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43",
+        "bytes": 8146,
+        "includes": ["Recursive font", "SIL Open Font License 1.1"]
+      },
+      {
+        "path": "docs/word_association_round_flow.svg",
+        "sha256": "da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0",
+        "bytes": 213203,
+        "includes": ["Copyright 2019 The Recursive Project Authors", "SIL OPEN FONT LICENSE Version 1.1", "PERMISSION &amp; CONDITIONS", "TERMINATION"]
       }
     ],
     "spdx": "GPL-2.0-only"

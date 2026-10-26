@@ -34,12 +34,20 @@ export interface AcScenarioDriver {
   execute(id: string, request: ScenarioRequest): Promise<Record<string, JsonValue>>;
 }
 
+function deepFreeze<T>(value: T): T {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const nested of Object.values(value as Record<string, unknown>)) deepFreeze(nested);
+    Object.freeze(value);
+  }
+  return value;
+}
+
 export class ScriptedObservationDriver implements AcScenarioDriver {
   readonly requests: Array<{ id: string; request: ScenarioRequest }> = [];
   private readonly scripts: ReadonlyMap<string, { request: ScenarioRequest; observation: Record<string, JsonValue> }>;
 
   constructor(scripts: ReadonlyMap<string, { request: ScenarioRequest; observation: Record<string, JsonValue> }>) {
-    this.scripts = scripts;
+    this.scripts = new Map([...scripts].map(([id, script]) => [id, deepFreeze(structuredClone(script))]));
   }
 
   async execute(id: string, request: ScenarioRequest): Promise<Record<string, JsonValue>> {
@@ -295,40 +303,40 @@ const customScenarios: ScenarioDraft[] = [
   },
   {
     id: 'AC-41-T01',
-    request: { setup: { requiredCommit: 'abc123', requiredEntries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], candidateArchives: ['valid.tar', 'missing-source.tar', 'missing-license.tar', 'missing-sbom.tar', 'wrong.tar', 'invalid.tar', 'empty.tar'] }, actions: [{ type: 'extract-temporary-archives' }, { type: 'validate-source-manifest' }, { type: 'validate-cyclonedx' }] },
+    request: { setup: { requiredCommit: '9c759e87adad4ff92d600da2ccac9315f0ada0d8', requiredEntries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], candidateArchives: ['valid.tar', 'missing-source.tar', 'missing-license.tar', 'missing-sbom.tar', 'wrong.tar', 'invalid.tar', 'empty.tar'] }, actions: [{ type: 'extract-temporary-archives' }, { type: 'validate-source-manifest' }, { type: 'validate-cyclonedx' }] },
     conformingObservation: { results: [
-      { name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], bom: { bomFormat: 'CycloneDX', specVersion: '1.6', version: 1, metadata: { component: { type: 'application', name: 'wordpairs', version: 'abc123' } } }, decision: 'accepted' },
-      { name: 'missing-source.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'sbom/abc123.cdx.json'], decision: 'incomplete-source' },
-      { name: 'missing-license.tar', entries: ['docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'missing-license' },
+      { name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], bom: { bomFormat: 'CycloneDX', specVersion: '1.6', serialNumber: 'urn:uuid:550e8400-e29b-41d4-a716-446655440000', version: 1, metadata: { component: { type: 'application', name: 'wordpairs', version: '9c759e87adad4ff92d600da2ccac9315f0ada0d8' } }, components: [] }, decision: 'accepted' },
+      { name: 'missing-source.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'incomplete-source' },
+      { name: 'missing-license.tar', entries: ['docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'missing-license' },
       { name: 'missing-sbom.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts'], decision: 'missing-sbom' },
       { name: 'wrong.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/def456.cdx.json'], decision: 'commit-mismatch' },
-      { name: 'invalid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'invalid-sbom' },
+      { name: 'invalid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'invalid-sbom' },
       { name: 'empty.tar', entries: [], decision: 'empty-archive' },
     ] },
     violations: [
-      { name: 'archive uses wrong swbom directory', observation: { results: [{ name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'swbom/abc123.cdx.json'], decision: 'accepted' }] } },
-      { name: 'archive without source or license accepted', observation: { results: [{ name: 'invalid.tar', entries: ['sbom/abc123.cdx.json'], decision: 'accepted' }] } },
+      { name: 'archive uses wrong swbom directory', observation: { results: [{ name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'swbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'accepted' }] } },
+      { name: 'archive without source or license accepted', observation: { results: [{ name: 'invalid.tar', entries: ['sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'accepted' }] } },
       { name: 'empty archive collection accepted vacuously', observation: { results: [] } },
     ],
     assertObservation: exact({ results: [
-      { name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], bom: { bomFormat: 'CycloneDX', specVersion: '1.6', version: 1, metadata: { component: { type: 'application', name: 'wordpairs', version: 'abc123' } } }, decision: 'accepted' },
-      { name: 'missing-source.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'sbom/abc123.cdx.json'], decision: 'incomplete-source' },
-      { name: 'missing-license.tar', entries: ['docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'missing-license' },
+      { name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], bom: { bomFormat: 'CycloneDX', specVersion: '1.6', serialNumber: 'urn:uuid:550e8400-e29b-41d4-a716-446655440000', version: 1, metadata: { component: { type: 'application', name: 'wordpairs', version: '9c759e87adad4ff92d600da2ccac9315f0ada0d8' } }, components: [] }, decision: 'accepted' },
+      { name: 'missing-source.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'incomplete-source' },
+      { name: 'missing-license.tar', entries: ['docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'missing-license' },
       { name: 'missing-sbom.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts'], decision: 'missing-sbom' },
       { name: 'wrong.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/def456.cdx.json'], decision: 'commit-mismatch' },
-      { name: 'invalid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'invalid-sbom' },
+      { name: 'invalid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/9c759e87adad4ff92d600da2ccac9315f0ada0d8.cdx.json'], decision: 'invalid-sbom' },
       { name: 'empty.tar', entries: [], decision: 'empty-archive' },
     ] }),
   },
   {
     id: 'AC-42-T01',
-    request: { setup: { requiredLicense: 'GPL-2.0-only', requiredLicenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', requiredNoticesSha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', bundledComponents: ['Recursive font'] }, actions: [{ type: 'extract-temporary-archive' }, { type: 'hash-license-and-notices' }] },
-    conformingObservation: { entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', includes: ['Recursive font', 'SIL Open Font License 1.1', 'Copyright'] }], spdx: 'GPL-2.0-only' },
+    request: { setup: { requiredLicense: 'GPL-2.0-only', requiredLicenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', requiredNoticesSha256: '7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43', requiredAsset: 'docs/word_association_round_flow.svg', requiredAssetSha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0', bundledComponents: ['Recursive font'] }, actions: [{ type: 'extract-temporary-archive' }, { type: 'hash-license-notices-and-assets' }, { type: 'inspect-embedded-font-notice' }] },
+    conformingObservation: { entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43', bytes: 8146, includes: ['Recursive font', 'SIL Open Font License 1.1'] }, { path: 'docs/word_association_round_flow.svg', sha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0', bytes: 213203, includes: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'] }], spdx: 'GPL-2.0-only' },
     violations: [
-      { name: 'archive omits bundled component notice', observation: { entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }], spdx: 'GPL-2.0-only' } },
-      { name: 'archive contains truncated license retaining markers', observation: { entries: [{ path: 'LICENSE', sha256: 'truncated', bytes: 75 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', includes: ['Recursive font', 'SIL Open Font License 1.1', 'Copyright'] }], spdx: 'GPL-2.0-only' } },
+      { name: 'archive omits bundled notice-bearing asset', observation: { entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43', bytes: 8146, includes: ['Recursive font', 'SIL Open Font License 1.1'] }], spdx: 'GPL-2.0-only' } },
+      { name: 'archive contains truncated license retaining markers', observation: { entries: [{ path: 'LICENSE', sha256: 'truncated', bytes: 75 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43', bytes: 8146, includes: ['Recursive font', 'SIL Open Font License 1.1'] }, { path: 'docs/word_association_round_flow.svg', sha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0', bytes: 213203, includes: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'] }], spdx: 'GPL-2.0-only' } },
     ],
-    assertObservation: exact({ entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', includes: ['Recursive font', 'SIL Open Font License 1.1', 'Copyright'] }], spdx: 'GPL-2.0-only' }),
+    assertObservation: exact({ entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43', bytes: 8146, includes: ['Recursive font', 'SIL Open Font License 1.1'] }, { path: 'docs/word_association_round_flow.svg', sha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0', bytes: 213203, includes: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'] }], spdx: 'GPL-2.0-only' }),
   },
   {
     id: 'AC-50-T01',

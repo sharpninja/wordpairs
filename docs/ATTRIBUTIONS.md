@@ -30,6 +30,14 @@ Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only
 | `msw` | Mock HTTP and WebSocket service boundaries in tests | 3.0.3 | [npm registry](https://www.npmjs.com/package/msw/v/3.0.3) | MIT | [Mock Service Worker](https://mswjs.io/) |
 | `@playwright/test` | Browser-level acceptance tests | 1.64.1 | [npm registry](https://www.npmjs.com/package/@playwright%2Ftest/v/1.64.1) | Apache-2.0 | [Playwright](https://playwright.dev/) |
 | `@cyclonedx/cyclonedx-npm` | Generate a CycloneDX SWBOM from the npm lockfile for each deployment | 6.0.1 | [npm registry](https://www.npmjs.com/package/@cyclonedx%2Fcyclonedx-npm/v/6.0.1) | Apache-2.0 | [CycloneDX npm generator](https://github.com/CycloneDX/cyclonedx-node-npm) |
+| `@cyclonedx/cyclonedx-library` | Validate test archive fixtures against the bundled official CycloneDX 1.6 schema | 10.3.0 | [npm registry](https://www.npmjs.com/package/@cyclonedx%2Fcyclonedx-library/v/10.3.0) | Apache-2.0 | [CycloneDX JavaScript library](https://github.com/CycloneDX/cyclonedx-javascript-library) |
+| `ajv` | JSON Schema engine used by the CycloneDX fixture validator | 8.20.0 | [npm registry](https://www.npmjs.com/package/ajv/v/8.20.0) | MIT | [Ajv](https://ajv.js.org/) |
+| `ajv-formats` | Standard format validators required by the CycloneDX schema engine | 3.0.1 | [npm registry](https://www.npmjs.com/package/ajv-formats/v/3.0.1) | MIT | [ajv-formats](https://github.com/ajv-validator/ajv-formats) |
+| `ajv-formats-draft2019` | Draft 2019 format validators required by the CycloneDX schema engine | 1.6.1 | [npm registry](https://www.npmjs.com/package/ajv-formats-draft2019/v/1.6.1) | MIT | [ajv-formats-draft2019](https://github.com/luzlab/ajv-formats-draft2019) |
+| `yauzl` | Inspect and extract temporary ZIP release fixtures in tests | 3.4.0 | [npm registry](https://www.npmjs.com/package/yauzl/v/3.4.0) | MIT | [yauzl](https://github.com/thejoshwolfe/yauzl) |
+| `yazl` | Construct temporary ZIP release fixtures in tests | 3.3.1 | [npm registry](https://www.npmjs.com/package/yazl/v/3.3.1) | MIT | [yazl](https://github.com/thejoshwolfe/yazl) |
+| `@types/yauzl` | Type declarations for ZIP fixture inspection | 2.10.3 | [npm registry](https://www.npmjs.com/package/@types%2Fyauzl/v/2.10.3) | MIT | [DefinitelyTyped yauzl](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yauzl) |
+| `@types/yazl` | Type declarations for ZIP fixture construction | 3.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Fyazl/v/3.3.0) | MIT | [DefinitelyTyped yazl](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yazl) |
 
 ## License compatibility policy
 
