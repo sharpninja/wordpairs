@@ -7,7 +7,7 @@
 
 ## 1. Current status
 
-Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 67 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. The oracle cases are authored and pass scripted mock-sensitivity checks; they do not prove application conformance. Phase 0 was approved on 26 October 2026. The 67 AC oracles pass conforming/violating mock-trace validation, so Phase 1A may begin. Run the same oracles against real product behavior as each increment is implemented; do not count mock-sensitivity checks as application conformance.
+Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 67 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. Phase 0 was approved on 26 October 2026. Existing oracle sensitivity tests pass but do not yet demonstrate meaningful AC scenarios or complete assertion coverage. The global mock-oracle gate remains incomplete; Phase 1A is blocked until corrections are independently reviewed at 98/98 or higher. Run unchanged assertions against real product behavior as each increment is implemented; mock sensitivity does not establish application conformance.
 
 No AC depends on deployed artifacts. Deployment, provisioning, environment topology, build gates, and deployed SWBOM checks are TR-only or operational evidence. Deployment execution and its tooling occur after coding Phases 1–6, in Phase 7; topology/account eligibility is assessed at Phase 7 entry. AC-39/41/42 are mockable document/archive contracts using local fixtures, and AC-37 is mockable application behavior. AC-38 is a traceability/process contract.
 
@@ -15,7 +15,7 @@ Lobby behavior is fixed: pre-countdown departure from a full room promotes the o
 
 ## 2. Phase 0 closure and next gate
 
-There are no unresolved product decisions affecting active AC expected outcomes. The user approved the v2.6 baseline, architecture, interfaces, and technical contracts in Phase 0. The mock-oracle gate is complete: all 67 active-AC oracles accept conforming scripted traces and reject mutations. This validates assertion sensitivity; run the same oracles against real behavior in each implementation increment.
+There are no unresolved product decisions affecting active AC expected outcomes. The user approved the v2.6 baseline, architecture, interfaces, and technical contracts in Phase 0. The 26 October hostile review found that the current oracle tests use expected objects as their own conforming traces and miss semantic violations. Correct and validate all 67 cases before Phase 1A; record mock-oracle validation separately from later real-SUT conformance.
 
 | Approved Phase 0 decision | Recorded contract/design baseline | Related scope |
 |---|---|---|

@@ -4,7 +4,7 @@ Wordpairs is a real-time word-association game. Its [requirements](docs/word_ass
 
 ## Project status
 
-Phase 0 was approved on 26 October 2026. The test-only harness has 72 passing checks, including 67 AC oracle tests against conforming and violating mock traces. This validates test sensitivity, not application behavior. The global mock-oracle gate is complete; exact-commit hostile review (98/98) is pending before Phase 1A. No production implementation code has been written. Deployment is scheduled after coding Phases 1–6, in Phase 7; deployed artifacts do not count toward AC coverage. External configuration, account, integration, deployment, and human evidence is tracked separately under TRs or operational release policy; deployed artifacts never count toward AC coverage.
+Phase 0 was approved on 26 October 2026. A prior exact-commit hostile review found material defects in the first oracle suite (82% accuracy / 75% completeness); those findings have since been corrected locally, and the revised test-only harness currently passes 154 tests. The mock-oracle gate remains pending independent review of the revised exact commit at 98/98 or higher. Phase 1A remains blocked until that review passes. No production implementation code has been written. Deployment is scheduled after coding Phases 1–6, in Phase 7; deployed artifacts do not count toward AC coverage. External configuration, account, integration, deployment, and human evidence is tracked separately under TRs or operational release policy; deployed artifacts never count toward AC coverage.
 
 ## License
 
