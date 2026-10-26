@@ -51,6 +51,7 @@ Before coding, produce and review these design artifacts:
 - Database schema and migrations for profiles, rooms, ordered player roster, observers/invitation context, ready states, curated categories/pairs, matches/rounds/submissions/scores, nominations, moderation, suggestions, and audit events. Include uniqueness, foreign-key, transaction, retention, and row-level-security policies.
 - Mock boundary catalog: clock, random-number source, repository/database, Realtime publisher/subscriber, OIDC verifier, environment/quota status, and Vercel build metadata. Production logic must depend on these interfaces rather than hidden globals.
 - Requirements-to-test traceability matrix, initial content plan, accessibility checks, security/threat review, deployment constraints and abstract environment-isolation evidence, and release/SWBOM artifact contract. Final branch/project topology and account-capacity verification are Phase 1 provisioning-entry decisions, not Phase 0 exit conditions.
+- The current draft command, event, logical data, authorization, transaction, and timer contracts are in [`phase0_interface_and_data_contracts.md`](phase0_interface_and_data_contracts.md); treat these as proposals pending Phase 0 review and approval.
 
 ## 3. Delivery sequence and phase gates
 
@@ -98,7 +99,7 @@ This is the initial allocation of every criterion to its first implementation ph
 | AC-29 | Phase 5 | Allowed emoji broadcast to players/observers; arbitrary payload and state/score mutation rejected; display/rate rules after approval. |
 | AC-30–33 | Phase 3 | Oldest observer selected; player relative order retained; no-observer vacancy; fake-clock 30s idle; 5s holdout warning; ready-before-expiry; timeout boot/countdown for rooms over two players; exactly two-player timeout keeps holdout and waits; lock and no replacement after countdown. |
 | AC-37 | Phase 1 | Fake quota provider returns a recoverable service-limit outcome without paid fallback. |
-| AC-38 | Phases 0–7 | [`ac_test_inventory.md`](ac_test_inventory.md) links all 45 active ACs to planned test IDs; it does not mean test code has been authored or passed. After Phase 0 approval, every active AC test must be authored and mock-validated before the first project implementation code; thereafter the test command blocks the application build on failure. |
+| AC-38 | Phases 0–7 | [`ac_test_inventory.md`](ac_test_inventory.md) links all 45 active ACs to planned test IDs; it does not mean test code has been authored or passed. After Phase 0 approval, every active AC test must be authored and mock-validated before the first project implementation code. A fail-closed application build command is a separate TR-only build control and is not part of AC-38 evidence. |
 | AC-39 | Phase 1 and any dependency/asset change | Lockfile consistency; attribution row/license/source for every direct package and external asset; unreviewed dependency/asset blocks release. |
 | AC-41 | Phase 1 and every release | Archive contains exact release source, `LICENSE`, and `sbom/<sha>.cdx.json`; reject missing, malformed, or wrong-commit report. |
 | AC-42 | Phase 1 and every release | GPL-2.0-only notice and complete text present; bundled components/asset notices retained and compatibility review recorded. |
