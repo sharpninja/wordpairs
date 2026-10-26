@@ -1,7 +1,7 @@
 # Word Association Game Requirements
 
 **Functional behavior, technical requirements, and acceptance criteria**  
-Version 2.0 · 26 October 2026 · Draft for product approval
+Version 2.2 · 25 October 2026 · Draft for product approval
 
 ## Purpose and scope
 
@@ -242,6 +242,8 @@ Exact compatible versions are selected and locked when implementation begins. Ma
 
 **TR-30 Public landing data boundary.** Serve the landing page and its gameplay rules without requiring authentication. Retrieve leaderboard and lobby display data through a read-only, server-controlled public projection that returns only approved fields. Restrict lobby results to discoverable, joinable rooms; exclude room codes, non-public profile fields and identifiers, observer perspective data, guesses, targets, moderation records, and secrets. Use bounded pagination, a documented refresh/cache policy, and recoverable empty/unavailable states. Do not expose service-role credentials or allow the public query to mutate game state.
 
+**TR-31 Testable domain and concurrency boundaries.** Organize application behavior as a modular monolith with explicit domain boundaries and application use cases. Keep game policies independent of Next.js and Supabase frameworks; route persistence, identity, time, randomness, and realtime effects through injected ports/adapters. Keep each business rule in one canonical domain policy, with database constraints as invariant backstops rather than competing rule implementations. Serialize conflicting room mutations in a single database transaction, enforce idempotency for retried commands, and persist the event/outbox record in the same transaction before realtime delivery.
+
 ## Acceptance criteria
 
 Criteria that depend on an unresolved decision are provisional until that decision is approved.
@@ -249,7 +251,7 @@ Criteria that depend on an unresolved decision are provisional until that decisi
 | ID | Given, when, then |
 |---|---|
 | AC-01 Room joining | Given a valid room code and 2–25 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon. |
-| AC-02 Player limit | Given a room with 8 players, when another player attempts to join, then the game rejects the additional player without changing existing room state. |
+| AC-02 Player limit | Given a room has reached its configured player capacity from 2 through 25, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 25. |
 | AC-03 Profile icon | Given a player selects an icon, when that player enters the lobby and plays a round, then the same icon appears in the lobby, live scorecard, and standings. |
 | AC-04 First category | Given a new game with 2–25 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background. |
 | AC-05 Category art | Given two word pairs in the same category, when each is played, then both rounds use that category’s predefined background. A pair in another category uses that category’s background. |
@@ -269,7 +271,7 @@ Criteria that depend on an unresolved decision are provisional until that decisi
 | AC-19 Category suggestion unlock | Given a player has fewer than 10 game wins, when they open the content suggestion flow, then category-and-pair submission is unavailable. Given they have won 10 games, then they can submit one proposed relationship category with three word pairs for review. The submission is not playable until approved and complete. |
 | AC-20 OpenAI OIDC profile | Given a player chooses account sign-in, when OpenAI OIDC authentication succeeds, then the game establishes or loads the game profile associated with that authenticated identity and allows the player to select an icon. |
 | AC-21 Guest play | Given a player chooses guest mode, when they continue without OIDC authentication, then the game creates a guest player identity, allows icon selection, and lets them create or join a room by code. |
-| AC-22 Browse open lobbies | Given a discoverable lobby is waiting and has fewer than 25 players, when a player browses lobbies, then the lobby appears as joinable; hidden, full, or started lobbies do not appear as joinable. |
+| AC-22 Browse open lobbies | Given a discoverable lobby is waiting and has fewer players than its configured capacity, when a player browses lobbies, then the lobby appears as joinable; hidden, full, or started lobbies do not appear as joinable. |
 | AC-23 Quick match | Given at least one discoverable lobby has an available player slot, when a player uses quick match, then the service assigns them to one available lobby without exceeding its configured capacity. Given none is available, then the player is offered browsing or room creation. |
 | AC-24 Configured capacity | Given a player creates a room, when they set a maximum capacity from 2 through 25, then the room stores and displays that limit. Values below 2 or above 25 are rejected. |
 | AC-25 Room invitations | Given a player is in a room, when they share its room code or deep link, then another player can use either invitation to reach the intended room, subject to an open slot. |
@@ -291,6 +293,14 @@ Criteria that depend on an unresolved decision are provisional until that decisi
 | AC-41 SWBOM release archive | Given a production build is selected for release, when its downloadable release archive is prepared, then the archive includes the SWBOM at `sbom/<git-commit-sha>.cdx.json`; publication is blocked if the report is missing, invalid, or identifies a different commit. |
 | AC-42 GPL-2.0-only release | Given a source release is published, when its release archive is inspected, then it contains the root `LICENSE` file with the complete GPL-2.0-only text, and every bundled third-party component retains its required attribution and license notice. |
 | AC-43 Public game landing page | Given an unauthenticated visitor opens the game landing page, when the page loads, then it presents the approved leaderboard, public information for discoverable joinable lobbies, and the gameplay rules without requiring sign-in; it excludes private room/game data and provides usable empty or unavailable states when no public data is available. |
+| AC-44 Accessible game controls | Given a player uses a phone-sized viewport in portrait or landscape, when they operate primary game actions with touch or keyboard and view text over category backgrounds, then the actions remain operable, text and controls retain clear contrast, focus is visible, and selected icon, solved status, and score changes are indicated by labels or shapes as well as color. |
+| AC-45 Authoritative answer handling | Given an unsolved player submits an answer for the current stage, when the server checks it against the target and approved accepted-answer list, then only a correct answer is accepted and scored once for that stage; an incorrect answer does not change score or expose guess text to other players; and the target answer remains unavailable to clients until round reveal. |
+| AC-46 OIDC token validation | Given an OIDC identity provider is configured, when a sign-in callback presents a token with an invalid signature, issuer, audience, state, nonce, or expiry, then the service rejects the sign-in and does not create or associate an authenticated profile from the unverified identity. |
+| AC-47 Moderation and catalog boundary | Given an actor is not authorized to perform moderation or catalog activation, when they attempt to change moderation status or publish content, then the service rejects the action; every change to nomination count, moderation status, and eligibility is auditable; and content cannot be selected for play until it has passed moderation and is complete in the curated catalog. |
+| AC-48 Repeatable provisioning and environment isolation | Given the Staging and Production projects have been provisioned, when the provisioning script is rerun, then it does not erase or duplicate existing project data, reports the applied migration state, keeps secrets out of files and logs, and keeps Preview configuration from targeting the Production database. |
+| AC-49 Build quality and SWBOM gate | Given a Vercel deployment build runs, when the test suite fails or the required SWBOM is missing, invalid, or mismatched to the build commit, then the application deployment does not proceed; when the gates pass, the deployed application serves the SWBOM generated for that deployment's lockfile and commit. |
+| AC-50 Landing-page public data | Given an unauthenticated visitor requests landing-page data, when the service responds, then it returns only approved leaderboard fields and public metadata for discoverable joinable lobbies; it does not expose room codes, non-public profile fields, guesses, target answers, observer-only views, moderation records, or secrets. |
+| AC-51 Testable, concurrency-safe domain boundary | Given game rules are exercised without production infrastructure, when domain use cases are tested, then they run through injected ports/fakes without requiring Next.js or Supabase runtime services. Given two join commands contend for the final player seat, when the database processes them concurrently, then no more than one command assigns that seat, configured room capacity is never exceeded, a retry with the same command ID does not duplicate membership, and each committed transition has one matching durable event record. |
 
 ## Decision register
 
@@ -313,6 +323,7 @@ Resolve these items before treating the acceptance criteria as final.
 | Colors category | Define the intended relationship between the paired words and provide its curated pairs. | Open |
 | Player naming | Confirm whether players choose a display name or use an assigned label beside their icon. | Open |
 | Guest profile persistence | Decide whether guest profiles persist across games, browser sessions, or devices, and whether a guest can later link the profile to an OpenAI OIDC account. | Open |
+| OpenAI OIDC eligibility | Confirm the project is eligible to use OpenAI's current Sign in with ChatGPT website integration. If access is unavailable, select an approved alternative identity provider and revise the affected identity requirements and AC-20 before implementation. | Open |
 | Lobby discovery policy | Confirm whether rooms are discoverable by default or require owner opt-in, what lobby details appear in search, and whether quick match uses any preferences beyond availability. | Proposed |
 | Observer limits and invite context | Set an observer limit per room and define how the inviter is identified when an invitee enters a manually shared room code without a deep-link invitation context. | Open |
 | Emoji display duration | Define how long an in-round emoji reaction remains visible and whether reactions are rate-limited. | Open |
