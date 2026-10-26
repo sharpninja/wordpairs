@@ -1,6 +1,6 @@
 # Wordpairs Third-Party Attributions
 
-Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only`). This inventory describes the planned direct dependencies for the initial implementation. Package versions shown are registry metadata reviewed on 26 October 2026; they are not an installed or compatibility-tested lockfile. Before implementation, resolve compatible versions, commit the package manager lockfile, and update this inventory to match it. Keep required upstream notices when distributing builds.
+Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only`). This inventory describes direct dependencies for the initial implementation. Runtime dependencies remain planned and are not installed. Test/development dependencies listed below have been installed at the reviewed versions for the test-only bootstrap; React and React DOM are currently test-only development dependencies and will move to runtime dependencies with the application scaffold. `package-lock.json` is the resolved dependency tree. Typecheck and the AC-38 inventory guard pass in the current workspace. Update this inventory to match any lockfile change and keep required upstream notices when distributing builds.
 
 ## Runtime dependencies
 
