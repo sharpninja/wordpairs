@@ -1,69 +1,66 @@
 # Acceptance-Criteria Gap Analysis
 
-**Baseline reviewed:** `word_association_game_requirements.md` v2.5  
+**Baseline reviewed:** `word_association_game_requirements.md` v2.6  
 **Review date:** 26 October 2026  
 **Active criteria:** 45 (AC-01–33, AC-37–39, AC-41–47, AC-50–51)  
-**Retired identifiers:** AC-34, AC-35, AC-36, AC-40, AC-48, AC-49 (reserved; technical-requirement verification only)
+**Retired identifiers:** AC-34, AC-35, AC-36, AC-40, AC-48, AC-49 (reserved; TR/operational verification only)
 
 ## 1. Current status
 
-The active baseline has 45 ACs and [`ac_test_inventory.md`](ac_test_inventory.md) maps them to 64 planned test case IDs. This is planned traceability, not authored or passing coverage. Phase 0 remains planning-only. No executable tests or application code may be written until Phase 0 exits; after exit, all active AC contract tests must pass against mocks before any project implementation code is written.
+Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 65 planned test cases. This is traceability planning, not authored or passing coverage. Phase 0 remains planning-only: no executable tests, project scripts, migrations, or implementation code may be authored until Phase 0 passes. After Phase 0, every active-AC contract test must be authored and validated against mocks before any project implementation code begins.
 
-Deployment, provisioning, environment isolation, build gates, and deployed SWBOM checks are TR-only or operational evidence. No AC depends on a deployed artifact, and no deployment or account check counts toward AC coverage. AC-39, AC-41, and AC-42 remain active because they cover attribution records and source archive contents that can be tested using temporary manifests/files and fixture SWBOM/license inputs. AC-37 is application behavior for a quota response and is mockable. AC-38 is a traceability/process contract, not a deployment gate.
+No AC depends on deployed artifacts. Deployment, provisioning, environment topology, build gates, and deployed SWBOM checks are TR-only or operational evidence. Deployment execution and its tooling occur after coding Phases 1–6, in Phase 7; topology/account eligibility is assessed at Phase 7 entry. AC-39/41/42 are mockable document/archive contracts using local fixtures, and AC-37 is mockable application behavior. AC-38 is a traceability/process contract.
 
-The 2-player holdout outcome is resolved: after the five-second warning expires, keep the holdout and wait without starting countdown until both players are ready. For rooms with more than two players, an unready holdout is removed and the countdown begins. Before countdown, a departing player in a full room is replaced by the oldest observer and the remaining player order compacts; after countdown lock, a departure is not replaced. These behaviors appear in FR-03/FR-19/FR-20, AC-30–33, and the test inventory.
+Lobby behavior is fixed: pre-countdown departure from a full room promotes the oldest observer into the last player position and compacts the remaining roster. After countdown begins, the roster is locked and no replacement occurs. If fewer than two original roster members remain at countdown expiry, start is aborted and the room closes. An exactly two-player holdout is retained after the five-second warning expires; the lobby waits until both players are ready. In rooms with more than two players, an expired unready holdout is removed and countdown begins. A 30-second unchanged lobby prompts all players once for that aggregate version.
 
-## 2. Remaining Phase 0 blockers
+## 2. Remaining Phase 0 work
 
-These decisions affect active AC expected results and must be approved or formally resolved in the requirements before the global mock gate:
+There are no unresolved product decisions affecting active AC expected outcomes. Phase 0 remains open for review and approval of technical design and test specifications:
 
-| Priority | Area | Missing decision or precision | Affected criteria |
-|---|---|---|---|
-| P0 | Account identity feasibility | Verify eligibility for the specified OpenAI OIDC integration. If unavailable, choose and baseline a supported provider or revise the account sign-in behavior. | AC-20, AC-46 |
-| P0 | Match and scoring | Set match length, stage duration, no-response/no-solver outcome, normalization and accepted-answer policy, total-time aggregation, and final tie behavior. | AC-06–14, AC-45 |
-| P0 | Readiness lifecycle | Confirm countdown duration, host authority, and timer reset/cancellation semantics; preserve the already confirmed 2-player exception. Specify ordering for simultaneous ready, leave, and expiry events. | AC-30–33 |
-| P1 | Lobby policy | Define quick-match selection/tie behavior, discoverability default, observer limit, room-code expiry/invalid behavior, invite context after inviter departure, reconnect, and creator departure. | AC-01–02, AC-22–28, AC-30–33, AC-51 |
-| P1 | Public landing contract | Approve leaderboard metric/window, identity labels and guest inclusion, tie order, public lobby field allowlist/count precision/freshness, and rules-summary source. Keep private data excluded as already required. | AC-43, AC-50 |
-| P1 | Moderation and suggestions | Define unique nomination counting, duplicate/self-nomination rules, moderation roles/states/reasons, review trigger, appeals/removal, and 10-win scope. | AC-17–19, AC-47 |
-| P1 | Free-tier service behavior | Set supported concurrency target and the exact recoverable quota/service-limit response; do not add paid fallback. | AC-37 |
-| P2 | Reactions and accessibility detail | Approve reaction display duration/rate limit; define any additional screen-reader and background-fallback acceptance needed beyond AC-44. | AC-29, AC-44 |
-| P2 | Release archive policy | AC-41/42 cover fixture-verifiable archive contents. Decide archive format, source completeness rule, checksum/reproducibility policy, and notice manifest details as operational/TR contract details, without making deployment an AC dependency. | AC-39, AC-41–42; TR-25, TR-28–29 |
-
-## 3. Traceability and coverage gaps
-
-The inventory gives each active AC one or more planned IDs, but several entries describe later real-system integration evidence. Those entries are not AC coverage by themselves. Each active AC must have at least one mock-validated application or document/archive contract before implementation. Real database/provider/browser checks are additional integration evidence where relevant; deployment/account checks are TR-only.
-
-| Requirement area | Existing coverage | Remaining gap or test-specification action |
+| Work item | Phase 0 completion evidence | Related scope |
 |---|---|---|
-| Server authority, answers, privacy | AC-09, AC-28, AC-45; architecture TR-01–05 | Add explicit adversarial payload cases for client attempts to alter scores, roster, category choice, results, and event order if those behaviors are asserted by the finalized requirements. Keep the acceptance oracle in local/mockable application contracts. |
-| Timing and concurrency | AC-10–14, AC-30–33, AC-51 | Fix equal-time ordering and timer invalidation semantics; retain deterministic clock/scheduler cases. Database locking/durability proof is TR integration evidence and cannot replace mock AC coverage. |
-| Catalog and moderation | AC-16–19, AC-47 | Specify fixtures for disabled/unapproved/incomplete content, duplicate nominations, moderation transitions and audit expectations after policy approval. |
-| Identity | AC-20–21, AC-46 | Resolve provider feasibility and guest/session lifecycle; inventory currently marks entitlement as a planning dependency. |
-| Lobby, invitations, observers | AC-01–02, AC-22–33, AC-51 | Resolve code and lifecycle edge cases, then add explicit mock cases for invalid/expired links, stale capacity, and simultaneous membership commands where those outcomes are baselined. |
-| Public landing | AC-43, AC-50 | Freeze public DTO field list and ranking/freshness behavior; test allowlisting against adversarial private fields and empty/unavailable fixtures. |
-| Attribution and source release | AC-39, AC-41–42 | Test temporary manifests and archives with missing notices, incomplete source, malformed/mismatched fixture SWBOM, and missing GPL text. Do not inspect or depend on a deployed artifact. |
-| Architecture boundary | AC-51 | Separate mockable application guarantees (port use, conflict handling, idempotency intent, outbox intent) from actual DB serialization/durability proof, which remains a later TR integration check. |
-| Deployment and operations | TR-20–TR-29 | Keep all Vercel/account/branch/environment/deployed SWBOM checks outside the AC inventory. Validate mockable script/build contracts test-first as TR work; record real operational evidence separately. |
+| Baseline and architecture ADR | Approve requirements v2.6, selected stack, DDD boundaries, dependency/license versions and pattern contracts. | AC-38/39; TR-26–31 |
+| Application interfaces | Approve commands, queries, typed errors, event schemas/audiences, server-derived identity and role checks. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
+| Persistence and security | Approve logical schema, RLS, transaction/locking, idempotency, outbox, audit, retention and secret boundaries. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
+| Timer contract | Approve versioned durable deadline semantics and stale/duplicate delivery handling. Actual Free-plan platform availability is a post-coding Phase 7 TR integration check. | AC-30–33; TR-22 |
+| Test specification | Expand all 65 planned cases into concrete assertions, fake behavior and evidence tiers; preserve a mockable contract for every active AC. | All active ACs |
+| Post-coding deployment planning | Keep Vercel, account, branch/project, provisioning, deployed build and operational SWBOM evidence outside AC coverage. | TR-20–29; AC-41/42 use only local fixtures |
 
-## 4. Prior findings and dispositions
+## 3. Traceability and evidence gaps to close
 
-| Earlier finding | Current disposition |
+| Requirement area | Current mapping | Phase 0 specification action |
+|---|---|---|
+| Server authority, answers, privacy | AC-09, AC-28, AC-45; TR-01–05 | Give adversarial client payloads explicit assertions for score, roster, category choice, results and event order. |
+| Timing and concurrency | AC-10–14, AC-30–33, AC-51 | Define equal-time event ordering and timer invalidation assertions with deterministic clocks/schedulers. Database locking/durability remains separate TR integration evidence. |
+| Catalog and moderation | AC-16–19, AC-47 | Specify fixtures for incomplete/unapproved content, unique nominations, reasoned moderation, one appeal and audit expectations. |
+| Identity | AC-20–21, AC-46 | Specify verified OIDC claims and same-device guest persistence contracts. Provider registration/entitlement remains external TR integration evidence, never an AC oracle. |
+| Lobby and observers | AC-01–02, AC-22–33, AC-51 | Specify invalid/expired code and link, reconnect grace, stale capacity, simultaneous membership, observer promotion, compaction and locked departure cases. |
+| Public landing | AC-43, AC-50 | Freeze allowlisted DTO assertions for leaderboard ordering/opt-out, lobby summaries, refresh cadence and versioned rules. |
+| Attribution and source release | AC-39, AC-41–42 | Validate temporary manifests/archives for missing notices, incomplete tracked source, malformed/mismatched fixture SWBOM, GPL text and checksum behavior. |
+| Architecture boundary | AC-51 | Separate mockable application guarantees (port calls, conflicts, idempotency/outbox intent) from real database serialization/durability proof, which is TR integration. |
+| Deployment and operations | TR-20–TR-29 | Validate mockable operational interfaces before their Phase 7 tools are written. Record real account, environment and deployment evidence separately after coding. |
+
+## 4. Resolved findings
+
+| Earlier issue | Current disposition |
 |---|---|
-| AC-02/AC-22 used inconsistent fixed capacity limits | Resolved: current criteria use configured capacity (2–25). |
-| Two-player timeout could remove the second player and start below minimum | Resolved by user: exactly two players keep the holdout and wait for both ready; AC-32-T04 covers it. |
-| Deployment topology was treated as a Phase 0 gate | Resolved: topology/account capacity is a Phase 1 provisioning-entry decision, not a Phase 0 gate. |
-| Deployment/build/release automation appeared as AC-34/35/36/40/48/49 | Resolved in v2.5: IDs are retired and reserved; mapped requirements are verified as TR-only/operational evidence. |
-| AC coverage could rely on a deployed build or artifact | Resolved: no AC depends on deployed artifacts. Mockable application or fixture contracts provide AC coverage; deployment evidence cannot satisfy it. |
-| “SWBOM release archive” could be read as deployment gate behavior | Refined: AC-41 checks temporary source archive contents and fixture SWBOM path/validity/commit match; actual deployment SWBOM serving is TR-only. |
+| Capacity used inconsistent fixed limits | Resolved: configured capacity is 2–25. |
+| Two-player holdout could be removed or start below minimum | Resolved: retain the holdout and wait until both players are ready. |
+| Pre-countdown full-room departure handling | Resolved: promote oldest observer into last player position and compact the remaining player order. |
+| Post-countdown departure could trigger replacement | Resolved: roster is locked; no replacement; abort and close if fewer than two originals remain at expiry. |
+| Deployment topology treated as a Phase 0 gate | Resolved: assess topology/account capacity at Phase 7 entry after coding Phases 1–6. |
+| Deployment/build/release automation represented as ACs | Resolved: AC-34/35/36/40/48/49 are retired; associated checks are TR/operational. |
+| Deployed artifacts used as AC evidence | Resolved: no AC depends on deployed artifacts. Mockable behavior and local fixtures provide AC evidence. |
+| SWBOM archive behavior conflated with deployment | Resolved: AC-41/42 check temporary source archives and fixtures; deployment SWBOM behavior is TR-only. |
 
 ## 5. Phase 0 exit actions
 
-1. Close all P0/P1 decisions that affect active expected results, or formally revise affected ACs out of the active baseline.
-2. Freeze public interfaces, domain policies, database schema/RLS/transaction contracts, scheduler behavior, and the approved dependency/toolchain proposal.
-3. Refine all 64 planned cases into exact assertions, mock behavior, and evidence type; ensure every one of the 45 active ACs has a mockable AC contract test.
-4. Keep real database/provider/deployment checks in separate TR integration/operational records. They can neither establish nor substitute for AC coverage.
-5. Pass the Phase 0 hostile review and obtain baseline approval. Only then author executable tests; validate all active AC tests against mocks before project implementation code.
+1. Approve the v2.6 baseline and technical architecture/interface/schema/security contracts.
+2. Refine all 65 planned cases into exact assertions, fake interactions and evidence tiers; verify all 45 active ACs have mockable contract coverage.
+3. Keep real database/provider/deployment checks in separate TR integration or operations records. They cannot establish or substitute for AC coverage.
+4. Obtain hostile review at 98% or higher accuracy and completeness on the exact repository commit, with complete reviewer output recorded in the JSONL receipt.
+5. Only after Phase 0 passes, author executable tests; validate the complete active-AC suite against mocks before any project implementation code.
 
 ## 6. Review limits
 
-This document records requirement completeness, consistency, feasibility, and testability gaps in the v2.5 baseline. It does not claim test execution, resolve product decisions, verify an external account entitlement, or provide deployment evidence. Planned IDs are not passing coverage.
+This document reviews requirements completeness, consistency, feasibility and testability against v2.6. It does not claim test execution, external account entitlement, or deployment evidence. Planned IDs are not passing coverage.
