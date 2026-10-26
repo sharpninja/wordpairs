@@ -10,7 +10,8 @@ This inventory decomposes the active acceptance criteria into proposed test case
 | AC-01 | Room joining | `AC-01-T01` | Valid room joins by code, browse, quick match, or deep link use the same slot authority. | Room use case | Fake RoomRepository, actor, invite/code lookup, transaction result | Planned — not authored |
 | AC-02 | Player limit | `AC-02-T01` | Capacities 2, 8, and 25 accept only up to the configured limit; reject the next join. | Room domain + concurrency integration | Capacity fixtures; two simultaneous final-seat commands against disposable DB | Planned — not authored |
 | AC-03 | Profile icon | `AC-03-T01` | Chosen icon persists and appears consistently in room, scorecard, summary, standings. | Profile use case + UI projection | Fake profile store and deterministic profile/score projections | Planned — not authored |
-| AC-04 | First category | `AC-04-T01` | Anchor index is selected within 1..N and maps to the frozen roster entry. | Domain unit | Injected deterministic RandomSource and roster fixture | Planned — not authored |
+| AC-04 | First category | `AC-04-T01` | Request a uniform integer from 1..N inclusive and verify every returned boundary/index maps to its matching player in the frozen roster. | Domain unit + RandomSource contract | Injected deterministic RandomSource spy and N-player roster fixture | Planned — not authored |
+| AC-04 | First category | `AC-04-T02` | Only the assigned anchor can choose the first category; reject a non-anchor choice without changing match state. | Gameplay use case + authorization policy | Anchor/non-anchor actor fixtures and fake MatchRepository | Planned — not authored |
 | AC-05 | Category art | `AC-05-T01` | Category asset is shown behind readable controls; missing asset falls back accessibly. | Browser visual/UI | Fixed viewport and asset fixture | Planned — not authored |
 | AC-06 | No-hint solve | `AC-06-T01` | Correct answer at no-hint stage awards 5 once; incorrect answer awards nothing. | Gameplay domain unit | Fake MatchRepository, fixed stage, answer policy | Planned — not authored |
 | AC-07 | Hint scoring | `AC-07-T01` | Correct answers after Hint 1/2/3 award 3/2/1 respectively. | Scoring policy unit | Table-driven stage fixtures | Planned — not authored |
@@ -78,7 +79,7 @@ These tests cannot receive final expected-result assertions until the decision i
 | `AC-20-T01`, `AC-46-T01` | Verify OpenAI Sign in with ChatGPT eligibility; if unavailable, revise provider requirements and tests. |
 | `AC-32-T02` | Resolve two-player room outcome when the only holdout is removed, given the two-player minimum. |
 | `AC-13-T01`, `AC-14-T01` | Approve match length, unsolved-time aggregation, and final tie behavior. |
-| `AC-04-T01`, `AC-06-T01`, `AC-18-T01`, `AC-45-T01` | Approve category catalog volume/reuse, answer normalization, nomination identity/counting, and listed answer-policy details. |
+| `AC-06-T01`, `AC-18-T01`, `AC-45-T01` | Approve answer normalization and nomination identity/counting details that affect these assertions. |
 | `AC-22-T01`, `AC-23-T01`, `AC-43-T01`, `AC-50-T01` | Approve public leaderboard/lobby fields, ranking/order, visibility, and freshness behavior. |
 | `AC-30-T01`–`AC-33-T01`, `AC-48-T02` | Define durable deadline execution and approve concurrent readiness/countdown boundary outcomes. |
 | `AC-36-T01`, `AC-48-T01`–`T02` | Approve isolated Development, Staging, Preview, and Production topology. |
