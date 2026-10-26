@@ -14,7 +14,7 @@ Deliver Wordpairs through coding Phase 6 and obtain independent hostile-validati
 - Phase 0 was approved by the user on 26 October 2026.
 - The detailed Phase 1–6 plan is documented and remote-reviewed at commit `fb9225b931b262c74fbf03ad52503a1a3a5b43b0` with 99% accuracy and 99% completeness; the complete output is in `repo_review_receipt.jsonl`.
 - The current plan covers 45 active ACs. Its inventory has 67 planned AC test IDs; two TR-30 and six TR-31 cases are separately identified. The original Phase 0 approval receipt's count of 65 records the inventory at approval time, before two appeal-coverage cases were added.
-- No test harness, executable test suite, or production implementation has been created. The next action is test-harness bootstrap and authoring the full AC contract suite.
+- The test-only Node/Vitest harness is installed and the AC-38 inventory guard passes. The behavioral AC suite has not yet been authored or mock-validated. No production implementation has been created.
 - Deployment remains Phase 7, after coding Phases 1–6. No AC depends on deployed artifacts, and deployment checks do not count as AC evidence.
 
 ## Non-negotiable constraints
@@ -32,7 +32,7 @@ Deliver Wordpairs through coding Phase 6 and obtain independent hostile-validati
 | Milestone | Scope | Required exit evidence |
 |---|---|---|
 | **Phase 0 — Approved baseline** | Requirements v2.6, architecture, interfaces, schema/security contracts, traceability, dependency/license review, and phased plan. | User approval receipt; exact-commit hostile review at ≥98/98; no unresolved product decision. **Status: complete.** |
-| **Pre-implementation — Global test gate** | Reviewed test-only harness; executable contract tests for all active ACs; deterministic fakes/mocks, clocks, random sources, and fixtures. | 45/45 active ACs explicitly mapped; every case is meaningful and passes against mocks; full suite has zero failures and zero skips; command/output and fake boundaries recorded; hostile review ≥98/98. **Status: not started.** |
+| **Pre-implementation — Global test gate** | Reviewed test-only harness; executable contract tests for all active ACs; deterministic fakes/mocks, clocks, random sources, and fixtures. | 45/45 active ACs explicitly mapped; every case is meaningful and passes against mocks; full suite has zero failures and zero skips; command/output and fake boundaries recorded; hostile review ≥98/98. **Status: in progress; AC-38 traceability guard passes, behavioral tests remain.** |
 | **Phase 1 — Core application foundation** | Application skeleton, domain/application ports, persistence/security adapters, migrations, idempotency/outbox, quota handling. | Increment tests and regression green; local/disposable database evidence separately filed as TR; domain boundaries and AC traceability complete; phase hostile review ≥98/98. |
 | **Phase 2 — Landing, identity, rooms** | Anonymous leaderboard/lobby/rules, guest and OIDC profiles, room creation/join, browse/quick match, invites and observer boundaries. | Mock contracts and local multi-client tests green; privacy and capacity invariants verified; phase hostile review ≥98/98. |
 | **Phase 3 — Lobby/readiness** | Ordered rosters, observer promotion before countdown, compaction, ready state, idle prompt, holdout warning, countdown lock and departure policy. | Fake-clock tests cover the 30s prompt, 5s warning, 10s countdown, two-player holdout exception, larger-room boot, and no replacement after countdown; race regressions green; phase hostile review ≥98/98. |
