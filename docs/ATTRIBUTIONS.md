@@ -37,4 +37,10 @@ The Apache-2.0 entries above are development or build tools and are not bundled 
 
 ## External assets and content
 
-No third-party artwork, fonts, sounds, or game content are included in the initial repository. The workflow SVGs are generated from the project’s requirements. Add source, creator, license, and required credit wording here before introducing any external asset or content.
+The Mermaid-rendered workflow SVGs embed the Recursive Variable font for diagram labels. The font includes its SIL Open Font License 1.1 notice in the SVG source.
+
+| Asset | Use | License | Source / notice |
+|---|---|---|---|
+| Recursive Variable font (embedded in the Mermaid-generated workflow SVGs under `docs/word_association_*.svg`) | Diagram labels only; not an application runtime dependency | SIL Open Font License 1.1 | [Recursive project](https://github.com/arrowtype/recursive); copyright and license notice are embedded in each generated SVG. |
+
+No third-party game artwork, sounds, or game content are included in the initial repository. Other architecture diagrams are authored as project SVGs. Add source, creator, license, and required credit wording here before introducing any external asset or content.
