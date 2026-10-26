@@ -79,13 +79,13 @@ This is a logical model. Column types, identifiers, indexes, normalization, rete
 | `matches` | `match_id`, `room_id`, frozen roster/version, status, anchor profile, round index, timestamps | Roster snapshot taken at match start; room countdown lock prevents substitution after countdown begins. |
 | `match_players` | `match_id`, `profile_id`, stable roster index, score/result fields | One row per frozen player; authoritative score and time are server-owned. |
 | `rounds` | `round_id`, `match_id`, pair/category IDs, stage, status, started/closed timestamps | Stage transitions are serialized; category/pair comes from approved playable catalog. |
-| `submissions` | `submission_id`, round/player/stage, idempotency reference, accepted status, server acceptance time, optional restricted payload | One score-bearing acceptance per player/stage; raw incorrect guess retention and deletion rules require approval. Never sent to other players. |
+| `submissions` | `submission_id`, round/player/stage, idempotency reference, accepted status, server acceptance time | One score-bearing acceptance per player/stage. Raw incorrect guess text is never persisted or sent to other players. |
 | `categories`, `word_pairs`, `accepted_answers` | IDs, category relation, prompt/target, ordered hints, background, status, moderation version | Only complete approved records are playable; target/accepted answers are restricted server-side until reveal. |
-| `nominations` | ID, candidate, source player/round, actor, created time, status | Count only unique player profiles; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve. Retention follows the approved privacy schedule. |
+| `nominations` | ID, candidate, source player/round, actor, created time, status | Count only unique player profiles; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve. Retain only the fields required to enforce unique nominations and moderation; audit events follow the one-year v2.6 retention schedule. |
 | `suggestions` | ID, proposer, proposed category and pair payload, status, timestamps | Requires 10 lifetime wins on one stable profile and no other open suggestion; does not enter play without moderation and complete curated records. |
-| `moderation_actions` / `audit_events` | ID, actor, target, prior/new state, reason code, timestamp, correlation ID | Append-only for authorized review; no client mutation; retention and access policy require approval. |
-| `idempotency_records` | scope, actor, command ID, request digest, canonical result/reference, created/expiry times | Unique per agreed scope; same key/same request returns prior result; same key/different request rejects. Retention period requires approval. |
-| `outbox_events` | event ID, aggregate type/ID/version, event type/version, minimal payload, audience, publish state/attempts | Inserted in same transaction as aggregate change; only committed events published; payload is already privacy-scoped. Retention policy requires approval. |
+| `moderation_actions` / `audit_events` | ID, actor, target, prior/new state, reason code, timestamp, correlation ID | Append-only for authorized review; no client mutation; audit events are retained for one year; access is restricted by role. |
+| `idempotency_records` | scope, actor, command ID, request digest, canonical result/reference, created/expiry times | Unique per agreed scope; same key/same request returns prior result; same key/different request rejects. Retain idempotency results until 30 days after room close. |
+| `outbox_events` | event ID, aggregate type/ID/version, event type/version, minimal payload, audience, publish state/attempts | Inserted in same transaction as aggregate change; only committed events published; payload is already privacy-scoped. Retain published outbox rows for seven days. |
 | `deadline_jobs` (or external scheduler reference) | job ID, aggregate ID, kind, expected version, due time, state | Idempotent and version-checked; stale jobs no-op. Persist versioned deadline jobs in Postgres and process them with the selected Supabase Cron/pg_cron adapter; verify actual Free-plan availability at Phase 7 deployment entry. |
 
 Foreign keys should prevent orphaned room memberships, rounds, submissions, content relations, moderation actions, and outbox aggregate references. Unique/check constraints backstop room capacity, player positions, one active membership, command keys, and event versions. Complex policy remains in one domain implementation rather than duplicated in database and application layers; constraints are invariant backstops.
@@ -102,7 +102,7 @@ Candidate access model for approval:
 - Realtime publication uses server-authorized audience projections. Subscription channel names are not treated as authorization.
 - Migration and operator credentials are kept in the operator secret store or CLI session, never source control, fixtures, client bundles, logs, SWBOM, or public archive.
 
-RLS policy details, guest-session representation, and role administration remain technical contracts for Phase 0 approval. The v2.6 product policy fixes guest persistence and public aliases. Service-role credentials remain server-only and are not exposed to clients. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
+RLS policy details, guest-session representation, and role administration remain technical contracts for Phase 0 approval. Retention values follow the resolved v2.6 schedule: audit events one year, published outbox rows seven days, and idempotency results through 30 days after room close. The v2.6 product policy fixes guest persistence and public aliases. Service-role credentials remain server-only and are not exposed to clients. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
 
 ## 7. Transaction and concurrency contracts
 
@@ -119,7 +119,7 @@ Each state-changing command includes a unique command ID, authenticated actor, a
 Required room serialization points:
 
 - **Final seat:** capacity check and membership insertion occur in one serialized room transaction; at most one concurrent command claims the last seat.
-- **Pre-countdown departure:** remove leaver, promote oldest observer if applicable, and compact remaining roster atomically. The ordering key must be deterministic; exact timestamp ties need a decision or stable secondary key.
+- **Pre-countdown departure:** remove leaver, promote oldest observer if applicable, and compact remaining roster atomically. Order by observer-arrival sequence/time, then stable profile ID. A mock case supplies equal arrival order and asserts the stable-ID winner.
 - **All-ready transition:** the final ready update, countdown start, and roster lock are one aggregate transition.
 - **Holdout timeout:** compare deadline and aggregate version inside the same transition as any concurrent ready/leave command. In exactly two-player rooms, expiry keeps the holdout and waits; for larger rooms, expiry removes the holdout and starts/locks countdown.
 - **Post-countdown departure:** membership departure does not unlock roster or promote a replacement.
@@ -132,7 +132,7 @@ Mock contracts assert application behavior at each port (commands, conflict resu
 - `Clock.now()` is the authoritative source for accepted answer times, lobby change times, and audit timestamps. A client timestamp may be informational only.
 - `DeadlineScheduler.schedule()` accepts aggregate ID, deadline kind, due time, and expected aggregate version; it returns an opaque job reference. `cancel()` is best effort. `deliver()` may repeat or arrive late; the application re-reads state/version and applies idempotently.
 - A 30-second idle prompt and five-second holdout warning are based on server-recorded state versions/timestamps. Any qualifying state change invalidates stale callback work according to the finalized definition of “unchanged.”
-- Scheduler durability and free-tier compatibility must be demonstrated before implementation. A browser timer or ephemeral Vercel process is not authoritative.
+- The durable deadline-job contract is validated with injected clock/scheduler mocks before implementation. Verify Supabase Cron availability and Free-plan compatibility as TR integration at Phase 7 deployment entry, after coding Phases 1–6. A browser timer or ephemeral Vercel process is not authoritative.
 - Transient persistence/realtime/quota failures return typed recoverable outcomes when safe. Never retry a non-idempotent write without its command ID. Realtime failure does not roll back an already committed state; clients recover from an authorized projection.
 - A quota rejection returns `SERVICE_LIMIT`, preserves the last committed state and may be retried with the same command ID after capacity recovers. Do not silently upgrade or automatically repeat a non-idempotent command.
 
@@ -156,7 +156,7 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 - [ ] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
 - [ ] Approve server clock and durable deadline-scheduler contract for lobby timers.
 - [ ] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
-- [ ] Refine all 65 planned case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
+- [ ] Refine all 65 planned AC case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
 - [ ] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
 - [ ] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 
