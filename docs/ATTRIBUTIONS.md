@@ -1,6 +1,6 @@
 # Wordpairs Third-Party Attributions
 
-Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only`). This inventory describes direct dependencies for the initial implementation. Runtime dependencies remain planned and are not installed. Vitest, TypeScript, MSW, React Testing Library, React/React DOM, jsdom, Playwright, and their listed type packages have been installed at the reviewed versions for the test-only bootstrap; React and React DOM are currently development dependencies and will move to runtime dependencies with the application scaffold. The CycloneDX npm generator is listed for Phase 7 but is not installed yet. `package-lock.json` is the resolved dependency tree for the installed packages. Typecheck and the AC-38 inventory guard pass in the current workspace. Update this inventory to match any lockfile change and keep required upstream notices when distributing builds.
+Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only`). This inventory describes direct dependencies for the current implementation phase. Next.js, React, and React DOM are installed as exact runtime dependencies for the Phase 1A application skeleton. Supabase, OpenID Connect, and Zod remain planned runtime dependencies for later increments. Vitest, TypeScript, Biome, MSW, React Testing Library, jsdom, Playwright, and their listed type packages are installed as development/test dependencies. The CycloneDX npm generator is listed for Phase 7 but is not installed yet. `package-lock.json` is the resolved dependency tree for the installed packages. Update this inventory to match any lockfile change and keep required upstream notices when distributing builds.
 
 ## Runtime dependencies
 
@@ -18,7 +18,8 @@ Wordpairs is intended to be licensed under GNU GPL version 2 only (`GPL-2.0-only
 
 | Package | Planned use | Reviewed version | Registry version record | License | Upstream |
 |---|---|---:|---|---|---|
-| `typescript` | Static type checking | 7.0.2 | [npm registry](https://www.npmjs.com/package/typescript/v/7.0.2) | Apache-2.0 | [TypeScript](https://www.typescriptlang.org/) |
+| `typescript` | Static type checking | 6.0.3 | [npm registry](https://www.npmjs.com/package/typescript/v/6.0.3) | Apache-2.0 | [TypeScript](https://www.typescriptlang.org/) |
+| `@biomejs/biome` | Lint and formatting checks for application and test sources | 2.6.3 | [npm registry](https://www.npmjs.com/package/@biomejs%2Fbiome/v/2.6.3) | MIT OR Apache-2.0 | [Biome](https://github.com/biomejs/biome) |
 | `@types/react` | React type declarations | 19.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Freact/v/19.3.0) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) |
 | `@types/react-dom` | React DOM type declarations | 19.3.0 | [npm registry](https://www.npmjs.com/package/@types%2Freact-dom/v/19.3.0) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom) |
 | `@types/node` | Node.js type declarations | 26.6.5 | [npm registry](https://www.npmjs.com/package/@types%2Fnode/v/26.6.5) | MIT | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node) |

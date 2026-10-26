@@ -91,7 +91,7 @@ it('AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 
 it('AC-42 validates complete GPL and the actual Recursive-bearing SVG notice', async () => {
   const expected = {
     licenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3',
-    attributionSha256: '7e112447507249b6c71ee1c74bf357c0382c042b29325ebce00e268f67cb7c43',
+    attributionSha256: '14618e95c83b2bd7bed1d3c4abce8cf7abfafdd9337f80b524ca9bbfb2261749',
     assetPath: 'docs/word_association_round_flow.svg',
     assetSha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0',
     requiredAssetText: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'],
