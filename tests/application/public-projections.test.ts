@@ -4,7 +4,9 @@ import {
   publicLobbies,
   rankPublicProfiles,
 } from "../../src/application/public-projections";
+import { PublicLandingService } from "../../src/application/public-service";
 import type { Profile, Room } from "../../src/domain/model";
+import { success } from "../../src/domain/result";
 import { acOracleScenarios } from "../ac-contracts/oracle-scenarios";
 
 const profile = (id: string, values: Partial<Profile> = {}): Profile => ({
@@ -46,8 +48,8 @@ const room = (id: string, values: Partial<Room> = {}): Room => ({
 });
 
 describe("Phase 2A anonymous public projections", () => {
-  it("orders lifetime wins, points, earliest win and stable ID while excluding opt-outs", () => {
-    const ranked = rankPublicProfiles([
+  it("orders lifetime wins, points, earliest win and stable ID while excluding opt-outs", async () => {
+    const inputs = [
       profile("p2", { earliestWinAt: 200 }),
       profile("p1"),
       profile("g1", {
@@ -58,7 +60,28 @@ describe("Phase 2A anonymous public projections", () => {
         alias: "Guest Cedar",
       }),
       profile("g2", { kind: "guest", wins: 9, publicLeaderboard: false }),
-    ]);
+    ];
+    const ranked = rankPublicProfiles(inputs);
+    let now = 0;
+    const calls: number[] = [];
+    const service = new PublicLandingService(
+      {
+        leaderboard: async () => {
+          calls.push(now);
+          return success({ rows: inputs, revision: 1, nextOffset: null });
+        },
+        lobbies: async () =>
+          success({ rows: [], revision: 1, nextOffset: null }),
+      },
+      { now: () => now },
+    );
+    await service.read(null, null);
+    now = 299999;
+    await service.read(null, null);
+    expect(calls).toEqual([0]);
+    now = 300000;
+    await service.read(null, null);
+    expect(calls).toHaveLength(2);
     acOracleScenarios
       .find((scenario) => scenario.id === "AC-43-T02")
       ?.assertObservation({
@@ -66,8 +89,10 @@ describe("Phase 2A anonymous public projections", () => {
           alias: entry.alias,
           profileId: entry.id,
         })),
-        excludedProfileIds: ["g2"],
-        refreshAtMs: 300000,
+        excludedProfileIds: inputs
+          .filter((input) => !ranked.some((row) => row.id === input.id))
+          .map((input) => input.id),
+        refreshAtMs: calls[1],
       });
     expect(
       rankPublicProfiles([profile("b"), profile("a")]).map((entry) => entry.id),

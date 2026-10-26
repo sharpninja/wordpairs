@@ -5,7 +5,19 @@
 **Active criteria:** 45 (AC-01–33, AC-37–39, AC-41–47, AC-50–51)  
 **Retired identifiers:** AC-34, AC-35, AC-36, AC-40, AC-48, AC-49 (reserved; TR/operational verification only)
 
-## 1. Current status
+## Current Phase 6 candidate
+
+Phases 1–5 independently exited at 99/99. The Phase 6 candidate maps all 45 active ACs, 67 primary cases and 27 supplemental cases to actual production or local process assertions in `evidence/phase6/acceptance-mapping.json`. The original mock oracles and semantic controls remain intact. Thirteen gameplay oracles run unchanged on actual observations; documented counterparts handle incompatible historical fixtures, including fixed eight-round completion, actual category assets, canonical targets with zero alternatives, and measured contrast above the 4.5 threshold.
+
+Candidate regression passes 494 tests in 39 files and 25 Chromium journeys, with zero failures/skips. Typecheck and source lint pass. Separate TR runs pass 34 PostgreSQL tests, SQL checks and four actual Realtime tests. The detailed commands, raw observations, source hashes, scope and evidence limits are in `phase6_execution.md` and `evidence/phase6/`. These results replace the historical planned/pending implementation status below; they do not turn database/deployment evidence into AC proof.
+
+The remaining exit conditions are independent exact-commit Phase 6 hostile validation and the plan's separate human phone-validation requirement. Automated viewport checks and the agent's screenshot inspection are recorded honestly as such. Deployment/account/operational release work remains Phase 7.
+
+## Historical pre-implementation assessment
+
+The following sections preserve the original Phase 0 gap analysis and next steps as historical context, rather than the current execution status.
+
+## 1. Historical status
 
 Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 67 case IDs; two TR-30 public-query contract cases, six TR-31 database integration cases, and four TR-19 reaction cases remain separate from AC coverage. Phase 0 was approved on 26 October 2026. The global mock-oracle candidate has 67 primary and 27 supplemental AC scenarios and passes 316 tests with 112 named AC semantic controls; five Phase 1A shell checks bring the current suite to 321. The exact-commit hostile review of `f7b5ff8302e24c6eae4dd1d2f21d7cba8577ac29` scored 99% accuracy and 100% completeness. AC-38 and related evidence-label findings are corrected; the global mock-oracle gate passed and Phase 1A is authorized. Run unchanged assertions against real product behavior as each increment is implemented; mock sensitivity does not establish application conformance.
 

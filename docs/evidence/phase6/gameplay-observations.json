@@ -1,0 +1,469 @@
+{
+  "AC-04-T01": {
+    "request": {
+      "setup": {
+        "roster": [
+          "p9",
+          "p3",
+          "p7"
+        ],
+        "randomReturns": [
+          1,
+          3
+        ]
+      },
+      "actions": [
+        {
+          "type": "select-first-anchor"
+        }
+      ]
+    },
+    "observed": {
+      "randomCalls": [
+        {
+          "min": 1,
+          "max": 3
+        },
+        {
+          "min": 1,
+          "max": 3
+        }
+      ],
+      "selections": [
+        {
+          "randomValue": 1,
+          "anchorId": "p9"
+        },
+        {
+          "randomValue": 3,
+          "anchorId": "p7"
+        }
+      ]
+    }
+  },
+  "AC-04-T02": {
+    "request": {
+      "setup": {
+        "anchorId": "p2",
+        "categoryId": "animals"
+      },
+      "actions": [
+        {
+          "type": "choose-first-category"
+        }
+      ]
+    },
+    "observed": {
+      "attempts": [
+        {
+          "actorId": "p2",
+          "result": "chosen",
+          "matchVersion": 2
+        },
+        {
+          "actorId": "p1",
+          "result": "forbidden",
+          "matchVersion": 2
+        }
+      ],
+      "categoryId": "animals"
+    }
+  },
+  "AC-06-T01": {
+    "request": {
+      "setup": {
+        "stage": "no-hint",
+        "acceptedAnswer": "cat",
+        "submissions": [
+          "cat",
+          "dog",
+          "cat"
+        ]
+      },
+      "actions": [
+        {
+          "type": "submit-answer"
+        }
+      ]
+    },
+    "observed": {
+      "results": [
+        {
+          "answer": "cat",
+          "accepted": true,
+          "scoreDelta": 5
+        },
+        {
+          "answer": "dog",
+          "accepted": false,
+          "scoreDelta": 0
+        },
+        {
+          "answer": "cat",
+          "accepted": true,
+          "scoreDelta": 0
+        }
+      ],
+      "scoreAfter": 5
+    }
+  },
+  "AC-07-T01": {
+    "request": {
+      "setup": {
+        "acceptedAnswer": "cat",
+        "stages": [
+          "hint-1",
+          "hint-2",
+          "hint-3"
+        ]
+      },
+      "actions": [
+        {
+          "type": "submit-answer-at-hint-stages"
+        }
+      ]
+    },
+    "observed": {
+      "results": [
+        {
+          "stage": "hint-1",
+          "scoreDelta": 3
+        },
+        {
+          "stage": "hint-2",
+          "scoreDelta": 2
+        },
+        {
+          "stage": "hint-3",
+          "scoreDelta": 1
+        }
+      ]
+    }
+  },
+  "AC-08-T01": {
+    "request": {
+      "setup": {
+        "playerId": "p1",
+        "target": "cat"
+      },
+      "actions": [
+        {
+          "type": "exhaust-hints"
+        }
+      ]
+    },
+    "observed": {
+      "playerResult": {
+        "scoreDelta": 0,
+        "solved": false
+      },
+      "projectionAfterHint3": {
+        "revealedTarget": "cat"
+      }
+    }
+  },
+  "AC-09-T01": {
+    "request": {
+      "setup": {
+        "stage": "hint-1",
+        "unsolved": [
+          "p1",
+          "p2"
+        ]
+      },
+      "actions": [
+        {
+          "type": "submit-stage-answers"
+        }
+      ]
+    },
+    "observed": {
+      "transitions": [
+        {
+          "submitted": [
+            "p1"
+          ],
+          "stage": "hint-1",
+          "hintRecipients": []
+        },
+        {
+          "submitted": [
+            "p1",
+            "p2"
+          ],
+          "stage": "hint-2",
+          "hintRecipients": [
+            "p1",
+            "p2"
+          ]
+        }
+      ]
+    }
+  },
+  "AC-10-T01": {
+    "request": {
+      "setup": {
+        "playerId": "p1",
+        "icon": "owl",
+        "scoreBefore": 4,
+        "stage": "hint-1",
+        "roundStartedAtMs": 1000,
+        "serverAcceptedAtMs": 13000,
+        "clientClaimedAtMs": 2000
+      },
+      "actions": [
+        {
+          "type": "submit-answer",
+          "payload": {
+            "answer": "cat"
+          }
+        },
+        {
+          "type": "project-live-scorecard"
+        }
+      ]
+    },
+    "observed": {
+      "acceptedSubmission": {
+        "playerId": "p1",
+        "acceptedAtMs": 13000,
+        "elapsedMs": 12000,
+        "scoreDelta": 3
+      },
+      "scorecard": [
+        {
+          "playerId": "p1",
+          "icon": "owl",
+          "roundPoints": 3,
+          "cumulativePoints": 7,
+          "elapsedMs": 12000
+        }
+      ]
+    }
+  },
+  "AC-11-T01": {
+    "request": {
+      "setup": {
+        "submissions": [
+          {
+            "playerId": "p2",
+            "acceptedAtMs": 200,
+            "sequence": 2
+          },
+          {
+            "playerId": "p1",
+            "acceptedAtMs": 100,
+            "sequence": 1
+          },
+          {
+            "playerId": "p3",
+            "acceptedAtMs": 100,
+            "sequence": 2
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "accept-competing-correct-answers"
+        }
+      ]
+    },
+    "observed": {
+      "chooserId": "p1",
+      "orderedCandidates": [
+        "p1",
+        "p3",
+        "p2"
+      ]
+    }
+  },
+  "AC-12-T01": {
+    "request": {
+      "setup": {
+        "priorScores": {
+          "p1": 5,
+          "p2": 3
+        },
+        "roundResults": {
+          "p1": {
+            "points": 0,
+            "elapsedMs": null
+          },
+          "p2": {
+            "points": 3,
+            "elapsedMs": 12000
+          }
+        }
+      },
+      "actions": [
+        {
+          "type": "project-round-summary"
+        }
+      ]
+    },
+    "observed": {
+      "rows": [
+        {
+          "playerId": "p2",
+          "cumulativeScore": 6,
+          "roundPoints": 3,
+          "elapsedMs": 12000
+        },
+        {
+          "playerId": "p1",
+          "cumulativeScore": 5,
+          "roundPoints": 0,
+          "elapsedMs": null
+        }
+      ]
+    }
+  },
+  "AC-14-T01": {
+    "request": {
+      "setup": {
+        "rows": [
+          {
+            "playerId": "fast",
+            "score": 10,
+            "solveSeconds": [
+              10,
+              20
+            ],
+            "unsolvedRounds": 0
+          },
+          {
+            "playerId": "slow",
+            "score": 10,
+            "solveSeconds": [
+              20,
+              30
+            ],
+            "unsolvedRounds": 0
+          },
+          {
+            "playerId": "penalty-a",
+            "score": 8,
+            "solveSeconds": [
+              5
+            ],
+            "unsolvedRounds": 1
+          },
+          {
+            "playerId": "penalty-b",
+            "score": 8,
+            "solveSeconds": [
+              5
+            ],
+            "unsolvedRounds": 1
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "rank-final-standings"
+        }
+      ]
+    },
+    "observed": {
+      "standings": [
+        {
+          "rank": 1,
+          "playerId": "fast",
+          "score": 10,
+          "tieSeconds": 30
+        },
+        {
+          "rank": 2,
+          "playerId": "slow",
+          "score": 10,
+          "tieSeconds": 50
+        },
+        {
+          "rank": 3,
+          "playerId": "penalty-a",
+          "score": 8,
+          "tieSeconds": 85
+        },
+        {
+          "rank": 3,
+          "playerId": "penalty-b",
+          "score": 8,
+          "tieSeconds": 85
+        }
+      ]
+    }
+  },
+  "AC-45-T01": {
+    "request": {
+      "setup": {
+        "playerId": "p1",
+        "stage": "no-hint",
+        "commandIds": [
+          "cmd-1",
+          "cmd-1",
+          "cmd-2"
+        ]
+      },
+      "actions": [
+        {
+          "type": "retry-accepted-answer"
+        }
+      ]
+    },
+    "observed": {
+      "acceptances": [
+        {
+          "commandId": "cmd-1",
+          "scoreDelta": 5
+        }
+      ],
+      "scoreAfter": 5
+    }
+  },
+  "AC-45-T02": {
+    "request": {
+      "setup": {
+        "playerId": "p1",
+        "answer": "dog",
+        "target": "cat",
+        "scoreBefore": 5
+      },
+      "actions": [
+        {
+          "type": "submit-incorrect-answer"
+        }
+      ]
+    },
+    "observed": {
+      "result": "incorrect",
+      "scoreAfter": 5,
+      "emittedEvents": []
+    }
+  },
+  "AC-45-T03": {
+    "request": {
+      "setup": {
+        "target": "cat"
+      },
+      "actions": [
+        {
+          "type": "project-answer-visibility"
+        }
+      ]
+    },
+    "observed": {
+      "beforeReveal": {
+        "player": {},
+        "observer": {}
+      },
+      "afterReveal": {
+        "player": {
+          "target": "cat"
+        },
+        "observer": {
+          "target": "cat"
+        }
+      }
+    }
+  }
+}

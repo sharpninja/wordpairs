@@ -1,0 +1,270 @@
+{
+  "test": "AC-30-T03 stale departure loses to queue change and retries against the latest oldest observer",
+  "evidence": "Actual production decisions returned through TransactionFake; no database durability claim",
+  "observed": [
+    {
+      "initial": {
+        "id": "r",
+        "version": 4,
+        "code": "ABCDEFGH",
+        "creatorId": "p1",
+        "capacity": 3,
+        "discoverable": false,
+        "status": "waiting",
+        "createdAt": 0,
+        "changedAt": 0,
+        "closedAt": null,
+        "players": [
+          {
+            "profileId": "p1",
+            "ready": false,
+            "joinedAt": 0,
+            "disconnectedAt": null,
+            "lastSeenAt": 0
+          },
+          {
+            "profileId": "p2",
+            "ready": false,
+            "joinedAt": 0,
+            "disconnectedAt": null,
+            "lastSeenAt": 0
+          },
+          {
+            "profileId": "p3",
+            "ready": false,
+            "joinedAt": 0,
+            "disconnectedAt": null,
+            "lastSeenAt": 0
+          }
+        ],
+        "observers": [
+          {
+            "profileId": "o1",
+            "followedPlayerId": "p1",
+            "arrivalSequence": 0,
+            "joinedAt": 0
+          },
+          {
+            "profileId": "o2",
+            "followedPlayerId": "p1",
+            "arrivalSequence": 1,
+            "joinedAt": 0
+          }
+        ],
+        "lockedRoster": [],
+        "nextObserverSequence": 2,
+        "idlePromptedVersion": null,
+        "holdoutId": null,
+        "holdoutDueAt": null,
+        "countdownDueAt": null,
+        "emptySince": null
+      },
+      "commits": [
+        {
+          "command": {
+            "aggregateId": "r",
+            "actorId": "o1",
+            "commandId": "oldest-leaves",
+            "requestDigest": "oldest-leaves",
+            "expectedVersion": 4
+          },
+          "transition": {
+            "state": {
+              "id": "r",
+              "version": 5,
+              "code": "ABCDEFGH",
+              "creatorId": "p1",
+              "capacity": 3,
+              "discoverable": false,
+              "status": "waiting",
+              "createdAt": 0,
+              "changedAt": 1,
+              "closedAt": null,
+              "players": [
+                {
+                  "profileId": "p1",
+                  "ready": false,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                },
+                {
+                  "profileId": "p2",
+                  "ready": false,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                },
+                {
+                  "profileId": "p3",
+                  "ready": false,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                }
+              ],
+              "observers": [
+                {
+                  "profileId": "o2",
+                  "followedPlayerId": "p1",
+                  "arrivalSequence": 1,
+                  "joinedAt": 0
+                }
+              ],
+              "lockedRoster": [],
+              "nextObserverSequence": 2,
+              "idlePromptedVersion": null,
+              "holdoutId": null,
+              "holdoutDueAt": null,
+              "countdownDueAt": null,
+              "emptySince": null
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "roomId": "r",
+                "version": 5,
+                "status": "waiting"
+              }
+            },
+            "events": [
+              {
+                "id": "queue-event-1",
+                "aggregateType": "room",
+                "aggregateId": "r",
+                "version": 5,
+                "schemaVersion": 1,
+                "type": "RoomLobbyChanged",
+                "audience": [
+                  "p1",
+                  "p2",
+                  "p3",
+                  "o1",
+                  "o2"
+                ],
+                "payload": {
+                  "roomId": "r"
+                }
+              }
+            ],
+            "deadlines": [
+              {
+                "id": "queue-event-2",
+                "aggregateId": "r",
+                "expectedVersion": 5,
+                "kind": "idle",
+                "dueAt": 30001
+              },
+              {
+                "id": "queue-event-3",
+                "aggregateId": "r",
+                "expectedVersion": 5,
+                "kind": "reconnect",
+                "dueAt": 45000
+              }
+            ],
+            "audits": []
+          }
+        },
+        {
+          "command": {
+            "aggregateId": "r",
+            "actorId": "p2",
+            "commandId": "refreshed-departure",
+            "requestDigest": "refreshed-departure",
+            "expectedVersion": 5
+          },
+          "transition": {
+            "state": {
+              "id": "r",
+              "version": 6,
+              "code": "ABCDEFGH",
+              "creatorId": "p1",
+              "capacity": 3,
+              "discoverable": false,
+              "status": "waiting",
+              "createdAt": 0,
+              "changedAt": 1,
+              "closedAt": null,
+              "players": [
+                {
+                  "profileId": "p1",
+                  "ready": false,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                },
+                {
+                  "profileId": "p3",
+                  "ready": false,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                },
+                {
+                  "profileId": "o2",
+                  "ready": false,
+                  "joinedAt": 1,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 1
+                }
+              ],
+              "observers": [],
+              "lockedRoster": [],
+              "nextObserverSequence": 2,
+              "idlePromptedVersion": null,
+              "holdoutId": null,
+              "holdoutDueAt": null,
+              "countdownDueAt": null,
+              "emptySince": null
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "roomId": "r",
+                "version": 6,
+                "status": "waiting"
+              }
+            },
+            "events": [
+              {
+                "id": "queue-event-4",
+                "aggregateType": "room",
+                "aggregateId": "r",
+                "version": 6,
+                "schemaVersion": 1,
+                "type": "RoomLobbyChanged",
+                "audience": [
+                  "p1",
+                  "p2",
+                  "p3",
+                  "o2"
+                ],
+                "payload": {
+                  "roomId": "r"
+                }
+              }
+            ],
+            "deadlines": [
+              {
+                "id": "queue-event-5",
+                "aggregateId": "r",
+                "expectedVersion": 6,
+                "kind": "idle",
+                "dueAt": 30001
+              },
+              {
+                "id": "queue-event-6",
+                "aggregateId": "r",
+                "expectedVersion": 6,
+                "kind": "reconnect",
+                "dueAt": 45000
+              }
+            ],
+            "audits": []
+          }
+        }
+      ]
+    }
+  ]
+}
