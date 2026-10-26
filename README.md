@@ -1,6 +1,6 @@
 # Wordpairs
 
-Wordpairs is a real-time word-association game. Its approved requirements and rendered diagrams are in [`docs/word_association_game_requirements.md`](docs/word_association_game_requirements.md).
+Wordpairs is a real-time word-association game. Its requirements, [implementation plan](docs/implementation_plan.md), and rendered diagrams are in [`docs/word_association_game_requirements.md`](docs/word_association_game_requirements.md).
 
 ## Project status
 
