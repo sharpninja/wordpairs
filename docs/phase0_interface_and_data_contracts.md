@@ -46,7 +46,9 @@ Names and paths are proposed; the request/response semantics should remain stabl
 | `GetObserverView` | Room ID, verified observer membership | View scoped to the bound inviter | Cannot submit or mutate; only inviter-authorized visible fields |
 | `GetLandingPage` | Page/filter token, anonymous or authenticated caller | Approved leaderboard, lobby summary, rules projection and explicit empty/unavailable state | Allowlist only; no room codes, answers, guesses, private profile fields, moderation data, secrets |
 | `NominateAnswer` / `SuggestCategory` | Actor, source match/win evidence, candidate payload, command ID | Submission status and audit reference | Server checks eligibility and idempotency; never automatically activates content |
-| `ReviewContent` | Moderator identity, content ID, decision/reason, command ID | Updated moderation state and audit reference | Reject unauthorized or invalid transition; preserve audit trail |
+| `ReviewContent` | Moderator identity, content ID, decision/reason, command ID, expected version | Updated moderation state and audit reference | Reject unauthorized or invalid transition; reviewer cannot approve own content; preserve audit trail |
+| `AppealModerationDecision` | Proposer identity, rejected content ID/version, appeal reason, command ID | `appealed` state and audit reference | One appeal per rejected version; only proposer may appeal; route to a Senior Moderator distinct from the original reviewer; duplicate/stale requests are idempotent/conflicts as applicable |
+| `ResolveModerationAppeal` | Senior Moderator identity, appeal ID, uphold/overturn decision and reason, command ID, expected version | Closed appeal and updated moderation state/audit reference | Reject original reviewer, proposer, or unauthorized role; uphold keeps rejection; overturn returns the case to approved-for-curation only; neither outcome automatically makes content playable |
 
 Typed errors should be stable domain/application codes, independent of HTTP status or Supabase error strings. Proposed classes: `VALIDATION_ERROR`, `NOT_AUTHENTICATED`, `NOT_AUTHORIZED`, `NOT_FOUND`, `ROOM_FULL`, `ROOM_CLOSED`, `CONFLICT`, `IDEMPOTENCY_CONFLICT`, `RATE_LIMITED`, `SERVICE_LIMIT`, `TEMPORARY_UNAVAILABLE`, and `INTERNAL_ERROR`. Public wording avoids provider details; retryable service-limit behavior returns `SERVICE_LIMIT`; never return secrets or raw provider/database errors.
 
@@ -138,7 +140,7 @@ Mock contracts assert application behavior at each port (commands, conflict resu
 
 ## 9. Approved Phase 0 technical contracts
 
-Requirements v2.6 resolves product choices affecting active AC expected results. These Phase 0 technical contracts are approved. External account and platform integration checks remain post-coding TR evidence.
+Requirements v2.6 resolves product choices affecting active AC expected results. These Phase 0 technical contracts are approved. For moderation, only a proposer may appeal a rejected decision once; the appeal is assigned to a Senior Moderator who did not make the original decision. The Senior Moderator records a reasoned uphold or overturn outcome. Uphold preserves rejection; overturn moves the case to approved-for-curation, but neither decision activates content. Each transition is version-checked, idempotent by command ID, and audited in the same transaction. A case may not be appealed again after its appeal closes. External account and platform integration checks remain post-coding TR evidence.
 
 | Approval | Contract to review | Related requirements |
 |---|---|---|
@@ -146,7 +148,7 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 | Public interfaces | Finalize application command/query schemas, stable error codes, event versions/audiences and authorization derivation. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
 | Persistence/security | Approve schema, RLS, transactions/versioning, idempotency/outbox, role source, retention, and server-only secret handling. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
 | Timer adapter | Approve durable deadline-job contract and Postgres transaction semantics. Supabase Cron/pg_cron is selected; actual free-plan eligibility is checked in Phase 7. | AC-30–33; TR-22 |
-| Test specification | Refine all 65 planned AC cases into exact assertions, mocks and evidence tiers. Verify every active AC has a mockable contract before any implementation. | AC-01–33, AC-37–39, AC-41–47, AC-50–51 |
+| Test specification | Refine all 67 planned AC cases into exact assertions, mocks and evidence tiers. Verify every active AC has a mockable contract before any implementation. | AC-01–33, AC-37–39, AC-41–47, AC-50–51 |
 | Deployment contract planning | Keep Vercel, provisioning, build/SWBOM and source archive checks TR-only; do not execute deployment during coding Phases 1–6. | TR-20–29; AC-41/42 use local archive fixtures only |
 
 ## 10. Phase 0 completion record
@@ -156,7 +158,7 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 - [x] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
 - [x] Approve server clock and durable deadline-scheduler contract for lobby timers.
 - [x] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
-- [x] Refine all 65 planned AC case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
+- [x] Refine all 67 planned AC case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
 - [x] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
 - [x] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 
