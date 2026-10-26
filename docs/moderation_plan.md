@@ -1,7 +1,7 @@
 # Wordpairs Content Moderation Plan
 
 **Status:** Proposed moderation design; policies and implementation are not approved  
-**Requirements baseline:** `word_association_game_requirements.md` v2.3  
+**Requirements baseline:** `word_association_game_requirements.md` v2.4  
 **Implementation sequence:** `implementation_plan.md`  
 **Current scope:** player nominations and category/pair suggestions; no public chat
 
