@@ -1,7 +1,7 @@
 # Word Association Game Requirements
 
 **Functional behavior, technical requirements, and acceptance criteria**  
-Version 2.6 · 26 October 2026 · Draft for product approval
+Version 2.6 · 26 October 2026 · Approved baseline
 
 ## Purpose and scope
 
