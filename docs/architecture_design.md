@@ -119,7 +119,7 @@ Vercel hosts the web application selected by the architecture decision record; t
 
 ## Open decisions preserved
 
-The architecture does not invent product decisions still marked open in Requirements v2.3. In particular, OpenAI OIDC access eligibility, match length and final tiebreak edge cases, guest persistence, answer matching details, lobby discovery defaults, quick-match ordering, public leaderboard contract, and idle/deadline execution mechanism must be approved or verified before their policy is finalized. The two-player holdout case is resolved by AC-32: removing the unready player starts and locks the countdown with the remaining roster, even when one player remains. These are represented as injected policies, explicit configuration, or adapter contracts so the decision does not require duplicating domain rules.
+The architecture does not invent product decisions still marked open in Requirements v2.3. In particular, OpenAI OIDC access eligibility, match length and final tiebreak edge cases, guest persistence, answer matching details, lobby discovery defaults, quick-match ordering, public leaderboard contract, idle/deadline execution mechanism, and the match-start outcome when a locked countdown expires below the two-player minimum must be approved or verified before their policies are finalized. The two-player holdout case itself is resolved by AC-32: removing the unready player starts and locks the countdown with the remaining roster, even when one player remains. These are represented as injected policies, explicit configuration, or adapter contracts so the decision does not require duplicating domain rules.
 
 ## Traceability validation
 
