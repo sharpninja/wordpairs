@@ -1,12 +1,12 @@
 # Wordpairs Architecture Pattern Decisions
 
 **Status:** Selected architectural direction; detailed interfaces remain subject to Phase 0 design review  
-**Requirements baseline:** `word_association_game_requirements.md` v2.5  
+**Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Related documents:** [`implementation_plan.md`](implementation_plan.md), [`deployment_plan.md`](deployment_plan.md)
 
 ## 1. Decision summary
 
-Build Wordpairs as a **DDD modular monolith** with **ports and adapters**, **pure domain policies**, **transactional aggregate commands**, **idempotent command handling**, and a **transactional outbox** for committed state changes. Use **CQRS-lite** only for public/read-only projections such as the landing-page leaderboard and discoverable-lobby list. Keep the application in one deployment on the required Vercel target and use required Supabase Postgres as the concurrency arbiter and durable state store. Next.js/TypeScript is the proposed application stack pending a Phase 0 architecture decision record.
+Build Wordpairs as a **DDD modular monolith** with **ports and adapters**, **pure domain policies**, **transactional aggregate commands**, **idempotent command handling**, and a **transactional outbox** for committed state changes. Use **CQRS-lite** only for public/read-only projections such as the landing-page leaderboard and discoverable-lobby list. Keep the application in one deployment on the required Vercel target and use required Supabase Postgres as the concurrency arbiter and durable state store. Next.js/TypeScript is the selected v2.6 application stack, pending Phase 0 technical ADR approval.
 
 The design favors boundaries that can be tested with fakes and unit tests, while the database serializes contending mutations. It avoids microservices, distributed transactions, duplicated rule implementations, and full event sourcing. A room has at most 25 players, and its database record provides a natural contention boundary.
 
@@ -49,7 +49,7 @@ Keep route handlers thin: transport parsing, authentication, request schema vali
 
 Represent business concepts with small value objects and named policies (examples: `RoomCapacity`, `RoomId`, `PlayerId`, `RosterPosition`, `ReadyDeadline`, `HintStage`, `Score`, `AcceptedAnswerPolicy`). Pure functions receive state plus an explicit command/context and return a decision or domain error. They perform no database, network, logging, or UI side effects.
 
-Keep open policies explicit. Answer normalization, no-response behavior, tiebreaks, nomination counting, and leaderboard rules must not be hidden in helper defaults before the owner approves them.
+Keep all v2.6 product policies explicit in named domain policies: answer normalization and no-response scoring, tiebreaks, nomination uniqueness, and leaderboard ordering. Phase 0 approves the technical interfaces and transaction contracts; the product outcomes are fixed in the requirements baseline.
 
 ### 3.3 DRY without erasing trust boundaries
 
