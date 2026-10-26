@@ -12,6 +12,8 @@ The design favors boundaries that can be tested with fakes and unit tests, while
 
 ## 2. Architectural shape
 
+![Wordpairs modular monolith and adapter boundaries](architecture_patterns.svg)
+
 Browser and Next.js presentation code call application use cases. Use cases depend on domain policies and ports; production adapters implement those ports with Supabase/Postgres, the approved OIDC provider, and deployment metadata. Browser code never calls privileged adapters. Server routes/actions authenticate the caller, validate transport input, invoke a use case, and map its result. The domain imports no Next.js, Supabase SDK, React, or network clients.
 
 ### 2.1 DDD bounded contexts
