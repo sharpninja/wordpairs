@@ -3,7 +3,7 @@
 **Requirements baseline:** `word_association_game_requirements.md` v2.2  
 **Status:** Planned traceability inventory; no test code is authored, mock-validated, or passing yet
 
-This inventory decomposes the active acceptance criteria into proposed test cases with criterion-specific assertions and seams. It establishes planned traceability only: it is not evidence of implemented test coverage. Before each increment, author the tests for the next small behavior, validate that they pass against mocks, then implement the smallest production behavior and refactor, following Byrd Development Process v4. Record actual test names and results when they exist. Keep all unresolved-policy cases blocked rather than inventing expected results.
+This inventory decomposes the active acceptance criteria into proposed test cases with criterion-specific assertions and seams. It establishes planned traceability only: it is not evidence of implemented test coverage. Phase 0 is planning-only, so executable tests are not authored until Phase 0 passes. After Phase 0 approval, every active AC test must be authored and validated against mocks before any project implementation code. This global gate is followed by small implementation increments with full regression runs. Mock validation does not replace static configuration inspection, account verification, live integration, deployment, or human evidence where the AC requires those. Keep all unresolved-policy cases blocked rather than inventing expected results.
 
 | AC | Criterion | Planned test ID | Assertion focus | Verification boundary | Test seam / fixture | Evidence status |
 |---|---|---|---|---|---|
