@@ -4,7 +4,7 @@ Wordpairs is a real-time word-association game. Its [requirements](docs/word_ass
 
 ## Project status
 
-Phase 0 was approved on 26 October 2026; the global mock-oracle gate passed exact-commit review at 99% accuracy and 100% completeness. Phase 1's foundation candidate adds typed ports, command/idempotency/quota handling, a server PostgreSQL adapter, private/RLS migrations, and outbox/deadline/audit persistence. It passes 352 regression tests plus a separate disposable PostgreSQL suite with three real adapter tests. [Phase 1 execution](docs/phase1_execution.md) distinguishes application, fake-port, and database evidence. Phase 1 exit review is pending; gameplay remains unimplemented. Deployment stays in Phase 7, after coding Phases 1–6; external integration and deployed artifacts never count toward AC coverage.
+Phase 0 and [Phase 1](docs/phase1_execution.md) passed exact-commit hostile review. The [Phase 2 candidate](docs/phase2_execution.md) adds the anonymous community board, persistent guests, OIDC/profile handling, capacity-checked rooms, quick match, signed invitations, observer access and private Realtime notifications. It passes 403 regression tests, six browser journeys with synthetic HTTP boundaries, and separate disposable Postgres/Realtime integration checks. Phase 2's exact-commit exit review is pending. Readiness, gameplay, moderation and final acceptance remain in Phases 3–6. Deployment stays in Phase 7; external integration and deployed artifacts never count toward AC coverage.
 
 ## License
 

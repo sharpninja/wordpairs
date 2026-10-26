@@ -41,6 +41,10 @@ export class SupabasePostgresStore<S extends Versioned>
   constructor(
     private readonly pool: SqlPool,
     private readonly kind: DomainEvent["aggregateType"],
+    private readonly selectCommand?: (
+      connection: SqlConnection,
+      command: Command,
+    ) => Promise<Result<Command>>,
   ) {
     if (typeof window !== "undefined")
       throw new Error("Server persistence is unavailable in the browser");
@@ -56,6 +60,15 @@ export class SupabasePostgresStore<S extends Versioned>
     try {
       connection = await this.pool.connect();
       await connection.query("begin");
+      if (this.selectCommand) {
+        const selected = await this.selectCommand(connection, command);
+        if (!selected.ok) {
+          await connection.query("rollback");
+          completed = true;
+          return selected;
+        }
+        command = selected.value;
+      }
       await connection.query(
         "select id from wordpairs.aggregates where kind=$1 and id=$2 for update",
         [this.kind, command.aggregateId],
