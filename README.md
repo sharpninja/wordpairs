@@ -4,7 +4,7 @@ Wordpairs is a real-time word-association game. Its [requirements](docs/word_ass
 
 ## Project status
 
-Phase 0 was approved on 26 October 2026. The project is completing the global mock-validation gate for all 45 active acceptance criteria before any production implementation code. No application code has been written. Deployment is scheduled after coding Phases 1–6, in Phase 7; deployed artifacts do not count toward AC coverage. External configuration, account, integration, deployment, and human evidence is tracked separately under TRs or operational release policy; deployed artifacts never count toward AC coverage.
+Phase 0 was approved on 26 October 2026. The next step is test-harness bootstrap and the global mock-validation gate for all 45 active acceptance criteria; it must pass before any production implementation code. No application code or executable test suite has been written. Deployment is scheduled after coding Phases 1–6, in Phase 7; deployed artifacts do not count toward AC coverage. External configuration, account, integration, deployment, and human evidence is tracked separately under TRs or operational release policy; deployed artifacts never count toward AC coverage.
 
 ## License
 
