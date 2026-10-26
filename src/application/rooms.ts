@@ -63,6 +63,7 @@ export function roomProjection(
     holdoutId: room.holdoutId,
     holdoutDueAt: room.holdoutDueAt,
     countdownDueAt: room.countdownDueAt,
+    matchAvailable: room.startedAt !== undefined,
     players: room.players.map((player, index) => ({
       ...label(player.profileId),
       position: index + 1,

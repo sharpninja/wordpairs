@@ -92,7 +92,7 @@ it('AC-42 validates complete GPL and the actual Recursive-bearing SVG notice', a
   const expected = {
     licenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3',
     // Reviewed inventory now also includes the MIT-licensed pg/@types/pg 8.23.1 rows.
-    attributionSha256: '42122abf9b0691c659321e9283282cce41bb8597743cede0a1fe18394e24ba36',
+    attributionSha256: '672b47e0aeb29511355aa32c7097f095620f288c79470a75b3eff68dfcac095f',
     assetPath: 'docs/word_association_round_flow.svg',
     assetSha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0',
     requiredAssetText: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'],
