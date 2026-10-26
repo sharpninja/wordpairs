@@ -46,7 +46,7 @@ The requirements specify product outcomes. The content checklist below is operat
 
 ### 3.2 Resolved moderation policy
 
-Requirements v2.6 fixes the policy: ten unique profiles trigger review; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve; an independent Content Moderator approves or rejects with a reason; one appeal may be submitted to a Senior Moderator; ten lifetime wins unlock one open category suggestion containing exactly three pairs. Approval does not publish incomplete content. Technical role storage, state-transition interfaces and audit schema remain Phase 0 design work.
+Requirements v2.6 fixes the policy: ten unique profiles trigger review; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve; an independent Content Moderator approves or rejects with a reason; one appeal may be submitted to a Senior Moderator; ten lifetime wins unlock one open category suggestion containing exactly three pairs. Approval does not publish incomplete content. The approved Phase 0 contract defines role checks, versioned state transitions, and same-transaction audit writes; implementation follows the global mock-validation gate.
 
 Candidate matching uses the requirements' Unicode NFKC, trim, internal-whitespace collapse and case-insensitive normalization while preserving punctuation. The submitted spelling is retained separately for reviewer display. Public aliases and leaderboard opt-out follow FR-22. Rejected or pending user content is not public or playable. The requirements' retention schedule governs audit, idempotency and outbox records; no raw incorrect guesses are persisted.
 
@@ -97,7 +97,7 @@ Keep nomination eligibility, moderation review, editorial completion, and playab
 | Dimension | Suggested states | Meaning |
 |---|---|---|
 | Nomination threshold | `collecting`, `threshold_met`, `withdrawn`, `closed` | Counts and availability; threshold is not an approval. |
-| Moderation case | `not_queued`, `queued`, `in_review`, `needs_revision`, `approved`, `rejected`, `escalated`, `appealed`, `closed` | Human decision lifecycle. One appeal may be filed to a Senior Moderator; technical transition invariants are finalized in Phase 0. |
+| Moderation case | `not_queued`, `queued`, `in_review`, `needs_revision`, `approved`, `rejected`, `escalated`, `appealed`, `closed` | Human decision lifecycle. Only the proposer may file one appeal of a rejected decision. A distinct Senior Moderator records a reasoned uphold or overturn; overturn permits curation only and never activates content. |
 | Editorial curation | `not_started`, `in_progress`, `blocked`, `complete` | Whether a complete validated game record exists. |
 | Catalog availability | `not_playable`, `scheduled`, `active`, `disabled` | Release-level state; only `active` content can enter a newly created round. |
 
@@ -138,7 +138,7 @@ Because this is a free-tier, small-scope project, the initial approach is an own
 
 ### 7.3 Appeals, revision, and emergency disablement
 
-One appeal may be submitted to a senior moderator. Before implementation, the Phase 0 interface contract must specify the appeal state transition, eligible reason categories, reviewer separation, and resubmission handling consistently with that policy. Preserve every version and decision. Do not let an appeal silently restore content to the play pool.
+Only the proposer may submit one appeal after rejection. The system assigns it to a Senior Moderator distinct from the original reviewer; that reviewer records a reasoned uphold or overturn. Uphold keeps the rejection. Overturn moves the case to approved-for-curation, and still does not add content to the playable pool. A closed appeal cannot be resubmitted. Preserve every version, command ID, actor, decision, reason, and transition in the transactional audit. Stale versions are rejected and retries with the same command ID return the canonical result.
 
 Provide a privileged `disable` operation for active catalog content that is found to be harmful, inaccurate, rights-infringing, or otherwise unsuitable. It blocks inclusion in future rounds and future catalog releases; it cannot rewrite already completed match history. An active match continues using its content snapshot; disablement prevents selection in future rounds and catalog releases. Record actor, reason, time, affected catalog version, and whether the content remains visible in historical summaries.
 
@@ -167,7 +167,7 @@ Moderation code follows the same Byrd Development Process v4 gates as the rest o
 
 | Increment | Scope | Required mock-first cases |
 |---|---|---|
-| **M0 — Policy and interface baseline** | Approve the standards, roles, thresholds, state transitions, normalization, appeals, retention, and new ACs. Define review use-case/API contracts and database access boundaries. | No production code. Define test cases and mock interfaces for role verification, candidate repository, policy version, threshold counter, clock, and audit writer. Resolve expected results before tests are written. |
+| **M0 — Approved policy and interface baseline** | Requirements v2.6 and the Phase 0 interface contract already approve standards, roles, thresholds, state transitions, normalization, appeal limits, retention, and database boundaries. | No production code. Test cases use fake role verification, candidate repository, policy version, threshold counter, clock, and audit writer; all 45 ACs pass the global mock gate before implementation. |
 | **M1 — Eligibility and nomination capture** | Enforce no-hint solve, nomination window, input limits, normalized candidate key, duplicate policy, and transactional vote count. | Eligible/ineligible player; no-hint vs hinted solve; duplicate spelling; Unicode/case/whitespace variants; repeat attempt; concurrent threshold race; idempotent retry; invalid/control/oversize input. Cover AC-17 and approved M-02. |
 | **M2 — Threshold and moderation queue** | Maintain candidate gate states and create a queue case under the approved before/after-threshold policy. | 9/10 boundary, vote removed/invalidated policy, approved-but-below-threshold, threshold-without-approval, concurrent queue creation, no duplicate cases, restricted flag access. Cover AC-18 and approved M-03/M-08. |
 | **M3 — Review permissions and audit** | Role-guard review actions; implement approved state transitions, reason codes, optimistic concurrency, private/public views, and immutable audit. | Player denial; moderator permitted; self-approval rule; stale case version; invalid transition; private-note non-disclosure; audit commit/rollback behavior. Cover approved M-01/M-04/M-05/M-10. |
@@ -215,4 +215,4 @@ Moderation is complete for a release only when every approved moderation criteri
 
 ## 13. Resolved policy and remaining technical review
 
-The product policy checklist is resolved by requirements v2.6; there are no open product decisions for nomination count, nomination eligibility, moderation roles, appeal count, lifetime-win scope, public aliases, or retention. Phase 0 review remains for technical role assignment, authorization and RLS, state transitions, concurrent threshold enforcement, audit transaction boundaries, and test interface definitions. These technical approvals do not change acceptance outcomes.
+The product policy checklist is resolved by requirements v2.6; there are no open product decisions for nomination count, nomination eligibility, moderation roles, appeal count, lifetime-win scope, public aliases, or retention. Phase 0 approved the technical role assignment, authorization/RLS, state transitions, concurrent threshold enforcement, audit transaction boundaries, and test interfaces. Implementation follows the global mock-validation gate; real database guarantees remain separate TR integration evidence.
