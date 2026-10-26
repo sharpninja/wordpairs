@@ -1,7 +1,7 @@
 # Implementation Kickoff: Phase 0 Execution
 
 **Status:** Phase 0 planning closure started; implementation code is gated  
-**Requirements baseline:** `word_association_game_requirements.md` v2.4  
+**Requirements baseline:** `word_association_game_requirements.md` v2.5  
 **Execution date:** 26 October 2026  
 **Target:** `sharpninja/wordpairs`
 
@@ -9,15 +9,15 @@
 
 This kickoff begins the implementation plan at **Phase 0 — Planning Closure**. The repository is still documentation-only. No executable tests have been authored, validated against mocks, or run, and no production implementation has been written. Phase 0 is currently a planning-only gate: do not author executable tests, project scripts/configuration, or implementation code until it passes. Once approved, author and validate tests for all active ACs against mocks before writing any project implementation code, as explicitly required for this project. Subsequent small increments still follow TDD and run the full regression suite.
 
-The requirements contain 22 functional requirements, 31 technical requirements, and 51 active acceptance criteria. [`ac_test_inventory.md`](ac_test_inventory.md) currently maps all 51 criteria to 71 planned case IDs, including separate later integration-evidence cases where mock contracts cannot prove database properties. This is traceability planning only: it does not satisfy the mock-validation gate. Decision groups that affect active expected results are Phase 0 blockers; do not carry them into the global gate unresolved.
+The requirements contain 22 functional requirements, 31 technical requirements, and 45 active acceptance criteria. The six retired IDs AC-34, AC-35, AC-36, AC-40, AC-48, and AC-49 remain reserved and are verified only through their mapped technical requirements. [`ac_test_inventory.md`](ac_test_inventory.md) maps the 45 active ACs to 64 planned case IDs. This is traceability planning only; it does not satisfy the mock-validation gate. Decision groups that affect active AC expected results are Phase 0 blockers; do not carry them into the global gate unresolved.
 
 ## 2. Phase 0 gate status
 
 | Gate | Current evidence | Status | Remaining work |
 |---|---|---|---|
-| Requirements baseline | Requirements v2.4; 51 ACs; all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | In progress | Review and approve the baseline; resolve every decision that affects an active AC's expected result. Formal requirements changes are required for deferred behavior. |
+| Requirements baseline | Requirements v2.5; 45 active ACs (51 numbered IDs including six retired TR-only IDs); all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | In progress | Review and approve the baseline; resolve every decision that affects an active AC's expected result. Formal requirements changes are required for deferred behavior. |
 | DDD and concurrency direction | Modular monolith, context split, ports/adapters, aggregate transactions, idempotency, outbox and SVG diagrams in [`architecture_patterns.md`](architecture_patterns.md) and [`architecture_design.md`](architecture_design.md) | Direction documented; ADR approval pending | Approve selected framework/runtime and detailed public interfaces; confirm transaction, RLS and outbox contracts. |
-| Test traceability | Planned case IDs cover AC-01–AC-51, with mock contract and later real-system evidence tiers separated where needed | Planning/specification only; no executable tests permitted before Phase 0 approval | Fix expected outcomes for every active AC. Resolve any decision affecting an assertion or formally revise/remove that AC from the active baseline. After Phase 0 approval, author and mock-validate every active-AC contract test before any project implementation code. |
+| Test traceability | 45 active ACs map to 64 planned case IDs; deployment-only IDs are retired and mapped to TR-only verification | Planning/specification only; no executable tests permitted before Phase 0 approval | Fix expected outcomes for every active AC. After Phase 0 approval, author and mock-validate every active-AC contract test before any project implementation code. Mockable TR contract tests are also test-first; deployed-artifact checks are TR integration/operational evidence and never count as AC coverage. |
 | Dependency/license review | Planned direct dependencies and attribution are listed in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); GPL-2.0-only license exists | Preliminary | Select framework/package-manager versions, verify current licenses and compatibility, create lockfile only after stack approval. |
 | Deployment topology | Vercel Hobby + Supabase Free, no GitHub Actions, manual provisioning, SWBOM/release gates documented | Constraints accepted; proposed layout is documented and is not a Phase 0 gate | Finalize branch/project mapping and verify account capacity at Phase 1 provisioning entry, before provisioning/configuration implementation or deployment. AC contract tests validate isolation behavior generically and do not depend on branch names or project IDs. |
 | Data/security design | DDD ownership and projection boundaries are documented | Incomplete | Define schema, RLS, transaction procedures, retention, secret names, role model and failure behavior for the Foundation increment. |
@@ -59,7 +59,7 @@ The detailed proposal/open state remains in the requirements decision register. 
 
 ### Phase 1 entry decision — deployment topology (not a Phase 0 gate)
 
-Before provisioning/configuration work for AC-34–37 and AC-48–49, finalize the protected staging branch and Vercel Preview mapping, separate Staging/Production Supabase project allocation, account capacity, and Preview/Production variable scopes. This operational mapping does not change the AC contract expectations and is not required for Phase 0 exit. The global mock suite can validate branch/environment separation and fail-closed behavior using abstract environment identifiers; actual account eligibility and deployed settings are verified later as separate evidence.
+Before provisioning/configuration work for TR-20–TR-24 and TR-27, finalize the protected staging branch and Vercel Preview mapping, separate Staging/Production Supabase project allocation, account capacity, and Preview/Production variable scopes. This operational mapping does not change active AC contract expectations and is not required for Phase 0 exit. Mockable TR tests can validate branch/environment separation and fail-closed behavior using abstract identifiers; actual account eligibility and deployed settings are TR-only integration/operational evidence, never AC coverage.
 
 Phase 1 provisioning-entry checklist:
 
@@ -73,19 +73,19 @@ This is a **test-specification candidate only**, not permission to write tests o
 
 | ACs | Planned cases | Mock-backed test responsibilities before implementation |
 |---|---|---|
-| AC-34–35 | `AC-34-T01`, `AC-35-T01` | Mock branch metadata to validate intended mapping logic and no paid-service fallback. Separately inspect committed Vercel configuration and verify the actual account plan/eligibility; mocks cannot establish either external fact. |
-| AC-36, AC-48 | `AC-36-T01`, `AC-48-T01`, `AC-48-T02` | Fake CLI, existing-project state, migration inventory, Preview/Production variable maps, redacted logs and temporary filesystem; verify rerun and environment-separation behavior. Later inspect actual project settings and run a disposable staging provision/migration check. |
-| AC-37 | `AC-37-T01` | Fake quota provider; validate recoverable response and absence of paid fallback. Later exercise quota behavior against the documented Free-tier configuration where feasible. |
-| AC-38, AC-49 | `AC-38-T01`, `AC-49-T01` | Fake test runner and SWBOM validator; prove test failure, absent report, invalid schema and commit mismatch block build; valid gate exposes matching report. Later inspect Vercel build settings and deployed endpoint/artifact identity. |
-| AC-39–42 | `AC-39-T01`–`AC-42-T01` | Fixture manifest/lockfile, license inventory, CycloneDX, temporary release archive and checksums; prove required files/metadata and rejection cases. Separately review the real dependency/asset notices and inspect each release archive. |
-| AC-51 | `AC-51-T01`–`AC-51-T04` | Mock-validated application contracts cover dependency boundaries, conflict handling, idempotent command behavior, and outbox intent. `AC-51-T05`–`T07` are later real-database integration evidence and must not be reported as mock proof. |
+| TR-20, TR-24 | `TR-20-T01`, `TR-24-T01` | Fake Vercel Git metadata/config adapter; validate branch-to-environment mapping and no Actions dependency. Live Vercel behavior is separate TR integration evidence, not an AC. |
+| TR-21 | `TR-21-T01` | Fake configuration evaluator rejects paid plans/add-ons; actual account eligibility is checked at Phase 1 provisioning entry. |
+| TR-22–23 | `TR-23-T01`–`TR-23-T03` | Fake CLI and temporary filesystem validate safe rerun, migration reporting, secret redaction, and environment variable scoping. Disposable database/account checks remain TR-only integration evidence. |
+| TR-26–27 | `TR-26-T01`, `TR-27-T01` | Fake test runner and build metadata plus temporary build output validate fail-closed ordering and CycloneDX SWBOM generation against the fixture lockfile; no deployed artifact is read. |
+| TR-28–29 | `TR-28-T01`, `TR-29-T01` | Temporary source archive and fixture SWBOM/license validate exact-commit archive contents and GPL notices without publishing or deploying. |
+| AC-51 | `AC-51-T01`–`AC-51-T07` | Active-AC mock contracts cover domain boundaries/conflict policy/idempotency/outbox intent; distinct later DB integration tests verify actual capacity, uniqueness and atomic durability. |
 
 While Phase 0 is open, refine only the written test specifications; do not create executable test files. After Phase 0 approval, replace planned IDs with exact executable test names and paths for all active ACs, not just this increment. Each test must exercise behavior behind its fake; mocks may provide boundary responses but may not simply return the expected result. Run the complete suite against mocks, inspect positive and failure assertions, and record results before any project implementation code. Separately record non-mock evidence required by each AC. Once the global gate passes, implement the smallest behavior and run the full regression suite before closing each increment.
 
 ## 6. Phase 0 exit checklist
 
 - [ ] Approve the ADR proposal or record replacements.
-- [ ] Assign every active AC to an increment, test IDs, expected outcome, evidence type, owner and blocked decision, preserving all 51 criteria.
+- [ ] Assign every active AC (45 total) to an increment, test IDs, expected outcome, evidence type, owner and blocked decision; keep retired deployment IDs in TR-only verification records.
 - [ ] Approve public interfaces for provisioning, migration, environment validation, quota reporting, build gates and artifact verification.
 - [ ] Document database schema, idempotency, transaction/locking, outbox, RLS and secret boundaries for the foundation slice.
 - [ ] Review current direct dependency versions/licenses and update `ATTRIBUTIONS.md`; commit a lockfile only after toolchain approval.
