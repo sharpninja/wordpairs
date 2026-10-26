@@ -1,5 +1,6 @@
 import { failure } from "../../../../domain/result";
 import {
+  advanceLobbyDeadlines,
   deliverOutbox,
   getIdentityService,
   getInvitationSigner,
@@ -24,6 +25,7 @@ async function context(request: Request, route: Context) {
   const session = await identity.session(sessionToken);
   if (!session.ok) return session;
   const { reference } = await route.params;
+  await advanceLobbyDeadlines();
   const invite = new URL(request.url).searchParams.get("invite");
   if (invite && !getInvitationSigner()?.verify(invite))
     return failure("NOT_FOUND");

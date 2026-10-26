@@ -13,8 +13,27 @@ export class PostgresRoomRepository
   implements RoomDirectory
 {
   readonly quickStore: TransactionStore<Room>;
+  readonly presenceStore: TransactionStore<Room>;
   constructor(private directoryPool: SqlPool) {
     super(directoryPool, "room");
+    // Presence renews only the verified actor's liveness. Select the current
+    // version under the same lock, so unrelated heartbeats cannot starve it.
+    this.presenceStore = new SupabasePostgresStore<Room>(
+      directoryPool,
+      "room",
+      async (connection, command) => {
+        const selected = await connection.query(
+          "select version from wordpairs.aggregates where kind='room' and id=$1 for update",
+          [command.aggregateId],
+        );
+        return selected.rows[0]
+          ? success({
+              ...command,
+              expectedVersion: selected.rows[0].version as number,
+            })
+          : failure("NOT_FOUND");
+      },
+    );
     this.quickStore = new SupabasePostgresStore<Room>(
       directoryPool,
       "room",
@@ -108,11 +127,10 @@ export class PostgresRoomRepository
     events: DomainEvent[],
     deadlines: Deadline[],
   ) {
-    if (events.length !== 1 || deadlines.length !== 0)
-      return failure("VALIDATION_ERROR");
+    if (events.length !== 1) return failure("VALIDATION_ERROR");
     const result = await this.call<Room>(
       "create",
-      [command, room, secrets.hash(room.code), events[0]],
+      [command, room, secrets.hash(room.code), events[0], deadlines],
       true,
     );
     return !result.ok && result.error.code === "SERVICE_LIMIT"

@@ -25,6 +25,7 @@ export interface Player {
   ready: boolean;
   joinedAt: number;
   disconnectedAt: number | null;
+  lastSeenAt?: number;
 }
 
 export interface Observer {
@@ -51,6 +52,7 @@ export interface Room extends Versioned {
   holdoutId: string | null;
   holdoutDueAt: number | null;
   countdownDueAt: number | null;
+  emptySince?: number | null;
 }
 
 export interface Pair extends Versioned {

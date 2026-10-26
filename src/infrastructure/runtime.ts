@@ -1,8 +1,10 @@
 import { IdentityService } from "../application/identity";
+import { LobbyDispatcher, LobbyService } from "../application/lobby";
 import { OutboxRelay } from "../application/outbox";
 import { PublicLandingService } from "../application/public-service";
 import { RoomService } from "../application/rooms";
 import type { Profile } from "../domain/model";
+import { PostgresLobbyQueue } from "./deadlines";
 import { PostgresIdentityRepository } from "./identity-repository";
 import { InvitationSigner } from "./invitations";
 import { OpenAiOidcProvider } from "./oidc";
@@ -27,6 +29,26 @@ export function getInvitationSigner() {
 }
 let relay: OutboxRelay | undefined;
 let delivery: Promise<unknown> | null = null;
+let dispatching: ReturnType<LobbyDispatcher["drain"]> | null = null;
+export async function advanceLobbyDeadlines() {
+  if (dispatching) return dispatching;
+  const pool = getDatabasePool();
+  if (!pool) return null;
+  const dispatcher = new LobbyDispatcher(
+    new PostgresLobbyQueue(pool),
+    new LobbyService(
+      new PostgresRoomRepository(pool),
+      { now: () => Date.now() },
+      ids,
+    ),
+    { now: () => Date.now() },
+    ids,
+  );
+  dispatching = dispatcher.drain(25).finally(() => {
+    dispatching = null;
+  });
+  return dispatching;
+}
 export function getRealtimeSettings() {
   const url = process.env.WORDPAIRS_SUPABASE_URL;
   const anonKey = process.env.WORDPAIRS_SUPABASE_ANON_KEY;
@@ -117,6 +139,12 @@ export function getRoomServices() {
   const repository = new PostgresRoomRepository(pool);
   return {
     repository,
+    lobby: new LobbyService(
+      repository,
+      { now: () => Date.now() },
+      ids,
+      repository.presenceStore,
+    ),
     service: new RoomService(
       repository,
       { now: () => Date.now() },

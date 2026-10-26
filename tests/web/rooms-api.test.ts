@@ -4,7 +4,7 @@ import {secrets} from '../../src/infrastructure/secrets';
 import {newRoom,joinRoom} from '../../src/domain/rooms';
 import {success} from '../../src/domain/result';
 const mocks=vi.hoisted(()=>({session:vi.fn(),create:vi.fn(),quickMatch:vi.fn(),resolve:vi.fn(),view:vi.fn(),join:vi.fn(),invite:vi.fn(),signer:{mint:vi.fn(),verify:vi.fn()}}));
-vi.mock('../../src/infrastructure/runtime',()=>({getIdentityService:()=>({session:mocks.session}),getRoomServices:()=>({service:{create:mocks.create,quickMatch:mocks.quickMatch,resolve:mocks.resolve,view:mocks.view,join:mocks.join},repository:{invite:mocks.invite}}),getInvitationSigner:()=>mocks.signer,deliverOutbox:async()=>undefined}));
+vi.mock('../../src/infrastructure/runtime',()=>({advanceLobbyDeadlines:async()=>undefined,getIdentityService:()=>({session:mocks.session}),getRoomServices:()=>({service:{create:mocks.create,quickMatch:mocks.quickMatch,resolve:mocks.resolve,view:mocks.view,join:mocks.join},repository:{invite:mocks.invite}}),getInvitationSigner:()=>mocks.signer,deliverOutbox:async()=>undefined}));
 import {POST as create} from '../../src/app/api/rooms/route';
 import {GET,POST} from '../../src/app/api/rooms/[reference]/route';
 const roomId='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
