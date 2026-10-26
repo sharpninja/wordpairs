@@ -21,7 +21,7 @@ export type TraceabilityManifest = {
 
 export type TraceabilityResult =
   | { valid: true }
-  | { valid: false; code: 'missing-ac' | 'missing-test' | 'missing-record' | 'incomplete-record' };
+  | { valid: false; code: 'empty-active-set' | 'missing-ac' | 'missing-test' | 'missing-record' | 'incomplete-record' };
 
 export function validateRows(inputRows: string[]): string[] {
   const ids: string[] = [];
@@ -51,6 +51,7 @@ function hasConcreteValue(value: unknown): boolean {
 }
 
 export function validateTraceabilityManifest(manifest: TraceabilityManifest): TraceabilityResult {
+  if (manifest.activeAcIds.length === 0) return { valid: false, code: 'empty-active-set' };
   const mappingByAc = new Map(manifest.mappings.map((mapping) => [mapping.acId, mapping]));
   const existingTests = new Set(manifest.existingTestIds);
   const records = new Map(manifest.mockValidationRecords.map((record) => [record.testId, record]));
@@ -68,7 +69,7 @@ export function validateTraceabilityManifest(manifest: TraceabilityManifest): Tr
         || !hasConcreteValue(record.actions)
         || !hasConcreteValue(record.observation)
         || !hasConcreteValue(record.assertions)
-        || !['planned', 'passing'].includes(record.status)
+        || record.status !== 'passing'
       ) return { valid: false, code: 'incomplete-record' };
     }
   }
