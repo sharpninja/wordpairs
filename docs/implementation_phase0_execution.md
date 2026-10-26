@@ -1,7 +1,7 @@
 # Implementation Kickoff: Phase 0 Execution
 
 **Status:** Phase 0 planning closure started; implementation code is gated  
-**Requirements baseline:** `word_association_game_requirements.md` v2.3  
+**Requirements baseline:** `word_association_game_requirements.md` v2.4  
 **Execution date:** 26 October 2026  
 **Target:** `sharpninja/wordpairs`
 
@@ -15,7 +15,7 @@ The requirements contain 22 functional requirements, 31 technical requirements, 
 
 | Gate | Current evidence | Status | Remaining work |
 |---|---|---|---|
-| Requirements baseline | Requirements v2.3; 51 ACs; all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | In progress | Review and approve the baseline; resolve every decision that affects an active AC's expected result. Formal requirements changes are required for deferred behavior. |
+| Requirements baseline | Requirements v2.4; 51 ACs; all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | In progress | Review and approve the baseline; resolve every decision that affects an active AC's expected result. Formal requirements changes are required for deferred behavior. |
 | DDD and concurrency direction | Modular monolith, context split, ports/adapters, aggregate transactions, idempotency, outbox and SVG diagrams in [`architecture_patterns.md`](architecture_patterns.md) and [`architecture_design.md`](architecture_design.md) | Direction documented; ADR approval pending | Approve selected framework/runtime and detailed public interfaces; confirm transaction, RLS and outbox contracts. |
 | Test traceability | Planned case IDs cover AC-01–AC-51, with mock contract and later real-system evidence tiers separated where needed | Planning/specification only; no executable tests permitted before Phase 0 approval | Fix expected outcomes for every active AC. Resolve any decision affecting an assertion or formally revise/remove that AC from the active baseline. After Phase 0 approval, author and mock-validate every active-AC contract test before any project implementation code. |
 | Dependency/license review | Planned direct dependencies and attribution are listed in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); GPL-2.0-only license exists | Preliminary | Select framework/package-manager versions, verify current licenses and compatibility, create lockfile only after stack approval. |
@@ -53,7 +53,7 @@ Every decision that affects an active AC's expected result must be resolved befo
 | OIDC access and identity policy | Verify OpenAI website OIDC eligibility or revise the provider; separately approve guest persistence, display labels and account linking. | 2 | Blocks account-backed identity; guest/profile work can proceed only after its lifecycle is approved. |
 | Lobby/public product policy | Approve quick-match ordering, discovery defaults, observer limits/inviter attribution, public leaderboard/lobby contract and cache/refresh policy. | 2 | Blocks corresponding lobby and public-projection behavior. |
 | Match/content/moderation policy | Approve stage/no-response/answer/tiebreak/content-volume and nomination/moderation rules. | 4–5 | Blocks only the affected gameplay/content increments. |
-| Readiness and match-start minimum | Resolve countdown duration, host powers, deadline mechanism, and what happens if a locked countdown expires with fewer than two players (FR-03). AC-32's immediate countdown with a one-player remainder is confirmed. | 3 | Blocks readiness implementation and below-minimum countdown-expiry expectations. |
+| Readiness race outcomes | Resolve countdown duration/host authority and deadline execution. The two-player timeout exception is confirmed: do not boot the holdout or start countdown; wait until both players are ready. | 3 | Blocks readiness/countdown implementation except the already specified timeout branch. |
 | Quota/reconnect/room lifecycle | Set expected concurrency, recoverable Free-tier quota UX, reconnect/session behavior, room expiry and creator departure. | 1 for quota contract; 2–3 for room lifecycle | Blocks relevant operational and membership behavior. |
 
 The detailed proposal/open state remains in the requirements decision register. Any deferral that affects an active AC requires a requirements change before Phase 0 approval; after that change, the revised AC must have testable expected behavior. A blocked assertion is not full coverage and cannot pass the global gate.
@@ -83,4 +83,4 @@ While Phase 0 is open, refine only the written test specifications; do not creat
 - [ ] Review current direct dependency versions/licenses and update `ATTRIBUTIONS.md`; commit a lockfile only after toolchain approval.
 - [ ] Complete all planning/design/decision work; keep this checklist free of executable test or implementation tasks.
 
-**Current gate:** not passed. Phase 0 may pass only after the baseline, interfaces, schema/security contracts, every active AC expected outcome/evidence tier, and all decisions affecting active assertions are approved. Any intentionally deferred behavior must first be removed or re-scoped in the requirements baseline. The next required inputs are approval or replacement of the framework/package/test-stack proposal, confirmation of Staging/Production layout and provisioning contract, disposition of all open product decisions, and a decision for the FR-03 below-minimum roster at countdown expiry. AC-32's one-player countdown start is confirmed; what happens at countdown expiry remains open. After Phase 0 passes, the next gate is mock validation of every active-AC contract test; no project implementation code begins before it passes. Real database/platform tests run as separate evidence after adapters exist.
+**Current gate:** not passed. Phase 0 may pass only after the baseline, interfaces, schema/security contracts, every active AC expected outcome/evidence tier, and all decisions affecting active assertions are approved. Any intentionally deferred behavior must first be removed or re-scoped in the requirements baseline. The next required inputs are approval or replacement of the framework/package/test-stack proposal, confirmation of Staging/Production layout and provisioning contract, and disposition of all remaining open product decisions. AC-32's two-player exception is confirmed. After Phase 0 passes, the next gate is mock validation of every active-AC contract test; no project implementation code begins before it passes. Real database/platform tests run as separate evidence after adapters exist.
