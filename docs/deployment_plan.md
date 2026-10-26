@@ -1,14 +1,14 @@
 # Wordpairs Deployment and Release Plan
 
 **Status:** Proposed operational plan; deployment implementation has not started  
-**Requirements baseline:** `word_association_game_requirements.md` v2.0  
+**Requirements baseline:** `word_association_game_requirements.md` v2.2  
 **Implementation sequence:** `implementation_plan.md`  
 **Hosting constraint:** Vercel Hobby and Supabase Free; no paid add-ons or fallback  
 **Automation constraint:** no GitHub Actions
 
 ## 1. Purpose and scope
 
-This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. It turns TR-20 through TR-24 and TR-27 through TR-30, plus AC-34 through AC-37 and AC-40 through AC-43, into an operational sequence. It covers delivery of the new anonymous landing page and its public data projection. It does not provision accounts or infrastructure and does not change the game's approved requirements.
+This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. It turns TR-20 through TR-24 and TR-27 through TR-30, plus AC-34 through AC-37 and AC-40 through AC-43 and AC-48 through AC-50, into an operational sequence. It covers delivery of the new anonymous landing page and its public data projection. It does not provision accounts or infrastructure and does not change the game's approved requirements.
 
 The system uses Vercel Git integration for deployment from `sharpninja/wordpairs`, Next.js for the application, and Supabase Postgres/Realtime for durable and live room data. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
 
@@ -177,6 +177,7 @@ During Phase 0, set realistic recovery-time and recovery-point expectations suit
 - [ ] Each deployment serves the valid SWBOM for its exact commit, lockfile, environment, and URL without secret values.
 - [ ] Smoke checks confirm the anonymous landing page, approved leaderboard projection, discoverable/joinable lobby summary, rules content, identity, room creation/join, quota error handling, and expected environment labeling.
 - [ ] AC-43 no-login, no-data, unavailable-data, and forbidden-field checks pass in the deployment environment.
+- [ ] AC-48 rerun and Preview/Production isolation checks pass; AC-49 blocks deployment if tests or the matching SWBOM fail validation; AC-50 confirms the landing-page public data allowlist.
 
 ### Release archive
 
