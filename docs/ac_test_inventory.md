@@ -1,78 +1,88 @@
 # Acceptance Criteria to Test Inventory
 
 **Requirements baseline:** `word_association_game_requirements.md` v2.2  
-**Status:** Planned traceability inventory; no tests are authored or validated yet
+**Status:** Planned traceability inventory; no test code is authored, mock-validated, or passing yet
 
-This table gives each active acceptance criterion at least one stable planned test-case ID. It establishes 51/51 planned criterion-to-test mappings only. It does **not** claim 51/51 implemented tests, passing test results, mock validation, or production coverage. Before each increment, write its tests, run and validate them against mocks, and only then write production code, following Byrd Development Process v4. The full regression suite must pass at the increment gate.
+This inventory decomposes the active acceptance criteria into proposed test cases with criterion-specific assertions and seams. It establishes planned traceability only: it is not evidence of implemented test coverage. Before each increment, author the tests for the next small behavior, validate that they pass against mocks, then implement the smallest production behavior and refactor, following Byrd Development Process v4. Record actual test names and results when they exist. Keep all unresolved-policy cases blocked rather than inventing expected results.
 
-| AC | Acceptance criterion | Planned test ID | Verification boundary | Mock seam / fixture | Evidence status |
+| AC | Criterion | Planned test ID | Assertion focus | Verification boundary | Test seam / fixture | Evidence status |
 |---|---|---|---|---|---|
-| AC-01 | Room joining | `AC-01-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-02 | Player limit | `AC-02-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-03 | Profile icon | `AC-03-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-04 | First category | `AC-04-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-05 | Category art | `AC-05-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-06 | No-hint solve | `AC-06-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-07 | Hint scoring | `AC-07-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-08 | Unsolved result | `AC-08-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-09 | Hint progression | `AC-09-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-10 | Live scorecard | `AC-10-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-11 | Category choice | `AC-11-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-12 | Round summary | `AC-12-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-13 | Final standings | `AC-13-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-14 | Time tiebreak | `AC-14-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-15 | Orientation | `AC-15-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-16 | Content validation | `AC-16-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-17 | Nomination eligibility | `AC-17-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-18 | Nomination threshold and moderation | `AC-18-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-19 | Category suggestion unlock | `AC-19-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-20 | OpenAI OIDC profile | `AC-20-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-21 | Guest play | `AC-21-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-22 | Browse open lobbies | `AC-22-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-23 | Quick match | `AC-23-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-24 | Configured capacity | `AC-24-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-25 | Room invitations | `AC-25-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-26 | Deep-link join and full room | `AC-26-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-27 | Full-room observer | `AC-27-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-28 | Observer perspective and permissions | `AC-28-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-29 | In-round emoji reaction | `AC-29-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-30 | Pre-countdown observer promotion | `AC-30-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-31 | Ready countdown and roster lock | `AC-31-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-32 | Holdout warning and removal | `AC-32-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-33 | Idle lobby readiness prompt | `AC-33-T01` | Domain/use-case unit + UI acceptance | Pure policy; fixed clock/random; fake repository/event ports | Planned — not authored |
-| AC-34 | Vercel branch deployments | `AC-34-T01` | Build/provisioning acceptance | Mock CLI, filesystem, environment, and deployment responses | Planned — not authored |
-| AC-35 | Free-tier deployment | `AC-35-T01` | Build/provisioning acceptance | Mock CLI, filesystem, environment, and deployment responses | Planned — not authored |
-| AC-36 | Repeatable provisioning | `AC-36-T01` | Build/provisioning acceptance | Mock CLI, filesystem, environment, and deployment responses | Planned — not authored |
-| AC-37 | Free-tier quota handling | `AC-37-T01` | Build/provisioning acceptance | Mock CLI, filesystem, environment, and deployment responses | Planned — not authored |
-| AC-38 | Mock-first acceptance coverage | `AC-38-T01` | Build/provisioning acceptance | Mock CLI, filesystem, environment, and deployment responses | Planned — not authored |
-| AC-39 | Dependency attribution | `AC-39-T01` | Supply-chain/release acceptance | Fixture lockfile, mock build metadata, temporary archive | Planned — not authored |
-| AC-40 | Per-deployment SWBOM | `AC-40-T01` | Supply-chain/release acceptance | Fixture lockfile, mock build metadata, temporary archive | Planned — not authored |
-| AC-41 | SWBOM release archive | `AC-41-T01` | Supply-chain/release acceptance | Fixture lockfile, mock build metadata, temporary archive | Planned — not authored |
-| AC-42 | GPL-2.0-only release | `AC-42-T01` | Supply-chain/release acceptance | Fixture lockfile, mock build metadata, temporary archive | Planned — not authored |
-| AC-43 | Public game landing page | `AC-43-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-44 | Accessible game controls | `AC-44-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-45 | Authoritative answer handling | `AC-45-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-46 | OIDC token validation | `AC-46-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-47 | Moderation and catalog boundary | `AC-47-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-48 | Repeatable provisioning and environment isolation | `AC-48-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-49 | Build quality and SWBOM gate | `AC-49-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-50 | Landing-page public data | `AC-50-T01` | Security/projection or adapter contract | Fake actor/session, fake catalog, allowlisted DTO fixtures | Planned — not authored |
-| AC-51 | Testable, concurrency-safe domain boundary | `AC-51-T01` | Domain unit + database concurrency integration | Injected fakes first; disposable DB for concurrent final-seat case | Planned — not authored |
+| AC-01 | Room joining | `AC-01-T01` | Valid room joins by code, browse, quick match, or deep link use the same slot authority. | Room use case | Fake RoomRepository, actor, invite/code lookup, transaction result | Planned — not authored |
+| AC-02 | Player limit | `AC-02-T01` | Capacities 2, 8, and 25 accept only up to the configured limit; reject the next join. | Room domain + concurrency integration | Capacity fixtures; two simultaneous final-seat commands against disposable DB | Planned — not authored |
+| AC-03 | Profile icon | `AC-03-T01` | Chosen icon persists and appears consistently in room, scorecard, summary, standings. | Profile use case + UI projection | Fake profile store and deterministic profile/score projections | Planned — not authored |
+| AC-04 | First category | `AC-04-T01` | Anchor index is selected within 1..N and maps to the frozen roster entry. | Domain unit | Injected deterministic RandomSource and roster fixture | Planned — not authored |
+| AC-05 | Category art | `AC-05-T01` | Category asset is shown behind readable controls; missing asset falls back accessibly. | Browser visual/UI | Fixed viewport and asset fixture | Planned — not authored |
+| AC-06 | No-hint solve | `AC-06-T01` | Correct answer at no-hint stage awards 5 once; incorrect answer awards nothing. | Gameplay domain unit | Fake MatchRepository, fixed stage, answer policy | Planned — not authored |
+| AC-07 | Hint scoring | `AC-07-T01` | Correct answers after Hint 1/2/3 award 3/2/1 respectively. | Scoring policy unit | Table-driven stage fixtures | Planned — not authored |
+| AC-08 | Unsolved result | `AC-08-T01` | Unsolved after Hint 3 receives zero and round reveal exposes target. | Gameplay domain + projection | Fixed match fixture and reveal projection mapper | Planned — not authored |
+| AC-09 | Hint progression | `AC-09-T01` | Stage advances only after all unsolved players submit; next hint goes only to remaining unsolved players. | Gameplay use case + projection | Fake submissions/event port and per-player projection fixtures | Planned — not authored |
+| AC-10 | Live scorecard | `AC-10-T01` | Accepted server time determines elapsed duration and scorecard row; client time cannot change it. | Gameplay use case | Fixed Clock and fake repository; skewed client timestamp input | Planned — not authored |
+| AC-11 | Category choice | `AC-11-T01` | Earliest accepted correct solver is chooser; same-time submissions use deterministic tie order. | Gameplay domain + transaction | Injected clock/sequence and competing submission fixtures | Planned — not authored |
+| AC-12 | Round summary | `AC-12-T01` | Round summary ranks all players by cumulative score and includes round points and elapsed time. | Query projection | Match fixture with tie and unsolved result rows | Planned — not authored |
+| AC-13 | Final standings | `AC-13-T01` | Final standings sort by total score after the configured final round. | Standing policy | Configured match-length and score fixtures | Planned — not authored |
+| AC-14 | Time tiebreak | `AC-14-T01` | Equal top scores use approved total-answer-time policy; unresolved final tie behavior is decision-gated. | Standing policy unit | Table-driven elapsed/unsolved fixtures after policy approval | Planned — not authored |
+| AC-15 | Orientation | `AC-15-T01` | Portrait and landscape phone view keeps answer controls, hints, and scorecard visible without horizontal overflow. | Browser viewport acceptance | Fixed viewport sizes; keyboard/touch interaction | Planned — not authored |
+| AC-16 | Content validation | `AC-16-T01` | Incomplete category/pair/background/accepted-answer records are excluded from playable catalog. | Catalog domain + repository contract | Catalog fixtures for complete, incomplete, disabled, and unapproved items | Planned — not authored |
+| AC-17 | Nomination eligibility | `AC-17-T01` | Only a no-hint solver can nominate; a post-hint solver is denied. | Gameplay/content use case | Solved-stage fixtures and fake nomination repository | Planned — not authored |
+| AC-18 | Nomination threshold and moderation | `AC-18-T01` | Below threshold or unmoderated candidate is ineligible; threshold plus approval still requires full curation before play. | Moderation/catalog use case | Nomination counts/status fixtures and catalog validation fake | Planned — not authored |
+| AC-19 | Category suggestion unlock | `AC-19-T01` | Fewer than 10 wins blocks suggestion; exactly 10 permits one category with three pairs. | Content use case | Win-count fixtures and fake suggestion repository | Planned — not authored |
+| AC-20 | OpenAI OIDC profile | `AC-20-T01` | Verified OpenAI OIDC identity loads/creates one profile; token-invalid paths fail closed. | OIDC adapter contract + profile use case | Mock discovery/JWKS/token responses; provider entitlement is a planning blocker | Planned — not authored |
+| AC-21 | Guest play | `AC-21-T01` | Guest path creates guest identity, supports icon selection, and can create/join by code. | Identity and room use cases | Fake GuestIdentityStore and RoomRepository | Planned — not authored |
+| AC-22 | Browse open lobbies | `AC-22-T01` | Only discoverable, waiting lobbies with player_count below configured_capacity appear joinable. | Lobby query projection | Room fixtures for discoverable/hidden/full/started | Planned — not authored |
+| AC-23 | Quick match | `AC-23-T01` | Quick match uses the same atomic seat reservation; no available room returns browse/create options. | Room use case + concurrency integration | Fake query adapter plus competing final-seat DB requests | Planned — not authored |
+| AC-24 | Configured capacity | `AC-24-T01` | Accept capacity 2 and 25; reject 1 and 26. | Room domain unit | Boundary-value inputs and fake repository | Planned — not authored |
+| AC-25 | Room invitations | `AC-25-T01` | Shared room code/deep link resolves to intended active room and admits invite while slot remains. | Room invitation use case | Fake room-code resolver and invite context | Planned — not authored |
+| AC-26 | Deep-link join and full room | `AC-26-T01` | Deep link bypasses browse; open seat joins, full room offers observer path. | Routing + room use case | Fake router, room states, observer invitation context | Planned — not authored |
+| AC-27 | Full-room observer | `AC-27-T01` | Observer consumes no seat and is bound to inviting player. | Room domain/use case | Fake RoomRepository and invitation claims | Planned — not authored |
+| AC-28 | Observer perspective and permissions | `AC-28-T01` | Observer projection follows inviter; answer/category/state mutations are rejected and no score is created. | Authorization and projection acceptance | Fake actor/permission policy and allowlisted view fixtures | Planned — not authored |
+| AC-29 | In-round emoji reaction | `AC-29-T01` | Allowed menu emoji broadcasts to players/observers without changing score, answer, or round state. | Reaction use case + event contract | Emoji allowlist, fake EventOutbox, before/after aggregate snapshot | Planned — not authored |
+| AC-30 | Pre-countdown observer promotion | `AC-30-T01` | Oldest observer is promoted before countdown, player order compacts, remaining observers retain status. | Room domain + concurrency integration | Arrival sequence fixtures and serialized leave/promotion transaction | Planned — not authored |
+| AC-30 | Pre-countdown observer promotion | `AC-30-T02` | No-waiting-observer departure leaves one open slot without changing remaining player order. | Room domain unit | Room fixture with empty observer queue | Planned — not authored |
+| AC-31 | Ready countdown and roster lock | `AC-31-T01` | All-ready transition starts countdown atomically and freezes roster. | Room aggregate use case | Fake RoomRepository and versioned transaction | Planned — not authored |
+| AC-31 | Ready countdown and roster lock | `AC-31-T02` | Departure after countdown does not replace the leaver. | Room domain + concurrency integration | Competing leave/join command at locked roster state | Planned — not authored |
+| AC-32 | Holdout warning and removal | `AC-32-T01` | Holdout warning appears at five seconds; ready-before-expiry starts countdown. | Room domain + fake scheduler | Fixed Clock, fake DeadlineScheduler, aggregate version fixture | Planned — not authored |
+| AC-32 | Holdout warning and removal | `AC-32-T02` | Expiry removes still-unready holdout and starts countdown; two-player result is blocked pending product decision. | Room domain + concurrency integration | Versioned expiry command and race fixtures; do not finalize two-player expected result yet | Planned — not authored |
+| AC-33 | Idle lobby readiness prompt | `AC-33-T01` | Thirty seconds unchanged prompts all current players once; intervening change invalidates stale timer. | Room domain + fake scheduler | Fixed Clock, versioned DeadlineScheduler, room-state event fixtures | Planned — not authored |
+| AC-34 | Vercel branch deployments | `AC-34-T01` | Non-production push produces Preview; main merge produces Production via Vercel Git integration, without Actions. | Deployment configuration acceptance | Mock Vercel deployment metadata and branch fixtures | Planned — not authored |
+| AC-35 | Free-tier deployment | `AC-35-T01` | Configuration remains Vercel Hobby/Supabase Free and contains no paid add-on/upgrade. | Infrastructure configuration audit | Fixture project settings and service allowlist | Planned — not authored |
+| AC-36 | Repeatable provisioning | `AC-36-T01` | Provisioning creates or links projects, applies migrations, sets env values, and emits no secret to files/logs. | Provisioning CLI integration | Mock CLI, temporary filesystem, redacted environment fixture | Planned — not authored |
+| AC-37 | Free-tier quota handling | `AC-37-T01` | Quota exhaustion returns recoverable service-limit response without paid fallback. | Application service-limit use case | Fake quota port returning threshold/exhaustion states | Planned — not authored |
+| AC-38 | Mock-first acceptance coverage | `AC-38-T01` | Every applicable AC has a named test before implementation; mock test suite runs before app build and failure blocks build. | Build pipeline acceptance | Temporary test runner/build command with pass/fail fixtures | Planned — not authored |
+| AC-39 | Dependency attribution | `AC-39-T01` | Direct dependencies/assets have purpose, license, upstream source, and locked resolved versions. | Supply-chain document/build check | Fixture package manifest/lockfile and attribution inventory | Planned — not authored |
+| AC-40 | Per-deployment SWBOM | `AC-40-T01` | Deployment SWBOM validates schema and matches lockfile, commit, environment, timestamp, URL; has no secrets. | SWBOM generation acceptance | Fixture lockfile/metadata and CycloneDX validator mock | Planned — not authored |
+| AC-41 | SWBOM release archive | `AC-41-T01` | Release archive contains exact commit SWBOM at required path; missing/invalid/mismatched report blocks publish. | Release packaging acceptance | Temporary archive and valid/missing/invalid/wrong-commit SWBOM fixtures | Planned — not authored |
+| AC-42 | GPL-2.0-only release | `AC-42-T01` | Source release includes complete GPL-2.0-only license and required notices for bundled components. | Release archive acceptance | License fixture and archive manifest inspection | Planned — not authored |
+| AC-43 | Public game landing page | `AC-43-T01` | Unauthenticated landing loads leaderboard, public joinable lobbies, rules, and empty/unavailable states. | Browser + public query acceptance | Anonymous session, fake public projections, empty/error fixtures | Planned — not authored |
+| AC-44 | Accessible game controls | `AC-44-T01` | Touch/keyboard actions work; focus, contrast, labels/non-color status pass accessibility checks in phone orientations. | Browser accessibility/UI | Keyboard/touch scripts, contrast fixtures, portrait/landscape viewports | Planned — not authored |
+| AC-45 | Authoritative answer handling | `AC-45-T01` | Accepted correct answer can score at most once for a stage. | Gameplay domain unit | Fake repository with retry and duplicate command fixtures | Planned — not authored |
+| AC-45 | Authoritative answer handling | `AC-45-T02` | Incorrect answer leaves score unchanged and is not broadcast. | Gameplay use case + event projection | Fake outbox and before/after score snapshots | Planned — not authored |
+| AC-45 | Authoritative answer handling | `AC-45-T03` | Target answer is absent from player/observer payload until reveal. | Projection privacy contract | Allowlisted player/observer DTO fixtures and reveal state | Planned — not authored |
+| AC-46 | OIDC token validation | `AC-46-T01` | Bad signature, issuer, audience, state, nonce, or expiry rejects callback and creates no profile association. | OIDC adapter contract | Mock keyset/token/callback variants and profile-store spy | Planned — not authored |
+| AC-47 | Moderation and catalog boundary | `AC-47-T01` | Unauthorized moderation/catalog transition is rejected and leaves state unchanged. | Moderation authorization use case | Role/actor fixtures and fake ModerationRepository | Planned — not authored |
+| AC-47 | Moderation and catalog boundary | `AC-47-T02` | Nomination count/status/eligibility changes are auditable; incomplete or unapproved records cannot enter play. | Moderation/catalog integration | Fake audit store and playable-catalog query fixtures | Planned — not authored |
+| AC-48 | Repeatable provisioning and environment isolation | `AC-48-T01` | Rerun applies no destructive/duplicate changes and reports migration state. | Provisioning CLI integration | Mock CLI responses and pre-existing project/database fixture | Planned — not authored |
+| AC-48 | Repeatable provisioning and environment isolation | `AC-48-T02` | Preview env never targets Production; secrets absent from logs/files. | Environment isolation acceptance | Distinct Preview/Production env fixtures and log capture | Planned — not authored |
+| AC-49 | Build quality and SWBOM gate | `AC-49-T01` | Failing tests or missing/invalid/mismatched SWBOM stops deploy; valid gates serve exact report. | Build/deployment pipeline acceptance | Mock test runner, SWBOM validator, build output and deployment response | Planned — not authored |
+| AC-50 | Landing-page public data | `AC-50-T01` | Public response contains allowlisted leaderboard/lobby fields and excludes room codes, answers, guesses, private views, moderation, secrets. | Public projection security contract | Fake public query and adversarial hidden-field fixtures | Planned — not authored |
+| AC-51 | Testable, concurrency-safe domain boundary | `AC-51-T01` | Pure domain/use-case suite runs without Next.js/Supabase production runtime imports. | Domain unit + architecture guard | Injected port fakes and import-boundary checker | Planned — not authored |
+| AC-51 | Testable, concurrency-safe domain boundary | `AC-51-T02` | Concurrent final-seat requests assign at most one seat and never exceed configured capacity. | Database concurrency integration | Two independent DB sessions and controlled simultaneous join barrier | Planned — not authored |
+| AC-51 | Testable, concurrency-safe domain boundary | `AC-51-T03` | Retry with same command ID returns canonical result without duplicate membership. | Repository/idempotency integration | Same command replay fixture | Planned — not authored |
+| AC-51 | Testable, concurrency-safe domain boundary | `AC-51-T04` | Each committed transition has exactly one durable outbox event; rollback has none. | Database transaction/outbox integration | Transaction fault injection and outbox row count | Planned — not authored |
 
 ## Decision-gated cases
 
-The planned IDs for criteria affected by unresolved requirements cannot receive final expected-result assertions until the listed decision is approved. Keep these cases marked blocked in the increment plan; do not encode an assumed outcome in test doubles or production code.
+These tests cannot receive final expected-result assertions until the decision is approved. The listed tests can be drafted as blocked examples, but mocks must not assert an invented product outcome.
 
 | Planned tests | Decision required |
 |---|---|
-| `AC-20-T01`, `AC-46-T01` | Confirm eligibility for OpenAI Sign in with ChatGPT; otherwise revise provider requirements and tests. |
-| `AC-32-T01` | Resolve whether a two-player room may lose its holdout while preserving the minimum two-player game rule. |
+| `AC-20-T01`, `AC-46-T01` | Verify OpenAI Sign in with ChatGPT eligibility; if unavailable, revise provider requirements and tests. |
+| `AC-32-T02` | Resolve two-player room outcome when the only holdout is removed, given the two-player minimum. |
 | `AC-13-T01`, `AC-14-T01` | Approve match length, unsolved-time aggregation, and final tie behavior. |
-| `AC-04-T01`, `AC-06-T01`, `AC-18-T01`, `AC-45-T01` | Approve catalog volume/reuse, answer normalization, nomination identity/counting, and other listed answer-policy details. |
-| `AC-22-T01`, `AC-23-T01`, `AC-43-T01`, `AC-50-T01` | Approve public leaderboard and lobby fields, ordering, visibility, and freshness behavior. |
-| `AC-30-T01`–`AC-33-T01`, `AC-48-T01` | Define supported deadline execution mechanism and approve race outcomes at readiness/countdown boundaries. |
-| `AC-36-T01`, `AC-48-T01` | Approve the exact isolated Development, Staging, Preview, and Production provisioning topology. |
+| `AC-04-T01`, `AC-06-T01`, `AC-18-T01`, `AC-45-T01` | Approve category catalog volume/reuse, answer normalization, nomination identity/counting, and listed answer-policy details. |
+| `AC-22-T01`, `AC-23-T01`, `AC-43-T01`, `AC-50-T01` | Approve public leaderboard/lobby fields, ranking/order, visibility, and freshness behavior. |
+| `AC-30-T01`–`AC-33-T01`, `AC-48-T02` | Define durable deadline execution and approve concurrent readiness/countdown boundary outcomes. |
+| `AC-36-T01`, `AC-48-T01`–`T02` | Approve isolated Development, Staging, Preview, and Production topology. |
 
-## Evidence fields for implementation
+## Implementation evidence
 
-For each test ID, implementation evidence must record the test file and test name, mock-validation command and result, production implementation commit, full-suite regression result, and any later integration/browser evidence. A test must not be marked complete solely because a mock returns the expected answer; the test must exercise the actual domain/use-case contract while its external ports are mocked.
+For every test ID, record the test file/name, mock-validation command and result, production implementation commit, full-suite regression result, and any later integration/browser evidence. The mocked boundary substitutes external ports; it must not replace the domain behavior under test with a mock that simply returns the expected outcome.
