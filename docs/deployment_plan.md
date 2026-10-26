@@ -63,7 +63,7 @@ Supabase Free currently permits two free projects across an owner's/admin's orga
 - Review current official plan terms, usage quotas, project pausing, log retention, database backup availability, region choice, and CLI versions.
 - Choose a region based on expected player geography and service availability; record the choice. Avoid claiming a multi-region or uptime guarantee on Free.
 - Approve secret names and ownership without writing secret values to this plan or the repository.
-- Approve database schema and migrations in accordance with the implementation plan; deployment planning must not precede mock-first tests for application behavior.
+- Approve database schema and migrations in accordance with the implementation plan. Deployment planning may proceed during Phase 0; provisioning/deployment execution and related implementation must follow the applicable mock-first gates. Final branch/project topology is confirmed at Phase 1 provisioning entry.
 
 ### 4.2 Repeatable provisioning command
 
