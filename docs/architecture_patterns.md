@@ -6,7 +6,7 @@
 
 ## 1. Decision summary
 
-Build Wordpairs as a **DDD modular monolith** with **ports and adapters**, **pure domain policies**, **transactional aggregate commands**, **idempotent command handling**, and a **transactional outbox** for committed state changes. Use **CQRS-lite** only for public/read-only projections such as the landing-page leaderboard and discoverable-lobby list. Keep the application in one Next.js deployment and use Supabase Postgres as the concurrency arbiter and durable state store.
+Build Wordpairs as a **DDD modular monolith** with **ports and adapters**, **pure domain policies**, **transactional aggregate commands**, **idempotent command handling**, and a **transactional outbox** for committed state changes. Use **CQRS-lite** only for public/read-only projections such as the landing-page leaderboard and discoverable-lobby list. Keep the application in one deployment on the required Vercel target and use required Supabase Postgres as the concurrency arbiter and durable state store. Next.js/TypeScript is the proposed application stack pending a Phase 0 architecture decision record.
 
 The design favors boundaries that can be tested with fakes and unit tests, while the database serializes contending mutations. It avoids microservices, distributed transactions, duplicated rule implementations, and full event sourcing. A room has at most 25 players, and its database record provides a natural contention boundary.
 
@@ -14,7 +14,7 @@ The design favors boundaries that can be tested with fakes and unit tests, while
 
 ![Wordpairs modular monolith and adapter boundaries](architecture_patterns.svg)
 
-Browser and Next.js presentation code call application use cases. Use cases depend on domain policies and ports; production adapters implement those ports with Supabase/Postgres, the approved OIDC provider, and deployment metadata. Browser code never calls privileged adapters. Server routes/actions authenticate the caller, validate transport input, invoke a use case, and map its result. The domain imports no Next.js, Supabase SDK, React, or network clients.
+Browser and proposed Next.js presentation code call application use cases. Use cases depend on domain policies and ports; production adapters implement those ports with Supabase/Postgres, the approved OIDC provider, and deployment metadata. Browser code never calls privileged adapters. Server routes/actions authenticate the caller, validate transport input, invoke a use case, and map its result. The domain imports no Next.js, Supabase SDK, React, or network clients.
 
 ### 2.1 DDD bounded contexts
 
