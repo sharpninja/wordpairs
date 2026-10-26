@@ -1,7 +1,7 @@
 # Wordpairs Architecture Pattern Decisions
 
 **Status:** Selected architectural direction; detailed interfaces remain subject to Phase 0 design review  
-**Requirements baseline:** `word_association_game_requirements.md` v2.4  
+**Requirements baseline:** `word_association_game_requirements.md` v2.5  
 **Related documents:** [`implementation_plan.md`](implementation_plan.md), [`deployment_plan.md`](deployment_plan.md)
 
 ## 1. Decision summary
