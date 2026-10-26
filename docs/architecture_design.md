@@ -1,7 +1,7 @@
 # Wordpairs Architecture Design
 
 **Requirements traceability, DDD component split, and design-pattern class views**  
-Version 1.0 · 26 October 2026 · Derived from Requirements v2.4
+Version 1.0 · 26 October 2026 · Derived from Requirements v2.5
 
 This document maps every functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to the proposed bounded contexts, application components, and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. The selected deployment and persistence requirements are Vercel and Supabase/Postgres (TR-20–TR-24). The architecture proposes a modular monolith using Next.js/TypeScript, pending approval of the architecture decision record before implementation. The diagrams are SVG assets embedded here.
 
@@ -119,7 +119,7 @@ Vercel hosts the web application selected by the architecture decision record; t
 
 ## Open decisions preserved
 
-The architecture does not invent product decisions still marked open in Requirements v2.4. In particular, OpenAI OIDC access eligibility, match length and final tiebreak edge cases, guest persistence, answer matching details, lobby discovery defaults, quick-match ordering, public leaderboard contract, countdown duration/host powers, and idle/deadline execution mechanism must be approved or verified before their policies are finalized. AC-32 specifies that rooms over two players boot the expired holdout and start/lock the countdown; an exactly two-player lobby retains its holdout and waits for both players to be ready.
+The architecture does not invent product decisions still marked open in Requirements v2.5. In particular, OpenAI OIDC access eligibility, match length and final tiebreak edge cases, guest persistence, answer matching details, lobby discovery defaults, quick-match ordering, public leaderboard contract, countdown duration/host powers, and idle/deadline execution mechanism must be approved or verified before their policies are finalized. AC-32 specifies that rooms over two players boot the expired holdout and start/lock the countdown; an exactly two-player lobby retains its holdout and waits for both players to be ready.
 
 ## Traceability validation
 
