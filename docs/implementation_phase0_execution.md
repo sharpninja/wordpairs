@@ -1,7 +1,7 @@
 # Implementation Kickoff: Phase 0 Execution
 
 **Status:** Phase 0 planning closure started; implementation code is gated  
-**Requirements baseline:** `word_association_game_requirements.md` v2.2  
+**Requirements baseline:** `word_association_game_requirements.md` v2.3  
 **Execution date:** 26 October 2026  
 **Target:** `sharpninja/wordpairs`
 
@@ -9,15 +9,15 @@
 
 This kickoff begins the implementation plan at **Phase 0 — Planning Closure**. The repository is still documentation-only. No executable tests have been authored, validated against mocks, or run, and no production implementation has been written. Phase 0 is currently a planning-only gate: do not author executable tests, project scripts/configuration, or implementation code until it passes. Once approved, author and validate tests for all active ACs against mocks before writing any project implementation code, as explicitly required for this project. Subsequent small increments still follow TDD and run the full regression suite.
 
-The requirements contain 22 functional requirements, 31 technical requirements, and 51 active acceptance criteria. [`ac_test_inventory.md`](ac_test_inventory.md) currently maps all 51 criteria to 62 planned case IDs. This is traceability planning only: it does not satisfy the mock-validation gate. The unresolved-decision groups below remain open; implementation must not encode choices for them.
+The requirements contain 22 functional requirements, 31 technical requirements, and 51 active acceptance criteria. [`ac_test_inventory.md`](ac_test_inventory.md) currently maps all 51 criteria to 70 planned case IDs, including separate later integration-evidence cases where mock contracts cannot prove database properties. This is traceability planning only: it does not satisfy the mock-validation gate. Decision groups that affect active expected results are Phase 0 blockers; do not carry them into the global gate unresolved.
 
 ## 2. Phase 0 gate status
 
 | Gate | Current evidence | Status | Remaining work |
 |---|---|---|---|
-| Requirements baseline | Requirements v2.2; 51 ACs; all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | In progress | Review and approve the baseline; resolve or explicitly defer every decision by increment. |
+| Requirements baseline | Requirements v2.3; 51 ACs; all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | In progress | Review and approve the baseline; resolve every decision that affects an active AC's expected result. Formal requirements changes are required for deferred behavior. |
 | DDD and concurrency direction | Modular monolith, context split, ports/adapters, aggregate transactions, idempotency, outbox and SVG diagrams in [`architecture_patterns.md`](architecture_patterns.md) and [`architecture_design.md`](architecture_design.md) | Direction documented; ADR approval pending | Approve selected framework/runtime and detailed public interfaces; confirm transaction, RLS and outbox contracts. |
-| Test traceability | 62 planned test IDs cover AC-01–AC-51 | Planning/specification only; no executable tests permitted before Phase 0 approval | Complete expected outcomes, evidence type and mock boundary for all cases. After Phase 0 approval, author and mock-validate every active AC test before any project implementation code. |
+| Test traceability | Planned case IDs cover AC-01–AC-51, with mock contract and later real-system evidence tiers separated where needed | Planning/specification only; no executable tests permitted before Phase 0 approval | Fix expected outcomes for every active AC. Resolve any decision affecting an assertion or formally revise/remove that AC from the active baseline. After Phase 0 approval, author and mock-validate every active-AC contract test before any project implementation code. |
 | Dependency/license review | Planned direct dependencies and attribution are listed in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); GPL-2.0-only license exists | Preliminary | Select framework/package-manager versions, verify current licenses and compatibility, create lockfile only after stack approval. |
 | Deployment topology | Vercel Hobby + Supabase Free, no GitHub Actions, manual provisioning, SWBOM/release gates documented | Constraints accepted; project topology pending | Approve the two-project Supabase allocation and protected `staging` Preview branch mapping; verify account eligibility and current limits before provisioning. |
 | Data/security design | DDD ownership and projection boundaries are documented | Incomplete | Define schema, RLS, transaction procedures, retention, secret names, role model and failure behavior for the Foundation increment. |
@@ -39,9 +39,9 @@ This is a concrete proposal, not an approved technology decision. Requirements a
 
 **ADR approval required:** Next.js/TypeScript, npm, and the proposed test stack. The pattern direction is already captured, but the public interfaces, schema/RLS, migrations, provisioning command contract, test/build order, and deadline scheduler still need Phase 0 design. If any proposed framework/dependency is declined, update this ADR and the package attribution before writing tests or production code.
 
-## 4. Decisions to resolve or defer before the first increment
+## 4. Decisions to resolve before Phase 0 exit
 
-Only decisions that affect the selected increment must be resolved before that increment starts, but every open criterion must remain assigned to an increment and blocked where necessary. Do not mark the full plan ready while these decisions lack an owner or disposition.
+Every decision that affects an active AC's expected result must be resolved before Phase 0 exits. If a behavior is intentionally deferred, formally revise the requirement and remove or re-scope its AC from the active baseline before approval. An active AC may not enter the global mock gate without fixed expected behavior. Decisions that do not affect any active AC may remain informational/open with an owner and rationale.
 
 | Decision group | Required disposition | First affected phase | Gate effect |
 |---|---|---:|---|
@@ -56,7 +56,7 @@ Only decisions that affect the selected increment must be resolved before that i
 | Readiness race outcomes | Resolve two-player holdout removal, countdown duration/host authority and deadline execution. | 3 | Blocks readiness/countdown implementation. |
 | Quota/reconnect/room lifecycle | Set expected concurrency, recoverable Free-tier quota UX, reconnect/session behavior, room expiry and creator departure. | 1 for quota contract; 2–3 for room lifecycle | Blocks relevant operational and membership behavior. |
 
-The detailed proposal/open state remains in the requirements decision register. An explicit deferral must identify the affected AC, the later phase, and the assertion that remains blocked; it cannot be used to claim full AC implementation.
+The detailed proposal/open state remains in the requirements decision register. Any deferral that affects an active AC requires a requirements change before Phase 0 approval; after that change, the revised AC must have testable expected behavior. A blocked assertion is not full coverage and cannot pass the global gate.
 
 ## 5. First increment candidate: delivery foundation contracts
 
@@ -69,7 +69,7 @@ This is a **test-specification candidate only**, not permission to write tests o
 | AC-37 | `AC-37-T01` | Fake quota provider; validate recoverable response and absence of paid fallback. Later exercise quota behavior against the documented Free-tier configuration where feasible. |
 | AC-38, AC-49 | `AC-38-T01`, `AC-49-T01` | Fake test runner and SWBOM validator; prove test failure, absent report, invalid schema and commit mismatch block build; valid gate exposes matching report. Later inspect Vercel build settings and deployed endpoint/artifact identity. |
 | AC-39–42 | `AC-39-T01`–`AC-42-T01` | Fixture manifest/lockfile, license inventory, CycloneDX, temporary release archive and checksums; prove required files/metadata and rejection cases. Separately review the real dependency/asset notices and inspect each release archive. |
-| AC-51 | `AC-51-T01` | Static architecture boundary check proving domain/app policy modules do not import runtime adapters. Database concurrency cases remain assigned to the room increment and require disposable database integration evidence. |
+| AC-51 | `AC-51-T01`–`AC-51-T04` | Mock-validated application contracts cover dependency boundaries, conflict handling, idempotent command behavior, and outbox intent. `AC-51-T05`–`T07` are later real-database integration evidence and must not be reported as mock proof. |
 
 While Phase 0 is open, refine only the written test specifications; do not create executable test files. After Phase 0 approval, replace planned IDs with exact executable test names and paths for all active ACs, not just this increment. Each test must exercise behavior behind its fake; mocks may provide boundary responses but may not simply return the expected result. Run the complete suite against mocks, inspect positive and failure assertions, and record results before any project implementation code. Separately record non-mock evidence required by each AC. Once the global gate passes, implement the smallest behavior and run the full regression suite before closing each increment.
 
@@ -83,4 +83,4 @@ While Phase 0 is open, refine only the written test specifications; do not creat
 - [ ] Review current direct dependency versions/licenses and update `ATTRIBUTIONS.md`; commit a lockfile only after toolchain approval.
 - [ ] Complete all planning/design/decision work; keep this checklist free of executable test or implementation tasks.
 
-**Current gate:** not passed. Phase 0 may pass only after the baseline, interfaces, schema/security contracts, AC expected outcomes/evidence types, and decision dispositions are approved. The next required inputs are approval or replacement of the framework/package/test-stack proposal, plus confirmation of the Staging/Production project layout and provisioning contract. Gameplay decisions outside Phase 1 may remain open only when their AC expected outcomes remain explicitly blocked and assigned. After Phase 0 passes, the next gate is the global mock validation of every active AC test; no project implementation code begins before it passes.
+**Current gate:** not passed. Phase 0 may pass only after the baseline, interfaces, schema/security contracts, every active AC expected outcome/evidence tier, and all decisions affecting active assertions are approved. Any intentionally deferred behavior must first be removed or re-scoped in the requirements baseline. The next required inputs are approval or replacement of the framework/package/test-stack proposal, confirmation of Staging/Production layout and provisioning contract, and disposition of all open product decisions that affect active ACs. After Phase 0 passes, the next gate is mock validation of every active-AC contract test; no project implementation code begins before it passes. Real database/platform tests run as separate evidence after adapters exist.
