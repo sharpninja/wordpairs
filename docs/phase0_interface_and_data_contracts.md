@@ -1,17 +1,17 @@
 # Phase 0 Interface and Data Contracts
 
 **Status:** Draft for Phase 0 review; not an approved implementation contract  
-**Requirements baseline:** `word_association_game_requirements.md` v2.5  
+**Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Architecture:** DDD modular monolith, ports and adapters, Supabase Postgres, Vercel  
 **Implementation status:** Specification only; no executable tests, project code, scripts, migrations, or schema files are created by this document.
 
 ## 1. Purpose and constraints
 
-This document advances Phase 0 by defining candidate module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is deliberately concrete enough to refine into mock-first test specifications while leaving product decisions that affect AC expected results unresolved.
+This document advances Phase 0 by defining candidate module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is deliberately concrete enough to refine into mock-first test specifications with product decisions affecting AC expected results resolved in requirements v2.6.
 
-The interfaces below are logical contracts, not committed route names, SQL, TypeScript source, or approved schema. Before Phase 0 exits, approve or replace the framework/runtime and resolve each open decision that changes active AC behavior. No executable test or project implementation code may be authored before Phase 0 passes. After Phase 0, every active-AC contract test must be authored and mock-validated before any project implementation code is written.
+The interfaces below are logical contracts, not committed route names, SQL, TypeScript source, or approved schema. Before Phase 0 exits, review and approve the v2.6 framework/runtime selection and technical contracts. Product choices that affect active AC behavior are resolved in the v2.6 decision register. No executable test or project implementation code may be authored before Phase 0 passes. After Phase 0, every active-AC contract test must be authored and mock-validated before any project implementation code is written.
 
-Deployment, provider/account configuration, branch topology, and deployed-artifact checks are outside AC coverage. Operational topology is finalized at Phase 1 provisioning entry. Mockable operational command contracts remain TR work and follow their own test-first gate.
+Deployment, provider/account configuration, branch topology, and deployed-artifact checks are outside AC coverage. Deployment execution and deployment tooling follow completion of coding Phases 1–6; topology is finalized at Phase 7 entry. Mockable operational command contracts remain TR work and follow their own test-first gate.
 
 ## 2. Bounded contexts and ownership
 
@@ -36,7 +36,7 @@ Names and paths are proposed; the request/response semantics should remain stabl
 | `JoinRoom` | Room ID/code, actor, requested player mode, invite context, command ID, optional expected version | Canonical player/observer membership and current safe projection | Full/stale/closed room returns typed result; concurrent final-seat loss cannot overfill |
 | `LeaveRoom` | Room ID, actor, command ID, expected version | Updated membership, ordered roster, version | Duplicate command returns canonical prior result; unauthorized/nonmember does not mutate |
 | `BrowseRooms` | Public filter/page token | Only discoverable waiting rooms with an available player slot and approved fields | No room code, private profile, game answer, or observer-specific view |
-| `QuickMatch` | Actor, command ID, approved match policy | Joined room or browse/create fallback | Uses the same capacity-checked join command; policy/tie behavior remains open |
+| `QuickMatch` | Actor and command ID | Joined oldest eligible room or browse/create fallback | Sort by room creation time then stable room ID; use the same atomic capacity-checked join command |
 | `EnterObserverMode` | Room ID/code, actor, inviter context, command ID | Observer membership and followed-player projection | Must not consume a player slot; reject missing/invalid invitation context |
 | `SetReady` | Room ID, actor, ready intent, command ID, expected version | Current readiness state and any transition (warning/countdown/lock) | Reject nonplayer/locked-roster mutation; deduplicate retries |
 | `ProcessDeadline` | Room ID, deadline kind, expected aggregate version, due time, scheduler job ID | Applied transition or stale/no-op result | Stale version/deadline is a no-op; duplicate job is idempotent |
@@ -48,7 +48,7 @@ Names and paths are proposed; the request/response semantics should remain stabl
 | `NominateAnswer` / `SuggestCategory` | Actor, source match/win evidence, candidate payload, command ID | Submission status and audit reference | Server checks eligibility and idempotency; never automatically activates content |
 | `ReviewContent` | Moderator identity, content ID, decision/reason, command ID | Updated moderation state and audit reference | Reject unauthorized or invalid transition; preserve audit trail |
 
-Typed errors should be stable domain/application codes, independent of HTTP status or Supabase error strings. Proposed classes: `VALIDATION_ERROR`, `NOT_AUTHENTICATED`, `NOT_AUTHORIZED`, `NOT_FOUND`, `ROOM_FULL`, `ROOM_CLOSED`, `CONFLICT`, `IDEMPOTENCY_CONFLICT`, `RATE_LIMITED`, `SERVICE_LIMIT`, `TEMPORARY_UNAVAILABLE`, and `INTERNAL_ERROR`. Exact public wording, retryability, and error detail policy require approval; never return secrets or raw provider/database errors.
+Typed errors should be stable domain/application codes, independent of HTTP status or Supabase error strings. Proposed classes: `VALIDATION_ERROR`, `NOT_AUTHENTICATED`, `NOT_AUTHORIZED`, `NOT_FOUND`, `ROOM_FULL`, `ROOM_CLOSED`, `CONFLICT`, `IDEMPOTENCY_CONFLICT`, `RATE_LIMITED`, `SERVICE_LIMIT`, `TEMPORARY_UNAVAILABLE`, and `INTERNAL_ERROR`. Public wording avoids provider details; retryable service-limit behavior returns `SERVICE_LIMIT`; never return secrets or raw provider/database errors.
 
 ## 4. Event contract and privacy boundary
 
@@ -72,7 +72,7 @@ This is a logical model. Column types, identifiers, indexes, normalization, rete
 
 | Relation / aggregate | Candidate key and important fields | Invariants / ownership |
 |---|---|---|
-| `profiles` | `profile_id`, `identity_kind`, nullable `provider_subject`, `icon_id`, optional public label, timestamps | Unique verified provider subject; identity claims are not public projection fields. Guest persistence/linking policy remains open. |
+| `profiles` | `profile_id`, `identity_kind`, nullable `provider_subject`, `icon_id`, optional public label, timestamps | Unique verified provider subject; identity claims are not public projection fields. Guest identity persists in the same browser/device until site data is cleared and does not sync or link to OIDC. |
 | `rooms` | `room_id`, protected code lookup value, `capacity`, `status`, `version`, `discoverable`, creator reference, timestamps | Capacity 2–25; status/version changes serialized by the Lobby aggregate; never expose lookup secret publicly. |
 | `room_members` | `room_id`, `profile_id`, `membership_kind`, `roster_position`, `ready`, `joined_at`, inviter reference | At most one active membership per profile/room; player positions unique and dense after compaction; player count never above capacity. |
 | `observer_memberships` | `room_id`, `profile_id`, `followed_player_id`, monotonic arrival sequence/time, active state | Does not consume player capacity; promotion selects earliest eligible observer; inviter binding is server verified. |
@@ -81,12 +81,12 @@ This is a logical model. Column types, identifiers, indexes, normalization, rete
 | `rounds` | `round_id`, `match_id`, pair/category IDs, stage, status, started/closed timestamps | Stage transitions are serialized; category/pair comes from approved playable catalog. |
 | `submissions` | `submission_id`, round/player/stage, idempotency reference, accepted status, server acceptance time, optional restricted payload | One score-bearing acceptance per player/stage; raw incorrect guess retention and deletion rules require approval. Never sent to other players. |
 | `categories`, `word_pairs`, `accepted_answers` | IDs, category relation, prompt/target, ordered hints, background, status, moderation version | Only complete approved records are playable; target/accepted answers are restricted server-side until reveal. |
-| `nominations` | ID, candidate, source player/round, actor, created time, status | Count semantics, duplicate/self-nomination policy and privacy retention require approval. |
-| `suggestions` | ID, proposer, proposed category and pair payload, status, timestamps | Requires approved eligibility rule; does not enter play without moderation and complete curated records. |
+| `nominations` | ID, candidate, source player/round, actor, created time, status | Count only unique player profiles; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve. Retention follows the approved privacy schedule. |
+| `suggestions` | ID, proposer, proposed category and pair payload, status, timestamps | Requires 10 lifetime wins on one stable profile and no other open suggestion; does not enter play without moderation and complete curated records. |
 | `moderation_actions` / `audit_events` | ID, actor, target, prior/new state, reason code, timestamp, correlation ID | Append-only for authorized review; no client mutation; retention and access policy require approval. |
 | `idempotency_records` | scope, actor, command ID, request digest, canonical result/reference, created/expiry times | Unique per agreed scope; same key/same request returns prior result; same key/different request rejects. Retention period requires approval. |
 | `outbox_events` | event ID, aggregate type/ID/version, event type/version, minimal payload, audience, publish state/attempts | Inserted in same transaction as aggregate change; only committed events published; payload is already privacy-scoped. Retention policy requires approval. |
-| `deadline_jobs` (or external scheduler reference) | job ID, aggregate ID, kind, expected version, due time, state | Idempotent and version-checked; stale jobs no-op. Whether stored in Postgres or delivered by an approved free-tier scheduler remains an architecture decision. |
+| `deadline_jobs` (or external scheduler reference) | job ID, aggregate ID, kind, expected version, due time, state | Idempotent and version-checked; stale jobs no-op. Persist versioned deadline jobs in Postgres and process them with the selected Supabase Cron/pg_cron adapter; verify actual Free-plan availability at Phase 7 deployment entry. |
 
 Foreign keys should prevent orphaned room memberships, rounds, submissions, content relations, moderation actions, and outbox aggregate references. Unique/check constraints backstop room capacity, player positions, one active membership, command keys, and event versions. Complex policy remains in one domain implementation rather than duplicated in database and application layers; constraints are invariant backstops.
 
@@ -102,7 +102,7 @@ Candidate access model for approval:
 - Realtime publication uses server-authorized audience projections. Subscription channel names are not treated as authorization.
 - Migration and operator credentials are kept in the operator secret store or CLI session, never source control, fixtures, client bundles, logs, SWBOM, or public archive.
 
-RLS policy details, guest-session representation, role administration, and whether service-role operations are isolated behind RPCs or a server-only database adapter must be approved before implementation. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
+RLS policy details, guest-session representation, and role administration remain technical contracts for Phase 0 approval. The v2.6 product policy fixes guest persistence and public aliases. Service-role credentials remain server-only and are not exposed to clients. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
 
 ## 7. Transaction and concurrency contracts
 
@@ -134,28 +134,20 @@ Mock contracts assert application behavior at each port (commands, conflict resu
 - A 30-second idle prompt and five-second holdout warning are based on server-recorded state versions/timestamps. Any qualifying state change invalidates stale callback work according to the finalized definition of “unchanged.”
 - Scheduler durability and free-tier compatibility must be demonstrated before implementation. A browser timer or ephemeral Vercel process is not authoritative.
 - Transient persistence/realtime/quota failures return typed recoverable outcomes when safe. Never retry a non-idempotent write without its command ID. Realtime failure does not roll back an already committed state; clients recover from an authorized projection.
-- Whether a failed quota-bound write is retryable, and the exact user-facing copy/actions, remains open for AC-37. Do not silently upgrade to a paid service.
+- A quota rejection returns `SERVICE_LIMIT`, preserves the last committed state and may be retried with the same command ID after capacity recovers. Do not silently upgrade or automatically repeat a non-idempotent command.
 
-## 9. Decisions required before Phase 0 exit
+## 9. Phase 0 technical approvals
 
-| Decision | Contract section | Affected AC/TR | Exit disposition |
-|---|---|---|---|
-| Framework/runtime/package manager/test stack | architecture ADR | AC-38/39; TR-26–29 | Approve or replace proposal before executable setup |
-| OpenAI OIDC eligibility and provider fallback | Identity | AC-20/46 | Verify eligibility or revise provider baseline |
-| Guest identity lifecycle, account linking, display labels | Identity and profiles | AC-03/20/21/43/50 | Fix observable lifecycle and public fields |
-| Room code secret/expiry/rate limits and lifecycle | Lobby | AC-01/02/22–28 | Approve validity, failure and privacy behavior |
-| Quick-match selection and tie policy | Lobby | AC-23 | Approve deterministic eligible-room selection |
-| Countdown duration/authority and idle timer reset semantics | Lobby timers | AC-30–33 | Approve; preserve confirmed 2-player exception |
-| Observer arrival tie-break and inviter departure | Lobby | AC-27/30 | Approve stable promotion eligibility/order |
-| Stage duration/no response, answer normalization and final tie | Match | AC-06–14/45 | Fix all expected outcomes before test specs freeze |
-| Nomination identity/counting and review workflow | Content | AC-17/18/47 | Approve uniqueness, roles, states, audit and appeal behavior |
-| 10-win scope and suggestion moderation | Content | AC-19/47 | Approve lifetime/session/account rules and transitions |
-| Public leaderboard/lobby fields, ranking and freshness | Public read model | AC-43/50 | Freeze allowlist, sort, tie, empty/error and refresh behavior |
-| Reaction allowlist/display/rate behavior | Match/realtime | AC-29 | Approve exact menu and expiry/rate behavior |
-| Quota target and recovery UX | Operations/application | AC-37; TR-21/22 | Define mockable error contract and supported load target |
-| RLS, role source, retention, secret names, outbox/idempotency retention | Data/security | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 | Approve schema/security ADR before migrations |
-| Deadline execution mechanism | Delivery architecture | AC-30–33; TR-22 | Validate free-tier option and durable callback semantics |
-| Source archive format/checksum/completeness policy | Release operations | AC-39/41/42; TR-25/28/29 | Freeze fixture-verifiable archive contract; keep deployment checks TR-only |
+Requirements v2.6 resolves product choices affecting active AC expected results. The remaining work is technical review and approval of these contracts; external integration checks stay post-coding TR evidence.
+
+| Approval | Contract to review | Related requirements |
+|---|---|---|
+| Architecture ADR | Selected Next.js/TypeScript/npm stack, DDD boundaries, ports/adapters and test stack; record reviewed compatible versions before project setup. | AC-38/39; TR-26–31 |
+| Public interfaces | Finalize application command/query schemas, stable error codes, event versions/audiences and authorization derivation. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
+| Persistence/security | Approve schema, RLS, transactions/versioning, idempotency/outbox, role source, retention, and server-only secret handling. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
+| Timer adapter | Approve durable deadline-job contract and Postgres transaction semantics. Supabase Cron/pg_cron is selected; actual free-plan eligibility is checked in Phase 7. | AC-30–33; TR-22 |
+| Test specification | Refine all 65 planned AC cases into exact assertions, mocks and evidence tiers. Verify every active AC has a mockable contract before any implementation. | AC-01–33, AC-37–39, AC-41–47, AC-50–51 |
+| Deployment contract planning | Keep Vercel, provisioning, build/SWBOM and source archive checks TR-only; do not execute deployment during coding Phases 1–6. | TR-20–29; AC-41/42 use local archive fixtures only |
 
 ## 10. Phase 0 completion checklist
 
@@ -163,9 +155,9 @@ Mock contracts assert application behavior at each port (commands, conflict resu
 - [ ] Freeze route/action inputs, outputs, error codes, event schemas, and authorization rules for every active AC.
 - [ ] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
 - [ ] Approve server clock and durable deadline-scheduler contract for lobby timers.
-- [ ] Resolve all decisions in Section 9 that affect active-AC expected results, or formally revise affected ACs out of the active baseline.
-- [ ] Refine all 64 planned case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
-- [ ] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 1 provisioning-entry decision.
+- [ ] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
+- [ ] Refine all 65 planned case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
+- [ ] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
 - [ ] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 
-**Current status:** Draft work advances Phase 0, but the gate remains open. This document does not authorize executable tests, scripts, migrations, or project code.
+**Current status:** Draft work advances Phase 0, but the gate remains open. This document does not authorize executable tests, scripts, migrations, or project code. Deployment and release operations begin only after coding Phases 1–6 are complete.
