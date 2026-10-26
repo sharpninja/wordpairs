@@ -113,6 +113,47 @@
       "line": 0,
       "specs": [
         {
+          "title": "AC-05-T01 counterpart artwork retry renders the successfully probed URL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1561,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/home/sharpninja/github/WordGame/.wp-WYYpBZ/playwright_chromiumdev_profile-gdsOBw --remote-debugging-pipe --no-startup-window \u001b[30m+0ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launched> pid=2036736 \u001b[30m+10ms\u001b[0m\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:31.249Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-9d5e566595cbd52c2f98",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
           "title": "AC-05-T01 counterpart artwork failure shows an accessible fallback with usable answer controls",
           "ok": true,
           "tags": [],
@@ -128,19 +169,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1573,
+                  "duration": 1051,
                   "errors": [],
                   "stdout": [],
-                  "stderr": [
-                    {
-                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-IA9e8G --remote-debugging-pipe --no-startup-window \u001b[30m+0ms\u001b[0m\n"
-                    },
-                    {
-                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launched> pid=1967523 \u001b[30m+8ms\u001b[0m\n"
-                    }
-                  ],
+                  "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:25.019Z",
+                  "startTime": "2026-10-26T22:36:33.087Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -150,283 +184,11 @@
           ],
           "id": "f9762619a6b602e2f2a9-6c27a2d02e4176a895dc",
           "file": "accessibility.phase6.spec.ts",
-          "line": 5,
+          "line": 60,
           "column": 1
         },
         {
           "title": "AC-05-T01 counterpart real heroes asset for pair 0",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 841,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:26.828Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-2d70baa5340ea9ca467d",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 55,
-          "column": 3
-        },
-        {
-          "title": "AC-05-T01 counterpart real heroes asset for pair 1",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 828,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:27.687Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-467783ccd2c3e9356462",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 55,
-          "column": 3
-        },
-        {
-          "title": "AC-05-T01 counterpart real colors asset for pair 0",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 860,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:28.531Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-2e1d8efe2370e6b71d9f",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 55,
-          "column": 3
-        },
-        {
-          "title": "AC-15/44 counterparts 320x568 keyboard and touch",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1078,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:29.414Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-c056c99c3620a8f4a3aa",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 94,
-          "column": 3
-        },
-        {
-          "title": "AC-15/44 counterparts 568x320 keyboard and touch",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1224,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:30.521Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-cdd4bbd9d2ba7191d145",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 94,
-          "column": 3
-        },
-        {
-          "title": "AC-15/44 counterparts 390x844 keyboard and touch",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1202,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:31.764Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-ff54232699ec5e8b7544",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 94,
-          "column": 3
-        },
-        {
-          "title": "AC-15/44 counterparts 844x390 keyboard and touch",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1508,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:32.979Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-6daa28a272e316b2763b",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 94,
-          "column": 3
-        },
-        {
-          "title": "AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1477,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-26T22:11:34.498Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "f9762619a6b602e2f2a9-be47eaa1870ba83d6bf8",
-          "file": "accessibility.phase6.spec.ts",
-          "line": 226,
-          "column": 1
-        },
-        {
-          "title": "maximum room roster and 25-player scorecard remain usable on a phone",
           "ok": true,
           "tags": [],
           "tests": [
@@ -446,7 +208,279 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:35.995Z",
+                  "startTime": "2026-10-26T22:36:34.160Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-2d70baa5340ea9ca467d",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 110,
+          "column": 3
+        },
+        {
+          "title": "AC-05-T01 counterpart real heroes asset for pair 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 889,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:35.177Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-467783ccd2c3e9356462",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 110,
+          "column": 3
+        },
+        {
+          "title": "AC-05-T01 counterpart real colors asset for pair 0",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 856,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:36.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-2e1d8efe2370e6b71d9f",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 110,
+          "column": 3
+        },
+        {
+          "title": "AC-15/44 counterparts 320x568 keyboard and touch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:36.961Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-c056c99c3620a8f4a3aa",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 149,
+          "column": 3
+        },
+        {
+          "title": "AC-15/44 counterparts 568x320 keyboard and touch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1404,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:38.168Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-cdd4bbd9d2ba7191d145",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 149,
+          "column": 3
+        },
+        {
+          "title": "AC-15/44 counterparts 390x844 keyboard and touch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1244,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:39.589Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-ff54232699ec5e8b7544",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 149,
+          "column": 3
+        },
+        {
+          "title": "AC-15/44 counterparts 844x390 keyboard and touch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1503,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:40.848Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-6daa28a272e316b2763b",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 149,
+          "column": 3
+        },
+        {
+          "title": "AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1966,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:42.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9762619a6b602e2f2a9-be47eaa1870ba83d6bf8",
+          "file": "accessibility.phase6.spec.ts",
+          "line": 281,
+          "column": 1
+        },
+        {
+          "title": "maximum room roster and 25-player scorecard remain usable on a phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T22:36:44.353Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -456,7 +490,7 @@
           ],
           "id": "f9762619a6b602e2f2a9-3c338b12f7c76addde3e",
           "file": "accessibility.phase6.spec.ts",
-          "line": 319,
+          "line": 374,
           "column": 1
         }
       ]
@@ -483,12 +517,16 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3246,
+                  "duration": 3498,
                   "errors": [],
                   "stdout": [],
-                  "stderr": [],
+                  "stderr": [
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=2036736][err] [2036736:2036771:1026/173648.866600:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT \u001b[30m+18s\u001b[0m\n"
+                    }
+                  ],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:37.016Z",
+                  "startTime": "2026-10-26T22:36:45.414Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -525,22 +563,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3535,
+                  "duration": 3578,
                   "errors": [],
                   "stdout": [],
-                  "stderr": [
-                    {
-                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=1967523][err] [1967523:1967540:1026/171140.403274:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR \u001b[30m+15s\u001b[0m\n"
-                    },
-                    {
-                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=1967523][err] [1967523:1967540:1026/171140.403724:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR \u001b[30m+1ms\u001b[0m\n"
-                    },
-                    {
-                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=1967523][err] [1967523:1967540:1026/171140.414805:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR \u001b[30m+10ms\u001b[0m\n"
-                    }
-                  ],
+                  "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:40.281Z",
+                  "startTime": "2026-10-26T22:36:48.930Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -577,12 +605,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1994,
+                  "duration": 3136,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:43.846Z",
+                  "startTime": "2026-10-26T22:36:52.537Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -611,12 +639,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1292,
+                  "duration": 2100,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:45.858Z",
+                  "startTime": "2026-10-26T22:36:55.687Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -653,12 +681,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2003,
+                  "duration": 4537,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:47.174Z",
+                  "startTime": "2026-10-26T22:36:57.814Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -687,12 +715,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2161,
+                  "duration": 2357,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:49.189Z",
+                  "startTime": "2026-10-26T22:37:02.368Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -729,12 +757,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 977,
+                  "duration": 1133,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:51.371Z",
+                  "startTime": "2026-10-26T22:37:04.749Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -763,12 +791,16 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11263,
+                  "duration": 11250,
                   "errors": [],
                   "stdout": [],
-                  "stderr": [],
+                  "stderr": [
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=2036736][err] [2036736:2036771:1026/173709.097260:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT \u001b[30m+20s\u001b[0m\n"
+                    }
+                  ],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:11:52.365Z",
+                  "startTime": "2026-10-26T22:37:05.896Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -805,16 +837,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1942,
+                  "duration": 3569,
                   "errors": [],
                   "stdout": [],
-                  "stderr": [
-                    {
-                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=1967523][err] [1967523:1967540:1026/171204.615392:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT \u001b[30m+24s\u001b[0m\n"
-                    }
-                  ],
+                  "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:03.656Z",
+                  "startTime": "2026-10-26T22:37:17.169Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -851,12 +879,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2440,
+                  "duration": 2642,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:05.621Z",
+                  "startTime": "2026-10-26T22:37:20.761Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -885,12 +913,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1312,
+                  "duration": 1344,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:08.074Z",
+                  "startTime": "2026-10-26T22:37:23.417Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -919,12 +947,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1353,
+                  "duration": 1478,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:09.400Z",
+                  "startTime": "2026-10-26T22:37:24.779Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -961,12 +989,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 809,
+                  "duration": 810,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:10.783Z",
+                  "startTime": "2026-10-26T22:37:26.278Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -995,12 +1023,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 784,
+                  "duration": 871,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:11.611Z",
+                  "startTime": "2026-10-26T22:37:27.100Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1029,12 +1057,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 779,
+                  "duration": 877,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-26T22:12:12.410Z",
+                  "startTime": "2026-10-26T22:37:27.985Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1052,9 +1080,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-26T22:11:22.683Z",
-    "duration": 50718.181000000004,
-    "expected": 25,
+    "startTime": "2026-10-26T22:36:28.337Z",
+    "duration": 60726.818,
+    "expected": 26,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

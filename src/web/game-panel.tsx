@@ -191,34 +191,38 @@ export function GamePanel({
   const category = view?.categories.find((c) => c.id === view.autoCategoryId);
   const art = view?.round?.backgroundId;
   const artUrl = art && BACKGROUNDS.has(art) ? `/backgrounds/${art}.svg` : null;
+  const requestedArtUrl =
+    artUrl && artAttempt > 0 ? `${artUrl}?attempt=${artAttempt}` : artUrl;
   useEffect(() => {
-    if (!artUrl) return;
+    if (!requestedArtUrl) return;
     let active = true;
     const probe = new Image();
     probe.onload = () => {
       if (active) {
-        setLoadedArt(artUrl);
+        setLoadedArt(requestedArtUrl);
         setFailedArt(null);
       }
     };
     probe.onerror = () => {
-      if (active) setFailedArt(artUrl);
+      if (active) setFailedArt(requestedArtUrl);
     };
-    probe.src = artAttempt === 0 ? artUrl : `${artUrl}?attempt=${artAttempt}`;
+    probe.src = requestedArtUrl;
     return () => {
       active = false;
       probe.onload = null;
       probe.onerror = null;
     };
-  }, [artUrl, artAttempt]);
+  }, [requestedArtUrl]);
   const artwork =
-    !artUrl || failedArt === artUrl
+    !requestedArtUrl || failedArt === requestedArtUrl
       ? "fallback"
-      : loadedArt === artUrl
+      : loadedArt === requestedArtUrl
         ? "loaded"
         : "loading";
   const background =
-    artUrl && failedArt !== artUrl ? `url(${artUrl})` : undefined;
+    requestedArtUrl && failedArt !== requestedArtUrl
+      ? `url(${requestedArtUrl})`
+      : undefined;
   return (
     <section
       className="panel game-panel"

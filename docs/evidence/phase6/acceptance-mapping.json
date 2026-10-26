@@ -507,18 +507,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "chosen icon persists",
               "sourceTest": "AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings",
-              "line": 226,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 281,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "aria-pressed",
                   "statements": [
                     {
-                      "line": 241,
+                      "line": 296,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     },
                     {
-                      "line": 243,
+                      "line": 298,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     }
                   ]
@@ -527,35 +527,35 @@
                   "observation": "frog",
                   "statements": [
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -564,11 +564,11 @@
                   "observation": "final",
                   "statements": [
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -805,18 +805,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "counterpart artwork failure",
               "sourceTest": "AC-05-T01 counterpart artwork failure shows an accessible fallback with usable answer controls",
-              "line": 5,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 60,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "data-artwork",
                   "statements": [
                     {
-                      "line": 20,
+                      "line": 75,
                       "expression": "expect(page.locator(\".game-panel\")).toHaveAttribute(\n      \"data-artwork\",\n      \"fallback\",\n    )"
                     },
                     {
-                      "line": 37,
+                      "line": 92,
                       "expression": "expect(page.locator(\".game-panel\")).toHaveAttribute(\n      \"data-artwork\",\n      \"loaded\",\n    )"
                     }
                   ]
@@ -825,19 +825,19 @@
                   "observation": "Your answer",
                   "statements": [
                     {
-                      "line": 19,
+                      "line": 74,
                       "expression": "expect(page.getByLabel(\"Your answer\", { exact: true })).toBeEnabled()"
                     },
                     {
-                      "line": 19,
+                      "line": 74,
                       "expression": "expect(page.getByLabel(\"Your answer\", { exact: true }))"
                     },
                     {
-                      "line": 44,
+                      "line": 99,
                       "expression": "expect(page.getByLabel(\"Your answer\", { exact: true })).toBeEnabled()"
                     },
                     {
-                      "line": 44,
+                      "line": 99,
                       "expression": "expect(page.getByLabel(\"Your answer\", { exact: true }))"
                     }
                   ]
@@ -846,19 +846,19 @@
                   "observation": "Category artwork unavailable",
                   "statements": [
                     {
-                      "line": 16,
+                      "line": 71,
                       "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 16,
+                      "line": 71,
                       "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    )"
                     },
                     {
-                      "line": 41,
+                      "line": 96,
                       "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    ).toHaveCount(0)"
                     },
                     {
-                      "line": 41,
+                      "line": 96,
                       "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    )"
                     }
                   ]
@@ -876,18 +876,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "counterpart real",
               "sourceTest": "`AC-05-T01 counterpart real ${category} asset for pair ${index}`",
-              "line": 55,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 110,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "observed.background",
                   "statements": [
                     {
-                      "line": 77,
+                      "line": 132,
                       "expression": "expect(observed.background).toContain(`/backgrounds/${category}.svg`)"
                     },
                     {
-                      "line": 77,
+                      "line": 132,
                       "expression": "expect(observed.background)"
                     }
                   ]
@@ -896,7 +896,7 @@
                   "observation": "pair.prompt",
                   "statements": [
                     {
-                      "line": 69,
+                      "line": 124,
                       "expression": "expect(page.locator(\".game-prompt\")).toHaveText(pair.prompt)"
                     }
                   ]
@@ -905,7 +905,7 @@
                   "observation": "data-artwork",
                   "statements": [
                     {
-                      "line": 65,
+                      "line": 120,
                       "expression": "expect(page.locator(\".game-panel\")).toHaveAttribute(\n        \"data-artwork\",\n        \"loaded\",\n      )"
                     }
                   ]
@@ -924,6 +924,69 @@
                 },
                 {
                   "title": "AC-05-T01 counterpart real colors asset for pair 0",
+                  "status": "passed",
+                  "artifact": "docs/evidence/phase6/browser.json"
+                }
+              ]
+            },
+            {
+              "file": "tests/browser/accessibility.phase6.spec.ts",
+              "title": "artwork retry renders the successfully probed URL",
+              "sourceTest": "AC-05-T01 counterpart artwork retry renders the successfully probed URL",
+              "line": 5,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
+              "assertedObservations": [
+                {
+                  "observation": "observed.decoded",
+                  "statements": [
+                    {
+                      "line": 50,
+                      "expression": "expect(observed.decoded).toBe(true)"
+                    },
+                    {
+                      "line": 50,
+                      "expression": "expect(observed.decoded)"
+                    }
+                  ]
+                },
+                {
+                  "observation": "observed.background",
+                  "statements": [
+                    {
+                      "line": 51,
+                      "expression": "expect(observed.background).toContain(\"/backgrounds/heroes.svg?attempt=1\")"
+                    },
+                    {
+                      "line": 51,
+                      "expression": "expect(observed.background)"
+                    }
+                  ]
+                },
+                {
+                  "observation": "Category artwork unavailable",
+                  "statements": [
+                    {
+                      "line": 22,
+                      "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    ).toBeVisible()"
+                    },
+                    {
+                      "line": 22,
+                      "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    )"
+                    },
+                    {
+                      "line": 52,
+                      "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    ).toHaveCount(0)"
+                    },
+                    {
+                      "line": 52,
+                      "expression": "expect(\n      page.getByText(\"Category artwork unavailable\", { exact: true }),\n    )"
+                    }
+                  ]
+                }
+              ],
+              "executions": [
+                {
+                  "title": "AC-05-T01 counterpart artwork retry renders the successfully probed URL",
                   "status": "passed",
                   "artifact": "docs/evidence/phase6/browser.json"
                 }
@@ -1344,18 +1407,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "chosen icon persists",
               "sourceTest": "AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings",
-              "line": 226,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 281,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "aria-pressed",
                   "statements": [
                     {
-                      "line": 241,
+                      "line": 296,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     },
                     {
-                      "line": 243,
+                      "line": 298,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     }
                   ]
@@ -1364,35 +1427,35 @@
                   "observation": "frog",
                   "statements": [
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -1401,11 +1464,11 @@
                   "observation": "final",
                   "statements": [
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -1971,18 +2034,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "keyboard and touch",
               "sourceTest": "`AC-15/44 counterparts ${viewport.width}x${viewport.height} keyboard and touch`",
-              "line": 94,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 149,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "scrollWidth",
                   "statements": [
                     {
-                      "line": 110,
+                      "line": 165,
                       "expression": "expect(\n        await page.evaluate(\n          () => document.documentElement.scrollWidth <= innerWidth,\n        ),\n      ).toBe(true)"
                     },
                     {
-                      "line": 110,
+                      "line": 165,
                       "expression": "expect(\n        await page.evaluate(\n          () => document.documentElement.scrollWidth <= innerWidth,\n        ),\n      )"
                     }
                   ]
@@ -1991,11 +2054,11 @@
                   "observation": "sample.ratios",
                   "statements": [
                     {
-                      "line": 183,
+                      "line": 238,
                       "expression": "expect(\n          Math.min(...sample.ratios),\n          sample.selector,\n        ).toBeGreaterThanOrEqual(4.5)"
                     },
                     {
-                      "line": 183,
+                      "line": 238,
                       "expression": "expect(\n          Math.min(...sample.ratios),\n          sample.selector,\n        )"
                     }
                   ]
@@ -2004,19 +2067,19 @@
                   "observation": "measured.focus",
                   "statements": [
                     {
-                      "line": 187,
+                      "line": 242,
                       "expression": "expect(measured.focus.style).toBe(\"solid\")"
                     },
                     {
-                      "line": 187,
+                      "line": 242,
                       "expression": "expect(measured.focus.style)"
                     },
                     {
-                      "line": 188,
+                      "line": 243,
                       "expression": "expect(Number.parseFloat(measured.focus.width)).toBeGreaterThanOrEqual(3)"
                     },
                     {
-                      "line": 188,
+                      "line": 243,
                       "expression": "expect(Number.parseFloat(measured.focus.width))"
                     }
                   ]
@@ -2025,11 +2088,11 @@
                   "observation": "measured.buttonHeight",
                   "statements": [
                     {
-                      "line": 189,
+                      "line": 244,
                       "expression": "expect(measured.buttonHeight).toBeGreaterThanOrEqual(44)"
                     },
                     {
-                      "line": 189,
+                      "line": 244,
                       "expression": "expect(measured.buttonHeight)"
                     }
                   ]
@@ -2038,19 +2101,19 @@
                   "observation": "Solved",
                   "statements": [
                     {
-                      "line": 192,
+                      "line": 247,
                       "expression": "expect(\n        page.getByText(\n          \"✓ Solved. Your score is locked; later hints stay private to unsolved players.\",\n        ),\n      ).toBeVisible()"
                     },
                     {
-                      "line": 192,
+                      "line": 247,
                       "expression": "expect(\n        page.getByText(\n          \"✓ Solved. Your score is locked; later hints stay private to unsolved players.\",\n        ),\n      )"
                     },
                     {
-                      "line": 197,
+                      "line": 252,
                       "expression": "expect(page.getByText(/Solved · \\+3 points/)).toBeVisible()"
                     },
                     {
-                      "line": 197,
+                      "line": 252,
                       "expression": "expect(page.getByText(/Solved · \\+3 points/))"
                     }
                   ]
@@ -3437,7 +3500,7 @@
                   "artifact": "docs/evidence/phase6/unit.json"
                 },
                 {
-                  "title": "AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints rejects a malformed or untrusted token without returning provider details: {\"claims\":{\"nbf\":1793056066}}",
+                  "title": "AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints rejects a malformed or untrusted token without returning provider details: {\"claims\":{\"nbf\":1793057668}}",
                   "status": "passed",
                   "artifact": "docs/evidence/phase6/unit.json"
                 },
@@ -8713,18 +8776,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "keyboard and touch",
               "sourceTest": "`AC-15/44 counterparts ${viewport.width}x${viewport.height} keyboard and touch`",
-              "line": 94,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 149,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "scrollWidth",
                   "statements": [
                     {
-                      "line": 110,
+                      "line": 165,
                       "expression": "expect(\n        await page.evaluate(\n          () => document.documentElement.scrollWidth <= innerWidth,\n        ),\n      ).toBe(true)"
                     },
                     {
-                      "line": 110,
+                      "line": 165,
                       "expression": "expect(\n        await page.evaluate(\n          () => document.documentElement.scrollWidth <= innerWidth,\n        ),\n      )"
                     }
                   ]
@@ -8733,11 +8796,11 @@
                   "observation": "sample.ratios",
                   "statements": [
                     {
-                      "line": 183,
+                      "line": 238,
                       "expression": "expect(\n          Math.min(...sample.ratios),\n          sample.selector,\n        ).toBeGreaterThanOrEqual(4.5)"
                     },
                     {
-                      "line": 183,
+                      "line": 238,
                       "expression": "expect(\n          Math.min(...sample.ratios),\n          sample.selector,\n        )"
                     }
                   ]
@@ -8746,19 +8809,19 @@
                   "observation": "measured.focus",
                   "statements": [
                     {
-                      "line": 187,
+                      "line": 242,
                       "expression": "expect(measured.focus.style).toBe(\"solid\")"
                     },
                     {
-                      "line": 187,
+                      "line": 242,
                       "expression": "expect(measured.focus.style)"
                     },
                     {
-                      "line": 188,
+                      "line": 243,
                       "expression": "expect(Number.parseFloat(measured.focus.width)).toBeGreaterThanOrEqual(3)"
                     },
                     {
-                      "line": 188,
+                      "line": 243,
                       "expression": "expect(Number.parseFloat(measured.focus.width))"
                     }
                   ]
@@ -8767,11 +8830,11 @@
                   "observation": "measured.buttonHeight",
                   "statements": [
                     {
-                      "line": 189,
+                      "line": 244,
                       "expression": "expect(measured.buttonHeight).toBeGreaterThanOrEqual(44)"
                     },
                     {
-                      "line": 189,
+                      "line": 244,
                       "expression": "expect(measured.buttonHeight)"
                     }
                   ]
@@ -8780,19 +8843,19 @@
                   "observation": "Solved",
                   "statements": [
                     {
-                      "line": 192,
+                      "line": 247,
                       "expression": "expect(\n        page.getByText(\n          \"✓ Solved. Your score is locked; later hints stay private to unsolved players.\",\n        ),\n      ).toBeVisible()"
                     },
                     {
-                      "line": 192,
+                      "line": 247,
                       "expression": "expect(\n        page.getByText(\n          \"✓ Solved. Your score is locked; later hints stay private to unsolved players.\",\n        ),\n      )"
                     },
                     {
-                      "line": 197,
+                      "line": 252,
                       "expression": "expect(page.getByText(/Solved · \\+3 points/)).toBeVisible()"
                     },
                     {
-                      "line": 197,
+                      "line": 252,
                       "expression": "expect(page.getByText(/Solved · \\+3 points/))"
                     }
                   ]
@@ -8825,18 +8888,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "chosen icon persists",
               "sourceTest": "AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings",
-              "line": 226,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 281,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "aria-pressed",
                   "statements": [
                     {
-                      "line": 241,
+                      "line": 296,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     },
                     {
-                      "line": 243,
+                      "line": 298,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     }
                   ]
@@ -8845,35 +8908,35 @@
                   "observation": "frog",
                   "statements": [
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -8882,11 +8945,11 @@
                   "observation": "final",
                   "statements": [
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -9215,7 +9278,7 @@
                   "artifact": "docs/evidence/phase6/unit.json"
                 },
                 {
-                  "title": "AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints rejects a malformed or untrusted token without returning provider details: {\"claims\":{\"nbf\":1793056066}}",
+                  "title": "AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints rejects a malformed or untrusted token without returning provider details: {\"claims\":{\"nbf\":1793057668}}",
                   "status": "passed",
                   "artifact": "docs/evidence/phase6/unit.json"
                 },
@@ -15264,18 +15327,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "keyboard and touch",
               "sourceTest": "`AC-15/44 counterparts ${viewport.width}x${viewport.height} keyboard and touch`",
-              "line": 94,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 149,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "scrollWidth",
                   "statements": [
                     {
-                      "line": 110,
+                      "line": 165,
                       "expression": "expect(\n        await page.evaluate(\n          () => document.documentElement.scrollWidth <= innerWidth,\n        ),\n      ).toBe(true)"
                     },
                     {
-                      "line": 110,
+                      "line": 165,
                       "expression": "expect(\n        await page.evaluate(\n          () => document.documentElement.scrollWidth <= innerWidth,\n        ),\n      )"
                     }
                   ]
@@ -15284,11 +15347,11 @@
                   "observation": "sample.ratios",
                   "statements": [
                     {
-                      "line": 183,
+                      "line": 238,
                       "expression": "expect(\n          Math.min(...sample.ratios),\n          sample.selector,\n        ).toBeGreaterThanOrEqual(4.5)"
                     },
                     {
-                      "line": 183,
+                      "line": 238,
                       "expression": "expect(\n          Math.min(...sample.ratios),\n          sample.selector,\n        )"
                     }
                   ]
@@ -15297,19 +15360,19 @@
                   "observation": "measured.focus",
                   "statements": [
                     {
-                      "line": 187,
+                      "line": 242,
                       "expression": "expect(measured.focus.style).toBe(\"solid\")"
                     },
                     {
-                      "line": 187,
+                      "line": 242,
                       "expression": "expect(measured.focus.style)"
                     },
                     {
-                      "line": 188,
+                      "line": 243,
                       "expression": "expect(Number.parseFloat(measured.focus.width)).toBeGreaterThanOrEqual(3)"
                     },
                     {
-                      "line": 188,
+                      "line": 243,
                       "expression": "expect(Number.parseFloat(measured.focus.width))"
                     }
                   ]
@@ -15318,11 +15381,11 @@
                   "observation": "measured.buttonHeight",
                   "statements": [
                     {
-                      "line": 189,
+                      "line": 244,
                       "expression": "expect(measured.buttonHeight).toBeGreaterThanOrEqual(44)"
                     },
                     {
-                      "line": 189,
+                      "line": 244,
                       "expression": "expect(measured.buttonHeight)"
                     }
                   ]
@@ -15331,19 +15394,19 @@
                   "observation": "Solved",
                   "statements": [
                     {
-                      "line": 192,
+                      "line": 247,
                       "expression": "expect(\n        page.getByText(\n          \"✓ Solved. Your score is locked; later hints stay private to unsolved players.\",\n        ),\n      ).toBeVisible()"
                     },
                     {
-                      "line": 192,
+                      "line": 247,
                       "expression": "expect(\n        page.getByText(\n          \"✓ Solved. Your score is locked; later hints stay private to unsolved players.\",\n        ),\n      )"
                     },
                     {
-                      "line": 197,
+                      "line": 252,
                       "expression": "expect(page.getByText(/Solved · \\+3 points/)).toBeVisible()"
                     },
                     {
-                      "line": 197,
+                      "line": 252,
                       "expression": "expect(page.getByText(/Solved · \\+3 points/))"
                     }
                   ]
@@ -15376,18 +15439,18 @@
               "file": "tests/browser/accessibility.phase6.spec.ts",
               "title": "chosen icon persists",
               "sourceTest": "AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings",
-              "line": 226,
-              "sourceHash": "9c1f9909e43acbe2b2e2a71268f5c55f648a4f189f7ecde5281fc83f3c898a71",
+              "line": 281,
+              "sourceHash": "f4a9802e241485b097540761538955c31b6f90a0ae78d3974fe5498d94a89da0",
               "assertedObservations": [
                 {
                   "observation": "aria-pressed",
                   "statements": [
                     {
-                      "line": 241,
+                      "line": 296,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     },
                     {
-                      "line": 243,
+                      "line": 298,
                       "expression": "expect(selected).toHaveAttribute(\"aria-pressed\", \"true\")"
                     }
                   ]
@@ -15396,35 +15459,35 @@
                   "observation": "frog",
                   "statements": [
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 246,
+                      "line": 301,
                       "expression": "expect(\n      page\n        .locator(\".roster li\")\n        .filter({ hasText: \"Guest Oak\" })\n        .getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 256,
+                      "line": 311,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 270,
+                      "line": 325,
                       "expression": "expect(\n      playerRow(scorecard).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]
@@ -15433,11 +15496,11 @@
                   "observation": "final",
                   "statements": [
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    ).toBeVisible()"
                     },
                     {
-                      "line": 292,
+                      "line": 347,
                       "expression": "expect(\n      playerRow(final).getByRole(\"img\", { name: \"frog\", exact: true }),\n    )"
                     }
                   ]

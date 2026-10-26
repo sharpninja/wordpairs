@@ -1,0 +1,34 @@
+[WebServer] (node:2009476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2009488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2009545) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2009705) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/accessibility.phase6.spec.ts:5:1 › AC-05-T01 counterpart artwork retry renders the successfully probed URL (1.7s)
+
+
+  1) tests/browser/accessibility.phase6.spec.ts:5:1 › AC-05-T01 counterpart artwork retry renders the successfully probed URL
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      34 |     });
+      35 |     await writeFile(info.outputPath("artwork-retry.json"), JSON.stringify(observed, null, 2));
+    > 36 |     expect(observed.decoded).toBe(true);
+         |                              ^
+      37 |     expect(observed.background).toContain("/backgrounds/heroes.svg?attempt=1");
+      38 |     await expect(page.getByText("Category artwork unavailable", { exact: true })).toHaveCount(0);
+      39 |   } finally {
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/accessibility.phase6.spec.ts:36:30
+
+    Error Context: test-results/accessibility.phase6-AC-05-b933e-the-successfully-probed-URL/error-context.md
+
+  1 failed
+    tests/browser/accessibility.phase6.spec.ts:5:1 › AC-05-T01 counterpart artwork retry renders the successfully probed URL

@@ -2,6 +2,61 @@ import { writeFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { connectGame, roomId } from "./phase6-fixture";
 
+test("AC-05-T01 counterpart artwork retry renders the successfully probed URL", async ({
+  browser,
+}, info) => {
+  const context = await browser.newContext();
+  try {
+    await connectGame(context);
+    await context.route("**/backgrounds/heroes.svg*", (route) =>
+      new URL(route.request().url()).searchParams.has("attempt")
+        ? route.fulfill({
+            status: 200,
+            contentType: "image/svg+xml",
+            body: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10" fill="red"/></svg>',
+          })
+        : route.fulfill({ status: 404, body: "Missing original asset" }),
+    );
+    const page = await context.newPage();
+    await page.goto(`/rooms/${roomId}`);
+    await expect(
+      page.getByText("Category artwork unavailable", { exact: true }),
+    ).toBeVisible();
+    await page
+      .getByRole("button", { name: "Retry artwork", exact: true })
+      .click();
+    await expect(page.locator(".game-panel")).toHaveAttribute(
+      "data-artwork",
+      "loaded",
+    );
+    const observed = await page
+      .locator(".game-panel")
+      .evaluate(async (element) => {
+        const background = getComputedStyle(element).backgroundImage;
+        const image = new Image();
+        image.src = background.slice(5, -2);
+        let decoded = true;
+        try {
+          await image.decode();
+        } catch {
+          decoded = false;
+        }
+        return { background, decoded };
+      });
+    await writeFile(
+      info.outputPath("artwork-retry.json"),
+      JSON.stringify(observed, null, 2),
+    );
+    expect(observed.decoded).toBe(true);
+    expect(observed.background).toContain("/backgrounds/heroes.svg?attempt=1");
+    await expect(
+      page.getByText("Category artwork unavailable", { exact: true }),
+    ).toHaveCount(0);
+  } finally {
+    await context.close();
+  }
+});
+
 test("AC-05-T01 counterpart artwork failure shows an accessible fallback with usable answer controls", async ({
   browser,
 }, info) => {

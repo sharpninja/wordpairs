@@ -4,7 +4,27 @@
     "isolatedModerationPassed": 1,
     "signal": null,
     "diagnosticSequencePassed": 11,
-    "finalFullBrowserPassed": 25
+    "finalFullBrowserPassed": 25,
+    "status": "Corrected artwork and dependency synchronization; final full run uses verified disk-backed temporary shared-memory files and passes without failures/skips",
+    "afterOwnedCacheCleanup": {
+      "chromiumExitCode": 0,
+      "failed": 0,
+      "signal": null,
+      "log": "browser-after-cache-cleanup.log",
+      "passed": 26
+    },
+    "finalDiskBackedTemporaryDirectory": {
+      "environment": "browser-environment.json",
+      "chromiumExitCode": 0,
+      "assertionsWeakened": false,
+      "passed": 26,
+      "retriesAdded": false,
+      "failed": 0,
+      "verifiedMappings": "browser-temp-maps.json",
+      "ownedDirectoryRemoved": true,
+      "signal": null,
+      "log": "browser-final.log"
+    }
   },
   "scope": "Failure messages/status extracted from the tool transcript; these are not reconstructed complete raw browser reports.",
   "runs": [
@@ -21,13 +41,70 @@
       "error": "expect(getByText('Playable in future rounds', { exact: true })).toBeVisible(): Target crashed",
       "test": "eligible proposer, independent moderator and senior complete suggestion/rejection/appeal/curation without automatic publication",
       "failed": 1
+    },
+    {
+      "error": "Target crashed at approved display",
+      "passed": 24,
+      "failed": 1,
+      "source": "Independent review raw log retained in docs/phase6_review_receipt.jsonl"
+    },
+    {
+      "browserExitSignal": "SIGTRAP",
+      "passed": 23,
+      "failed": 2,
+      "source": "/tmp/wordpairs-phase6-verbose-renderer.log",
+      "errors": [
+        "Target crashed in moderation",
+        "Target crashed in match journey"
+      ]
+    },
+    {
+      "source": "browser-native-diagnostic.log",
+      "failed": 2,
+      "launcherBypassResolvedCrash": false,
+      "errors": [
+        "Content timeout due to appeal dependency race",
+        "Match Target crashed"
+      ],
+      "passed": 24
+    },
+    {
+      "source": "browser-long-temp-path.log",
+      "failed": 26,
+      "stage": "Browser startup",
+      "error": "First disk-backed TMPDIR exceeded Chromium Unix socket path limit; corrected with shorter fresh path",
+      "passed": 0
     }
   ],
   "source": "Observed functions.write_stdin tool transcript, sessions26892 and48679",
   "diagnosis": {
-    "cause": "unknown",
+    "cause": "Strongly supported inference: failed shared-memory allocation under confirmed per-UID /tmp quota; historical Chromium errno not captured",
     "oomJournalLineReturned": false,
     "applicationRunawayFoundByIndependentReview": false,
-    "newSystemCoreFound": false
+    "newSystemCoreFound": true,
+    "earlierNoCoreCorrection": "Initial UTC-looking --since value was interpreted in local CDT. Correct local filtering found Chromium SIGTRAP cores.",
+    "coreObservations": [
+      {
+        "pid": 1995856,
+        "signal": "SIGTRAP",
+        "timestamp": "2026-10-26 17:21:03 CDT",
+        "thread": "Compositor",
+        "tid": 1995869
+      },
+      {
+        "pid": 1994653,
+        "signal": "SIGTRAP",
+        "timestamp": "2026-10-26 17:21:03 CDT"
+      },
+      {
+        "pid": 1997580,
+        "signal": "SIGTRAP",
+        "timestamp": "2026-10-26 17:21:16 CDT"
+      }
+    ],
+    "gdb": "Chromium frames unresolved; private extracted core deleted after inspection. No function names inferred.",
+    "testCgroupOomEvents": 0,
+    "testCgroupOomKillEvents": 0,
+    "details": "chromium-crash-diagnosis.md and quota-before.json/quota-after.json"
   }
 }

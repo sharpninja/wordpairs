@@ -146,6 +146,13 @@ export const primaryBindings: Record<string, AssertionBinding[]> = {
   "AC-05-T01": [
     art,
     artLoaded,
+    ui(
+      "accessibility.phase6",
+      "artwork retry renders the successfully probed URL",
+      "observed.decoded",
+      "observed.background",
+      "Category artwork unavailable",
+    ),
     a("catalog-seed", "ships six categories", "backgroundId"),
   ],
   "AC-13-T01": [
