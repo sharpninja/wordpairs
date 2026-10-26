@@ -1,18 +1,32 @@
 # Wordpairs Deployment and Release Plan
 
 **Status:** Proposed operational plan; deployment implementation has not started  
-**Requirements baseline:** `word_association_game_requirements.md` v2.4  
+**Requirements baseline:** `word_association_game_requirements.md` v2.5  
 **Implementation sequence:** `implementation_plan.md`  
 **Hosting constraint:** Vercel Hobby and Supabase Free; no paid add-ons or fallback  
 **Automation constraint:** no GitHub Actions
 
 ## 1. Purpose and scope
 
-This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. It turns TR-20 through TR-24 and TR-27 through TR-30, plus AC-34 through AC-37 and AC-40 through AC-43 and AC-48 through AC-50, into an operational sequence. It covers delivery of the new anonymous landing page and its public data projection. It does not provision accounts or infrastructure and does not change the game's approved requirements.
+This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. Deployment, provisioning, build/SWBOM, and environment-isolation checks are bound to technical requirements TR-20–TR-29, not to ACs. Any live deployment/account/database checks are TR-only integration or operational evidence and cannot satisfy the AC mock-coverage gate. The public landing behavior remains covered by active AC-43 and AC-50 tests against local components and mocked projections; deployed smoke checks are operational diagnostics only.
 
 The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the proposed application stack pending its architecture decision record. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
 
 ![Vercel deployment workflow](word_association_vercel_deployment.svg)
+
+## 2.1 TR-only verification, separate from AC coverage
+
+The following contract tests are specified before implementation and validated against mocks before the corresponding scripts/build code is written. They do not add ACs or count toward AC coverage. Real Vercel, Supabase, and deployment checks run later as technical integration evidence.
+
+| TR | Mock-first technical contract | Later TR-only integration/operational evidence |
+|---|---|---|
+| TR-20, TR-24 | `TR-20-T01` / `TR-24-T01`: fake Vercel configuration metadata verifies branch-to-Preview/Production mapping and no GitHub Actions dependency. | Verify the connected repository and branch settings in Vercel; this is not AC evidence. |
+| TR-21 | `TR-21-T01`: configuration policy rejects paid tiers, add-ons, and metered resources. | Confirm actual account plan/eligibility and deployed resource settings before provisioning/release. |
+| TR-22 | `TR-22-T01`: application ports handle repository/Realtime success, failure, retry, and stale-state responses without assuming process memory is durable. | Disposable Supabase integration verifies persistence, RLS, transactions, and Realtime behavior. |
+| TR-23 | `TR-23-T01`–`TR-23-T03`: fake CLI/temp filesystem verifies idempotent create/link, migration reporting, Preview/Production variable separation, and secret redaction. | Run safe provisioning and migration checks against isolated Staging/Production targets. |
+| TR-26 | `TR-26-T01`: fake test runner proves the build orchestrator fails closed on test failure and orders checks before build. | Inspect actual Vercel build command/configuration; operational evidence only. |
+| TR-27 | `TR-27-T01`: fixture lockfile and mocked build metadata produce a valid CycloneDX 1.6 SWBOM in a temporary pre-deployment build output with no secrets. | Verify the real build/deployment inventory and served endpoint; this remains TR-only and is not AC coverage. |
+| TR-28, TR-29 | `TR-28-T01` / `TR-29-T01`: temporary source archive with fixture SWBOM/license verifies exact-commit paths and required notices. | Inspect the release archive and publication record; AC-41/42 also have independent mock-backed archive tests. |
 
 ## 2. Deployment principles and constraints
 
@@ -174,10 +188,10 @@ During Phase 0, set realistic recovery-time and recovery-point expectations suit
 - [ ] A feature branch gets a Preview; `main` gets Production; no GitHub Actions workflow is required.
 - [ ] Build order runs checks/tests before SWBOM and app build; failed tests fail deployment.
 - [ ] Preview uses Staging credentials; Production uses Production credentials; protected fork deployment cannot expose secrets.
-- [ ] Each deployment serves the valid SWBOM for its exact commit, lockfile, environment, and URL without secret values.
+- [ ] TR-27 operational check confirms each deployment serves the SWBOM for its exact commit, lockfile, environment, and URL without secret values; this is TR evidence, not AC coverage.
 - [ ] Smoke checks confirm the anonymous landing page, approved leaderboard projection, discoverable/joinable lobby summary, rules content, identity, room creation/join, quota error handling, and expected environment labeling.
-- [ ] AC-43 no-login, no-data, unavailable-data, and forbidden-field checks pass in the deployment environment.
-- [ ] AC-48 rerun and Preview/Production isolation checks pass; AC-49 blocks deployment if tests or the matching SWBOM fail validation; AC-50 confirms the landing-page public data allowlist.
+- [ ] AC-43 and AC-50 contract tests pass against local components with mocked public projections before implementation. Any deployed smoke check is diagnostic only and does not count toward AC coverage.
+- [ ] TR-23/TR-26/TR-27 configuration, provisioning, build-gate, and SWBOM checks pass as TR-only evidence; they do not substitute for AC coverage.
 
 ### Release archive
 
