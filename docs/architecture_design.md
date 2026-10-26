@@ -1,9 +1,9 @@
 # Wordpairs Architecture Design
 
 **Requirements traceability, DDD component split, and design-pattern class views**  
-Version 1.0 · 26 October 2026 · Derived from Requirements v2.5
+Version 1.0 · 26 October 2026 · Derived from Requirements v2.6
 
-This document maps every functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to the proposed bounded contexts, application components, and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. The selected deployment and persistence requirements are Vercel and Supabase/Postgres (TR-20–TR-24). The architecture proposes a modular monolith using Next.js/TypeScript, pending approval of the architecture decision record before implementation. The diagrams are SVG assets embedded here.
+This document maps every functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to the proposed bounded contexts, application components, and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. The selected deployment and persistence requirements are Vercel and Supabase/Postgres (TR-20–TR-24). The selected architecture is a modular monolith using the Next.js/TypeScript stack; its technical ADR and interfaces remain Phase 0 review items before implementation. The diagrams are SVG assets embedded here.
 
 ## Architecture rules
 
@@ -27,7 +27,7 @@ The component view places identity, room/lobby, gameplay, content/moderation, an
 
 ![Domain aggregates, entities, value objects, and policies](architecture_domain_classes.svg)
 
-The diagram includes central classes from Identity & Profile, Room & Lobby, Gameplay, Content & Moderation, and Read Models/Room Events, along with pure policies and infrastructure ports. Policy interfaces isolate choices that must remain configurable or unresolved, such as answer matching, match length, tiebreak treatment, and public leaderboard contract. Domain rules do not depend on persistence.
+The diagram includes central classes from Identity & Profile, Room & Lobby, Gameplay, Content & Moderation, and Read Models/Room Events, along with named policies and infrastructure ports. Policies encode the resolved v2.6 product rules for answer matching, match length, tiebreak treatment, and public leaderboard contract. Domain rules do not depend on persistence.
 
 ### Transactional command, idempotency, and outbox patterns
 
@@ -115,11 +115,11 @@ The command path validates the command key, locks/reloads the aggregate in one t
 
 ## Deployment and runtime topology
 
-Vercel hosts the web application selected by the architecture decision record; the current proposal is Next.js/TypeScript. Supabase Postgres is the durable source of truth; Supabase Realtime transports committed allowlisted outbox events. Domain code stays inside the application modules. A deadline scheduler is accessed through a port and must use a supported free-tier mechanism with durable, idempotent callbacks; a serverless process or browser timer is never treated as the authority. Build and release pipelines validate tests and the commit-matched SWBOM per the technical requirements.
+Vercel hosts the web application selected by the architecture decision record; the selected v2.6 stack is Next.js/TypeScript pending Phase 0 technical ADR approval. Supabase Postgres is the durable source of truth; Supabase Realtime transports committed allowlisted outbox events. Domain code stays inside the application modules. A deadline scheduler is accessed through a port and must use a supported free-tier mechanism with durable, idempotent callbacks; a serverless process or browser timer is never treated as the authority. Build and release pipelines validate tests and the commit-matched SWBOM per the technical requirements.
 
 ## Open decisions preserved
 
-The architecture does not invent product decisions still marked open in Requirements v2.5. In particular, OpenAI OIDC access eligibility, match length and final tiebreak edge cases, guest persistence, answer matching details, lobby discovery defaults, quick-match ordering, public leaderboard contract, countdown duration/host powers, and idle/deadline execution mechanism must be approved or verified before their policies are finalized. AC-32 specifies that rooms over two players boot the expired holdout and start/lock the countdown; an exactly two-player lobby retains its holdout and waits for both players to be ready.
+The v2.6 requirements resolve product behavior affecting active AC outcomes, including the exactly two-player holdout exception. Phase 0 approves technical interfaces, schema/security, and transaction contracts. Vercel/Supabase account, topology, and deployment verification occur only at Phase 7 after coding Phases 1–6; deployed artifacts never provide AC coverage.
 
 ## Traceability validation
 
