@@ -1,6 +1,6 @@
 # Wordpairs Content Moderation Plan
 
-**Status:** Moderation policy baseline resolved in requirements v2.6; technical workflow design is pending Phase 0 approval  
+**Status:** Moderation policy baseline and technical workflow design approved in Phase 0; implementation awaits the global active-AC mock-validation gate  
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Implementation sequence:** `implementation_plan.md`  
 **Current scope:** player nominations and category/pair suggestions; no public chat
