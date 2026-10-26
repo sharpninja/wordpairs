@@ -7,7 +7,7 @@
 
 ## 1. Current status
 
-Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 65 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. This is traceability planning, not authored or passing coverage. Phase 0 was approved on 26 October 2026. Test authoring and mock validation are now authorized; they are not yet complete. No production implementation code may begin until every active-AC contract test is executable and passes against mocks.
+Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 67 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. This is traceability planning, not authored or passing coverage. Phase 0 was approved on 26 October 2026. Test authoring and mock validation are now authorized; they are not yet complete. No production implementation code may begin until every active-AC contract test is executable and passes against mocks.
 
 No AC depends on deployed artifacts. Deployment, provisioning, environment topology, build gates, and deployed SWBOM checks are TR-only or operational evidence. Deployment execution and its tooling occur after coding Phases 1–6, in Phase 7; topology/account eligibility is assessed at Phase 7 entry. AC-39/41/42 are mockable document/archive contracts using local fixtures, and AC-37 is mockable application behavior. AC-38 is a traceability/process contract.
 
@@ -23,7 +23,7 @@ There are no unresolved product decisions affecting active AC expected outcomes.
 | Application interfaces | Approved commands, queries, typed errors, event schemas/audiences, server-derived identity and role checks. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
 | Persistence and security | Approved logical schema, RLS, transaction/locking, idempotency, outbox, audit, retention and secret boundaries. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
 | Timer contract | Approved versioned durable deadline semantics and stale/duplicate delivery handling. Actual Free-plan platform availability is a post-coding Phase 7 TR integration check. | AC-30–33; TR-22 |
-| Test authoring and mock-validation gate | Replace all 65 planned AC cases with executable test names, exact assertions, fake behavior and evidence tiers; validate every active AC against mocks before production code. | All active ACs |
+| Test authoring and mock-validation gate | Replace all 67 planned AC cases with executable test names, exact assertions, fake behavior and evidence tiers; validate every active AC against mocks before production code. | All active ACs |
 | Post-coding deployment planning | Keep Vercel, account, branch/project, provisioning, deployed build and operational SWBOM evidence outside AC coverage. | TR-20–29; AC-41/42 use only local fixtures |
 
 ## 3. Traceability and evidence gaps to close
@@ -55,7 +55,7 @@ There are no unresolved product decisions affecting active AC expected outcomes.
 
 ## 5. Post-approval actions
 
-1. Replace all 65 planned AC case IDs with exact executable test names/paths, assertions, fake interactions and evidence tiers.
+1. Replace all 67 planned AC case IDs with exact executable test names/paths, assertions, fake interactions and evidence tiers.
 2. Verify all 45 active ACs have executable, mockable contract coverage and validate the complete suite against mocks before any production implementation code.
 3. Keep real database/provider/deployment checks in separate TR integration or operations records. They cannot establish or substitute for AC coverage.
 4. Record test outputs and hostile review against the exact repository commit; no planned test ID is represented as passing coverage before execution.
