@@ -1,6 +1,6 @@
 # Phase 2 landing, identity and rooms
 
-Status: candidate implemented; exact-commit hostile-validation exit is pending. Phase 1 was approved at remote commit `7e46694adf733ee70c272f0d23e7e8fefe22dc9b` (99% accuracy, 99% completeness). Phase 3 has not begun.
+Status: formal Phase 2 APPROVED at remote commit `a24550cd1ae389c91d8a863b617abfca67282adf`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. All 138 remote leaf entries match the tested local tree `074b0f912ccd2e6dbd2848fd36d16f3b95f1bd24`. Phase 3 entry is authorized; Phase 3 implementation has not been evaluated. The complete request, rubric, remote verification, independent test evidence and verdict are in [`phase2_review_receipt.jsonl`](phase2_review_receipt.jsonl).
 
 ## Scope and evidence
 
@@ -52,6 +52,6 @@ Apply sorted migrations `001`–`005`. Apply `src/infrastructure/realtime-policy
 
 The MCP hook reports `no-session`, `health-failed`, missing workspace marker and empty failsafe path. Source edits and real verification continued; no recovery success is claimed. These repository records preserve the evidence until the marker is repaired.
 
-## Exit still required
+## Formal exit
 
-Publish the immutable candidate source checkpoint without moving a deployment branch; obtain an independent GPT-6 Astra/high review of that exact remote commit at **at least 98% accuracy and completeness**, with no unresolved material findings; record its complete receipt. Only then enter Phase 3. Phases 3–6, final AC acceptance and their hostile reviews remain required for the active goal. Deployment/release stays in Phase 7.
+Independent GPT-6 Astra/high review approved the exact remote candidate at **99% accuracy and 99% completeness**, with no unresolved material findings. The reviewer independently reran all 403 tests, typecheck, lint, local build, 11 actual PostgreSQL tests plus SQL checks, two actual Supabase Realtime tests and six Chromium journeys; all passed. The reviewed source was clean before receipt edits. Phase 3 entry is authorized. Phases 3–6, final AC acceptance and their hostile reviews remain required for the active goal. Deployment/release stays in Phase 7.
