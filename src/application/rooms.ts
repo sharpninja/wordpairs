@@ -1,3 +1,4 @@
+import { lobbyDeadlines } from "../domain/lobby";
 import type { Room } from "../domain/model";
 import { failure, type Result, success } from "../domain/result";
 import {
@@ -58,6 +59,10 @@ export function roomProjection(
     ...(role === "player" ? { code: room.code } : {}),
     role,
     followedPlayerId: observer?.followedPlayerId ?? null,
+    idlePrompt: room.idlePromptedVersion !== null,
+    holdoutId: room.holdoutId,
+    holdoutDueAt: room.holdoutDueAt,
+    countdownDueAt: room.countdownDueAt,
     players: room.players.map((player, index) => ({
       ...label(player.profileId),
       position: index + 1,
@@ -129,7 +134,7 @@ export class RoomService {
       command,
       room.value,
       [event],
-      [],
+      lobbyDeadlines(room.value, () => this.ids.next()),
     );
     return result.ok
       ? success({
@@ -170,7 +175,11 @@ export class RoomService {
           )
         : await this.repository.get(reference);
     if (!room.ok) return room;
-    if (room.value.status === "closed") return failure("NOT_FOUND");
+    if (
+      room.value.status === "closed" &&
+      (code || !roomRole(room.value, actorId))
+    )
+      return failure("NOT_FOUND");
     if (
       !code &&
       !roomRole(room.value, actorId) &&
@@ -189,9 +198,15 @@ export class RoomService {
       ...room.observers.map((o) => o.profileId),
     ]);
     return labels.ok
-      ? success(
-          roomProjection(room, actorId, labels.value, !roomRole(room, actorId)),
-        )
+      ? success({
+          ...roomProjection(
+            room,
+            actorId,
+            labels.value,
+            !roomRole(room, actorId),
+          ),
+          serverNow: this.clock.now(),
+        })
       : labels;
   }
   async join(
@@ -232,7 +247,7 @@ export class RoomService {
               payload: { roomId: room.id },
             },
           ],
-          deadlines: [],
+          deadlines: lobbyDeadlines(next.value, () => this.ids.next()),
           audits: [],
         });
       },

@@ -5,7 +5,11 @@ import type { RoomView } from "../application/rooms";
 import { IdentityPanel, ProfileIcon } from "./identity-panel";
 import { useRoomUpdates } from "./use-room-updates";
 
-type View = RoomView & { actorId: string; inviterId: string | null };
+type View = RoomView & {
+  actorId: string;
+  inviterId: string | null;
+  serverNow?: number;
+};
 type ScreenProps = {
   reference: string;
   invitation: string | null;
@@ -33,6 +37,8 @@ function RoomSession({
   const [busy, setBusy] = useState(false);
   const [selected, setSelected] = useState("");
   const [link, setLink] = useState("");
+  const [displayNow, setDisplayNow] = useState(0);
+  const serverOffset = useRef(0);
   const sequence = useRef(0);
   const fetching = useRef(false);
   const pending = useRef<Record<string, unknown> | null>(null);
@@ -80,6 +86,10 @@ function RoomSession({
           ? previous
           : result,
       );
+      if (typeof result.serverNow === "number") {
+        serverOffset.current = result.serverNow - Date.now();
+        setDisplayNow(result.serverNow);
+      }
       setError("");
       if (result.role) setActiveRef(result.roomId);
     } catch (problem) {
@@ -96,15 +106,76 @@ function RoomSession({
   useEffect(() => {
     fetching.current = false;
     void refresh();
-    const timer = setInterval(() => void refresh(), 15000);
+    const timer = setInterval(
+      () => void refresh(),
+      room?.status === "countdown" || room?.holdoutDueAt ? 1000 : 15000,
+    );
     return () => {
       sequence.current++;
       fetching.current = false;
       clearInterval(timer);
     };
-  }, [refresh]);
+  }, [refresh, room?.status, room?.holdoutDueAt]);
+  useEffect(() => {
+    const timer = setInterval(
+      () => setDisplayNow(Date.now() + serverOffset.current),
+      250,
+    );
+    return () => clearInterval(timer);
+  }, []);
+  const current = useRef({ room, busy });
+  current.current = { room, busy };
+  useEffect(() => {
+    if (room?.role !== "player" || room.status === "closed") return;
+    let stopped = false;
+    let inFlight = false;
+    let retry: Record<string, unknown> | null = null;
+    const heartbeat = async () => {
+      const latest = current.current;
+      if (
+        stopped ||
+        inFlight ||
+        latest.busy ||
+        !latest.room ||
+        latest.room.role !== "player"
+      )
+        return;
+      inFlight = true;
+      retry ??= {
+        action: "presence",
+        connected: true,
+        expectedProfileId: profile.id,
+        expectedVersion: latest.room.version,
+        commandId: crypto.randomUUID(),
+      };
+      try {
+        const response = await fetch(
+          `/api/rooms/${encodeURIComponent(latest.room.roomId)}/lobby`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(retry),
+            signal: AbortSignal.timeout(10000),
+          },
+        );
+        if (response.ok || response.status < 500) retry = null;
+        if (!stopped) await refresh();
+      } catch {
+        /* An uncertain heartbeat reuses its command ID at the next bounded attempt. */
+      } finally {
+        inFlight = false;
+      }
+    };
+    const timer = setInterval(() => void heartbeat(), 20000);
+    window.addEventListener("online", heartbeat);
+    return () => {
+      stopped = true;
+      clearInterval(timer);
+      window.removeEventListener("online", heartbeat);
+    };
+  }, [profile.id, room?.role, room?.status, refresh]);
   const command = async (
-    action: "join" | "invite",
+    action: "join" | "invite" | "ready" | "leave",
     mode?: "player" | "observer",
   ) => {
     if (!room || !profile || busy) return;
@@ -116,15 +187,23 @@ function RoomSession({
       commandId: crypto.randomUUID(),
       expectedVersion: room.version,
       ...(mode ? { mode, inviterId: room.inviterId ?? selected } : {}),
+      ...(action === "ready"
+        ? { ready: !room.players.find((p) => p.id === profile.id)?.ready }
+        : {}),
     };
-    if (action === "join") pending.current = input;
+    if (action !== "invite") pending.current = input;
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        signal: AbortSignal.timeout(10000),
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
-      });
+      const response = await fetch(
+        ["ready", "leave"].includes(input.action as string)
+          ? `/api/rooms/${encodeURIComponent(room.roomId)}/lobby`
+          : endpoint,
+        {
+          method: "POST",
+          signal: AbortSignal.timeout(10000),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(input),
+        },
+      );
       const result = await response.json();
       if (!response.ok) {
         if (response.status < 500) pending.current = null;
@@ -135,7 +214,11 @@ function RoomSession({
         );
       }
       pending.current = null;
-      if (action === "invite") setLink(result.url);
+      if (input.action === "leave") {
+        window.location.assign("/play");
+        return;
+      }
+      if (input.action === "invite") setLink(result.url);
       else setActiveRef(result.roomId);
       await refresh();
     } catch (problem) {
@@ -160,6 +243,7 @@ function RoomSession({
           className="panel room-panel"
           aria-labelledby="room-title"
           aria-busy={busy}
+          data-room-version={room?.version}
         >
           <div className="panel-heading">
             <h1 id="room-title">
@@ -194,12 +278,52 @@ function RoomSession({
                 </p>
               )}
               <h2>Players</h2>
+              {room.status === "waiting" && room.idlePrompt && (
+                <p role="status">
+                  Ready to play? All players, mark yourself ready when you are
+                  set.
+                </p>
+              )}
+              {room.status === "waiting" &&
+                room.holdoutId === profile.id &&
+                room.holdoutDueAt && (
+                  <p role="alert">
+                    Mark ready within{" "}
+                    {Math.max(
+                      0,
+                      Math.ceil((room.holdoutDueAt - displayNow) / 1000),
+                    )}{" "}
+                    seconds.
+                    {room.players.length > 2
+                      ? " Otherwise you will leave this countdown."
+                      : " The room will wait for both players."}
+                  </p>
+                )}
+              {room.status === "countdown" && room.countdownDueAt && (
+                <p role="status">
+                  Roster locked. Starting in{" "}
+                  {Math.max(
+                    0,
+                    Math.ceil((room.countdownDueAt - displayNow) / 1000),
+                  )}{" "}
+                  seconds. Departing players will not be replaced.
+                </p>
+              )}
+              {room.status === "closed" && (
+                <p role="status">
+                  This room closed. The game cannot start with fewer than two
+                  original players.
+                </p>
+              )}
               <ol className="roster">
                 {room.players.map((player) => (
                   <li key={player.id}>
                     <ProfileIcon icon={player.icon} />{" "}
                     <strong>{player.alias}</strong>
                     <span>{player.ready ? "✓ Ready" : "○ Not ready"}</span>
+                    {!player.connected && (
+                      <span>Reconnecting · seat retained for two minutes</span>
+                    )}
                   </li>
                 ))}
               </ol>
@@ -221,10 +345,26 @@ function RoomSession({
               )}
               {room.role === "player" && (
                 <>
+                  {room.status === "waiting" && (
+                    <button
+                      className="button"
+                      type="button"
+                      disabled={busy || pending.current !== null}
+                      onClick={() => void command("ready")}
+                    >
+                      {room.players.find((p) => p.id === profile.id)?.ready
+                        ? "Not ready yet"
+                        : "Mark ready"}
+                    </button>
+                  )}
                   <button
                     className="button secondary"
                     type="button"
-                    disabled={busy}
+                    disabled={
+                      busy ||
+                      pending.current !== null ||
+                      room.status === "closed"
+                    }
                     onClick={() => void command("invite")}
                   >
                     Create invitation link
@@ -249,6 +389,16 @@ function RoomSession({
                   )?.alias ?? "a player who left"}
                   . You cannot submit answers or change readiness.
                 </p>
+              )}
+              {room.role && room.status !== "closed" && (
+                <button
+                  className="button secondary"
+                  type="button"
+                  disabled={busy || pending.current !== null}
+                  onClick={() => void command("leave")}
+                >
+                  Leave room
+                </button>
               )}
               {!room.role && (
                 <div className="join-options">

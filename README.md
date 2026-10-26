@@ -4,7 +4,7 @@ Wordpairs is a real-time word-association game. Its [requirements](docs/word_ass
 
 ## Project status
 
-Phase 0 and [Phase 1](docs/phase1_execution.md) passed exact-commit hostile review. The [Phase 2 candidate](docs/phase2_execution.md) adds the anonymous community board, persistent guests, OIDC/profile handling, capacity-checked rooms, quick match, signed invitations, observer access and private Realtime notifications. It passes 403 regression tests, six browser journeys with synthetic HTTP boundaries, and separate disposable Postgres/Realtime integration checks. Phase 2's exact-commit exit review is pending. Readiness, gameplay, moderation and final acceptance remain in Phases 3–6. Deployment stays in Phase 7; external integration and deployed artifacts never count toward AC coverage.
+Phases 0–2 passed exact-commit hostile review. [Phase 2](docs/phase2_execution.md) adds the anonymous community board, persistent guests, OIDC/profile handling, capacity-checked rooms, quick match, signed invitations, observer access and private Realtime notifications. Its independent exit scored 99/99. The [Phase 3 candidate](docs/phase3_execution.md) adds ordered departures/promotion, readiness, persisted deadlines, countdown locking and reconnect grace; its exit review remains pending. Gameplay, moderation and final acceptance remain in Phases 4–6. Deployment stays in Phase 7; external integration and deployed artifacts never count toward AC coverage.
 
 ## License
 
