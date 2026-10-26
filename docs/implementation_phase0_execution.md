@@ -61,6 +61,12 @@ The detailed proposal/open state remains in the requirements decision register. 
 
 Before provisioning/configuration work for AC-34–37 and AC-48–49, finalize the protected staging branch and Vercel Preview mapping, separate Staging/Production Supabase project allocation, account capacity, and Preview/Production variable scopes. This operational mapping does not change the AC contract expectations and is not required for Phase 0 exit. The global mock suite can validate branch/environment separation and fail-closed behavior using abstract environment identifiers; actual account eligibility and deployed settings are verified later as separate evidence.
 
+Phase 1 provisioning-entry checklist:
+
+- [ ] Confirm current Vercel Hobby eligibility and Supabase Free account capacity.
+- [ ] Approve the branch-to-environment mapping and separate Staging/Production project allocation.
+- [ ] Verify Preview and Production variable scopes before provisioning or deployment.
+
 ## 5. First increment candidate: delivery foundation contracts
 
 This is a **test-specification candidate only**, not permission to write tests or code while Phase 0 is open. Once Phase 0 passes, it is expected to be the first implementation increment. Its cases must be expanded to concrete test names, expected outcomes, mock behavior, and non-mock evidence types. After Phase 0 approval, these and all other active-AC tests must be executable and mock-validated before the first project implementation code.
@@ -82,7 +88,6 @@ While Phase 0 is open, refine only the written test specifications; do not creat
 - [ ] Assign every active AC to an increment, test IDs, expected outcome, evidence type, owner and blocked decision, preserving all 51 criteria.
 - [ ] Approve public interfaces for provisioning, migration, environment validation, quota reporting, build gates and artifact verification.
 - [ ] Document database schema, idempotency, transaction/locking, outbox, RLS and secret boundaries for the foundation slice.
-- [ ] Confirm current Vercel/Supabase Free account capacity and Hobby eligibility before provisioning.
 - [ ] Review current direct dependency versions/licenses and update `ATTRIBUTIONS.md`; commit a lockfile only after toolchain approval.
 - [ ] Complete all planning/design/decision work; keep this checklist free of executable test or implementation tasks.
 
