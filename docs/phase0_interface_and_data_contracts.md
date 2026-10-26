@@ -158,7 +158,7 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 - [x] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
 - [x] Approve server clock and durable deadline-scheduler contract for lobby timers.
 - [x] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
-- [x] Refine all 67 AC case IDs into executable oracles and evidence tiers; validate each oracle with conforming/violating scripted traces before production implementation.
+- [x] Map all 67 AC case IDs to oracle entries and evidence tiers. **Phase 0A gate status:** the latest exact-commit review scored 92/89.9 and identified gaps; the local candidate now includes the mapped supplemental assertions, but the global gate remains incomplete until fresh independent review reaches 98/98.
 - [x] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
 - [x] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 
