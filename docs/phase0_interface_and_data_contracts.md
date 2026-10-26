@@ -106,6 +106,8 @@ Approved access model for implementation:
 
 RLS policy details, guest-session representation, and role administration follow this approved contract. Retention values follow the resolved v2.6 schedule: audit events one year, published outbox rows seven days, and idempotency results through 30 days after room close. The v2.6 product policy fixes guest persistence and public aliases. Service-role credentials remain server-only and are not exposed to clients. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
 
+Phase 1 persistence refinement: room and match command records retain an explicit room anchor, so a finished match uses its room's close timestamp rather than a nonexistent match `closed` status. Room-linked moderation records use the same anchor. Profile and moderation commands without room context retain their canonical results for 30 days after creation. These records remain private; audit retention is independent. Live rounds reference a specific immutable `(pair_id, pair_version)`; changing content requires a new version.
+
 ## 7. Transaction and concurrency contracts
 
 Each state-changing command includes a unique command ID, authenticated actor, aggregate ID, and expected version when a stale view could cause a conflict. The transaction boundary owns command deduplication, aggregate transition, durable result, and outbox intent.

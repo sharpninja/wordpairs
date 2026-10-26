@@ -25,7 +25,7 @@ Deliver Wordpairs through coding Phase 6 and obtain independent hostile-validati
 4. **Separate evidence tiers.** AC contract evidence is mockable and independent of deployment. Local/disposable database and provider checks are additional TR integration evidence; deployed artifact checks never satisfy AC coverage.
 5. **No deployment before Phase 7.** Do not provision, connect, preview-deploy, or release during coding Phases 1–6. Phase 7 is after all coding and final AC validation.
 6. **Project constraints.** Use the approved Vercel/Supabase Free-tier target, do not depend on GitHub Actions, preserve GPL-2.0-only licensing, attribution, and the per-release SWBOM requirement.
-7. **Independent review.** Use GPT-5.6 Sol High for implementation/coding and reserve GPT-6 Astra xhigh for independent hostile validation after implementation. At each phase exit, review the exact immutable GitHub commit with a hostile reviewer independent from implementation. Record the complete request, rubric, reviewer output, scores, findings, corrections, and final disposition in JSONL. Iterate until reviewer and implementation owner agree at 98% or higher for both measures.
+7. **Independent review.** The current user's execution goal selects GPT-6 Astra **high** for independent hostile validation at every phase exit, superseding the prior reviewer-effort setting. At each phase exit, review the exact immutable GitHub commit with a hostile reviewer independent from implementation. Record the complete request, rubric, reviewer output, scores, findings, corrections, and final disposition in JSONL. Iterate until reviewer and implementation owner agree at 98% or higher for both measures.
 
 ## Milestones and exit evidence
 
