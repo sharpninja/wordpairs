@@ -1,13 +1,13 @@
 # Implementation Kickoff: Phase 0 Execution
 
-**Status:** Phase 0 approved; AC mock-oracle gate complete; exact-commit hostile review pending before Phase 1A  
+**Status:** Phase 0 approved; AC mock-oracle gate incomplete after hostile review; Phase 1A blocked  
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Execution date:** 26 October 2026  
 **Target:** `sharpninja/wordpairs`
 
 ## 1. Current baseline
 
-The user approved Phase 0 on 26 October 2026. Planning artifacts and the v2.6 baseline are now approved for test authoring. The test-only Node/Vitest harness now has 72 passing tests: four AC-38/AC-39 traceability/attribution checks, one inventory-to-oracle manifest check, and 67 scripted AC oracle checks that accept conforming traces and reject mutated violations. This validates assertion sensitivity only; no application behavior or production implementation is claimed. The global mock-oracle gate is complete, so Phase 1A may begin. Each implementation increment must run its applicable oracles against the real SUT and the full regression suite, following BDP v4 Red/Green/Refactor.
+The user approved Phase 0 on 26 October 2026. Planning artifacts and the v2.6 baseline are approved. The test-only Node/Vitest harness has 154 passing tests, but the exact-commit hostile review at `239fcee793662491c85be05c07fbe3bdc9606e3d` scored 82% accuracy and 75% completeness. It found that AC oracles are generic comparisons against clones of expected objects, important semantic failures pass, and seven remote workflow SVGs were corrupted by a truncated upload. The global mock-oracle gate is incomplete; Phase 1A remains blocked until fixes are independently reviewed at 98/98 or higher. The passing tests validate only the current test implementation, not AC coverage or product behavior.
 
 The requirements contain 22 functional requirements, 31 technical requirements, and 45 active acceptance criteria. The six retired IDs AC-34, AC-35, AC-36, AC-40, AC-48, and AC-49 remain reserved and are verified only through their mapped technical requirements. [`ac_test_inventory.md`](ac_test_inventory.md) maps all 45 active ACs to 67 test oracles. The oracle suite proves assertion sensitivity, not product conformance. The user approved the v2.6 baseline, architecture, interface contracts, and Phase 0 exit. All product choices affecting active AC expected results are resolved.
 
@@ -17,8 +17,8 @@ The requirements contain 22 functional requirements, 31 technical requirements, 
 |---|---|---|---|
 | Requirements baseline | Requirements v2.6; 45 active ACs (51 numbered IDs including six retired TR-only IDs); all FR/TR IDs mapped in [`architecture_design.md`](architecture_design.md) | Approved by user | Record approval in the Phase 0 receipt; any later behavior change requires a formal requirements and test change. |
 | DDD and concurrency direction | Modular monolith, context split, ports/adapters, aggregate transactions, idempotency, outbox and SVG diagrams in [`architecture_patterns.md`](architecture_patterns.md) and [`architecture_design.md`](architecture_design.md) | Approved for implementation | ADR and interface contracts are recorded; evolve only through reviewed requirements/design changes. |
-| Test traceability | 45 active ACs map to 67 planned AC case IDs; deployment-only IDs are retired and mapped to TR-only verification | Phase 0 approved; 67/67 AC mock oracles validated; application behavior pending implementation | Run the same 67 oracles against the real application as behaviors are implemented; keep app-conformance evidence distinct from mock-oracle validation. Mockable TR contracts are also test-first before their later implementation; deployed-artifact checks are TR integration/operational evidence and never count as AC coverage. |
-| Test-harness bootstrap | Selected test tools/direct dependencies and licenses are documented in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); package-lock.json records installed test dependencies | Test-only harness established; 67/67 contract oracles pass conforming/violating mock-trace checks | Mock-oracle gate is complete; begin Phase 1A. This bootstrap contains no product implementation, routes, schema, migrations, or production adapters. |
+| Test traceability | 45 active ACs map to 67 planned AC case IDs; deployment-only IDs are retired and mapped to TR-only verification | Inventory and schema guard present; full meaningful scenario coverage not yet validated | Correct each scenario/assertion and relevant semantic negative control. Then run the same reusable assertions against real behavior as implemented; keep product-conformance evidence distinct. TR and deployment checks never count as AC coverage. |
+| Test-harness bootstrap | Selected test tools/direct dependencies and licenses are documented in [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md); package-lock.json records installed test dependencies | Revised test-only harness passes 154 tests; exact-commit hostile re-review pending | Prior review findings were corrected locally: separate contract expectations/raw observations, reusable drivers/assertions, semantic violations, and restored SVGs. Sync and obtain exact-commit 98/98 review before Phase 1A. No product implementation exists. |
 | Deployment topology | Vercel Hobby + Supabase Free, no GitHub Actions, manual provisioning, SWBOM/release gates documented | Constraints accepted; deployment follows coding | Do not provision or deploy during coding Phases 1–6. Finalize branch/project mapping and verify account capacity at Phase 7 entry. These TR checks do not change AC expectations. |
 | Data/security design | DDD ownership, projection boundaries, and candidate persistence/security contracts are documented | Approved design baseline | Implement and validate the schema/security contract through tests before the Phase 1 persistence adapter. |
 | Public interfaces and data contracts | Approved commands, queries, typed failures, event audiences, logical relations, RLS and transaction invariants are documented in [`phase0_interface_and_data_contracts.md`](phase0_interface_and_data_contracts.md) | Approved design baseline | Translate the approved contracts into executable test names/paths; any technical change requires corresponding test updates. |
@@ -48,13 +48,13 @@ All product decisions affecting active AC expected results are resolved in Requi
 
 The user approved the Phase 0 baseline and exit on 26 October 2026. The implementation owner records test/mock evidence, implementation increments and review receipts. Any change affecting requirements or expected results returns through requirements and test review before code changes.
 
-Phase 0 approval and the global mock-oracle gate are complete. The harness validates all 67 AC oracles against conforming and field-by-field violating scripted traces; it validates assertion sensitivity, not the product. The next steps are:
+Phase 0 approval is complete; the global mock-oracle gate is awaiting independent re-review after correction. The harness currently validates all 67 AC scenarios against independently authored contract expectations and named violating traces. This is test sensitivity evidence, not product conformance. The next steps are:
 
 1. **Record the exact gate evidence:** keep test IDs, commands, results, hashes, and boundary limits in `test_execution_receipt.jsonl`.
 2. **Hostile review:** independently review the exact remote commit and iterate until accuracy and completeness both score at least 98%.
 3. **Phase 1A entry:** after that review passes, begin production implementation with BDP v4 Red/Green/Refactor. Run the unchanged oracles against real behavior incrementally and record product conformance separately.
 
-The v2.6 decision register resolves all product outcomes. Phase 0 approvals and the global mock-oracle gate are complete; exact-commit hostile review is pending before Phase 1A. Deployment topology and account eligibility remain post-coding Phase 7 work.
+The v2.6 decision register resolves all product outcomes. Phase 0 approval is complete; the global mock-oracle gate is pending exact-commit hostile re-review at 98/98 before Phase 1A. Deployment topology and account eligibility remain post-coding Phase 7 work.
 
 The v2.6 requirements decision register records resolved defaults. Future changes that affect expected behavior require a baseline update and corresponding test-specification revision before implementation.
 
@@ -92,7 +92,7 @@ Specify these now, but implement/run them only after coding Phases 1–6 are com
 | TR-26–27 | `TR-26-T01`, `TR-27-T01` | Fake test runner/build metadata and temporary output verify fail-closed ordering and fixture SWBOM generation. |
 | TR-28–29 | `TR-28-T01`, `TR-29-T01` | Temporary source archive and fixture SWBOM/license verify required paths/notices without deployment. |
 
-The 67 active-AC oracle IDs are executable and pass scripted conforming/violating mock-trace sensitivity checks. That gate validates assertions only, not the product. Phase 1A may begin; as each behavior is implemented, run the applicable oracle against the real system under test, inspect positive and failure paths, and record product-conformance results. Separately record non-mock evidence required by each AC. Run the full regression suite before closing each increment.
+The 67 active-AC IDs have test entries, but the 26 October hostile review showed the current entries are insufficient: expected objects are used as their own conforming observations, and semantic violations in privacy, ranking, and category background are accepted. The gate is not passed. Fix scenario setup, actions, raw observations, reusable assertions, and semantic negative controls. Phase 1A may begin only after the complete suite has zero failures/skips and an independent exact-commit review scores at least 98/98. During implementation, run those unchanged assertions against the real system and record actual product conformance separately.
 
 ## 6. Phase 0 exit checklist
 
@@ -103,4 +103,4 @@ The 67 active-AC oracle IDs are executable and pass scripted conforming/violatin
 - [x] Review current direct dependency versions/licenses and update `ATTRIBUTIONS.md`; the approved test-only dependency lockfile is committed. Runtime dependencies remain planned for Phase 1.
 - [x] Complete all planning/design/decision work; keep this checklist free of executable test or implementation tasks.
 
-**Current gate:** Phase 0 passed on 26 October 2026 by user approval; see `phase0_approval_receipt.jsonl`. All 67 AC oracles pass conforming/violating scripted mock-trace validation, covering all 45 active ACs. This validates tests, not product behavior. Phase 1A may begin; keep each oracle in the full suite and verify actual behavior incrementally. Deployment remains Phase 7 after coding Phases 1–6; database/platform checks remain TR evidence separate from AC coverage.
+**Current gate:** Phase 0 passed on 26 October 2026 by user approval; see `phase0_approval_receipt.jsonl`. The global AC mock-oracle gate has not passed review. At `239fcee793662491c85be05c07fbe3bdc9606e3d`, hostile validation scored accuracy 82% and completeness 75%; see the review receipt. Phase 1A is blocked pending corrections and exact-commit scores of at least 98/98. Deployment remains Phase 7 after coding Phases 1–6; database/platform checks remain TR evidence separate from AC coverage.

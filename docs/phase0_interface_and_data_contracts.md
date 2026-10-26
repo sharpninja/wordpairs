@@ -9,7 +9,7 @@
 
 This Phase 0-approved document defines module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is the contract baseline for executable mock-first tests; product decisions affecting AC expected results are resolved in requirements v2.6.
 
-The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. The 67 active-AC test oracles pass scripted conforming/violating mock-trace validation before production implementation. This validates assertion sensitivity only. The same oracles must exercise real behavior during each implementation increment.
+The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. The current 67-case test suite is not yet an accepted mock-validation gate: hostile review found its conforming observations are clones of expected objects and that several semantic violations pass. Correct and independently review the scenarios before Phase 1A. The same reusable assertions must exercise real behavior during each implementation increment.
 
 Deployment, provider/account configuration, branch topology, and deployed-artifact checks are outside AC coverage. Deployment execution and deployment tooling follow completion of coding Phases 1–6; topology is finalized at Phase 7 entry. Mockable operational command contracts remain TR work and follow their own test-first gate.
 

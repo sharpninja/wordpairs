@@ -59,20 +59,30 @@ const packageJson = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
 };
+const packageLock = JSON.parse(readFileSync(resolve(process.cwd(), 'package-lock.json'), 'utf8')) as {
+  packages: Record<string, { version?: string; license?: string }>;
+};
 const attribution = readFileSync(resolve(process.cwd(), 'docs/ATTRIBUTIONS.md'), 'utf8');
 
 describe('direct dependency attribution (AC-39)', () => {
-  it('records each installed direct dependency, exact version, and declared license', () => {
+  it('records each installed direct dependency purpose, upstream, exact locked version, and license', () => {
     expect(packageJson.license).toBe('GPL-2.0-only');
     const direct = { ...packageJson.dependencies, ...packageJson.devDependencies };
     for (const [name, version] of Object.entries(direct)) {
       const row = attribution.split(/\r?\n/).find((line) => line.startsWith(`| \`${name}\` |`));
       expect(row, `missing attribution for ${name}`).toBeDefined();
-      expect(row!.split('|')[3].trim(), `version mismatch for ${name}`).toBe(version);
+      const columns = row!.split('|').map((column) => column.trim());
+      expect(columns[2], `missing purpose for ${name}`).not.toBe('');
+      expect(columns[3], `version mismatch for ${name}`).toBe(version);
+      expect(columns[4], `missing registry source for ${name}`).toMatch(/^\[.+\]\(https:\/\/.+\)$/);
+      expect(columns[6], `missing upstream source for ${name}`).toMatch(/^\[.+\]\(https:\/\/.+\)$/);
       const packageFile = resolve(process.cwd(), 'node_modules', ...name.split('/'), 'package.json');
       const installed = JSON.parse(readFileSync(packageFile, 'utf8')) as { version: string; license: string };
       expect(installed.version, `installed version mismatch for ${name}`).toBe(version);
-      expect(row!.split('|')[5].trim(), `license mismatch for ${name}`).toBe(installed.license);
+      expect(columns[5], `license mismatch for ${name}`).toBe(installed.license);
+      const locked = packageLock.packages[`node_modules/${name}`];
+      expect(locked?.version, `lockfile version mismatch for ${name}`).toBe(version);
+      expect(locked?.license, `lockfile license mismatch for ${name}`).toBe(installed.license);
     }
   });
 });
