@@ -1,7 +1,7 @@
 # Wordpairs Deployment and Release Plan
 
 **Status:** Proposed operational plan; deployment implementation has not started  
-**Requirements baseline:** `word_association_game_requirements.md` v2.5  
+**Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Implementation sequence:** `implementation_plan.md`  
 **Hosting constraint:** Vercel Hobby and Supabase Free; no paid add-ons or fallback  
 **Automation constraint:** no GitHub Actions
@@ -10,7 +10,7 @@
 
 This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. Deployment, provisioning, build/SWBOM, and environment-isolation checks are bound to technical requirements TR-20–TR-29, not to ACs. Any live deployment/account/database checks are TR-only integration or operational evidence and cannot satisfy the AC mock-coverage gate. The public landing behavior remains covered by active AC-43 and AC-50 tests against local components and mocked projections; deployed smoke checks are operational diagnostics only.
 
-The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the proposed application stack pending its architecture decision record. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
+The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the selected application stack, pending Phase 0 technical ADR approval. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
 
 ![Vercel deployment workflow](word_association_vercel_deployment.svg)
 
@@ -63,11 +63,11 @@ Supabase Free currently permits two free projects across an owner's/admin's orga
 - Review current official plan terms, usage quotas, project pausing, log retention, database backup availability, region choice, and CLI versions.
 - Choose a region based on expected player geography and service availability; record the choice. Avoid claiming a multi-region or uptime guarantee on Free.
 - Approve secret names and ownership without writing secret values to this plan or the repository.
-- Approve database schema and migrations in accordance with the implementation plan. Deployment planning may proceed during Phase 0; provisioning/deployment execution and related implementation must follow the applicable mock-first gates. Final branch/project topology is confirmed at Phase 1 provisioning entry.
+- Approve database schema and migrations in accordance with the implementation plan. Deployment planning may be completed during Phase 0. Provisioning, deployment tooling, and deployment execution begin only after coding Phases 1–6 are complete, in Phase 7. Confirm branch/project topology at Phase 7 deployment entry.
 
 ### 4.2 Repeatable provisioning command
 
-Implement one manually invoked provisioning entry point, backed by pinned Supabase CLI and Vercel CLI versions. Select a shell or Node-based wrapper during Phase 1 foundation design, before provisioning scripts are implemented; declare the tools as direct development/build dependencies or provide a pinned documented installation mechanism, and add their purpose, license, and upstream source to `ATTRIBUTIONS.md`. Final branch/project topology and account-capacity confirmation are also Phase 1 provisioning decisions, not Phase 0 exit gates.
+Implement one manually invoked provisioning entry point, backed by pinned Supabase CLI and Vercel CLI versions. Select a shell or Node-based wrapper during Phase 7 post-coding deployment design, before provisioning scripts are implemented; declare the tools as direct development/build dependencies or provide a pinned documented installation mechanism, and add their purpose, license, and upstream source to `ATTRIBUTIONS.md`. Final branch/project topology and account-capacity confirmation are Phase 7 deployment-entry decisions after coding, not Phase 0 exit gates.
 
 The command has explicit subcommands, a safe default dry-run/plan mode, and confirmation for destructive changes:
 
@@ -86,7 +86,9 @@ Store Supabase configuration, SQL migrations, seed fixtures, application build c
 
 Use a two-person review where possible; otherwise use an explicit self-review checklist for Production. Supabase schema and RLS policies are reviewed as code. Keep Vercel build configuration in the project files only where the framework actually requires it; do not duplicate settings in incompatible Dashboard and file-based configuration.
 
-## 5. Git-to-Vercel workflow
+## 5. Git-to-Vercel workflow (post-coding phase)
+
+Do not connect the repository to Vercel or execute deployments during coding Phases 1–6. Complete local and disposable-service validation first. Begin this workflow only in Phase 7, after the coding phase is complete and the full AC suite passes.
 
 ### 5.1 Repository setup
 
