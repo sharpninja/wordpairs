@@ -40,7 +40,7 @@ The current requirements call out unresolved or proposed decisions. Before imple
 
 Before coding, produce and review these design artifacts:
 
-- Architecture decision record for Next.js on Vercel, Supabase Postgres/Realtime, guest and OIDC identity, and server-authoritative game state.
+- Architecture decision record confirming the proposed Next.js/TypeScript application framework and detailing the already specified Vercel and Supabase choices, guest/OIDC identity, and server-authoritative game state. Vercel and Supabase are requirements (TR-20–TR-24); Next.js/TypeScript remain proposed until this ADR is approved.
 - Pattern decision record in [`architecture_patterns.md`](architecture_patterns.md) covering DDD boundaries, ports/adapters, pure policy testing, room transactions, idempotency, and transactional outbox.
 - Context/container diagram and trust-boundary notes. Identify browser, Next.js server/API, Supabase database, Realtime, identity provider, Vercel deployment, and operator workstation responsibilities.
 - Domain model and state-transition diagrams for room/lobby readiness, membership/observer promotion, match, round/hint stages, nominations, moderation, and suggestions.
@@ -93,7 +93,7 @@ This is the initial allocation of every criterion to its first implementation ph
 | AC-29 | Phase 5 | Allowed emoji broadcast to players/observers; arbitrary payload and state/score mutation rejected; display/rate rules after approval. |
 | AC-30–33 | Phase 3 | Oldest observer selected; player relative order retained; no-observer vacancy; fake-clock 30s idle; 5s holdout warning; ready-before-expiry; boot-at-expiry; two-player edge decision; lock and no replacement after countdown. |
 | AC-34–37 | Phase 1 | Vercel branch-to-environment mapping; no Actions dependency; free plan configuration; rerunnable provisioning/migrations/secrets masking; recoverable quota response without paid fallback. |
-| AC-38 | Phases 0–7 | Build-order contract; test inventory reports 51/51 active AC covered; test command blocks application build on failure; mock-first evidence recorded for each increment. |
+| AC-38 | Phases 0–7 | [`ac_test_inventory.md`](ac_test_inventory.md) links all 51 active ACs to planned test IDs; it does not mean test code has been authored or passed. For each increment, mock-first evidence is recorded before implementation; the test command blocks the application build on failure. |
 | AC-39 | Phase 1 and any dependency/asset change | Lockfile consistency; attribution row/license/source for every direct package and external asset; unreviewed dependency/asset blocks release. |
 | AC-40 | Phase 1 and every deployment | Build fixture for valid CycloneDX 1.6; exact lockfile and commit metadata; runtime/dev inventory; environment/URL; secret scan; endpoint inclusion in same immutable deployment. |
 | AC-41 | Phase 1 and every release | Archive contains exact release source, `LICENSE`, and `sbom/<sha>.cdx.json`; reject missing, malformed, or wrong-commit report. |
