@@ -1,7 +1,7 @@
 # Word Association Game Requirements
 
 **Functional behavior, technical requirements, and acceptance criteria**  
-Version 2.2 · 25 October 2026 · Draft for product approval
+Version 2.3 · 26 October 2026 · Draft for product approval
 
 ## Purpose and scope
 
@@ -281,7 +281,7 @@ Criteria that depend on an unresolved decision are provisional until that decisi
 | AC-29 In-round emoji reaction | Given a round is active, when a player selects an emoji from the menu, then the reaction appears in real time to room players and observers and does not change scores, answer stage, or round state. |
 | AC-30 Pre-countdown observer promotion | Given a room is full and the start countdown has not begun, when a player leaves and at least one observer is waiting, then the observer who entered observer mode earliest becomes the final player in the roster, existing players move up to close the vacancy while preserving their relative order, and any remaining observers stay observers. |
 | AC-31 Ready countdown and roster lock | Given every player in the room has marked ready, when the final ready state is received, then the game start countdown begins immediately and the player roster locks. If a player leaves after the countdown begins, then no observer or other player is promoted or substituted into that player’s place. |
-| AC-32 Holdout warning and removal | Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready, they are removed from the room and the start countdown begins with the remaining roster locked. |
+| AC-32 Holdout warning and removal | Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready, they are removed from the room and the start countdown begins with the remaining roster locked, even if only one player remains. |
 | AC-33 Idle lobby readiness prompt | Given the game start countdown has not begun, when the lobby state remains unchanged for 30 seconds, then the game prompts all players in the lobby to mark themselves ready. |
 | AC-34 Vercel branch deployments | Given the Vercel Git integration is connected to `sharpninja/wordpairs`, when a non-production branch is pushed, then Vercel creates a Preview deployment; when a change is merged to `main`, then Vercel creates a Production deployment. No GitHub Actions workflow is required. |
 | AC-35 Free-tier deployment | Given the project is provisioned, when deployment and storage resources are inspected, then Vercel Hobby and Supabase Free are used, no paid add-on or metered upgrade is enabled, and the project is configured for personal non-commercial use. |
@@ -331,7 +331,6 @@ Resolve these items before treating the acceptance criteria as final.
 | Landing-page lobby information | Define public fields, whether counts are exact or bucketed, refresh interval, join action, and how room discoverability/started/full state is represented. Do not expose room codes or private player details by default. | Proposed |
 | Landing-page rules source | Confirm whether the public rules are a concise summary or the complete rules, and how a rules revision is reflected in the page. | Proposed |
 | Host controls and countdown duration | Confirm whether the room creator has additional controls and set the game start countdown duration. The five-second warning shown to a sole holdout is confirmed. | Open |
-| Minimum roster after holdout removal | If the sole unready player is removed from a two-player room, only one player remains. Decide whether to cancel the start countdown, allow a one-player game, or apply another rule; the current minimum is two players. | Open |
 | Free-tier capacity target | Set the expected peak number of concurrent players and rooms and decide the user-facing behavior when Supabase Free connection, message, database, or egress limits are reached. The app must not incur paid usage. | Open |
 | Reconnect and room expiry | Define reconnection behavior, room-code lifetime, and what happens if the creator disconnects. | Open |
 
