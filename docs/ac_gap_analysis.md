@@ -7,7 +7,7 @@
 
 ## 1. Current status
 
-Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 67 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. This is traceability planning, not authored or passing coverage. Phase 0 was approved on 26 October 2026. Test authoring and mock validation are now authorized; they are not yet complete. No production implementation code may begin until every active-AC contract test is executable and passes against mocks.
+Requirements v2.6 resolves the product choices that determine active AC outcomes. The inventory maps all 45 active criteria to 67 planned AC test cases; two TR-30 public-query contract cases and six TR-31 database integration cases remain outside AC coverage. The oracle cases are authored and pass scripted mock-sensitivity checks; they do not prove application conformance. Phase 0 was approved on 26 October 2026. The 67 AC oracles pass conforming/violating mock-trace validation, so Phase 1A may begin. Run the same oracles against real product behavior as each increment is implemented; do not count mock-sensitivity checks as application conformance.
 
 No AC depends on deployed artifacts. Deployment, provisioning, environment topology, build gates, and deployed SWBOM checks are TR-only or operational evidence. Deployment execution and its tooling occur after coding Phases 1–6, in Phase 7; topology/account eligibility is assessed at Phase 7 entry. AC-39/41/42 are mockable document/archive contracts using local fixtures, and AC-37 is mockable application behavior. AC-38 is a traceability/process contract.
 
@@ -15,7 +15,7 @@ Lobby behavior is fixed: pre-countdown departure from a full room promotes the o
 
 ## 2. Phase 0 closure and next gate
 
-There are no unresolved product decisions affecting active AC expected outcomes. The user approved the v2.6 baseline, architecture, interfaces, and technical contracts in Phase 0. The next gate is completing and mock-validating the full active-AC test suite before production implementation:
+There are no unresolved product decisions affecting active AC expected outcomes. The user approved the v2.6 baseline, architecture, interfaces, and technical contracts in Phase 0. The mock-oracle gate is complete: all 67 active-AC oracles accept conforming scripted traces and reject mutations. This validates assertion sensitivity; run the same oracles against real behavior in each implementation increment.
 
 | Approved Phase 0 decision | Recorded contract/design baseline | Related scope |
 |---|---|---|
@@ -23,20 +23,20 @@ There are no unresolved product decisions affecting active AC expected outcomes.
 | Application interfaces | Approved commands, queries, typed errors, event schemas/audiences, server-derived identity and role checks. | AC-01–33, AC-37–39, AC-43–47, AC-50–51 |
 | Persistence and security | Approved logical schema, RLS, transaction/locking, idempotency, outbox, audit, retention and secret boundaries. | AC-28/37/45/47/50/51; TR-01–05/09/22/23/31 |
 | Timer contract | Approved versioned durable deadline semantics and stale/duplicate delivery handling. Actual Free-plan platform availability is a post-coding Phase 7 TR integration check. | AC-30–33; TR-22 |
-| Test authoring and mock-validation gate | Replace all 67 planned AC cases with executable test names, exact assertions, fake behavior and evidence tiers; validate every active AC against mocks before production code. | All active ACs |
+| Mock-oracle gate | 67 executable test oracles cover all 45 active ACs; each accepts a conforming scripted trace and rejects a violating mutation. Product behavior is verified separately as code is implemented. | All active ACs |
 | Post-coding deployment planning | Keep Vercel, account, branch/project, provisioning, deployed build and operational SWBOM evidence outside AC coverage. | TR-20–29; AC-41/42 use only local fixtures |
 
 ## 3. Traceability and evidence gaps to close
 
-| Requirement area | Current mapping | Test-authoring/mock-validation action |
+| Requirement area | Current mapping | Implementation conformance check |
 |---|---|---|
-| Server authority, answers, privacy | AC-09, AC-28, AC-45; TR-01–05 | Give adversarial client payloads explicit assertions for score, roster, category choice, results and event order. |
-| Timing and concurrency | AC-10–14, AC-30–33, AC-51 | Define equal-time event ordering and timer invalidation assertions with deterministic clocks/schedulers. Database locking/durability remains separate TR integration evidence. |
-| Catalog and moderation | AC-16–19, AC-47 | Specify fixtures for incomplete/unapproved content, unique nominations, reasoned moderation, one appeal and audit expectations. |
-| Identity | AC-20–21, AC-46 | Specify verified OIDC claims and same-device guest persistence contracts. Provider registration/entitlement remains external TR integration evidence, never an AC oracle. |
-| Lobby and observers | AC-01–02, AC-22–33, AC-51 | Specify invalid/expired code and link, reconnect grace, stale capacity, simultaneous membership, observer promotion, compaction and locked departure cases. |
-| Public landing | AC-43, AC-50 | Freeze allowlisted DTO assertions for leaderboard ordering/opt-out, lobby summaries, refresh cadence and versioned rules. |
-| Attribution and source release | AC-39, AC-41–42 | Validate temporary manifests/archives for missing notices, incomplete tracked source, malformed/mismatched fixture SWBOM, GPL text and checksum behavior. |
+| Server authority, answers, privacy | AC-09, AC-28, AC-45; TR-01–05 | Run the existing adversarial payload oracles against real use cases and verify score, roster, category choice, results and event order. |
+| Timing and concurrency | AC-10–14, AC-30–33, AC-51 | Run equal-time ordering and timer invalidation oracles with deterministic clocks/schedulers. Database locking/durability remains separate TR integration evidence. |
+| Catalog and moderation | AC-16–19, AC-47 | Run the approved incomplete/unapproved content, nomination, reasoned moderation, appeal and audit oracles against the real implementation. |
+| Identity | AC-20–21, AC-46 | Verify OIDC claim failures and same-device guest persistence against mocked providers and the real application adapter. Provider registration/entitlement remains external TR integration evidence, never an AC oracle. |
+| Lobby and observers | AC-01–02, AC-22–33, AC-51 | Run existing invalid/expired code, reconnect, stale capacity, concurrent membership, observer promotion/compaction and locked-departure oracles against the real SUT. |
+| Public landing | AC-43, AC-50 | Run allowlisted DTO assertions for leaderboard order/opt-out, lobby summaries, refresh cadence and versioned rules against the real projection. |
+| Attribution and source release | AC-39, AC-41–42 | Run the temporary-manifest/archive oracles against local fixtures for notices, tracked source, SWBOM identity, GPL text and checksums. |
 | Architecture boundary | AC-51 / TR-31 | AC-51 is limited to mockable domain/application behavior. Database serialization/idempotency/outbox durability is tested separately as TR-31 integration evidence and never contributes to AC coverage. |
 | Deployment and operations | TR-20–TR-29 | Validate mockable operational interfaces before their Phase 7 tools are written. Record real account, environment and deployment evidence separately after coding. |
 
@@ -53,12 +53,13 @@ There are no unresolved product decisions affecting active AC expected outcomes.
 | Deployed artifacts used as AC evidence | Resolved: no AC depends on deployed artifacts. Mockable behavior and local fixtures provide AC evidence. |
 | SWBOM archive behavior conflated with deployment | Resolved: AC-41/42 check temporary source archives and fixtures; deployment SWBOM behavior is TR-only. |
 
-## 5. Post-approval actions
+## 5. Current next actions
 
-1. Replace all 67 planned AC case IDs with exact executable test names/paths, assertions, fake interactions and evidence tiers.
-2. Verify all 45 active ACs have executable, mockable contract coverage and validate the complete suite against mocks before any production implementation code.
-3. Keep real database/provider/deployment checks in separate TR integration or operations records. They cannot establish or substitute for AC coverage.
-4. Record test outputs and hostile review against the exact repository commit; no planned test ID is represented as passing coverage before execution.
+1. Preserve the 67 executable oracle cases and their traceability to all 45 active ACs.
+2. Keep the test-execution receipt anchored to hashes, commands, and exact outputs.
+3. Obtain exact-commit hostile review at 98% or higher accuracy and completeness before beginning Phase 1A.
+4. During each implementation increment, run applicable oracles against real product behavior; report product conformance separately from mock-oracle sensitivity.
+5. Keep real database/provider/deployment checks in separate TR integration or operations records; they cannot establish or substitute for AC coverage.
 
 ## 6. Review limits
 
