@@ -3,7 +3,7 @@
 **Requirements traceability, DDD component split, and design-pattern class views**  
 Version 1.0 · 26 October 2026 · Derived from Requirements v2.2
 
-This document maps every functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to the proposed bounded contexts, application components, and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. The architecture is a modular monolith: one deployable Next.js application and one Supabase/Postgres data boundary, with explicit domain modules and ports. The diagrams are SVG assets embedded here.
+This document maps every functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to the proposed bounded contexts, application components, and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. The selected deployment and persistence requirements are Vercel and Supabase/Postgres (TR-20–TR-24). The architecture proposes a modular monolith using Next.js/TypeScript, pending approval of the architecture decision record before implementation. The diagrams are SVG assets embedded here.
 
 ## Architecture rules
 
@@ -115,7 +115,7 @@ The command path validates the command key, locks/reloads the aggregate in one t
 
 ## Deployment and runtime topology
 
-Vercel hosts the Next.js web application and server endpoints. Supabase Postgres is the durable source of truth; Supabase Realtime transports committed allowlisted outbox events. Domain code stays inside the application modules. A deadline scheduler is accessed through a port and must use a supported free-tier mechanism with durable, idempotent callbacks; a serverless process or browser timer is never treated as the authority. Build and release pipelines validate tests and the commit-matched SWBOM per the technical requirements.
+Vercel hosts the web application selected by the architecture decision record; the current proposal is Next.js/TypeScript. Supabase Postgres is the durable source of truth; Supabase Realtime transports committed allowlisted outbox events. Domain code stays inside the application modules. A deadline scheduler is accessed through a port and must use a supported free-tier mechanism with durable, idempotent callbacks; a serverless process or browser timer is never treated as the authority. Build and release pipelines validate tests and the commit-matched SWBOM per the technical requirements.
 
 ## Open decisions preserved
 
