@@ -1,6 +1,6 @@
 # Phase 1A Execution: Application Skeleton and Module Boundaries
 
-**Status:** In progress  
+**Status:** Historical Phase 1A record at `706e854`; current Phase 1 foundation status is in [`phase1_execution.md`](phase1_execution.md)
 **Phase 0A gate:** Passed at 99% accuracy / 100% completeness on commit `f7b5ff8302e24c6eae4dd1d2f21d7cba8577ac29`  
 **Scope:** AC-38/39/51 and TR-25/26; no gameplay behavior
 
