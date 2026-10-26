@@ -7,7 +7,7 @@ Version 2.2 · 25 October 2026 · Draft for product approval
 
 This document defines a real-time word-pair game for 2–25 players who join one room from their own devices. Each curated prompt belongs to a relationship category with a predefined background. Players submit guesses through a sequence of hint stages, with more points awarded for solving earlier. Players who solve before any hint can nominate candidate answers for future curated content.
 
-The requirements record confirmed gameplay and identify proposed defaults or unresolved choices. The document is ready to guide implementation after the open decisions are approved. It does not select a hosting provider, programming language, database, or networking library.
+The requirements record confirmed gameplay and identify proposed defaults or unresolved choices. The deployment provider and persistence/realtime services are specified by TR-20–TR-24 (Vercel and Supabase). The application framework and programming language remain architecture choices: the current plans propose Next.js/TypeScript, subject to an explicit architecture decision before implementation. The requirements do not prescribe a networking library.
 
 ## Game landing page
 
