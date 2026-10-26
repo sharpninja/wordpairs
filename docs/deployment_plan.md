@@ -1,7 +1,7 @@
 # Wordpairs Deployment and Release Plan
 
 **Status:** Proposed operational plan; deployment implementation has not started  
-**Requirements baseline:** `word_association_game_requirements.md` v2.3  
+**Requirements baseline:** `word_association_game_requirements.md` v2.4  
 **Implementation sequence:** `implementation_plan.md`  
 **Hosting constraint:** Vercel Hobby and Supabase Free; no paid add-ons or fallback  
 **Automation constraint:** no GitHub Actions
