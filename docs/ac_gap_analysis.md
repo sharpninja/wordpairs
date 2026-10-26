@@ -1,6 +1,6 @@
 # Acceptance-Criteria Gap Analysis
 
-**Baseline reviewed:** `word_association_game_requirements.md` v2.3  
+**Baseline reviewed:** `word_association_game_requirements.md` v2.4  
 **Current criteria reviewed:** AC-01 through AC-51  
 **Status:** Resolved criteria merged; remaining findings and proposals are documented below
 
