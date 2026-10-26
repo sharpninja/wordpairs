@@ -63,6 +63,16 @@ export class PostgresMatchRepository
         if (snapshot?.code === "IDEMPOTENCY_CONFLICT")
           return failure("IDEMPOTENCY_CONFLICT");
         if (
+          "catalogRevision" in input &&
+          typeof input.catalogRevision === "number"
+        ) {
+          const revision = await connection.query(
+            "select public.wordpairs_lock_catalog_revision() as revision",
+          );
+          if (Number(revision.rows[0]?.revision) !== input.catalogRevision)
+            return failure("CONFLICT");
+        }
+        if (
           input.actorId !== "system:deadline" &&
           lobbyOverdue(room, this.clock.now())
         )

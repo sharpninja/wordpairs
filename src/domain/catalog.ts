@@ -12,6 +12,7 @@ export interface Catalog {
   categories: Category[];
   pairs: Pair[];
   initialCategoryIds: string[];
+  revision?: number;
 }
 export function normalizeAnswer(value: string): string {
   return fullCaseFold(value.normalize("NFKC").trim().replace(/\s+/gu, " "));
@@ -83,9 +84,9 @@ export function categoryPool(catalog: Catalog, categoryId: string): Pair[] {
     if ((newest.get(pair.id)?.version ?? -1) < pair.version)
       newest.set(pair.id, pair);
   }
-  return [...newest.values()].sort((a, b) =>
-    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
-  );
+  return [...newest.values()]
+    .filter((p) => p.selectable !== false)
+    .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 }
 export function roundPair(
   catalog: Catalog,

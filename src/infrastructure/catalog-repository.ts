@@ -16,30 +16,28 @@ const INITIAL_CATEGORIES = [
 export class PostgresCatalogRepository
   implements CatalogReader, ContentRepository
 {
-  private cached: { expiresAt: number; catalog: Catalog } | null = null;
-  private loading: Promise<Result<Catalog>> | null = null;
-  constructor(
-    private pool: SqlPool,
-    private now = () => Date.now(),
-  ) {}
+  private cached: Catalog | null = null;
+  constructor(private pool: SqlPool) {}
   read(): Promise<Result<Catalog>> {
-    if (this.cached && this.cached.expiresAt > this.now())
-      return Promise.resolve(success(this.cached.catalog));
-    if (this.loading) return this.loading;
-    this.loading = this.load().finally(() => {
-      this.loading = null;
-    });
-    return this.loading;
+    return this.load();
   }
   private async load(): Promise<Result<Catalog>> {
     let connection: SqlConnection | undefined;
     try {
       connection = await this.pool.connect();
+      const revision = await connection.query(
+        "select public.wordpairs_catalog_revision() as revision",
+      );
+      if (
+        this.cached &&
+        this.cached.revision === Number(revision.rows[0]?.revision)
+      )
+        return success(this.cached);
       const query = await connection.query(
         "select public.wordpairs_catalog() as response",
       );
       const result = query.rows[0]?.response as
-        | Result<{ categories: Category[]; pairs: Pair[] }>
+        | Result<{ categories: Category[]; pairs: Pair[]; revision: number }>
         | undefined;
       if (!result) return failure("TEMPORARY_UNAVAILABLE");
       if (!result.ok) return result;
@@ -48,9 +46,9 @@ export class PostgresCatalogRepository
         result.value.pairs,
         INITIAL_CATEGORIES,
       );
-      if (catalog.ok)
-        this.cached = { expiresAt: this.now() + 5000, catalog: catalog.value };
-      return catalog;
+      if (!catalog.ok) return catalog;
+      this.cached = { ...catalog.value, revision: result.value.revision };
+      return success(this.cached);
     } catch {
       return failure("TEMPORARY_UNAVAILABLE");
     } finally {

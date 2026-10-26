@@ -47,7 +47,7 @@ export function useRoomUpdates(
               seen.delete(seen.values().next().value as string);
             seen.add(event.eventId);
             if (
-              ["room", "match"].includes(event.aggregateType) &&
+              ["room", "match", "moderation"].includes(event.aggregateType) &&
               event.aggregateId === roomId
             )
               void refresh();

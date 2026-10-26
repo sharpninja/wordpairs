@@ -1,0 +1,483 @@
+"use client";
+import {
+  type FormEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import type { ContentAction, ContentService } from "../application/content";
+import type { OwnProfile } from "../application/identity";
+import {
+  BACKGROUND_IDS,
+  type CuratedPackage,
+  type Proposal,
+} from "../domain/content";
+import { IdentityPanel } from "./identity-panel";
+import { usePrivateIntent } from "./use-private-intent";
+
+type View = Extract<
+  Awaited<ReturnType<ContentService["view"]>>,
+  { ok: true }
+>["value"];
+type Case = View["cases"][number];
+export function ContentScreen({ oidcEnabled }: { oidcEnabled: boolean }) {
+  const [profile, setProfile] = useState<OwnProfile | null>(null);
+  return (
+    <>
+      <IdentityPanel oidcEnabled={oidcEnabled} onProfile={setProfile} />
+      {profile && <ContentPanel key={profile.id} profileId={profile.id} />}
+    </>
+  );
+}
+function ContentPanel({ profileId }: { profileId: string }) {
+  const [view, setView] = useState<View | null>(null);
+  const [error, setError] = useState("");
+  const generation = useRef(0);
+  const refresh = useCallback(async () => {
+    const sequence = ++generation.current;
+    try {
+      const response = await fetch("/api/content", {
+        cache: "no-store",
+        signal: AbortSignal.timeout(10000),
+      });
+      const result = await response.json();
+      if (sequence !== generation.current) return;
+      if (!response.ok || result.actorId !== profileId) {
+        if (
+          [401, 403, 404].includes(response.status) ||
+          (result.actorId && result.actorId !== profileId)
+        )
+          setView(null);
+        throw new Error(
+          "Submission updates are unavailable. Refresh to recover.",
+        );
+      }
+      setView((previous) =>
+        previous && previous.version > result.version ? previous : result,
+      );
+      setError("");
+    } catch (problem) {
+      if (sequence === generation.current)
+        setError(
+          problem instanceof Error
+            ? problem.message
+            : "Submission service unavailable.",
+        );
+    }
+  }, [profileId]);
+  useEffect(() => {
+    void refresh();
+    const timer = setInterval(() => void refresh(), 15000);
+    return () => {
+      generation.current++;
+      clearInterval(timer);
+    };
+  }, [refresh]);
+  const intent = usePrivateIntent(profileId, refresh, () => setView(null));
+  const send = (action: ContentAction) =>
+    view
+      ? intent.send("/api/content", {
+          ...action,
+          action: action.type,
+          type: undefined,
+          expectedVersion: view.version,
+        })
+      : Promise.resolve();
+  const suggest = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const proposal: Proposal = {
+      category: String(form.get("category") ?? ""),
+      pairs: [1, 2, 3].map((i) => ({
+        prompt: String(form.get(`prompt-${i}`) ?? ""),
+        target: String(form.get(`target-${i}`) ?? ""),
+      })),
+    };
+    void send({ type: "suggest", proposal });
+  };
+  return (
+    <section
+      className="panel content-panel"
+      aria-labelledby="content-title"
+      aria-busy={intent.busy}
+    >
+      <div className="panel-heading">
+        <h1 id="content-title">Community content</h1>
+        <button type="button" onClick={() => void refresh()}>
+          Refresh submissions
+        </button>
+      </div>
+      <div className="content-surface">
+        {error && <p role="alert">{error}</p>}
+        {intent.error && <p role="alert">{intent.error}</p>}
+        {intent.notice && <p role="status">{intent.notice}</p>}
+        {!view && !error && <p role="status">Loading your submissions…</p>}
+        {view && (
+          <>
+            <p>
+              Suggestions unlock at ten lifetime wins. Your profile has{" "}
+              {view.wins}. Approval permits curation; complete curated records
+              are required before future play.
+            </p>
+            {view.canSuggest ? (
+              <form onSubmit={suggest}>
+                <fieldset disabled={intent.locked}>
+                  <legend>Suggest one category and three pairs</legend>
+                  <label>
+                    Proposed category
+                    <input name="category" required maxLength={80} />
+                  </label>
+                  {[1, 2, 3].map((i) => (
+                    <div className="pair-fields" key={`proposal-${i}`}>
+                      <label>
+                        Pair {i} prompt
+                        <input name={`prompt-${i}`} required maxLength={200} />
+                      </label>
+                      <label>
+                        Pair {i} target
+                        <input name={`target-${i}`} required maxLength={200} />
+                      </label>
+                    </div>
+                  ))}
+                  <button className="button" type="submit">
+                    Submit suggestion
+                  </button>
+                </fieldset>
+              </form>
+            ) : (
+              <p role="status">
+                {view.wins < 10
+                  ? "Keep playing to unlock category suggestions."
+                  : "Your open suggestion is under review. You can submit another after it closes."}
+              </p>
+            )}
+            <h2>
+              {view.canModerate
+                ? "Review queue and your submissions"
+                : "Your submissions"}
+            </h2>
+            {!view.cases.length && <p>No submissions yet.</p>}
+            {view.cases.map((item) => (
+              <article className="content-case" key={item.id}>
+                <h3>
+                  {item.kind === "nomination"
+                    ? String(item.word)
+                    : item.proposal?.category}
+                </h3>
+                <p>
+                  <strong>{item.status}</strong> ·{" "}
+                  {item.kind === "nomination"
+                    ? `${item.nominationCount} unique nominations`
+                    : "Category and three pairs"}
+                </p>
+                <p>
+                  {item.playable
+                    ? "Playable in future rounds"
+                    : item.futureEligible
+                      ? "Approved for curation; not playable"
+                      : "Not playable"}
+                </p>
+                {item.reason && <p>Reason: {item.reason}</p>}
+                {item.proposal && (
+                  <ul>
+                    {item.proposal.pairs.map((p) => (
+                      <li key={`${p.prompt}:${p.target}`}>
+                        {p.prompt} → {p.target}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {item.canReview && (
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      const form = new FormData(event.currentTarget);
+                      const decision =
+                        (
+                          event.nativeEvent as SubmitEvent
+                        ).submitter?.getAttribute("value") === "reject"
+                          ? "reject"
+                          : "approve";
+                      void send({
+                        type: "review",
+                        caseId: item.id,
+                        decision,
+                        reason: String(form.get("reason") ?? ""),
+                      });
+                    }}
+                  >
+                    <fieldset disabled={intent.locked}>
+                      <label>
+                        Decision reason
+                        <textarea name="reason" required maxLength={1000} />
+                      </label>
+                      <button type="submit" name="decision" value="approve">
+                        Approve for curation
+                      </button>
+                      <button type="submit" name="decision" value="reject">
+                        Reject
+                      </button>
+                    </fieldset>
+                  </form>
+                )}
+                {item.canAppeal && (
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      void send({
+                        type: "appeal",
+                        caseId: item.id,
+                        reason: String(
+                          new FormData(event.currentTarget).get("reason") ?? "",
+                        ),
+                      });
+                    }}
+                  >
+                    <fieldset disabled={intent.locked}>
+                      <label>
+                        Appeal reason
+                        <textarea name="reason" required maxLength={1000} />
+                      </label>
+                      <button type="submit">Appeal once</button>
+                    </fieldset>
+                  </form>
+                )}
+                {item.canResolve && (
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      void send({
+                        type: "resolve",
+                        caseId: item.id,
+                        outcome:
+                          (
+                            event.nativeEvent as SubmitEvent
+                          ).submitter?.getAttribute("value") === "uphold"
+                            ? "uphold"
+                            : "overturn",
+                        reason: String(
+                          new FormData(event.currentTarget).get("reason") ?? "",
+                        ),
+                      });
+                    }}
+                  >
+                    <fieldset disabled={intent.locked}>
+                      <label>
+                        Appeal decision reason
+                        <textarea name="reason" required maxLength={1000} />
+                      </label>
+                      <button type="submit" value="uphold">
+                        Uphold rejection
+                      </button>
+                      <button type="submit" value="overturn">
+                        Overturn rejection
+                      </button>
+                    </fieldset>
+                  </form>
+                )}
+                {item.canActivate && (
+                  <details>
+                    <summary>Prepare catalog records</summary>
+                    <CurationForm
+                      item={item}
+                      view={view}
+                      disabled={intent.locked}
+                      activate={(content) =>
+                        void send({
+                          type: "activate",
+                          caseId: item.id,
+                          content,
+                        })
+                      }
+                    />
+                  </details>
+                )}
+                <details>
+                  <summary>Decision history</summary>
+                  <ol>
+                    {view.audit
+                      .filter((a) => a.caseId === item.id)
+                      .map((a) => (
+                        <li
+                          key={`${a.at}:${a.action}:${a.nominationCount}:${a.status}`}
+                        >
+                          {a.action}
+                          {a.reason ? ` · ${String(a.reason)}` : ""}
+                          {a.nominationCount !== null
+                            ? ` · ${String(a.nominationCount)} nominations`
+                            : ""}
+                        </li>
+                      ))}
+                  </ol>
+                </details>
+              </article>
+            ))}
+            {view.canModerate && (
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const data = new FormData(event.currentTarget);
+                  const pair = view.catalogPairs.find(
+                    (p) => `${p.id}@${p.version}` === data.get("pair"),
+                  );
+                  if (pair)
+                    void send({
+                      type: "disable",
+                      pairId: pair.id,
+                      pairVersion: pair.version,
+                      reason: String(data.get("reason") ?? ""),
+                    });
+                }}
+              >
+                <fieldset disabled={intent.locked}>
+                  <legend>Exclude a pair from future rounds</legend>
+                  <p>
+                    Historical rounds retain their content. Curate a replacement
+                    before excluding the final pair in an initial category.
+                  </p>
+                  <label>
+                    Pair to exclude
+                    <select name="pair" required>
+                      <option value="">Choose a pair</option>
+                      {view.catalogPairs
+                        .filter((p) => p.selectable)
+                        .map((p) => (
+                          <option
+                            key={`${p.id}@${p.version}`}
+                            value={`${p.id}@${p.version}`}
+                          >
+                            {p.prompt} · version {p.version}
+                          </option>
+                        ))}
+                    </select>
+                  </label>
+                  <label>
+                    Exclusion reason
+                    <textarea name="reason" required maxLength={1000} />
+                  </label>
+                  <button type="submit">Exclude from future rounds</button>
+                </fieldset>
+              </form>
+            )}
+          </>
+        )}
+        {intent.pending && (
+          <button
+            type="button"
+            disabled={intent.busy}
+            onClick={() => void intent.send()}
+          >
+            Retry pending content request
+          </button>
+        )}
+      </div>
+    </section>
+  );
+}
+function CurationForm({
+  item,
+  view,
+  disabled,
+  activate,
+}: {
+  item: Case;
+  view: View;
+  disabled: boolean;
+  activate: (content: CuratedPackage) => void;
+}) {
+  const pairs = item.proposal?.pairs ?? [
+    { prompt: "", target: String(item.word) },
+  ];
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const category =
+          item.kind === "nomination"
+            ? view.categories.find((c) => c.id === data.get("category"))
+            : {
+                id: `curated-${item.id}`,
+                version: 0,
+                name: item.proposal?.category ?? "",
+                approved: true,
+                backgroundId: String(data.get("background")),
+              };
+        if (!category) return;
+        activate({
+          category,
+          pairs: pairs.map((p, i) => ({
+            id: `curated-${item.id}-${i + 1}`,
+            version: 0,
+            categoryId: category.id,
+            prompt: String(data.get(`prompt-${i + 1}`)),
+            target: p.target,
+            acceptedAnswers: String(data.get(`alternatives-${i + 1}`) ?? "")
+              .split("\n")
+              .map((v) => v.trim())
+              .filter(Boolean),
+            hints: [1, 2, 3].map((h) =>
+              String(data.get(`hint-${i + 1}-${h}`)),
+            ) as [string, string, string],
+            backgroundId: category.backgroundId,
+            approved: true,
+          })),
+        });
+      }}
+    >
+      <fieldset disabled={disabled}>
+        {item.kind === "nomination" ? (
+          <label>
+            Category
+            <select name="category" required>
+              {view.categories.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : (
+          <label>
+            Category background
+            <select name="background">
+              {BACKGROUND_IDS.map((id) => (
+                <option value={id} key={id}>
+                  {id}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        {pairs.map((p, i) => (
+          <div className="curated-pair" key={`${p.prompt}:${p.target}`}>
+            <h4>
+              Pair {i + 1}: {p.target}
+            </h4>
+            <label>
+              Pair {i + 1} prompt
+              <input
+                name={`prompt-${i + 1}`}
+                required
+                maxLength={200}
+                defaultValue={p.prompt}
+              />
+            </label>
+            {[1, 2, 3].map((h) => (
+              <label key={`hint-${h}`}>
+                Pair {i + 1} hint {h}
+                <input name={`hint-${i + 1}-${h}`} required maxLength={400} />
+              </label>
+            ))}
+            <label>
+              Pair {i + 1} accepted alternatives (one per line)
+              <textarea name={`alternatives-${i + 1}`} />
+            </label>
+          </div>
+        ))}
+        <button type="submit">Activate complete content</button>
+      </fieldset>
+    </form>
+  );
+}

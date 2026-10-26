@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { MatchService } from "../application/matches";
 import { ProfileIcon } from "./identity-panel";
+import { SocialPanel } from "./social-panel";
 
 type Projection = Extract<
   Awaited<ReturnType<MatchService["view"]>>,
@@ -419,6 +420,18 @@ export function GamePanel({
                 </a>
               </>
             )}
+            <SocialPanel
+              roomId={roomId}
+              profileId={profileId}
+              canReact={view.status === "playing" && view.role === "player"}
+              roundId={view.round?.roundId ?? null}
+              canNominate={
+                view.role === "player" && !!view.round?.nominationEligible
+              }
+              now={now}
+              refreshKey={refreshKey}
+              labels={view.labels}
+            />
             {pending.current && (
               <button type="button" disabled={busy} onClick={() => void send()}>
                 Retry pending game request
