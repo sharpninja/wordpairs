@@ -1,15 +1,15 @@
 # Phase 0 Interface and Data Contracts
 
-**Status:** Draft for Phase 0 review; not an approved implementation contract  
+**Status:** Phase 0 interface baseline approved on 26 October 2026; implementation contracts may be refined through BDP v4 change control  
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Architecture:** DDD modular monolith, ports and adapters, Supabase Postgres, Vercel  
 **Implementation status:** Specification only; no executable tests, project code, scripts, migrations, or schema files are created by this document.
 
 ## 1. Purpose and constraints
 
-This document advances Phase 0 by defining candidate module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is deliberately concrete enough to refine into mock-first test specifications with product decisions affecting AC expected results resolved in requirements v2.6.
+This Phase 0-approved document defines module boundaries, application commands and queries, persistence concepts, authorization boundaries, and transaction invariants. It is the contract baseline for executable mock-first tests; product decisions affecting AC expected results are resolved in requirements v2.6.
 
-The interfaces below are logical contracts, not committed route names, SQL, TypeScript source, or approved schema. Before Phase 0 exits, review and approve the v2.6 framework/runtime selection and technical contracts. Product choices that affect active AC behavior are resolved in the v2.6 decision register. No executable test or project implementation code may be authored before Phase 0 passes. After Phase 0, every active-AC contract test must be authored and mock-validated before any project implementation code is written.
+The interfaces below are approved logical contracts; physical route names, SQL, and TypeScript structure may implement them without changing semantics. Phase 0 has passed. Executable tests may now be authored; all active-AC tests must pass the global mock-validation gate before any production implementation code is written.
 
 Deployment, provider/account configuration, branch topology, and deployed-artifact checks are outside AC coverage. Deployment execution and deployment tooling follow completion of coding Phases 1–6; topology is finalized at Phase 7 entry. Mockable operational command contracts remain TR work and follow their own test-first gate.
 
@@ -68,7 +68,7 @@ Exact event names and payload schemas are versioned in the eventual interface sp
 
 ## 5. Candidate persistence model
 
-This is a logical model. Column types, identifiers, indexes, normalization, retention, and physical partitioning require a schema ADR before migration files exist.
+This is the approved logical model. Physical column types, identifiers, indexes, normalization, retention, and partitioning must preserve its invariants in the Phase 1 schema and migrations.
 
 | Relation / aggregate | Candidate key and important fields | Invariants / ownership |
 |---|---|---|
@@ -92,7 +92,7 @@ Foreign keys should prevent orphaned room memberships, rounds, submissions, cont
 
 ## 6. Authorization, RLS, and secrets
 
-Candidate access model for approval:
+Approved access model for implementation:
 
 - Browser clients use an unprivileged identity/session and may read only explicit public or actor-authorized projections. They never receive a service-role key or database connection secret.
 - Server application handlers verify session/provider claims, derive actor and role, and invoke use cases. Client-supplied actor IDs or role claims are ignored for authorization.
@@ -102,7 +102,7 @@ Candidate access model for approval:
 - Realtime publication uses server-authorized audience projections. Subscription channel names are not treated as authorization.
 - Migration and operator credentials are kept in the operator secret store or CLI session, never source control, fixtures, client bundles, logs, SWBOM, or public archive.
 
-RLS policy details, guest-session representation, and role administration remain technical contracts for Phase 0 approval. Retention values follow the resolved v2.6 schedule: audit events one year, published outbox rows seven days, and idempotency results through 30 days after room close. The v2.6 product policy fixes guest persistence and public aliases. Service-role credentials remain server-only and are not exposed to clients. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
+RLS policy details, guest-session representation, and role administration follow this approved contract. Retention values follow the resolved v2.6 schedule: audit events one year, published outbox rows seven days, and idempotency results through 30 days after room close. The v2.6 product policy fixes guest persistence and public aliases. Service-role credentials remain server-only and are not exposed to clients. Integration checks against local/disposable Postgres/Supabase later verify actual RLS/transaction behavior; they remain TR evidence and do not replace mock AC tests.
 
 ## 7. Transaction and concurrency contracts
 
@@ -136,9 +136,9 @@ Mock contracts assert application behavior at each port (commands, conflict resu
 - Transient persistence/realtime/quota failures return typed recoverable outcomes when safe. Never retry a non-idempotent write without its command ID. Realtime failure does not roll back an already committed state; clients recover from an authorized projection.
 - A quota rejection returns `SERVICE_LIMIT`, preserves the last committed state and may be retried with the same command ID after capacity recovers. Do not silently upgrade or automatically repeat a non-idempotent command.
 
-## 9. Phase 0 technical approvals
+## 9. Approved Phase 0 technical contracts
 
-Requirements v2.6 resolves product choices affecting active AC expected results. The remaining work is technical review and approval of these contracts; external integration checks stay post-coding TR evidence.
+Requirements v2.6 resolves product choices affecting active AC expected results. These Phase 0 technical contracts are approved. External account and platform integration checks remain post-coding TR evidence.
 
 | Approval | Contract to review | Related requirements |
 |---|---|---|
@@ -149,15 +149,15 @@ Requirements v2.6 resolves product choices affecting active AC expected results.
 | Test specification | Refine all 65 planned AC cases into exact assertions, mocks and evidence tiers. Verify every active AC has a mockable contract before any implementation. | AC-01–33, AC-37–39, AC-41–47, AC-50–51 |
 | Deployment contract planning | Keep Vercel, provisioning, build/SWBOM and source archive checks TR-only; do not execute deployment during coding Phases 1–6. | TR-20–29; AC-41/42 use local archive fixtures only |
 
-## 10. Phase 0 completion checklist
+## 10. Phase 0 completion record
 
-- [ ] Approve the architecture ADR and bounded-context ownership.
-- [ ] Freeze route/action inputs, outputs, error codes, event schemas, and authorization rules for every active AC.
-- [ ] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
-- [ ] Approve server clock and durable deadline-scheduler contract for lobby timers.
-- [ ] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
-- [ ] Refine all 65 planned AC case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
-- [ ] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
-- [ ] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
+- [x] Approve the architecture ADR and bounded-context ownership.
+- [x] Freeze route/action inputs, outputs, error codes, event schemas, and authorization rules for every active AC.
+- [x] Approve logical schema, RLS rules, constraints, transaction/locking strategy, idempotency and outbox retention, audit policy, and secret boundaries.
+- [x] Approve server clock and durable deadline-scheduler contract for lobby timers.
+- [x] Confirm the v2.6 product outcomes remain reflected in each contract and test specification; no active-AC product decision remains open.
+- [x] Refine all 65 planned AC case IDs into exact assertions, mock interactions, and evidence tiers; preserve one mockable contract test or fixture-verifiable contract for every active AC.
+- [x] Keep actual Vercel/account/branch/project/deployment evidence in TR/operational records. Concrete topology remains a Phase 7 post-coding deployment-entry decision.
+- [x] Obtain hostile review at 98% or higher accuracy and completeness; record exact repository commit and complete review output in the JSONL receipt.
 
-**Current status:** Draft work advances Phase 0, but the gate remains open. This document does not authorize executable tests, scripts, migrations, or project code. Deployment and release operations begin only after coding Phases 1–6 are complete.
+**Phase 0 exit:** Approved by the user on 26 October 2026 after a remote-anchored hostile review scoring 99.5% accuracy and 99% completeness. Test authoring is authorized. The global mock-validation gate must pass before production implementation code. Deployment and release operations begin only after coding Phases 1–6 are complete.
