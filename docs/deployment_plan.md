@@ -10,7 +10,7 @@
 
 This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. Deployment, provisioning, build/SWBOM, and environment-isolation checks are bound to technical requirements TR-20–TR-29, not to ACs. Any live deployment/account/database checks are TR-only integration or operational evidence and cannot satisfy the AC mock-coverage gate. The public landing behavior remains covered by active AC-43 and AC-50 tests against local components and mocked projections; deployed smoke checks are operational diagnostics only.
 
-The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the selected application stack, pending Phase 0 technical ADR approval. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
+The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the selected application stack recorded in the approved Phase 0 technical ADR. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
 
 ![Vercel deployment workflow](word_association_vercel_deployment.svg)
 
