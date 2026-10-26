@@ -1,6 +1,6 @@
 # Phase 5 execution
 
-Status: in progress after Phase 4 approval at 99/99. No Phase 5 exit approval yet.
+Status: formal Phase 5 APPROVED by independent GPT-6 Astra/high at remote commit `2c1daaa2b51f91969a81b304e5c586c993c2f183`, with 99% accuracy and 99% completeness and no unresolved material findings. Phase 6 entry is authorized; the overall goal remains active.
 
 5A covers AC-16–18/47: no-hint eligibility at current round results, normalized unique candidate/profile votes, one nomination per eligible round, threshold 9/10, independent server-role review with reasons, one proposer appeal resolved by a distinct Senior Moderator, atomic audits and complete curated future-pool gates. Content activation preserves immutable historical pair versions; disabled content cannot be selected in future rounds.
 
@@ -30,4 +30,6 @@ Verified locally on 26 October 2026:
 
 Early failures were retained as development evidence: tests initially failed for missing modules/UI; disposable setup rejected an invalid Crockford fixture code and a missing relational room; fixture cleanup encountered the intended immutable-content guards. Cleanup now removes only owned disposable fixtures with named guards disabled/re-enabled in a transaction. The reaction transport fixture initially had overdue presence; renewing it through the real lobby application repaired the fixture without relaxing authorization. No production trigger or original oracle assertion was weakened.
 
-No Phase 5 exit claim is made until independent exact-commit approval. Phase 6 still requires the complete real-SUT AC driver matrix, responsive/accessibility review, and final hostile validation. No deployment, external account setup, branch movement, GitHub Actions or release tooling occurred. MCP hook recovery remains degraded (missing marker/no-session/health-failed, empty failsafe path).
+The independent reviewer verified exact remote tree `97b9711e8cd5949ff33feab4bce3a3c279ae0f9f` and all 208 leaf entries against the tested local candidate, then independently passed all 466 tests, typecheck, lint, production build, 34 actual PostgreSQL tests plus SQL checks, four actual Realtime tests and all twelve Chromium journeys. The complete request, rubric, raw report, scores, resolved findings, evidence limits and remote commit/tree responses are preserved in [`phase5_review_receipt.jsonl`](phase5_review_receipt.jsonl). The three incremental material findings are resolved; no findings remain open for Phase 5.
+
+Phase 6 still requires the complete real-SUT AC driver matrix, responsive/accessibility review, and final hostile validation. The preserved AC-13 three-round mock fixture must remain distinguishable from actual fixed-eight-round lifecycle evidence; the receipt records the recommended honest mapping. No deployment, external account setup, branch movement, GitHub Actions or release tooling occurred. MCP hook recovery remains degraded (missing marker/no-session/health-failed, empty failsafe path).
