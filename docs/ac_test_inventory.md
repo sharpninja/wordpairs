@@ -81,7 +81,7 @@ This inventory decomposes the active acceptance criteria into proposed test case
 
 ## Decision-gated cases
 
-These cases are currently blocked. They cannot be treated as active-AC mock coverage or allow Phase 0 to pass while expected results are unresolved. Before Phase 0 approval, either approve each decision and update its assertions, or formally revise the requirements to defer/remove the affected AC from the active baseline. Mock fixtures must not invent product policy.
+These cases are currently blocked. They cannot be treated as active-AC mock coverage or allow Phase 0 to pass while expected results are unresolved. Before Phase 0 approval, either approve each decision and update its assertions, or formally revise the requirements to defer/remove the affected AC from the active baseline. Mock fixtures must not invent product policy. Deployment topology is intentionally excluded from this Phase 0 blocker list: the environment-isolation contract can be tested using generic identifiers, with concrete branch/project/account mapping finalized at the Phase 1 provisioning gate.
 
 | Planned tests | Decision required |
 |---|---|
@@ -90,7 +90,6 @@ These cases are currently blocked. They cannot be treated as active-AC mock cove
 | `AC-06-T01`, `AC-18-T01`, `AC-45-T01` | Approve answer normalization and nomination identity/counting details that affect these assertions. |
 | `AC-22-T01`, `AC-23-T01`, `AC-43-T01`, `AC-50-T01` | Approve public leaderboard/lobby fields, ranking/order, visibility, and freshness behavior. |
 | `AC-30-T01`–`AC-33-T01`, `AC-48-T02` | Define durable deadline execution and approve concurrent readiness/countdown boundary outcomes. |
-| `AC-36-T01`, `AC-48-T01`–`T02` | Approve isolated Development, Staging, Preview, and Production topology. |
 
 ## Implementation evidence
 
