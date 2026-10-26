@@ -4,7 +4,7 @@ Wordpairs is a real-time word-association game. Its [requirements](docs/word_ass
 
 ## Project status
 
-Phase 0 planning closure has started. No application code or executable tests have been written. Phase 0 is planning-only; after it passes, tests for all active acceptance criteria must be authored and validated against mocks before any project implementation code is written. External configuration, account, integration, deployment, and human evidence remains separately required where an AC calls for it.
+Phase 0 planning closure has started. No application code or executable tests have been written. Phase 0 is planning-only; after it passes, tests for all active acceptance criteria must be authored and validated against mocks before any project implementation code is written. External configuration, account, integration, deployment, and human evidence is tracked separately under TRs or operational release policy; deployed artifacts never count toward AC coverage.
 
 ## License
 
