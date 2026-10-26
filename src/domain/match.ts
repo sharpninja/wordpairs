@@ -351,6 +351,7 @@ export function matchProjection(
             backgroundId: pair.backgroundId,
             hints: pair.hints.slice(0, own?.stage ?? current.stage),
             solved: !!own,
+            nominationEligible: current.revealed && own?.stage === 0,
             submitted: current.submittedPlayerIds.includes(perspectiveId),
             canAnswer:
               match.status === "playing" &&

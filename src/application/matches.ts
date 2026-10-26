@@ -70,7 +70,12 @@ export class MatchService {
       room.startedAt !== undefined &&
       catalog.value.initialCategoryIds.length === 6 &&
       catalog.value.initialCategoryIds.every(
-        (id) => categoryPool(catalog.value, id).length >= 10,
+        (id) =>
+          new Set(
+            catalog.value.pairs
+              .filter((p) => p.categoryId === id)
+              .map((p) => p.id),
+          ).size >= 10 && categoryPool(catalog.value, id).length > 0,
       )
         ? createMatch(
             room.id,
@@ -146,8 +151,12 @@ export class MatchService {
   ): Promise<Result<MatchCommandResult>> {
     const catalog = await this.content.read();
     if (!catalog.ok) return catalog;
+    const checkedCommand = {
+      ...command,
+      catalogRevision: catalog.value.revision,
+    };
     const committed = await executeCommand(
-      command,
+      checkedCommand,
       {
         store: this.repository,
         clock: this.clock,
@@ -222,14 +231,16 @@ export class MatchService {
     if (job.kind !== "stage") return failure("VALIDATION_ERROR");
     const catalog = await this.content.read();
     if (!catalog.ok) return catalog;
+    const checkedCommand = {
+      aggregateId: job.aggregateId,
+      actorId: "system:deadline",
+      commandId: job.id,
+      requestDigest: JSON.stringify(job),
+      expectedVersion: job.expectedVersion,
+      catalogRevision: catalog.value.revision,
+    };
     const committed = await executeCommand(
-      {
-        aggregateId: job.aggregateId,
-        actorId: "system:deadline",
-        commandId: job.id,
-        requestDigest: JSON.stringify(job),
-        expectedVersion: job.expectedVersion,
-      },
+      checkedCommand,
       {
         store: this.repository,
         clock: this.clock,

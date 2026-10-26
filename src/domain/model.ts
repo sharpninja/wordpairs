@@ -58,6 +58,7 @@ export interface Room extends Versioned {
 }
 
 export interface Pair extends Versioned {
+  selectable?: boolean;
   categoryId: string;
   prompt: string;
   target: string;

@@ -1,12 +1,15 @@
+import { ContentService } from "../application/content";
 import { IdentityService } from "../application/identity";
 import { LobbyDispatcher, LobbyService } from "../application/lobby";
 import { MatchService } from "../application/matches";
 import { OutboxRelay } from "../application/outbox";
 import { PublicLandingService } from "../application/public-service";
+import { ReactionService } from "../application/reactions";
 import { RoomService } from "../application/rooms";
 import type { Profile } from "../domain/model";
 import { success } from "../domain/result";
 import { PostgresCatalogRepository } from "./catalog-repository";
+import { PostgresContentRepository } from "./content-repository";
 import { PostgresLobbyQueue } from "./deadlines";
 import { PostgresIdentityRepository } from "./identity-repository";
 import { InvitationSigner } from "./invitations";
@@ -15,6 +18,7 @@ import { OpenAiOidcProvider } from "./oidc";
 import { PostgresOutbox } from "./outbox";
 import { createSupabasePool } from "./postgres-pool";
 import { PostgresPublicReadRepository } from "./public-read";
+import { PostgresReactionRepository } from "./reaction-repository";
 import { realtimeSettings, SupabaseRealtimePublisher } from "./realtime";
 import { PostgresRoomRepository } from "./room-repository";
 import { ids, random, secrets } from "./secrets";
@@ -23,6 +27,26 @@ import { SupabasePostgresStore } from "./supabase-postgres";
 let publicService: PublicLandingService | undefined;
 let database: ReturnType<typeof createSupabasePool> | undefined;
 let identity: IdentityService | undefined;
+export function getContentService() {
+  const pool = getDatabasePool();
+  return pool
+    ? new ContentService(
+        new PostgresContentRepository(pool),
+        { now: () => Date.now() },
+        ids,
+      )
+    : null;
+}
+export function getReactionService() {
+  const pool = getDatabasePool();
+  return pool
+    ? new ReactionService(
+        new PostgresReactionRepository(pool),
+        { now: () => Date.now() },
+        ids,
+      )
+    : null;
+}
 export function getInvitationSigner() {
   const key = process.env.WORDPAIRS_INVITE_SECRET;
   try {

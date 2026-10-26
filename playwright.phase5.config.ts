@@ -1,0 +1,1 @@
+import {defineConfig} from '@playwright/test';import phase4 from './playwright.phase4.config';export default defineConfig({...phase4,testMatch:['*.phase2.spec.ts','*.phase3.spec.ts','*.phase4.spec.ts','*.phase5.spec.ts']});

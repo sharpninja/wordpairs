@@ -10,6 +10,7 @@ export default function PlayPage() {
         </a>
         <nav aria-label="Main navigation">
           <a href="/">Community board</a>
+          <a href="/content">Community content</a>
         </nav>
       </header>
       <PlayHub oidcEnabled={oidcAvailable()} />
