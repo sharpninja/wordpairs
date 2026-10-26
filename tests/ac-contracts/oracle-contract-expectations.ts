@@ -237,7 +237,8 @@ export const contractExpectations = {
       {
         "playerId": "p1",
         "icon": "owl",
-        "points": 7,
+        "roundPoints": 3,
+        "cumulativePoints": 7,
         "elapsedMs": 12000
       }
     ]
@@ -744,63 +745,42 @@ export const contractExpectations = {
     ]
   },
   "AC-41-T01": {
-    "requiredCommit": "abc123",
-    "archives": [
+    "results": [
       {
         "name": "valid.tar",
-        "entries": [
-          {
-            "path": "src/index.ts",
-            "content": "source"
-          },
-          {
-            "path": "swbom/abc123.cdx.json",
-            "content": "{\"bomFormat\":\"CycloneDX\",\"commit\":\"abc123\"}"
-          }
-        ],
+        "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "src/index.ts", "sbom/abc123.cdx.json"],
+        "bom": {"bomFormat":"CycloneDX","specVersion":"1.6","version":1,"metadata":{"component":{"type":"application","name":"wordpairs","version":"abc123"}}},
         "decision": "accepted"
       },
       {
-        "name": "missing.tar",
-        "entries": [
-          {
-            "path": "src/index.ts",
-            "content": "source"
-          }
-        ],
-        "decision": "missing-swbom"
+        "name": "missing-source.tar",
+        "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "sbom/abc123.cdx.json"],
+        "decision": "incomplete-source"
       },
       {
-        "name": "wrong.tar",
-        "entries": [
-          {
-            "path": "swbom/abc123.cdx.json",
-            "content": "{\"bomFormat\":\"CycloneDX\",\"commit\":\"def456\"}"
-          }
-        ],
-        "decision": "commit-mismatch"
+        "name": "missing-license.tar",
+        "entries": ["docs/ATTRIBUTIONS.md", "src/index.ts", "sbom/abc123.cdx.json"],
+        "decision": "missing-license"
       },
       {
-        "name": "invalid.tar",
-        "entries": [
-          {
-            "path": "swbom/abc123.cdx.json",
-            "content": "not-json"
-          }
-        ],
-        "decision": "invalid-swbom"
-      }
+        "name": "missing-sbom.tar", "entries": ["LICENSE", "docs/ATTRIBUTIONS.md", "src/index.ts"], "decision": "missing-sbom"
+      },
+      {"name":"wrong.tar","entries":["LICENSE","docs/ATTRIBUTIONS.md","src/index.ts","sbom/def456.cdx.json"],"decision":"commit-mismatch"},
+      {"name":"invalid.tar","entries":["LICENSE","docs/ATTRIBUTIONS.md","src/index.ts","sbom/abc123.cdx.json"],"decision":"invalid-sbom"},
+      {"name":"empty.tar","entries":[],"decision":"empty-archive"}
     ]
   },
   "AC-42-T01": {
     "entries": [
       {
         "path": "LICENSE",
-        "content": "GNU GENERAL PUBLIC LICENSE\nVersion 2, June 1991\nEND OF TERMS AND CONDITIONS"
+        "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3",
+        "bytes": 17337
       },
       {
         "path": "docs/ATTRIBUTIONS.md",
-        "content": "Recursive font | SIL Open Font License 1.1"
+        "sha256": "259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a",
+        "includes": ["Recursive font", "SIL Open Font License 1.1", "Copyright"]
       }
     ],
     "spdx": "GPL-2.0-only"

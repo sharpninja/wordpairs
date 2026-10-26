@@ -9,8 +9,8 @@ import {
   type OracleScenario,
 } from './oracle-scenarios.js';
 
-function scenarioMap(scenarios: OracleScenario[]): Map<string, Record<string, JsonValue>> {
-  return new Map(scenarios.map((scenario) => [scenario.id, scenario.conformingObservation]));
+function scenarioMap(scenarios: OracleScenario[]): Map<string, { request: OracleScenario['request']; observation: Record<string, JsonValue> }> {
+  return new Map(scenarios.map((scenario) => [scenario.id, { request: scenario.request, observation: scenario.conformingObservation }]));
 }
 
 it('has one reusable scripted scenario for every planned active-AC test ID', () => {
@@ -49,6 +49,22 @@ describe.each(acOracleScenarios)('$id reusable acceptance oracle', (scenario) =>
 
   it.each(scenario.violations)('rejects semantic control: $name', ({ observation }) => {
     expect(() => scenario.assertObservation(structuredClone(observation))).toThrow();
+  });
+
+  it('rejects missing, reordered, or altered scripted actions', async () => {
+    const driver = new ScriptedObservationDriver(scenarioMap([scenario]));
+    const missingActions = { ...structuredClone(scenario.request), actions: [] };
+    await expect(driver.execute(scenario.id, missingActions)).rejects.toThrow('Unexpected setup or ordered actions');
+
+    const alteredSetup = structuredClone(scenario.request);
+    alteredSetup.setup = { __unexpected: true };
+    await expect(driver.execute(scenario.id, alteredSetup)).rejects.toThrow('Unexpected setup or ordered actions');
+
+    if (scenario.request.actions.length > 1) {
+      const reordered = structuredClone(scenario.request);
+      reordered.actions.reverse();
+      await expect(driver.execute(scenario.id, reordered)).rejects.toThrow('Unexpected setup or ordered actions');
+    }
   });
 });
 

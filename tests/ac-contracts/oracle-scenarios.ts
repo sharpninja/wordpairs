@@ -36,17 +36,20 @@ export interface AcScenarioDriver {
 
 export class ScriptedObservationDriver implements AcScenarioDriver {
   readonly requests: Array<{ id: string; request: ScenarioRequest }> = [];
-  private readonly observations: ReadonlyMap<string, Record<string, JsonValue>>;
+  private readonly scripts: ReadonlyMap<string, { request: ScenarioRequest; observation: Record<string, JsonValue> }>;
 
-  constructor(observations: ReadonlyMap<string, Record<string, JsonValue>>) {
-    this.observations = observations;
+  constructor(scripts: ReadonlyMap<string, { request: ScenarioRequest; observation: Record<string, JsonValue> }>) {
+    this.scripts = scripts;
   }
 
   async execute(id: string, request: ScenarioRequest): Promise<Record<string, JsonValue>> {
     this.requests.push({ id, request: structuredClone(request) });
-    const observation = this.observations.get(id);
-    if (!observation) throw new Error(`No scripted observation for ${id}`);
-    return structuredClone(observation);
+    const script = this.scripts.get(id);
+    if (!script) throw new Error(`No scripted scenario for ${id}`);
+    if (!isDeepStrictEqual(request, script.request)) {
+      throw new Error(`Unexpected setup or ordered actions for ${id}`);
+    }
+    return structuredClone(script.observation);
   }
 }
 
@@ -223,11 +226,16 @@ const customScenarios: ScenarioDraft[] = [
     violations: [
       { name: 'same category has different backgrounds', observation: { rounds: [{ pairId: 'a1', background: 'forest.svg', controls: { readable: true } }, { pairId: 'a2', background: 'desert.svg', controls: { readable: true } }, { pairId: 's1', background: 'stars.svg', controls: { readable: true } }], missingAsset: { background: 'accessible-fallback', label: 'Category artwork unavailable' } } },
       { name: 'different category reuses wrong background', observation: { rounds: [{ pairId: 'a1', background: 'forest.svg', controls: { readable: true } }, { pairId: 'a2', background: 'forest.svg', controls: { readable: true } }, { pairId: 's1', background: 'forest.svg', controls: { readable: true } }], missingAsset: { background: 'accessible-fallback', label: 'Category artwork unavailable' } } },
+      { name: 'category background assignments swapped', observation: { rounds: [{ pairId: 'a1', background: 'stars.svg', controls: { readable: true } }, { pairId: 'a2', background: 'stars.svg', controls: { readable: true } }, { pairId: 's1', background: 'forest.svg', controls: { readable: true } }], missingAsset: { background: 'accessible-fallback', label: 'Category artwork unavailable' } } },
+      { name: 'pair coverage is incomplete', observation: { rounds: [{ pairId: 'a1', background: 'forest.svg', controls: { readable: true } }, { pairId: 's1', background: 'stars.svg', controls: { readable: true } }], missingAsset: { background: 'accessible-fallback', label: 'Category artwork unavailable' } } },
     ],
     assertObservation(observation) {
       const rounds = observation.rounds as Array<Record<string, JsonValue>>;
-      invariant(rounds[0].background === rounds[1].background, 'pairs in one category must share its background');
-      invariant(rounds[2].background !== rounds[0].background, 'different category must use its assigned background');
+      invariant(isDeepStrictEqual(rounds, [
+        { pairId: 'a1', background: 'forest.svg', controls: { readable: true } },
+        { pairId: 'a2', background: 'forest.svg', controls: { readable: true } },
+        { pairId: 's1', background: 'stars.svg', controls: { readable: true } },
+      ]), 'each pair must use the background assigned to its category with exact pair coverage');
       invariant(rounds.every((round) => (round.controls as Record<string, JsonValue>).readable === true), 'controls must remain readable');
       invariant(isDeepStrictEqual(observation.missingAsset, { background: 'accessible-fallback', label: 'Category artwork unavailable' }), 'missing art must have accessible fallback');
     },
@@ -235,12 +243,13 @@ const customScenarios: ScenarioDraft[] = [
   {
     id: 'AC-10-T01',
     request: { setup: { playerId: 'p1', icon: 'owl', scoreBefore: 4, stage: 'hint-1', roundStartedAtMs: 1000, serverAcceptedAtMs: 13000, clientClaimedAtMs: 2000 }, actions: [{ type: 'submit-answer', payload: { answer: 'cat' } }, { type: 'project-live-scorecard' }] },
-    conformingObservation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', points: 7, elapsedMs: 12000 }] },
+    conformingObservation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', roundPoints: 3, cumulativePoints: 7, elapsedMs: 12000 }] },
     violations: [
-      { name: 'client clock determines elapsed time', observation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 1000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', points: 7, elapsedMs: 1000 }] } },
-      { name: 'scorecard omits icon and wrong points', observation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'fox', points: 4, elapsedMs: 12000 }] } },
+      { name: 'client clock determines elapsed time', observation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 1000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', roundPoints: 3, cumulativePoints: 7, elapsedMs: 1000 }] } },
+      { name: 'scorecard substitutes cumulative for round points', observation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', roundPoints: 7, cumulativePoints: 7, elapsedMs: 12000 }] } },
+      { name: 'scorecard omits selected icon', observation: { acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'fox', roundPoints: 3, cumulativePoints: 7, elapsedMs: 12000 }] } },
     ],
-    assertObservation: exact({ acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', points: 7, elapsedMs: 12000 }] }),
+    assertObservation: exact({ acceptedSubmission: { playerId: 'p1', acceptedAtMs: 13000, elapsedMs: 12000, scoreDelta: 3 }, scorecard: [{ playerId: 'p1', icon: 'owl', roundPoints: 3, cumulativePoints: 7, elapsedMs: 12000 }] }),
   },
   {
     id: 'AC-14-T01',
@@ -286,68 +295,40 @@ const customScenarios: ScenarioDraft[] = [
   },
   {
     id: 'AC-41-T01',
-    request: { setup: { requiredCommit: 'abc123', candidateArchives: ['valid.tar', 'missing.tar', 'wrong.tar', 'invalid.tar'] }, actions: [{ type: 'list-archive-entries' }, { type: 'read-swbom-entry' }] },
-    conformingObservation: { requiredCommit: 'abc123', archives: [
-      { name: 'valid.tar', entries: [{ path: 'src/index.ts', content: 'source' }, { path: 'swbom/abc123.cdx.json', content: '{"bomFormat":"CycloneDX","commit":"abc123"}' }], decision: 'accepted' },
-      { name: 'missing.tar', entries: [{ path: 'src/index.ts', content: 'source' }], decision: 'missing-swbom' },
-      { name: 'wrong.tar', entries: [{ path: 'swbom/abc123.cdx.json', content: '{"bomFormat":"CycloneDX","commit":"def456"}' }], decision: 'commit-mismatch' },
-      { name: 'invalid.tar', entries: [{ path: 'swbom/abc123.cdx.json', content: 'not-json' }], decision: 'invalid-swbom' },
+    request: { setup: { requiredCommit: 'abc123', requiredEntries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], candidateArchives: ['valid.tar', 'missing-source.tar', 'missing-license.tar', 'missing-sbom.tar', 'wrong.tar', 'invalid.tar', 'empty.tar'] }, actions: [{ type: 'extract-temporary-archives' }, { type: 'validate-source-manifest' }, { type: 'validate-cyclonedx' }] },
+    conformingObservation: { results: [
+      { name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], bom: { bomFormat: 'CycloneDX', specVersion: '1.6', version: 1, metadata: { component: { type: 'application', name: 'wordpairs', version: 'abc123' } } }, decision: 'accepted' },
+      { name: 'missing-source.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'sbom/abc123.cdx.json'], decision: 'incomplete-source' },
+      { name: 'missing-license.tar', entries: ['docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'missing-license' },
+      { name: 'missing-sbom.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts'], decision: 'missing-sbom' },
+      { name: 'wrong.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/def456.cdx.json'], decision: 'commit-mismatch' },
+      { name: 'invalid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'invalid-sbom' },
+      { name: 'empty.tar', entries: [], decision: 'empty-archive' },
     ] },
     violations: [
-      { name: 'wrong commit archive accepted', observation: { requiredCommit: 'abc123', archives: [
-        { name: 'valid.tar', entries: [{ path: 'src/index.ts', content: 'source' }, { path: 'swbom/abc123.cdx.json', content: '{"bomFormat":"CycloneDX","commit":"abc123"}' }], decision: 'accepted' },
-        { name: 'missing.tar', entries: [{ path: 'src/index.ts', content: 'source' }], decision: 'missing-swbom' },
-        { name: 'wrong.tar', entries: [{ path: 'swbom/abc123.cdx.json', content: '{"bomFormat":"CycloneDX","commit":"def456"}' }], decision: 'accepted' },
-        { name: 'invalid.tar', entries: [{ path: 'swbom/abc123.cdx.json', content: 'not-json' }], decision: 'invalid-swbom' },
-      ] } },
-      { name: 'invalid document treated as valid', observation: { requiredCommit: 'abc123', archives: [
-        { name: 'valid.tar', entries: [{ path: 'src/index.ts', content: 'source' }, { path: 'swbom/abc123.cdx.json', content: '{"bomFormat":"CycloneDX","commit":"abc123"}' }], decision: 'accepted' },
-        { name: 'missing.tar', entries: [{ path: 'src/index.ts', content: 'source' }], decision: 'missing-swbom' },
-        { name: 'wrong.tar', entries: [{ path: 'swbom/abc123.cdx.json', content: '{"bomFormat":"CycloneDX","commit":"def456"}' }], decision: 'commit-mismatch' },
-        { name: 'invalid.tar', entries: [{ path: 'swbom/abc123.cdx.json', content: 'not-json' }], decision: 'accepted' },
-      ] } },
+      { name: 'archive uses wrong swbom directory', observation: { results: [{ name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'swbom/abc123.cdx.json'], decision: 'accepted' }] } },
+      { name: 'archive without source or license accepted', observation: { results: [{ name: 'invalid.tar', entries: ['sbom/abc123.cdx.json'], decision: 'accepted' }] } },
+      { name: 'empty archive collection accepted vacuously', observation: { results: [] } },
     ],
-    assertObservation(observation) {
-      const requiredCommit = observation.requiredCommit;
-      invariant(typeof requiredCommit === 'string', 'required commit must be observed');
-      const archives = observation.archives as Array<Record<string, JsonValue>>;
-      for (const archive of archives) {
-        const entries = archive.entries as Array<Record<string, JsonValue>>;
-        const swbom = entries.find(({ path }) => path === `swbom/${requiredCommit}.cdx.json`);
-        let expectedDecision = 'missing-swbom';
-        if (swbom) {
-          try {
-            const parsed = JSON.parse(String(swbom.content)) as { bomFormat?: string; commit?: string };
-            expectedDecision = parsed.bomFormat !== 'CycloneDX'
-              ? 'invalid-swbom'
-              : parsed.commit === requiredCommit ? 'accepted' : 'commit-mismatch';
-          } catch {
-            expectedDecision = 'invalid-swbom';
-          }
-        }
-        invariant(archive.decision === expectedDecision, `${String(archive.name)} decision does not match its raw entries`);
-      }
-    },
+    assertObservation: exact({ results: [
+      { name: 'valid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], bom: { bomFormat: 'CycloneDX', specVersion: '1.6', version: 1, metadata: { component: { type: 'application', name: 'wordpairs', version: 'abc123' } } }, decision: 'accepted' },
+      { name: 'missing-source.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'sbom/abc123.cdx.json'], decision: 'incomplete-source' },
+      { name: 'missing-license.tar', entries: ['docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'missing-license' },
+      { name: 'missing-sbom.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts'], decision: 'missing-sbom' },
+      { name: 'wrong.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/def456.cdx.json'], decision: 'commit-mismatch' },
+      { name: 'invalid.tar', entries: ['LICENSE', 'docs/ATTRIBUTIONS.md', 'src/index.ts', 'sbom/abc123.cdx.json'], decision: 'invalid-sbom' },
+      { name: 'empty.tar', entries: [], decision: 'empty-archive' },
+    ] }),
   },
   {
     id: 'AC-42-T01',
-    request: { setup: { requiredLicense: 'GPL-2.0-only', bundledComponents: ['Recursive font'] }, actions: [{ type: 'list-archive-entries' }, { type: 'read-license-and-notices' }] },
-    conformingObservation: { entries: [{ path: 'LICENSE', content: 'GNU GENERAL PUBLIC LICENSE\nVersion 2, June 1991\nEND OF TERMS AND CONDITIONS' }, { path: 'docs/ATTRIBUTIONS.md', content: 'Recursive font | SIL Open Font License 1.1' }], spdx: 'GPL-2.0-only' },
+    request: { setup: { requiredLicense: 'GPL-2.0-only', requiredLicenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', requiredNoticesSha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', bundledComponents: ['Recursive font'] }, actions: [{ type: 'extract-temporary-archive' }, { type: 'hash-license-and-notices' }] },
+    conformingObservation: { entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', includes: ['Recursive font', 'SIL Open Font License 1.1', 'Copyright'] }], spdx: 'GPL-2.0-only' },
     violations: [
-      { name: 'archive omits bundled component notice', observation: { entries: [{ path: 'LICENSE', content: 'GNU GENERAL PUBLIC LICENSE\nVersion 2, June 1991\nEND OF TERMS AND CONDITIONS' }, { path: 'docs/ATTRIBUTIONS.md', content: '' }], spdx: 'GPL-2.0-only' } },
-      { name: 'archive contains incomplete license text', observation: { entries: [{ path: 'LICENSE', content: 'GNU GPL' }, { path: 'docs/ATTRIBUTIONS.md', content: 'Recursive font | SIL Open Font License 1.1' }], spdx: 'GPL-2.0-only' } },
+      { name: 'archive omits bundled component notice', observation: { entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }], spdx: 'GPL-2.0-only' } },
+      { name: 'archive contains truncated license retaining markers', observation: { entries: [{ path: 'LICENSE', sha256: 'truncated', bytes: 75 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', includes: ['Recursive font', 'SIL Open Font License 1.1', 'Copyright'] }], spdx: 'GPL-2.0-only' } },
     ],
-    assertObservation(observation) {
-      invariant(observation.spdx === 'GPL-2.0-only', 'release must use GPL-2.0-only');
-      const entries = observation.entries as Array<Record<string, JsonValue>>;
-      const license = String(entries.find(({ path }) => path === 'LICENSE')?.content ?? '');
-      const notices = String(entries.find(({ path }) => path === 'docs/ATTRIBUTIONS.md')?.content ?? '');
-      invariant(license.includes('GNU GENERAL PUBLIC LICENSE'), 'GPL text is missing');
-      invariant(license.includes('Version 2, June 1991'), 'GPL v2 header is missing');
-      invariant(license.includes('END OF TERMS AND CONDITIONS'), 'GPL v2 text is incomplete');
-      invariant(notices.includes('Recursive font'), 'bundled component notice is missing');
-      invariant(notices.includes('SIL Open Font License 1.1'), 'bundled component license is missing');
-    },
+    assertObservation: exact({ entries: [{ path: 'LICENSE', sha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3', bytes: 17337 }, { path: 'docs/ATTRIBUTIONS.md', sha256: '259a762030cf0ff1de48236116b203bf135f2b3aa195ba3f6a940db02c87b08a', includes: ['Recursive font', 'SIL Open Font License 1.1', 'Copyright'] }], spdx: 'GPL-2.0-only' }),
   },
   {
     id: 'AC-50-T01',
