@@ -116,7 +116,7 @@ Finalize physical schema during architecture planning. The following logical rec
 
 Enforce uniqueness and threshold counting in database transactions or a server-controlled database function so concurrent votes cannot cross the threshold inconsistently. Add row-level security that denies client-side direct updates to moderation states, thresholds, and catalog publication. Use service operations for authorized review actions. Keep a small, explicit list of public status fields; internal notes, risk flags, voter identities, and staff data remain private.
 
-Retention and deletion rules need approval. The recommendation is to retain decision/event history for the life of the candidate plus a defined post-close period, remove or pseudonymize identity linkage when legally/operationally required, preserve aggregate threshold evidence, and never keep rejected raw text longer than policy needs. Define how user account deletion affects the audit record without erasing evidence that a decision occurred.
+The resolved retention schedule is one year for audit events, seven days for published outbox rows, and until 30 days after room close for idempotency results. Raw incorrect guesses are not persisted. Moderation candidate/submission records retain only the content and identity linkage required for review and audit; access is restricted and deletion/pseudonymization follows applicable account-removal requirements without erasing the fact of a decision.
 
 ## 7. Moderator operations
 
@@ -185,8 +185,8 @@ Use fake clocks, deterministic IDs, repository fakes, transaction fakes, and eve
 - Render submissions as text, never unsanitized HTML. Escape all moderator rationale and user-facing decision text. Avoid embedding user text into logs, URLs, or metric labels.
 - Keep candidate status and reviewer data out of public room Realtime channels. Publish only explicitly whitelisted events to authorized recipients.
 - Protect moderation/admin routes with server-side authorization, CSRF protection appropriate to the chosen route model, rate limiting, and audit logging. Use service credentials only in the server runtime.
-- Minimize retained personal data. Define retention and deletion interactions before schema design. Never retain raw incorrect guesses for moderation; the game requirement says guess text remains private.
-- Treat suspected threats, personal information, or rights complaints as restricted cases; suppress public display while review is pending 
+- Minimize retained personal data and apply the v2.6 retention schedule. Never retain raw incorrect guesses for moderation; the game requirement says guess text remains private.
+- Treat suspected threats, personal information, or rights complaints as restricted cases; suppress public display while review is pending
 - Do not assume a content filter can make final policy judgments. Any classifier is a future, optional triage aid that must have its own cost, bias, privacy, accuracy, and appeal review.
 
 ## 11. Moderation quality and operational metrics
@@ -208,7 +208,7 @@ Do not publish nominee identities or rank candidate words by vote totals. Set ta
 3. **Design review:** approve data model, authorization matrix, state machine, public API, privacy boundaries, queue UX, catalog handoff, and audit schema before coding.
 4. **Mock-first tests:** map every active AC to test IDs; validate all tests for the increment against mocks before production implementation. Maintain 100% active AC coverage and green prior increments.
 5. **Staging trial:** use synthetic submissions and test moderator/editor accounts; verify role checks, queue transitions, audit history, privacy projections, and catalog release linkage.
-6. **Release gate:** confirm no unreviewed or incomplete user proposal is playable; review dependencies/license/attribution and protect the Production catalog migration. Keep content enablement separate from deploy .
+6. **Release gate:** confirm no unreviewed or incomplete user proposal is playable; review dependencies/license/attribution and protect the Production catalog migration. Keep content enablement separate from deployment.
 7. **Operations review:** inspect queue health and audit integrity; respond to flags using approved policy; review policy effectiveness after actual use and revise requirements through the normal change process.
 
 Moderation is complete for a release only when every approved moderation criterion passes, sensitive/internal data is not exposed, audit events are verifiable, approved content cannot skip curation/catalog gates, and moderators can act without accessing Production secrets or raw private gameplay data beyond what the approved review policy requires.
