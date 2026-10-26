@@ -1,18 +1,18 @@
 # Wordpairs Content Moderation Plan
 
-**Status:** Proposed moderation design; policies and implementation are not approved  
-**Requirements baseline:** `word_association_game_requirements.md` v2.5  
+**Status:** Moderation policy baseline resolved in requirements v2.6; technical workflow design is pending Phase 0 approval  
+**Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Implementation sequence:** `implementation_plan.md`  
 **Current scope:** player nominations and category/pair suggestions; no public chat
 
 ## 1. Purpose and scope
 
-This plan defines the proposed policy, workflow, data boundaries, reviewer experience, audit trail, and test coverage for user-submitted candidate answers and category/pair suggestions. It supports FR-16–FR-17 and AC-16–AC-19 and AC-47 in the requirements. AC-47 now establishes the baseline authorization, auditability, and catalog activation gate; the detailed moderation roles, states, reasons, appeals, and retention choices in this plan remain proposed until approved. The new public landing page (FR-22/AC-43/AC-50) may show leaderboard labels and lobby summaries; this plan treats those as a separate public projection, not moderation data. It does not publish user submissions or introduce a public chat feature.
+This plan defines the workflow, data boundaries, reviewer experience, audit trail, and test coverage for user-submitted candidate answers and category/pair suggestions. It supports FR-16–FR-17 and AC-16–AC-19 and AC-47 in the requirements. Requirements v2.6 establishes nomination thresholds, moderator roles, reasoned decisions, one senior-moderator appeal, and catalog activation gates; retention and audit details are also fixed there. The new public landing page (FR-22/AC-43/AC-50) may show leaderboard labels and lobby summaries; this plan treats those as a separate public projection, not moderation data. It does not publish user submissions or introduce a public chat feature.
 
 There are two related but different flows:
 
 - **Candidate nomination:** a player who solves during the no-hint stage nominates a word for possible inclusion in a future answer pool. A candidate must meet the approved nomination threshold and pass moderation; even then it cannot be played until editors create a complete curated word-pair record.
-- **Category and pair suggestion:** a player who meets the approved 10-win scope proposes one relationship category and exactly three pairs. Review and approval do not make those pairs playable until each record and the category background are complete and the curated catalog passes validation.
+- **Category and pair suggestion:** a player who has ten lifetime wins on one stable profile proposes one relationship category and exactly three pairs. Review and approval do not make those pairs playable until each record and the category background are complete and the curated catalog passes validation.
 
 The moderation process reviews content quality and suitability. It does not resolve the gameplay requirement questions, choose accepted-answer policy, or automatically promote content because it received votes. The curated catalog remains the only source of playable prompts, answers, hints, accepted alternatives, and background references.
 
@@ -27,11 +27,11 @@ The moderation process reviews content quality and suitability. It does not reso
 7. **Decision records are durable:** retain an auditable history of threshold changes, reviews, status transitions, and catalog linkage. A moderation action must not rewrite nomination history.
 8. **Keep live play safe and predictable:** only complete, approved content may enter a published catalog version. Nominations and suggestions never alter an active match.
 
-## 3. Policy boundary and proposed content standards
+## 3. Policy boundary and content standards
 
-The requirements currently specify threshold/moderation outcomes but not the full content policy. The following is a policy proposal for product approval before moderation implementation. It must be written into the requirements and translated to acceptance criteria before it becomes enforceable.
+The requirements specify product outcomes. The content checklist below is operational guidance for human reviewers and does not change AC expectations; technical review interfaces and permissions are approved in Phase 0.
 
-### 3.1 Proposed approval checklist
+### 3.1 Reviewer checklist
 
 | Review dimension | Approve when | Return/reject when |
 |---|---|---|
@@ -40,74 +40,64 @@ The requirements currently specify threshold/moderation outcomes but not the ful
 | Accuracy | Names, dates, titles, spelling, and claims are accurate enough for the approved content standard. Reviewer records a reference for disputed or non-obvious factual claims. | Material factual error cannot be corrected or the pair depends on an unsupported assertion. |
 | Distinctiveness | The candidate adds useful variety and is not an accidental normalized duplicate of an existing candidate, pair, category, or alias. | It duplicates existing content without adding a useful accepted alternative. |
 | Playability | The answer has a clear accepted-answer policy; three useful ordered hints can be written without revealing the answer too early; the prompt is solvable at the intended difficulty. | No fair prompt/hint sequence can be created or a hint leaks the target before its stage. |
-| Audience and harm | Content meets the audience/safety policy that the product owner explicitly approves. Reviewers can flag slurs, targeted abuse, threats, personal data, sexual content, or other sensitive content for restricted review. | It violates the approved safety policy or targets a private person with abusive content. |
+| Audience and harm | Content meets the general-audience suitability baseline in the v2.6 requirements. Reviewers can flag slurs, targeted abuse, threats, personal data, sexual content, or other sensitive content for restricted review. | It violates the approved safety policy or targets a private person with abusive content. |
 | Rights and attribution | Text/artwork can be used with appropriate permissions/notices and the pair does not depend on copying protected material beyond an approved use. | Required permission is absent, attribution is impossible, or a proposed asset conflicts with GPL distribution requirements. |
 | Category quality | The category name is distinct, describable, and supports a coherent set of pairs and a suitable background. | It is a duplicate, too broad to guide content, or cannot be represented safely and consistently. |
 
-### 3.2 Decisions that require explicit approval
+### 3.2 Resolved moderation policy
 
-The current decision register leaves these items open: whether the 10 nominations count unique players; whether one player can nominate the same candidate more than once or nominate multiple candidates from one round; whether moderation happens before or after the threshold; nomination normalization; moderator roles and states; appeal/removal behavior; and whether 10 wins means lifetime, match, or another scope.
+Requirements v2.6 fixes the policy: ten unique profiles trigger review; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve; an independent Content Moderator approves or rejects with a reason; one appeal may be submitted to a Senior Moderator; ten lifetime wins unlock one open category suggestion containing exactly three pairs. Approval does not publish incomplete content. Technical role storage, state-transition interfaces and audit schema remain Phase 0 design work.
 
-This plan recommends, but does not enact, the following default policy for the owner to approve or replace:
-
-- Normalize candidate text consistently for Unicode, case, and whitespace before duplicate detection; preserve the submitted spelling separately for review.
-- Count distinct eligible player identities per normalized candidate, with one vote per player per candidate. Do not count repeated submissions from one player as extra support.
-- Run structural and safety screening at submission time, keep submissions hidden from other players while below threshold, and open a human moderation case once the approved threshold is met.
-- Do not publish nomination status, voter list, or moderator notes to the room. The submitter may see their own status and a public reason for a decision.
-- Allow one revision after a “needs changes” decision. Require a fresh review after edits; preserve prior revisions and votes. Set an appeal path to a different reviewer when staffing permits.
-- Use a general-audience suitability standard only if the owner confirms it; absent approval, do not encode age ratings or content prohibitions beyond the explicit safety baseline selected by the owner.
-- Scope the 10-win unlock to the player-account lifetime only if the owner accepts that persistence model; otherwise use the approved guest/account policy and recalculate eligibility accordingly.
-
-If these recommendations are not accepted, record exact alternatives and expected behavior. A named policy choice must replace each open item before its related tests are authored.
+Candidate matching uses the requirements' Unicode NFKC, trim, internal-whitespace collapse and case-insensitive normalization while preserving punctuation. The submitted spelling is retained separately for reviewer display. Public aliases and leaderboard opt-out follow FR-22. Rejected or pending user content is not public or playable. The requirements' retention schedule governs audit, idempotency and outbox records; no raw incorrect guesses are persisted.
 
 ## 4. Roles and permissions
 
 | Role | Allowed actions | Not allowed |
 |---|---|---|
-| Player / submitter | Submit an eligible nomination; submit an unlocked category/pair proposal; view own submission status and public decision reason; revise or appeal only as approved. | See another player's private nomination identity, internal reviewer notes, or unresolved drafts; approve own content; edit the live catalog. |
+| Player / submitter | Submit an eligible nomination; submit an unlocked category/pair proposal; view own submission status and public decision reason; submit one appeal to a Senior Moderator. | See another player's private nomination identity, internal reviewer notes, or unresolved drafts; approve own content; edit the live catalog. |
 | Moderator | Review assigned eligible cases; request revision, approve for editorial curation, reject with a reason, flag risk, and view only the submitter/eligibility data needed to decide. | Change vote history, change game scores, make content playable, approve own submission, or silently delete audit history. |
 | Content editor | Convert approved nominations into complete pairs; edit/complete pair data; attach category/background; validate catalog; prepare a catalog release. | Bypass moderation status or publish unreviewed content. |
 | Administrator | Manage moderator/editor accounts, policy configuration, and emergency content disablement; inspect audit history. | Erase the audit trail or make a user proposal playable without the required moderation/editorial checks. |
 | System | Validate structure, normalize duplicate keys, count eligible votes/wins, create queue cases, enforce status transitions, and record immutable events. | Make final content suitability decisions unless a specific deterministic rule has been approved. |
 
-The landing page creates a separate content-exposure concern: whether leaderboard entries use display names, aliases, or opt-in labels is unresolved. Do not expose moderator-only fields or nomination histories as leaderboard data. If player-selected labels are used publicly, the display-name policy must define reserved/prohibited strings, report/removal handling, and how a disabled label is represented. These choices belong to the landing-page decision register, not the nomination review queue unless the product owner explicitly connects the workflows.
+The landing page uses generated public aliases and honors profile opt-out as specified in v2.6. Do not expose moderator-only fields or nomination histories as leaderboard data. If player-selected labels are used publicly, the display-name policy must define reserved/prohibited strings, report/removal handling, and how a disabled label is represented. These choices belong to the landing-page decision register, not the nomination review queue unless the product owner explicitly connects the workflows.
 
-Role names, count, authentication method, and whether moderation/editor roles can be combined are open architecture/policy decisions. All privileged actions require server-side role checks; hiding an admin link in the browser is not authorization. Use the least-privilege service key only server-side. Require re-authentication or additional confirmation for permanent deletion and emergency disablement if supported by the approved identity design.
+Moderator and senior-moderator authority is defined by the v2.6 policy; role storage and server-side assignment are technical design items. All privileged actions require server-side role checks; hiding an admin link in the browser is not authorization. Use the least-privilege service key only server-side. Require re-authentication or additional confirmation for permanent deletion and emergency disablement if supported by the approved identity design.
 
 ## 5. Submission lifecycle
 
 ### 5.1 Candidate nomination lifecycle
 
 1. **Eligibility check:** on submission, the server verifies the player identity, active game/round, accepted no-hint solve, one-time/duplicate policy, and allowed submission window.
-2. **Input handling:** retain the original spelling for display; derive a normalized comparison key using the approved normalization rules; reject empty, excessive-length, malformed, or control-character input. Do not put raw text in general logs.
-3. **Duplicate/threshold handling:** associate the nomination with the canonical candidate record or create a pending candidate. Apply the approved unique-voter and repeat-submission rules transactionally. Recheck threshold at commit to avoid double counting.
-4. **Pre-review state:** keep below-threshold candidates out of playable content and out of public room views. If the proposed immediate-safety-screening rule is approved, flag suspected personal data or prohibited content for restricted review before the nomination can accrue support.
+2. **Input handling:** retain the original spelling for display; derive a normalized comparison key using the v2.6 normalization rules; reject empty, excessive-length, malformed, or control-character input. Do not put raw text in general logs.
+3. **Duplicate/threshold handling:** associate the nomination with the canonical candidate record or create a pending candidate. Apply the unique-profile and one-candidate-per-eligible-solve rules transactionally. Recheck threshold at commit to avoid double counting.
+4. **Pre-review state:** keep below-threshold candidates out of playable content and out of public room views. Flag suspected personal data or prohibited content for restricted review; flagged content remains hidden from public projections and is not playable.
 5. **Review queue:** once threshold and required eligibility rules pass, create exactly one active moderation case. Store the threshold snapshot and nomination count that triggered the case; subsequent votes remain auditable and do not duplicate the queue item.
-6. **Human decision:** reviewer inspects original/normalized text, duplicate candidates, counts, game context, and references. Reviewer chooses `approved_for_curation`, `needs_revision`, `rejected`, or a restricted `escalated` state if those states are approved.
+6. **Human decision:** reviewer inspects original/normalized text, duplicate candidates, counts, game context, and references. Reviewer chooses `approved_for_curation`, `needs_revision`, `rejected`, or a restricted `escalated` state 
 7. **Curation:** approval marks the candidate eligible for future-pool curation, not playable. Editor creates a complete pair with prompt, category, target, three hints, accepted answers, and background; content validation must pass.
 8. **Catalog release:** only a reviewed catalog version with complete records is deployed. Record which moderation case and source candidate led to the pair. Never alter a published active match's content snapshot.
 
-If the owner chooses moderation before threshold, a case may be opened on initial submission and the threshold remains a separate eligibility gate. The state machine and queue priority must be adjusted accordingly; the test plan must verify that approval alone or threshold alone cannot make a candidate eligible.
+Open a moderation case when the ten-unique-profile threshold is reached. Approval and threshold are independent eligibility gates: neither alone makes a candidate eligible for curation.
 
 ### 5.2 Category-and-pair suggestion lifecycle
 
-1. Check approved win-scope and identity rules on the server; do not trust a client-supplied win total.
+1. Check the ten-lifetime-wins stable-profile rule on the server; do not trust a client-supplied win total.
 2. Accept one category proposal with exactly three pair proposals as a single submission transaction. Enforce size limits and field validation for each proposed pair.
 3. Snapshot the eligibility evidence, proposer, category label, three pair records, submission time, and version. The proposer may not edit the submitted version in place.
 4. Run deterministic validation: duplicate category/name, pair duplicates, missing fields, invalid hint count/order, invalid category/background references, prohibited markup/control characters, and content-size bounds.
-5. Place the complete submission into review. Moderator considers the category and all three pairs together, with the option to request revision of the whole package or individual pairs if that policy is approved.
+5. Place the complete submission into review. Moderator considers the category and all three pairs together, with the option to request revision of the whole package or individual pairs.
 6. On approval, create an editorial work item. Editors verify the relationship, factuality, answer alternatives, three hints, and artwork/background rights; a category background asset is not user-uploaded at launch under the current requirements.
 7. Validate the finished catalog record and include it in a versioned catalog release. Only then is any proposed pair playable.
 8. On rejection, preserve the case/reason and provide only approved public feedback. A resubmission is a new version linked to the prior case, not destructive overwrite.
 
-### 5.3 Suggested states (to approve)
+### 5.3 Case states
 
 Keep nomination eligibility, moderation review, editorial completion, and playability as separate dimensions rather than one overloaded status field.
 
 | Dimension | Suggested states | Meaning |
 |---|---|---|
 | Nomination threshold | `collecting`, `threshold_met`, `withdrawn`, `closed` | Counts and availability; threshold is not an approval. |
-| Moderation case | `not_queued`, `queued`, `in_review`, `needs_revision`, `approved`, `rejected`, `escalated`, `appealed`, `closed` | Human decision lifecycle. Final state set/appeal semantics require owner approval. |
+| Moderation case | `not_queued`, `queued`, `in_review`, `needs_revision`, `approved`, `rejected`, `escalated`, `appealed`, `closed` | Human decision lifecycle. One appeal may be filed to a Senior Moderator; technical transition invariants are finalized in Phase 0. |
 | Editorial curation | `not_started`, `in_progress`, `blocked`, `complete` | Whether a complete validated game record exists. |
 | Catalog availability | `not_playable`, `scheduled`, `active`, `disabled` | Release-level state; only `active` content can enter a newly created round. |
 
@@ -148,15 +138,15 @@ Because this is a free-tier, small-scope project, the initial approach is an own
 
 ### 7.3 Appeals, revision, and emergency disablement
 
-The decision register leaves appeals/removal behavior open. Before implementation, define who may appeal, the allowed time/window, whether a different reviewer is required, what reasons can be appealed, and whether a rejected submission can be resubmitted. Preserve every version and decision. Do not let an appeal silently restore content to the play pool.
+One appeal may be submitted to a senior moderator. Before implementation, the Phase 0 interface contract must specify the appeal state transition, eligible reason categories, reviewer separation, and resubmission handling consistently with that policy. Preserve every version and decision. Do not let an appeal silently restore content to the play pool.
 
-Provide a privileged `disable` operation for active catalog content that is found to be harmful, inaccurate, rights-infringing, or otherwise unsuitable. It blocks inclusion in future rounds and future catalog releases; it cannot rewrite already completed match history. For an active room, decide whether the current match finishes from its snapshotted content or halts safely; this must be explicit before implementation. Record actor, reason, time, affected catalog version, and whether the content remains visible in historical summaries.
+Provide a privileged `disable` operation for active catalog content that is found to be harmful, inaccurate, rights-infringing, or otherwise unsuitable. It blocks inclusion in future rounds and future catalog releases; it cannot rewrite already completed match history. An active match continues using its content snapshot; disablement prevents selection in future rounds and catalog releases. Record actor, reason, time, affected catalog version, and whether the content remains visible in historical summaries.
 
-## 8. Proposed moderation-specific acceptance criteria
+## 8. Moderation controls and acceptance-criteria traceability
 
-AC-16 through AC-19 currently cover catalog completeness, nomination thresholds/moderation, and the category-suggestion unlock at a high level. The operational controls below are recommendations, not approved requirements. If adopted, add them to the requirements and traceability matrix before implementation; each becomes part of the 100% mock-first test coverage gate.
+AC-16 through AC-19 and AC-47 cover catalog completeness, nomination thresholds/moderation, category-suggestion unlock, authorization and audit. The controls below detail implementation of those accepted requirements and technical safeguards. Additional product behavior is out of scope until explicitly added to requirements and the traceability matrix.
 
-| Proposed AC | Given/when/then outcome to approve |
+| Control | Given/when/then contract |
 |---|---|
 | **M-01 Role enforcement** | Given a player without a moderator/editor role, when they call a review, edit, or catalog activation operation, then the server rejects it and records no state change. |
 | **M-02 Nomination uniqueness** | Given the approved vote-counting policy, when duplicate or repeat nominations arrive concurrently, then the candidate count reflects only eligible distinct votes and remains correct after retries. |
@@ -169,7 +159,7 @@ AC-16 through AC-19 currently cover catalog completeness, nomination thresholds/
 | **M-09 Disable active content** | Given an authorized editor disables a catalog item, when a new round starts, then the disabled item is excluded; historical match records remain stable. |
 | **M-10 Privacy** | Given a player views a room or another player's status, when moderation data is returned, then voter identity, private notes, raw guesses, and staff-only flags are not exposed. |
 
-M-01 through M-10 are proposed additions and need approval. If declined or revised, document the exact replacement criteria or explicitly exclude them before coding; do not silently implement unapproved policy.
+M-01 through M-10 are moderation-plan controls, not independent acceptance criteria. Trace applicable controls to AC-16–19/47; do not use additional controls to claim AC coverage.
 
 ## 9. Mock-first test and implementation plan
 
@@ -196,7 +186,7 @@ Use fake clocks, deterministic IDs, repository fakes, transaction fakes, and eve
 - Keep candidate status and reviewer data out of public room Realtime channels. Publish only explicitly whitelisted events to authorized recipients.
 - Protect moderation/admin routes with server-side authorization, CSRF protection appropriate to the chosen route model, rate limiting, and audit logging. Use service credentials only in the server runtime.
 - Minimize retained personal data. Define retention and deletion interactions before schema design. Never retain raw incorrect guesses for moderation; the game requirement says guess text remains private.
-- Treat suspected threats, personal information, or rights complaints as restricted cases; suppress public display while review is pending if that handling is approved.
+- Treat suspected threats, personal information, or rights complaints as restricted cases; suppress public display while review is pending 
 - Do not assume a content filter can make final policy judgments. Any classifier is a future, optional triage aid that must have its own cost, bias, privacy, accuracy, and appeal review.
 
 ## 11. Moderation quality and operational metrics
@@ -213,32 +203,16 @@ Do not publish nominee identities or rank candidate words by vote totals. Set ta
 
 ## 12. Rollout and completion gates
 
-1. **Policy review:** owner approves/replaces the proposed standards, thresholds, identity count, moderator roles, status transitions, public feedback, revision/appeal, emergency removal, and retention choices.
-2. **Requirements update:** add explicit functional/technical requirements and acceptance criteria for the approved policy; update all relevant diagrams if the workflow topology changes and render diagrams as SVG.
+1. **Baseline review:** verify the resolved v2.6 policy is reflected in the moderation interface, state model and test specifications.
+2. **Requirements update:** add requirements and acceptance criteria only if scope changes; update and render relevant diagrams as SVG when workflow topology changes.
 3. **Design review:** approve data model, authorization matrix, state machine, public API, privacy boundaries, queue UX, catalog handoff, and audit schema before coding.
 4. **Mock-first tests:** map every active AC to test IDs; validate all tests for the increment against mocks before production implementation. Maintain 100% active AC coverage and green prior increments.
 5. **Staging trial:** use synthetic submissions and test moderator/editor accounts; verify role checks, queue transitions, audit history, privacy projections, and catalog release linkage.
-6. **Release gate:** confirm no unreviewed or incomplete user proposal is playable; review dependencies/license/attribution and protect the Production catalog migration. Keep content enablement separate from deploy if the approved architecture supports it.
+6. **Release gate:** confirm no unreviewed or incomplete user proposal is playable; review dependencies/license/attribution and protect the Production catalog migration. Keep content enablement separate from deploy .
 7. **Operations review:** inspect queue health and audit integrity; respond to flags using approved policy; review policy effectiveness after actual use and revise requirements through the normal change process.
 
 Moderation is complete for a release only when every approved moderation criterion passes, sensitive/internal data is not exposed, audit events are verifiable, approved content cannot skip curation/catalog gates, and moderators can act without accessing Production secrets or raw private gameplay data beyond what the approved review policy requires.
 
-## 13. Open moderation decisions to close
+## 13. Resolved policy and remaining technical review
 
-Use this checklist with the requirements decision register. Each row must become an approved rule or an explicit deferral before the related code increment begins.
-
-- [ ] Do 10 nominations mean 10 distinct player identities, 10 valid submissions, or another count?
-- [ ] Can one player nominate a candidate repeatedly, and can one player nominate multiple candidates from one round?
-- [ ] What normalization defines a candidate as the same word (Unicode normalization, case folding, punctuation, whitespace, diacritics, and language/locale)?
-- [ ] Does moderation begin on first submission, after a threshold, or at a different point? Does a safety flag bypass the normal queue trigger?
-- [ ] Who may moderate and edit? Can roles be combined? Is self-approval prohibited? Is a second reviewer required for any case class?
-- [ ] Which content suitability policy applies (audience age, slurs, sexual content, violence, politics/religion, protected groups, private people, trademarks, copyrighted phrases/assets)?
-- [ ] What statuses, decision reasons, submitter feedback, revision limits, appeal rights, and appeal reviewers are supported?
-- [ ] What happens to an active catalog item after a complaint or emergency disablement, including matches already in progress?
-- [ ] How long are rejected submissions, identities, decisions, and audit events retained? How do profile deletion and privacy requests affect those records?
-- [ ] Is the 10-win category-suggestion threshold lifetime, match-scoped, or another scope? How does a guest's win history persist or migrate?
-- [ ] Who supplies factual references and background artwork, and what source/license evidence is required before catalog publication?
-- [ ] What queue-age objective and expected reviewer workload are realistic for the initial release?
-- [ ] If the public leaderboard uses player-selected labels, what review/report/removal policy applies to those labels, and who can act on a report?
-
-Until these decisions are approved, this document is a detailed proposal and should not be treated as final moderation policy.
+The product policy checklist is resolved by requirements v2.6; there are no open product decisions for nomination count, nomination eligibility, moderation roles, appeal count, lifetime-win scope, public aliases, or retention. Phase 0 review remains for technical role assignment, authorization and RLS, state transitions, concurrent threshold enforcement, audit transaction boundaries, and test interface definitions. These technical approvals do not change acceptance outcomes.
