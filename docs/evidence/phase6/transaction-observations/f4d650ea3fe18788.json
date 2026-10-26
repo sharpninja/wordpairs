@@ -1,0 +1,154 @@
+{
+  "test": "AC-32-T03 final ready wins before warning expiry and commits exactly one countdown despite replay and stale deadline",
+  "evidence": "Actual production decisions returned through TransactionFake; no database durability claim",
+  "observed": [
+    {
+      "initial": {
+        "id": "r",
+        "version": 4,
+        "code": "ABCDEFGH",
+        "creatorId": "p1",
+        "capacity": 3,
+        "discoverable": false,
+        "status": "waiting",
+        "createdAt": 0,
+        "changedAt": 0,
+        "closedAt": null,
+        "players": [
+          {
+            "profileId": "p1",
+            "ready": true,
+            "joinedAt": 0,
+            "disconnectedAt": null,
+            "lastSeenAt": 0
+          },
+          {
+            "profileId": "p2",
+            "ready": true,
+            "joinedAt": 0,
+            "disconnectedAt": null,
+            "lastSeenAt": 0
+          },
+          {
+            "profileId": "p3",
+            "ready": false,
+            "joinedAt": 0,
+            "disconnectedAt": null,
+            "lastSeenAt": 0
+          }
+        ],
+        "observers": [],
+        "lockedRoster": [],
+        "nextObserverSequence": 0,
+        "idlePromptedVersion": null,
+        "holdoutId": "p3",
+        "holdoutDueAt": 5000,
+        "countdownDueAt": null,
+        "emptySince": null
+      },
+      "commits": [
+        {
+          "command": {
+            "aggregateId": "r",
+            "actorId": "p3",
+            "commandId": "last-ready",
+            "requestDigest": "last-ready",
+            "expectedVersion": 4
+          },
+          "transition": {
+            "state": {
+              "id": "r",
+              "version": 5,
+              "code": "ABCDEFGH",
+              "creatorId": "p1",
+              "capacity": 3,
+              "discoverable": false,
+              "status": "countdown",
+              "createdAt": 0,
+              "changedAt": 4999,
+              "closedAt": null,
+              "players": [
+                {
+                  "profileId": "p1",
+                  "ready": true,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                },
+                {
+                  "profileId": "p2",
+                  "ready": true,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                },
+                {
+                  "profileId": "p3",
+                  "ready": true,
+                  "joinedAt": 0,
+                  "disconnectedAt": null,
+                  "lastSeenAt": 0
+                }
+              ],
+              "observers": [],
+              "lockedRoster": [
+                "p1",
+                "p2",
+                "p3"
+              ],
+              "nextObserverSequence": 0,
+              "idlePromptedVersion": null,
+              "holdoutId": null,
+              "holdoutDueAt": null,
+              "countdownDueAt": 14999,
+              "emptySince": null
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "roomId": "r",
+                "version": 5,
+                "status": "countdown"
+              }
+            },
+            "events": [
+              {
+                "id": "countdown-event",
+                "aggregateType": "room",
+                "aggregateId": "r",
+                "version": 5,
+                "schemaVersion": 1,
+                "type": "RoomLobbyChanged",
+                "audience": [
+                  "p1",
+                  "p2",
+                  "p3"
+                ],
+                "payload": {
+                  "roomId": "r"
+                }
+              }
+            ],
+            "deadlines": [
+              {
+                "id": "countdown-event",
+                "aggregateId": "r",
+                "expectedVersion": 5,
+                "kind": "countdown",
+                "dueAt": 14999
+              },
+              {
+                "id": "countdown-event",
+                "aggregateId": "r",
+                "expectedVersion": 5,
+                "kind": "reconnect",
+                "dueAt": 45000
+              }
+            ],
+            "audits": []
+          }
+        }
+      ]
+    }
+  ]
+}

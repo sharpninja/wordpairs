@@ -1,0 +1,33 @@
+{
+  "subsequentEvidence": {
+    "chromiumExitCode": 0,
+    "isolatedModerationPassed": 1,
+    "signal": null,
+    "diagnosticSequencePassed": 11,
+    "finalFullBrowserPassed": 25
+  },
+  "scope": "Failure messages/status extracted from the tool transcript; these are not reconstructed complete raw browser reports.",
+  "runs": [
+    {
+      "session": 26892,
+      "passed": 24,
+      "error": "expect(getByText('approved', { exact: true })).toBeVisible(): Target crashed",
+      "test": "eligible proposer, independent moderator and senior complete suggestion/rejection/appeal/curation without automatic publication",
+      "failed": 1
+    },
+    {
+      "session": 48679,
+      "passed": 24,
+      "error": "expect(getByText('Playable in future rounds', { exact: true })).toBeVisible(): Target crashed",
+      "test": "eligible proposer, independent moderator and senior complete suggestion/rejection/appeal/curation without automatic publication",
+      "failed": 1
+    }
+  ],
+  "source": "Observed functions.write_stdin tool transcript, sessions26892 and48679",
+  "diagnosis": {
+    "cause": "unknown",
+    "oomJournalLineReturned": false,
+    "applicationRunawayFoundByIndependentReview": false,
+    "newSystemCoreFound": false
+  }
+}

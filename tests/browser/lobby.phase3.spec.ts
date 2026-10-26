@@ -36,10 +36,12 @@ test('two actual clients ready, lock their roster and close below two without pr
   const state=fixture();const first=await browser.newContext();const second=await browser.newContext();const observer=await browser.newContext();
   try{
     await state.connect(first,'p1');await state.connect(second,'p2');await state.connect(observer,'o1');const a=await first.newPage();const b=await second.newPage();const o=await observer.newPage();
+    await b.clock.install({time:0});await b.clock.pauseAt(0);
     await Promise.all([a.goto(`/rooms/${id}`),b.goto(`/rooms/${id}`),o.goto(`/rooms/${id}`)]);
     await expect(o.getByRole('button',{name:'Mark ready',exact:true})).toHaveCount(0);await expect(o.getByText(/Read-only observer/)).toBeVisible();
     await a.getByRole('button',{name:'Mark ready',exact:true}).click();await b.getByRole('button',{name:'Refresh room'}).click();
     await expect(b.getByRole('alert').filter({hasText:'The room will wait for both players.'})).toBeVisible();
+    await expect(b.getByRole('alert').filter({hasText:'Mark ready within'})).toContainText('Mark ready within 5 seconds.');await a.getByRole('button',{name:'Refresh room'}).click();await expect(a.getByRole('alert').filter({hasText:'Mark ready within'})).toHaveCount(0);await o.getByRole('button',{name:'Refresh room'}).click();await expect(o.getByRole('alert').filter({hasText:'Mark ready within'})).toHaveCount(0);
     await b.getByRole('button',{name:'Mark ready',exact:true}).click();await expect(b.getByText(/Roster locked/)).toBeVisible();
     await a.getByRole('button',{name:'Refresh room'}).click();await a.getByRole('button',{name:'Leave room',exact:true}).click();await expect(a).toHaveURL(/\/play$/);
     expect(state.room().players.map(p=>p.profileId)).toEqual(['p2']);expect(state.room().observers.map(p=>p.profileId)).toEqual(['o1']);

@@ -1,0 +1,240 @@
+{
+  "test": "AC-45-T02 real domain/application conformance with unchanged oracle",
+  "evidence": "Actual production decisions returned through TransactionFake; no database durability claim",
+  "observed": [
+    {
+      "initial": {
+        "id": "m",
+        "roomId": "r",
+        "version": 0,
+        "roster": [
+          "p1",
+          "p2"
+        ],
+        "anchorId": "p1",
+        "chooserId": "p1",
+        "status": "choosing",
+        "rounds": [],
+        "usedPairIds": [],
+        "autoCategoryId": null,
+        "startedAt": 0,
+        "finishedAt": null
+      },
+      "commits": [
+        {
+          "command": {
+            "aggregateId": "m",
+            "actorId": "p1",
+            "commandId": "setup-1",
+            "requestDigest": "setup-1",
+            "expectedVersion": 0
+          },
+          "transition": {
+            "state": {
+              "id": "m",
+              "roomId": "r",
+              "version": 1,
+              "roster": [
+                "p1",
+                "p2"
+              ],
+              "anchorId": "p1",
+              "chooserId": "p1",
+              "status": "playing",
+              "rounds": [
+                {
+                  "id": "prior",
+                  "pairId": "animals-0",
+                  "pairVersion": 0,
+                  "categoryId": "animals",
+                  "startedAt": 0,
+                  "stage": 3,
+                  "stageDueAt": 80000,
+                  "submittedPlayerIds": [],
+                  "solves": [
+                    {
+                      "profileId": "p1",
+                      "points": 5,
+                      "elapsedMs": 1000,
+                      "acceptedAt": 1000,
+                      "order": 0,
+                      "stage": 0
+                    }
+                  ],
+                  "revealed": true,
+                  "endedAt": 80000,
+                  "attempts": []
+                },
+                {
+                  "id": "real-2",
+                  "pairId": "animals-0",
+                  "pairVersion": 0,
+                  "categoryId": "animals",
+                  "startedAt": 0,
+                  "stage": 0,
+                  "stageDueAt": 20000,
+                  "submittedPlayerIds": [],
+                  "solves": [],
+                  "revealed": false,
+                  "attempts": []
+                }
+              ],
+              "usedPairIds": [
+                "animals-0"
+              ],
+              "autoCategoryId": null,
+              "startedAt": 0,
+              "finishedAt": null
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "matchId": "m",
+                "version": 1
+              }
+            },
+            "events": [
+              {
+                "id": "real-3",
+                "aggregateType": "match",
+                "aggregateId": "m",
+                "version": 1,
+                "schemaVersion": 1,
+                "type": "MatchChanged",
+                "audience": [
+                  "p1",
+                  "p2"
+                ],
+                "payload": {
+                  "roomId": "r"
+                }
+              }
+            ],
+            "deadlines": [
+              {
+                "id": "real-4",
+                "aggregateId": "m",
+                "expectedVersion": 1,
+                "kind": "stage",
+                "dueAt": 20000
+              }
+            ],
+            "audits": []
+          }
+        },
+        {
+          "command": {
+            "aggregateId": "m",
+            "actorId": "p1",
+            "commandId": "cmd-5",
+            "requestDigest": "cmd-5",
+            "expectedVersion": 1
+          },
+          "transition": {
+            "state": {
+              "id": "m",
+              "roomId": "r",
+              "version": 2,
+              "roster": [
+                "p1",
+                "p2"
+              ],
+              "anchorId": "p1",
+              "chooserId": "p1",
+              "status": "playing",
+              "rounds": [
+                {
+                  "id": "prior",
+                  "pairId": "animals-0",
+                  "pairVersion": 0,
+                  "categoryId": "animals",
+                  "startedAt": 0,
+                  "stage": 3,
+                  "stageDueAt": 80000,
+                  "submittedPlayerIds": [],
+                  "solves": [
+                    {
+                      "profileId": "p1",
+                      "points": 5,
+                      "elapsedMs": 1000,
+                      "acceptedAt": 1000,
+                      "order": 0,
+                      "stage": 0
+                    }
+                  ],
+                  "revealed": true,
+                  "endedAt": 80000,
+                  "attempts": []
+                },
+                {
+                  "id": "real-2",
+                  "pairId": "animals-0",
+                  "pairVersion": 0,
+                  "categoryId": "animals",
+                  "startedAt": 0,
+                  "stage": 0,
+                  "stageDueAt": 20000,
+                  "submittedPlayerIds": [
+                    "p1"
+                  ],
+                  "solves": [],
+                  "revealed": false,
+                  "attempts": [
+                    {
+                      "profileId": "p1",
+                      "stage": 0,
+                      "acceptedAt": 0,
+                      "correct": false
+                    }
+                  ]
+                }
+              ],
+              "usedPairIds": [
+                "animals-0"
+              ],
+              "autoCategoryId": null,
+              "startedAt": 0,
+              "finishedAt": null
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "matchId": "m",
+                "version": 2,
+                "correct": false,
+                "points": 0
+              }
+            },
+            "events": [
+              {
+                "id": "real-6",
+                "aggregateType": "match",
+                "aggregateId": "m",
+                "version": 2,
+                "schemaVersion": 1,
+                "type": "MatchChanged",
+                "audience": [
+                  "p1",
+                  "p2"
+                ],
+                "payload": {
+                  "roomId": "r"
+                }
+              }
+            ],
+            "deadlines": [
+              {
+                "id": "real-7",
+                "aggregateId": "m",
+                "expectedVersion": 2,
+                "kind": "stage",
+                "dueAt": 20000
+              }
+            ],
+            "audits": []
+          }
+        }
+      ]
+    }
+  ]
+}

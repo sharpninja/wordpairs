@@ -44,6 +44,9 @@ export function GamePanel({
   const [busy, setBusy] = useState(false);
   const [now, setNow] = useState(0);
   const [confirmed, setConfirmed] = useState(0);
+  const [loadedArt, setLoadedArt] = useState<string | null>(null);
+  const [failedArt, setFailedArt] = useState<string | null>(null);
+  const [artAttempt, setArtAttempt] = useState(0);
   const pending = useRef<Record<string, unknown> | null>(null);
   const generation = useRef(0);
   const fetching = useRef(false);
@@ -187,8 +190,35 @@ export function GamePanel({
     view && (view.status === "choosing" || view.status === "summary");
   const category = view?.categories.find((c) => c.id === view.autoCategoryId);
   const art = view?.round?.backgroundId;
+  const artUrl = art && BACKGROUNDS.has(art) ? `/backgrounds/${art}.svg` : null;
+  useEffect(() => {
+    if (!artUrl) return;
+    let active = true;
+    const probe = new Image();
+    probe.onload = () => {
+      if (active) {
+        setLoadedArt(artUrl);
+        setFailedArt(null);
+      }
+    };
+    probe.onerror = () => {
+      if (active) setFailedArt(artUrl);
+    };
+    probe.src = artAttempt === 0 ? artUrl : `${artUrl}?attempt=${artAttempt}`;
+    return () => {
+      active = false;
+      probe.onload = null;
+      probe.onerror = null;
+    };
+  }, [artUrl, artAttempt]);
+  const artwork =
+    !artUrl || failedArt === artUrl
+      ? "fallback"
+      : loadedArt === artUrl
+        ? "loaded"
+        : "loading";
   const background =
-    art && BACKGROUNDS.has(art) ? `url(/backgrounds/${art}.svg)` : undefined;
+    artUrl && failedArt !== artUrl ? `url(${artUrl})` : undefined;
   return (
     <section
       className="panel game-panel"
@@ -196,6 +226,7 @@ export function GamePanel({
       aria-busy={busy}
       style={{ backgroundImage: background }}
       data-match-version={view?.version}
+      data-artwork={artwork}
     >
       <div className="game-surface">
         <div className="panel-heading">
@@ -268,6 +299,23 @@ export function GamePanel({
             {view.round && (
               <>
                 <h3 className="game-prompt">{view.round.prompt}</h3>
+                {artwork === "fallback" && (
+                  <p role="status">
+                    <span>Category artwork unavailable</span>
+                    {artUrl && (
+                      <>
+                        {" "}
+                        ·{" "}
+                        <button
+                          type="button"
+                          onClick={() => setArtAttempt((value) => value + 1)}
+                        >
+                          Retry artwork
+                        </button>
+                      </>
+                    )}
+                  </p>
+                )}
                 {view.status === "playing" && (
                   <p role="status">
                     {view.round.stage === 0
