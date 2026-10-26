@@ -48,7 +48,7 @@ Before coding, produce and review these design artifacts:
 - Public interface specifications: route/action inputs and outputs, event names/payloads, authorization checks, error codes, and versioning policy. Document which side owns each timer and timestamp.
 - Database schema and migrations for profiles, rooms, ordered player roster, observers/invitation context, ready states, curated categories/pairs, matches/rounds/submissions/scores, nominations, moderation, suggestions, and audit events. Include uniqueness, foreign-key, transaction, retention, and row-level-security policies.
 - Mock boundary catalog: clock, random-number source, repository/database, Realtime publisher/subscriber, OIDC verifier, environment/quota status, and Vercel build metadata. Production logic must depend on these interfaces rather than hidden globals.
-- Requirements-to-test traceability matrix, initial content plan, accessibility checks, security/threat review, deployment environment map, provisioning design, and release/SWBOM artifact contract.
+- Requirements-to-test traceability matrix, initial content plan, accessibility checks, security/threat review, deployment constraints and abstract environment-isolation evidence, and release/SWBOM artifact contract. Final branch/project topology and account-capacity verification are Phase 1 provisioning-entry decisions, not Phase 0 exit conditions.
 
 ## 3. Delivery sequence and phase gates
 
@@ -65,7 +65,9 @@ Phases are ordered by dependency. Phase 0 is the planning-only gate. No executab
 | **6 — Responsive UX, accessibility, and complete acceptance validation** | Complete phone portrait/landscape behavior, keyboard/touch operation, contrast and focus states, loading/offline/quota/reconnect states; run end-to-end flows across landing, identity, lobby, game, and results; close all AC traceability gaps. | AC-01–33, AC-37–38, AC-43–47, AC-50–51, with full regression across AC-01–51. | Browser tests use Playwright with deterministic seeded data and mocked/intercepted external services as appropriate. Human validation on representative phone-sized viewports and both orientations. No known acceptance criterion remains uncovered or failing. |
 | **7 — Release readiness and publication** | Generate the production commit's SWBOM; verify schema, commit, deployment URL/environment, dependencies/licenses, and no secrets; package complete GPL source and matching SWBOM; validate archive; publish through the approved manual release procedure; verify deployed production and downloadable archive. | AC-34–42 plus final regression of all active criteria. | Release candidate passes all tests, manual checks, free-tier audit, license/attribution review, archive inspection, and source/build/SWBOM commit matching. Publication is blocked on any mismatch. |
 
-### Phase 1 deployment environments
+### Phase 1 deployment environments (topology finalized at Phase 1 entry)
+
+The environment mapping below is a planning proposal. Confirm the branch-to-environment mapping, project allocation, account capacity, and service settings before Phase 1 provisioning/configuration work. These operational choices do not gate Phase 0 or change the AC contract expectations.
 
 - **Development:** local Next.js and local test/mocked services; disposable Supabase project or isolated local database for integration testing where practical.
 - **Staging:** a persistent Vercel Preview target (for example, a protected `staging` branch) and isolated Supabase project/configuration. Validate migrations, quotas, OIDC callback, and release packaging without Production data.
