@@ -16,7 +16,7 @@ The most important gaps to resolve before the affected increments are designed a
 4. **Cross-cutting security and failure cases:** ACs cover successful flows better than invalid tokens/codes, concurrent/stale operations, reconnect/retry, answer confidentiality, access-control enforcement, and data leakage.
 5. **Unresolved policies undermine testability:** match/timer rules, answer normalization, leaderboard semantics, nomination counting, moderation states, and guest identity scope must be decided before test expectations can be finalized.
 
-This report proposes wording for additional criteria AC-44 through AC-53. They are drafts for review, not active requirements. Preserve the current baseline until each proposed behavior is accepted, revised, or explicitly excluded.
+This report proposes wording for additional criteria AC-44 through AC-54. They are drafts for review, not active requirements. Preserve the current baseline until each proposed behavior is accepted, revised, or explicitly excluded.
 
 ## 2. Direct inconsistencies and testability blockers
 
