@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T04:25:10.206474+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "User explicitly requested hostile validation and keeping all receipts, now explicitly authorizes deploying existing Vercel wordpairs as staging and wordpairs-j9jf production. Please independently review docs/hosting_execution.md execution plan read-only for readiness, security, isolation, quotas, missing constraints, exact reproducibility. Existing agent context may be artwork; new task is hosting. Do not mutate source or live services. Write review receipt under docs/evidence/hosting/plan-review-round1.json, preserving findings and accuracy/completeness scores. Flag concrete blocking issues, suggest narrow fixes. In particular evaluate secret-preserving rename integration envs, TLS URL handling, hosted pg_cron guarded pg_net/Vault worker, SWBOM build gate, production eligibility ambiguity. Report without requiring a new human gate for already authorized deploy. You may inspect effective requirements from private ../wordpairs-local/hosting-effective.yaml and local code. Repo root /home/sharpninja/github/WordGame/.mcpServer/wordpairs.",
+  "scope": "Read-only hosting execution-plan readiness; no implementation or hosted resource mutation.",
+  "verdict": "changes_required",
+  "accuracyScore": 95,
+  "completenessScore": 90,
+  "rubric": {
+    "requiredThreshold": "99 accuracy /99 completeness and no unresolved material readiness defect",
+    "accuracy": "Plan fits current code, provider behavior, explicit authorization and evidence; no secret/eligibility/completion overclaims.",
+    "completeness": "Exact environment/release isolation, reproducible provisioning, scheduler security/recovery/quotas, build/SWBOM gates, validation and rollback are specified sufficiently to implement safely.",
+    "note": "Scores are reviewer judgments, not statistical guarantees."
+  },
+  "findings": [
+    {
+      "id": "HOST-HV-001",
+      "priority": "P1",
+      "file": "docs/hosting_execution.md",
+      "line": 35,
+      "title": "Specify controls that prevent production Git deployment before staging passes",
+      "problem": "Both existing Vercel projects use their production target and the plan commits/pushes one source revision, but no exact branch/auto-deployment/domain-assignment control is specified. If both projects follow main, the same push can release production before step7, bypassing the stated staging-first sequence. Disabling feature previews does not prevent this.",
+      "requiredChange": "Record each project Git binding, production branch and deployment-trigger control. Stage the exact production-target commit without assigning canonical domains, verify its isolated binding and immutable URL, then promote that tested production build. Prevent automatic production-domain assignment during staging verification; record prior deployment and safe rollback/first-launch disable procedure. Reconcile the operator-authorized two-project topology with effective TR20 rather than claiming the old Preview topology was executed.",
+      "validation": "Metadata preflight plus a dry-run/fake release-order test must prove a source push or staging failure cannot activate production; read back deployed commit/environment/domain after promotion."
+    },
+    {
+      "id": "HOST-HV-002",
+      "priority": "P2",
+      "file": "docs/hosting_execution.md",
+      "line": 28,
+      "title": "Bound scheduler history and quantify free-tier usage",
+      "problem": "A one-second pg_cron job runs86400 times/day even when no HTTP work exists. Supabase documents that cron.job_run_details grows for every execution and is not automatically cleaned. No retention/row budget is specified for this or new scheduler history. Idle HTTP suppression alone does not protect the500MB database. Continuous active one-second HTTP calls would be2592000/month before user traffic, beyond the currently documented1000000 Hobby invocations.",
+      "requiredChange": "Add explicit bounded retention/cleanup for this owned cron job and private scheduler outcome records, with cleanup ownership and failure behavior. Record actual plan/quota readback, expected active-room call/message/connection budget, backlog/DB-size thresholds and operator-visible graceful quota handling. Do not promise unlimited continuous load or bypass platform pausing.",
+      "validation": "Tests prove history remains bounded and cleanup never removes pending gameplay work; staging evidence shows idle HTTP count zero, bounded history, current quotas, and backlog/503 or429 recovery.",
+      "sources": [
+        "https://supabase.com/docs/guides/cron/quickstart",
+        "https://vercel.com/docs/plans/hobby"
+      ]
+    },
+    {
+      "id": "HOST-HV-003",
+      "priority": "P1",
+      "file": "docs/hosting_execution.md",
+      "line": 29,
+      "title": "Define scheduler secret and function trust boundaries beyond Vault storage",
+      "problem": "The plan restricts endpoint/secret changes to an administrator but does not specify read/execute grants. pg_net materializes decrypted Authorization headers in its request queue; Vault and extension ownership/default grants are platform-specific. Storing a credential in Vault is not proof that every database role is denied it. A newly created callable SECURITY DEFINER wrapper could also expose privileged dispatch.",
+      "requiredChange": "Inventory effective schema usage, object ownership, function EXECUTE and Vault/pg_net/control-table privileges. Put dispatcher/control objects in an unexposed private schema, use a fixed safe search_path and explicit allowlisted endpoint, revoke PUBLIC execution on owned wrappers, and prove anon/authenticated cannot inspect secrets or dispatch work. Identify trusted application/service/admin roles honestly; do not assert service_role cannot read Vault if its platform grants permit it. Keep the scheduler credential purpose-limited. Avoid unsupported blanket revocations of Supabase-owned extension objects.",
+      "validation": "Role-based SQL/API denial tests, secret-free cron command/history/readback, no exposed secret-returning function, endpoint-change denial, and callback authorization tests.",
+      "sources": [
+        "https://supabase.com/docs/guides/functions/schedule-functions",
+        "https://supabase.com/kb/troubleshooting/revoking-privileges-on-storage-pg_cron-vault-and-extension-objects-has-no-effect"
+      ]
+    },
+    {
+      "id": "HOST-HV-004",
+      "priority": "P1",
+      "file": "docs/hosting_execution.md",
+      "line": 28,
+      "title": "Make the guarded scheduler recovery contract explicit",
+      "problem": "Private in-flight state and backoff are mentioned but their state machine and idle predicate are unspecified. pg_net request and response tables are unlogged, so a database restart or response expiry can leave durable in-flight state without a response. In current runtime, match bootstrap is a separate starts() query after lobby jobs; a room can already be started without an existing match or due job. A guard looking only at jobs/outbox could permanently miss that work.",
+      "requiredChange": "Define transactional guard acquisition, finite in-flight lease, HTTP timeout versus Vercel worker limit, bounded backoff and recovery for missing/evicted responses. Due-work detection must include eligible room-to-match bootstrap, due/expired-lease lobby and match jobs, and pending outbox. Do not mark application work complete based only on HTTP submission/timeout. Preserve independent deadline and publication outcomes.",
+      "validation": "Mock-first and disposable SQL tests for simultaneous ticks, idle suppression, startup gap, lost pg_net response/restart, late duplicate callback, worker503/429, outbox failure without deadline starvation, and eventual canonical recovery.",
+      "sources": [
+        "https://supabase.com/docs/guides/database/extensions/pg_net"
+      ],
+      "codeReferences": [
+        "src/infrastructure/runtime.ts:85",
+        "src/infrastructure/runtime.ts:108",
+        "src/app/api/internal/deadlines/route.ts:26",
+        "src/infrastructure/match-repository.ts:132"
+      ]
+    },
+    {
+      "id": "HOST-HV-005",
+      "priority": "P2",
+      "file": "docs/hosting_execution.md",
+      "line": 12,
+      "title": "Retain the required reproducible provisioning and environment contract",
+      "problem": "Effective TR23 requires a manually invoked repeatable provisioning script; the execution plan currently describes actions without naming its checked-in entry point or contracts. Generic renaming also omits the precise per-project variable-name/target/branch mapping and repeat-run/rotation behavior. Database URL handling is secure in principle but leaves the pooler/role/CA identity choice unresolved.",
+      "requiredChange": "Specify a version-controlled doctor/plan/apply/status procedure with pinned documented tools, migration hashes/history/drift checks and idempotent reruns. Add an allowlisted environment manifest mapping integration keys to WORDPAIRS_* names, target scopes, classification and rotation behavior; preserve sensitive type and verify no accidental Preview credential inheritance. Map database URL using an explicit approved host/user/database/port and CA strategy; strip only understood SSL parameters after verification or reject them, never weaken certificate checks. Select a serverless-compatible connection endpoint and verify project binding privately. Confirm hosted Realtime accepts the existing custom HS256 token and that its per-project signing key is available/valid before declaring live transport configured.",
+      "validation": "Dry-run has no writes; second apply makes no extra migration/job/secret; mismatch aborts before mutation; SSL/query override/CA/host and environment-scope negative tests; cross-project token/channel denial plus renewal.",
+      "codeReferences": [
+        "src/infrastructure/postgres-pool.ts:8",
+        "src/infrastructure/realtime.ts:51"
+      ],
+      "sources": [
+        "https://supabase.com/docs/guides/database/connecting-to-postgres/serverless-drivers",
+        "https://supabase.com/docs/guides/platform/ssl-enforcement"
+      ]
+    },
+    {
+      "id": "HOST-HV-006",
+      "priority": "P2",
+      "file": "docs/hosting_execution.md",
+      "line": 63,
+      "title": "Resolve the existing free-tier eligibility prerequisite before production promotion",
+      "problem": "The plan acknowledges unverified Hobby eligibility for prize-contest use but still unconditionally advances to production in step7. Effective TR21 requires personal/non-commercial Hobby use. Current Vercel guidance defines commercial purpose broadly and directs uncertain cases to support; this review cannot turn the contest purpose into a provider ruling.",
+      "requiredChange": "Make the eligibility disposition an explicit technical/provider prerequisite for promotion: record a defensible current policy basis or actual provider clarification, or keep the eligibility-dependent operation pending while continuing authorized implementation and testing. Do not invent a paid fallback, claim eligibility verified, or ask the user to authorize the same deployment again. Keep contest-specific eligibility separate from code correctness.",
+      "validation": "A final receipt must show the evidence/decision and preserve any remaining uncertainty; generic successful deployment is not proof of eligibility.",
+      "sources": [
+        "https://vercel.com/docs/limits/fair-use-guidelines",
+        "https://vercel.com/docs/plans/hobby"
+      ]
+    }
+  ],
+  "positiveAssessment": [
+    "Explicit operator authorization for the two existing projects is accepted; no new personal-signoff requirement is introduced.",
+    "Separate named Supabase projects, secrets and canonical origins are the correct isolation direction.",
+    "Rejecting TLS URL overrides and retaining rejectUnauthorized:true matches current pg driver protection.",
+    "pg_cron plus guarded pg_net is feasible for subminute triggering; avoiding idle HTTP calls is appropriate.",
+    "Test -> schema-validated lockfile CycloneDX1.6 -> Next build ordering is correct; docs/SWBOM.md already specifies runtime/build components, PURLs/licenses/dependency edges and immutable public endpoint. Add strict metadata/endpoint and failure-order fixtures during implementation; schema validity alone does not establish complete inventory.",
+    "Staging-only synthetic acceptance and non-destructive production smoke appropriately limit data impact.",
+    "No new resources/paid fallback/Actions, no guessed administrator, and no Phase7/contest/physical-device completion overclaim are appropriate."
+  ],
+  "documentationFollowups": [
+    "Refresh stale docs/SWBOM.md statement that no lockfile/application build exists when implementing the gate.",
+    "Reconcile superseded Preview-vs-two-project topology in effective requirements and deployment docs while retaining history.",
+    "Record exact deployment URL metadata separately for each build of the same commit; staging SWBOM must not be copied into production."
+  ],
+  "evidence": {
+    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "planPath": "docs/hosting_execution.md",
+    "planSha256": "f7fddecba4a77fb81b1199f123d98b72209e3704b5ccbf115467770173c185c7",
+    "effectiveRequirementsSha256": "71404aef75d0a4e96de6c72bb0305e0de44eadd814980d7190e45fc5d197533c",
+    "localReads": [
+      "docs/hosting_execution.md",
+      "docs/deployment_plan.md",
+      "docs/SWBOM.md",
+      "private effective requirement sections TR20/21/23/26/27 and LIVE07",
+      "private sanitized hosting Vercel preflight metadata",
+      "src/infrastructure/runtime.ts",
+      "src/infrastructure/postgres-pool.ts",
+      "src/infrastructure/realtime.ts",
+      "src/infrastructure/deadlines.ts",
+      "src/infrastructure/outbox.ts",
+      "src/infrastructure/match-repository.ts",
+      "src/app/api/internal/deadlines/route.ts",
+      "numbered migration grants/outbox schema"
+    ],
+    "currentOfficialSources": [
+      "https://supabase.com/changelog",
+      "https://supabase.com/docs/guides/cron",
+      "https://supabase.com/docs/guides/cron/quickstart",
+      "https://supabase.com/docs/guides/functions/schedule-functions",
+      "https://supabase.com/docs/guides/database/extensions/pg_net",
+      "https://supabase.com/kb/troubleshooting/revoking-privileges-on-storage-pg_cron-vault-and-extension-objects-has-no-effect",
+      "https://supabase.com/docs/guides/database/connecting-to-postgres/serverless-drivers",
+      "https://supabase.com/docs/guides/platform/ssl-enforcement",
+      "https://vercel.com/docs/plans/hobby",
+      "https://vercel.com/docs/limits/fair-use-guidelines"
+    ],
+    "platformNotes": [
+      "Supabase changelog HTML checked after markdown URL was unsupported by web tool. Relevant announced TLS cipher change affects HTTP APIs, not Postgres/pooler connections; no reason to weaken certificate verification.",
+      "Changelog also notes hosted realtime schema mutation restrictions while realtime.messages RLS policies remain supported; apply policy only, not self-hosted bootstrap DDL.",
+      "Supabase connector documentation search was consulted; where its example differed from current public schedule documentation, the public page was treated as current and no example secret/auth pattern was blindly adopted."
+    ]
+  },
+  "limits": [
+    "No hosted metadata independently fetched in this round beyond provided sanitized preflight; actual team/plan/project/schema/secret scopes remain execution preflight obligations.",
+    "No secret values were requested or printed; no SQL/API mutations, deployments, app tests or source edits performed.",
+    "No assertion that existing hosted resources are vulnerable: findings identify missing execution-plan safeguards before the proposed changes.",
+    "Eligibility assessment identifies a conflict to resolve against current provider guidance; it is not a legal ruling or a fabricated need for renewed human deployment authorization.",
+    "Previously outstanding live2..25 browser capacity evidence remains outstanding; this plan review does not complete it."
+  ],
+  "disposition": "Implementation preparation may continue within the existing authorization. Revise the six concrete readiness gaps and obtain source/operational evidence before treating this plan as approved for production promotion."
+}

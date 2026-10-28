@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T22:46:16.6925095Z",
+  "scope": "Hosting candidate preflight; not a live release",
+  "targets": [
+    {
+      "vercelProject": "wordpairs",
+      "supabaseId": "jshjkaigwbxsbnnogfxs",
+      "origin": "https://wordpairs.vercel.app",
+      "role": "staging",
+      "vercelId": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w"
+    },
+    {
+      "vercelProject": "wordpairs-j9jf",
+      "supabaseId": "krdcuuhcynmdfcjlpbsf",
+      "origin": "https://wordpairs-j9jf.vercel.app",
+      "role": "production",
+      "vercelId": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh"
+    }
+  ],
+  "localValidation": {
+    "unitFailed": 0,
+    "inventoryComponents": 283,
+    "inventorySchema": "CycloneDX 1.6",
+    "peerEdges": "verified by independent reviewer",
+    "unitPassed": 553,
+    "productionBuild": "passed",
+    "lint": "passed"
+  },
+  "certificate": {
+    "notAfter": "2031-04-26T10:56:53Z",
+    "verificationDisabled": false,
+    "subject": "Supabase Root 2021 CA",
+    "sha256": "807025AD50D4ED219D2C9C7D299C004F824EB00CF7F65AFEF607D07B72E6CAFA"
+  },
+  "staging": {
+    "applicationLoginTls": "passed",
+    "catalogPairs": 60,
+    "cronActive": false,
+    "schedulerDispatch": false,
+    "gameRlsTables": 31,
+    "adminTls": "passed",
+    "pendingMigrations": 0,
+    "catalogCategories": 6,
+    "schemaHistorySourceCheck": "passed"
+  },
+  "remaining": [
+    "Create and validate exact-commit staging deployment",
+    "Verify hosted private realtime and autonomous scheduler with actual UI",
+    "Migrate and deploy production only after staging passes",
+    "Provider Hobby eligibility for prize-contest interpretation remains unverified"
+  ],
+  "privacy": "No credentials, browser state, private session logs or runtime configuration included"
+}

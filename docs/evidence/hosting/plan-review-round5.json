@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T22:30:14.775207+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "User obtainingCAmanually; wecanfinishunaffectedsource. HOST-HV-013 fixed: generate-sbom dependencygraph now includes installed peerDependencies, skips missing optionalpeers viaexisting resolution. Fixture @tools/b peer a installed and absent-peer optional now asserts exactlyaedge; red1fail/3pass beforefix recorded privatehosting-peer-red.log; hooksucceededpendingpoll. Please finalround5 source-only verification real-lockreact-dom\u2192react andNext\u2192React/DOM/installedtestingpeers + focaltest andreceipt docs/evidence/hosting/plan-review-round5.json, retainallrounds. No cloud readiness claim, CA stillpending user. Do not mutate source/live. May inspect newfullsuite loghosting-unit-peer-final.log whenpresent.",
+  "scope": "Final source-only rereview of the narrow peer-dependency repair, carrying forward reviewed hosting source. No cloud activation or deployment approval claim.",
+  "verdict": "approve_source_readiness",
+  "accuracyScore": 99,
+  "completenessScore": 99,
+  "rubric": {
+    "threshold": "99 accuracy and 99 completeness, with no unresolved material finding in the reviewed source scope.",
+    "accuracy": "Generator output and retained test results agree with actual lockfile relationships; hosted evidence is not inferred from local tests.",
+    "completeness": "Installed peer edges, absent optional peers, existing component metadata and prior hosting corrections are covered without reopening unrelated product work.",
+    "scores": "Reviewer judgments, not statistical guarantees."
+  },
+  "unresolvedSourceFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "HOST-HV-013",
+      "status": "resolved",
+      "file": "scripts/generate-sbom.mjs",
+      "line": 43,
+      "correction": "Dependency enumeration now includes peerDependencies, resolves them against installed lockfile paths, removes duplicate edges and excludes unresolved optional peers.",
+      "regression": "Fixture @tools/b has installed peer a and missing optional absent-peer; emitted dependsOn is exactly [node_modules/a].",
+      "redEvidence": "Read implementer-retained hosting-peer-red.log: 1 failed / 3 passed; expected node_modules/a edge was absent before repair.",
+      "greenEvidence": "Independent focused run: 11/11 passed across hosted-sbom, hosting-schema and hosting-environment tests."
+    }
+  ],
+  "independentVerification": {
+    "focusedTests": {
+      "command": "npx vitest run tests/integration/hosted-sbom.test.ts tests/integration/hosting-schema.test.ts tests/integration/hosting-environment.test.ts",
+      "result": "11/11 passed in 3 files; 1.10 seconds",
+      "execution": "Authorized subprocess-capable execution; local fixture files only."
+    },
+    "actualLockfile": {
+      "command": "node scripts/generate-sbom.mjs --sha 5e4117e8ea4336013b1ac4082e255660fcab4c4a --branch main --target production --url review-fixture.vercel.app --output /tmp/wordpairs-hv-sbom-round5.json",
+      "result": "CycloneDX 1.6 validated; 283 components",
+      "metadataQualification": "review-fixture.vercel.app and base SHA supplied as diagnostic metadata only, not evidence of a deployed candidate.",
+      "assertedEdges": [
+        {
+          "ref": "node_modules/react-dom",
+          "requiredPeers": [
+            "node_modules/react"
+          ],
+          "duplicateFree": true
+        },
+        {
+          "ref": "node_modules/next",
+          "requiredPeers": [
+            "node_modules/react",
+            "node_modules/react-dom",
+            "node_modules/@playwright/test"
+          ],
+          "duplicateFree": true
+        },
+        {
+          "ref": "node_modules/@testing-library/react",
+          "requiredPeers": [
+            "node_modules/react",
+            "node_modules/react-dom",
+            "node_modules/@testing-library/dom"
+          ],
+          "duplicateFree": true
+        }
+      ]
+    }
+  },
+  "priorRoundContinuity": "All rounds 1\u20134 are preserved. The prior disabled-installation approval and resolved scheduler, role-trust, session-pooling, history-drift and bounded-lock findings remain as recorded. Round4 peer-edge rejection is superseded only after the measured repair; it is not deleted.",
+  "fullSuiteStatusAtReview": "hosting-unit-peer-final.log existed but contained only npm/vitest startup when inspected. No final full-suite pass is asserted for this newest run. Parent previously reported 553/553 before the peer-edge change; the narrow changed behavior is independently tested here.",
+  "snapshot": {
+    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "state": "Current working-tree source, not represented as a committed/deployed immutable candidate",
+    "files": [
+      {
+        "path": "scripts/generate-sbom.mjs",
+        "sha256": "921107543d98bbff94f627621ef48d3a36a934f88c3eb475662c5af489b186f6",
+        "bytes": 4139
+      },
+      {
+        "path": "scripts/hosting-schema.mjs",
+        "sha256": "b496a03425fdc8312fd8746177d92d732595086dbb33a6c5ceeb003fc5490ed4",
+        "bytes": 6117
+      },
+      {
+        "path": "tests/integration/hosted-sbom.test.ts",
+        "sha256": "bce5eca42cdea6e8f382bc1b9c618d5b51cbfc4c310b1c81826e5062f98a5a8d",
+        "bytes": 2921
+      },
+      {
+        "path": "tests/integration/hosting-schema.test.ts",
+        "sha256": "b028d3f39a3f3ba9712d4c2b5d7e0334ef2ffbfc9bbe4eb6c7fc68728970f381",
+        "bytes": 1910
+      },
+      {
+        "path": "tests/integration/hosting-environment.test.ts",
+        "sha256": "77c33b2a0b8dab6f1b410529d2cd0d6feb95393c406eca4216b3911f89ccf9f5",
+        "bytes": 1578
+      },
+      {
+        "path": "src/infrastructure/runtime.ts",
+        "sha256": "ea6a9b0535b54000440c36d2c631b5fcc2ca43501b6a5ee47038b08744a3ff11",
+        "bytes": 8658
+      },
+      {
+        "path": "src/infrastructure/hosting/001_scheduler.sql",
+        "sha256": "bb6b22fec2469e3d662eac01e39826367b6432fb845ff1562014812ca1f08585",
+        "bytes": 4904
+      },
+      {
+        "path": "src/infrastructure/hosting/002_realtime_policy.sql",
+        "sha256": "0d64cefc30fe90e133a337fd2bb0ac20e6bf332c05c1e3cbe1601513cfb71cab",
+        "bytes": 719
+      },
+      {
+        "path": "docs/hosting_execution.md",
+        "sha256": "177af33d710f420fb52549c84c7be720b7a60e8779bfff5eea8765d89c5055d0",
+        "bytes": 8175
+      },
+      {
+        "path": "docs/deployment_plan.md",
+        "sha256": "426b51fe8ed1f376a20198a3f63cd1efd094440b2d58d3e47baef748ad03ec2c",
+        "bytes": 30709
+      },
+      {
+        "path": "docs/SWBOM.md",
+        "sha256": "90f2af109fec5a01b8b696e0d918cb76a5aabb3d6568529facdabb85716b0d9a",
+        "bytes": 3215
+      },
+      {
+        "path": "package.json",
+        "sha256": "fa8d3facf48f2265dc9b3552076ef9831446c535f5325615fb53dc1241a5b96f",
+        "bytes": 1462
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "ef5a30905ce33fed9e9654ecc73829f3788fb13ae4ac489b6d03deef61917e3e",
+        "bytes": 145569
+      }
+    ]
+  },
+  "operationalDisposition": {
+    "readyToClaimLive": false,
+    "pending": [
+      "Obtain and verify the proper staging CA without weakening TLS certificate checks.",
+      "Verify actual runtime-role database connection and environment isolation.",
+      "Complete configured scheduler response/recovery and private Realtime operational checks.",
+      "Deploy/validate the exact source candidate in staging before the separately authorized production steps.",
+      "Retain provider eligibility uncertainty and unsatisfied operational criteria honestly."
+    ],
+    "unchangedCheckpoint": "Staging installation with disabled cron/dispatch and no production database migration/deployment are parent-reported checkpoint facts, not newly queried by reviewer."
+  },
+  "limits": [
+    "No source, live services, requirements or secrets changed; only this new review receipt written.",
+    "No independent hosted metadata/DB query or cloud application test in this round.",
+    "No final full-suite, live 2..25 UI capacity, physical-device installation, contest eligibility or complete Phase7 certification.",
+    "Source readiness approval is not a workaround for the pending CA/browser access condition."
+  ],
+  "disposition": "APPROVE reviewed hosting source readiness at 99/99, with HOST-HV-013 resolved. Continue only already-authorized preparation/validation as dependencies permit; no cloud readiness claim until the separate operational prerequisites pass."
+}

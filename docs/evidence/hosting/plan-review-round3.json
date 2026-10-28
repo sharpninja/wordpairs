@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T04:52:47.437759+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "Round3 please: corrected current_time\u2192v_now, removed managed net/Vault revokes and documented direct DB login trust; service_role inherited RLS remains. Runner now session port5432 only with session lock, ordered-prefix name/source-body matching against statements (nativeMCP timestamps accepted), unknown/source/orderdrift fails. Exact codeupdated scripts/hosting-schema.mjs; planmetadata now lists serverOnlyFallbacks instead of rename. Need go/no-go on applying newhosted scheduler disabled (notactivating until configuredtick+readback), then runtimecredentials. Original001-011 staging installed. Native migrationAPI timestamp collision007 committedschema but historyinsertfailed: verified7table+lastfunction+seed6 before DMLhistoryrepair; spacing subsequent calls1200ms andstripouterBEGINCOMMIT fixed. Will preserve repairreceipt andsourcehashes. Please reviewandwrite round3 quickly; no live actions needed.",
+  "scope": "Source review for installing the hosted scheduler with dispatch disabled, then isolated runtime credentials; separate assessment of the optional fallback runner. Not activation, production promotion or full hosting completion.",
+  "verdict": "approve_disabled_installation",
+  "accuracyScore": 99,
+  "completenessScore": 99,
+  "scoreScope": "Only the requested disabled-installation and credential-preparation step; no score claiming operational deployment readiness.",
+  "rubric": {
+    "threshold": "99/99 for the narrow authorized step; unresolved material activation prerequisites remain explicit.",
+    "accuracy": "Correct current code semantics, trust boundaries and scoped authority without treating implementation reports as independent runtime evidence.",
+    "completeness": "Disabled installation preserves pending work and is followed by bounded configuration/readback; remaining fallback defects do not silently authorize that path."
+  },
+  "resolvedFindings": [
+    {
+      "id": "HOST-HV-007",
+      "status": "resolved in source",
+      "evidence": "All scheduler clock expressions now use v_now."
+    },
+    {
+      "id": "HOST-HV-008",
+      "status": "resolved in source design; hosted grant evidence pending",
+      "evidence": "Unsupported managed net/Vault revocations removed. Direct DB logins explicitly trusted for scheduler credentials; owned control/function restrictions remain. Server-side credential possession is no longer described as denied by ineffective revokes."
+    },
+    {
+      "id": "HOST-HV-009",
+      "status": "pooling defect resolved; bounded-wait follow-up remains",
+      "evidence": "Fallback now permits only session port5432, so session advisory lock remains on the same backend. client.end closes that session in finally; there is still no bounded lock acquisition."
+    },
+    {
+      "id": "HOST-HV-010",
+      "status": "resolved in source and pure fixture checks",
+      "evidence": "History must be an ordered exact-name prefix with one source-body-matching statement per migration. MCP-assigned timestamps accepted without pretending they equal proposed fallback versions; gap, duplicate, changed and reordered fixtures rejected."
+    }
+  ],
+  "independentChecks": [
+    "Read all three current requested files.",
+    "node --check scripts/hosting-schema.mjs passed.",
+    "Executed actual runner plan/history path against six owned temporary fixtures: complete correct history PASS; valid seven-migration prefix PASS; missing migration rejected; duplicate rejected; changed SQL rejected; swapped names/order rejected. No database connection or mutation.",
+    "Reviewed trust-boundary correction against previously retrieved official Supabase managed-owner grant documentation and existing aggregate RLS policy."
+  ],
+  "nonblockingForDisabledInstallation": [
+    {
+      "id": "HOST-HV-011",
+      "priority": "P2",
+      "file": "scripts/hosting-schema.mjs",
+      "location": "pg_advisory_lock acquisition",
+      "problem": "The optional fallback can wait indefinitely for another session lock. Port5432 fixes lock correctness but not bounded completion.",
+      "requiredChange": "Before relying on fallback apply/status, set a finite lock/statement timeout or use bounded pg_try_advisory_lock retries; test contention and failure cleanup. Explicit unlock is useful, while current session close does release locks on ordinary termination.",
+      "scope": "Does not block native apply_migration of the disabled scheduler."
+    },
+    {
+      "id": "HOST-HV-012",
+      "priority": "P2",
+      "file": "src/infrastructure/hosting/001_scheduler.sql",
+      "location": "singleton not-found return before cron-history pruning",
+      "problem": "cron.schedule immediately creates an active one-second job, but no scheduler singleton is inserted by this migration. With no row, the function returns before history pruning. This is safe from HTTP dispatch but not a permanently bounded idle installation.",
+      "requiredChange": "Immediately provision the exact-environment singleton with enabled=false, or leave the cron job inactive until that row is installed. Do not leave the rowless active job unattended.",
+      "scope": "Operational sequence condition for this approval; does not require enabling HTTP dispatch."
+    }
+  ],
+  "activationPrerequisites": [
+    "Read back exact migration source/history, repaired007 provenance and all expected objects before activation. Preserve the collision/failure as history, not an all-success assertion.",
+    "Verify singleton endpoint belongs to this database, enabled=false initially, independent per-environment secrets, no guessed admin, no credentials in evidence.",
+    "Execute configured disabled and idle tick; verify no HTTP requests and history retention. Test due work, absent response35s lease recovery, non200 backoff, successful response reset, and concurrent guard before production reliance.",
+    "Inspect effective wordpairs_app membership/attributes, own control/function denial, runtime aggregate visibility/locking, and net/Vault exclusion from exposed Data API schemas. The service_role trust boundary includes inherited managed privileges, not only Wordpairs objects.",
+    "Staging runtime must prove TLS, independent guest clients, private Realtime/renewal, outbox delivery and autonomous deadlines before activation or production promotion is reported successful.",
+    "Keep implementation plan status accurate: original staging migrations are now reported installed; no claim that no database migration occurred. Wording that only an administrator can change secrets must be qualified because trusted service_role-derived logins may have managed Vault update privileges."
+  ],
+  "implementerReportedNotIndependentlyReexecuted": [
+    "Original001\u2013011 installed in staging. Migration007 schema committed while provider history insertion collided; implementer verified objects and repaired history.",
+    "Subsequent native migrations spaced1200ms and outer transaction wrappers stripped to preserve provider transaction control."
+  ],
+  "snapshot": {
+    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "files": [
+      {
+        "path": "docs/hosting_execution.md",
+        "sha256": "8fb0323c426f353d3e5bcae70043bb23c1feeeb79157b2e3ffca0f4f04ed448e",
+        "bytes": 6665
+      },
+      {
+        "path": "src/infrastructure/hosting/001_scheduler.sql",
+        "sha256": "b3bb0c3bab6b9a2e1f4bca6dc7d3860b56bf6b18ebb3f655b2bf11948d610eac",
+        "bytes": 4799
+      },
+      {
+        "path": "scripts/hosting-schema.mjs",
+        "sha256": "2b08023b137d3e5145160c7efd0b7bf594463adb87450cbaff0fe91304812914",
+        "bytes": 5887
+      }
+    ]
+  },
+  "limits": [
+    "No live database/API mutation, credential access, schema installation or activation performed by reviewer.",
+    "No new full unit/browser/build run; pure runner checks are not database execution proof.",
+    "Fallback requires exactly one preserved statement per migration; histories in a different representation fail closed and need explicit reviewed reconciliation.",
+    "Provider Hobby eligibility remains unverified. This approval does not certify contest compliance, complete Phase7 or outstanding live2..25 UI capacity.",
+    "Round1 and round2 remain unchanged."
+  ],
+  "disposition": "GO for native installation of the corrected hosted scheduler with dispatch disabled, followed by isolated credential preparation and immediate disabled-row/cron-state reconciliation. NO operational activation approval yet. The fallback runner is not approved for unattended use until bounded lock waiting is repaired. No renewed human approval is requested for already authorized deployment work."
+}

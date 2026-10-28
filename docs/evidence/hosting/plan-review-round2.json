@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T04:34:58.588555+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "Please round2 review updated docs/hosting_execution.md plus src/infrastructure/hosting/001_scheduler.sql and scripts/hosting-schema.mjs. Write docs/evidence/hosting/plan-review-round2.json; preserve round1. SWBOM generator tests isolated4/4 passing, full unit suite underway. Production Git initial ignored-build exit0 and previews disabled now applied; no env exposure expansion. Exact Vercel domains/API bindings verified. Supabase org confirmed free. Individual get_project_env can decrypt public URL/anon, but sensitive DB/JWT/service remain unreadable; preserving sensitive by key-only rename is planned. Dedicated runtime role prevents admin DB credentials inapp. No new resourcecost. Eligibility now explicitly retained as unverified criterion, authorized deployment not represented as compliance/provider approval. Need technical readiness, tell me precise actual blockers inSQL andrunner. Actual original schemaMCP migrations will be transactional ordered; newpassword generated inVault no plaintextsecretlog.",
+  "subsequentSteering": [
+    "Sensitive-key rename returned API400 without mutation. Implementer instead added server-only fallbacks for SUPABASE_SERVICE_ROLE_KEY and SUPABASE_JWT_SECRET, retaining explicit WORDPAIRS precedence. No secret retrieval/exposure expansion.",
+    "Implementer requests proceeding with original reviewed 001\u2013011 staging migrations separately from hosted scheduler activation."
+  ],
+  "scope": "Read-only updated hosting plan, hosted scheduler and migration fallback; supplemental review of two-key runtime fallback. No hosted mutations or deployment.",
+  "verdict": "changes_required",
+  "accuracyScore": 95,
+  "completenessScore": 94,
+  "rubric": {
+    "threshold": "99 accuracy /99 completeness and no unresolved material readiness defect",
+    "accuracy": "Code and plan match actual PostgreSQL/provider semantics and evidence without invented secret isolation or provider eligibility.",
+    "completeness": "Repeatable migrations, scoped privileges, bounded scheduler recovery, exact environment bindings and executable operational verification.",
+    "scores": "Reviewer judgments, not statistical estimates."
+  },
+  "findings": [
+    {
+      "id": "HOST-HV-007",
+      "priority": "P1",
+      "file": "src/infrastructure/hosting/001_scheduler.sql",
+      "line": 33,
+      "title": "Use a non-keyword timestamp variable throughout the scheduler",
+      "problem": "The declaration and SQL expressions use unquoted current_time. PostgreSQL reserves CURRENT_TIME as a SQL value expression of type time with time zone, not the intended timestamp. Expressions comparing last_pruned/due_at to current_time can resolve the built-in rather than the declared timestamp and fail. This path needs actual execution, not only CREATE FUNCTION success.",
+      "requiredChange": "Rename consistently to v_now (or another non-keyword), then run a configured tick and every response/lease branch in disposable SQL.",
+      "evidenceType": "Source and PostgreSQL keyword/date-time documentation; no independent database execution in this review.",
+      "sources": [
+        "https://www.postgresql.org/docs/17/sql-keywords-appendix.html",
+        "https://www.postgresql.org/docs/17/functions-datetime.html"
+      ]
+    },
+    {
+      "id": "HOST-HV-008",
+      "priority": "P1",
+      "file": "src/infrastructure/hosting/001_scheduler.sql",
+      "line": 20,
+      "title": "Do not claim unsupported revocations isolate scheduler secrets from the runtime login",
+      "problem": "The SQL and plan promise app-role denial of Vault/net. Supabase-owned grants can survive postgres REVOKE; granting service_role also inherits its Vault access. A direct revoke from wordpairs_app does not subtract inherited privileges. pg_net can expose queued Authorization headers to every direct SQL login through PUBLIC grants. The current statements are not proof of the promised boundary.",
+      "requiredChange": "Remove unsupported blanket-revocation assumptions. Inventory effective hosted grants and exposed schemas. Explicitly classify this trusted server login as able to access purpose-limited scheduler credentials where platform grants require it; retain owned control-schema/function revocations and browser/API denial. If strict runtime-secret separation is actually required, implement a supported alternative boundary instead. Do not print secrets or rely on a successful REVOKE return as proof.",
+      "validation": "Actual role privilege readback and anon/authenticated API denial, no exposed net/Vault schema or secret-returning wrapper, runtime cannot edit owned scheduler control/function, scheduler credential scoped only to deadline/outbox endpoint.",
+      "sources": [
+        "https://supabase.com/kb/troubleshooting/revoking-privileges-on-storage-pg_cron-vault-and-extension-objects-has-no-effect",
+        "https://supabase.com/kb/troubleshooting/revoking-access-to-pg_net-objects-has-no-effect"
+      ]
+    },
+    {
+      "id": "HOST-HV-009",
+      "priority": "P1",
+      "file": "scripts/hosting-schema.mjs",
+      "line": 31,
+      "title": "Do not use session advisory locks through transaction pooling",
+      "problem": "The runner permits port6543 but acquires pg_advisory_lock outside any transaction. With a transaction pooler later queries can use a different backend; the session lock can remain on the old pooled backend and does not safely serialize the migration sequence. The unbounded lock call can also hang.",
+      "requiredChange": "Restrict this migration runner to the verified session/direct endpoint, add bounded lock acquisition and explicit unlock in finally, or redesign locking/history checks inside transactions suitable for transaction pooling. Keep application serverless pooling separate.",
+      "validation": "Reject the transaction endpoint before connecting under the session-lock design; concurrent runner test and failure cleanup must prove no stranded lock or double migration.",
+      "sources": [
+        "https://supabase.com/docs/guides/database/connecting-to-postgres"
+      ]
+    },
+    {
+      "id": "HOST-HV-010",
+      "priority": "P2",
+      "file": "scripts/hosting-schema.mjs",
+      "line": 36,
+      "title": "Verify applied migration contents and order, not only names",
+      "problem": "The query retrieves statements but ignores them. An applied row with a known name and different SQL/version is accepted; duplicate names collapse in a Map, and a missing earlier migration can be applied after a later one. This fails the claimed repeatable drift guard even if current hosted histories are empty.",
+      "requiredChange": "Verify unique names and an ordered applied prefix plus exact source-content identity. Define explicit reconciliation for provider-assigned migration versions/statement splitting rather than assuming name equality is equivalent. Abort drift before writes and test changed-content, duplicate, gap, reordered and correct rerun histories.",
+      "validation": "Pure/fake runner tests plus hosted history readback; no need to mutate production to prove rejection."
+    }
+  ],
+  "documentationCorrections": [
+    "Update obsolete key-renaming prose and secretMapping plan output to describe the verified two-key server-side fallback; retain nonsecret URL/anon configuration and production-only target scope.",
+    "Preserve Hobby eligibility as an unverified criterion; deployment authorization does not establish provider eligibility. No renewed personal-signoff gate is imposed."
+  ],
+  "withdrawnObservation": {
+    "claim": "A role inheriting service_role would be unable to read/lock aggregates because BYPASSRLS is not inherited.",
+    "correction": "Withdrawn after complete grant inspection: 001_foundation.sql line301 defines server_aggregate_access TO service_role USING(true) WITH CHECK(true). Inherited membership makes the policy applicable. No extra BYPASSRLS or SET ROLE is required for that aggregate path. Earlier warning was explicitly corrected to parent before this report."
+  },
+  "priorRoundDisposition": {
+    "HOST-HV-001": "Plan now specifies production ignored-build cancellation and staged exact-SHA release; implementation readback reported by parent, not independently queried here.",
+    "HOST-HV-002": "One-hour cron retention and idle suppression specified; actual SQL execution and quota/backlog measurements remain pending.",
+    "HOST-HV-003": "Not resolved: effective secret boundary is misrepresented; HOST-HV-008 gives specific source correction.",
+    "HOST-HV-004": "Finite lease/backoff/missing-match predicate now present; reserved identifier and branch execution evidence still need repair.",
+    "HOST-HV-005": "Runner added, but pooling and drift defects remain; sensitive rename superseded by tested fallback.",
+    "HOST-HV-006": "Reconciled with explicit deployment authorization: provider interpretation remains openly unverified, without fabricating a new human gate or claiming compliance."
+  },
+  "independentChecks": [
+    "Read scheduler, runner, current execution plan, migration RLS/grants, runtime pool/aggregate locking/presence and secret fallback.",
+    "node --check scripts/hosting-schema.mjs passed.",
+    "Runner staging --mode plan executed without connection/writes; emitted13 ordered migration entries and hashes for exact staging ref.",
+    "npx vitest run tests/integration/hosting-environment.test.ts:2/2 passed.",
+    "Consulted current official PostgreSQL and Supabase documentation for inheritance, keywords, managed extension grants and connection modes."
+  ],
+  "implementerReportedEvidence": [
+    "Production initial ignored-build exit0 and previews disabled; exact project/domain bindings and free Supabase organization verified.",
+    "SWBOM isolated4/4 and local production build passed; full suite rerun pending at request.",
+    "Sensitive rename rejected400 without mutation; no env exposure expansion or secret retrieval."
+  ],
+  "snapshot": {
+    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "files": [
+      {
+        "path": "docs/hosting_execution.md",
+        "sha256": "8fb0323c426f353d3e5bcae70043bb23c1feeeb79157b2e3ffca0f4f04ed448e",
+        "bytes": 6665
+      },
+      {
+        "path": "src/infrastructure/hosting/001_scheduler.sql",
+        "sha256": "b3bb0c3bab6b9a2e1f4bca6dc7d3860b56bf6b18ebb3f655b2bf11948d610eac",
+        "bytes": 4799
+      },
+      {
+        "path": "scripts/hosting-schema.mjs",
+        "sha256": "2af7503af80b5a0a26d9825b818f790c3f941780e8f0c6f5f1bf6d97b9ccf8d6",
+        "bytes": 4968
+      },
+      {
+        "path": "src/infrastructure/runtime.ts",
+        "sha256": "2095621f83b447e709fafa1267bd189b6ea10a75e7f1bf80ecbeecef4991777e",
+        "bytes": 8654
+      },
+      {
+        "path": "tests/integration/hosting-environment.test.ts",
+        "sha256": "77c33b2a0b8dab6f1b410529d2cd0d6feb95393c406eca4216b3911f89ccf9f5",
+        "bytes": 1578
+      }
+    ]
+  },
+  "limits": [
+    "No hosted schema/role/environment values independently queried or modified; current source review is not operational deployment proof.",
+    "No real scheduler branch or fallback database apply executed by reviewer; no production smoke/browser/capacity claim.",
+    "No secret values requested, logged or included. Only this new receipt written; round1 preserved.",
+    "Outstanding live2..25 UI, contest/provider eligibility and complete Phase7 remain outside this approval scope."
+  ],
+  "disposition": "Original already-reviewed game migrations001\u2013011 may proceed in order against the independently preflighted empty staging database with history/readback and original transactional safeguards. Hold new hosted scheduler activation and use of the fallback runner until the specific defects are repaired and tested. Narrow two-key runtime fallback is approved in source scope. No final hosted deployment readiness approval yet."
+}
