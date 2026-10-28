@@ -1,0 +1,119 @@
+{
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "high",
+    "role": "Independent hostile validator"
+  },
+  "scope": "Administration and ACL extension after the completed Phase 0–6 baseline",
+  "verdict": "APPROVE",
+  "accuracyScore": 99,
+  "completenessScore": 99,
+  "scoreScale": 100,
+  "unresolvedFindings": [],
+  "rubric": {
+    "accuracy": "Authorization, concurrency, retry semantics, catalog integrity, privacy and UI behavior agree with the reviewed design and observed evidence.",
+    "completeness": "Requested administration pages, word/hint management, role assignment, private environment bootstrap, documentation and relevant verification are present.",
+    "approvalThreshold": "At least 98 in both categories, with no unresolved material finding.",
+    "qualification": "Scores express review judgment, not statistical guarantees."
+  },
+  "snapshot": {
+    "repository": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs",
+    "baseCommit": "3273c121de6517aec34503d8c769b0159e9e52df",
+    "type": "Local working-tree snapshot",
+    "manifest": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs-local/admin-source-manifest.json",
+    "fileCount": 189,
+    "snapshotSha256": "5c9bcee1f2133751fe786416eed769c14c77a171a3050a15437726ef4493f7df",
+    "algorithm": "SHA256 over UTF-8 lines in listed files-array order: file SHA256, two spaces, relative path, LF.",
+    "independentVerification": "All 189 listed file hashes match current files. Recomputed snapshot digest matches the recorded digest."
+  },
+  "assessment": {
+    "authorization": "Permissions are derived from authenticated profiles and trusted server configuration. Administrative SQL independently authorizes directory reads and mutations. Browser database roles cannot execute the privileged ACL functions.",
+    "bootstrap": "WORDPAIRS_ADMIN_PROFILE_IDS is private server configuration containing explicit profile IDs. There is no first-user assignment, default administrator credential or browser-controlled bootstrap.",
+    "concurrency": "Exclusive ACL locking serializes role changes and final-administrator checks. Content operations acquire the corresponding shared lock before loading authoritative roles. The repaired integration test verifies an actual writer waiting behind revocation.",
+    "retries": "ACL authorization precedes canonical replay, so revoked administrators cannot recover authority through historical commands. Replayed successful grants do not reapply removed roles. Existing content replay remains mutation-free.",
+    "catalog": "Editorial changes append the next immutable pair version without moving IDs between categories. Community activation requires previously unused IDs at version zero. Historical round lookups remain available; future selection uses the highest version and never falls back after exclusion. Both publication paths enforce the 4096-version ceiling.",
+    "interface": "Administration pages provide moderation, word/hint editing and user-role management. Identity binding, uncertain-write retries and stale-response invalidation protect private UI state. Reviewed phone captures show readable forms and controls without visible clipping."
+  },
+  "resolvedFindings": [
+    {
+      "id": "ADMIN-DESIGN-001",
+      "issue": "Publishing beyond 4096 historical versions could make catalog reads unavailable.",
+      "resolution": "Both editorial saves and community activation reject projected overflow before mutation. Pure and PostgreSQL evidence cover rejection and preserved state/history.",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "ADMIN-DESIGN-002",
+      "issue": "Newest-selectable wording could imply fallback to an older excluded pair version.",
+      "resolution": "Design explicitly specifies highest-version selection followed by selectability filtering.",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "ADMIN-IMPLEMENTATION-001",
+      "issue": "A delayed authorized GET could repopulate privileged data after mutation denial.",
+      "resolution": "Both private UI owners increment their request generation before clearing data. Browser regressions exercise delayed GET, POST 403 and late GET completion for users and moderation.",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "ADMIN-IMPLEMENTATION-002",
+      "issue": "Community activation bypassed pair identity and version invariants.",
+      "originalEvidence": "Independent execution of the actual domain source accepted heroes-01, originally category heroes/version 0, in hv-weather/version 99.",
+      "resolution": "Activation now requires unused IDs at version zero. Regression assertions separately reject reused IDs at version zero, cross-category reuse and skipped versions.",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "ADMIN-EVIDENCE-001",
+      "issue": "Manifest algorithm description incorrectly claimed ordinal sorting.",
+      "resolution": "Description now specifies listed-files order. Every file hash and the aggregate digest independently reproduce.",
+      "status": "RESOLVED"
+    }
+  ],
+  "independentChecks": [
+    "Read-only examination of domain/application policies, repository adapters, migration 010, runtime configuration, API handlers, administration UI and linked design documents.",
+    "Executed 18 focused tests across five files covering access policy, catalog administration, admin transport and existing content behavior; all passed on the final snapshot.",
+    "Inspected delayed-response browser regressions and PostgreSQL authorization, concurrency, rollback, history, capacity and actual-route composition tests.",
+    "Inspected both phone screenshots independently.",
+    "Read saved production build, final unit, PostgreSQL rerun and production-browser completion logs.",
+    "Verified all 189 manifest hashes and reproduced the snapshot digest."
+  ],
+  "implementerRunEvidence": {
+    "finalDefaultSuite": {
+      "result": "502/502 tests passed across 42 files",
+      "logReviewed": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs-local/admin-unit-completion.log"
+    },
+    "finalPostgreSQLSuite": {
+      "result": "66/66 tests passed across 10 files; migration and SQL checks passed",
+      "durationSeconds": 377.85,
+      "logReviewed": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs-local/admin-postgres-rerun-completion.log"
+    },
+    "focusedAdministrationPostgreSQL": {
+      "result": "8/8 passed, reported by implementer",
+      "scope": "Includes actual Request handlers, trusted environment bootstrap and real database persistence; test database TLS factory seam substituted."
+    },
+    "fullBrowserSuite": {
+      "result": "31/31 journeys passed, reported by implementer"
+    },
+    "productionAdministrationBrowser": {
+      "result": "5/5 journeys passed",
+      "logReviewed": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs-local/admin-production-browser-completion.log"
+    },
+    "productionBuild": {
+      "result": "Passed, exit 0",
+      "logReviewed": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs-local/admin-build-completion.log"
+    },
+    "typecheckAndLint": "Passed, reported by implementer"
+  },
+  "evidenceQualifications": [
+    "The reviewer independently ran the focused 18-test suite, not the full database or browser suites.",
+    "Administration browser tests use disclosed HTTP fixtures. The catalog journey exercises the actual content service/domain with an in-memory transaction port; those tests alone do not prove database authorization.",
+    "Separate real PostgreSQL and actual route-handler tests supply persistence and server-authorization evidence.",
+    "Phone inspection was agent visual review and browser automation; no personal human sign-off or human testing is claimed.",
+    "The first full PostgreSQL run passed 65/66 and timed out at 60 seconds in the 25-player fixture. Its failure log is preserved. Increasing only that fixture's wall-clock budget to 120 seconds retained all eight-round assertions; the subsequent complete run passed.",
+    "Approval binds to the verified local snapshot, not an independently verified new remote commit."
+  ],
+  "disposition": "The reviewed administration/ACL extension is technically ready and approved. No unresolved material correctness, security, completeness or usability finding remains.",
+  "scopeLimits": [
+    "This extension does not reopen historical Phase 0–6 approvals.",
+    "This report does not authorize or claim external deployment, branch movement, PR publication or Phase 7 completion.",
+    "The reviewer made no implementation, test, configuration or documentation changes and preserved the preceding multiplayer work."
+  ]
+}

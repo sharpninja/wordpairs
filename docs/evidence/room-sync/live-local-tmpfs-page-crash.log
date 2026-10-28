@@ -1,0 +1,132 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 24 tests using 1 worker
+
+LIVE_SCALE players=2 round=1
+LIVE_SCALE players=2 round=2
+LIVE_SCALE players=2 round=3
+LIVE_SCALE players=2 round=4
+LIVE_SCALE players=2 round=5
+LIVE_SCALE players=2 round=6
+LIVE_SCALE players=2 round=7
+LIVE_SCALE players=2 round=8
+  ✓   1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (17.6s)
+LIVE_SCALE players=3 round=1
+LIVE_SCALE players=3 round=2
+LIVE_SCALE players=3 round=3
+LIVE_SCALE players=3 round=4
+LIVE_SCALE players=3 round=5
+LIVE_SCALE players=3 round=6
+LIVE_SCALE players=3 round=7
+LIVE_SCALE players=3 round=8
+  ✓   2 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 3 real browser players complete eight UI rounds (18.5s)
+LIVE_SCALE players=4 round=1
+LIVE_SCALE players=4 round=2
+LIVE_SCALE players=4 round=3
+LIVE_SCALE players=4 round=4
+LIVE_SCALE players=4 round=5
+LIVE_SCALE players=4 round=6
+LIVE_SCALE players=4 round=7
+LIVE_SCALE players=4 round=8
+  ✓   3 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds (21.3s)
+LIVE_SCALE players=5 round=1
+LIVE_SCALE players=5 round=2
+LIVE_SCALE players=5 round=3
+LIVE_SCALE players=5 round=4
+LIVE_SCALE players=5 round=5
+LIVE_SCALE players=5 round=6
+LIVE_SCALE players=5 round=7
+LIVE_SCALE players=5 round=8
+  ✓   4 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 5 real browser players complete eight UI rounds (23.9s)
+LIVE_SCALE players=6 round=1
+LIVE_SCALE players=6 round=2
+LIVE_SCALE players=6 round=3
+LIVE_SCALE players=6 round=4
+LIVE_SCALE players=6 round=5
+LIVE_SCALE players=6 round=6
+LIVE_SCALE players=6 round=7
+LIVE_SCALE players=6 round=8
+  ✓   5 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 6 real browser players complete eight UI rounds (27.1s)
+LIVE_SCALE players=7 round=1
+LIVE_SCALE players=7 round=2
+LIVE_SCALE players=7 round=3
+LIVE_SCALE players=7 round=4
+LIVE_SCALE players=7 round=5
+LIVE_SCALE players=7 round=6
+LIVE_SCALE players=7 round=7
+LIVE_SCALE players=7 round=8
+  ✓   6 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 7 real browser players complete eight UI rounds (34.2s)
+LIVE_SCALE players=8 round=1
+LIVE_SCALE players=8 round=2
+LIVE_SCALE players=8 round=3
+LIVE_SCALE players=8 round=4
+LIVE_SCALE players=8 round=5
+LIVE_SCALE players=8 round=6
+LIVE_SCALE players=8 round=7
+LIVE_SCALE players=8 round=8
+  ✓   7 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 8 real browser players complete eight UI rounds (47.8s)
+LIVE_SCALE players=9 round=1
+LIVE_SCALE players=9 round=2
+LIVE_SCALE players=9 round=3
+LIVE_SCALE players=9 round=4
+LIVE_SCALE players=9 round=5
+LIVE_SCALE players=9 round=6
+LIVE_SCALE players=9 round=7
+LIVE_SCALE players=9 round=8
+  ✓   8 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 9 real browser players complete eight UI rounds (1.1m)
+LIVE_SCALE players=10 round=1
+LIVE_SCALE players=10 round=2
+LIVE_SCALE players=10 round=3
+LIVE_SCALE players=10 round=4
+LIVE_SCALE players=10 round=5
+LIVE_SCALE players=10 round=6
+LIVE_SCALE players=10 round=7
+LIVE_SCALE players=10 round=8
+  ✓   9 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 10 real browser players complete eight UI rounds (55.2s)
+LIVE_SCALE players=11 round=1
+LIVE_SCALE players=11 round=2
+LIVE_SCALE players=11 round=3
+LIVE_SCALE players=11 round=4
+LIVE_SCALE players=11 round=5
+LIVE_SCALE players=11 round=6
+LIVE_SCALE players=11 round=7
+LIVE_SCALE players=11 round=8
+  ✓  10 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 11 real browser players complete eight UI rounds (1.0m)
+LIVE_SCALE players=12 round=1
+LIVE_SCALE players=12 round=2
+LIVE_SCALE players=12 round=3
+LIVE_SCALE players=12 round=4
+LIVE_SCALE players=12 round=5
+  ✘  11 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 12 real browser players complete eight UI rounds (1.5m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 12 real browser players complete eight UI rounds 
+
+    Error: page.waitForRequest: Page crashed
+
+      30 |   async function click(page: Page, action: string, run: () => Promise<unknown>) {
+      31 |     const [request] = await Promise.all([
+    > 32 |       page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
+         |            ^
+      33 |       run(),
+      34 |     ]);
+      35 |     // A browser AbortSignal can end an uncertain request without any HTTP
+        at click (/home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:32:12)
+        at commitUi (/home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:49:28)
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:112:24
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:111:27
+
+    Error Context: test-results/live-local/live-player-counts.integra-a6d25-rs-complete-eight-UI-rounds/error-context.md
+
+  Slow test file: tests/browser/live-player-counts.integration.spec.ts (7.8m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 12 real browser players complete eight UI rounds 
+  13 did not run
+  10 passed (7.8m)
+  1 error was not a part of any test, see above for details
+

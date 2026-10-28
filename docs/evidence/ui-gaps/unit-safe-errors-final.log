@@ -1,0 +1,16 @@
+
+> wordpairs@0.1.0 test
+> vitest run --maxWorkers=2 --testTimeout=60000 --hookTimeout=60000
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+
+ Test Files  53 passed (53)
+      Tests  542 passed (542)
+   Start at  20:09:42
+   Duration  38.21s (tests 84%, environment 8%, import 6%, transform 1%)
+
+    Isolate  53 workers spawned · ~221ms startup each (spawn + environment, per file)
+             at least ~5.65s faster with isolate: false — reuses workers across files instead of one per file
+

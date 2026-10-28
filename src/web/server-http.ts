@@ -1,4 +1,13 @@
+import { createHash } from "node:crypto";
 import type { Failure } from "../domain/result";
+/** Non-authenticating, purpose-separated identity for a verified session cookie. */
+export const uiSessionGeneration = (token: string | null) =>
+  token
+    ? createHash("sha256")
+        .update("wordpairs-ui-session-generation\u0000")
+        .update(token)
+        .digest("hex")
+    : null;
 export const PRIVATE_HEADERS = {
   "Cache-Control": "no-store",
   "Referrer-Policy": "no-referrer",

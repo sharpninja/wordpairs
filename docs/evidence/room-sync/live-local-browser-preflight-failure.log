@@ -1,0 +1,30 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 2 tests using 1 worker
+
+  ✘  1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (6ms)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 2 real browser players complete eight UI rounds 
+
+    Error: browserType.launch: Executable doesn't exist at /home/sharpninja/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/live-local/live-player-counts.integra-95991-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 2 real browser players complete eight UI rounds 
+  1 did not run
+  1 error was not a part of any test, see above for details
+

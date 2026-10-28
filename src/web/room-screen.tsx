@@ -1,9 +1,14 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { OwnProfile } from "../application/identity";
 import type { RoomView } from "../application/rooms";
 import { GamePanel } from "./game-panel";
 import { IdentityPanel, ProfileIcon } from "./identity-panel";
+import {
+  invalidatePrivateState,
+  privateIdentityRevision,
+} from "./private-state";
 import { useRoomUpdates } from "./use-room-updates";
 
 type View = RoomView & {
@@ -15,13 +20,20 @@ type ScreenProps = {
   reference: string;
   invitation: string | null;
   oidcEnabled: boolean;
+  fromDiscovery?: boolean;
 };
 export function RoomScreen(props: ScreenProps) {
   const [profile, setProfile] = useState<OwnProfile | null>(null);
   return (
     <>
       <IdentityPanel oidcEnabled={props.oidcEnabled} onProfile={setProfile} />
-      {profile && <RoomSession key={profile.id} {...props} profile={profile} />}
+      {profile && (
+        <RoomSession
+          key={`${profile.id}:${privateIdentityRevision()}`}
+          {...props}
+          profile={profile}
+        />
+      )}
     </>
   );
 }
@@ -29,9 +41,11 @@ function RoomSession({
   reference,
   invitation,
   profile,
+  fromDiscovery = false,
 }: ScreenProps & {
   profile: OwnProfile;
 }) {
+  const router = useRouter();
   const [room, setRoom] = useState<View | null>(null);
   const [activeRef, setActiveRef] = useState(reference);
   const [error, setError] = useState("");
@@ -45,78 +59,120 @@ function RoomSession({
   const fetching = useRef(false);
   const refreshAgain = useRef(false);
   const pending = useRef<Record<string, unknown> | null>(null);
+  const inFlight = useRef(false);
+  const commandEpoch = useRef(0);
+  useEffect(
+    () => () => {
+      commandEpoch.current++;
+    },
+    [],
+  );
+  const deny = useCallback(() => {
+    sequence.current++;
+    commandEpoch.current++;
+    fetching.current = false;
+    refreshAgain.current = false;
+    pending.current = null;
+    invalidatePrivateState();
+    setRoom(null);
+    setLink("");
+    setSelected("");
+    setBusy(false);
+    setError(
+      "Room access is unavailable. Refresh your profile or find a room.",
+    );
+  }, []);
   const endpoint = `/api/rooms/${encodeURIComponent(activeRef)}${activeRef === reference && invitation ? `?invite=${encodeURIComponent(invitation)}` : ""}`;
-  const refresh = useCallback(async (): Promise<void> => {
-    if (!profile) return;
-    if (fetching.current) {
-      refreshAgain.current = true;
-      return;
-    }
-    fetching.current = true;
-    const generation = ++sequence.current;
-    try {
-      const response = await fetch(endpoint, {
-        cache: "no-store",
-        signal: AbortSignal.timeout(10000),
-      });
-      const result = (await response.json()) as View;
-      if (generation !== sequence.current) return;
-      if (!response.ok) {
-        if ([401, 403, 404].includes(response.status)) {
+  const refresh = useCallback(
+    async (resolvedJoin = false): Promise<void> => {
+      if (!profile) return;
+      if (fetching.current) {
+        refreshAgain.current = true;
+        return;
+      }
+      fetching.current = true;
+      const generation = ++sequence.current;
+      let explanation = "Room information is unavailable. Try again.";
+      try {
+        const response = await fetch(endpoint, {
+          cache: "no-store",
+          signal: AbortSignal.timeout(10000),
+        });
+        const body = await response.text();
+        if (generation !== sequence.current) return;
+        if (!response.ok) {
+          explanation =
+            response.status === 404
+              ? "Room not found or invitation expired."
+              : response.status === 429
+                ? "Too many code attempts. Wait a minute and try again."
+                : "Room information is unavailable. Try again.";
+          if (
+            fromDiscovery &&
+            response.status === 404 &&
+            !pending.current &&
+            (!inFlight.current || resolvedJoin)
+          ) {
+            router.replace("/?seatLost=1#community");
+            return;
+          }
+          if ([401, 403, 404].includes(response.status)) {
+            setRoom(null);
+            setLink("");
+            setSelected("");
+            pending.current = null;
+          }
+          throw new Error("Unavailable");
+        }
+        const result = JSON.parse(body) as View;
+        if (result.actorId !== profile.id) {
           setRoom(null);
           setLink("");
           setSelected("");
           pending.current = null;
+          explanation =
+            "Your account changed in another tab. Reload to continue.";
+          throw new Error("Unavailable");
         }
-        throw new Error(
-          response.status === 404
-            ? "Room not found or invitation expired."
-            : response.status === 429
-              ? "Too many code attempts. Wait a minute and try again."
-              : "Room information is unavailable. Try again.",
+        if (
+          fromDiscovery &&
+          !result.role &&
+          !result.canJoinPlayer &&
+          !pending.current &&
+          (!inFlight.current || resolvedJoin)
+        ) {
+          router.replace("/?seatLost=1#community");
+          return;
+        }
+        setRoom((previous) =>
+          previous &&
+          previous.actorId === result.actorId &&
+          previous.roomId === result.roomId &&
+          previous.version > result.version
+            ? previous
+            : result,
         );
-      }
-      if (result.actorId !== profile.id) {
-        setRoom(null);
-        setLink("");
-        setSelected("");
-        pending.current = null;
-        throw new Error(
-          "Your account changed in another tab. Reload to continue.",
-        );
-      }
-      setRoom((previous) =>
-        previous &&
-        previous.actorId === result.actorId &&
-        previous.roomId === result.roomId &&
-        previous.version > result.version
-          ? previous
-          : result,
-      );
-      if (typeof result.serverNow === "number") {
-        serverOffset.current = result.serverNow - Date.now();
-        setDisplayNow(result.serverNow);
-      }
-      setError("");
-      setGameRefresh((value) => value + 1);
-      if (result.role) setActiveRef(result.roomId);
-    } catch (problem) {
-      if (generation === sequence.current)
-        setError(
-          problem instanceof Error
-            ? problem.message
-            : "Room information is unavailable.",
-        );
-    } finally {
-      if (generation === sequence.current) {
-        fetching.current = false;
-        if (refreshAgain.current) {
-          refreshAgain.current = false;
-          void refresh();
+        if (typeof result.serverNow === "number") {
+          serverOffset.current = result.serverNow - Date.now();
+          setDisplayNow(result.serverNow);
+        }
+        setError("");
+        setGameRefresh((value) => value + 1);
+        if (result.role) setActiveRef(result.roomId);
+      } catch {
+        if (generation === sequence.current) setError(explanation);
+      } finally {
+        if (generation === sequence.current) {
+          fetching.current = false;
+          if (refreshAgain.current) {
+            refreshAgain.current = false;
+            void refresh();
+          }
         }
       }
-    }
-  }, [endpoint, profile]);
+    },
+    [endpoint, profile, fromDiscovery, router],
+  );
   useEffect(() => {
     fetching.current = false;
     void refresh();
@@ -173,6 +229,9 @@ function RoomSession({
             signal: AbortSignal.timeout(10000),
           },
         );
+        // Drain before releasing the canonical retry. An unread fetch body can
+        // remain active until its abort deadline even after200 headers arrive.
+        await response.text();
         if (response.ok || response.status < 500) retry = null;
         if (!stopped) await refresh();
       } catch {
@@ -193,7 +252,9 @@ function RoomSession({
     action: "join" | "invite" | "ready" | "leave",
     mode?: "player" | "observer",
   ) => {
-    if (!room || !profile || busy) return;
+    if (!room || !profile || inFlight.current) return;
+    inFlight.current = true;
+    const epoch = commandEpoch.current;
     setBusy(true);
     setError("");
     const input = pending.current ?? {
@@ -207,6 +268,7 @@ function RoomSession({
         : {}),
     };
     if (action !== "invite") pending.current = input;
+    let explanation = "Room access is unavailable. Retry the same request.";
     try {
       const response = await fetch(
         ["ready", "leave"].includes(input.action as string)
@@ -219,14 +281,40 @@ function RoomSession({
           body: JSON.stringify(input),
         },
       );
+      if (epoch !== commandEpoch.current) {
+        await response.text();
+        return;
+      }
+      if ([401, 403, 404].includes(response.status)) {
+        deny();
+        await response.text();
+        return;
+      }
       const result = await response.json();
+      if (epoch !== commandEpoch.current) return;
+      if (response.ok || response.status < 500) {
+        // A pre-command preview cannot decide membership or discovery recovery.
+        // Retire it before clearing the canonical intent and read fresh state.
+        sequence.current++;
+        fetching.current = false;
+        refreshAgain.current = false;
+      }
       if (!response.ok) {
         if (response.status < 500) pending.current = null;
-        throw new Error(
+        if (
+          fromDiscovery &&
+          input.action === "join" &&
+          input.mode === "player" &&
+          response.status === 409
+        ) {
+          await refresh(true);
+          return;
+        }
+        explanation =
           response.status === 409
             ? "The room or account changed. Refresh and try again."
-            : "Your request was not confirmed. Retry the same request.",
-        );
+            : "Your request was not confirmed. Retry the same request.";
+        throw new Error("Unavailable");
       }
       pending.current = null;
       if (input.action === "leave") {
@@ -236,14 +324,11 @@ function RoomSession({
       if (input.action === "invite") setLink(result.url);
       else setActiveRef(result.roomId);
       await refresh();
-    } catch (problem) {
-      setError(
-        problem instanceof Error
-          ? problem.message
-          : "Room access is unavailable. Retry the same request.",
-      );
+    } catch {
+      if (epoch === commandEpoch.current) setError(explanation);
     } finally {
-      setBusy(false);
+      inFlight.current = false;
+      if (epoch === commandEpoch.current) setBusy(false);
     }
   };
   const live = useRoomUpdates(
@@ -494,6 +579,7 @@ function RoomSession({
       )}
       {room?.role && room.matchAvailable && (
         <GamePanel
+          live={live}
           key={`${profile.id}:${room.roomId}`}
           roomId={room.roomId}
           profileId={profile.id}

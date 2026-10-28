@@ -1,0 +1,111 @@
+
+> wordpairs@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/lobby-api.test.ts (4 tests | 1 failed) 1165ms
+   × exposes a fail-closed server scheduler credential without leaking it 152ms
+ ❯ tests/acceptance/coverage-map.test.ts (1 test | 1 failed) 16424ms
+   × binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions 16390ms
+ ❯ tests/web/pwa-manifest.test.ts (2 tests | 1 failed) 22027ms
+   × PWA-02 supplies real PNG dimensions and opaque backgrounds 21534ms
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts (85 tests | 2 failed) 23493ms
+   × AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator 10048ms
+   × AC-42 validates complete GPL and the actual Recursive-bearing SVG notice 11524ms
+ ❯ tests/acceptance/source-archive.test.ts (1 test | 1 failed) 108279ms
+   × AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering 108253ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ac-contracts/oracle-supplemental-validation.test.ts > AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator
+Error: Test timed out in 10000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts:59:1
+     57| }
+     58|
+     59| it('AC-41 creates and inspects ZIP archives using the official pinned …
+       | ^
+     60|   expect(preparedSourcePaths.length).toBeGreaterThan(0);
+     61|   expect(await validateSourceArchiveZip(await roundTripTemporaryArchiv…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/ac-contracts/oracle-supplemental-validation.test.ts > AC-42 validates complete GPL and the actual Recursive-bearing SVG notice
+Error: Test timed out in 10000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts:91:1
+     89| });
+     90|
+     91| it('AC-42 validates complete GPL and the actual Recursive-bearing SVG …
+       | ^
+     92|   const expected = {
+     93|     licenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b3…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/acceptance/coverage-map.test.ts > binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions
+Error: Test timed out in 10000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/acceptance/coverage-map.test.ts:211:1
+    209|     "emittedEvents=[] means incorrect-guess broadcasts. A real MatchCh…
+    210| };
+    211| it("binds every primary/supplemental oracle leaf group to scoped produ…
+       | ^
+    212|   expect(Object.keys(primaryBindings).sort()).toEqual(
+    213|     acOracleScenarios.map((s) => s.id).sort(),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/acceptance/source-archive.test.ts > AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering
+Error: Test timed out in 60000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/acceptance/source-archive.test.ts:17:1
+     15|
+     16| // Acceptance fixture only: no publication, deployment inventory or re…
+     17| it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete…
+       | ^
+     18|   const commit = execFileSync("git", ["rev-parse", "HEAD"], {
+     19|     encoding: "utf8",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/web/lobby-api.test.ts > exposes a fail-closed server scheduler credential without leaking it
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ tests/web/lobby-api.test.ts:28:126
+     26|   const call=(authorization:string)=>tick(new Request('https://wordpai…
+     27|   for(const key of ['',`Bearer ${'é'.repeat(32)}`,`Bearer ${'b'.repeat…
+     28|   expect(mocks.advance).not.toHaveBeenCalled();const accepted=await ca…
+       |                                                                                                                              ^
+     29| });
+     30|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/web/pwa-manifest.test.ts > PWA-02 supplies real PNG dimensions and opaque backgrounds
+Error: Test timed out in 10000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/web/pwa-manifest.test.ts:46:1
+     44| });
+     45|
+     46| it("PWA-02 supplies real PNG dimensions and opaque backgrounds", async…
+       | ^
+     47|   const { default: sharp } = await import("sharp");
+     48|   for (const [name, size] of [
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  5 failed | 42 passed (47)
+      Tests  6 failed | 516 passed (522)
+   Start at  14:43:35
+   Duration  332.76s (tests 54%, import 19%, environment 18%, transform 7%, worker 2%)
+

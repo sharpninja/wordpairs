@@ -1,0 +1,107 @@
+[WebServer] (node:1222228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1222253) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:1222443) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1222660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/seat-recovery.phase6.spec.ts:306:1 › TEST-LOBBYMATCHING-117 a pre-join full preview cannot bounce the successful new member (1.9s)
+[WebServer] (node:1222988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-read denial cannot clear a replacement profile draft (6.5s)
+(node:1223434) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1223694) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-write denial cannot clear a replacement profile draft (6.9s)
+(node:1224220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1224441) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete social-read denial cannot clear a replacement profile draft (6.7s)
+
+
+  1) tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-read denial cannot clear a replacement profile draft 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Proposed category', { exact: true })
+    Expected: "Replacement profile draft"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Proposed category', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Proposed category', { exact: true })
+
+
+      885 |         .click();
+      886 |       await page.goBack();
+    > 887 |       await expect(draft).toHaveValue("Replacement profile draft");
+          |                           ^
+      888 |     } finally {
+      889 |       release();
+      890 |       await context.close();
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:887:27
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-79316-a-replacement-profile-draft/error-context.md
+
+  2) tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-write denial cannot clear a replacement profile draft 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Proposed category', { exact: true })
+    Expected: "Replacement profile draft"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Proposed category', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Proposed category', { exact: true })
+
+
+      885 |         .click();
+      886 |       await page.goBack();
+    > 887 |       await expect(draft).toHaveValue("Replacement profile draft");
+          |                           ^
+      888 |     } finally {
+      889 |       release();
+      890 |       await context.close();
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:887:27
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-c8de5-a-replacement-profile-draft/error-context.md
+
+  3) tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete social-read denial cannot clear a replacement profile draft 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Proposed category', { exact: true })
+    Expected: "Replacement profile draft"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Proposed category', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Proposed category', { exact: true })
+
+
+      885 |         .click();
+      886 |       await page.goBack();
+    > 887 |       await expect(draft).toHaveValue("Replacement profile draft");
+          |                           ^
+      888 |     } finally {
+      889 |       release();
+      890 |       await context.close();
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:887:27
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-20353-a-replacement-profile-draft/error-context.md
+
+  3 failed
+    tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-read denial cannot clear a replacement profile draft 
+    tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-write denial cannot clear a replacement profile draft 
+    tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete social-read denial cannot clear a replacement profile draft 
+  1 passed (28.2s)

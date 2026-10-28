@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/live-races.test.ts (5 tests | 1 failed) 362ms
+   × LIVE connected game safety polling is15s and cadence changes do not invalidate an active read 43ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/live-races.test.ts > LIVE connected game safety polling is15s and cadence changes do not invalidate an active read
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/web/live-races.test.ts:74:66
+     72|   const props = { roomId: "r1", profileId: "p1", refreshKey: 0, onFini…
+     73|   const view = render(React.createElement(GamePanel, { ...props, live:…
+     74|   expect(intervals.mock.calls.some((call) => call[1] === 15000)).toBe(…
+       |                                                                  ^
+     75|   expect(intervals.mock.calls.some((call) => call[1] === 1000)).toBe(f…
+     76|   view.rerender(React.createElement(GamePanel, { ...props, live: false…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  15:38:15
+   Duration  10.49s (environment 63%, import 22%, transform 11%, tests 4%)
+

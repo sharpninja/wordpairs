@@ -1,0 +1,33 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts
+
+
+Running 1 test using 1 worker
+
+(node:235021) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect (44.3s)
+
+
+  1) tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 
+
+    Error: locator.click: Target crashed 
+    Call log:
+      - waiting for getByRole('button', { name: 'Open room', exact: true })
+        - locator resolved to <button type="submit">Open room</button>
+
+
+      188 |     await observer
+      189 |       .getByRole("button", { name: "Open room", exact: true })
+    > 190 |       .click();
+          |        ^
+      191 |     await observer
+      192 |       .getByLabel("Who invited you?")
+      193 |       .selectOption({ label: aliases[1] });
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-multiplayer.integration.spec.ts:190:8
+
+    Error Context: test-results/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md
+
+  1 failed
+    tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 

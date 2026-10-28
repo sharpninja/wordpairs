@@ -1,23 +1,29 @@
+import Link from "next/link";
 import { getPublicService } from "../infrastructure/runtime";
 import { LandingBoard } from "../web/landing-board";
 
 export const dynamic = "force-dynamic";
-export default async function HomePage() {
-  const result = await getPublicService()?.read(null, null);
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ seatLost?: string }>;
+}) {
+  const seatLost = (await searchParams).seatLost === "1";
+  const result = seatLost ? null : await getPublicService()?.read(null, null);
   return (
     <main className="site-shell">
       <header className="topbar">
-        <a className="brand" href="/" aria-label="Wordpairs home">
+        <Link className="brand" href="/" aria-label="Wordpairs home">
           <span className="brand-mark" aria-hidden="true">
             w
           </span>
           wordpairs
-        </a>
+        </Link>
         <nav aria-label="Main navigation">
-          <a href="#rules">How to play</a>
-          <a className="button compact" href="/play">
+          <Link href="#rules">How to play</Link>
+          <Link className="button compact" href="/play">
             Let’s play ↗
-          </a>
+          </Link>
         </nav>
       </header>
       <section className="hero">
@@ -33,12 +39,12 @@ export default async function HomePage() {
             your word association skills to the test with friends.
           </p>
           <div className="hero-actions">
-            <a className="button" href="/play">
+            <Link className="button" href="/play">
               Start playing <span aria-hidden="true">↗</span>
-            </a>
-            <a className="button secondary" href="#rules">
+            </Link>
+            <Link className="button secondary" href="#rules">
               Learn the rules
-            </a>
+            </Link>
           </div>
           <p className="hero-meta">2–25 players · 8 rounds · Free to play</p>
         </div>
@@ -54,7 +60,11 @@ export default async function HomePage() {
           <span className="art-caption">Great minds make connections.</span>
         </div>
       </section>
-      <LandingBoard initialData={result?.ok ? result.value.projection : null} />
+      <LandingBoard
+        key={seatLost ? "seat-lost" : "normal"}
+        resetForSeatLoss={seatLost}
+        initialData={result?.ok ? result.value.projection : null}
+      />
       <footer className="footer">
         <span>Wordpairs — a game of connections.</span>
         <span>Free software · GPL-2.0-only</span>

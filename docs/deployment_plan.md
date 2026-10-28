@@ -8,6 +8,8 @@
 
 ## 1. Purpose and scope
 
+Phone home-screen installation is implemented in the [PWA extension](pwa_design.md). Production must serve the application, `/manifest.webmanifest`, `/sw.js`, `/offline.html` and `/icons/*` from the same HTTPS origin. Preserve the worker's no-cache/no-store JavaScript headers and root scope. Operational checks must install and relaunch on actual Android/iPhone devices, verify standalone `/play`, offline reconnect guidance and recovery online. Local Chromium diagnostics and iPhone user-agent tests do not establish a physical-device installation or a hosted release. No deployment was performed as part of adding PWA support.
+
 This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. Deployment, provisioning, build/SWBOM, and environment-isolation checks are bound to technical requirements TR-20–TR-29, not to ACs. Any live deployment/account/database checks are TR-only integration or operational evidence and cannot satisfy the AC mock-coverage gate. The public landing behavior remains covered by active AC-43 and AC-50 tests against local components and mocked projections; deployed smoke checks are operational diagnostics only.
 
 The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the selected application stack recorded in the approved Phase 0 technical ADR. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
@@ -55,6 +57,10 @@ Vercel Hobby currently provides Local, Preview, and Production environments; nam
 Supabase Free currently permits two free projects across an owner's/admin's organizations. Allocate those projects to Staging and Production; confirm account availability before provisioning. Do not create a new hosted Supabase project for each branch. Make branch previews data-safe through opaque test prefixes, short-lived fixtures, cleanup scoped to the fixture owner, and no assumption that the shared staging database is empty.
 
 ## 4. Provisioning plan
+
+### Administration configuration
+
+Apply migration `010_access_control.sql` before using the [administration/ACL extension](admin_acl_design.md). Set `WORDPAIRS_ADMIN_PROFILE_IDS` only in the server environment to a comma-separated list of existing profile IDs. The authenticated profile panel shows the current ID. Never use a `NEXT_PUBLIC_` variable for this setting and never set it from browser input. Restart/redeploy when changing the allowlist. An empty value grants no bootstrap authority; there is no default administrator account or password. Persisted grants can then be managed at `/admin/users` by an effective administrator. Use durable signed-in profiles for operational administrators; losing guest browser data loses access to that guest identity. Separate Preview and Production administrator lists and databases.
 
 ### 4.1 Preconditions
 
@@ -213,3 +219,7 @@ Checked 26 October 2026; re-check at provisioning and release because plan rules
 - [Supabase Free project pausing](https://supabase.com/docs/guides/platform/free-project-pausing) — low activity pause behavior and recovery.
 - [Supabase local development](https://supabase.com/docs/guides/local-development) and [database migrations](https://supabase.com/docs/guides/local-development/database-migrations) — local stack and versioned schema changes.
 - [`SWBOM.md`](SWBOM.md) and [`ATTRIBUTIONS.md`](ATTRIBUTIONS.md) — project artifact and license-inventory contracts.
+
+## Temporary local validation
+
+The local Realtime gateway, independent scheduler and real browser integration are documented in [the live multiplayer extension](room_sync_fix.md). This temporary leased runtime preserves the game database and is not a Vercel/Supabase cloud deployment. A cloud deployment must provide an independent deadline/outbox trigger and verify actual private delivery before release; browser polling does not establish scheduler health.

@@ -1,0 +1,133 @@
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/live-races.test.ts (3 tests | 3 failed) 1520ms
+   × LIVE-HV-001 foreground requests do not wait for a deferred worker batch 46ms
+   × LIVE-HV-002 a push during an older game GET schedules exactly one newer read 1364ms
+   × LIVE-HV-003 unmount during authentication cannot create an obsolete channel 91ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/live-races.test.ts > LIVE-HV-001 foreground requests do not wait for a deferred worker batch
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/web/live-races.test.ts:31:82
+     29|   let foregroundDone = false;
+     30|   const foreground = deliverOutbox().then(() => { foregroundDone = tru…
+     31|   try { await Promise.resolve(); await Promise.resolve(); expect(foreg…
+       |                                                                                  ^
+     32|   finally { pending.resolve({ ok: true, value: 25 }); await Promise.al…
+     33|   expect(drain).toHaveBeenCalledExactlyOnceWith(25);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/web/live-races.test.ts > LIVE-HV-002 a push during an older game GET schedules exactly one newer read
+Error: Invalid Chai property: toHaveAttribute
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <section
+        aria-busy="false"
+        aria-labelledby="game-title"
+        class="panel game-panel"
+        data-artwork="fallback"
+        data-match-version="2"
+      >
+        <div
+          class="game-surface"
+        >
+          <div
+            class="panel-heading"
+          >
+            <h2
+              id="game-title"
+            >
+              The game
+            </h2>
+            <button
+              type="button"
+            >
+              Refresh game
+            </button>
+          </div>
+          <p>
+            Round 
+            0
+             / 
+            8
+             · Anchor:
+             
+            Player
+          </p>
+          <div
+            class="category-selection"
+          >
+            <h3>
+              Choose a category
+            </h3>
+            <div
+              class="category-choices"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
+ ❯ tests/web/live-races.test.ts:47:74
+     45|   expect(fetcher).toHaveBeenCalledTimes(1);
+     46|   await act(async () => { older.resolve(new Response(JSON.stringify(st…
+     47|   await waitFor(() => expect(view.container.querySelector(".game-panel…
+       |                                                                          ^
+     48|   expect(fetcher).toHaveBeenCalledTimes(2);
+     49| });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/web/live-races.test.ts > LIVE-HV-003 unmount during authentication cannot create an obsolete channel
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "wordpairs-profile:p1",
+      Object {
+        "config": Object {
+          "private": true,
+        },
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ tests/web/live-races.test.ts:62:23
+     60|   view.unmount();
+     61|   await act(async () => { authenticated.resolve(); });
+     62|   expect(channel).not.toHaveBeenCalled();
+       |                       ^
+     63|   expect(removeAllChannels).toHaveBeenCalled();
+     64| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  14:50:53
+   Duration  18.07s (environment 42%, transform 31%, import 16%, tests 10%, worker 1%)
+

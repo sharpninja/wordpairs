@@ -1,3 +1,4 @@
+import { configuredAdministrator } from "../domain/access";
 import type { Actor, Profile } from "../domain/model";
 import { failure, type Result, success } from "../domain/result";
 import { executeCommand } from "./command";
@@ -69,6 +70,7 @@ export class IdentityService {
     private random: RandomSource,
     private clock: Clock,
     private oidc: OidcProvider | null,
+    private adminProfileIds: readonly string[] = [],
   ) {}
   private alias(kind: Profile["kind"]): string {
     const words = [
@@ -141,7 +143,10 @@ export class IdentityService {
     return resolved.ok
       ? success({
           profile: ownProfile(resolved.value.profile),
-          actor: resolved.value.actor,
+          actor: configuredAdministrator(
+            resolved.value.actor,
+            this.adminProfileIds,
+          ),
         })
       : resolved;
   }

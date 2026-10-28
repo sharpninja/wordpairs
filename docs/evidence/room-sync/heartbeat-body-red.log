@@ -1,0 +1,57 @@
+
+> wordpairs@0.1.0 test
+> vitest run tests/web/heartbeat-body.test.ts
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/heartbeat-body.test.ts (2 tests | 2 failed) 92ms
+   × LIVE production heartbeat drains its response before refreshing 71ms
+   × LIVE failed heartbeat body consumption preserves the exact canonical retry 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/heartbeat-body.test.ts > LIVE production heartbeat drains its response before refreshing
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/web/heartbeat-body.test.ts:49:29
+     47|   const before = fixture.reads();
+     48|   await fixture.beat();
+     49|   expect(response.bodyUsed).toBe(true);
+       |                             ^
+     50|   expect(fixture.reads()).toBe(before);
+     51|   await act(async () => { stream.enqueue(new TextEncoder().encode("{}"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/web/heartbeat-body.test.ts > LIVE failed heartbeat body consumption preserves the exact canonical retry
+AssertionError: expected 3 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 3
+
+ ❯ tests/web/heartbeat-body.test.ts:60:27
+     58|   const before = fixture.reads();
+     59|   await fixture.beat();
+     60|   expect(fixture.reads()).toBe(before);
+       |                           ^
+     61|   await fixture.beat();
+     62|   expect(fixture.posts).toHaveLength(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  17:01:54
+   Duration  2.33s (environment 56%, transform 27%, import 12%, tests 4%)
+

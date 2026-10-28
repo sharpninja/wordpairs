@@ -1,0 +1,13 @@
+[WebServer] (node:3446421) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:3446491) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/pwa.spec.ts:6:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites (960ms)
+  ✓  2 tests/browser/pwa.spec.ts:87:1 › PWA-03/06/07 real worker offline launch, private cache isolation and reconnect (806ms)
+  ✓  3 tests/browser/pwa.spec.ts:147:1 › PWA-04/05 phone guidance, synthetic prompt lifecycle and installed-state UI (581ms)
+  ✓  4 tests/browser/pwa.spec.ts:181:1 › PWA-05 iPhone browser guidance and standalone launch presentation (554ms)
+
+  4 passed (5.0s)

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { minimumRevision, parsePage } from "../application/public-pages";
 import {
@@ -20,12 +21,16 @@ function rankingRows(rows: LandingProjection["leaderboard"]) {
 
 export function LandingBoard({
   initialData,
+  resetForSeatLoss = false,
 }: {
   initialData: LandingProjection | null;
+  resetForSeatLoss?: boolean;
 }) {
   const [data, setData] = useState(initialData);
-  const [failed, setFailed] = useState(initialData === null);
-  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(
+    !resetForSeatLoss && initialData === null,
+  );
+  const [loading, setLoading] = useState(resetForSeatLoss);
   const [pages, setPages] = useState({
     leaderboard: [null] as (string | null)[],
     lobbies: [null] as (string | null)[],
@@ -41,7 +46,7 @@ export function LandingBoard({
   const [changed, setChanged] = useState<"refreshing" | "updated" | null>(null);
   const [rankingOffset, setRankingOffset] = useState(0);
   const minimum = useRef({ leaderboard: 0, lobbies: 0 });
-  const freshNext = useRef(false);
+  const freshNext = useRef(resetForSeatLoss);
   const sequence = useRef(0);
   const active = useRef<AbortController | null>(null);
   const refresh = useCallback(
@@ -154,6 +159,12 @@ export function LandingBoard({
   }, [refresh]);
   return (
     <div className="public-area" id="community">
+      {resetForSeatLoss && (
+        <p role="status">
+          That room is no longer available. Choose another open room.
+        </p>
+      )}
+      {loading && !data && <p role="status">Loading the community board…</p>}
       <div className="section-heading">
         <div>
           <p className="eyebrow">The community board</p>
@@ -257,7 +268,7 @@ export function LandingBoard({
           ) : !data?.lobbies.length ? (
             <div className="state-message">
               <p>No joinable rooms</p>
-              <a href="/play">Create the first room →</a>
+              <Link href="/play">Create the first room →</Link>
             </div>
           ) : (
             <ul className="lobby-list">
@@ -270,12 +281,12 @@ export function LandingBoard({
                       {Math.floor(room.ageSeconds / 60)}m old
                     </span>
                   </div>
-                  <a
+                  <Link
                     className="button compact"
-                    href={`/rooms/${encodeURIComponent(room.roomId)}`}
+                    href={`/rooms/${encodeURIComponent(room.roomId)}?from=discovery`}
                   >
                     Join room <span aria-hidden="true">↗</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

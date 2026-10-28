@@ -1,0 +1,39 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-scale --max-failures=1 --workers=2 --fully-parallel
+
+
+Running 24 tests using 2 workers
+
+(node:349082) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:349051) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (1.5m)
+Testing stopped early after 1 maximum allowed failures.
+  ✘   1 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 3 real browser players complete eight UI rounds (1.5m)
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds 
+
+    TimeoutError: page.waitForResponse: Timeout 20000ms exceeded while waiting for event "response"
+
+      25 |   }
+      26 |   async function click(page: Page, action: string, run: () => Promise<unknown>) {
+    > 27 |     const response = page.waitForResponse((r) => r.request().method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.request().postDataJSON()?.action === action);
+         |                           ^
+      28 |     await run();
+      29 |     return response;
+      30 |   }
+        at click (/home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:27:27)
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:89:28
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:78:27
+
+    Error Context: test-results/live-scale/live-player-counts.integra-95991-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds 
+  1 interrupted
+    tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 3 real browser players complete eight UI rounds 
+  22 did not run
+  1 error was not a part of any test, see above for details

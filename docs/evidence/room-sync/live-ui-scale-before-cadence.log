@@ -1,0 +1,45 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-scale --max-failures=1 --workers=2 --fully-parallel
+
+
+Running 24 tests using 2 workers
+
+(node:370246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:370249) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (2.3m)
+Testing stopped early after 1 maximum allowed failures.
+  ✘   2 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 3 real browser players complete eight UI rounds (2.3m)
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds 
+
+    TimeoutError: apiRequestContext.get: Timeout 20000ms exceeded.
+    Call log:
+      - → GET https://wordpairs-24aacf3f.ngrok-free.app/api/rooms/4fd69a73-d82e-46fb-8222-1c7785685ba8
+        - user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36
+        - accept: */*
+        - accept-encoding: gzip,deflate,br
+        - ngrok-skip-browser-warning: 1
+        - cookie: wp_session=[redacted-test-session]
+
+
+      129 |     if (created) for (let i = count - 1; i >= 0; i--) {
+      130 |       for (let attempt = 0; attempt < 4; attempt++) {
+    > 131 |         const room = await (await contexts[i].request.get(`/api/rooms/${roomId}`)).json();
+          |                                                       ^
+      132 |         if (room.role !== "player") break;
+      133 |         const left = await post(contexts[i], `/api/rooms/${roomId}/lobby`, { action: "leave", expectedProfileId: ids[i], expectedVersion: room.version, commandId: randomUUID() });
+      134 |         if (left.ok()) break;
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:131:55
+
+    Error Context: test-results/live-scale/live-player-counts.integra-95991-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds 
+  1 interrupted
+    tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 3 real browser players complete eight UI rounds 
+  22 did not run
+  1 error was not a part of any test, see above for details

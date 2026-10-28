@@ -4,6 +4,7 @@ import type {
   ContentPort,
 } from "../application/content";
 import type { Command, Transition } from "../application/ports";
+import { configuredAdministrator } from "../domain/access";
 import { buildCatalog } from "../domain/catalog";
 import { CONTENT_ID, type ContentState } from "../domain/content";
 import { lobbyOverdue } from "../domain/lobby";
@@ -26,6 +27,7 @@ const initial = [
 async function context(
   connection: SqlConnection,
   actorId: string,
+  administrators: readonly string[],
 ): Promise<Result<ContentContext>> {
   const query = await connection.query(
     "select public.wordpairs_content_context($1) as response",
@@ -50,6 +52,7 @@ async function context(
   return catalog.ok
     ? success({
         ...raw,
+        actor: configuredAdministrator(raw.actor, administrators),
         catalog: { ...catalog.value, revision: raw.catalog.value.revision },
       })
     : catalog;
@@ -58,6 +61,7 @@ export class PostgresContentRepository implements ContentPort {
   constructor(
     private pool: SqlPool,
     private now = () => Date.now(),
+    private administrators: readonly string[] = [],
   ) {}
   async read(
     actorId: string,
@@ -65,13 +69,16 @@ export class PostgresContentRepository implements ContentPort {
     let connection: SqlConnection | undefined;
     try {
       connection = await this.pool.connect();
-      await connection.query("begin isolation level repeatable read read only");
+      await connection.query("begin");
+      await connection.query(
+        "select pg_advisory_xact_lock_shared(hashtextextended('wordpairs-acl',0))",
+      );
       const loaded = await connection.query(
         "select state from wordpairs.aggregates where kind='moderation' and id=$1",
         [CONTENT_ID],
       );
       const state = loaded.rows[0]?.state as ContentState | undefined;
-      const evidence = await context(connection, actorId);
+      const evidence = await context(connection, actorId, this.administrators);
       await connection.query("commit");
       return !state
         ? failure("NOT_FOUND")
@@ -105,6 +112,9 @@ export class PostgresContentRepository implements ContentPort {
       "moderation",
       async (client, input) => {
         connection = client;
+        await client.query(
+          "select pg_advisory_xact_lock_shared(hashtextextended('wordpairs-acl',0))",
+        );
         if (input.aggregateId !== CONTENT_ID)
           return failure("VALIDATION_ERROR");
         const prior = await client.query(
@@ -143,7 +153,11 @@ export class PostgresContentRepository implements ContentPort {
     );
     return store.transact(command, async (state) => {
       if (!connection) return failure("INTERNAL_ERROR");
-      const evidence = await context(connection, command.actorId);
+      const evidence = await context(
+        connection,
+        command.actorId,
+        this.administrators,
+      );
       return evidence.ok
         ? decide(state, { ...evidence.value, room, match })
         : evidence;

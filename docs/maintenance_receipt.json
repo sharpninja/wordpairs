@@ -1,0 +1,125 @@
+{
+  "recordedAtUtc": "2026-10-27T10:54:58.6490651Z",
+  "requestSequence": [
+    "sync-logs",
+    "refresh-docs",
+    "commit-sync"
+  ],
+  "steering": [
+    "Import all requirements into MCP as part of refresh-docs",
+    "Requirement IDs must identify their subjects",
+    "Use the mcpserver-codex-plugin",
+    "Obtain hostile validation"
+  ],
+  "repository": "/home/sharpninja/github/WordGame/.mcpServer/wordpairs",
+  "gitBase": "3273c121de6517aec34503d8c769b0159e9e52df",
+  "plugin": {
+    "name": "mcpserver-codex-plugin",
+    "pendingCount": 0,
+    "status": "available",
+    "failsafeCount": 0,
+    "wrapper": "Invoke-CodexMcpPlugin.ps1",
+    "version": "1.121.0",
+    "sessionId": "Codex-20261027T100516Z-plugin-session",
+    "turnRequestId": "req-20261027T101704Z-prompt-06af"
+  },
+  "recovery": {
+    "command": "director add-workspace",
+    "result": "Existing partial workspace updated and started using supported client.Workspace APIs; signed marker and fresh health nonce verified. No duplicate registration.",
+    "permissionRepair": "User-authorized pkexec /usr/bin/setfacl -m m::rw- /opt/mcpserver/app/appsettings.yaml; exit0; service effective rw verified. File owner and application-directory permissions preserved; no global service restart.",
+    "observedFailures": [
+      "Initial local full-access key bootstrap failed; CLI incorrectly exited0. No successful temporary-key fallback was observed.",
+      "Using a trusted registered workspace and matching server obtained the key, but registration returned HTTP500 writing appsettings.yaml."
+    ],
+    "historyQualification": "Earlier product work logged retrospectively with explicit provenance after trust recovery. No separate background MCP session ID verified."
+  },
+  "triage": [
+    {
+      "subject": "director credential bootstrap and false exit0",
+      "reportId": "triage-report-3e9d6131199c49ec9e8f42771747e6b8"
+    },
+    {
+      "subject": "appsettings ACL causes registration500",
+      "reportId": "triage-report-4e43e25c317c41b781599315560f3e8e"
+    },
+    {
+      "subject": "Linux first wiki export missing output root",
+      "reportId": "triage-report-c9d9c4345d7b4a9599430e8e218ded56"
+    },
+    {
+      "subject": "wiki project links and assets unresolved",
+      "reportId": "triage-report-1a473591a4284ceb8bda0453ed178744"
+    },
+    {
+      "subject": "in-place export metadata unreadable",
+      "reportId": "triage-report-d124219f281f4ec7aed00621ad495ee9"
+    }
+  ],
+  "triageStatus": "Accepted for asynchronous triage; no resolution claimed.",
+  "requirements": {
+    "receipt": "docs/requirements/import_receipt.json",
+    "mappingRecords": 25,
+    "structuredCriterionEntries": 318,
+    "technical": 35,
+    "migration": "Supported authoritative ingestion only after exact141-session-created-record guard and full backup; typed batch updates restored complete fields.25 unioned FR mapping rows verified.",
+    "testing": 81,
+    "statusQualification": "318 counts structured entries across FR/TR/TEST, not unique product ACs. TEST records are verification contracts, not newly executed tests. Hosted/provider obligations remain pending or in_progress.",
+    "resolvedDefaults": 24,
+    "activeBaselineACs": 45,
+    "functional": 25,
+    "ids": "Descriptive canonical IDs such as FR-ROOMACCESS-001 and TR-ACL-AUTHORIZATION-032; baseline and replaced IDs retained as provenance aliases.",
+    "verification": "All records, statuses, provenance, criterion IDs/text/evidence and mappings read back and compared. Every FR/TR criterion has a mapped TEST contract. Six retired AC identifiers preserved. No active provisional IDs."
+  },
+  "documentation": {
+    "navigation": "Flat schema-valid document leaves",
+    "prunedMarkdown": [],
+    "generatedRequirementPages": 6,
+    "platforms": [
+      "github",
+      "azure"
+    ],
+    "wikiConfiguredPages": 33,
+    "personalSkillChange": "Adds complete requirement import, semantic IDs, coverage/read-back verification before exact wiki export. Outside this Git repository; not included in its commit.",
+    "projectMarkdownPages": 27,
+    "screenshots": "No screenshot regeneration or wiki sync script exists. Historical phone captures linked in /tmp are local-only references.",
+    "personalSkill": "/home/sharpninja/.codex/skills/refresh-docs/SKILL.md",
+    "pruningReason": "Existing historical documents remain accurate when qualified; stale sections updated."
+  },
+  "export": {
+    "provenance": "Exact MCP contentBase64 ZIP bytes. All33 configured Markdown pages exist on both platforms, including exact25FR/35TR/81TEST IDs. No generated requirement Markdown authored locally.",
+    "entries": 71,
+    "outputTree": "Server-managed docs/Project/wiki/ remains on disk and is ignored by Git. Hidden metadata owned nobody with ACL mask--- is unreadable to workspace user; exact returned ZIP is the versioned artifact. No export files deleted or permissions weakened.",
+    "bytes": 575478,
+    "limitation": "Copied project pages retain repository-relative links and SVG references absent from ZIP. Content export is complete but not a self-contained publication-ready wiki. See triage.",
+    "sha256": "fddc86781b5d3823e36a262c9264c1933202f284bca2e46c683eb0f65542b47a",
+    "archive": "docs/requirements/archive/requirements-wiki-maintenance-20261027.zip"
+  },
+  "validation": {
+    "productSnapshotFiles": 183,
+    "historicalProductReview": "docs/admin_acl_review_receipt.json; prior189-file approval remains historical and unchanged.",
+    "focusedEvidence": "docs/evidence/admin/maintenance-ac42.log",
+    "focusedResult": "PASS1/1;84unrelated cases skipped; all assertions/negative controls within AC-42 executed.",
+    "focusedCommand": "npm test -- tests/ac-contracts/oracle-supplemental-validation.test.ts -t AC-42",
+    "historicalResults": [
+      "502 unit/contract tests",
+      "66 PostgreSQL tests after first65/66 timeout and clean rerun",
+      "31 browser journeys",
+      "5 production administration browser journeys",
+      "18 independent focused tests",
+      "type/lint/build passed"
+    ],
+    "initialFailure": "First focused run failed at import with EACCES reading server-generated .mcp-requirements-manifest.json; ignored only generated output working tree, then rerun passed.",
+    "hostileMaintenanceReview": "APPROVE99/99; no unresolved material findings; exact report docs/maintenance_review_receipt.json; qualifications preserved.",
+    "maintenanceTestException": "Only actual-file AC-42 attribution hash/comment changed after reviewing inventory delta and preserved notices. Historical mock oracles and negative controls unchanged; product source unchanged.",
+    "unchangedSnapshotFiles": 182,
+    "codeVerify": "MCP code-verify TypeScript succeeded"
+  },
+  "commitSync": {
+    "status": "Awaiting acknowledgement required by explicitly invoked commit-sync skill",
+    "pushed": false,
+    "branch": "main",
+    "committed": false,
+    "origin": "https://github.com/sharpninja/wordpairs.git",
+    "staged": false
+  }
+}

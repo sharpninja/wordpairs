@@ -1,0 +1,11 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts heartbeat.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/browser/heartbeat.integration.spec.ts:4:1 › LIVE unread-body control and production heartbeat completion through real HTTP (12.6s)
+
+  1 passed (13.6s)
+

@@ -1,0 +1,92 @@
+[WebServer] (node:1215448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1215462) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:1215627) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1215889) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/seat-recovery.phase6.spec.ts:306:1 › TEST-LOBBYMATCHING-117 a pre-join full preview cannot bounce the successful new member (2.5s)
+[WebServer] (node:1216034) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-read denial cannot clear a replacement profile draft (30.0s)
+(node:1217059) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1217282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-write denial cannot clear a replacement profile draft (30.0s)
+(node:1218789) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1218987) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete social-read denial cannot clear a replacement profile draft (30.0s)
+
+
+  1) tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-read denial cannot clear a replacement profile draft 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test ended.
+    Call log:
+      - waiting for getByRole('link', { name: 'Community content', exact: true })
+
+
+      863 |       await page
+      864 |         .getByRole("link", { name: "Community content", exact: true })
+    > 865 |         .click();
+          |          ^
+      866 |       const draft = page.getByLabel("Proposed category", { exact: true });
+      867 |       await draft.fill("Replacement profile draft");
+      868 |       const complete = page.waitForResponse(
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:865:10
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-79316-a-replacement-profile-draft/error-context.md
+
+  2) tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-write denial cannot clear a replacement profile draft 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test ended.
+    Call log:
+      - waiting for getByRole('link', { name: 'Community content', exact: true })
+
+
+      863 |       await page
+      864 |         .getByRole("link", { name: "Community content", exact: true })
+    > 865 |         .click();
+          |          ^
+      866 |       const draft = page.getByLabel("Proposed category", { exact: true });
+      867 |       await draft.fill("Replacement profile draft");
+      868 |       const complete = page.waitForResponse(
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:865:10
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-c8de5-a-replacement-profile-draft/error-context.md
+
+  3) tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete social-read denial cannot clear a replacement profile draft 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test ended.
+    Call log:
+      - waiting for getByRole('link', { name: 'Community content', exact: true })
+
+
+      863 |       await page
+      864 |         .getByRole("link", { name: "Your submissions and community content", exact: true })
+    > 865 |         .click();
+          |          ^
+      866 |       const draft = page.getByLabel("Proposed category", { exact: true });
+      867 |       await draft.fill("Replacement profile draft");
+      868 |       const complete = page.waitForResponse(
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:865:10
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-20353-a-replacement-profile-draft/error-context.md
+
+  3 failed
+    tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-read denial cannot clear a replacement profile draft 
+    tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete game-write denial cannot clear a replacement profile draft 
+    tests/browser/ui-gaps.phase6.spec.ts:823:3 › TEST-REQUESTFEEDBACK-143 obsolete social-read denial cannot clear a replacement profile draft 
+  1 passed (1.7m)

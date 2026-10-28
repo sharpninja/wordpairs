@@ -15,7 +15,7 @@ The web server is the authority for identity, room membership, readiness, match 
 
 ## Test and dependency decision
 
-Use npm with a committed lockfile. Vitest runs domain/use-case/component tests; MSW and explicit fakes replace external boundaries; Testing Library covers React interactions; Playwright covers browser journeys. Runtime validation uses Zod. Server-side OpenID Connect uses `openid-client`. Supabase integration uses `@supabase/supabase-js` and `@supabase/ssr` only in adapters.
+Use npm with a committed lockfile. Vitest runs domain/use-case/component tests; MSW and explicit fakes replace external boundaries; Testing Library covers React interactions; Playwright covers browser journeys. The implemented transport boundaries use explicit allowlisted parsers and domain validation. Server-side OpenID Connect uses `openid-client`; PostgreSQL persistence uses `pg`; Realtime uses `@supabase/supabase-js` in infrastructure adapters. Zod and `@supabase/ssr` were reviewed planning options and are not installed or required by the current implementation. The server issues its own opaque session cookies backed by hashed PostgreSQL session records.
 
 Use the reviewed package versions in `ATTRIBUTIONS.md` as direct dependencies and generate the lockfile before any production implementation. Apache-2.0 packages remain build/test tools and are not bundled into game runtime assets. Wordpairs source and game are GPL-2.0-only.
 

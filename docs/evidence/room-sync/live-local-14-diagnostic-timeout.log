@@ -1,0 +1,37 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 1 test using 1 worker
+
+LIVE_SCALE players=14 round=1
+  ✘  1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds (1.2m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+    Call Log:
+    - Timeout 20000ms exceeded while waiting on the predicate
+
+      112 |       phase = `UI round ${round}`;
+      113 |       console.log(`LIVE_SCALE players=${count} round=${round}`);
+    > 114 |       await expect.poll(async () => (await Promise.all(pages.map((p) => p.getByRole("button", { name: "Opposites", exact: true }).isVisible()))).filter(Boolean).length, { timeout: 20000 }).toBe(1);
+          |                                                                                                                                                                                              ^
+      115 |       const chooser = (await Promise.all(pages.map(async (p) => (await p.getByRole("button", { name: "Opposites", exact: true }).isVisible()) ? p : null))).find((p) => p)!;
+      116 |       const chosen = await commitUi(chooser, "choose", () => chooser.getByRole("button", { name: "Opposites", exact: true }).click());
+      117 |       const categoryVersion = chosen.version;
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:114:190
+
+    Error Context: test-results/live-local/live-player-counts.integra-3113b-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds 
+  1 error was not a part of any test, see above for details
+

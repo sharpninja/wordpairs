@@ -1,0 +1,39 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts
+
+
+Running 1 test using 1 worker
+
+(node:150332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/live-multiplayer.integration.spec.ts:16:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect (2.4m)
+
+
+  1) tests/browser/live-multiplayer.integration.spec.ts:16:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('● Live updates connected', { exact: true })
+    Expected: visible
+    Timeout: 40000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('● Live updates connected', { exact: true }) with timeout 40000ms
+      - waiting for getByText('● Live updates connected', { exact: true })
+
+
+      251 |           await expect(
+      252 |             page.getByText("● Live updates connected", { exact: true }),
+    > 253 |           ).toBeVisible({ timeout: 40000 });
+          |             ^
+      254 |       }
+      255 |
+      256 |       const beforeAnswer = notices[1].length;
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-multiplayer.integration.spec.ts:253:13
+
+    Error Context: test-results/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md
+
+  1 failed
+    tests/browser/live-multiplayer.integration.spec.ts:16:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 

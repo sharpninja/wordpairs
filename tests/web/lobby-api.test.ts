@@ -25,5 +25,5 @@ it('exposes a fail-closed server scheduler credential without leaking it',async(
   vi.stubEnv('WORDPAIRS_SCHEDULER_SECRET','a'.repeat(32));
   const call=(authorization:string)=>tick(new Request('https://wordpairs.test/api/internal/deadlines',{method:'POST',headers:{authorization}}));
   for(const key of ['',`Bearer ${'é'.repeat(32)}`,`Bearer ${'b'.repeat(32)}`])expect((await call(key)).status).toBe(403);
-  expect(mocks.advance).not.toHaveBeenCalled();const accepted=await call(`Bearer ${'a'.repeat(32)}`);expect(accepted.status).toBe(200);expect(await accepted.json()).toEqual({applied:1});
+  expect(mocks.advance).not.toHaveBeenCalled();mocks.deliver.mockResolvedValue(success(0));const accepted=await call(`Bearer ${'a'.repeat(32)}`);expect(accepted.status).toBe(200);expect(await accepted.json()).toEqual({deadlines:{ok:true,applied:1},outbox:{ok:true,published:0}});
 });

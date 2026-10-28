@@ -1,0 +1,43 @@
+[WebServer] (node:3438712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:3438913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/pwa.spec.ts:4:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites (5.8s)
+(node:3439664) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/browser/pwa.spec.ts:65:1 › PWA-03/06/07 real worker offline launch, private cache isolation and reconnect (1.2s)
+  ✓  3 tests/browser/pwa.spec.ts:125:1 › PWA-04/05 phone guidance, synthetic prompt lifecycle and installed-state UI (921ms)
+  ✓  4 tests/browser/pwa.spec.ts:159:1 › PWA-05 iPhone browser guidance and standalone launch presentation (737ms)
+
+
+  1) tests/browser/pwa.spec.ts:4:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: locator('meta[name="apple-mobile-web-app-capable"]')
+    Expected: "yes"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" locator('meta[name="apple-mobile-web-app-capable"]') with timeout 5000ms
+      - waiting for locator('meta[name="apple-mobile-web-app-capable"]')
+
+
+      15 |   await expect(
+      16 |     page.locator('meta[name="apple-mobile-web-app-capable"]'),
+    > 17 |   ).toHaveAttribute("content", "yes");
+         |     ^
+      18 |   await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute(
+      19 |     "href",
+      20 |     "/icons/apple-touch-icon.png",
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/pwa.spec.ts:17:5
+
+    Error Context: test-results/pwa-PWA-01-02-production-m-4a5c7--installation-prerequisites/error-context.md
+
+  1 failed
+    tests/browser/pwa.spec.ts:4:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites 
+  3 passed (12.7s)

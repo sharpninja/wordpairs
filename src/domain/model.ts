@@ -6,7 +6,7 @@ export type Json =
   | Json[]
   | { [key: string]: Json };
 export type Versioned = { id: string; version: number };
-export type Role = "player" | "moderator" | "senior-moderator";
+export type Role = "player" | "moderator" | "senior-moderator" | "admin";
 export type Actor = { profileId: string; roles: readonly Role[] };
 
 export interface Profile extends Versioned {
@@ -156,7 +156,15 @@ export interface ModerationCase extends Versioned {
   kind: "nomination" | "suggestion";
   payload: { [key: string]: Json };
   nominatorIds: string[];
-  status: "collecting" | "pending" | "approved" | "rejected" | "appealed";
+  status:
+    | "collecting"
+    | "pending"
+    | "pending_review"
+    | "changes_requested"
+    | "on_hold"
+    | "approved"
+    | "rejected"
+    | "appealed";
   reviewerId: string | null;
   reason: string | null;
   appealed: boolean;

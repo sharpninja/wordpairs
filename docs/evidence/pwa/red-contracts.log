@@ -1,0 +1,187 @@
+
+> wordpairs@0.1.0 test
+> vitest run tests/web/pwa-manifest.test.ts tests/web/pwa-worker.test.ts tests/web/pwa-support.test.ts
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/pwa-worker.test.ts (4 tests | 4 failed) 16ms
+   × PWA-06 returns live HTTP errors unchanged and static offline navigation only on network failure 10ms
+   × PWA-07 excludes all API/auth/realtime/mutations and RSC from fallback and private caching 1ms
+   × PWA-08 removes only owned old caches after activation without forcing an update 1ms
+   × PWA-08 failed precache rejects installation and preserves the previously usable cache 1ms
+ ❯ tests/web/pwa-manifest.test.ts (2 tests | 2 failed) 115ms
+   × PWA-01 validates actual manifest and rejects weakened identity, launch and icon controls 12ms
+   × PWA-02 supplies real PNG dimensions and opaque backgrounds 101ms
+ ❯ tests/web/pwa-support.test.ts (7 tests | 7 failed) 25ms
+   × PWA-03 registers securely at root with fresh updates; errors preserve manual guidance 9ms
+   × PWA-04 prompts once on a click and hides after actual appinstalled 3ms
+   × PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: false 2ms
+   × PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: true 2ms
+   × PWA-04 hides in display-mode standalone and responds to mode changes 2ms
+   × PWA-04 recognizes iPhone standalone and removes listeners on unmount 2ms
+   × PWA-05 insecure origins explain HTTPS and do not register a worker 2ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/pwa-manifest.test.ts > PWA-01 validates actual manifest and rejects weakened identity, launch and icon controls
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/app/manifest.ts' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-manifest.test.ts
+ ❯ tests/web/pwa-manifest.test.ts:22:14
+     20| it("PWA-01 validates actual manifest and rejects weakened identity, la…
+     21|   const path = resolve("src/app/manifest.ts");
+     22|   const m = (await import(path)).default();
+       |              ^
+     23|   assertManifest(m);
+     24|   for (const invalid of [{ ...m, display: "browser" }, { ...m, start_u…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  tests/web/pwa-manifest.test.ts > PWA-02 supplies real PNG dimensions and opaque backgrounds
+Error: ENOENT: no such file or directory, open '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/public/icons/icon-192.png'
+ ❯ tests/web/pwa-manifest.test.ts:32:18
+     30|   const { default: sharp } = await import("sharp");
+     31|   for (const [name, size] of [["icon-192.png", 192], ["icon-512.png", …
+     32|     const file = readFileSync(resolve("public/icons", name));
+       |                  ^
+     33|     expect(file.subarray(0, 8).toString("hex")).toBe("89504e470d0a1a0a…
+     34|     const image = sharp(file);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  tests/web/pwa-support.test.ts > PWA-03 registers securely at root with fresh updates; errors preserve manual guidance
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/web/pwa-support.tsx' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-support.test.ts
+ ❯ mount tests/web/pwa-support.test.ts:25:26
+     23| async function mount() {
+     24|   const path = resolve("src/web/pwa-support.tsx");
+     25|   const { PwaSupport } = await import(path);
+       |                          ^
+     26|   let view!: ReturnType<typeof render>;
+     27|   await act(async () => { view = render(React.createElement(PwaSupport…
+ ❯ tests/web/pwa-support.test.ts:39:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  tests/web/pwa-support.test.ts > PWA-04 prompts once on a click and hides after actual appinstalled
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/web/pwa-support.tsx' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-support.test.ts
+ ❯ mount tests/web/pwa-support.test.ts:25:26
+     23| async function mount() {
+     24|   const path = resolve("src/web/pwa-support.tsx");
+     25|   const { PwaSupport } = await import(path);
+       |                          ^
+     26|   let view!: ReturnType<typeof render>;
+     27|   await act(async () => { view = render(React.createElement(PwaSupport…
+ ❯ tests/web/pwa-support.test.ts:45:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  tests/web/pwa-support.test.ts > PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: false
+ FAIL  tests/web/pwa-support.test.ts > PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: true
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/web/pwa-support.tsx' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-support.test.ts
+ ❯ mount tests/web/pwa-support.test.ts:25:26
+     23| async function mount() {
+     24|   const path = resolve("src/web/pwa-support.tsx");
+     25|   const { PwaSupport } = await import(path);
+       |                          ^
+     26|   let view!: ReturnType<typeof render>;
+     27|   await act(async () => { view = render(React.createElement(PwaSupport…
+ ❯ tests/web/pwa-support.test.ts:56:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  tests/web/pwa-support.test.ts > PWA-04 hides in display-mode standalone and responds to mode changes
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/web/pwa-support.tsx' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-support.test.ts
+ ❯ mount tests/web/pwa-support.test.ts:25:26
+     23| async function mount() {
+     24|   const path = resolve("src/web/pwa-support.tsx");
+     25|   const { PwaSupport } = await import(path);
+       |                          ^
+     26|   let view!: ReturnType<typeof render>;
+     27|   await act(async () => { view = render(React.createElement(PwaSupport…
+ ❯ tests/web/pwa-support.test.ts:68:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  tests/web/pwa-support.test.ts > PWA-04 recognizes iPhone standalone and removes listeners on unmount
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/web/pwa-support.tsx' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-support.test.ts
+ ❯ mount tests/web/pwa-support.test.ts:25:26
+     23| async function mount() {
+     24|   const path = resolve("src/web/pwa-support.tsx");
+     25|   const { PwaSupport } = await import(path);
+       |                          ^
+     26|   let view!: ReturnType<typeof render>;
+     27|   await act(async () => { view = render(React.createElement(PwaSupport…
+ ❯ tests/web/pwa-support.test.ts:78:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  tests/web/pwa-support.test.ts > PWA-05 insecure origins explain HTTPS and do not register a worker
+Error: Cannot find module '/home/sharpninja/github/WordGame/.mcpServer/wordpairs/src/web/pwa-support.tsx' imported from /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/web/pwa-support.test.ts
+ ❯ mount tests/web/pwa-support.test.ts:25:26
+     23| async function mount() {
+     24|   const path = resolve("src/web/pwa-support.tsx");
+     25|   const { PwaSupport } = await import(path);
+       |                          ^
+     26|   let view!: ReturnType<typeof render>;
+     27|   await act(async () => { view = render(React.createElement(PwaSupport…
+ ❯ tests/web/pwa-support.test.ts:87:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  tests/web/pwa-worker.test.ts > PWA-06 returns live HTTP errors unchanged and static offline navigation only on network failure
+Error: ENOENT: no such file or directory, open 'public/sw.js'
+ ❯ worker tests/web/pwa-worker.test.ts:28:19
+     26|     },
+     27|   };
+     28|   runInNewContext(readFileSync("public/sw.js", "utf8"), {
+       |                   ^
+     29|     self: { location: new URL("https://wordpairs.test/sw.js"), addEven…
+     30|     caches, fetch: network, URL, Response,
+ ❯ tests/web/pwa-worker.test.ts:46:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  tests/web/pwa-worker.test.ts > PWA-07 excludes all API/auth/realtime/mutations and RSC from fallback and private caching
+Error: ENOENT: no such file or directory, open 'public/sw.js'
+ ❯ worker tests/web/pwa-worker.test.ts:28:19
+     26|     },
+     27|   };
+     28|   runInNewContext(readFileSync("public/sw.js", "utf8"), {
+       |                   ^
+     29|     self: { location: new URL("https://wordpairs.test/sw.js"), addEven…
+     30|     caches, fetch: network, URL, Response,
+ ❯ tests/web/pwa-worker.test.ts:56:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  tests/web/pwa-worker.test.ts > PWA-08 removes only owned old caches after activation without forcing an update
+Error: ENOENT: no such file or directory, open 'public/sw.js'
+ ❯ worker tests/web/pwa-worker.test.ts:28:19
+     26|     },
+     27|   };
+     28|   runInNewContext(readFileSync("public/sw.js", "utf8"), {
+       |                   ^
+     29|     self: { location: new URL("https://wordpairs.test/sw.js"), addEven…
+     30|     caches, fetch: network, URL, Response,
+ ❯ tests/web/pwa-worker.test.ts:68:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  tests/web/pwa-worker.test.ts > PWA-08 failed precache rejects installation and preserves the previously usable cache
+Error: ENOENT: no such file or directory, open 'public/sw.js'
+ ❯ worker tests/web/pwa-worker.test.ts:28:19
+     26|     },
+     27|   };
+     28|   runInNewContext(readFileSync("public/sw.js", "utf8"), {
+       |                   ^
+     29|     self: { location: new URL("https://wordpairs.test/sw.js"), addEven…
+     30|     caches, fetch: network, URL, Response,
+ ❯ tests/web/pwa-worker.test.ts:79:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  13 failed (13)
+   Start at  06:04:56
+   Duration  1.37s (environment 69%, import 11%, tests 11%, transform 8%, worker 1%)
+

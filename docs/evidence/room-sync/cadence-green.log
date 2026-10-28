@@ -1,0 +1,12 @@
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+
+ Test Files  3 passed (3)
+      Tests  9 passed (9)
+   Start at  15:41:14
+   Duration  29.79s (environment 67%, transform 15%, import 12%, tests 6%)
+
+    Isolate  3 workers spawned · ~10.80s startup each (spawn + environment, per file)
+             at least ~5.40s faster with isolate: false — reuses workers across files instead of one per file
+

@@ -1,0 +1,39 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-scale --max-failures=1
+
+
+Running 24 tests using 1 worker
+
+(node:289882) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (38.0s)
+  ✓   2 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 3 real browser players complete eight UI rounds (1.1m)
+  ✘   3 tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 4 real browser players complete eight UI rounds (2.1m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 409
+    Received: 503
+
+      84 |             return;
+      85 |           }
+    > 86 |           expect(response.status()).toBe(409);
+         |                                     ^
+      87 |           // The real UI refreshes its stale version and the next explicit UI
+      88 |           // submission creates a fresh command; uncertain5xx is never replayed here.
+      89 |         }
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:86:37
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:76:7
+
+    Error Context: test-results/live-scale/live-player-counts.integra-bacd2-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:11:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+  21 did not run
+  2 passed (3.9m)
+  1 error was not a part of any test, see above for details

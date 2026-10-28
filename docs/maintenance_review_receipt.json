@@ -1,0 +1,31 @@
+{
+  "reviewer": "gpt-6-astra / high",
+  "scope": "Maintenance documentation, requirements import/export and narrow AC-42 correction",
+  "verdict": "APPROVE",
+  "accuracyScore": 99,
+  "completenessScore": 99,
+  "unresolvedMaterialFindings": [],
+  "resolvedFinding": {
+    "issue": "Refreshed attribution bytes invalidated the AC-42 actual-file golden hash.",
+    "verification": "Only the explanatory comment and attributionSha256 changed. The new value matches current ATTRIBUTIONS.md. Historical mock expectations, license/asset hashes and negative assertions remain unchanged.",
+    "sha256": "c34b69d1c56d4df056223e1ab2b9330df239cf6773bbc1b644628bd5622444ae",
+    "testEvidence": "Reviewed docs/evidence/admin/maintenance-ac42.log: 1 selected test passed; 84 unrelated tests skipped by the explicit filter."
+  },
+  "independentVerification": [
+    "All 183 previously reviewed product/test/config files were hash-compared; the sole difference is the reviewed AC-42 golden-hash/comment correction.",
+    "The generated wiki working directory is now narrowly ignored; the exact returned export ZIP remains available for version control.",
+    "Prior reconciliation verified all 141 descriptive requirement records, 318 structured criteria, 25 mappings, 45 active ACs and 24 resolved defaults, with no orphan references or active provisional IDs.",
+    "Original 22 FR and 31 TR bodies were preserved exactly, and retired AC identifiers remain reserved.",
+    "Both export platforms contain all 33 configured pages and the expected 25 FR, 35 TR and 81 TEST identifiers.",
+    "Documentation preserves historical review boundaries and leaves hosted/provider obligations pending or in progress."
+  ],
+  "qualifications": [
+    "The exporter preserves repository-relative links and references SVG assets absent from the ZIP. This remains a disclosed exporter limitation requiring link/asset handling before standalone wiki publication.",
+    "Server-generated metadata permissions caused an initial EACCES failure. Ignoring the server-managed working directory avoids including it in source archives; it does not repair the exporter permissions. Preserve the failure and triage record.",
+    "MCP reconciliation used saved authoritative read-back artifacts; the reviewer performed no MCP mutation or independent live query.",
+    "The focused AC-42 result is implementer-run evidence reviewed from its saved log. No broad product suite was rerun or claimed.",
+    "The historical administration approval remains separate from this maintenance approval."
+  ],
+  "disposition": "Approved for completion of the requested maintenance workflow, with the stated export limitations recorded. Commit/push remains governed by the user's existing commit-sync contract.",
+  "reviewerChanges": "None"
+}

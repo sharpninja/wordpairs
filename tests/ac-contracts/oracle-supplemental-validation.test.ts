@@ -42,7 +42,9 @@ const validBom = JSON.stringify({
 const preparedSourcePaths = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' })
   .trim().split('\n').filter(Boolean).sort();
 const preparedSource = Object.fromEntries(preparedSourcePaths.map((path) => [path, readFileSync(resolve(process.cwd(), path))]));
-const sourceManifest = Object.fromEntries(preparedSourcePaths.map((path) => [path, sha256(readFileSync(resolve(process.cwd(), path)))]));
+// Hash the same immutable bytes placed in the archive. Live evidence files can
+// change between filesystem reads while other integration suites are running.
+const sourceManifest = Object.fromEntries(Object.entries(preparedSource).map(([path, content]) => [path, sha256(content)]));
 const baseArchive: Record<string, string | Buffer> = { ...preparedSource, [`sbom/${EXPECTED_COMMIT}.cdx.json`]: validBom };
 
 async function roundTripTemporaryArchive(files: Record<string, string | Buffer>): Promise<Buffer> {
@@ -91,8 +93,8 @@ it('AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 
 it('AC-42 validates complete GPL and the actual Recursive-bearing SVG notice', async () => {
   const expected = {
     licenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3',
-    // Reviewed inventory now also includes the MIT-licensed pg/@types/pg 8.23.1 rows.
-    attributionSha256: '672b47e0aeb29511355aa32c7097f095620f288c79470a75b3eff68dfcac095f',
+    // Reviewed inventory distinguishes installed dependencies from future options; notices are preserved.
+    attributionSha256: 'c34b69d1c56d4df056223e1ab2b9330df239cf6773bbc1b644628bd5622444ae',
     assetPath: 'docs/word_association_round_flow.svg',
     assetSha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0',
     requiredAssetText: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'],

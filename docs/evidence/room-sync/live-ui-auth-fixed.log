@@ -1,0 +1,33 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-multiplayer.integration.spec.ts --output=test-results/live-primary
+
+
+Running 1 test using 1 worker
+
+(node:266438) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect (1.6m)
+
+
+  1) tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 409
+
+      58 |     await click();
+      59 |     const result = await response;
+    > 60 |     expect(result.status()).toBe(200);
+         |                             ^
+      61 |     return (await result.json()).version as number;
+      62 |   }
+      63 |   async function answer(page: Page, value: string) {
+        at command (/home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-multiplayer.integration.spec.ts:60:29)
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-multiplayer.integration.spec.ts:299:29
+
+    Error Context: test-results/live-primary/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md
+
+  1 failed
+    tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 

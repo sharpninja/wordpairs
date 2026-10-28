@@ -1,0 +1,12 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-multiplayer.integration.spec.ts --output=test-results/live-primary
+
+
+Running 1 test using 1 worker
+
+(node:294240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect (3.9m)
+
+  1 passed (3.9m)

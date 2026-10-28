@@ -1,0 +1,68 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-scale --max-failures=1 --workers=2 --fully-parallel
+
+
+Running 24 tests using 2 workers
+
+(node:417038) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:417039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+LIVE_SCALE players=2 round=1
+LIVE_SCALE players=3 round=1
+LIVE_SCALE players=2 round=2
+LIVE_SCALE players=2 round=3
+LIVE_SCALE players=3 round=2
+LIVE_SCALE players=2 round=4
+LIVE_SCALE players=3 round=3
+LIVE_SCALE players=2 round=5
+LIVE_SCALE players=2 round=6
+LIVE_SCALE players=3 round=4
+LIVE_SCALE players=2 round=7
+LIVE_SCALE players=2 round=8
+LIVE_SCALE players=3 round=5
+  ✓   1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (1.6m)
+LIVE_SCALE players=3 round=6
+LIVE_SCALE players=3 round=7
+LIVE_SCALE players=3 round=8
+  ✘   2 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 3 real browser players complete eight UI rounds (2.5m)
+Testing stopped early after 1 maximum allowed failures.
+  ✘   3 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds (55.8s)
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 3 real browser players complete eight UI rounds 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  getByLabel('Your answer', { exact: true })
+    Expected: enabled
+    Received: disabled
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeEnabled" getByLabel('Your answer', { exact: true }) with timeout 10000ms
+      - waiting for getByLabel('Your answer', { exact: true })
+        22 × locator resolved to <input disabled type="text" value="Sad" name="answer" maxlength="200" autocomplete="off" id="answer-b5bd970b-f87f-4bf9-b0b9-cf059d128160"/>
+           - unexpected value "disabled"
+
+
+      103 |             expect(response.request().postDataJSON()).toEqual(pendingPayload);
+      104 |           } else {
+    > 105 |           await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+          |                                                                         ^
+      106 |           await page.getByLabel("Your answer", { exact: true }).fill(pair.target);
+      107 |           response = await click(page, "answer", () => page.getByRole("button", { name: "Submit answer", exact: true }).click());
+      108 |           }
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:105:73
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:96:27
+
+    Error Context: test-results/live-scale/live-player-counts.integra-de1cf-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 3 real browser players complete eight UI rounds 
+  1 interrupted
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+  21 did not run
+  1 passed (2.6m)
+  1 error was not a part of any test, see above for details

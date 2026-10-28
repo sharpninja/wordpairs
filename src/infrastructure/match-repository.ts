@@ -70,7 +70,13 @@ export class PostgresMatchRepository
             "select public.wordpairs_lock_catalog_revision() as revision",
           );
           if (Number(revision.rows[0]?.revision) !== input.catalogRevision)
-            return failure("CONFLICT");
+            // An unchanged match still owns its deadline. A catalog race must
+            // not be acknowledged as an obsolete-version job by the worker.
+            return failure(
+              input.actorId === "system:deadline"
+                ? "TEMPORARY_UNAVAILABLE"
+                : "CONFLICT",
+            );
         }
         if (
           input.actorId !== "system:deadline" &&

@@ -1,0 +1,96 @@
+{
+  "inspectedAtUtc": "2026-10-27T22:32:58.883313+00:00",
+  "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+  "sources": [
+    {
+      "path": "docs/admin_acl_design.md",
+      "sha256": "a47ebc53283762ccc70f437652c8d2ef9dd1d60727e3787699147dad66ed3bcc",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "Updated prose following verified implementation; original inspected hash retained.",
+      "originalInspectedSha256": "7c3fdde2f1d480c6612599b24763dcb1871d61fe889947c4aa09b67e6fff1f7c"
+    },
+    {
+      "path": "docs/pwa_design.md",
+      "sha256": "08606f2281e783149651e910f063548154b51a772f2581223e0e19404b73737f",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "dirty/untracked: hash identifies inspected bytes"
+    },
+    {
+      "path": "docs/room_sync_fix.md",
+      "sha256": "704321da584dd5f42e29966c316ea4627727efbd150931b721e3f91f7ae47dc9",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "dirty/untracked: hash identifies inspected bytes"
+    },
+    {
+      "path": "docs/word_association_category_suggestion.svg",
+      "sha256": "ef587ca4cb6924572af55c4509748a34c509d19673a0f60bb86255fc913cc8f7",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/word_association_client_message_flow.svg",
+      "sha256": "11e4eda67fe2f3d070c7a743f41bc8f1b29efa90ae25f8e615a319a7a7edd83d",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/word_association_game_requirements.md",
+      "sha256": "1121b9bcf6d2713309d7d77d2925df4269b228c6fbc7aabff91a736b65e7d324",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "dirty source inspected; current bytes add synchronized UI-extension links without altering the retained baseline",
+      "preSynchronizationLinkSha256": "e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2"
+    },
+    {
+      "path": "docs/word_association_identity_profile.svg",
+      "sha256": "70a0038357c566132717e92b3b6a0c121f5454491525485626deb2c8138ceece",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/word_association_lobby_discovery.svg",
+      "sha256": "b374ca0d01d2c6b7e2b60bd28317484e9ce09a1728f0a5920511b0f271b95ce9",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/word_association_nomination_flow.svg",
+      "sha256": "915d40ed1cd4ee22d7e2ea53bd0ee8ac615fbe4b9f6f88e11815c60d7583318f",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/word_association_room_creation.svg",
+      "sha256": "8a2125a797539c244be00daa260f48d740a6c38f3381d5097725ae62865bdac7",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/word_association_round_flow.svg",
+      "sha256": "da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "clean"
+    },
+    {
+      "path": "docs/testing/ui/decisions.md",
+      "sha256": "1ab26873aff949e43323225f3e982026e33f3ca66da51ffdd945cecb8d2f6be9",
+      "commit": "3273c121de6517aec34503d8c769b0159e9e52df",
+      "workingTree": "Updated prose following verified implementation; original inspected hash retained.",
+      "originalInspectedSha256": "da93060bd2dd8249262d191218027a3911f95b31c2f6196fbc6ed5039282b2d6"
+    }
+  ],
+  "visualInspection": "All seven original SVG flow/sequence diagrams rendered in Chromium and visually inspected. RSVG did not render foreignObject labels; browser-rendered copies are retained.",
+  "renderedDesigns": [
+    "evidence/word_association_category_suggestion-browser.png",
+    "evidence/word_association_client_message_flow-browser.png",
+    "evidence/word_association_identity_profile-browser.png",
+    "evidence/word_association_lobby_discovery-browser.png",
+    "evidence/word_association_nomination_flow-browser.png",
+    "evidence/word_association_room_creation-browser.png",
+    "evidence/word_association_round_flow-browser.png"
+  ],
+  "excluded": [
+    "architecture diagrams and Vercel deployment flow are technical architecture/deployment rather than UI stories",
+    "public/backgrounds and icons are implementation assets, not UI storyboards"
+  ],
+  "synchronizedAtUtc": "2026-10-28T01:05:26.316044+00:00"
+}

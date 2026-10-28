@@ -1,10 +1,12 @@
 # Wordpairs Architecture Pattern Decisions
 
-**Status:** Architecture and interface baseline approved in Phase 0; implementation awaits the global active-AC mock-validation gate  
+**Status:** Implemented through Phase 6 and the administration/ACL extension; hosted deployment remains Phase 7
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Related documents:** [`implementation_plan.md`](implementation_plan.md), [`deployment_plan.md`](deployment_plan.md)
 
 ## 1. Decision summary
+
+The [27 October administration/ACL extension](admin_acl_design.md) adds a centralized permission policy, trusted server allowlist for bootstrap administrators, a serialized ACL revision with retry records and audits, and shared/exclusive advisory locking for role changes racing with content mutations. Editorial changes append immutable pair versions through the existing moderation transaction and catalog projection; live rounds retain their original versions. Its hostile-review receipt is separate from the historical Phase 0–6 approvals.
 
 Build Wordpairs as a **DDD modular monolith** with **ports and adapters**, **pure domain policies**, **transactional aggregate commands**, **idempotent command handling**, and a **transactional outbox** for committed state changes. Use **CQRS-lite** only for public/read-only projections such as the landing-page leaderboard and discoverable-lobby list. Keep the application in one deployment on the required Vercel target and use required Supabase Postgres as the concurrency arbiter and durable state store. Next.js/TypeScript is the selected v2.6 application stack, recorded in the approved ADR.
 
@@ -14,7 +16,7 @@ The design favors boundaries that can be tested with fakes and unit tests, while
 
 ![Wordpairs modular monolith and adapter boundaries](architecture_patterns.svg)
 
-Browser and proposed Next.js presentation code call application use cases. Use cases depend on domain policies and ports; production adapters implement those ports with Supabase/Postgres, the approved OIDC provider, and deployment metadata. Browser code never calls privileged adapters. Server routes/actions authenticate the caller, validate transport input, invoke a use case, and map its result. The domain imports no Next.js, Supabase SDK, React, or network clients.
+Browser and Next.js presentation code call application use cases. Use cases depend on domain policies and ports; production adapters implement those ports with Supabase/Postgres, the approved OIDC provider, and deployment metadata. Browser code never calls privileged adapters. Server routes authenticate the caller, validate transport input, invoke a use case, and map its result. The domain imports no Next.js, Supabase SDK, React, or network clients.
 
 ### 2.1 DDD bounded contexts
 
@@ -124,7 +126,7 @@ The AC-to-test matrix remains the coverage ledger. Each increment authors tests 
 - **Distributed locks or in-memory mutexes:** Vercel instances are not shared durable coordinators. Postgres transactions/version checks are the authority.
 - **UI-first rules or duplicated server/RPC policy:** creates inconsistent outcomes and exploitable gaps. UI aids usability; server/domain and database invariants decide.
 
-## 8. Adoption gates
+## 8. Historical adoption gates
 
-Before implementation, approve aggregate boundaries, command contracts, outbox shape, idempotency retention, locking/version approach, RLS, and deadline scheduler. Validate local/Free-tier support for transaction and wake-up behavior. If a platform constraint prevents a selected pattern, record an ADR and preserve its observable invariants and mock seams rather than silently weakening them.
+Phase 0 approved aggregate boundaries, command contracts, outbox shape, idempotency retention, locking/version approach, RLS and the scheduler contract before implementation. Coding Phases 1–6 and the administration extension have their own passing validation and review receipts. Free-tier account and hosted scheduler availability remain Phase 7 checks. If a platform constraint prevents a selected pattern, record an ADR and preserve its observable invariants and mock seams rather than silently weakening them.
 

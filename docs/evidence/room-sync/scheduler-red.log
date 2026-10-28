@@ -1,0 +1,99 @@
+
+> wordpairs@0.1.0 test
+> vitest run tests/web/deadlines-api.test.ts
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/deadlines-api.test.ts (5 tests | 4 failed) 41ms
+   × LIVE-03 independently reports deadline and bounded outbox outcomes 8ms
+   × LIVE-03 publishes despite deadline failure and reports the partial failure 1ms
+   × LIVE-03 publication failure does not masquerade as healthy scheduler success 2ms
+   × LIVE-03 missing Realtime configuration is a visible worker failure 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/deadlines-api.test.ts > LIVE-03 independently reports deadline and bounded outbox outcomes
+AssertionError: expected "vi.fn()" to be called with arguments: [ 25 ]
+
+Received:
+
+  1st vi.fn() call:
+
+- [
+-   25,
+- ]
++ []
+
+
+Number of calls: 1
+
+ ❯ tests/web/deadlines-api.test.ts:30:25
+     28|   const r = await POST(request());
+     29|   expect(r.status).toBe(200);
+     30|   expect(calls.publish).toHaveBeenCalledWith(25);
+       |                         ^
+     31|   expect(await r.json()).toEqual({
+     32|     deadlines: { ok: true, applied: 2 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/web/deadlines-api.test.ts > LIVE-03 publishes despite deadline failure and reports the partial failure
+AssertionError: expected "vi.fn()" to be called with arguments: [ 25 ]
+
+Number of calls: 0
+
+ ❯ tests/web/deadlines-api.test.ts:42:25
+     40|   });
+     41|   const r = await POST(request());
+     42|   expect(calls.publish).toHaveBeenCalledWith(25);
+       |                         ^
+     43|   expect(r.status).toBe(503);
+     44|   expect((await r.json()).outbox).toEqual({ ok: true, published: 3 });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/web/deadlines-api.test.ts > LIVE-03 publication failure does not masquerade as healthy scheduler success
+AssertionError: expected 200 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 200
+
+ ❯ tests/web/deadlines-api.test.ts:52:20
+     50|   });
+     51|   const r = await POST(request());
+     52|   expect(r.status).toBe(503);
+       |                    ^
+     53|   expect(await r.json()).toEqual({
+     54|     deadlines: { ok: true, applied: 2 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/web/deadlines-api.test.ts > LIVE-03 missing Realtime configuration is a visible worker failure
+AssertionError: expected 200 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 200
+
+ ❯ tests/web/deadlines-api.test.ts:61:20
+     59|   calls.publish.mockResolvedValue(undefined);
+     60|   const r = await POST(request());
+     61|   expect(r.status).toBe(503);
+       |                    ^
+     62|   expect((await r.json()).outbox).toEqual({
+     63|     ok: false,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 1 passed (5)
+   Start at  07:06:38
+   Duration  280ms (transform 46%, tests 32%, import 18%, worker 4%)
+

@@ -1,0 +1,44 @@
+[WebServer] (node:3442791) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:3442900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/pwa.spec.ts:4:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites (487ms)
+(node:3443046) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/browser/pwa.spec.ts:68:1 › PWA-03/06/07 real worker offline launch, private cache isolation and reconnect (900ms)
+  ✓  3 tests/browser/pwa.spec.ts:128:1 › PWA-04/05 phone guidance, synthetic prompt lifecycle and installed-state UI (588ms)
+  ✓  4 tests/browser/pwa.spec.ts:162:1 › PWA-05 iPhone browser guidance and standalone launch presentation (526ms)
+
+
+  1) tests/browser/pwa.spec.ts:4:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 6
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "errorArguments": Array [],
+    +     "errorId": "in-incognito",
+    +   },
+    + ]
+
+      48 |   expect(parsed.errors).toEqual([]);
+      49 |   const installability = await cdp.send("Page.getInstallabilityErrors");
+    > 50 |   expect(installability.installabilityErrors).toEqual([]);
+         |                                               ^
+      51 |   await writeFile(
+      52 |     `${evidence}/chromium-installability.json`,
+      53 |     JSON.stringify(
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/pwa.spec.ts:50:47
+
+    Error Context: test-results/pwa-PWA-01-02-production-m-4a5c7--installation-prerequisites/error-context.md
+
+  1 failed
+    tests/browser/pwa.spec.ts:4:1 › PWA-01/02 production manifest, icons, metadata and Chromium installation prerequisites 
+  3 passed (5.3s)

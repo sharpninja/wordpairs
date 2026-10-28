@@ -138,4 +138,6 @@ it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices a
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
-}, 60000);
+// Repeated exact tar extraction/hash checks exceed60s on the shared validation host.
+// Preserve every source, checksum, license and tamper assertion with a bounded budget.
+}, 240000);

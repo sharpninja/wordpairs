@@ -40,16 +40,24 @@ export type MatchCommandResult = {
   correct?: boolean;
   points?: number;
 };
+/** Automatic advance delay; optional manual Continue may advance sooner. */
+export const AUTO_ROUND_DELAY_MS = 3000;
 export function matchDeadlines(match: Match, nextId: () => string): Deadline[] {
   const round = match.rounds.at(-1);
-  return match.status === "playing" && round
+  const automatic =
+    match.status === "summary" &&
+    match.autoCategoryId &&
+    round?.endedAt !== undefined;
+  return round && (match.status === "playing" || automatic)
     ? [
         {
           id: nextId(),
           aggregateId: match.id,
           expectedVersion: match.version,
           kind: "stage",
-          dueAt: round.stageDueAt,
+          dueAt: automatic
+            ? (round.endedAt as number) + AUTO_ROUND_DELAY_MS
+            : round.stageDueAt,
         },
       ]
     : [];
@@ -247,6 +255,44 @@ export class MatchService {
         quota: { check: async () => success(undefined) },
       },
       (match, now) => {
+        if (match.status === "summary" && match.autoCategoryId) {
+          const endedAt = match.rounds.at(-1)?.endedAt;
+          if (
+            endedAt === undefined ||
+            job.dueAt !== endedAt + AUTO_ROUND_DELAY_MS ||
+            now < job.dueAt
+          )
+            return failure("CONFLICT");
+          const next = continueAutoRound(
+            match,
+            match.roster[0],
+            catalog.value,
+            this.random,
+            now,
+            () => this.ids.next(),
+          );
+          if (!next.ok) return next;
+          return success({
+            ...this.transition(
+              match,
+              next.value,
+              success({ matchId: match.id, version: next.value.version }),
+            ),
+            audits: [
+              {
+                id: this.ids.next(),
+                actorId: "system:deadline",
+                targetId: match.id,
+                action: "automatic-next-round",
+                at: now,
+                details: {
+                  roundNumber: next.value.rounds.length,
+                  categoryId: match.autoCategoryId,
+                },
+              },
+            ],
+          });
+        }
         if (match.rounds.at(-1)?.stageDueAt !== job.dueAt)
           return failure("CONFLICT");
         const next = expireStage(match, now, catalog.value, this.random);

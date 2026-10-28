@@ -1,0 +1,11 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-multiplayer.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/browser/live-multiplayer.integration.spec.ts:17:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect (2.4m)
+
+  1 passed (2.4m)
+

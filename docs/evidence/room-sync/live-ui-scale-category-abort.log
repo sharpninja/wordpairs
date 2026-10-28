@@ -1,0 +1,62 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-scale --max-failures=1 --workers=2 --fully-parallel
+
+
+Running 24 tests using 2 workers
+
+(node:441331) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:441314) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+LIVE_SCALE players=2 round=1
+LIVE_SCALE players=3 round=1
+LIVE_SCALE players=2 round=2
+LIVE_SCALE players=3 round=2
+LIVE_SCALE players=2 round=3
+LIVE_SCALE players=2 round=4
+LIVE_SCALE players=3 round=3
+LIVE_SCALE players=2 round=5
+LIVE_SCALE players=3 round=4
+LIVE_SCALE players=2 round=6
+LIVE_SCALE players=2 round=7
+LIVE_SCALE players=3 round=5
+LIVE_SCALE players=2 round=8
+LIVE_SCALE players=3 round=6
+  ✓   2 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 2 real browser players complete eight UI rounds (1.2m)
+LIVE_SCALE players=3 round=7
+LIVE_SCALE players=3 round=8
+LIVE_SCALE players=4 round=1
+  ✓   1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 3 real browser players complete eight UI rounds (1.6m)
+LIVE_SCALE players=5 round=1
+LIVE_SCALE players=4 round=2
+  ✘   3 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds (1.4m)
+Testing stopped early after 1 maximum allowed failures.
+  ✘   4 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 5 real browser players complete eight UI rounds (1.0m)
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 0
+
+      83 |       const chooser = (await Promise.all(pages.map(async (p) => (await p.getByRole("button", { name: "Opposites", exact: true }).isVisible()) ? p : null))).find((p) => p)!;
+      84 |       const chosen = await click(chooser, "choose", () => chooser.getByRole("button", { name: "Opposites", exact: true }).click());
+    > 85 |       expect(chosen.status()).toBe(200);
+         |                               ^
+      86 |       const categoryVersion = (await chosen.json()).version;
+      87 |       await Promise.all(pages.map(async (p) => {
+      88 |         await expect.poll(async () => Number(await p.locator(".game-panel").getAttribute("data-match-version"))).toBeGreaterThanOrEqual(categoryVersion);
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:85:31
+
+    Error Context: test-results/live-scale/live-player-counts.integra-bacd2-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+  1 interrupted
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 5 real browser players complete eight UI rounds 
+  20 did not run
+  2 passed (2.8m)
+  1 error was not a part of any test, see above for details

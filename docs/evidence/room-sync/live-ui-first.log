@@ -1,0 +1,36 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts
+
+
+Running 1 test using 1 worker
+
+(node:127704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/live-multiplayer.integration.spec.ts:16:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect (6.0m)
+
+
+  1) tests/browser/live-multiplayer.integration.spec.ts:16:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 
+
+    Test timeout of 360000ms exceeded.
+
+    Error: locator.click: Test ended.
+    Call log:
+      - waiting for getByRole('button', { name: 'Continue as guest', exact: true })
+
+
+      120 |       await page
+      121 |         .getByRole("button", { name: "Continue as guest", exact: true })
+    > 122 |         .click();
+          |          ^
+      123 |       await expect(
+      124 |         page.getByRole("heading", { name: "Your player profile" }),
+      125 |       ).toBeVisible();
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-multiplayer.integration.spec.ts:122:10
+
+    Error Context: test-results/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md
+
+  Slow test file: tests/browser/live-multiplayer.integration.spec.ts (6.0m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    tests/browser/live-multiplayer.integration.spec.ts:16:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 

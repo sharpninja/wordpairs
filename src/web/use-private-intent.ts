@@ -1,84 +1,88 @@
 "use client";
-import { useRef, useState } from "react";
-/** Uncertain writes retain the identical endpoint, payload and command ID for explicit retry. */
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import {
+  acknowledgePrivateResult,
+  currentPrivateScope,
+  intentFor,
+  privateRevision,
+  privateScope,
+  submitPrivateIntent,
+  subscribePrivateState,
+} from "./private-state";
+
+/** Navigation shares the exact command and lock; obsolete sessions cannot settle it. */
 export function usePrivateIntent(
   profileId: string,
-  committed: () => Promise<void>,
+  committed: (
+    result?: Record<string, unknown>,
+    draftKey?: string,
+  ) => Promise<void>,
   denied: () => void,
+  resource = "content",
 ) {
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
-  const pending = useRef<{
-    url: string;
-    input: Record<string, unknown>;
-  } | null>(null);
-  const inFlight = useRef(false);
-  const send = async (url?: string, input?: Record<string, unknown>) => {
-    if (inFlight.current) return;
-    const intent =
-      pending.current ??
-      (url && input
-        ? {
-            url,
-            input: {
-              ...input,
-              expectedProfileId: profileId,
-              commandId: crypto.randomUUID(),
-            },
-          }
-        : null);
-    if (!intent) return;
-    pending.current = intent;
-    inFlight.current = true;
-    setBusy(true);
-    setError("");
-    setNotice("");
-    try {
-      const response = await fetch(intent.url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(intent.input),
-        signal: AbortSignal.timeout(10000),
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        if (response.status < 500) {
-          pending.current = null;
-          if ([401, 403, 404].includes(response.status)) denied();
-          else await committed();
-        }
-        throw new Error(
-          response.status === 409
-            ? "The content or round changed. Refresh and try again."
-            : response.status === 429
-              ? "Please wait two seconds between reactions."
-              : response.status === 403
-                ? "This action is not available for your current role or membership."
-                : "Your request was not confirmed. Retry the same request.",
-        );
-      }
-      pending.current = null;
-      setNotice("Saved.");
-      await committed();
-      return result;
-    } catch (problem) {
-      setError(
-        problem instanceof Error
-          ? problem.message
-          : "Service unavailable. Retry the same request.",
-      );
-    } finally {
-      inFlight.current = false;
-      setBusy(false);
+  useSyncExternalStore(subscribePrivateState, privateRevision, () => 0);
+  const scope = privateScope(profileId);
+  const entry = intentFor(scope, resource);
+  const mounted = useRef(false);
+  const callbacks = useRef({ committed, denied });
+  callbacks.current = { committed, denied };
+  const observed = useRef({ scope, resolution: 0 });
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
+  useEffect(() => {
+    if (observed.current.scope !== scope) {
+      observed.current = { scope, resolution: 0 };
     }
+    if (
+      entry.resolution > observed.current.resolution &&
+      currentPrivateScope(scope)
+    ) {
+      observed.current.resolution = entry.resolution;
+      const settled = entry.settled;
+      void (async () => {
+        try {
+          await callbacks.current.committed(settled?.result, settled?.draftKey);
+          if (mounted.current && currentPrivateScope(scope))
+            acknowledgePrivateResult(scope, resource, settled);
+        } catch {
+          // Retain the result for a later mounted consumer; never repeat its write.
+          observed.current.resolution = 0;
+        }
+      })();
+    }
+  }, [scope, resource, entry.resolution, entry.settled]);
+  const send = async (
+    url?: string,
+    input?: Record<string, unknown>,
+    draftKey?: string,
+    method: "POST" | "PATCH" = "POST",
+  ) => {
+    const result = await submitPrivateIntent(
+      scope,
+      resource,
+      url,
+      input,
+      draftKey,
+      fetch,
+      method,
+    );
+    if (!mounted.current) return;
+    if (result.denied) callbacks.current.denied();
+    if (currentPrivateScope(scope))
+      return result.result as
+        | { expiresAt?: number; [key: string]: unknown }
+        | undefined;
   };
   return {
-    busy,
-    locked: busy || pending.current !== null,
-    pending: pending.current !== null,
-    error,
-    notice,
+    busy: entry.busy,
+    locked: entry.busy || entry.pending !== null || entry.settled !== null,
+    pending: entry.pending !== null,
+    error: entry.error,
+    notice: entry.notice,
     send,
   };
 }

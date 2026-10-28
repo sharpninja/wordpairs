@@ -1,0 +1,15 @@
+{
+  "gameDatabaseDataMount": [
+    {
+      "Type": "volume",
+      "Destination": "/var/lib/postgresql/data"
+    }
+  ],
+  "ioPressure": [
+    "some avg10=7.96 avg60=14.58 avg300=21.38 total=4717028466",
+    "full avg10=6.02 avg60=10.31 avg300=14.16 total=3647020543"
+  ],
+  "observation": "Repeated COMMIT IO/WalSync waits in the isolated-database run on the shared cluster; no demonstrated lock cycle or failing-device attribution",
+  "monitor": "live-14-database-monitor.jsonl",
+  "checkedAtUtc": "2026-10-27T21:47:02.7601786+00:00"
+}

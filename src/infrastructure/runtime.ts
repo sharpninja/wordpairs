@@ -1,3 +1,4 @@
+import { AccessService } from "../application/access";
 import { ContentService } from "../application/content";
 import { IdentityService } from "../application/identity";
 import { LobbyDispatcher, LobbyService } from "../application/lobby";
@@ -8,6 +9,7 @@ import { ReactionService } from "../application/reactions";
 import { RoomService } from "../application/rooms";
 import type { Profile } from "../domain/model";
 import { success } from "../domain/result";
+import { PostgresAccessRepository } from "./access-repository";
 import { PostgresCatalogRepository } from "./catalog-repository";
 import { PostgresContentRepository } from "./content-repository";
 import { PostgresLobbyQueue } from "./deadlines";
@@ -27,11 +29,34 @@ import { SupabasePostgresStore } from "./supabase-postgres";
 let publicService: PublicLandingService | undefined;
 let database: ReturnType<typeof createSupabasePool> | undefined;
 let identity: IdentityService | undefined;
+/** Private server configuration; never copied into a client projection. */
+export function configuredAdminProfileIds(): string[] {
+  return [
+    ...new Set(
+      (process.env.WORDPAIRS_ADMIN_PROFILE_IDS ?? "")
+        .split(",")
+        .map((id) => id.trim())
+        .filter((id) => /^[A-Za-z0-9_-]{1,128}$/.test(id)),
+    ),
+  ];
+}
+export function getAccessService() {
+  const pool = getDatabasePool();
+  return pool
+    ? new AccessService(
+        new PostgresAccessRepository(pool, configuredAdminProfileIds()),
+      )
+    : null;
+}
 export function getContentService() {
   const pool = getDatabasePool();
   return pool
     ? new ContentService(
-        new PostgresContentRepository(pool),
+        new PostgresContentRepository(
+          pool,
+          () => Date.now(),
+          configuredAdminProfileIds(),
+        ),
         { now: () => Date.now() },
         ids,
       )
@@ -56,7 +81,7 @@ export function getInvitationSigner() {
   }
 }
 let relay: OutboxRelay | undefined;
-let delivery: Promise<unknown> | null = null;
+let delivery: ReturnType<OutboxRelay["drain"]> | null = null;
 let dispatching: ReturnType<LobbyDispatcher["drain"]> | null = null;
 export async function advanceLobbyDeadlines() {
   if (dispatching) return dispatching;
@@ -128,8 +153,10 @@ export function getRealtimeSettings() {
     return null;
   }
 }
-export async function deliverOutbox() {
-  if (delivery) return delivery;
+export async function deliverOutbox(limit = 1) {
+  // A foreground request must not inherit a worker's 25-publication latency.
+  // The active relay owns publication; the next worker tick catches later events.
+  if (delivery) return limit === 1 ? success(0) : delivery;
   if (!relay) {
     const settings = getRealtimeSettings();
     const pool = getDatabasePool();
@@ -141,8 +168,11 @@ export async function deliverOutbox() {
     );
   }
   delivery = relay
-    .drain(1)
-    .catch(() => undefined)
+    .drain(Math.max(1, Math.min(25, Math.trunc(limit))))
+    .catch(() => ({
+      ok: false as const,
+      error: { code: "TEMPORARY_UNAVAILABLE" as const },
+    }))
     .finally(() => {
       delivery = null;
     });
@@ -193,6 +223,7 @@ export function getIdentityService() {
     random,
     { now: () => Date.now() },
     oidc,
+    configuredAdminProfileIds(),
   );
   return identity;
 }

@@ -1,0 +1,85 @@
+
+[WebServer] (node:1079716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1079744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+
+(node:1079914) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/6] tests/browser/ui-gaps.phase6.spec.ts:11:1 › TEST-REVIEWCHANGES-140 independent reasoned change request and proposer-only audited revision
+[2/6] tests/browser/ui-gaps.phase6.spec.ts:47:1 › TEST-CANDIDATEHOLD-141 holds preserve nominations and forbid review until reasoned resume
+[3/6] tests/browser/ui-gaps.phase6.spec.ts:66:1 › TEST-NAVIGATIONDRAFTS-142 same-document Back preserves drafts; Discard, reload and identity change clear them
+[4/6] tests/browser/ui-gaps.phase6.spec.ts:85:1 › TEST-REQUESTFEEDBACK-143 busy and uncertain writes retain exact command through navigation
+[5/6] tests/browser/ui-gaps.phase6.spec.ts:105:1 › TEST-REQUESTFEEDBACK-143 distinct loading, empty and safe read failure with explicit retry
+  1) tests/browser/ui-gaps.phase6.spec.ts:105:1 › TEST-REQUESTFEEDBACK-143 distinct loading, empty and safe read failure with explicit retry 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "Submission updates are unavailable"
+    Error: strict mode violation: getByRole('alert') resolved to 2 elements:
+        1) <p role="alert">Submission updates are unavailable. Refresh to re…</p> aka getByText('Submission updates are')
+        2) <div role="alert" aria-live="assertive" id="__next-route-announcer__"></div> aka locator('[id="__next-route-announcer__"]')
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+
+
+      113 |     account.reads(async (route) => { await route.fulfill({ status: 500, json: { message: "DO-NOT-DISPLAY-SECRET" } }); });
+      114 |     await page.getByRole("button", { name: "Refresh submissions" }).click();
+    > 115 |     await expect(page.getByRole("alert")).toContainText("Submission updates are unavailable");
+          |                                           ^
+      116 |     await expect(page.getByText("DO-NOT-DISPLAY-SECRET", { exact: false })).toHaveCount(0);
+      117 |     account.reads(null); await page.getByRole("button", { name: "Refresh submissions" }).click(); await expect(page.getByRole("alert")).toHaveCount(0);
+      118 |   } finally { release(); await context.close(); }
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:115:43
+
+    Error Context: test-results/ui-gaps.phase6-TEST-REQUES-44b24-failure-with-explicit-retry/error-context.md
+
+
+
+(node:1081066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[6/6] tests/browser/ui-gaps.phase6.spec.ts:120:1 › TEST-NAVIGATIONDRAFTS-142 profile Cancel sends no write, preserves saved alias/icon and returns focus
+
+[WebServer] (node:1081205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  2) tests/browser/ui-gaps.phase6.spec.ts:120:1 › TEST-NAVIGATIONDRAFTS-142 profile Cancel sends no write, preserves saved alias/icon and returns focus 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('button', { name: 'Edit profile', exact: true })
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: 'Edit profile', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Edit profile', exact: true })
+        14 × locator resolved to <button type="button">Edit profile</button>
+           - unexpected value "inactive"
+
+
+      126 |     await page.getByLabel("Draft profile icon").selectOption("fox"); await page.getByLabel("Generate a new alias on Save").check();
+      127 |     await page.getByRole("button", { name: "Cancel profile editing" }).click();
+    > 128 |     await expect(opener).toBeFocused(); expect(writes).toHaveLength(0);
+          |                          ^
+      129 |     await expect(page.getByRole("button", { name: "Choose owl", exact: true })).toHaveAttribute("aria-pressed", "true");
+      130 |     await expect(page.locator(".profile-alias")).toContainText("Guest Oak");
+      131 |     await opener.click(); await expect(page.getByLabel("Draft profile icon")).toHaveValue("owl");
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/ui-gaps.phase6.spec.ts:128:26
+
+    Error Context: test-results/ui-gaps.phase6-TEST-NAVIGA-8c39f-lias-icon-and-returns-focus/error-context.md
+
+
+  2 failed
+    tests/browser/ui-gaps.phase6.spec.ts:105:1 › TEST-REQUESTFEEDBACK-143 distinct loading, empty and safe read failure with explicit retry 
+    tests/browser/ui-gaps.phase6.spec.ts:120:1 › TEST-NAVIGATIONDRAFTS-142 profile Cancel sends no write, preserves saved alias/icon and returns focus 
+  4 passed (20.4s)

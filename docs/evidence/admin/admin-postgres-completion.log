@@ -1,0 +1,32 @@
+Captured full PostgreSQL run completion (exec session 21405); exit 1.
+ ❯ tests/integration/multiplayer.integration.ts (24 tests | 1 failed) 409354ms
+   ❯ complete multiplayer games on real PostgreSQL (24)
+     × 25 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 60005ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/multiplayer.integration.ts > complete multiplayer games on real PostgreSQL > 25 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards
+Error: Test timed out in 60000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/integration/multiplayer.integration.ts:211:63
+    209|
+    210| describe("complete multiplayer games on real PostgreSQL", () => {
+    211|   it.each(Array.from({ length: 24 }, (_, index) => index + 2))(
+       |                                                               ^
+    212|     "%i players finish eight rounds with isolated sessions, concurrent…
+    213|     async (playerCount) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 9 passed (10)
+      Tests  1 failed | 65 passed (66)
+   Start at  04:25:08
+   Duration  421.88s (tests 100%)
+
+Exception: /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/integration/run-phase1.ps1:84
+Line |
+  84 |  … LASTEXITCODE -ne 0) { throw 'Real adapter integration tests failed' }
+     |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Real adapter integration tests failed
+

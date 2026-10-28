@@ -1,0 +1,210 @@
+{
+  "verifiedAtUtc": "2026-10-28T01:12:59.586316+00:00",
+  "status": "approved for scoped UI implementation; independent hostile review99/99",
+  "manifest": "docs/testing/ui/implementation-manifest.json",
+  "manifestSha256": "2728c24a17214fa06d1e4de9af4742f1a466ba736e922e88bb6a6c932784b0f8",
+  "gitBase": "3273c121de6517aec34503d8c769b0159e9e52df",
+  "sourceFiles": 234,
+  "testLanes": [
+    {
+      "command": "npm test -- --maxWorkers=2 --testTimeout=60000 --hookTimeout=60000",
+      "files": 53,
+      "passed": 542,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "docs/evidence/ui-gaps/unit-safe-errors-final.log",
+      "boundary": "Unit/process tests, local fixtures; no hosted claim."
+    },
+    {
+      "command": "WORDPAIRS_BROWSER_PATH=/usr/bin/chromium npm exec playwright -- test --config playwright.phase6.config.ts --output docs/evidence/ui-gaps/final-browser-artifacts",
+      "passed": 61,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "docs/evidence/ui-gaps/browser-safe-errors-final.log",
+      "boundary": "Final actual React/browser plus isolated HTTP/time/persistence ports using actual application/domain services. Includes all5tagged seat tests and malformed room GET/POST sentinel regressions. Not real Realtime/provider/physicalphone evidence."
+    },
+    {
+      "command": "WORDPAIRS_BROWSER_PATH=/usr/bin/chromium npm exec playwright -- test --config playwright.phase6.config.ts tests/browser/seat-recovery.phase6.spec.ts --output docs/evidence/ui-gaps/seat-artifacts",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "docs/evidence/ui-gaps/browser-seats-tagged.log",
+      "boundary": "Final tagged-response regression, real RoomService for ordinary cases; pre-join ordering case seeds accepted domain membership at HTTP fixture boundary, not a transaction/concurrency proof. Historical focused lane before safe-error repair; all5cases repeated in final61suite."
+    },
+    {
+      "command": "pwsh -NoProfile -File tests/integration/run-phase1.ps1 -Multiplayer -Administration",
+      "files": 10,
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "docs/evidence/ui-gaps/postgres.log",
+      "boundary": "Real disposable PostgreSQL, migrations/locking/canonical retry/audit and2..25service games. Nomination count/race queue setup disclosed fixtures. No liveUI transport claim."
+    }
+  ],
+  "checks": {
+    "lint": "passed docs/evidence/ui-gaps/lint-safe-errors.log",
+    "typecheck": "passed docs/evidence/ui-gaps/typecheck-safe-errors.log",
+    "productionBuild": "passed docs/evidence/ui-gaps/build-safe-errors-final.log"
+  },
+  "visualEvidence": {
+    "screenshots": 19,
+    "inspection": "Representative game/content/editor viewport captures visually inspected; all5specified responsive configurations measured. Viewport captures are deliberately partial vertical views, not full-page certifications.",
+    "zoom": "320CSS-pixel/deviceScaleFactor4 equivalent of1280at400%; not native browser zoom/phone/screen-reader certification.",
+    "directory": "docs/evidence/ui-gaps/final-browser-artifacts"
+  },
+  "logs": {
+    "content-red.log": {
+      "path": "docs/evidence/ui-gaps/content-red.log",
+      "sha256": "c58a9df6084238cf938d4e027cfdf0ff94989c88b4c432046facc228c34daedc",
+      "bytes": 2269
+    },
+    "lifecycle-red.log": {
+      "path": "docs/evidence/ui-gaps/lifecycle-red.log",
+      "sha256": "7117f3ce483d272b2b8e0efccdf5248cc97fc301b77694e27893f3a8e15ed51e",
+      "bytes": 562
+    },
+    "automatic-red.log": {
+      "path": "docs/evidence/ui-gaps/automatic-red.log",
+      "sha256": "b5d8f81b99e340fc96d41261fa4f575a3835155ab125037d54be638e450c6214",
+      "bytes": 646
+    },
+    "browser-first.log": {
+      "path": "docs/evidence/ui-gaps/browser-first.log",
+      "sha256": "9027d688791690f7c44e86317458f52b78cbf974b3b587359f1b19dbf65a927f",
+      "bytes": 5439
+    },
+    "unit.log": {
+      "path": "docs/evidence/ui-gaps/unit.log",
+      "sha256": "fdf99141e38e7f7934a052f35edcfe69af3b273adff428769b9a82fefd5f5733",
+      "bytes": 517
+    },
+    "postgres.log": {
+      "path": "docs/evidence/ui-gaps/postgres.log",
+      "sha256": "409ada5cf5d2670c337438ddf30b1484494b5730bc0284d5a36d84f8f08d3610",
+      "bytes": 2870
+    },
+    "browser-gaps.log": {
+      "path": "docs/evidence/ui-gaps/browser-gaps.log",
+      "sha256": "13f176085b329dc9b182fdc177aa7e5ea0ab4165adbad4e29918217f9ebe85bd",
+      "bytes": 9846
+    },
+    "browser-regression.log": {
+      "path": "docs/evidence/ui-gaps/browser-regression.log",
+      "sha256": "8b1750a193d7efa6285ee165dda8104f5d66ede38fa31e8de13a59063de0692e",
+      "bytes": 15627
+    },
+    "browser-review-fixes.log": {
+      "path": "docs/evidence/ui-gaps/browser-review-fixes.log",
+      "sha256": "2b26a334f8da1f84a78c1ea74c5f76b07fbca8daaf2670d242426ba48e817ddb",
+      "bytes": 7206
+    },
+    "browser-seats.log": {
+      "path": "docs/evidence/ui-gaps/browser-seats.log",
+      "sha256": "990b5b6b26e22d84d74a70ff696e83ad2fb5b3412b5ad1f76102703b889c6543",
+      "bytes": 1854
+    },
+    "browser-final.log": {
+      "path": "docs/evidence/ui-gaps/browser-final.log",
+      "sha256": "02856c837d404cf29b5f9a0ea1f3dc6884a640bba9d9c629867385bbed21eb9b",
+      "bytes": 15614
+    },
+    "browser-seats-final.log": {
+      "path": "docs/evidence/ui-gaps/browser-seats-final.log",
+      "sha256": "d2069cea30d169a745149c20c4d4fb7f24fdbb2158170aeb9829ed2c7bd10a20",
+      "bytes": 2179
+    },
+    "lint.log": {
+      "path": "docs/evidence/ui-gaps/lint.log",
+      "sha256": "c52f7f3e2df82bd992b48fce236e7a81daf530018ae7dc69d5c8f349341909b1",
+      "bytes": 106
+    },
+    "typecheck.log": {
+      "path": "docs/evidence/ui-gaps/typecheck.log",
+      "sha256": "25530dd6930a86bcf319b5d35d9e57aca1ae197fb06247c859133751928e13d8",
+      "bytes": 45
+    },
+    "browser-obsolete-races.log": {
+      "path": "docs/evidence/ui-gaps/browser-obsolete-races.log",
+      "sha256": "502894575ccbb6a552ef788be433580ad7ba5d8cdd08c18c6d5ff0b15c6e3e7b",
+      "bytes": 5536
+    },
+    "browser-obsolete-races-fixed.log": {
+      "path": "docs/evidence/ui-gaps/browser-obsolete-races-fixed.log",
+      "sha256": "87bd5d0fc87380cc150115a933f7ba2118caba765f42a8f9b0d5d9ff901ceb98",
+      "bytes": 5918
+    },
+    "browser-verified.log": {
+      "path": "docs/evidence/ui-gaps/browser-verified.log",
+      "sha256": "42eb709860b0c7bf18b5c03c182e61037673fb2082edbf5fb6b0198f66f8acfc",
+      "bytes": 17658
+    },
+    "unit-final.log": {
+      "path": "docs/evidence/ui-gaps/unit-final.log",
+      "sha256": "ddb622c83564e8bf4c33d29f29506cabdf2a73039138579af68766c850bb127c",
+      "bytes": 517
+    },
+    "lint-final.log": {
+      "path": "docs/evidence/ui-gaps/lint-final.log",
+      "sha256": "1021666cdf12d6e693cbc9512a4c7416ee32218b98529a8a3bc485e98ccfec94",
+      "bytes": 106
+    },
+    "typecheck-final.log": {
+      "path": "docs/evidence/ui-gaps/typecheck-final.log",
+      "sha256": "25530dd6930a86bcf319b5d35d9e57aca1ae197fb06247c859133751928e13d8",
+      "bytes": 45
+    },
+    "browser-seats-tagged.log": {
+      "path": "docs/evidence/ui-gaps/browser-seats-tagged.log",
+      "sha256": "6d6b10e0870f99ff6b39def15aac6c24daa4539a30632c43b7c14c2d32ef1b6d",
+      "bytes": 2369
+    },
+    "build.log": {
+      "path": "docs/evidence/ui-gaps/build.log",
+      "sha256": "7c56eaccbc87960e8d322af74ebaeefff5f74193375d2773d6e21aed64926422",
+      "bytes": 1232
+    },
+    "browser-safe-errors-final.log": {
+      "path": "docs/evidence/ui-gaps/browser-safe-errors-final.log",
+      "sha256": "2e1f6e49cc8cd57bc53f12ac34118d6a9d93fa2e60dc9a94ead1c0829d7884f8",
+      "bytes": 18544
+    },
+    "lint-safe-errors.log": {
+      "path": "docs/evidence/ui-gaps/lint-safe-errors.log",
+      "sha256": "d659e96ea65ac2252149b162b0f5dd77ff8711e72b42fecc2671d76df766a8e0",
+      "bytes": 106
+    },
+    "typecheck-safe-errors.log": {
+      "path": "docs/evidence/ui-gaps/typecheck-safe-errors.log",
+      "sha256": "25530dd6930a86bcf319b5d35d9e57aca1ae197fb06247c859133751928e13d8",
+      "bytes": 45
+    },
+    "unit-safe-errors-final.log": {
+      "path": "docs/evidence/ui-gaps/unit-safe-errors-final.log",
+      "sha256": "5dff7aa2c30a7608ef5a0425afe686dced8f96c97c6c3eee1c07c99f1f07ff17",
+      "bytes": 517
+    },
+    "build-safe-errors-final.log": {
+      "path": "docs/evidence/ui-gaps/build-safe-errors-final.log",
+      "sha256": "288a0838156a0896bbc241be97960ca12cbedbac287920bac7e89dc64da420fe",
+      "bytes": 1232
+    }
+  },
+  "openDependencies": [
+    "TEST-ROOMSYNC-139/TR-ROOM-SYNCRECOVERY-038#LIVE-07 full real private-push2..25UI execution",
+    "real OpenAI OIDC registration/entitlement",
+    "physical-phone install at HTTPS origin",
+    "contest authenticated mission, independently unavailable conduct text, Work provenance, final public URL/release package and manual submission"
+  ],
+  "humanDeviceTestClaimed": false,
+  "deploymentPerformed": false,
+  "applicationCommitPushPerformed": false,
+  "supersedes": "archive/pre-safe-errors-20261028/implementation-receipt.json",
+  "hostileReview": {
+    "accuracy": 99,
+    "completeness": 99,
+    "record": "docs/evidence/ui-gaps/hostile-validation.jsonl",
+    "event": "ui-implementation-final-approval",
+    "sourceManifestSha256": "2728c24a17214fa06d1e4de9af4742f1a466ba736e922e88bb6a6c932784b0f8",
+    "scope": "UI-DEC-01..08 implementation; no contest submission, real live2..25UI or public deployment certification"
+  }
+}

@@ -1,0 +1,17 @@
+
+> wordpairs@0.1.0 test
+> vitest run tests/application/ui-autocontinue.test.ts
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/application/ui-autocontinue.test.ts (3 tests | 3 failed) 16ms
+   × UI-NOSOLVER: exact server deadline, early rejection, replay and late worker preserve a full first stage 11ms
+   × manual Continue and the system deadline may win in either order without two next rounds 2ms
+   × eight no-solver rounds never schedule or create a ninth 2ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  19:12:19
+   Duration  268ms (transform 49%, import 33%, tests 14%, worker 4%)
+

@@ -1,0 +1,41 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-scale --max-failures=1 --workers=2 --fully-parallel
+
+
+Running 22 tests using 2 workers
+
+(node:472254) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:472248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 5 real browser players complete eight UI rounds (50.0s)
+Testing stopped early after 1 maximum allowed failures.
+  ✘   2 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds (57.4s)
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 5 real browser players complete eight UI rounds 
+
+    Error: page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://wordpairs-24aacf3f.ngrok-free.app/rooms/06915941-2bf7-42cb-b1b4-51119c270051
+    Call log:
+      - navigating to "https://wordpairs-24aacf3f.ngrok-free.app/rooms/06915941-2bf7-42cb-b1b4-51119c270051", waiting until "load"
+
+
+      85 |     // Bound simultaneous navigations rather than create25 renderer loads at once.
+      86 |     for (let i = 0; i < count; i += 4) {
+    > 87 |       const batch = await Promise.all(contexts.slice(i, i + 4).map(async (context) => { const page = await context.newPage(); page.on("requestfailed", (r) => { if (requestFailures.length < 100) requestFailures.push({ path: new URL(r.url()).pathname, method: r.method(), error: r.failure()?.errorText ?? null }); }); await page.goto(`/rooms/${roomId}`); return page; }));
+         |                                                                                                                                                                                                                                                                                                                                        ^
+      88 |       pages.push(...batch);
+      89 |     }
+      90 |     for (const page of pages) {
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:87:328
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:87:21
+
+    Error Context: test-results/live-scale/live-player-counts.integra-7be4b-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 5 real browser players complete eight UI rounds 
+  1 interrupted
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+  20 did not run
+  1 error was not a part of any test, see above for details

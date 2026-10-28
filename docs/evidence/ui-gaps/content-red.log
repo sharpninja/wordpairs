@@ -1,0 +1,51 @@
+
+> wordpairs@0.1.0 test
+> vitest run tests/application/ui-content-workflows.test.ts
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/application/ui-content-workflows.test.ts (2 tests | 2 failed) 10ms
+   × UI-CHANGES: independent reasoned change requests retain one-open slot, proposer-only resubmission and unused appeal 8ms
+   × UI-HOLD: moderator-only nomination hold/resume preserves counts and prohibits approval/publication while held 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/ui-content-workflows.test.ts > UI-CHANGES: independent reasoned change requests retain one-open slot, proposer-only resubmission and unused appeal
+AssertionError: expected 'undefined' to be 'function' // Object.is equality
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tests/application/ui-content-workflows.test.ts:25:45
+     23| const suggestion = () => value(content.suggestCategory(content.emptyCo…
+     24| it("UI-CHANGES: independent reasoned change requests retain one-open s…
+     25|   expect(typeof workflow.changeReviewState).toBe("function");
+       |                                             ^
+     26|   let state = suggestion();
+     27|   const original = structuredClone(state);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/application/ui-content-workflows.test.ts > UI-HOLD: moderator-only nomination hold/resume preserves counts and prohibits approval/publication while held
+AssertionError: expected 'undefined' to be 'function' // Object.is equality
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tests/application/ui-content-workflows.test.ts:47:45
+     45| });
+     46| it("UI-HOLD: moderator-only nomination hold/resume preserves counts an…
+     47|   expect(typeof workflow.changeReviewState).toBe("function");
+       |                                             ^
+     48|   let state = suggestion();
+     49|   state = { ...state, cases: [{ ...state.cases[0], id: "candidate", ki…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  18:57:18
+   Duration  262ms (transform 50%, import 36%, tests 10%, worker 4%)
+

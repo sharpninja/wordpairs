@@ -1,0 +1,122 @@
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/web/live-races.test.ts (3 tests | 2 failed) 1619ms
+   × LIVE-HV-002 a push during an older game GET schedules exactly one newer read 1560ms
+   × LIVE-HV-003 unmount during authentication cannot create an obsolete channel 32ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/live-races.test.ts > LIVE-HV-002 a push during an older game GET schedules exactly one newer read
+AssertionError: expected '1' to be '2' // Object.is equality
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <section
+        aria-busy="false"
+        aria-labelledby="game-title"
+        class="panel game-panel"
+        data-artwork="fallback"
+        data-match-version="1"
+      >
+        <div
+          class="game-surface"
+        >
+          <div
+            class="panel-heading"
+          >
+            <h2
+              id="game-title"
+            >
+              The game
+            </h2>
+            <button
+              type="button"
+            >
+              Refresh game
+            </button>
+          </div>
+          <p>
+            Round 
+            0
+             / 
+            8
+             · Anchor:
+             
+            Player
+          </p>
+          <div
+            class="category-selection"
+          >
+            <h3>
+              Choose a category
+            </h3>
+            <div
+              class="category-choices"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
+
+Expected: "2"
+Received: "1"
+
+ ❯ tests/web/live-races.test.ts:48:111
+     46|   expect(fetcher).toHaveBeenCalledTimes(1);
+     47|   await act(async () => { older.resolve(new Response(JSON.stringify(st…
+     48|   await waitFor(() => expect(view.container.querySelector(".game-panel…
+       |                                                                                                               ^
+     49|   expect(fetcher).toHaveBeenCalledTimes(2);
+     50| });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:97:7
+ ❯ waitFor node_modules/@testing-library/dom/dist/wait-for.js:36:10
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:164:54
+ ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:164:35
+ ❯ tests/web/live-races.test.ts:48:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/web/live-races.test.ts > LIVE-HV-003 unmount during authentication cannot create an obsolete channel
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "wordpairs-profile:p1",
+      Object {
+        "config": Object {
+          "private": true,
+        },
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ tests/web/live-races.test.ts:63:23
+     61|   view.unmount();
+     62|   await act(async () => { authenticated.resolve(); });
+     63|   expect(channel).not.toHaveBeenCalled();
+       |                       ^
+     64|   expect(removeAllChannels).toHaveBeenCalled();
+     65| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  14:52:49
+   Duration  10.18s (environment 51%, import 19%, tests 18%, transform 13%, worker 1%)
+

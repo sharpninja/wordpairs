@@ -1,0 +1,59 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 14 tests using 1 worker
+
+LIVE_SCALE players=12 round=1
+LIVE_SCALE players=12 round=2
+LIVE_SCALE players=12 round=3
+LIVE_SCALE players=12 round=4
+LIVE_SCALE players=12 round=5
+LIVE_SCALE players=12 round=6
+LIVE_SCALE players=12 round=7
+LIVE_SCALE players=12 round=8
+  ✓   1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 12 real browser players complete eight UI rounds (2.5m)
+LIVE_SCALE players=13 round=1
+LIVE_SCALE players=13 round=2
+LIVE_SCALE players=13 round=3
+LIVE_SCALE players=13 round=4
+LIVE_SCALE players=13 round=5
+LIVE_SCALE players=13 round=6
+LIVE_SCALE players=13 round=7
+LIVE_SCALE players=13 round=8
+  ✓   2 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 13 real browser players complete eight UI rounds (2.5m)
+LIVE_SCALE players=14 round=1
+  ✘   3 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds (1.2m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+    Call Log:
+    - Timeout 20000ms exceeded while waiting on the predicate
+
+       96 |       phase = `UI round ${round}`;
+       97 |       console.log(`LIVE_SCALE players=${count} round=${round}`);
+    >  98 |       await expect.poll(async () => (await Promise.all(pages.map((p) => p.getByRole("button", { name: "Opposites", exact: true }).isVisible()))).filter(Boolean).length, { timeout: 20000 }).toBe(1);
+          |                                                                                                                                                                                              ^
+       99 |       const chooser = (await Promise.all(pages.map(async (p) => (await p.getByRole("button", { name: "Opposites", exact: true }).isVisible()) ? p : null))).find((p) => p)!;
+      100 |       const chosen = await commitUi(chooser, "choose", () => chooser.getByRole("button", { name: "Opposites", exact: true }).click());
+      101 |       const categoryVersion = chosen.version;
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/live-player-counts.integration.spec.ts:98:190
+
+    Error Context: test-results/live-local/live-player-counts.integra-3113b-rs-complete-eight-UI-rounds/error-context.md
+
+  Slow test file: tests/browser/live-player-counts.integration.spec.ts (6.2m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds 
+  11 did not run
+  2 passed (6.2m)
+  1 error was not a part of any test, see above for details
+

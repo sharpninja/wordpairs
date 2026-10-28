@@ -1,0 +1,37 @@
+
+> wordpairs@0.1.0 test
+> vitest run --maxWorkers=2 --testTimeout=60000 --hookTimeout=60000
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts (85 tests | 1 failed) 21745ms
+   × AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator 2018ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ac-contracts/oracle-supplemental-validation.test.ts > AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator
+AssertionError: expected 'altered-source' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "altered-source"
+
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts:61:121
+     60|
+     61| it('AC-41 creates and inspects ZIP archives using the official pinned …
+     62|   expect(preparedSourcePaths.length).toBeGreaterThan(0);
+       |           ^
+     63|   expect(await validateSourceArchiveZip(await roundTripTemporaryArchiv…
+     64|   expect(await validateSourceArchiveZip(await roundTripTemporaryArchiv…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 48 passed (49)
+      Tests  1 failed | 529 passed (530)
+   Start at  15:46:02
+   Duration  183.54s (tests 77%, environment 11%, import 7%, transform 4%, worker 1%)
+
+    Isolate  49 workers spawned · ~1.51s startup each (spawn + environment, per file)
+             at least ~35.41s faster with isolate: false — reuses workers across files instead of one per file
+
