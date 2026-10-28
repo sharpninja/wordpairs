@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T15:12:58.436338+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "Need final candidate/source review round4 (preserve priorreceipts) while CA path pending. Staging 11 game + hosted scheduler + managed policy installed/readback6cats60pairs31RLStables12.7MB, cron anddispatchdisabled. Originalselfhost realtimepolicy ALTERTABLE failedownership; new src/infrastructure/hosting/002_realtime_policy.sql verifiesexistingRLS + createpolicy viaSupautils succeeded. Server runtime fallback2explicitkeys; Vercelpublic/privateenvpreparedstage, prodonlypublicenv. Actuallocal stagingTLS failed SELF_SIGNED_CERT_IN_CHAIN; browserdashboard access declined (cannotbypass), requested localCApath. No deploy created, no productionDBwrite. Updated docs/hosting_execution.md/deployment_plan.md/SWBOM. Runnerboundedpg_try_advisorylock + port5432+sourceprefixguard fixed. Review current scripts/hosting-schema.mjs, generate-sbom.mjs, newtests, runtime2keyfallback andschedulerSQL; receipt source readiness distinct from live readiness. Finalfullsuite/log private ../wordpairs-local/hosting-unit-final.log underway; prior548/548 + new5fixturespassed. No needrerun all. Comment potential currentbugs, retain99scores onlyactualscope.",
+  "scope": "Current hosting source and supporting documentation; independent focused local checks. No live services, secrets, databases or application deployment modified.",
+  "verdict": "changes_required",
+  "accuracyScore": 98,
+  "completenessScore": 97,
+  "rubric": {
+    "threshold": "99 accuracy and 99 completeness with no unresolved material source issue for source readiness. Live readiness is a separate disposition.",
+    "accuracy": "Implementation semantics, environment isolation and reports agree with current source and measured checks.",
+    "completeness": "Required inventory relationships, bounded provisioning, scheduler trust/recovery and managed policy prerequisites are correctly implemented and supported.",
+    "scores": "Reviewer judgments, not statistical probabilities."
+  },
+  "findings": [
+    {
+      "id": "HOST-HV-013",
+      "priority": "P2",
+      "file": "scripts/generate-sbom.mjs",
+      "line": 43,
+      "title": "Include installed peer dependencies in the inventory graph",
+      "problem": "Dependency-edge generation merges dependencies and optionalDependencies, plus root devDependencies, but never peerDependencies. The actual lockfile declares React as a React DOM peer and React/React DOM as Next peers. Those installed components appear in the report, yet their known relationships are absent. This conflicts with the inventory requirement to include dependency relationships available from the lockfile; schema validation cannot detect this semantic omission.",
+      "independentReproduction": {
+        "command": "node scripts/generate-sbom.mjs --sha 5e4117e8ea4336013b1ac4082e255660fcab4c4a --branch main --target production --url review-fixture.vercel.app --output /tmp/wordpairs-hv-sbom.json",
+        "result": "Validated CycloneDX 1.6: 283 components",
+        "observations": [
+          {
+            "ref": "node_modules/react-dom",
+            "lockPeer": "react ^19.3.1",
+            "emittedDependsOn": [
+              "node_modules/scheduler"
+            ]
+          },
+          {
+            "ref": "node_modules/next",
+            "missingInstalledPeerEdges": [
+              "node_modules/react",
+              "node_modules/react-dom",
+              "node_modules/@playwright/test"
+            ]
+          },
+          {
+            "ref": "node_modules/@testing-library/react",
+            "emittedDependsOn": [
+              "node_modules/@babel/runtime"
+            ],
+            "missingInstalledPeerEdges": [
+              "node_modules/react",
+              "node_modules/react-dom",
+              "node_modules/@testing-library/dom"
+            ]
+          }
+        ]
+      },
+      "requiredChange": "Include resolved installed peerDependencies in the edge set using the existing package resolution logic. Deduplicate shared ordinary/peer edges. Skip genuinely absent optional peers without inventing components. Add an isolated regression for installed peers and absent optional peers, then verify React DOM -> React and Next -> React/React DOM against the real lockfile.",
+      "scope": "A narrow inventory completeness blocker; no need to change application gameplay or TLS behavior."
+    }
+  ],
+  "resolvedPriorFindings": [
+    {
+      "id": "HOST-HV-007",
+      "status": "resolved",
+      "evidence": "Scheduler consistently uses v_now."
+    },
+    {
+      "id": "HOST-HV-008",
+      "status": "resolved in source design",
+      "evidence": "Managed-owner revoke assumptions removed; direct-login credential trust documented and owned control/function grants restricted."
+    },
+    {
+      "id": "HOST-HV-009",
+      "status": "resolved in source",
+      "evidence": "Only session port 5432 accepted. Nonblocking pg_try_advisory_lock with query timeout rejects contention; client.end releases the session."
+    },
+    {
+      "id": "HOST-HV-010",
+      "status": "resolved",
+      "evidence": "Ordered source-body prefix validation retained; matching and invalid history fixture tests pass."
+    },
+    {
+      "id": "HOST-HV-011",
+      "status": "resolved in source",
+      "evidence": "10-second statement timeout around nonblocking lock attempt, then bounded 60-second statements."
+    },
+    {
+      "id": "HOST-HV-012",
+      "status": "resolved for newly installed source",
+      "evidence": "Scheduler migration now explicitly sets its cron job inactive; rowless installation cannot accumulate one-second ticks."
+    }
+  ],
+  "positiveAssessment": [
+    "Managed Realtime policy checks existing RLS and changes only its owned SELECT policy; it no longer attempts forbidden ALTER TABLE. The policy remains profile-topic scoped and provides no client INSERT/publish grant. Existing permissive policy inventory remains a live preflight obligation.",
+    "Two explicit server-only integration-key fallbacks preserve WORDPAIRS precedence and fail closed when required settings are absent. No general environment serialization or secret-copy mechanism was added.",
+    "Scheduler dispatch and cron remain separately disabled until operational validation. TLS rejectUnauthorized:true remains intact; no CA bypass added.",
+    "Build inventory validates schema before output, restricts deployment metadata and includes exact lockfile digest, scoped/nested/dev/optional components, license declarations and source commit. Peer edges are the specific outstanding defect.",
+    "Hosting and deployment documents now identify the two-project topology, current staging-only progress and unresolved CA/provider limitations without claiming the application is live."
+  ],
+  "independentVerification": {
+    "focusedTests": {
+      "command": "npx vitest run tests/integration/hosted-sbom.test.ts tests/integration/hosting-schema.test.ts tests/integration/hosting-environment.test.ts",
+      "finalResult": "11/11 tests in 3 files passed; duration 888 ms",
+      "initialRestrictedAttempt": "9/11 passed; subprocess fixtures encountered EPERM / empty output inside sandbox. Authorized escalation reran the identical focused command successfully. This was not recorded as a product assertion fix."
+    },
+    "actualLockfileInventory": "Generator independently executed successfully against current package-lock.json; 283 components. Read emitted graph and reproduced HOST-HV-013.",
+    "reads": [
+      "scripts/hosting-schema.mjs",
+      "scripts/generate-sbom.mjs",
+      "src/infrastructure/hosting/001_scheduler.sql",
+      "src/infrastructure/hosting/002_realtime_policy.sql",
+      "src/infrastructure/runtime.ts",
+      "tests/integration/hosted-sbom.test.ts",
+      "tests/integration/hosting-schema.test.ts",
+      "tests/integration/hosting-environment.test.ts",
+      "docs/hosting_execution.md",
+      "docs/deployment_plan.md",
+      "docs/SWBOM.md"
+    ]
+  },
+  "implementerReportedEvidence": [
+    "Staging installed 11 game migrations, scheduler and managed policy; readback 6 categories, 60 pairs, 31 game RLS tables and approximately 12.7 MB.",
+    "Configured disabled tick and cron state readback passed; current cron and dispatch disabled.",
+    "Original managed policy ALTER TABLE ownership failure preserved; replacement policy succeeded.",
+    "Staging TLS failed SELF_SIGNED_CERT_IN_CHAIN; trusted CA resolution is pending, verification not disabled.",
+    "Prior full suite passed 548/548; newest full suite pending at request. No reviewer claim that this pending run completed.",
+    "No application deployment created and no production database writes reported."
+  ],
+  "snapshot": {
+    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "files": [
+      {
+        "path": "scripts/hosting-schema.mjs",
+        "sha256": "b496a03425fdc8312fd8746177d92d732595086dbb33a6c5ceeb003fc5490ed4",
+        "bytes": 6117
+      },
+      {
+        "path": "scripts/generate-sbom.mjs",
+        "sha256": "18d36ffdfb68e637e11fbc7ef8d2d0c0cb66d8ab9dfebb402afbc0da26486a41",
+        "bytes": 4103
+      },
+      {
+        "path": "src/infrastructure/hosting/001_scheduler.sql",
+        "sha256": "bb6b22fec2469e3d662eac01e39826367b6432fb845ff1562014812ca1f08585",
+        "bytes": 4904
+      },
+      {
+        "path": "src/infrastructure/hosting/002_realtime_policy.sql",
+        "sha256": "0d64cefc30fe90e133a337fd2bb0ac20e6bf332c05c1e3cbe1601513cfb71cab",
+        "bytes": 719
+      },
+      {
+        "path": "src/infrastructure/runtime.ts",
+        "sha256": "ea6a9b0535b54000440c36d2c631b5fcc2ca43501b6a5ee47038b08744a3ff11",
+        "bytes": 8658
+      },
+      {
+        "path": "tests/integration/hosted-sbom.test.ts",
+        "sha256": "92e93a91a15bf2b82c3566cd9167fffe201d74cc4415cd8def2f6a8fd0874797",
+        "bytes": 2676
+      },
+      {
+        "path": "tests/integration/hosting-schema.test.ts",
+        "sha256": "b028d3f39a3f3ba9712d4c2b5d7e0334ef2ffbfc9bbe4eb6c7fc68728970f381",
+        "bytes": 1910
+      },
+      {
+        "path": "tests/integration/hosting-environment.test.ts",
+        "sha256": "77c33b2a0b8dab6f1b410529d2cd0d6feb95393c406eca4216b3911f89ccf9f5",
+        "bytes": 1578
+      },
+      {
+        "path": "docs/hosting_execution.md",
+        "sha256": "177af33d710f420fb52549c84c7be720b7a60e8779bfff5eea8765d89c5055d0",
+        "bytes": 8175
+      },
+      {
+        "path": "docs/deployment_plan.md",
+        "sha256": "426b51fe8ed1f376a20198a3f63cd1efd094440b2d58d3e47baef748ad03ec2c",
+        "bytes": 30709
+      },
+      {
+        "path": "docs/SWBOM.md",
+        "sha256": "90f2af109fec5a01b8b696e0d918cb76a5aabb3d6568529facdabb85716b0d9a",
+        "bytes": 3215
+      }
+    ]
+  },
+  "operationalDisposition": "Not ready to claim either environment live. Resolve the trusted staging CA, prove verified TLS as the actual runtime role, then perform configured scheduler response/recovery, private Realtime authorization/renewal, guest-client autonomous progression and exact-deployment inventory checks. Retain staging-first release controls. Source corrections do not replace these operational gates.",
+  "limits": [
+    "No independent hosted grants/history/secret readback in this round; implementer reports remain labeled.",
+    "No full unit, browser, database or build rerun; unchanged broad product scope was not reopened.",
+    "No legal/provider eligibility ruling, contest readiness, physical-device installation or outstanding live 2..25 UI capacity certification.",
+    "All prior hosting receipts are preserved; only this new review artifact was written."
+  ],
+  "disposition": "Repair HOST-HV-013 before final source readiness approval. Previously approved disabled installation and isolated credential preparation remain valid. Other inspected corrections have no newly identified material source defect; live readiness remains blocked separately by TLS and pending operational evidence.",
+  "checkpointUpdate": {
+    "source": "Parent message received after review findings were written",
+    "report": "Final 553/553 full unit tests, lint and Next build reported passed. All source remains uncommitted. Supabase browser origin remains denied by saved permission/managed policy despite renewed explicit user authorization; no bypass attempted. CA unresolved. Deployment work stopped at this checkpoint. Staging 13 migrations installed with cron/dispatch disabled; production DB untouched; no deployment created. QBrain three requirement notes updated/read back with zero operational criteria satisfied. SWBOM peer-edge repair remains pending for resumption.",
+    "reviewerDisposition": "No change to changes_required or operational hold. Full test success does not cover the independently demonstrated missing graph relationship."
+  }
+}

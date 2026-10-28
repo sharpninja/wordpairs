@@ -38,11 +38,11 @@ it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices a
   mkdirSync(source);
   const archive = join(directory, "candidate.tar.gz");
   try {
-    execFileSync("tar", ["-xf", "-", "-C", source], {
-      input: execFileSync("git", ["archive", "--format=tar", commit], {
-        maxBuffer: 32 * 1024 * 1024,
-      }),
-    });
+    // Generated artwork makes the tracked source larger than a bounded stdout
+    // buffer. Keep the exact Git snapshot on disk instead of truncating it.
+    const snapshot = join(directory, "source.tar");
+    execFileSync("git", ["archive", "--format=tar", "--output", snapshot, commit]);
+    execFileSync("tar", ["-xf", snapshot, "-C", source]);
     mkdirSync(join(source, "sbom"), { recursive: true });
     const report = `sbom/${commit}.cdx.json`;
     const bom = {

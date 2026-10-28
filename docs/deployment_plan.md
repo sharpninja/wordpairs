@@ -1,12 +1,18 @@
 # Wordpairs Deployment and Release Plan
 
-**Status:** Proposed operational plan; deployment implementation has not started  
+**Status:** Hosted setup in progress; see [execution and current blockers](hosting_execution.md)
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Implementation sequence:** `implementation_plan.md`  
 **Hosting constraint:** Vercel Hobby and Supabase Free; no paid add-ons or fallback  
 **Automation constraint:** no GitHub Actions
 
 ## 1. Purpose and scope
+
+The operator selected two existing projects: `wordpairs` for logical Staging and
+`wordpairs-j9jf` for Production. Each uses its own stable Vercel production-target
+domain and matching isolated Supabase project. This supersedes the single-project
+Staging Preview proposal below. The [execution record](hosting_execution.md)
+documents the current server-only configuration, scheduler, migrations and evidence.
 
 Phone home-screen installation is implemented in the [PWA extension](pwa_design.md). Production must serve the application, `/manifest.webmanifest`, `/sw.js`, `/offline.html` and `/icons/*` from the same HTTPS origin. Preserve the worker's no-cache/no-store JavaScript headers and root scope. Operational checks must install and relaunch on actual Android/iPhone devices, verify standalone `/play`, offline reconnect guidance and recovery online. Local Chromium diagnostics and iPhone user-agent tests do not establish a physical-device installation or a hosted release. No deployment was performed as part of adding PWA support.
 

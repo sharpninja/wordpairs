@@ -4,7 +4,7 @@
 
 The game source is intended to use the GNU General Public License version 2 only (`GPL-2.0-only`); the repository root `LICENSE` file carries the full text.
 
-Wordpairs produces one software bill of materials (SWBOM) for every successful Vercel Preview or Production deployment. The report identifies the dependency inventory used to create that specific deployment. The repository has no application lockfile or published application build yet, so no build-specific SWBOM can be generated at this stage.
+The hosted build command generates one software bill of materials (SWBOM) for each successful Vercel deployment using `scripts/generate-sbom.mjs`. The report describes that deployment's committed npm lockfile. Generated reports are ignored by Git and bundled into the Next.js build after the test gate.
 
 ## Format and contents
 
@@ -23,7 +23,7 @@ The report must not contain secret values, credentials, or copied environment va
 
 ## Build and publication
 
-The Vercel build sequence is: run the acceptance test suite; generate the SWBOM from the committed lockfile and Vercel build metadata; then run the framework production build so the report is bundled with that same deployment. Store it at `public/sbom/<git-commit-sha>.cdx.json`. It must be reachable at `/sbom/<git-commit-sha>.cdx.json` from that deployment’s URL. Preview and Production deployments each receive their own artifact, even when both use the same source commit; each artifact is served from its own immutable deployment URL.
+The configured Vercel build command is `npm run typecheck && npm test && node scripts/generate-sbom.mjs && npm run build`. The generator requires `VERCEL_GIT_COMMIT_SHA`, `VERCEL_GIT_COMMIT_REF`, `VERCEL_ENV` and `VERCEL_URL`; it validates CycloneDX 1.6 and fails closed on missing/unsafe metadata. Store the report at `public/sbom/<git-commit-sha>.cdx.json`; it is reachable at `/sbom/<git-commit-sha>.cdx.json` from that deployment. The inventory includes lockfile paths as stable component references, declared licenses, package URLs, dependency edges, development/optional flags and the exact lockfile SHA-256. It copies no general environment values. `tests/integration/hosted-sbom.test.ts` uses isolated fixture files and validates metadata rejection and dependency coverage.
 
 No GitHub Actions workflow is involved. The generator runs as part of Vercel’s build command. The report describes the packages in the lockfile and is not a vulnerability assessment or license approval.
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-28T03:08:25.559706+00:00",
+  "generatedAt": "2026-10-28T22:46:16.8825929Z",
   "baseCommit": "3273c121de6517aec34503d8c769b0159e9e52df",
   "scope": "Hash index of existing repository hostile-review originals and supporting manifests; includes all rejected/superseded JSONL records without rewriting or copying originals.",
   "indexSemantics": "Hashes bind original bytes at generation time; this is not a final application snapshot, eligibility certification, deployment approval or contest submission. New append-only UI records change that file hash; refresh this index after final review and freeze it with the exact submission snapshot.",
@@ -1073,6 +1073,31 @@
       "sha256": "0303cc7b114552e7030b5f9bbcff63eb19e392c5a195fbb96ddf15455a7e65ef",
       "bytes": 460274,
       "kind": "category-artwork-review-or-supporting-evidence"
+    },
+    {
+      "bytes": 16569,
+      "sourcePath": "docs/evidence/hosting/plan-review-round1.json",
+      "sha256": "a28a8b6db6760fd45570384393776b34c5a238885aab54ac77caf1ad27232a15"
+    },
+    {
+      "bytes": 12112,
+      "sourcePath": "docs/evidence/hosting/plan-review-round2.json",
+      "sha256": "fba8cf74caf7330b1fa8f84cb7ade77ce28c51b37777ce4e6eb41d8e600bb97d"
+    },
+    {
+      "bytes": 8869,
+      "sourcePath": "docs/evidence/hosting/plan-review-round3.json",
+      "sha256": "3c7df1a8ed28de5e36c5560280c99902fbb619ec2e2547e3973444cfd0e5e70f"
+    },
+    {
+      "bytes": 12957,
+      "sourcePath": "docs/evidence/hosting/plan-review-round4.json",
+      "sha256": "ccd876166aae6156859dc840325962b7c1a6d9da9e054354f86afc04d07fb96b"
+    },
+    {
+      "bytes": 8628,
+      "sourcePath": "docs/evidence/hosting/plan-review-round5.json",
+      "sha256": "8cf7413e41131a397889942020d9e0e60f49ca5e8de81deb85e49b96075117a6"
     }
   ],
   "coverage": [
@@ -1097,42 +1122,42 @@
   "limitations": [
     "Earlier logs may contain summaries instead of complete original transcripts. Indexing cannot reconstruct unavailable history.",
     "Historical approvals apply only to their named source snapshots and scope.",
-    "Live 2\u201325-player UI completion and hosted/physical-device/provider obligations retain their separate status. SQL service games are not browser capacity evidence.",
+    "Live 2–25-player UI completion and hosted/physical-device/provider obligations retain their separate status. SQL service games are not browser capacity evidence.",
     "Current UI implementation approval is scoped to its manifest; later changes require review."
   ],
   "refreshHistory": [
     {
-      "at": "2026-10-28T00:58:25.896971+00:00",
+      "at": "2026-10-27T19:58:25.896971-05:00",
       "priorIndexSha256": "3fffd1ccfd997f04e8df93b89c57b008e25bff3659ed2f17c20c58ff78732812",
       "reason": "Append repaired-race source review; preserve all original rounds."
     },
     {
-      "at": "2026-10-28T01:08:39.997572+00:00",
+      "at": "2026-10-27T20:08:39.997572-05:00",
       "priorIndexSha256": "6424d86d46b800737a79e1d56dcc9d892e594741658b076dbfdbc99b7495f20b",
       "reason": "Preserve final-evidence rejection and new implementation manifests."
     },
     {
-      "at": "2026-10-28T01:15:37.391311+00:00",
+      "at": "2026-10-27T20:15:37.391311-05:00",
       "priorIndexSha256": "7ffad1d07581f644b4c468dda69bfe4b921f8bac02e3336fa07e73d9a1efc8d8",
       "reason": "Append scoped final UI implementation approval; retain pre-safe-error rejected candidate artifacts."
     },
     {
-      "at": "2026-10-28T01:20:29.165185+00:00",
+      "at": "2026-10-27T20:20:29.165185-05:00",
       "priorIndexSha256": "9d68de199aae9c7d9ecf6484cb32f307107ed58a620d2f4c075600284cb61631",
       "reason": "Retain superseded163-record preliminary wiki audit; final165-record stage pending."
     },
     {
-      "at": "2026-10-28T01:25:00.597724+00:00",
+      "at": "2026-10-27T20:25:00.597724-05:00",
       "priorIndexSha256": "8a43d19f8d8fbbcb2e19816cf401c36ee2efd9077a54d1f308b69a4d89e18a90",
       "reason": "Preserve165-stage metadata correction finding."
     },
     {
-      "at": "2026-10-28T01:26:01.962459+00:00",
+      "at": "2026-10-27T20:26:01.962459-05:00",
       "priorIndexSha256": "8b709806f73cac4e95ebb6b6b0618c00366d8a3d01db3da89c49a4cacf30de42",
       "reason": "Append165-record publication recommendation and metadata resolution; actual push still pending."
     },
     {
-      "at": "2026-10-28T03:10:13.927864+00:00",
+      "at": "2026-10-27T22:10:13.927864-05:00",
       "priorIndexSha256": "37405ce7f32fe1d7b787db23b49ee0ee0d1fd5e765ba8fa6f4148a18030e1e1a",
       "reason": "Append all3 scoped artwork review rounds, including superseded/rejected findings, twelve-asset source evidence and final bounded verification logs."
     }

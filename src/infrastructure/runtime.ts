@@ -144,8 +144,14 @@ export function getMatchServices() {
 export function getRealtimeSettings() {
   const url = process.env.WORDPAIRS_SUPABASE_URL;
   const anonKey = process.env.WORDPAIRS_SUPABASE_ANON_KEY;
-  const serviceKey = process.env.WORDPAIRS_SUPABASE_SERVICE_KEY;
-  const jwtSecret = process.env.WORDPAIRS_SUPABASE_JWT_SECRET;
+  // Vercel's managed Supabase integration installs write-only secret variables.
+  // Read those names server-side; explicit local/runtime settings take precedence.
+  const serviceKey =
+    process.env.WORDPAIRS_SUPABASE_SERVICE_KEY ??
+    process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const jwtSecret =
+    process.env.WORDPAIRS_SUPABASE_JWT_SECRET ??
+    process.env.SUPABASE_JWT_SECRET;
   if (!url || !anonKey || !serviceKey || !jwtSecret) return null;
   try {
     return realtimeSettings({ url, anonKey, serviceKey, jwtSecret });
