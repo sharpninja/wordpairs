@@ -70,3 +70,6 @@ Run this checklist again immediately before manual entry. Record changes to spon
 Eligibility update: operator answered **"I meet all eligibility conditions"** on28October2026UTC. This resolves the requested attestation; no independent identity proof or legal eligibility adjudication is claimed. Keep the entry account/email accurate and reconfirm residence/presence at actual entry.
 
 Wiki publication is tracked separately by `TR-DOCS-WIKIPUBLISH-042#WIKI-01..03` / `TEST-WIKIPUBLISH-148`. [The publication receipt](wiki-publication.json) binds the canonical export to its published wiki pages, assets, link transforms and verified remote commit. This publication does not submit the contest entry.
+
+
+Category artwork update: the [prompt/provenance manifest](../category-artwork-prompts.json) records the approved comic concepts and all twelve recomposed 9:16/16:9 assets, their hashes and generation prompts. [Artwork validation](../category_artwork.md) and [scoped hostile review](../evidence/category-artwork/hostile-review.json) retain the corrected full-page-background design and superseded review findings. This is artwork provenance and bounded UI evidence, not a contest submission or legal-rights certification.

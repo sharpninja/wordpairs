@@ -8,7 +8,7 @@ test("AC-05-T01 counterpart artwork retry renders the successfully probed URL", 
   const context = await browser.newContext();
   try {
     await connectGame(context);
-    await context.route("**/backgrounds/heroes.svg*", (route) =>
+    await context.route("**/backgrounds/heroes-16x9.webp*", (route) =>
       new URL(route.request().url()).searchParams.has("attempt")
         ? route.fulfill({
             status: 200,
@@ -32,7 +32,9 @@ test("AC-05-T01 counterpart artwork retry renders the successfully probed URL", 
     const observed = await page
       .locator(".game-panel")
       .evaluate(async (element) => {
-        const background = getComputedStyle(element).backgroundImage;
+        const background = getComputedStyle(
+          document.querySelector(".game-backdrop")!,
+        ).backgroundImage;
         const image = new Image();
         image.src = background.slice(5, -2);
         let decoded = true;
@@ -48,7 +50,9 @@ test("AC-05-T01 counterpart artwork retry renders the successfully probed URL", 
       JSON.stringify(observed, null, 2),
     );
     expect(observed.decoded).toBe(true);
-    expect(observed.background).toContain("/backgrounds/heroes.svg?attempt=1");
+    expect(observed.background).toContain(
+      "/backgrounds/heroes-16x9.webp?attempt=1",
+    );
     await expect(
       page.getByText("Category artwork unavailable", { exact: true }),
     ).toHaveCount(0);
@@ -65,7 +69,9 @@ test("AC-05-T01 counterpart artwork failure shows an accessible fallback with us
   });
   try {
     await connectGame(context);
-    await context.route("**/backgrounds/heroes.svg", (r) => r.abort("failed"));
+    await context.route("**/backgrounds/heroes-9x16.webp", (r) =>
+      r.abort("failed"),
+    );
     const page = await context.newPage();
     await page.goto(`/rooms/${roomId}`);
     await expect(
@@ -85,7 +91,7 @@ test("AC-05-T01 counterpart artwork failure shows an accessible fallback with us
       info.outputPath("artwork-fallback.json"),
       JSON.stringify(observed, null, 2),
     );
-    await context.unroute("**/backgrounds/heroes.svg");
+    await context.unroute("**/backgrounds/heroes-9x16.webp");
     await page
       .getByRole("button", { name: "Retry artwork", exact: true })
       .click();
@@ -106,38 +112,198 @@ for (const [category, index] of [
   ["heroes", 0],
   ["heroes", 1],
   ["colors", 0],
+  ["years", 0],
+  ["directors", 0],
+  ["singers", 0],
+  ["opposites", 0],
 ] as const) {
-  test(`AC-05-T01 counterpart real ${category} asset for pair ${index}`, async ({
-    browser,
-  }, info) => {
-    const context = await browser.newContext({
-      viewport: { width: 390, height: 844 },
+  for (const viewport of [
+    { width: 390, height: 844 },
+    { width: 1440, height: 960 },
+  ]) {
+    test(`AC-05-T01 counterpart real ${category} asset for pair ${index} at ${viewport.width}`, async ({
+      browser,
+    }, info) => {
+      const context = await browser.newContext({
+        viewport,
+      });
+      try {
+        const { pair } = await connectGame(context, category, index);
+        const page = await context.newPage();
+        await page.goto(`/rooms/${roomId}`);
+        await expect(page.locator(".game-panel")).toHaveAttribute(
+          "data-artwork",
+          "loaded",
+        );
+        await expect(page.locator(".game-prompt")).toHaveText(pair.prompt);
+        await expect(
+          page.getByLabel("Your answer", { exact: true }),
+        ).toBeEnabled();
+        const artwork = page.locator(".game-backdrop");
+        await expect(page.locator(".category-artwork")).toHaveCount(0);
+        await expect(artwork).toBeVisible();
+        const observed = await page
+          .locator(".game-panel")
+          .evaluate(async (e) => {
+            const surface = getComputedStyle(e.querySelector(".game-surface")!);
+            const prompt = getComputedStyle(e.querySelector(".game-prompt")!);
+            const luminance = (color: string) => {
+              const channels = color
+                .match(/[\d.]+/g)!
+                .slice(0, 3)
+                .map(Number)
+                .map((c) => {
+                  const v = c / 255;
+                  return v <= 0.04045
+                    ? v / 12.92
+                    : ((v + 0.055) / 1.055) ** 2.4;
+                });
+              return (
+                channels[0] * 0.2126 +
+                channels[1] * 0.7152 +
+                channels[2] * 0.0722
+              );
+            };
+            const contrastFor = (fill: string, color: string) => {
+              const rgba = fill.match(/[\d.]+/g)!.map(Number);
+              const opacity = rgba[3] ?? 1;
+              const foreground = luminance(color);
+              return Math.min(
+                ...[0, 255].map((underlay) => {
+                  const composite = rgba
+                    .slice(0, 3)
+                    .map((c) => c * opacity + underlay * (1 - opacity));
+                  const background = luminance(`rgb(${composite.join(",")})`);
+                  return (
+                    (Math.max(background, foreground) + 0.05) /
+                    (Math.min(background, foreground) + 0.05)
+                  );
+                }),
+              );
+            };
+            const topbar = getComputedStyle(document.querySelector(".topbar")!);
+            const install = getComputedStyle(
+              document.querySelector(".pwa-install")!,
+            );
+            const backdrop = document.querySelector(".game-backdrop")!;
+            const background = getComputedStyle(backdrop).backgroundImage;
+            const image = new Image();
+            image.src = background.slice(5, -2);
+            await image.decode();
+            return {
+              background,
+              backdropPosition: getComputedStyle(backdrop).position,
+              backdropWidth: backdrop.getBoundingClientRect().width,
+              backdropHeight: backdrop.getBoundingClientRect().height,
+              viewportWidth: innerWidth,
+              viewportHeight: innerHeight,
+              prompt: e.querySelector("h3")?.textContent,
+              promptContrast: contrastFor(
+                surface.backgroundColor,
+                prompt.color,
+              ),
+              headerContrast: contrastFor(topbar.backgroundColor, topbar.color),
+              installContrast: contrastFor(
+                install.backgroundColor,
+                install.color,
+              ),
+              surfaceOpacity: Number(
+                surface.backgroundColor.match(/[\d.]+/g)![3] ?? 1,
+              ),
+              backdropFilter: surface.backdropFilter,
+              surfaceBackground: surface.backgroundColor,
+              imageWidth: image.naturalWidth,
+              imageHeight: image.naturalHeight,
+              noHorizontalOverflow:
+                document.documentElement.scrollWidth <= innerWidth,
+            };
+          });
+        expect(observed.backdropPosition).toBe("fixed");
+        expect(observed.backdropWidth).toBe(observed.viewportWidth);
+        expect(observed.backdropHeight).toBe(observed.viewportHeight);
+        expect(observed.imageWidth).toBe(
+          viewport.width < viewport.height ? 864 : 1536,
+        );
+        expect(observed.imageHeight).toBe(
+          viewport.width < viewport.height ? 1536 : 864,
+        );
+        expect(observed.promptContrast).toBeGreaterThanOrEqual(4.5);
+        expect(observed.headerContrast).toBeGreaterThanOrEqual(4.5);
+        expect(observed.installContrast).toBeGreaterThanOrEqual(4.5);
+        expect(observed.surfaceOpacity).toBeGreaterThanOrEqual(0.85);
+        expect(observed.surfaceOpacity).toBeLessThan(1);
+        expect(observed.backdropFilter).toContain("blur");
+        expect(observed.noHorizontalOverflow).toBe(true);
+        await page
+          .locator(".game-panel")
+          .evaluate((e) =>
+            e.scrollIntoView({ block: "start", behavior: "instant" }),
+          );
+        await page.screenshot({
+          path: info.outputPath("category.png"),
+          animations: "disabled",
+        });
+        expect(observed.background).toContain(
+          `/backgrounds/${category}-${viewport.width < viewport.height ? "9x16" : "16x9"}.webp`,
+        );
+        await page
+          .locator(".game-surface, .topbar, .pwa-install")
+          .evaluateAll((elements) => {
+            for (const element of elements) {
+              (element as HTMLElement).style.backdropFilter = "none";
+              (element as HTMLElement).style.setProperty(
+                "-webkit-backdrop-filter",
+                "none",
+              );
+            }
+          });
+        const withoutBlur = await page
+          .locator(".game-surface, .topbar, .pwa-install")
+          .evaluateAll((elements) =>
+            elements.map((e) => ({
+              fill: getComputedStyle(e).backgroundColor,
+              blur: getComputedStyle(e).backdropFilter,
+            })),
+          );
+        expect(withoutBlur).toHaveLength(3);
+        for (const style of withoutBlur) {
+          expect(style.fill).toBe(observed.surfaceBackground);
+          expect(style.blur).toBe("none");
+        }
+        await expect(
+          page.getByLabel("Your answer", { exact: true }),
+        ).toBeEnabled();
+        if (viewport.width < viewport.height) {
+          await page.setViewportSize({ width: 844, height: 390 });
+          await expect(page.locator(".game-panel")).toHaveAttribute(
+            "data-artwork",
+            "loaded",
+          );
+          await expect
+            .poll(() =>
+              artwork.evaluate((e) => getComputedStyle(e).backgroundImage),
+            )
+            .toContain(`/backgrounds/${category}-16x9.webp`);
+          await page.setViewportSize(viewport);
+          await expect(page.locator(".game-panel")).toHaveAttribute(
+            "data-artwork",
+            "loaded",
+          );
+          await expect
+            .poll(() =>
+              artwork.evaluate((e) => getComputedStyle(e).backgroundImage),
+            )
+            .toContain(`/backgrounds/${category}-9x16.webp`);
+        }
+        await writeFile(
+          info.outputPath("artwork.json"),
+          JSON.stringify({ pairId: pair.id, category, ...observed }, null, 2),
+        );
+      } finally {
+        await context.close();
+      }
     });
-    try {
-      const { pair } = await connectGame(context, category, index);
-      const page = await context.newPage();
-      await page.goto(`/rooms/${roomId}`);
-      await expect(page.locator(".game-panel")).toHaveAttribute(
-        "data-artwork",
-        "loaded",
-      );
-      await expect(page.locator(".game-prompt")).toHaveText(pair.prompt);
-      await expect(
-        page.getByLabel("Your answer", { exact: true }),
-      ).toBeEnabled();
-      const observed = await page.locator(".game-panel").evaluate((e) => ({
-        background: getComputedStyle(e).backgroundImage,
-        prompt: e.querySelector("h3")?.textContent,
-      }));
-      expect(observed.background).toContain(`/backgrounds/${category}.svg`);
-      await writeFile(
-        info.outputPath("artwork.json"),
-        JSON.stringify({ pairId: pair.id, category, ...observed }, null, 2),
-      );
-    } finally {
-      await context.close();
-    }
-  });
+  }
 }
 
 for (const viewport of [

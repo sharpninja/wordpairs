@@ -6,7 +6,7 @@ import type { Pair } from '../../src/domain/model';
 import data from '../../src/infrastructure/catalog-seed.json';
 it('ships six categories with ten distinct directed complete pairs, three static hints and one shared background each',()=>{
   const catalog=buildCatalog(data.categories,data.pairs as Pair[]);expect(catalog.ok).toBe(true);expect(data.categories).toHaveLength(6);expect(data.pairs).toHaveLength(60);
-  for(const category of data.categories){const pairs=data.pairs.filter(p=>p.categoryId===category.id);expect(pairs).toHaveLength(10);expect(new Set(pairs.map(p=>`${p.prompt}:${p.target}`)).size).toBe(10);expect(pairs.every(p=>p.backgroundId===category.backgroundId)).toBe(true);expect(existsSync(`public/backgrounds/${category.backgroundId}.svg`)).toBe(true);}
+  for(const category of data.categories){const pairs=data.pairs.filter(p=>p.categoryId===category.id);expect(pairs).toHaveLength(10);expect(new Set(pairs.map(p=>`${p.prompt}:${p.target}`)).size).toBe(10);expect(pairs.every(p=>p.backgroundId===category.backgroundId)).toBe(true);for (const aspect of ["9x16", "16x9"]) expect(existsSync(`public/backgrounds/${category.backgroundId}-${aspect}.webp`)).toBe(true);}
 });
 it('applies the official full default Unicode C+F mappings, including expansions, without Turkish locale folding',()=>{
   const source=readFileSync('third_party/unicode/CaseFolding-18.0.0.txt','utf8');expect(source).toContain('CaseFolding-18.0.0.txt');let checked=0;

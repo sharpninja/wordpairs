@@ -26,7 +26,11 @@ it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices a
   const manifest = new Map(
     paths.map((path) => [
       path,
-      sha256(execFileSync("git", ["show", `${commit}:${path}`])),
+      sha256(
+        execFileSync("git", ["show", `${commit}:${path}`], {
+          maxBuffer: 32 * 1024 * 1024,
+        }),
+      ),
     ]),
   );
   const directory = mkdtempSync(join(tmpdir(), "wordpairs-source-acceptance-"));
@@ -64,30 +68,28 @@ it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices a
         sha256(readFileSync(archive))
       )
         return "checksum";
-      const entries = new Set(
-        execFileSync("tar", ["-tzf", archive], { encoding: "utf8" })
-          .trim()
-          .split("\n"),
-      );
-      for (const [path, hash] of manifest) {
-        if (!entries.has(`./${path}`)) return "missing-source";
-        if (
-          sha256(
-            execFileSync("tar", ["-xOzf", archive, `./${path}`], {
-              maxBuffer: 16 * 1024 * 1024,
-            }),
-          ) !== hash
-        )
-          return "altered-source";
+      const extracted = mkdtempSync(join(directory, "inspect-"));
+      try {
+        execFileSync("tar", ["-xzf", archive, "-C", extracted]);
+        const entries = new Set(
+          execFileSync("tar", ["-tzf", archive], { encoding: "utf8" })
+            .trim()
+            .split("\n"),
+        );
+        for (const [path, hash] of manifest) {
+          if (!entries.has(`./${path}`)) return "missing-source";
+          if (sha256(readFileSync(join(extracted, path))) !== hash)
+            return "altered-source";
+        }
+        if (!entries.has(`./${report}`)) return "missing-sbom";
+        const text = readFileSync(join(extracted, report), "utf8");
+        if ((await validator.validate(text)) !== null) return "invalid-sbom";
+        if (JSON.parse(text).metadata?.component?.version !== commit)
+          return "commit-mismatch";
+        return "accepted";
+      } finally {
+        rmSync(extracted, { recursive: true, force: true });
       }
-      if (!entries.has(`./${report}`)) return "missing-sbom";
-      const text = execFileSync("tar", ["-xOzf", archive, `./${report}`], {
-        encoding: "utf8",
-      });
-      if ((await validator.validate(text)) !== null) return "invalid-sbom";
-      if (JSON.parse(text).metadata?.component?.version !== commit)
-        return "commit-mismatch";
-      return "accepted";
     };
     writeFileSync(join(source, report), JSON.stringify(bom));
     pack();
@@ -138,6 +140,6 @@ it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices a
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
-// Repeated exact tar extraction/hash checks exceed60s on the shared validation host.
-// Preserve every source, checksum, license and tamper assertion with a bounded budget.
+  // Extract each candidate once, then verify every source hash and tamper control.
+  // Keep a bounded I/O budget for large repository snapshots on shared hosts.
 }, 240000);

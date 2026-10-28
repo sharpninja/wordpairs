@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -40,7 +40,7 @@ const validBom = JSON.stringify({
   components: [],
 });
 const preparedSourcePaths = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' })
-  .trim().split('\n').filter(Boolean).sort();
+  .trim().split('\n').filter(Boolean).filter(path => existsSync(resolve(process.cwd(), path))).sort();
 const preparedSource = Object.fromEntries(preparedSourcePaths.map((path) => [path, readFileSync(resolve(process.cwd(), path))]));
 // Hash the same immutable bytes placed in the archive. Live evidence files can
 // change between filesystem reads while other integration suites are running.
@@ -88,7 +88,7 @@ it('AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 
   }
   const wrongMetadata = { ...JSON.parse(validBom), metadata: { component: { type: 'application', name: 'wordpairs', version: 'wrong' } } };
   expect(await validateSourceArchiveZip(await createZipArchive({ ...baseArchive, [`sbom/${EXPECTED_COMMIT}.cdx.json`]: JSON.stringify(wrongMetadata) }), EXPECTED_COMMIT, sourceManifest)).toBe('commit-mismatch');
-});
+}, 120_000);
 
 it('AC-42 validates complete GPL and the actual Recursive-bearing SVG notice', async () => {
   const expected = {
@@ -109,7 +109,7 @@ it('AC-42 validates complete GPL and the actual Recursive-bearing SVG notice', a
     expect(await validateReleaseNoticesZip(await createZipArchive({ ...baseArchive, 'docs/word_association_round_flow.svg': assetText.replace(removed, '') }), expected)).toBe(false);
   }
   expect(await validateReleaseNoticesZip(await createZipArchive({ ...baseArchive, 'docs/word_association_round_flow.svg': assetText.slice(0, assetText.indexOf('TERMINATION')) }), expected)).toBe(false);
-});
+}, 120_000);
 
 it('AC-30 strict driver rejects the empty-roster and empty-actions hostile control', async () => {
   const primary = (await import('./oracle-scenarios.js')).acOracleScenarios.find(({ id }) => id === 'AC-30-T01')!;
