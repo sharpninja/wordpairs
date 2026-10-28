@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "scope": "category artwork refinement",
+  "rounds": [
+    {
+      "round": 1,
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "reasoning": "high",
+        "role": "independent hostile reviewer"
+      },
+      "recordedAt": "2026-10-28T02:29:43.016836+00:00",
+      "baseCommit": "2081ad95b0d44f48c3f6f4f97dde54dade7b537f",
+      "request": "Review category artwork integration, readability including fallback and blur absence, images/layout, test validity and scope; preserve receipt. Source read-only.",
+      "disposition": "superseded_pending_revised_design",
+      "accuracyScore": null,
+      "completenessScore": null,
+      "scoreReason": "Review paused when user rejected decorative artwork panel; revised page-background implementation and final evidence pending.",
+      "rubric": [
+        "Matches current operator layout request",
+        "Six category assets correctly integrated",
+        "Readable foreground and usable fallback without blur",
+        "Assertions exercise actual rendered assets and layout",
+        "No unrelated behavioral changes"
+      ],
+      "findings": [
+        {
+          "id": "ART-HV-001",
+          "priority": "P2",
+          "file": "tests/application/catalog-seed.test.ts",
+          "line": 9,
+          "finding": "Catalog test requires all six removed .svg assets; WebP replacement makes existsSync false.",
+          "requiredCorrection": "Assert the actual WebP asset paths while retaining all seed/catalog assertions."
+        },
+        {
+          "id": "ART-HV-002",
+          "priority": "P2",
+          "file": "tests/acceptance/coverage-map.ts",
+          "line": 148,
+          "finding": "Current acceptance mapping still references deleted heroes.svg/colors.svg and describes Chromium loading SVG assets.",
+          "requiredCorrection": "Update active source/evidence mapping to actual WebP assets; retain historical receipts unchanged."
+        }
+      ],
+      "supersedingInstruction": "User: No, do not show the background in a panel! Parent will use a fixed page background behind translucent game content.",
+      "independentEvidence": [
+        "Read relevant source/test/CSS diffs and design/provenance documents.",
+        "Visually inspected all six actual 1536x1024 runtime WebP assets: consistent comic style, category imagery, no visible text/logos.",
+        "Inspected unchanged canonical requestedArtUrl probe/retry ownership and readable existing fallback.",
+        "Verified stale SVG paths directly in catalog test and acceptance map."
+      ],
+      "limits": [
+        "No independent browser/build execution this round; parent owns active verification.",
+        "No final runtime visual inspection or approval of revised page-background layout yet.",
+        "Scores intentionally withheld for superseded implementation."
+      ],
+      "sourceHashes": {
+        "src/web/game-panel.tsx": "b50d34e56556efb15a566589a44a2cbb9a61ee9ee43d3c568436a7d7d4eece3f",
+        "src/app/globals.css": "f08895fd3510b2e121a2e53e869aadec2cf4cfd8b015aa4a0aec5fdf427bc237",
+        "tests/browser/accessibility.phase6.spec.ts": "3e6147b1484108ffd2c88a85f2977e08aa92a1de91cd263063834cae6647f1cc",
+        "tests/application/catalog-seed.test.ts": "74fe5ad464f763fbea257818146eb9de80d709f05ddef26ba91206ee6a399532",
+        "tests/acceptance/coverage-map.ts": "8feff45a74a9452639849c0d55a46ede004e44a3c32089b869bbbaa1474efa7c",
+        "docs/category_artwork.md": "e97b09d57d76eeabb36e581e9431b16ce191718646cc8d5e69d1ac3a1effeb94",
+        "docs/category-artwork-prompts.json": "65fbe8f0a61cda5dbfe79b1d031b91d670050570c435d2d2780a35590c9c7194",
+        "public/backgrounds/colors.webp": "297599938af70d52297b29d1642a335e852e3647f350573c4cd2b487b943e717",
+        "public/backgrounds/directors.webp": "362b66e88f7edc31498cc26176d6b9d602b4999dadd08d1c0d022581154fce2a",
+        "public/backgrounds/heroes.webp": "bc80bf0d9f54e5a1991ee4a11fe73b633236d3ae31708e2caa24be46bf5948ed",
+        "public/backgrounds/opposites.webp": "9c6d4acd2cdf2ebf4825f650ccc22502a3655746a0224efb9b293c2d86dc4a38",
+        "public/backgrounds/singers.webp": "072d6fe9ee55cb64adec4499862616e67f7008aee7af4d9c8f8879e11bfdff10",
+        "public/backgrounds/years.webp": "ecb793f8136dc0718d67a3d2f77fcde2bc1c153b2729e0fa77eb51a4cdb25a65"
+      }
+    },
+    {
+      "round": 2,
+      "recordedAt": "2026-10-28T02:47:34.244801+00:00",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "request": "Review revised fixed page-background implementation, 12 portrait/landscape WebP assets, source/design/test changes and archive fixture adjustments; preserve prior round, no source or live-requirement mutation.",
+      "disposition": "request_changes",
+      "accuracyScore": 97,
+      "completenessScore": 96,
+      "rubric": {
+        "accuracy": "Correct layout/assets, safe readable rendering and truthful provenance",
+        "completeness": "All affected visible content, fallback/orientation coverage and bounded verification evidence"
+      },
+      "findings": [
+        {
+          "id": "ART-HV-003",
+          "priority": "P2",
+          "file": "src/app/globals.css",
+          "line": 716,
+          "finding": "The fixed page backdrop also paints beneath the transparent room topbar. Dark navigation text loses contrast over dark artwork; game-surface-only tests miss this.",
+          "evidence": "Independent isolated Chromium rendering using actual CSS/directors-9x16.webp at390x844; topbar background rgba(0,0,0,0), backdropFilter none, color rgb(20,44,50). Screenshot /tmp/wordpairs-artwork-header-review.png.",
+          "requiredCorrection": "Protect topbar text with a readable surface while retaining full-page art; test visible navigation."
+        },
+        {
+          "id": "ART-HV-004",
+          "priority": "P2",
+          "file": "src/app/globals.css",
+          "line": 950,
+          "finding": "The global PWA install aside remains transparent and muted text is now drawn directly on category imagery during play.",
+          "requiredCorrection": "Apply a readable surface to the mounted install/help aside while game backdrop exists; cover visible instructions and blur-disabled readability."
+        }
+      ],
+      "resolvedPriorFindings": [
+        "ART-HV-001: seed integrity now checks both WebP variants for every category.",
+        "ART-HV-002: current acceptance map lists all12 assets and corrected rendering evidence."
+      ],
+      "independentEvidence": [
+        "Inspected complete source/CSS/test diffs and design/provenance.",
+        "Checked all12 files: exact manifest SHA256 and byte counts; actual decoded dimensions864x1536 or1536x864.",
+        "Visually inspected portrait and landscape category contact sheets.",
+        "Independently reproduced exposed header in disposable Chromium fixture with actual CSS and actual portrait asset.",
+        "Archive maxBuffer32MiB change retains exact-source/tamper assertions; deleted-file filtering correctly scopes working-tree snapshot while separate HEAD archive remains immutable."
+      ],
+      "limits": [
+        "Isolated browser fixture is not full actual app execution.",
+        "First sandboxed Chromium launch failed due OS socket restriction; authorized escalated isolated fixture succeeded.",
+        "Final implementer unit/build/browser runs pending; observed archive fixture timeout must be resolved without removing assertions.",
+        "New header correction arrived during review; no approval until remaining visible-content coverage and final evidence are verified."
+      ],
+      "sourceHashes": {
+        "src/web/game-panel.tsx": "089821a1e789b0c789553ebb12390b6f3685ec02d08e38abb2adb41e93a63355",
+        "src/app/globals.css": "580d8c699960e00b08ca1ce6c87c376953630aa6702ab43455834bc43b577679",
+        "tests/browser/accessibility.phase6.spec.ts": "3787387f397561d02c27ff53dcc66578572655db0ea7f0da26ce50ff79dac1b6",
+        "docs/category_artwork.md": "05bac046c1a7dd5cdea170063f6de1e52f8663a24b36eb2e276df1f7dd1c3345",
+        "docs/category-artwork-prompts.json": "d43012da75cd1124c759786113aeb5cdd1fc8d831a918a5403711de1a16c1757"
+      }
+    },
+    {
+      "round": 3,
+      "recordedAt": "2026-10-28T03:05:47.025441+00:00",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "reasoning": "high",
+        "role": "independent hostile reviewer"
+      },
+      "request": "All final bounded checks now pass. docs/evidence/category-artwork/receipt.json contains exact source/12asset hashes and14 category observations. Production UI final5 passed22/22 (34.6s); README captures2/2 (5.1s), native screenshots refreshed. Full unit run passed541/542, remaining source-archive hit shared /tmp quota; targeted same test with task-owned workspace disk temp passed1/1 (24.59s). Archive/race regression90/90 also passed. Raw logs copied into docs/evidence/category-artwork/. final4 launch issue deepTMPDIR exceeded socket paths; final5 used short /home/sharpninja/github/WordGame/.wpa. All earlier failed runs retained separately. Production final3 CSS contains explicit header/PWA fill declarations; actual screenshots inspected after final5. Please finalize independent verdict and scores now against current source andbounded evidence, preserve rounds1/2 and all findings. QBrain evidence readback underway (2existingrecords,3newACeach). No need execute more tests unless unresolved concern.",
+      "scope": "Six approved comic category scenes in twelve recomposed portrait/landscape assets; fixed page background behind translucent readable game/navigation/install surfaces; responsive selection, fallback/retry, corresponding tests/design/provenance and bounded archive-fixture repairs.",
+      "disposition": "approved",
+      "accuracyScore": 99,
+      "completenessScore": 99,
+      "rubric": {
+        "threshold": "At least99 accuracy and99 completeness, with no unresolved material defect in this bounded refinement. Scores are reviewer judgments, not measured defect probabilities.",
+        "accuracy": [
+          "Correct approved full-page layout and six-category mapping",
+          "Exact asset provenance/dimensions and truthful evidence claims",
+          "Readable controls/text with and without blur",
+          "Canonical retry/loading ownership preserved"
+        ],
+        "completeness": [
+          "Both aspect variants and orientation transitions",
+          "Missing art, retry, keyboard/touch and overflow coverage",
+          "All page text affected by background protected",
+          "Earlier findings and failed/superseded evidence retained"
+        ]
+      },
+      "unresolvedFindings": [],
+      "resolvedFindings": [
+        {
+          "id": "ART-HV-001",
+          "status": "resolved",
+          "correction": "Catalog integrity checks both 9x16 and16x9 WebP paths for each category; independently ran2/2 catalog tests."
+        },
+        {
+          "id": "ART-HV-002",
+          "status": "resolved",
+          "correction": "Current acceptance mapping lists all twelve WebP paths and describes actual orientation/page-background evidence; historical receipts retained."
+        },
+        {
+          "id": "ART-HV-003",
+          "status": "resolved",
+          "correction": "Conditional topbar cream88% fill and10px blur protect navigation. Explicit CSS rule survives final production build; browser records11.014:1 worst-case contrast."
+        },
+        {
+          "id": "ART-HV-004",
+          "status": "resolved",
+          "correction": "Conditional PWA install/help surface receives same fill/blur; muted text worst-case4.848:1. Tests include this surface and disable blur."
+        }
+      ],
+      "snapshot": {
+        "baseCommit": "2081ad95b0d44f48c3f6f4f97dde54dade7b537f",
+        "state": "Uncommitted working-tree refinement, identified by exact file hashes; not an exact remote-commit review.",
+        "files": 21,
+        "sha256": "8f704598ad6c461cf8a0879a637a2282c2d54d1bacbbd29c2f3ee7d7dac02f5b",
+        "algorithm": "SHA256 of UTF-8 concatenation of path + TAB + lowercase SHA256 + LF, paths lexicographically sorted.",
+        "hashes": {
+          "src/web/game-panel.tsx": "089821a1e789b0c789553ebb12390b6f3685ec02d08e38abb2adb41e93a63355",
+          "src/app/globals.css": "56be5e6a58e4a99187f9c4927ecd4a6ba0011ee7288bab8b5a64d33bc7a32526",
+          "tests/browser/accessibility.phase6.spec.ts": "82f3cdf9a66ab67ab38f94e181948e9a6065e018870969d25c3fdf6c0305d470",
+          "tests/application/catalog-seed.test.ts": "d529521ae452cf2e76b4846a2eefa1e676d216dae160b4f70f56ea7aebde1895",
+          "tests/acceptance/coverage-map.ts": "eafd7748b85f63fd53c6884a39010fb53bc2a316f0bccd8bc9f2e8bc706d12ed",
+          "tests/acceptance/source-archive.test.ts": "1151607cf2350ecb6423e5fb66bd5c748ff81d2df535c9655a9118a90bf30093",
+          "tests/ac-contracts/oracle-supplemental-validation.test.ts": "40f41b16d0096def853b02205a705c730ef09fdb831ad96f3d388ff62326eb15",
+          "public/backgrounds/heroes-9x16.webp": "da46dc95ce6b2318dd1dba1391f151949e6df4c16542ba3c0ccc6d67ef451184",
+          "public/backgrounds/heroes-16x9.webp": "17cf1403af1909970f606ca2a578655f145af768f1473b7dcd2ca861d7de95cf",
+          "public/backgrounds/colors-9x16.webp": "7a1b3f7a579fd2f38c392e831373365e2295c394a1a892dc7f7b8c4595d13b17",
+          "public/backgrounds/colors-16x9.webp": "f294982cd052737cc6e5324d43e0f138d6b1c1c3bb9f1727ff324d60620f71a9",
+          "public/backgrounds/years-9x16.webp": "fbad4d371fcd9c206c2ea1809fc2d3640cfbb919b729711aaf4fe7400b062ac3",
+          "public/backgrounds/years-16x9.webp": "2be315bcaf9e15ec88e29a43713c83ef451b4f8ee42625a39699cccfceebc3c0",
+          "public/backgrounds/directors-9x16.webp": "ecd80f63fa550de9350cb75d3e86d1b87693bb29d17d18da2fd5a57f6a0bef6c",
+          "public/backgrounds/directors-16x9.webp": "e8dbbe5e7072298a527850a194278982947037b61371156a73200e44739904ff",
+          "public/backgrounds/singers-9x16.webp": "010d1cd65427cb44dca41420c24c81ceb6e6bdd89291e421e1dbc0c51441192b",
+          "public/backgrounds/singers-16x9.webp": "dc67426945ebcd93eb4946540bbfcd4a626ad3e9c39cddb867f2cf98170cd7e2",
+          "public/backgrounds/opposites-9x16.webp": "490dd2010221cfb21365aec29288e2a31dbab7e45044f704ba066ad6545861f9",
+          "public/backgrounds/opposites-16x9.webp": "ed9d2d2e605a1780660d07bfc753a956bc3b5b91f075f76c0ef5c6159fcfea15",
+          "docs/category_artwork.md": "e0bad1a48398db2d131e0f2a2383ef4d11999d145774386263751d1a9a85a770",
+          "docs/category-artwork-prompts.json": "d43012da75cd1124c759786113aeb5cdd1fc8d831a918a5403711de1a16c1757"
+        },
+        "implementerReceiptSha256": "2a5611950e43935f639100396bf5e18a0a5087306a132417fa6650893e7d99a6"
+      },
+      "independentChecks": [
+        "Read source/CSS/test/design/provenance diffs and checked scope; gameplay commands/privacy logic remain unchanged by the artwork integration.",
+        "Verified all19 source/asset hashes in implementation receipt against current files, zero mismatches; independently decoded all12 assets and checked exact dimensions, bytes and SHA256 against provenance.",
+        "Visually inspected both six-scene contact sheets and actual production-game phone/desktop screenshots.",
+        "Reproduced original header readability defect in isolated Chromium using actual CSS and directors portrait; then independently rendered corrected page at390x844 and1440x960 with blur disabled. All three surfaces retained rgba(255,254,249,.88), and no horizontal overflow occurred. These fixtures are separate diagnostic evidence, not application tests.",
+        "Independently calculated worst-case text contrast over black artwork: primary11.01414970223709:1 and muted4.84761038199209:1; both exceed4.5 without blur.",
+        "Independently ran npm test -- tests/application/catalog-seed.test.ts:2/2 passed.",
+        "Reviewed archive fixture changes:32MiB Git blob output buffer, deleted-working-tree-path filtering,120s bounded ZIP budgets, and extract-once tar inspection retain independent Git hashes and all source/checksum/license/BOM/missing/tamper assertions; immutable HEAD fixture240s budget unchanged.",
+        "Read final and failed raw logs,14 category observations, and current source binding; git diff --check passed."
+      ],
+      "implementerRunEvidence": {
+        "productionBrowser": "22/22 passed in34.6s; actual React/domain/application integration with isolated HTTP/time/persistence fixtures. Covers all six categories in both aspects, second heroes pair, resize selection, blur absence, fallback/retry and keyboard/touch usability.",
+        "productionBuild": "Final3 build passed; final5 production rendering verifies explicit header and install surface protection.",
+        "unitSuite": "541/542 passed in the full run; sole archive failure explicitly reports Disk quota exceeded. Same unchanged archive test then passed1/1 in24.59s using task-owned disk temporary storage. All542 obligations passed across these runs; no claim of one clean542-test invocation.",
+        "archiveAndRace": "90/90 targeted checks passed.",
+        "readmeCapture": "2/2 capture checks passed; visual documentation refreshed.",
+        "logs": {
+          "category-page-ui-final5.log": "3e9bbab34ee75d7d8ca0c51193b2c0ad8256fa6cbe378106b576c14946948a43",
+          "category-source-archive-final.log": "1925930a5bb8bed4e6e00f9046265d585984de0e06cd251162e22b16cb91479e",
+          "category-archive-race-regression.log": "6ae27e7d11b59ce2d27ca1a3b55add649411dceace5d39b1c7257a32a789b133",
+          "category-unit-complete.log": "d57b7e4e76c9efc9b5da3031a03a1ea8901b2246fbae30e5d43fbca93f4a2ecc",
+          "category-page-build-final3.log": "9056d19ea6bac1ac0d8b17ce1878f27408b6580113f2973c8679090be9f7ee5c",
+          "category-page-ui-final2.log": "b163a96065757fbae9515a53f2901405591488e6391ed4ccc527467d93c50fb2",
+          "category-page-ui-final3.log": "cbed9dc9d3f8afd801a3aa4713dfde9b2ffc46bbc1dfb6307f7b77c58fbfc3ab",
+          "category-page-ui-final4.log": "fabf0a6b7fd9e2bed8e44ede97a57052339e275113866f6522760c0d45d90866",
+          "category-readme-capture.log": "8b14a847433b964c9180904e9191d56a7f07487d639718948db1f9f3170a2650"
+        }
+      },
+      "failureHistory": [
+        "Round1 decorative banner superseded by explicit operator request for page background.",
+        "Round2 exposed topbar and install text required correction.",
+        "Intermediate final2 production CSS lacked protective fills and14 contrast assertions failed; explicit CSS rules plus final5 passing assertions resolve that observed failure.",
+        "final3 browser run21/22 had one Target crashed; exact cause not established and not attributed to application code.",
+        "final4 failed browser startup with explicit Socket path too long; short task-owned disk TMPDIR allowed final5 clean22/22 execution without assertion changes or retries.",
+        "Full unit archive operation failed with explicit Disk quota exceeded; separate disk-temp run passed unchanged assertions. Earlier buffer/timeout failures prompted bounded fixture repairs documented above."
+      ],
+      "limits": [
+        "Approval is scoped to the current artwork refinement and reviewed test-infrastructure repairs, not an entire product rereview.",
+        "No physical-phone, live Realtime, public25-player capacity, contest readiness, legal-rights, deployment or submission certification.",
+        "No independent image-generation-session/original-source-file provenance verification; final delivered asset hashes/dimensions were verified and generation statements are attributed to the provenance manifest.",
+        "QBrain synchronization/readback and subsequent wiki/export publication remain parent-owned work; this review did not mutate or certify live requirements.",
+        "Production browser/full unit/build executions were implementer-run and independently inspected; reviewer-run evidence is expressly separated above."
+      ],
+      "report": "APPROVED99/99. No unresolved material findings. The artwork is a responsive fixed page background, not an artwork panel; all twelve assets are correctly bound, text remains readable without blur, and navigation/install surfaces now receive the same protection. Earlier rejected and superseded rounds remain intact."
+    }
+  ],
+  "currentVerdict": {
+    "round": 3,
+    "disposition": "approved",
+    "accuracyScore": 99,
+    "completenessScore": 99,
+    "unresolvedFindings": 0,
+    "snapshotSha256": "8f704598ad6c461cf8a0879a637a2282c2d54d1bacbbd29c2f3ee7d7dac02f5b"
+  }
+}

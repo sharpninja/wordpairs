@@ -1,0 +1,45 @@
+
+> wordpairs@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /home/sharpninja/github/WordGame/.mcpServer/wordpairs
+
+
+gzip: stdout: Disk quota exceeded
+tar: /tmp/wordpairs-source-acceptance-sOrbwh/candidate.tar.gz: Cannot write: Broken pipe
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+ ❯ tests/acceptance/source-archive.test.ts (1 test | 1 failed) 9497ms
+   × AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering 9492ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/acceptance/source-archive.test.ts > AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering
+Error: Command failed: tar -czf /tmp/wordpairs-source-acceptance-sOrbwh/candidate.tar.gz -C /tmp/wordpairs-source-acceptance-sOrbwh/source .
+
+gzip: stdout: Disk quota exceeded
+tar: /tmp/wordpairs-source-acceptance-sOrbwh/candidate.tar.gz: Cannot write: Broken pipe
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+
+ ❯ pack tests/acceptance/source-archive.test.ts:59:7
+     57|     const validator = new JsonStrictValidator(Version.v1dot6);
+     58|     const pack = () => {
+     59|       execFileSync("tar", ["-czf", archive, "-C", source, "."]);
+       |       ^
+     60|       writeFileSync(
+     61|         `${archive}.sha256`,
+ ❯ tests/acceptance/source-archive.test.ts:95:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 52 passed (53)
+      Tests  1 failed | 541 passed (542)
+   Start at  21:55:58
+   Duration  19.58s (tests 60%, environment 18%, import 15%, transform 6%, worker 1%)
+
+    Isolate  53 workers spawned · ~608ms startup each (spawn + environment, per file)
+             at least ~1.54s faster with isolate: false — reuses workers across files instead of one per file
+

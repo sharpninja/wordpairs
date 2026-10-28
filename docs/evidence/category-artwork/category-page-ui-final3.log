@@ -1,0 +1,61 @@
+[WebServer] (node:1619306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 22 tests using 1 worker
+
+(node:1619531) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/browser/accessibility.phase6.spec.ts:5:1 › AC-05-T01 counterpart artwork retry renders the successfully probed URL (938ms)
+  ✓   2 tests/browser/accessibility.phase6.spec.ts:64:1 › AC-05-T01 counterpart artwork failure shows an accessible fallback with usable answer controls (776ms)
+  ✓   3 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 390 (1.1s)
+  ✘   4 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 1440 (4.8s)
+(node:1620621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 1 at 390 (1.1s)
+  ✓   6 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 1 at 1440 (1.0s)
+  ✓   7 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real colors asset for pair 0 at 390 (799ms)
+  ✓   8 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real colors asset for pair 0 at 1440 (1.1s)
+  ✓   9 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real years asset for pair 0 at 390 (791ms)
+  ✓  10 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real years asset for pair 0 at 1440 (922ms)
+  ✓  11 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real directors asset for pair 0 at 390 (741ms)
+  ✓  12 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real directors asset for pair 0 at 1440 (875ms)
+  ✓  13 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real singers asset for pair 0 at 390 (710ms)
+  ✓  14 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real singers asset for pair 0 at 1440 (875ms)
+  ✓  15 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real opposites asset for pair 0 at 390 (763ms)
+  ✓  16 tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real opposites asset for pair 0 at 1440 (1.0s)
+  ✓  17 tests/browser/accessibility.phase6.spec.ts:315:3 › AC-15/44 counterparts 320x568 keyboard and touch (945ms)
+  ✓  18 tests/browser/accessibility.phase6.spec.ts:315:3 › AC-15/44 counterparts 568x320 keyboard and touch (884ms)
+  ✓  19 tests/browser/accessibility.phase6.spec.ts:315:3 › AC-15/44 counterparts 390x844 keyboard and touch (753ms)
+  ✓  20 tests/browser/accessibility.phase6.spec.ts:315:3 › AC-15/44 counterparts 844x390 keyboard and touch (960ms)
+  ✓  21 tests/browser/accessibility.phase6.spec.ts:447:1 › AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings (893ms)
+  ✓  22 tests/browser/accessibility.phase6.spec.ts:540:1 › maximum room roster and 25-player scorecard remain usable on a phone (531ms)
+
+
+  1) tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 1440 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: locator('.game-panel')
+    Expected: "loaded"
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" locator('.game-panel') with timeout 5000ms
+      - waiting for locator('.game-panel')
+      - Target crashed
+
+
+      132 |         const page = await context.newPage();
+      133 |         await page.goto(`/rooms/${roomId}`);
+    > 134 |         await expect(page.locator(".game-panel")).toHaveAttribute(
+          |                                                   ^
+      135 |           "data-artwork",
+      136 |           "loaded",
+      137 |         );
+        at /home/sharpninja/github/WordGame/.mcpServer/wordpairs/tests/browser/accessibility.phase6.spec.ts:134:51
+
+    Error Context: .wpu-readme-capture/category-output/accessibility.phase6-AC-05-3bf6b-es-asset-for-pair-0-at-1440/error-context.md
+
+  1 failed
+    tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 1440 
+  21 passed (27.5s)

@@ -130,7 +130,7 @@ Deployment and provisioning begin only after coding Phases 1–6 are complete. P
 
 **FR-05 Relationship categories — Confirmed.** The initial category set supports Heroes and Villains, Colors, Year and Event, Director and Movie, Singer and Song, and Opposites. Each pair belongs to one category.
 
-**FR-06 Category backgrounds — Confirmed.** Each category maps to one predefined background asset. All word pairs in the same category use that background. The background must remain legible behind the prompt, hints, answer field, and scorecard.
+**FR-06 Category backgrounds — Confirmed.** Each category maps to one predefined background asset. All word pairs in the same category use that background. The background must remain legible behind the prompt, hints, answer field, and scorecard. The operator's 27 October 2026 refinement requires distinct cel-shaded comic illustrations for all six initial categories and a frosted translucent content panel that reveals the artwork without distracting from the game. Artwork fills the page background, not a separate image panel. Every category provides both 9:16 portrait and 16:9 landscape compositions selected by viewport orientation. The authoritative refinement is `FR-CATEGORYART-006#ART-COMIC-01`, `#ART-PANEL-01` and `#ART-ASPECT-01`; see [artwork design and evidence](category_artwork.md).
 
 ### Round play and scoring
 

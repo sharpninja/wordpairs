@@ -45,3 +45,10 @@ Feature: AC-05: Category art
 
 
 Criterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.
+
+
+## Comic background refinement (27 October 2026)
+
+The operator-approved refinement is documented in [the artwork design](../../../category_artwork.md) and read back from [QBrain](../../../evidence/category-artwork/qbrain-readback.json). It covers `FR-CATEGORYART-006#ART-COMIC-01`, `#ART-PANEL-01`, and `#ART-ASPECT-01`, through this existing TEST record. The historical design case above and its original evidence remain unchanged.
+
+For each of the six categories, start an isolated approved round at 390×844 and1440×960. Await the loaded artwork state, decode the actual9:16 or16:9 asset, verify that it fills the page background with no image panel, and observe enabled answer controls. Check translucent game/header/install surfaces and worst-case text contrast; disable backdrop blur and confirm the same readable fills and usable answer input. Rotate a portrait viewport and await the16:9 URL and loaded state, then restore portrait and await9:16. Abort artwork loading separately, confirm usable fallback and activate Retry artwork. Expected observations and hashes are in [the bounded execution receipt](../../../evidence/category-artwork/receipt.json). The real-UI fixture isolates HTTP/time/persistence ports; it is not physical-device or live Realtime evidence.

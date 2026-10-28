@@ -1,6 +1,6 @@
 {
-  "capturedAtUtc": "2026-10-28T02:01:21.180968+00:00",
-  "applicationRevision": "773bdc3acbe59c0814e066030ae848c54330112d",
+  "capturedAtUtc": "2026-10-28T03:02:43.538898+00:00",
+  "applicationRevision": "2081ad95b0d44f48c3f6f4f97dde54dade7b537f",
   "server": "Next.js production build, task-owned local port 3101",
   "browser": "Chromium via Playwright, device scale factor 1",
   "evidenceScope": "Actual React pages and domain/application services with isolated HTTP/time/persistence fixtures and demonstration players. These screenshots are presentation assets, not physical-device or live Realtime execution evidence.",
@@ -37,48 +37,48 @@
   "presentation": "1600 x 1000 HTML/CSS device perspective compositions embedding the unaltered viewport PNG captures.",
   "checks": {
     "captureChecksPassed": 2,
-    "captureDurationSeconds": 4.6,
+    "captureDurationSeconds": 5.1,
     "imageDimensions": "passed",
     "gifFramesAndTiming": "passed",
     "readmeImageLinks": "passed",
     "reducedMotionStaticSource": "present",
-    "visualInspection": "Phone and desktop frames inspected; no development indicator, overlaps, or clipped slide copy."
+    "visualInspection": "Final full-page comic background and frosted gameplay inspected at phone and desktop sizes; no artwork banner."
   },
   "assets": [
     {
       "path": "docs/images/readme/wordpairs-phone.png",
       "width": 390,
       "height": 844,
-      "bytes": 74414,
-      "sha256": "95c1ad8b7c7f4caa73825a1be2fe8e4b9f012cdee94cbb6a38db13a6a50baa6d"
+      "bytes": 174387,
+      "sha256": "b2bcc79d6879c2d291d9a60d768b23f0a341249192027f8adedf101bee470cc3"
     },
     {
       "path": "docs/images/readme/wordpairs-desktop.png",
       "width": 1440,
       "height": 960,
-      "bytes": 139964,
-      "sha256": "783461d0b6f5c8d7d8ff60ed842ae343ff1284dcdad2ca18440cd939b592ab87"
+      "bytes": 1112275,
+      "sha256": "b820204327975662ff847c5bbc59c18437656a603493cba5a095a965f8a04559"
     },
     {
       "path": "docs/images/readme/wordpairs-phone-perspective.png",
       "width": 1600,
       "height": 1000,
-      "bytes": 238937,
-      "sha256": "8ee18440aba4ca23007c129bcefce54901a96de9590831cc819f0715c2243647"
+      "bytes": 332052,
+      "sha256": "3a33d1dc40df7d287bf892a8db5fa5a5f96b05d698b7828bfedf5699a0aea7a7"
     },
     {
       "path": "docs/images/readme/wordpairs-desktop-perspective.png",
       "width": 1600,
       "height": 1000,
-      "bytes": 188865,
-      "sha256": "4ac6ca815ea9ba29955b33fee606415c68803bd077d1b5b47669ef26faa6929b"
+      "bytes": 710474,
+      "sha256": "4fe6a304304f1c3830d220f31e0915749eb0e218692195367d40f0f1db7da049"
     },
     {
       "path": "docs/images/readme/wordpairs-slideshow.gif",
       "width": 1600,
       "height": 1000,
-      "bytes": 239069,
-      "sha256": "857cec7e512ee0b515dd54c4184184b0fb4f70e1f86554596a05b1f2dff8f1aa",
+      "bytes": 449052,
+      "sha256": "15ebcc77aca49a2f76d32db35801681c840c3e135f8f05289a7527ee1ce509c6",
       "frames": 2,
       "frameDurationMs": [
         7000,
@@ -86,5 +86,26 @@
       ],
       "loop": "continuous"
     }
-  ]
+  ],
+  "workingTreeSourceHashes": {
+    "src/web/game-panel.tsx": "089821a1e789b0c789553ebb12390b6f3685ec02d08e38abb2adb41e93a63355",
+    "src/app/globals.css": "56be5e6a58e4a99187f9c4927ecd4a6ba0011ee7288bab8b5a64d33bc7a32526",
+    "tests/browser/accessibility.phase6.spec.ts": "82f3cdf9a66ab67ab38f94e181948e9a6065e018870969d25c3fdf6c0305d470",
+    "tests/application/catalog-seed.test.ts": "d529521ae452cf2e76b4846a2eefa1e676d216dae160b4f70f56ea7aebde1895",
+    "tests/acceptance/coverage-map.ts": "eafd7748b85f63fd53c6884a39010fb53bc2a316f0bccd8bc9f2e8bc706d12ed",
+    "tests/acceptance/source-archive.test.ts": "1151607cf2350ecb6423e5fb66bd5c748ff81d2df535c9655a9118a90bf30093",
+    "tests/ac-contracts/oracle-supplemental-validation.test.ts": "40f41b16d0096def853b02205a705c730ef09fdb831ad96f3d388ff62326eb15",
+    "public/backgrounds/heroes-9x16.webp": "da46dc95ce6b2318dd1dba1391f151949e6df4c16542ba3c0ccc6d67ef451184",
+    "public/backgrounds/heroes-16x9.webp": "17cf1403af1909970f606ca2a578655f145af768f1473b7dcd2ca861d7de95cf",
+    "public/backgrounds/colors-9x16.webp": "7a1b3f7a579fd2f38c392e831373365e2295c394a1a892dc7f7b8c4595d13b17",
+    "public/backgrounds/colors-16x9.webp": "f294982cd052737cc6e5324d43e0f138d6b1c1c3bb9f1727ff324d60620f71a9",
+    "public/backgrounds/years-9x16.webp": "fbad4d371fcd9c206c2ea1809fc2d3640cfbb919b729711aaf4fe7400b062ac3",
+    "public/backgrounds/years-16x9.webp": "2be315bcaf9e15ec88e29a43713c83ef451b4f8ee42625a39699cccfceebc3c0",
+    "public/backgrounds/directors-9x16.webp": "ecd80f63fa550de9350cb75d3e86d1b87693bb29d17d18da2fd5a57f6a0bef6c",
+    "public/backgrounds/directors-16x9.webp": "e8dbbe5e7072298a527850a194278982947037b61371156a73200e44739904ff",
+    "public/backgrounds/singers-9x16.webp": "010d1cd65427cb44dca41420c24c81ceb6e6bdd89291e421e1dbc0c51441192b",
+    "public/backgrounds/singers-16x9.webp": "dc67426945ebcd93eb4946540bbfcd4a626ad3e9c39cddb867f2cf98170cd7e2",
+    "public/backgrounds/opposites-9x16.webp": "490dd2010221cfb21365aec29288e2a31dbab7e45044f704ba066ad6545861f9",
+    "public/backgrounds/opposites-16x9.webp": "ed9d2d2e605a1780660d07bfc753a956bc3b5b91f075f76c0ef5c6159fcfea15"
+  }
 }

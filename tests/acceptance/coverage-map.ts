@@ -145,10 +145,20 @@ export const coverageProofs: Record<string, Proof> = {
     [
       "src/web/game-panel.tsx",
       "src/infrastructure/catalog-seed.json",
-      "public/backgrounds/heroes.svg",
-      "public/backgrounds/colors.svg",
+      ...[
+        "heroes",
+        "colors",
+        "years",
+        "directors",
+        "singers",
+        "opposites",
+      ].flatMap((category) =>
+        ["9x16", "16x9"].map(
+          (aspect) => `public/backgrounds/${category}-${aspect}.webp`,
+        ),
+      ),
     ],
-    "Every seed pair matches its category asset; two different heroes pairs load heroes.svg and colors loads colors.svg in Chromium. Readable foreground/overlay contrast and enabled controls are measured. Forced missing art shows an accessible unavailable status and usable controls; explicit retry can recover.",
+    "Every seed pair matches its category; two different heroes pairs and all six categories load their real portrait and landscape WebP page backgrounds in Chromium. Orientation changes select the matching aspect. Translucent foreground contrast and enabled controls are measured. Forced missing art shows an accessible unavailable status and usable controls; explicit retry can recover.",
     "Historical animals/forest.svg fixtures are replaced by actual approved category assets. Actual CSS background URLs, successful image loads and fallback observations are retained.",
   ),
   ...Object.fromEntries(
