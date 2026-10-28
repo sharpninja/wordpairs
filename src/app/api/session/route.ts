@@ -10,6 +10,7 @@ import {
   PRIVATE_HEADERS,
   sameOrigin,
   sessionCookie,
+  uiSessionGeneration,
 } from "../../../web/server-http";
 export const runtime = "nodejs";
 export async function GET(request: Request) {
@@ -18,7 +19,11 @@ export async function GET(request: Request) {
   const result = await service.session(cookie(request, "wp_session"));
   return result.ok
     ? Response.json(
-        { profile: result.value.profile, oidcAvailable: oidcAvailable() },
+        {
+          profile: result.value.profile,
+          oidcAvailable: oidcAvailable(),
+          sessionGeneration: uiSessionGeneration(cookie(request, "wp_session")),
+        },
         { headers: PRIVATE_HEADERS },
       )
     : errorResponse(result);
@@ -36,6 +41,7 @@ export async function POST(request: Request) {
         {
           profile: result.value.profile,
           guestCredential: result.value.guestCredential,
+          sessionGeneration: uiSessionGeneration(result.value.sessionToken),
         },
         {
           headers: {

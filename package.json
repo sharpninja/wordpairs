@@ -7,6 +7,9 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:live-ui": "playwright test --config=playwright.live.config.ts",
+    "test:multiplayer": "pwsh -NoProfile -File tests/integration/run-phase1.ps1 -Multiplayer",
+    "test:admin": "pwsh -NoProfile -File tests/integration/run-phase1.ps1 -Administration",
     "typecheck": "tsc --noEmit",
     "dev": "next dev",
     "build": "next build",

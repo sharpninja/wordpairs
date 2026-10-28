@@ -1,10 +1,14 @@
 # Wordpairs Implementation Plan
 
-**Status:** Phase 0 approved; global active-AC mock-validation gate precedes production implementation  
+**Status:** Coding Phases 0–6 complete and independently approved; administration/ACL extension reviewed; Phase 7 deployment remains future work
 **Planning baseline:** Requirements v2.6, 26 October 2026
 **Process:** Byrd Development Process draft v4  
 **Target repository:** `sharpninja/wordpairs`  
 **Execution tracker:** [`implementation_phase0_execution.md`](implementation_phase0_execution.md)
+
+Current execution evidence is in [`phase6_execution.md`](phase6_execution.md), with subsequent administration behavior and validation in [`admin_acl_design.md`](admin_acl_design.md) and [`admin_acl_review_receipt.json`](admin_acl_review_receipt.json). The ordered gates below describe the completed coding sequence and the remaining deployment contract. They do not reopen completed phase approvals or impose a personal human sign-off gate.
+
+The subsequent [phone PWA extension](pwa_design.md) adds home-screen installation, standalone launch and a private-data-safe offline reconnect screen. It is tracked separately from historical coding-phase approvals and does not claim a hosted release or physical-phone installation from browser emulation.
 
 ## 1. Purpose and governing documents
 
@@ -184,7 +188,7 @@ Use a server-owned clock and injected random source. Assign a stable event/order
 - `tests/`: unit, component, service-contract, integration, and browser suites organized by AC ID.
 - `scripts/`: provisioning, migration/status checks, SWBOM validation, release archive creation, and archive inspection. Scripts are safe to rerun and redact secrets.
 
-Finalize exact module and route names during architecture approval. This is a proposed boundary map, not authorization to start coding.
+This section preserves the original planning boundary map. The implemented layout uses `src/domain`, `src/application`, `src/infrastructure`, `src/web` and App Router entries under `src/app`; see [local development](local_development.md). Provisioning and operational release scripts in this planned map remain Phase 7 work.
 
 ### 7.3 Critical data invariants
 
@@ -232,4 +236,8 @@ Before locking dependencies, review direct/transitive licenses and whether shipp
 
 A coding increment is complete only when its approved ACs map to passing mock-first tests, implementation and regression suites pass, security/data invariants are verified, and migrations/interfaces are documented. Do not deploy during coding Phases 1–6. After those phases and the full active-AC suite complete, Phase 7 performs deployment, operational verification, and release packaging. Deployment checks and deployed artifacts remain outside AC coverage.
 
-The global AC mock-oracle suite has 67 primary AC scenarios, 27 supplemental scenarios, four separate TR-19 cases, and 112 named controls; its 316 tests passed independent exact-commit review at 99% accuracy / 100% completeness on `f7b5ff8302e24c6eae4dd1d2f21d7cba8577ac29`. Phase 1A added the application shell. The [Phase 1 foundation candidate](phase1_execution.md) now adds typed ports, transaction/quota handling, private SQL persistence and adapter tests; its suite passes 352 tests plus separate disposable database checks. Phase 1 exit review is pending. Gameplay behavior remains unimplemented. The same assertions must run against real application behavior in each implementation increment.
+The global AC mock-oracle suite had 67 primary AC scenarios, 27 supplemental scenarios, four separate TR-19 cases and 112 named controls; its 316 tests passed independent exact-commit review at 99% accuracy / 100% completeness on `f7b5ff8302e24c6eae4dd1d2f21d7cba8577ac29`. Phases 1–6 subsequently implemented and independently validated the application, including gameplay. [Phase 6](phase6_execution.md) records formal coding completion. The later administration extension passed 502 unit/contract tests, 66 PostgreSQL tests, 31 browser journeys and the production build, with an independent 99/99 review. Those extension results supplement the historical baseline; they do not replace its recorded source-bound acceptance mapping or claim Phase 7 completion.
+
+## Live transport follow-up
+
+The phone stale-roster defect expanded the follow-up from lobby recovery to actual private delivery and autonomous progression. [The reviewed plan and execution evidence](room_sync_fix.md) cover real UI integration, scheduler failure handling, bounded publication, resume coalescing and lifecycle cleanup. The previous administration/PWA review receipts remain historical snapshots.

@@ -1,11 +1,15 @@
 # Wordpairs Architecture Design
 
 **Requirements traceability, DDD component split, and design-pattern class views**  
-Version 1.0 · 26 October 2026 · Derived from Requirements v2.6
+Version 1.1 · 27 October 2026 · Derived from Requirements v2.6 and the administration/ACL extension
 
-This document maps every functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to the proposed bounded contexts, application components, and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. The selected deployment and persistence requirements are Vercel and Supabase/Postgres (TR-20–TR-24). The selected architecture is a modular monolith using the Next.js/TypeScript stack; its technical ADR and interfaces are approved Phase 0 baselines for test authoring and mock validation before production implementation. The diagrams are SVG assets embedded here.
+This document maps every baseline functional requirement (FR-01–FR-22) and technical requirement (TR-01–TR-31) to bounded contexts, application components and logical classes. Names below describe responsibilities, not mandatory programming-language syntax. Coding Phases 1–6 are complete; the administration extension is documented separately below. Vercel and Supabase/Postgres remain the selected deployment and persistence target (TR-20–TR-24), with hosted deployment work in Phase 7. The implementation is a Next.js/TypeScript modular monolith with the Phase 0-approved interfaces. The diagrams are SVG assets embedded here; the current source layout is documented in [local development](local_development.md).
 
 ## Architecture rules
+
+The [phone PWA extension](pwa_design.md) adds a native Next manifest, original install icons, secure root worker registration and browser-controlled installation guidance. Its worker caches only a self-contained offline document and an explicit public icon allowlist. API/authentication/realtime traffic, mutations and private server-rendered/RSC data stay on the network; navigation failures display reconnect guidance. Updates wait for existing app windows to close. No domain, persistence or authorization rules move into the worker.
+
+The [administration and ACL extension](admin_acl_design.md), requested 27 October 2026, adds `/admin`, `/admin/words`, and `/admin/users`, an explicit permission matrix, server-configured bootstrap administrators, serialized role assignment and immutable pair revisions. It extends the implemented baseline without changing historical phase approval receipts. Identity roles are reloaded server-side; UI visibility is never the permission boundary.
 
 - Domain policies contain each business rule once and import no Next.js, React, Supabase, or transport code.
 - Application use cases orchestrate domain decisions and ports; route handlers validate/translate transport input and call use cases.
@@ -124,3 +128,13 @@ The v2.6 requirements resolve product behavior affecting active AC outcomes, inc
 ## Traceability validation
 
 This matrix intentionally covers FR-01 through FR-22 and TR-01 through TR-31, including responsive/accessibility requirements, operational delivery, supply-chain requirements, and public-data privacy. Acceptance criteria remain the executable coverage ledger; each requirement maps here to implementation boundaries and classes, while the AC-to-test matrix maps it to test cases. Requirements changes should update both mappings in the same review.
+
+## Local live multiplayer extension
+
+The temporary local runtime uses the existing game database and an isolated Realtime internal database. A loopback gateway exposes app and approved Realtime paths through one HTTPS origin. A serialized authenticated worker advances durable deadlines and publishes bounded outbox batches independently of browser reads. Notifications remain per-profile invalidation metadata; all state reads still enforce actor authorization. See [live runtime and UI verification](room_sync_fix.md). Hosted Phase7 provisioning remains separate.
+
+The repeatable loopback HTTPS UI harness gives its separate Realtime broker a separate migrated game database and outbox. Sharing the public runtime's game database across two brokers would let one publisher acknowledge events delivered to the other broker, losing notifications. Strict-TLS application-URL identity verification precedes publisher startup; cleanup failures preserve owned recovery receipts. The original public game database remains intact.
+
+## UI decision implementation extension
+
+[UI-DEC-01..08 implementation](testing/ui/implementation.md) documents the additional moderation states, identity/session-bound memory state, acknowledged result consumption and discovery recovery. Content commands still commit under fresh server roles, expected versions, idempotency and the existing audit/outbox transaction. No-solver summary jobs now use the existing stage dispatcher for a3-second automatic-advance delay; late workers start a full initial answer interval, and catalog revision races preserve retryability rather than losing the job. See the linked execution receipt for the reviewed source snapshot and fixture/SQL boundaries.

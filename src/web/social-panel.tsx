@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactionService } from "../application/reactions";
 import { REACTIONS } from "../domain/reactions";
@@ -17,6 +18,7 @@ export function SocialPanel({
   now,
   refreshKey,
   labels,
+  live = false,
 }: {
   roomId: string;
   profileId: string;
@@ -26,6 +28,7 @@ export function SocialPanel({
   now: number;
   refreshKey: number;
   labels: { id: string; alias: string }[];
+  live?: boolean;
 }) {
   const [view, setView] = useState<View | null>(null);
   const [contentVersion, setContentVersion] = useState<number | null>(null);
@@ -38,6 +41,16 @@ export function SocialPanel({
   const contentFetched = useRef(false);
   const nominationRound = useRef<string | null>(null);
   const endpoint = `/api/rooms/${encodeURIComponent(roomId)}/reactions`;
+  const deny = useCallback(() => {
+    generation.current++;
+    fetching.current = false;
+    refreshAgain.current = false;
+    contentFetched.current = false;
+    setView(null);
+    setContentVersion(null);
+    setNominated(null);
+    setError("Reactions and nominations require current room access.");
+  }, []);
   const refresh = useCallback(async (): Promise<void> => {
     if (fetching.current) {
       refreshAgain.current = true;
@@ -51,6 +64,15 @@ export function SocialPanel({
           cache: "no-store",
           signal: AbortSignal.timeout(10000),
         });
+        if (sequence !== generation.current) {
+          await response.text();
+          return;
+        }
+        if ([401, 403, 404].includes(response.status)) {
+          deny();
+          await response.text();
+          return;
+        }
         const result = await response.json();
         if (sequence !== generation.current) return;
         if (!response.ok) {
@@ -68,12 +90,10 @@ export function SocialPanel({
             previous && previous.version > result.version ? previous : result,
           );
         setError("");
-      } catch (problem) {
+      } catch {
         if (sequence === generation.current)
           setError(
-            problem instanceof Error
-              ? problem.message
-              : "Reactions unavailable.",
+            "Reactions are unavailable. Refresh or wait for reconnection.",
           );
       }
       if (canNominate && roundId && !contentFetched.current) {
@@ -106,19 +126,21 @@ export function SocialPanel({
         }
       }
     }
-  }, [endpoint, profileId, canNominate, roundId]);
+  }, [endpoint, profileId, canNominate, roundId, deny]);
   useEffect(() => {
     fetching.current = false;
     contentFetched.current = false;
     void refresh();
-    const timer = setInterval(() => void refresh(), 1000);
     return () => {
       generation.current++;
       fetching.current = false;
       refreshAgain.current = false;
-      clearInterval(timer);
     };
   }, [refresh]);
+  useEffect(() => {
+    const timer = setInterval(() => void refresh(), live ? 15000 : 1000);
+    return () => clearInterval(timer);
+  }, [refresh, live]);
   useEffect(() => {
     if (refreshKey > 0) void refresh();
   }, [refresh, refreshKey]);
@@ -128,10 +150,8 @@ export function SocialPanel({
       contentFetched.current = false;
       await refresh();
     },
-    () => {
-      setView(null);
-      setContentVersion(null);
-    },
+    deny,
+    `social:${roomId}`,
   );
   const react = async (emoji: string) => {
     const result = await intent.send(endpoint, {
@@ -212,7 +232,7 @@ export function SocialPanel({
         <p role="status">Nomination recorded for this round.</p>
       )}
       <p>
-        <a href="/content">Your submissions and community content</a>
+        <Link href="/content">Your submissions and community content</Link>
       </p>
       {intent.pending && (
         <button

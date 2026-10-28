@@ -1,5 +1,5 @@
 # Local TR-31 verification. No ports, credentials, or data from external services are used.
-param([string]$ContainerName = ('wordpairs-verification-' + [guid]::NewGuid().ToString('N').Substring(0,10)),[switch]$Realtime)
+param([string]$ContainerName = ('wordpairs-verification-' + [guid]::NewGuid().ToString('N').Substring(0,10)),[switch]$Realtime,[switch]$Multiplayer,[switch]$Administration)
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $createdContainerId = $null
@@ -77,7 +77,10 @@ insert into wordpairs.room_members(room_id,profile_id,membership_kind,roster_pos
         $env:WORDPAIRS_TEST_DATABASE_URL = "postgresql://postgres:wordpairs-local-test@127.0.0.1:${localPort}/wordpairs"
         Push-Location $repoRoot
         try {
-            & npm exec vitest -- run --config vitest.postgres.config.ts
+            $testFiles = @()
+            if ($Multiplayer) { $testFiles = @('tests/integration/multiplayer.integration.ts') }
+            if ($Administration) { $testFiles = @('tests/integration/admin.integration.ts') }
+            & npm exec vitest -- run --config vitest.postgres.config.ts @testFiles
             if ($LASTEXITCODE -ne 0) { throw 'Real adapter integration tests failed' }
             if ($Realtime) {
                 Invoke-TestSql "create role supabase_admin superuser login password 'wordpairs-local-test'; create role dashboard_user nologin; grant anon,authenticated,service_role to supabase_admin with admin option; create schema _realtime; create schema auth; alter role service_role bypassrls; create function auth.uid() returns uuid language sql stable as 'select nullif(current_setting(''request.jwt.claims'',true)::jsonb->>''sub'','''')::uuid'; create function auth.jwt() returns jsonb language sql stable as 'select current_setting(''request.jwt.claims'',true)::jsonb';"

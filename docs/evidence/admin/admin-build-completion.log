@@ -1,0 +1,49 @@
+Captured production build completion (exec session 56887); exit 0.
+
+> wordpairs@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+✓ Running next.config.ts took 133ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.7s
+  Running TypeScript ...
+  Finished TypeScript in 14.2s ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/12) ...
+  Generating static pages using 15 workers (3/12) 
+  Generating static pages using 15 workers (6/12) 
+  Generating static pages using 15 workers (9/12) 
+✓ Generating static pages using 15 workers (12/12) in 302ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /admin
+├ ƒ /admin/users
+├ ƒ /admin/words
+├ ƒ /api/admin/users
+├ ƒ /api/auth/callback
+├ ƒ /api/auth/login
+├ ƒ /api/content
+├ ƒ /api/internal/deadlines
+├ ƒ /api/landing
+├ ƒ /api/profile
+├ ƒ /api/realtime
+├ ƒ /api/rooms
+├ ƒ /api/rooms/[reference]
+├ ƒ /api/rooms/[reference]/lobby
+├ ƒ /api/rooms/[reference]/match
+├ ƒ /api/rooms/[reference]/reactions
+├ ƒ /api/session
+├ ƒ /content
+├ ƒ /play
+└ ƒ /rooms/[reference]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+

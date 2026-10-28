@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { oidcAvailable } from "../../infrastructure/runtime";
 import { ContentScreen } from "../../web/content-panel";
 export const dynamic = "force-dynamic";
@@ -5,12 +6,12 @@ export default function ContentPage() {
   return (
     <main className="site-shell">
       <header className="topbar">
-        <a className="brand" href="/">
+        <Link className="brand" href="/">
           wordpairs
-        </a>
+        </Link>
         <nav aria-label="Main navigation">
-          <a href="/play">Find a room</a>
-          <a href="/">Community board</a>
+          <Link href="/play">Find a room</Link>
+          <Link href="/">Community board</Link>
         </nav>
       </header>
       <ContentScreen oidcEnabled={oidcAvailable()} />

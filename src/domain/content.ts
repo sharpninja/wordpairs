@@ -1,3 +1,4 @@
+import { allowed } from "./access";
 import {
   buildCatalog,
   type Catalog,
@@ -55,8 +56,16 @@ export const emptyContent = (): ContentState => ({
   publications: [],
   disabled: [],
 });
-export const canModerate = (actor: Actor) =>
-  actor.roles.some((r) => r === "moderator" || r === "senior-moderator");
+export const canModerate = (actor: Actor) => allowed(actor, "moderate");
+export const openSuggestionStatuses = [
+  "collecting",
+  "pending",
+  "pending_review",
+  "changes_requested",
+  "appealed",
+];
+const pendingReview = (item: ContentCase) =>
+  item.status === "pending" || item.status === "pending_review";
 export const cleanText = (value: unknown, max = 200): value is string =>
   typeof value === "string" &&
   value.trim().length > 0 &&
@@ -91,7 +100,7 @@ function anotherOpenSuggestion(state: ContentState, item: ContentCase) {
         c.id !== item.id &&
         c.kind === "suggestion" &&
         c.proposerId === item.proposerId &&
-        ["pending", "appealed", "collecting"].includes(c.status),
+        openSuggestionStatuses.includes(c.status),
     )
   );
 }
@@ -182,7 +191,7 @@ export function suggestCategory(
       (c) =>
         c.kind === "suggestion" &&
         c.proposerId === actor.profileId &&
-        ["pending", "appealed", "collecting"].includes(c.status),
+        openSuggestionStatuses.includes(c.status),
     )
   )
     return failure("CONFLICT");
@@ -242,7 +251,7 @@ export function reviewCase(
     return failure("NOT_AUTHORIZED");
   if (!cleanText(reason, 1000) || !["approve", "reject"].includes(decision))
     return failure("VALIDATION_ERROR");
-  if (item.status !== "pending") return failure("CONFLICT");
+  if (!pendingReview(item)) return failure("CONFLICT");
   return success(
     change(state, {
       ...edited(item, now),
@@ -250,6 +259,86 @@ export function reviewCase(
       reviewerId: actor.profileId,
       originalReviewerId: actor.profileId,
       reason,
+    }),
+  );
+}
+/** Review deferrals do not publish content or consume the rejection appeal. */
+export function changeReviewState(
+  state: ContentState,
+  id: string,
+  actor: Actor,
+  action: "request-changes" | "hold" | "resume",
+  reason: string,
+  now: number,
+): Result<ContentState> {
+  const item = state.cases.find((c) => c.id === id);
+  if (!item) return failure("NOT_FOUND");
+  if (!canModerate(actor) || item.proposerId === actor.profileId)
+    return failure("NOT_AUTHORIZED");
+  if (!cleanText(reason, 1000)) return failure("VALIDATION_ERROR");
+  const valid =
+    action === "request-changes"
+      ? item.kind === "suggestion" && pendingReview(item)
+      : action === "hold"
+        ? item.kind === "nomination" && pendingReview(item)
+        : action === "resume" &&
+          item.kind === "nomination" &&
+          item.status === "on_hold" &&
+          new Set(item.nominatorIds).size >= 10;
+  if (!valid || item.playable) return failure("CONFLICT");
+  return success(
+    change(state, {
+      ...edited(item, now),
+      status:
+        action === "request-changes"
+          ? "changes_requested"
+          : action === "hold"
+            ? "on_hold"
+            : "pending_review",
+      reviewerId: actor.profileId,
+      reason: reason.trim(),
+    }),
+  );
+}
+export function resubmitSuggestion(
+  state: ContentState,
+  id: string,
+  actor: Actor,
+  proposal: Proposal,
+  now: number,
+  catalog: Catalog,
+): Result<ContentState> {
+  const item = state.cases.find((c) => c.id === id);
+  if (!item) return failure("NOT_FOUND");
+  if (item.proposerId !== actor.profileId) return failure("NOT_AUTHORIZED");
+  if (
+    item.kind !== "suggestion" ||
+    item.status !== "changes_requested" ||
+    item.playable ||
+    anotherOpenSuggestion(state, item)
+  )
+    return failure("CONFLICT");
+  // Reuse the initial proposal validation without adding a second case or
+  // requiring another ten wins. The original eligibility snapshot is retained.
+  const checked = suggestCategory(
+    { ...state, cases: state.cases.filter((c) => c.id !== id) },
+    actor,
+    10,
+    proposal,
+    now,
+    () => id,
+    catalog,
+  );
+  if (!checked.ok) return checked;
+  return success(
+    change(state, {
+      ...edited(item, now),
+      proposal: structuredClone(proposal),
+      payload: { category: proposal.category },
+      status: "pending_review",
+      reviewerId: null,
+      originalReviewerId: null,
+      reason: null,
     }),
   );
 }
@@ -286,7 +375,7 @@ export function resolveAppeal(
   const item = state.cases.find((c) => c.id === id);
   if (!item) return failure("NOT_FOUND");
   if (
-    !actor.roles.includes("senior-moderator") ||
+    !allowed(actor, "resolve-appeals") ||
     item.proposerId === actor.profileId ||
     item.originalReviewerId === actor.profileId
   )
@@ -370,8 +459,8 @@ export function activateCase(
   )
     return failure("VALIDATION_ERROR");
   if (
-    content.pairs.some((p) =>
-      catalog.pairs.some((old) => old.id === p.id && old.version === p.version),
+    content.pairs.some(
+      (p) => p.version !== 0 || catalog.pairs.some((old) => old.id === p.id),
     )
   )
     return failure("CONFLICT");
@@ -380,6 +469,8 @@ export function activateCase(
   ]);
   if (!checked.ok || checked.value.pairs.length !== content.pairs.length)
     return failure("VALIDATION_ERROR");
+  if (catalog.pairs.length + content.pairs.length > 4096)
+    return failure("SERVICE_LIMIT");
   const next = change(state, {
     ...edited(item, now),
     playable: true,
@@ -425,12 +516,66 @@ export function disablePair(
     disabled: [...state.disabled, { pairId, version, reason, at: now }],
   });
 }
+/** Append-only editorial save: existing rounds keep the previous pair version. */
+export function saveCatalogPair(
+  state: ContentState,
+  actor: Actor,
+  pair: Pair,
+  reason: string,
+  now: number,
+  catalog: Catalog,
+  nextId: () => string,
+): Result<ContentState> {
+  if (!allowed(actor, "manage-content")) return failure("NOT_AUTHORIZED");
+  const category = catalog.categories.find((c) => c.id === pair?.categoryId);
+  if (
+    !category ||
+    !pair ||
+    !/^[-A-Za-z0-9_]{1,128}$/.test(pair.id) ||
+    !pair.approved ||
+    !cleanText(reason, 1000) ||
+    !cleanText(pair.prompt) ||
+    !cleanText(pair.target) ||
+    !Array.isArray(pair.hints) ||
+    pair.hints.length !== 3 ||
+    pair.hints.some((h) => !cleanText(h, 400)) ||
+    !Array.isArray(pair.acceptedAnswers) ||
+    pair.acceptedAnswers.length > 20 ||
+    pair.acceptedAnswers.some((a) => !cleanText(a)) ||
+    pair.backgroundId !== category.backgroundId
+  )
+    return failure("VALIDATION_ERROR");
+  const previous = catalog.pairs.filter((p) => p.id === pair.id);
+  const expectedVersion = previous.length
+    ? Math.max(...previous.map((p) => p.version)) + 1
+    : 0;
+  if (
+    pair.version !== expectedVersion ||
+    previous.some((p) => p.categoryId !== pair.categoryId)
+  )
+    return failure("CONFLICT");
+  const checked = buildCatalog([category], [pair], [category.id]);
+  if (!checked.ok) return checked;
+  if (catalog.pairs.length >= 4096) return failure("SERVICE_LIMIT");
+  return success({
+    ...state,
+    version: state.version + 1,
+    publications: [
+      ...state.publications,
+      {
+        caseId: nextId(),
+        content: { category, pairs: [structuredClone(pair)] },
+        at: now,
+      },
+    ],
+  });
+}
 export function contentProjection(state: ContentState, actor: Actor) {
   const moderator = canModerate(actor);
   return {
     version: state.version,
     canModerate: moderator,
-    isSenior: actor.roles.includes("senior-moderator"),
+    isSenior: allowed(actor, "resolve-appeals"),
     cases: state.cases
       .filter(
         (c) =>
@@ -452,16 +597,34 @@ export function contentProjection(state: ContentState, actor: Actor) {
         reason: c.reason,
         createdAt: c.createdAt,
         canReview:
+          moderator && c.proposerId !== actor.profileId && pendingReview(c),
+        canRequestChanges:
           moderator &&
           c.proposerId !== actor.profileId &&
-          c.status === "pending",
+          c.kind === "suggestion" &&
+          pendingReview(c),
+        canResubmit:
+          c.proposerId === actor.profileId &&
+          c.kind === "suggestion" &&
+          c.status === "changes_requested",
+        canHold:
+          moderator &&
+          c.proposerId !== actor.profileId &&
+          c.kind === "nomination" &&
+          pendingReview(c),
+        canResume:
+          moderator &&
+          c.proposerId !== actor.profileId &&
+          c.kind === "nomination" &&
+          c.status === "on_hold" &&
+          new Set(c.nominatorIds).size >= 10,
         canAppeal:
           c.proposerId === actor.profileId &&
           c.status === "rejected" &&
           !c.appealed &&
           !anotherOpenSuggestion(state, c),
         canResolve:
-          actor.roles.includes("senior-moderator") &&
+          allowed(actor, "resolve-appeals") &&
           c.proposerId !== actor.profileId &&
           c.originalReviewerId !== actor.profileId &&
           c.status === "appealed",

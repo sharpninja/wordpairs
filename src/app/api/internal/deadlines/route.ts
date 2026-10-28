@@ -20,9 +20,19 @@ export async function POST(request: Request) {
     !timingSafeEqual(suppliedBytes, expectedBytes)
   )
     return errorResponse(failure("NOT_AUTHORIZED"));
-  const result = await advanceLobbyDeadlines();
-  if (!result) return errorResponse(failure("TEMPORARY_UNAVAILABLE"));
-  if (!result.ok) return errorResponse(result);
-  await deliverOutbox();
-  return Response.json({ applied: result.value }, { headers: PRIVATE_HEADERS });
+  // A deadline failure must not starve independently committed notifications.
+  const deadlines = await advanceLobbyDeadlines().catch(() => null);
+  const published = await deliverOutbox(25).catch(() => undefined);
+  const result = {
+    deadlines: deadlines?.ok
+      ? { ok: true, applied: deadlines.value }
+      : { ok: false, error: deadlines?.error.code ?? "TEMPORARY_UNAVAILABLE" },
+    outbox: published?.ok
+      ? { ok: true, published: published.value }
+      : { ok: false, error: published?.error.code ?? "TEMPORARY_UNAVAILABLE" },
+  };
+  return Response.json(result, {
+    status: result.deadlines.ok && result.outbox.ok ? 200 : 503,
+    headers: PRIVATE_HEADERS,
+  });
 }

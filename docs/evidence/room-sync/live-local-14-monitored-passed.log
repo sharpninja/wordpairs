@@ -1,0 +1,19 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 1 test using 1 worker
+
+LIVE_SCALE players=14 round=1
+LIVE_SCALE players=14 round=2
+LIVE_SCALE players=14 round=3
+LIVE_SCALE players=14 round=4
+LIVE_SCALE players=14 round=5
+LIVE_SCALE players=14 round=6
+LIVE_SCALE players=14 round=7
+LIVE_SCALE players=14 round=8
+  ✓  1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 14 real browser players complete eight UI rounds (4.0m)
+
+  1 passed (4.0m)
+

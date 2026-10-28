@@ -6,3 +6,11 @@ playwright-report/
 test-results/
 *.tsbuildinfo
 .mcpServer/
+/.wpu-*/
+.env*
+!.env.example
+.vercel/
+AGENTS-README-FIRST.yaml
+/mcp.db*
+# Server-managed export working tree; exact returned ZIP is kept under docs/requirements/.
+/docs/Project/wiki/

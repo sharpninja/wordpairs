@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {
   type FormEvent,
   useCallback,
@@ -14,6 +15,11 @@ import {
   type Proposal,
 } from "../domain/content";
 import { IdentityPanel } from "./identity-panel";
+import { DraftForm } from "./private-draft";
+import {
+  invalidatePrivateState,
+  privateIdentityRevision,
+} from "./private-state";
 import { usePrivateIntent } from "./use-private-intent";
 
 type View = Extract<
@@ -21,49 +27,82 @@ type View = Extract<
   { ok: true }
 >["value"];
 type Case = View["cases"][number];
-export function ContentScreen({ oidcEnabled }: { oidcEnabled: boolean }) {
+export function ContentScreen({
+  oidcEnabled,
+  administration = false,
+}: {
+  oidcEnabled: boolean;
+  administration?: boolean;
+}) {
   const [profile, setProfile] = useState<OwnProfile | null>(null);
   return (
     <>
       <IdentityPanel oidcEnabled={oidcEnabled} onProfile={setProfile} />
-      {profile && <ContentPanel key={profile.id} profileId={profile.id} />}
+      {profile && (
+        <ContentPanel
+          key={`${profile.id}:${privateIdentityRevision()}`}
+          profileId={profile.id}
+          administration={administration}
+        />
+      )}
     </>
   );
 }
-function ContentPanel({ profileId }: { profileId: string }) {
+function ContentPanel({
+  profileId,
+  administration,
+}: {
+  profileId: string;
+  administration: boolean;
+}) {
   const [view, setView] = useState<View | null>(null);
   const [error, setError] = useState("");
+  const [reading, setReading] = useState(false);
+  const wasModerator = useRef(false);
+  const [filter, setFilter] = useState("all");
+  const [search, setSearch] = useState("");
   const generation = useRef(0);
   const refresh = useCallback(async () => {
     const sequence = ++generation.current;
+    setReading(true);
     try {
       const response = await fetch("/api/content", {
         cache: "no-store",
         signal: AbortSignal.timeout(10000),
       });
+      if ([401, 403, 404].includes(response.status)) {
+        await response.text();
+        if (sequence !== generation.current) return;
+        invalidatePrivateState();
+        setView(null);
+        setError("Access required. Your role or session changed.");
+        return;
+      }
       const result = await response.json();
       if (sequence !== generation.current) return;
       if (!response.ok || result.actorId !== profileId) {
         if (
           [401, 403, 404].includes(response.status) ||
           (result.actorId && result.actorId !== profileId)
-        )
+        ) {
+          invalidatePrivateState();
           setView(null);
+        }
         throw new Error(
           "Submission updates are unavailable. Refresh to recover.",
         );
       }
+      if (wasModerator.current && !result.canModerate) invalidatePrivateState();
+      wasModerator.current = result.canModerate;
       setView((previous) =>
         previous && previous.version > result.version ? previous : result,
       );
       setError("");
-    } catch (problem) {
+    } catch {
       if (sequence === generation.current)
-        setError(
-          problem instanceof Error
-            ? problem.message
-            : "Submission service unavailable.",
-        );
+        setError("Submission updates are unavailable. Refresh to recover.");
+    } finally {
+      if (sequence === generation.current) setReading(false);
     }
   }, [profileId]);
   useEffect(() => {
@@ -74,15 +113,30 @@ function ContentPanel({ profileId }: { profileId: string }) {
       clearInterval(timer);
     };
   }, [refresh]);
-  const intent = usePrivateIntent(profileId, refresh, () => setView(null));
-  const send = (action: ContentAction) =>
+  const intent = usePrivateIntent(profileId, refresh, () => {
+    generation.current++;
+    setView(null);
+    setError("Access required. Your role or session changed.");
+  });
+  const send = (
+    action: ContentAction,
+    draftKey = "caseId" in action
+      ? `${action.type}-${action.caseId}`
+      : action.type === "disable"
+        ? `disable-${action.pairId}`
+        : action.type,
+  ) =>
     view
-      ? intent.send("/api/content", {
-          ...action,
-          action: action.type,
-          type: undefined,
-          expectedVersion: view.version,
-        })
+      ? intent.send(
+          "/api/content",
+          {
+            ...action,
+            action: action.type,
+            type: undefined,
+            expectedVersion: view.version,
+          },
+          draftKey,
+        )
       : Promise.resolve();
   const suggest = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -94,8 +148,32 @@ function ContentPanel({ profileId }: { profileId: string }) {
         target: String(form.get(`target-${i}`) ?? ""),
       })),
     };
-    void send({ type: "suggest", proposal });
+    void send({ type: "suggest", proposal }, "suggestion");
   };
+  const visibleCases =
+    view?.cases.filter(
+      (item) =>
+        !administration ||
+        ((filter === "all" ||
+          (filter === "active"
+            ? item.playable
+            : (item.status === filter ||
+                (filter === "pending" && item.status === "pending_review")) &&
+              !item.playable)) &&
+          `${item.word ?? ""} ${item.proposal?.category ?? ""}`
+            .toLowerCase()
+            .includes(search.toLowerCase())),
+    ) ?? [];
+  if (administration && view && !view.canModerate)
+    return (
+      <section className="panel admin-surface">
+        <h1>Moderation access required</h1>
+        <p>
+          Your profile does not have moderation rights. Ask an administrator to
+          grant access.
+        </p>
+      </section>
+    );
   return (
     <section
       className="panel content-panel"
@@ -103,7 +181,9 @@ function ContentPanel({ profileId }: { profileId: string }) {
       aria-busy={intent.busy}
     >
       <div className="panel-heading">
-        <h1 id="content-title">Community content</h1>
+        <h1 id="content-title">
+          {administration ? "Moderation queue" : "Community content"}
+        </h1>
         <button type="button" onClick={() => void refresh()}>
           Refresh submissions
         </button>
@@ -112,53 +192,110 @@ function ContentPanel({ profileId }: { profileId: string }) {
         {error && <p role="alert">{error}</p>}
         {intent.error && <p role="alert">{intent.error}</p>}
         {intent.notice && <p role="status">{intent.notice}</p>}
-        {!view && !error && <p role="status">Loading your submissions…</p>}
+        {intent.busy && <p role="status">Saving your request…</p>}
+        {reading && <p role="status">Loading your submissions…</p>}
         {view && (
           <>
-            <p>
-              Suggestions unlock at ten lifetime wins. Your profile has{" "}
-              {view.wins}. Approval permits curation; complete curated records
-              are required before future play.
-            </p>
-            {view.canSuggest ? (
-              <form onSubmit={suggest}>
-                <fieldset disabled={intent.locked}>
-                  <legend>Suggest one category and three pairs</legend>
-                  <label>
-                    Proposed category
-                    <input name="category" required maxLength={80} />
-                  </label>
-                  {[1, 2, 3].map((i) => (
-                    <div className="pair-fields" key={`proposal-${i}`}>
+            {!administration && (
+              <>
+                <p>
+                  Suggestions unlock at ten lifetime wins. Your profile has{" "}
+                  {view.wins}. Approval permits curation; complete curated
+                  records are required before future play.
+                </p>
+                {view.canSuggest ? (
+                  <DraftForm
+                    profileId={profileId}
+                    draftKey="suggestion"
+                    onSubmit={suggest}
+                  >
+                    <fieldset disabled={intent.locked}>
+                      <legend>Suggest one category and three pairs</legend>
                       <label>
-                        Pair {i} prompt
-                        <input name={`prompt-${i}`} required maxLength={200} />
+                        Proposed category
+                        <input name="category" required maxLength={80} />
                       </label>
-                      <label>
-                        Pair {i} target
-                        <input name={`target-${i}`} required maxLength={200} />
-                      </label>
-                    </div>
-                  ))}
-                  <button className="button" type="submit">
-                    Submit suggestion
-                  </button>
-                </fieldset>
-              </form>
-            ) : (
-              <p role="status">
-                {view.wins < 10
-                  ? "Keep playing to unlock category suggestions."
-                  : "Your open suggestion is under review. You can submit another after it closes."}
+                      {[1, 2, 3].map((i) => (
+                        <div className="pair-fields" key={`proposal-${i}`}>
+                          <label>
+                            Pair {i} prompt
+                            <input
+                              name={`prompt-${i}`}
+                              required
+                              maxLength={200}
+                            />
+                          </label>
+                          <label>
+                            Pair {i} target
+                            <input
+                              name={`target-${i}`}
+                              required
+                              maxLength={200}
+                            />
+                          </label>
+                        </div>
+                      ))}
+                      <button className="button" type="submit">
+                        Submit suggestion
+                      </button>
+                      <button type="reset">Discard suggestion</button>
+                    </fieldset>
+                  </DraftForm>
+                ) : (
+                  <p role="status">
+                    {view.wins < 10
+                      ? "Keep playing to unlock category suggestions."
+                      : "Your open suggestion is under review. You can submit another after it closes."}
+                  </p>
+                )}
+              </>
+            )}
+            {view.canModerate && !administration && (
+              <p>
+                <Link href="/admin">Open administration</Link>
               </p>
+            )}
+            {administration && (
+              <div className="admin-toolbar">
+                <label>
+                  Search submissions
+                  <input
+                    type="search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
+                </label>
+                <label>
+                  Submission status
+                  <select
+                    value={filter}
+                    onChange={(event) => setFilter(event.target.value)}
+                  >
+                    <option value="all">All submissions</option>
+                    <option value="pending">Pending review</option>
+                    <option value="changes_requested">Changes requested</option>
+                    <option value="on_hold">On hold</option>
+                    <option value="appealed">Appeals</option>
+                    <option value="approved">Approved for curation</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="active">Active content</option>
+                  </select>
+                </label>
+              </div>
             )}
             <h2>
               {view.canModerate
                 ? "Review queue and your submissions"
                 : "Your submissions"}
             </h2>
-            {!view.cases.length && <p>No submissions yet.</p>}
-            {view.cases.map((item) => (
+            {!visibleCases.length && (
+              <p role="status">
+                {view.cases.length
+                  ? "No submissions match these filters. Change the search or status."
+                  : "No submissions yet. Refresh submissions or return to play to earn suggestion access."}
+              </p>
+            )}
+            {visibleCases.map((item) => (
               <article className="content-case" key={item.id}>
                 <h3>
                   {item.kind === "nomination"
@@ -189,22 +326,28 @@ function ContentPanel({ profileId }: { profileId: string }) {
                   </ul>
                 )}
                 {item.canReview && (
-                  <form
+                  <DraftForm
+                    profileId={profileId}
+                    draftKey={`review-${item.id}`}
                     onSubmit={(event) => {
                       event.preventDefault();
                       const form = new FormData(event.currentTarget);
-                      const decision =
-                        (
-                          event.nativeEvent as SubmitEvent
-                        ).submitter?.getAttribute("value") === "reject"
-                          ? "reject"
-                          : "approve";
-                      void send({
-                        type: "review",
-                        caseId: item.id,
-                        decision,
-                        reason: String(form.get("reason") ?? ""),
-                      });
+                      const decision = (
+                        event.nativeEvent as SubmitEvent
+                      ).submitter?.getAttribute("value");
+                      const reason = String(form.get("reason") ?? "");
+                      void send(
+                        decision === "request-changes" || decision === "hold"
+                          ? { type: decision, caseId: item.id, reason }
+                          : {
+                              type: "review",
+                              caseId: item.id,
+                              decision:
+                                decision === "reject" ? "reject" : "approve",
+                              reason,
+                            },
+                        `review-${item.id}`,
+                      );
                     }}
                   >
                     <fieldset disabled={intent.locked}>
@@ -218,11 +361,117 @@ function ContentPanel({ profileId }: { profileId: string }) {
                       <button type="submit" name="decision" value="reject">
                         Reject
                       </button>
+                      {item.canRequestChanges && (
+                        <button type="submit" value="request-changes">
+                          Request changes
+                        </button>
+                      )}
+                      {item.canHold && (
+                        <button type="submit" value="hold">
+                          Hold candidate
+                        </button>
+                      )}
+                      <button type="reset">Discard decision</button>
                     </fieldset>
-                  </form>
+                  </DraftForm>
+                )}
+                {item.canResume && (
+                  <DraftForm
+                    profileId={profileId}
+                    draftKey={`resume-${item.id}`}
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      void send(
+                        {
+                          type: "resume",
+                          caseId: item.id,
+                          reason: String(
+                            new FormData(event.currentTarget).get("reason") ??
+                              "",
+                          ),
+                        },
+                        `resume-${item.id}`,
+                      );
+                    }}
+                  >
+                    <fieldset disabled={intent.locked}>
+                      <label>
+                        Resume reason
+                        <textarea name="reason" required maxLength={1000} />
+                      </label>
+                      <button type="submit">Resume review</button>
+                      <button type="reset">Discard decision</button>
+                    </fieldset>
+                  </DraftForm>
+                )}
+                {item.canResubmit && item.proposal && (
+                  <DraftForm
+                    profileId={profileId}
+                    draftKey={`resubmit-${item.id}`}
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      const form = new FormData(event.currentTarget);
+                      void send(
+                        {
+                          type: "resubmit",
+                          caseId: item.id,
+                          proposal: {
+                            category: String(form.get("category") ?? ""),
+                            pairs: [1, 2, 3].map((i) => ({
+                              prompt: String(form.get(`prompt-${i}`) ?? ""),
+                              target: String(form.get(`target-${i}`) ?? ""),
+                            })),
+                          },
+                        },
+                        `resubmit-${item.id}`,
+                      );
+                    }}
+                  >
+                    <fieldset disabled={intent.locked}>
+                      <legend>Revise your suggestion</legend>
+                      <label>
+                        Revised category
+                        <input
+                          name="category"
+                          required
+                          maxLength={80}
+                          defaultValue={item.proposal.category}
+                        />
+                      </label>
+                      {item.proposal.pairs.map((pair, i) => (
+                        <div
+                          className="pair-fields"
+                          key={`${pair.prompt}:${pair.target}`}
+                        >
+                          <label>
+                            Revised pair {i + 1} prompt
+                            <input
+                              name={`prompt-${i + 1}`}
+                              required
+                              maxLength={200}
+                              defaultValue={pair.prompt}
+                            />
+                          </label>
+                          <label>
+                            Revised pair {i + 1} target
+                            <input
+                              name={`target-${i + 1}`}
+                              required
+                              maxLength={200}
+                              defaultValue={pair.target}
+                            />
+                          </label>
+                        </div>
+                      ))}
+                      <button type="submit">Resubmit suggestion</button>
+                      <button type="reset">Discard revision</button>
+                    </fieldset>
+                  </DraftForm>
                 )}
                 {item.canAppeal && (
-                  <form
+                  <DraftForm
+                    profileId={profileId}
+                    draftKey={`appeal-${item.id}`}
                     onSubmit={(event) => {
                       event.preventDefault();
                       void send({
@@ -240,11 +489,14 @@ function ContentPanel({ profileId }: { profileId: string }) {
                         <textarea name="reason" required maxLength={1000} />
                       </label>
                       <button type="submit">Appeal once</button>
+                      <button type="reset">Discard appeal</button>
                     </fieldset>
-                  </form>
+                  </DraftForm>
                 )}
                 {item.canResolve && (
-                  <form
+                  <DraftForm
+                    profileId={profileId}
+                    draftKey={`resolve-${item.id}`}
                     onSubmit={(event) => {
                       event.preventDefault();
                       void send({
@@ -273,13 +525,15 @@ function ContentPanel({ profileId }: { profileId: string }) {
                       <button type="submit" value="overturn">
                         Overturn rejection
                       </button>
+                      <button type="reset">Discard appeal decision</button>
                     </fieldset>
-                  </form>
+                  </DraftForm>
                 )}
                 {item.canActivate && (
                   <details>
                     <summary>Prepare catalog records</summary>
                     <CurationForm
+                      profileId={profileId}
                       item={item}
                       view={view}
                       disabled={intent.locked}
@@ -303,6 +557,13 @@ function ContentPanel({ profileId }: { profileId: string }) {
                           key={`${a.at}:${a.action}:${a.nominationCount}:${a.status}`}
                         >
                           {a.action}
+                          {a.caseVersion !== null
+                            ? ` · revision ${String(a.caseVersion)}`
+                            : ""}
+                          {a.previousStatus
+                            ? ` · ${String(a.previousStatus)} → ${String(a.status)}`
+                            : ""}
+                          {a.actorId ? ` · by ${a.actorId}` : ""}
                           {a.reason ? ` · ${String(a.reason)}` : ""}
                           {a.nominationCount !== null
                             ? ` · ${String(a.nominationCount)} nominations`
@@ -313,8 +574,10 @@ function ContentPanel({ profileId }: { profileId: string }) {
                 </details>
               </article>
             ))}
-            {view.canModerate && (
-              <form
+            {view.canModerate && !administration && (
+              <DraftForm
+                profileId={profileId}
+                draftKey="disable-pair"
                 onSubmit={(event) => {
                   event.preventDefault();
                   const data = new FormData(event.currentTarget);
@@ -322,12 +585,15 @@ function ContentPanel({ profileId }: { profileId: string }) {
                     (p) => `${p.id}@${p.version}` === data.get("pair"),
                   );
                   if (pair)
-                    void send({
-                      type: "disable",
-                      pairId: pair.id,
-                      pairVersion: pair.version,
-                      reason: String(data.get("reason") ?? ""),
-                    });
+                    void send(
+                      {
+                        type: "disable",
+                        pairId: pair.id,
+                        pairVersion: pair.version,
+                        reason: String(data.get("reason") ?? ""),
+                      },
+                      "disable-pair",
+                    );
                 }}
               >
                 <fieldset disabled={intent.locked}>
@@ -357,8 +623,9 @@ function ContentPanel({ profileId }: { profileId: string }) {
                     <textarea name="reason" required maxLength={1000} />
                   </label>
                   <button type="submit">Exclude from future rounds</button>
+                  <button type="reset">Discard exclusion</button>
                 </fieldset>
-              </form>
+              </DraftForm>
             )}
           </>
         )}
@@ -376,11 +643,13 @@ function ContentPanel({ profileId }: { profileId: string }) {
   );
 }
 function CurationForm({
+  profileId,
   item,
   view,
   disabled,
   activate,
 }: {
+  profileId: string;
   item: Case;
   view: View;
   disabled: boolean;
@@ -390,7 +659,9 @@ function CurationForm({
     { prompt: "", target: String(item.word) },
   ];
   return (
-    <form
+    <DraftForm
+      profileId={profileId}
+      draftKey={`activate-${item.id}`}
       onSubmit={(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -477,7 +748,8 @@ function CurationForm({
           </div>
         ))}
         <button type="submit">Activate complete content</button>
+        <button type="reset">Discard curation</button>
       </fieldset>
-    </form>
+    </DraftForm>
   );
 }

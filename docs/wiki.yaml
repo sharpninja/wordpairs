@@ -1,0 +1,829 @@
+schema: mcp-wiki-export/v1
+home:
+  document: home
+documents:
+- id: home
+  title: Home
+  source: generated:home
+  target: Home.md
+  platforms:
+  - github
+  - azure
+- id: functional
+  title: Functional Requirements
+  source: generated:functional
+  target: Functional-Requirements.md
+  platforms:
+  - github
+  - azure
+- id: technical
+  title: Technical Requirements
+  source: generated:technical
+  target: Technical-Requirements.md
+  platforms:
+  - github
+  - azure
+- id: testing
+  title: Testing Requirements
+  source: generated:testing
+  target: Testing-Requirements.md
+  platforms:
+  - github
+  - azure
+- id: mapping
+  title: TR per FR Mapping
+  source: generated:mapping
+  target: TR-per-FR-Mapping.md
+  platforms:
+  - github
+  - azure
+- id: matrix
+  title: Requirements Matrix
+  source: generated:matrix
+  target: Requirements-Matrix.md
+  platforms:
+  - github
+  - azure
+- id: readme
+  title: Wordpairs
+  source: README.md
+  target: Wordpairs.md
+  platforms:
+  - github
+  - azure
+- id: local-development
+  title: Local Development
+  source: docs/local_development.md
+  target: Local-Development.md
+  platforms:
+  - github
+  - azure
+- id: testing-guide
+  title: Testing and Evidence
+  source: docs/testing.md
+  target: Testing-and-Evidence.md
+  platforms:
+  - github
+  - azure
+- id: admin-acl
+  title: Administration and Access Control
+  source: docs/admin_acl_design.md
+  target: Administration-and-Access-Control.md
+  platforms:
+  - github
+  - azure
+- id: requirements-baseline
+  title: Requirements Baseline v2.6
+  source: docs/word_association_game_requirements.md
+  target: Requirements-Baseline.md
+  platforms:
+  - github
+  - azure
+- id: architecture-decision
+  title: Architecture Decision Record
+  source: docs/architecture_decision_record.md
+  target: Architecture-Decision-Record.md
+  platforms:
+  - github
+  - azure
+- id: architecture-design
+  title: Architecture Design
+  source: docs/architecture_design.md
+  target: Architecture-Design.md
+  platforms:
+  - github
+  - azure
+- id: architecture-patterns
+  title: Architecture Patterns
+  source: docs/architecture_patterns.md
+  target: Architecture-Patterns.md
+  platforms:
+  - github
+  - azure
+- id: moderation
+  title: Content Moderation
+  source: docs/moderation_plan.md
+  target: Content-Moderation.md
+  platforms:
+  - github
+  - azure
+- id: deployment
+  title: Deployment and Release Plan
+  source: docs/deployment_plan.md
+  target: Deployment-and-Release-Plan.md
+  platforms:
+  - github
+  - azure
+- id: acceptance-gaps
+  title: Acceptance Criteria Gap Analysis
+  source: docs/ac_gap_analysis.md
+  target: Acceptance-Criteria-Gap-Analysis.md
+  platforms:
+  - github
+  - azure
+- id: acceptance-inventory
+  title: Acceptance Criteria Test Inventory
+  source: docs/ac_test_inventory.md
+  target: Acceptance-Criteria-Test-Inventory.md
+  platforms:
+  - github
+  - azure
+- id: implementation-plan
+  title: Implementation Plan
+  source: docs/implementation_plan.md
+  target: Implementation-Plan.md
+  platforms:
+  - github
+  - azure
+- id: phase0-execution
+  title: Phase 0 Execution
+  source: docs/implementation_phase0_execution.md
+  target: Phase-0-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase0-contracts
+  title: Phase 0 Interface and Data Contracts
+  source: docs/phase0_interface_and_data_contracts.md
+  target: Phase-0-Interface-and-Data-Contracts.md
+  platforms:
+  - github
+  - azure
+- id: phase1a-execution
+  title: Phase 1A Execution
+  source: docs/phase1a_execution.md
+  target: Phase-1A-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase1-execution
+  title: Phase 1 Execution
+  source: docs/phase1_execution.md
+  target: Phase-1-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase2-execution
+  title: Phase 2 Execution
+  source: docs/phase2_execution.md
+  target: Phase-2-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase3-execution
+  title: Phase 3 Execution
+  source: docs/phase3_execution.md
+  target: Phase-3-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase4-execution
+  title: Phase 4 Execution
+  source: docs/phase4_execution.md
+  target: Phase-4-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase5-execution
+  title: Phase 5 Execution
+  source: docs/phase5_execution.md
+  target: Phase-5-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase6-execution
+  title: Phase 6 Execution
+  source: docs/phase6_execution.md
+  target: Phase-6-Execution.md
+  platforms:
+  - github
+  - azure
+- id: phase6-phone-feedback
+  title: Optional Phase 6 Human Feedback
+  source: docs/phase6_phone_review.md
+  target: Phase-6-Phone-Feedback.md
+  platforms:
+  - github
+  - azure
+- id: browser-crash-diagnosis
+  title: Historical Chromium Crash Diagnosis
+  source: docs/evidence/phase6/chromium-crash-diagnosis.md
+  target: Browser-Crash-Diagnosis.md
+  platforms:
+  - github
+  - azure
+- id: coding-goal
+  title: Completed Coding Goal and Review Agreement
+  source: docs/goal_hv_agreement_through_phase_6.md
+  target: Coding-Goal-and-Review-Agreement.md
+  platforms:
+  - github
+  - azure
+- id: attributions
+  title: Third Party Attributions
+  source: docs/ATTRIBUTIONS.md
+  target: Attributions.md
+  platforms:
+  - github
+  - azure
+- id: swbom
+  title: Software Bill of Materials Contract
+  source: docs/SWBOM.md
+  target: SWBOM.md
+  platforms:
+  - github
+  - azure
+- id: phone-pwa
+  title: Phone Installation and PWA
+  source: docs/pwa_design.md
+  target: Phone-Installation-and-PWA.md
+  platforms:
+  - github
+  - azure
+- id: live-multiplayer
+  title: Live Multiplayer Runtime and UI Integration
+  source: docs/room_sync_fix.md
+  target: Live-Multiplayer-and-UI-Integration.md
+  platforms:
+  - github
+  - azure
+- id: ui-test-index
+  title: UI Test Case Index
+  source: docs/testing/ui/index.md
+  target: UI-Index.md
+  platforms:
+  - github
+  - azure
+- id: ui-test-coverage
+  title: UI Design Coverage
+  source: docs/testing/ui/coverage.md
+  target: UI-Coverage.md
+  platforms:
+  - github
+  - azure
+- id: ui-test-gaps
+  title: UI Criterion Gaps
+  source: docs/testing/ui/gaps.md
+  target: UI-Gaps.md
+  platforms:
+  - github
+  - azure
+- id: ui-test-questions
+  title: UI Design Questions
+  source: docs/testing/ui/questions.md
+  target: UI-Questions.md
+  platforms:
+  - github
+  - azure
+- id: ui-test-persistence
+  title: UI Test Persistence
+  source: docs/testing/ui/persistence.md
+  target: UI-Persistence.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-accessiblegamecontrols-044
+  title: TEST-ACCESSIBLEGAMECONTROLS-044 UI Case
+  source: docs/testing/ui/cases/TEST-ACCESSIBLEGAMECONTROLS-044.md
+  target: TEST-ACCESSIBLEGAMECONTROLS-044-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-aclauthorization-132
+  title: TEST-ACLAUTHORIZATION-132 UI Case
+  source: docs/testing/ui/cases/TEST-ACLAUTHORIZATION-132.md
+  target: TEST-ACLAUTHORIZATION-132-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-adminui-136
+  title: TEST-ADMINUI-136 UI Case
+  source: docs/testing/ui/cases/TEST-ADMINUI-136.md
+  target: TEST-ADMINUI-136-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-authoritativeanswerhandling-045
+  title: TEST-AUTHORITATIVEANSWERHANDLING-045 UI Case
+  source: docs/testing/ui/cases/TEST-AUTHORITATIVEANSWERHANDLING-045.md
+  target: TEST-AUTHORITATIVEANSWERHANDLING-045-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-browseopenlobbies-022
+  title: TEST-BROWSEOPENLOBBIES-022 UI Case
+  source: docs/testing/ui/cases/TEST-BROWSEOPENLOBBIES-022.md
+  target: TEST-BROWSEOPENLOBBIES-022-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-catalogversioning-133
+  title: TEST-CATALOGVERSIONING-133 UI Case
+  source: docs/testing/ui/cases/TEST-CATALOGVERSIONING-133.md
+  target: TEST-CATALOGVERSIONING-133-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-categoryart-005
+  title: TEST-CATEGORYART-005 UI Case
+  source: docs/testing/ui/cases/TEST-CATEGORYART-005.md
+  target: TEST-CATEGORYART-005-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-categorychoice-011
+  title: TEST-CATEGORYCHOICE-011 UI Case
+  source: docs/testing/ui/cases/TEST-CATEGORYCHOICE-011.md
+  target: TEST-CATEGORYCHOICE-011-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-categorysuggestionunlock-019
+  title: TEST-CATEGORYSUGGESTIONUNLOCK-019 UI Case
+  source: docs/testing/ui/cases/TEST-CATEGORYSUGGESTIONUNLOCK-019.md
+  target: TEST-CATEGORYSUGGESTIONUNLOCK-019-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-configuredcapacity-024
+  title: TEST-CONFIGUREDCAPACITY-024 UI Case
+  source: docs/testing/ui/cases/TEST-CONFIGUREDCAPACITY-024.md
+  target: TEST-CONFIGUREDCAPACITY-024-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-connectionrecovery-109
+  title: TEST-CONNECTIONRECOVERY-109 UI Case
+  source: docs/testing/ui/cases/TEST-CONNECTIONRECOVERY-109.md
+  target: TEST-CONNECTIONRECOVERY-109-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-contentvalidation-016
+  title: TEST-CONTENTVALIDATION-016 UI Case
+  source: docs/testing/ui/cases/TEST-CONTENTVALIDATION-016.md
+  target: TEST-CONTENTVALIDATION-016-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-deeplinkjoinandfullroom-026
+  title: TEST-DEEPLINKJOINANDFULLROOM-026 UI Case
+  source: docs/testing/ui/cases/TEST-DEEPLINKJOINANDFULLROOM-026.md
+  target: TEST-DEEPLINKJOINANDFULLROOM-026-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-finalstandings-013
+  title: TEST-FINALSTANDINGS-013 UI Case
+  source: docs/testing/ui/cases/TEST-FINALSTANDINGS-013.md
+  target: TEST-FINALSTANDINGS-013-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-firstcategory-004
+  title: TEST-FIRSTCATEGORY-004 UI Case
+  source: docs/testing/ui/cases/TEST-FIRSTCATEGORY-004.md
+  target: TEST-FIRSTCATEGORY-004-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-freetierquotahandling-037
+  title: TEST-FREETIERQUOTAHANDLING-037 UI Case
+  source: docs/testing/ui/cases/TEST-FREETIERQUOTAHANDLING-037.md
+  target: TEST-FREETIERQUOTAHANDLING-037-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-fullroomobserver-027
+  title: TEST-FULLROOMOBSERVER-027 UI Case
+  source: docs/testing/ui/cases/TEST-FULLROOMOBSERVER-027.md
+  target: TEST-FULLROOMOBSERVER-027-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-guestplay-021
+  title: TEST-GUESTPLAY-021 UI Case
+  source: docs/testing/ui/cases/TEST-GUESTPLAY-021.md
+  target: TEST-GUESTPLAY-021-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-hintprogression-009
+  title: TEST-HINTPROGRESSION-009 UI Case
+  source: docs/testing/ui/cases/TEST-HINTPROGRESSION-009.md
+  target: TEST-HINTPROGRESSION-009-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-hintscoring-007
+  title: TEST-HINTSCORING-007 UI Case
+  source: docs/testing/ui/cases/TEST-HINTSCORING-007.md
+  target: TEST-HINTSCORING-007-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-holdoutwarningandremoval-032
+  title: TEST-HOLDOUTWARNINGANDREMOVAL-032 UI Case
+  source: docs/testing/ui/cases/TEST-HOLDOUTWARNINGANDREMOVAL-032.md
+  target: TEST-HOLDOUTWARNINGANDREMOVAL-032-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-idlelobbyreadinessprompt-033
+  title: TEST-IDLELOBBYREADINESSPROMPT-033 UI Case
+  source: docs/testing/ui/cases/TEST-IDLELOBBYREADINESSPROMPT-033.md
+  target: TEST-IDLELOBBYREADINESSPROMPT-033-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-inroundemojireaction-029
+  title: TEST-INROUNDEMOJIREACTION-029 UI Case
+  source: docs/testing/ui/cases/TEST-INROUNDEMOJIREACTION-029.md
+  target: TEST-INROUNDEMOJIREACTION-029-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-landingpagepublicdata-050
+  title: TEST-LANDINGPAGEPUBLICDATA-050 UI Case
+  source: docs/testing/ui/cases/TEST-LANDINGPAGEPUBLICDATA-050.md
+  target: TEST-LANDINGPAGEPUBLICDATA-050-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-livescorecard-010
+  title: TEST-LIVESCORECARD-010 UI Case
+  source: docs/testing/ui/cases/TEST-LIVESCORECARD-010.md
+  target: TEST-LIVESCORECARD-010-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-moderationandcatalogboundary-047
+  title: TEST-MODERATIONANDCATALOGBOUNDARY-047 UI Case
+  source: docs/testing/ui/cases/TEST-MODERATIONANDCATALOGBOUNDARY-047.md
+  target: TEST-MODERATIONANDCATALOGBOUNDARY-047-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-nohintsolve-006
+  title: TEST-NOHINTSOLVE-006 UI Case
+  source: docs/testing/ui/cases/TEST-NOHINTSOLVE-006.md
+  target: TEST-NOHINTSOLVE-006-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-nominationeligibility-017
+  title: TEST-NOMINATIONELIGIBILITY-017 UI Case
+  source: docs/testing/ui/cases/TEST-NOMINATIONELIGIBILITY-017.md
+  target: TEST-NOMINATIONELIGIBILITY-017-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-nominationmoderation-114
+  title: TEST-NOMINATIONMODERATION-114 UI Case
+  source: docs/testing/ui/cases/TEST-NOMINATIONMODERATION-114.md
+  target: TEST-NOMINATIONMODERATION-114-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-nominationthresholdandmoderation-018
+  title: TEST-NOMINATIONTHRESHOLDANDMODERATION-018 UI Case
+  source: docs/testing/ui/cases/TEST-NOMINATIONTHRESHOLDANDMODERATION-018.md
+  target: TEST-NOMINATIONTHRESHOLDANDMODERATION-018-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-observerperspectiveandpermissions-028
+  title: TEST-OBSERVERPERSPECTIVEANDPERMISSIONS-028 UI Case
+  source: docs/testing/ui/cases/TEST-OBSERVERPERSPECTIVEANDPERMISSIONS-028.md
+  target: TEST-OBSERVERPERSPECTIVEANDPERMISSIONS-028-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-oidctokenvalidation-046
+  title: TEST-OIDCTOKENVALIDATION-046 UI Case
+  source: docs/testing/ui/cases/TEST-OIDCTOKENVALIDATION-046.md
+  target: TEST-OIDCTOKENVALIDATION-046-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-openaioidcprofile-020
+  title: TEST-OPENAIOIDCPROFILE-020 UI Case
+  source: docs/testing/ui/cases/TEST-OPENAIOIDCPROFILE-020.md
+  target: TEST-OPENAIOIDCPROFILE-020-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-orientation-015
+  title: TEST-ORIENTATION-015 UI Case
+  source: docs/testing/ui/cases/TEST-ORIENTATION-015.md
+  target: TEST-ORIENTATION-015-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-playerlimit-002
+  title: TEST-PLAYERLIMIT-002 UI Case
+  source: docs/testing/ui/cases/TEST-PLAYERLIMIT-002.md
+  target: TEST-PLAYERLIMIT-002-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-precountdownobserverpromotion-030
+  title: TEST-PRECOUNTDOWNOBSERVERPROMOTION-030 UI Case
+  source: docs/testing/ui/cases/TEST-PRECOUNTDOWNOBSERVERPROMOTION-030.md
+  target: TEST-PRECOUNTDOWNOBSERVERPROMOTION-030-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-profileicon-003
+  title: TEST-PROFILEICON-003 UI Case
+  source: docs/testing/ui/cases/TEST-PROFILEICON-003.md
+  target: TEST-PROFILEICON-003-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-publicgamelandingpage-043
+  title: TEST-PUBLICGAMELANDINGPAGE-043 UI Case
+  source: docs/testing/ui/cases/TEST-PUBLICGAMELANDINGPAGE-043.md
+  target: TEST-PUBLICGAMELANDINGPAGE-043-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-pwainstall-137
+  title: TEST-PWAINSTALL-137 UI Case
+  source: docs/testing/ui/cases/TEST-PWAINSTALL-137.md
+  target: TEST-PWAINSTALL-137-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-pwaprivacy-138
+  title: TEST-PWAPRIVACY-138 UI Case
+  source: docs/testing/ui/cases/TEST-PWAPRIVACY-138.md
+  target: TEST-PWAPRIVACY-138-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-quickmatch-023
+  title: TEST-QUICKMATCH-023 UI Case
+  source: docs/testing/ui/cases/TEST-QUICKMATCH-023.md
+  target: TEST-QUICKMATCH-023-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-readycountdownandrosterlock-031
+  title: TEST-READYCOUNTDOWNANDROSTERLOCK-031 UI Case
+  source: docs/testing/ui/cases/TEST-READYCOUNTDOWNANDROSTERLOCK-031.md
+  target: TEST-READYCOUNTDOWNANDROSTERLOCK-031-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-roominvitations-025
+  title: TEST-ROOMINVITATIONS-025 UI Case
+  source: docs/testing/ui/cases/TEST-ROOMINVITATIONS-025.md
+  target: TEST-ROOMINVITATIONS-025-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-roomjoining-001
+  title: TEST-ROOMJOINING-001 UI Case
+  source: docs/testing/ui/cases/TEST-ROOMJOINING-001.md
+  target: TEST-ROOMJOINING-001-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-roomsync-139
+  title: TEST-ROOMSYNC-139 UI Case
+  source: docs/testing/ui/cases/TEST-ROOMSYNC-139.md
+  target: TEST-ROOMSYNC-139-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-roundsummary-012
+  title: TEST-ROUNDSUMMARY-012 UI Case
+  source: docs/testing/ui/cases/TEST-ROUNDSUMMARY-012.md
+  target: TEST-ROUNDSUMMARY-012-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-suggestionreview-115
+  title: TEST-SUGGESTIONREVIEW-115 UI Case
+  source: docs/testing/ui/cases/TEST-SUGGESTIONREVIEW-115.md
+  target: TEST-SUGGESTIONREVIEW-115-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-timetiebreak-014
+  title: TEST-TIMETIEBREAK-014 UI Case
+  source: docs/testing/ui/cases/TEST-TIMETIEBREAK-014.md
+  target: TEST-TIMETIEBREAK-014-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-unsolvedresult-008
+  title: TEST-UNSOLVEDRESULT-008 UI Case
+  source: docs/testing/ui/cases/TEST-UNSOLVEDRESULT-008.md
+  target: TEST-UNSOLVEDRESULT-008-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-test-decisions
+  title: UI Gap Decisions and Synchronization
+  source: docs/testing/ui/decisions.md
+  target: UI-Gap-Decisions.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-accessibilitydetails-144
+  title: TEST-ACCESSIBILITYDETAILS-144 UI Case
+  source: docs/testing/ui/cases/TEST-ACCESSIBILITYDETAILS-144.md
+  target: TEST-ACCESSIBILITYDETAILS-144-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-candidatehold-141
+  title: TEST-CANDIDATEHOLD-141 UI Case
+  source: docs/testing/ui/cases/TEST-CANDIDATEHOLD-141.md
+  target: TEST-CANDIDATEHOLD-141-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-lobbymatching-117
+  title: TEST-LOBBYMATCHING-117 UI Case
+  source: docs/testing/ui/cases/TEST-LOBBYMATCHING-117.md
+  target: TEST-LOBBYMATCHING-117-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-navigationdrafts-142
+  title: TEST-NAVIGATIONDRAFTS-142 UI Case
+  source: docs/testing/ui/cases/TEST-NAVIGATIONDRAFTS-142.md
+  target: TEST-NAVIGATIONDRAFTS-142-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-nosolverfallback-146
+  title: TEST-NOSOLVERFALLBACK-146 UI Case
+  source: docs/testing/ui/cases/TEST-NOSOLVERFALLBACK-146.md
+  target: TEST-NOSOLVERFALLBACK-146-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-requestfeedback-143
+  title: TEST-REQUESTFEEDBACK-143 UI Case
+  source: docs/testing/ui/cases/TEST-REQUESTFEEDBACK-143.md
+  target: TEST-REQUESTFEEDBACK-143-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-responsivematrix-145
+  title: TEST-RESPONSIVEMATRIX-145 UI Case
+  source: docs/testing/ui/cases/TEST-RESPONSIVEMATRIX-145.md
+  target: TEST-RESPONSIVEMATRIX-145-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-reviewchanges-140
+  title: TEST-REVIEWCHANGES-140 UI Case
+  source: docs/testing/ui/cases/TEST-REVIEWCHANGES-140.md
+  target: TEST-REVIEWCHANGES-140-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-case-test-roomcodes-110
+  title: TEST-ROOMCODES-110 UI Case
+  source: docs/testing/ui/cases/TEST-ROOMCODES-110.md
+  target: TEST-ROOMCODES-110-UI-Case.md
+  platforms:
+  - github
+  - azure
+- id: ui-implementation-plan
+  title: UI Gap Implementation Plan
+  source: docs/testing/ui/implementation-plan.md
+  target: UI-Gap-Implementation-Plan.md
+  platforms:
+  - github
+  - azure
+- id: ui-implementation
+  title: UI Gap Implementation and Evidence
+  source: docs/testing/ui/implementation.md
+  target: UI-Gap-Implementation.md
+  platforms:
+  - github
+  - azure
+- id: contest-readiness
+  title: Contest Readiness
+  source: docs/submission/README.md
+  target: Contest-Readiness.md
+  platforms:
+  - github
+  - azure
+- id: contest-hv
+  title: Hostile Validation Evidence
+  source: docs/submission/hv-evidence.md
+  target: Hostile-Validation-Evidence.md
+  platforms:
+  - github
+  - azure
+navigation:
+- document: home
+- document: functional
+- document: technical
+- document: testing
+- document: mapping
+- document: matrix
+- document: readme
+- document: local-development
+- document: testing-guide
+- document: admin-acl
+- document: requirements-baseline
+- document: architecture-decision
+- document: architecture-design
+- document: architecture-patterns
+- document: moderation
+- document: deployment
+- document: acceptance-gaps
+- document: acceptance-inventory
+- document: implementation-plan
+- document: phase0-execution
+- document: phase0-contracts
+- document: phase1a-execution
+- document: phase1-execution
+- document: phase2-execution
+- document: phase3-execution
+- document: phase4-execution
+- document: phase5-execution
+- document: phase6-execution
+- document: phase6-phone-feedback
+- document: browser-crash-diagnosis
+- document: coding-goal
+- document: attributions
+- document: swbom
+- document: phone-pwa
+- document: live-multiplayer
+- document: ui-test-index
+- document: ui-test-coverage
+- document: ui-test-gaps
+- document: ui-test-questions
+- document: ui-test-persistence
+- document: ui-case-test-accessiblegamecontrols-044
+- document: ui-case-test-aclauthorization-132
+- document: ui-case-test-adminui-136
+- document: ui-case-test-authoritativeanswerhandling-045
+- document: ui-case-test-browseopenlobbies-022
+- document: ui-case-test-catalogversioning-133
+- document: ui-case-test-categoryart-005
+- document: ui-case-test-categorychoice-011
+- document: ui-case-test-categorysuggestionunlock-019
+- document: ui-case-test-configuredcapacity-024
+- document: ui-case-test-connectionrecovery-109
+- document: ui-case-test-contentvalidation-016
+- document: ui-case-test-deeplinkjoinandfullroom-026
+- document: ui-case-test-finalstandings-013
+- document: ui-case-test-firstcategory-004
+- document: ui-case-test-freetierquotahandling-037
+- document: ui-case-test-fullroomobserver-027
+- document: ui-case-test-guestplay-021
+- document: ui-case-test-hintprogression-009
+- document: ui-case-test-hintscoring-007
+- document: ui-case-test-holdoutwarningandremoval-032
+- document: ui-case-test-idlelobbyreadinessprompt-033
+- document: ui-case-test-inroundemojireaction-029
+- document: ui-case-test-landingpagepublicdata-050
+- document: ui-case-test-livescorecard-010
+- document: ui-case-test-moderationandcatalogboundary-047
+- document: ui-case-test-nohintsolve-006
+- document: ui-case-test-nominationeligibility-017
+- document: ui-case-test-nominationmoderation-114
+- document: ui-case-test-nominationthresholdandmoderation-018
+- document: ui-case-test-observerperspectiveandpermissions-028
+- document: ui-case-test-oidctokenvalidation-046
+- document: ui-case-test-openaioidcprofile-020
+- document: ui-case-test-orientation-015
+- document: ui-case-test-playerlimit-002
+- document: ui-case-test-precountdownobserverpromotion-030
+- document: ui-case-test-profileicon-003
+- document: ui-case-test-publicgamelandingpage-043
+- document: ui-case-test-pwainstall-137
+- document: ui-case-test-pwaprivacy-138
+- document: ui-case-test-quickmatch-023
+- document: ui-case-test-readycountdownandrosterlock-031
+- document: ui-case-test-roominvitations-025
+- document: ui-case-test-roomjoining-001
+- document: ui-case-test-roomsync-139
+- document: ui-case-test-roundsummary-012
+- document: ui-case-test-suggestionreview-115
+- document: ui-case-test-timetiebreak-014
+- document: ui-case-test-unsolvedresult-008
+- document: ui-test-decisions
+- document: ui-case-test-accessibilitydetails-144
+- document: ui-case-test-candidatehold-141
+- document: ui-case-test-lobbymatching-117
+- document: ui-case-test-navigationdrafts-142
+- document: ui-case-test-nosolverfallback-146
+- document: ui-case-test-requestfeedback-143
+- document: ui-case-test-responsivematrix-145
+- document: ui-case-test-reviewchanges-140
+- document: ui-case-test-roomcodes-110
+- document: ui-implementation-plan
+- document: ui-implementation
+- document: contest-readiness
+- document: contest-hv

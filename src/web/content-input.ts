@@ -88,6 +88,48 @@ export function contentAction(
   ];
   const fields = (extra: string[]) => only(input, [...common, ...extra]);
   if (
+    (input.action === "request-changes" ||
+      input.action === "hold" ||
+      input.action === "resume") &&
+    fields(["caseId", "reason"]) &&
+    id(input.caseId) &&
+    text(input.reason, 1000)
+  )
+    return { type: input.action, caseId: input.caseId, reason: input.reason };
+  if (
+    input.action === "resubmit" &&
+    fields(["caseId", "proposal"]) &&
+    id(input.caseId) &&
+    proposal(input.proposal)
+  )
+    return { type: "resubmit", caseId: input.caseId, proposal: input.proposal };
+  if (
+    input.action === "save-pair" &&
+    fields(["pair", "reason"]) &&
+    text(input.reason, 1000) &&
+    object(input.pair)
+  ) {
+    const pair = input.pair;
+    // Reuse the strict curated-record transport contract; the domain resolves
+    // the real category and checks next-version/permission under its lock.
+    const wrapped = {
+      category: {
+        id: pair.categoryId,
+        version: 0,
+        name: "transport-validation",
+        backgroundId: pair.backgroundId,
+        approved: true,
+      },
+      pairs: [pair],
+    };
+    if (curated(wrapped))
+      return {
+        type: "save-pair",
+        pair: wrapped.pairs[0],
+        reason: input.reason,
+      };
+  }
+  if (
     input.action === "nominate" &&
     fields(["roomId", "roundId", "word"]) &&
     typeof input.roomId === "string" &&

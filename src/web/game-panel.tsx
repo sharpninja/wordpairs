@@ -1,7 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { MatchService } from "../application/matches";
 import { ProfileIcon } from "./identity-panel";
+import { invalidatePrivateState } from "./private-state";
 import { SocialPanel } from "./social-panel";
 
 type Projection = Extract<
@@ -31,11 +33,13 @@ export function GamePanel({
   profileId,
   refreshKey,
   onFinished,
+  live = false,
 }: {
   roomId: string;
   profileId: string;
   refreshKey: number;
   onFinished: () => Promise<void>;
+  live?: boolean;
 }) {
   const [view, setView] = useState<View | null>(null);
   const [answer, setAnswer] = useState("");
@@ -48,34 +52,68 @@ export function GamePanel({
   const [failedArt, setFailedArt] = useState<string | null>(null);
   const [artAttempt, setArtAttempt] = useState(0);
   const pending = useRef<Record<string, unknown> | null>(null);
+  const inFlight = useRef(false);
   const generation = useRef(0);
+  const lifecycle = useRef(0);
   const fetching = useRef(false);
+  const refreshAgain = useRef(false);
   const offset = useRef(0);
+  const deny = useCallback(() => {
+    generation.current++;
+    lifecycle.current++;
+    fetching.current = false;
+    refreshAgain.current = false;
+    pending.current = null;
+    invalidatePrivateState();
+    setView(null);
+    setAnswer("");
+    setBusy(false);
+    setError(
+      "Your game perspective is unavailable. The followed player may have left.",
+    );
+  }, []);
   const endpoint = `/api/rooms/${encodeURIComponent(roomId)}/match`;
-  const refresh = useCallback(async () => {
-    if (fetching.current) return;
+  const refresh = useCallback(async (): Promise<void> => {
+    if (fetching.current) {
+      refreshAgain.current = true;
+      return;
+    }
     fetching.current = true;
     const sequence = ++generation.current;
+    let explanation = "Game updates are unavailable. Refresh to recover.";
     try {
       const response = await fetch(endpoint, {
         cache: "no-store",
         signal: AbortSignal.timeout(10000),
       });
+      if (sequence !== generation.current) {
+        await response.text();
+        return;
+      }
+      if ([401, 403, 404].includes(response.status)) {
+        deny();
+        await response.text();
+        return;
+      }
       const result = await response.json();
       if (sequence !== generation.current) return;
       if (!response.ok) {
         if ([401, 403, 404].includes(response.status)) {
+          lifecycle.current++;
+          setBusy(false);
           setView(null);
           setAnswer("");
           pending.current = null;
         }
-        throw new Error(
+        explanation =
           response.status === 403
             ? "Your game perspective is unavailable. The followed player may have left."
-            : "Game updates are unavailable. Refresh to recover.",
-        );
+            : "Game updates are unavailable. Refresh to recover.";
+        throw new Error("Unavailable");
       }
       if (result.actorId !== profileId) {
+        lifecycle.current++;
+        setBusy(false);
         setView(null);
         setAnswer("");
         pending.current = null;
@@ -87,26 +125,31 @@ export function GamePanel({
       offset.current = result.serverNow - Date.now();
       setNow(result.serverNow);
       setError("");
-    } catch (problem) {
-      if (sequence === generation.current)
-        setError(
-          problem instanceof Error
-            ? problem.message
-            : "Game updates are unavailable.",
-        );
+    } catch {
+      if (sequence === generation.current) setError(explanation);
     } finally {
-      if (sequence === generation.current) fetching.current = false;
+      if (sequence === generation.current) {
+        fetching.current = false;
+        if (refreshAgain.current) {
+          refreshAgain.current = false;
+          void refresh();
+        }
+      }
     }
-  }, [endpoint, profileId]);
+  }, [endpoint, profileId, deny]);
   useEffect(() => {
     void refresh();
-    const timer = setInterval(() => void refresh(), 1000);
     return () => {
       generation.current++;
+      lifecycle.current++;
       fetching.current = false;
-      clearInterval(timer);
+      refreshAgain.current = false;
     };
   }, [refresh]);
+  useEffect(() => {
+    const timer = setInterval(() => void refresh(), live ? 15000 : 1000);
+    return () => clearInterval(timer);
+  }, [refresh, live]);
   useEffect(() => {
     if (refreshKey === 0) return;
     void refresh();
@@ -119,7 +162,8 @@ export function GamePanel({
     if (view?.status === "finished") void onFinished();
   }, [view?.status, onFinished]);
   const send = async (intent?: Intent) => {
-    if (!view || busy || view.role !== "player") return;
+    if (!view || inFlight.current || view.role !== "player") return;
+    const sequence = lifecycle.current;
     const input =
       pending.current ??
       (intent
@@ -131,10 +175,12 @@ export function GamePanel({
           }
         : null);
     if (!input) return;
+    inFlight.current = true;
     pending.current = input;
     setBusy(true);
     setError("");
     setNotice("");
+    let explanation = "Game service is unavailable. Retry the same request.";
     try {
       const response = await fetch(endpoint, {
         method: "POST",
@@ -142,7 +188,17 @@ export function GamePanel({
         body: JSON.stringify(input),
         signal: AbortSignal.timeout(10000),
       });
+      if (sequence !== lifecycle.current) {
+        await response.text();
+        return;
+      }
+      if ([401, 403, 404].includes(response.status)) {
+        deny();
+        await response.text();
+        return;
+      }
       const result = await response.json();
+      if (sequence !== lifecycle.current) return;
       if (!response.ok) {
         if (response.status < 500) {
           pending.current = null;
@@ -151,11 +207,11 @@ export function GamePanel({
             setAnswer("");
           } else await refresh();
         }
-        throw new Error(
+        explanation =
           response.status === 409
             ? "The round or account changed. Review the current stage and try again."
-            : "Your request was not confirmed. Retry the same request.",
-        );
+            : "Your request was not confirmed. Retry the same request.";
+        throw new Error("Unavailable");
       }
       pending.current = null;
       setConfirmed(result.version);
@@ -168,14 +224,11 @@ export function GamePanel({
         );
       }
       await refresh();
-    } catch (problem) {
-      setError(
-        problem instanceof Error
-          ? problem.message
-          : "Game service is unavailable. Retry the same request.",
-      );
+    } catch {
+      if (sequence === lifecycle.current) setError(explanation);
     } finally {
-      setBusy(false);
+      inFlight.current = false;
+      if (sequence === lifecycle.current) setBusy(false);
     }
   };
   const locked =
@@ -246,6 +299,23 @@ export function GamePanel({
         {!view && !error && <p role="status">Loading the game…</p>}
         {view && (
           <>
+            <p
+              className="sr-only"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              Round {view.roundNumber}. {view.status}.
+              {view.round
+                ? ` Stage ${view.round.stage}. ${view.round.pointsAvailable} points available.`
+                : ""}
+              {view.scorecard
+                ?.map(
+                  (row) =>
+                    `${label(row.profileId).alias}: ${row.points} points.`,
+                )
+                .join(" ")}
+            </p>
             <p>
               Round {view.roundNumber} / {view.roundsTotal} · Anchor:{" "}
               {label(view.anchorId).alias}
@@ -321,7 +391,7 @@ export function GamePanel({
                   </p>
                 )}
                 {view.status === "playing" && (
-                  <p role="status">
+                  <p className="round-timer">
                     {view.round.stage === 0
                       ? "No hint"
                       : `Hint ${view.round.stage}`}{" "}
@@ -467,12 +537,13 @@ export function GamePanel({
                   Eight rounds complete. Equal points use total answer time;
                   exact ties share rank. An unsolved round counts as 80 seconds.
                 </p>
-                <a className="button" href="/play">
+                <Link className="button" href="/play">
                   Create or join another room
-                </a>
+                </Link>
               </>
             )}
             <SocialPanel
+              live={live}
               roomId={roomId}
               profileId={profileId}
               canReact={view.status === "playing" && view.role === "player"}

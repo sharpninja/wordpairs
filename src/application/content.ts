@@ -5,17 +5,21 @@ import {
   CONTENT_ID,
   type ContentState,
   type CuratedPackage,
+  changeReviewState,
   contentProjection,
   disablePair,
   futureEligible,
   nominate,
+  openSuggestionStatuses,
   type Proposal,
   resolveAppeal,
+  resubmitSuggestion,
   reviewCase,
+  saveCatalogPair,
   suggestCategory,
 } from "../domain/content";
 import { playerGraceEndsAt } from "../domain/lobby";
-import type { Actor, Match, Room } from "../domain/model";
+import type { Actor, Match, Pair, Room } from "../domain/model";
 import { failure, type Result, success } from "../domain/result";
 import { executeCommand } from "./command";
 import type {
@@ -29,6 +33,12 @@ import type {
 export type ContentAction =
   | { type: "nominate"; roomId: string; roundId: string; word: string }
   | { type: "suggest"; proposal: Proposal }
+  | { type: "resubmit"; caseId: string; proposal: Proposal }
+  | {
+      type: "request-changes" | "hold" | "resume";
+      caseId: string;
+      reason: string;
+    }
   | {
       type: "review";
       caseId: string;
@@ -43,7 +53,8 @@ export type ContentAction =
       reason: string;
     }
   | { type: "activate"; caseId: string; content: CuratedPackage }
-  | { type: "disable"; pairId: string; pairVersion: number; reason: string };
+  | { type: "disable"; pairId: string; pairVersion: number; reason: string }
+  | { type: "save-pair"; pair: Pair; reason: string };
 export interface ContentContext {
   actor: Actor;
   wins: number;
@@ -91,30 +102,35 @@ export class ContentService {
           (c) =>
             c.kind === "suggestion" &&
             c.proposerId === actorId &&
-            ["collecting", "pending", "appealed"].includes(c.status),
+            openSuggestionStatuses.includes(c.status),
         ),
       categories: evidence.catalog.categories.map((c) => ({ ...c })),
       catalogPairs: projection.canModerate
         ? evidence.catalog.pairs.map((p) => ({
-            id: p.id,
-            version: p.version,
-            prompt: p.prompt,
+            ...p,
             selectable: p.selectable !== false,
           }))
         : [],
       audit: (evidence.audits ?? [])
-        .filter((a) => ids.has(String(a.details.caseId)))
+        .filter(
+          (a) => projection.canModerate || ids.has(String(a.details.caseId)),
+        )
         .map((a) => ({
           actorId: projection.canModerate ? a.actorId : null,
           action: a.action,
           at: a.at,
           caseId: a.details.caseId,
+          caseVersion: a.details.caseVersion ?? null,
+          previousProposal: a.details.previousProposal ?? null,
+          proposal: a.details.proposal ?? null,
           reason: a.details.reason ?? null,
           previousStatus: a.details.previousStatus ?? null,
           status: a.details.status ?? null,
           nominationCount: a.details.nominationCount ?? null,
           futureEligible: a.details.futureEligible ?? null,
           playable: a.details.playable ?? null,
+          pairId: a.details.pairId ?? null,
+          pairVersion: a.details.pairVersion ?? null,
         })),
     });
   }
@@ -168,6 +184,28 @@ export class ContentService {
             () => this.ids.next(),
             evidence.catalog,
           );
+        else if (action.type === "resubmit")
+          changed = resubmitSuggestion(
+            state,
+            action.caseId,
+            actor,
+            action.proposal,
+            now,
+            evidence.catalog,
+          );
+        else if (
+          action.type === "request-changes" ||
+          action.type === "hold" ||
+          action.type === "resume"
+        )
+          changed = changeReviewState(
+            state,
+            action.caseId,
+            actor,
+            action.type,
+            action.reason,
+            now,
+          );
         else if (action.type === "review")
           changed = reviewCase(
             state,
@@ -197,7 +235,17 @@ export class ContentService {
             now,
             evidence.catalog,
           );
-        else
+        else if (action.type === "save-pair")
+          changed = saveCatalogPair(
+            state,
+            actor,
+            action.pair,
+            action.reason,
+            now,
+            evidence.catalog,
+            () => this.ids.next(),
+          );
+        else if (action.type === "disable")
           changed = disablePair(
             state,
             actor,
@@ -207,6 +255,7 @@ export class ContentService {
             now,
             evidence.catalog,
           );
+        else return failure("VALIDATION_ERROR");
         if (!changed.ok) return changed;
         const next = changed.value;
         const item = next.cases.find(
@@ -278,8 +327,25 @@ export class ContentService {
                 nominationCount: item?.nominatorIds.length ?? null,
                 futureEligible: item ? futureEligible(item) : false,
                 playable: item?.playable ?? false,
+                ...(item?.proposal
+                  ? {
+                      previousProposal: prior?.proposal
+                        ? {
+                            category: prior.proposal.category,
+                            pairs: prior.proposal.pairs.map((p) => ({ ...p })),
+                          }
+                        : null,
+                      proposal: {
+                        category: item.proposal.category,
+                        pairs: item.proposal.pairs.map((p) => ({ ...p })),
+                      },
+                    }
+                  : {}),
                 reason:
                   "reason" in action ? action.reason : (item?.reason ?? null),
+                ...(action.type === "save-pair"
+                  ? { pairId: action.pair.id, pairVersion: action.pair.version }
+                  : {}),
                 ...(action.type === "disable"
                   ? { pairId: action.pairId, pairVersion: action.pairVersion }
                   : {}),

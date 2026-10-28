@@ -1,6 +1,6 @@
 # Wordpairs Content Moderation Plan
 
-**Status:** Moderation policy baseline and technical workflow design approved in Phase 0; implementation awaits the global active-AC mock-validation gate  
+**Status:** Implemented in Phase 5 and extended by the reviewed administration/ACL pages on 27 October 2026
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Implementation sequence:** `implementation_plan.md`  
 **Current scope:** player nominations and category/pair suggestions; no public chat
@@ -46,18 +46,22 @@ The requirements specify product outcomes. The content checklist below is operat
 
 ### 3.2 Resolved moderation policy
 
-Requirements v2.6 fixes the policy: ten unique profiles trigger review; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve; an independent Content Moderator approves or rejects with a reason; one appeal may be submitted to a Senior Moderator; ten lifetime wins unlock one open category suggestion containing exactly three pairs. Approval does not publish incomplete content. The approved Phase 0 contract defines role checks, versioned state transitions, and same-transaction audit writes; implementation follows the global mock-validation gate.
+Requirements v2.6 fixes the policy: ten unique profiles trigger review; each profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve; an independent Content Moderator approves or rejects with a reason; one appeal may be submitted to a Senior Moderator; ten lifetime wins unlock one open category suggestion containing exactly three pairs. Approval does not publish incomplete content. The implementation follows the approved Phase 0 role checks, versioned state transitions and same-transaction audit contract, with separate PostgreSQL evidence for database guarantees.
 
 Candidate matching uses the requirements' Unicode NFKC, trim, internal-whitespace collapse and case-insensitive normalization while preserving punctuation. The submitted spelling is retained separately for reviewer display. Public aliases and leaderboard opt-out follow FR-22. Rejected or pending user content is not public or playable. The requirements' retention schedule governs audit, idempotency and outbox records; no raw incorrect guesses are persisted.
 
 ## 4. Roles and permissions
 
+The 27 October 2026 [admin/ACL extension](admin_acl_design.md) makes the roles operational. Its permission matrix supersedes the earlier proposed separation between moderator and content-editor accounts below: moderators and senior moderators can curate approved cases and author/edit catalog pairs; administrators additionally manage role grants and revocations. Direct editorial saves require a reason and create immutable versions. Community case review and independent appeals remain mandatory for the community workflow. The admin role does not waive proposer/original-reviewer independence.
+
+Bootstrap administrators are defined by the server-only `WORDPAIRS_ADMIN_PROFILE_IDS` allowlist. Other privileges are persisted in PostgreSQL, audited and checked on the server. Configured administrator authority cannot be removed through the UI, and concurrent changes cannot remove every effective administrator. There is no public privilege-escalation or role-bootstrap endpoint.
+
 | Role | Allowed actions | Not allowed |
 |---|---|---|
 | Player / submitter | Submit an eligible nomination; submit an unlocked category/pair proposal; view own submission status and public decision reason; submit one appeal to a Senior Moderator. | See another player's private nomination identity, internal reviewer notes, or unresolved drafts; approve own content; edit the live catalog. |
-| Moderator | Review assigned eligible cases; request revision, approve for editorial curation, reject with a reason, flag risk, and view only the submitter/eligibility data needed to decide. | Change vote history, change game scores, make content playable, approve own submission, or silently delete audit history. |
-| Content editor | Convert approved nominations into complete pairs; edit/complete pair data; attach category/background; validate catalog; prepare a catalog release. | Bypass moderation status or publish unreviewed content. |
-| Administrator | Manage moderator/editor accounts, policy configuration, and emergency content disablement; inspect audit history. | Erase the audit trail or make a user proposal playable without the required moderation/editorial checks. |
+| Moderator | Review eligible cases; approve or reject with a reason; curate complete approved proposals; author/edit word pairs and hints as immutable versions; exclude content from future rounds; inspect content history. | Change vote history or scores, approve own submission, resolve appeals, assign roles, or erase audit history. |
+| Senior moderator | All moderator permissions plus independent reasoned appeal resolution. | Resolve an appeal of own submission or original decision, assign roles, or erase audit history. |
+| Administrator | All senior-moderator permissions plus audited role grants/revocations and user-directory access. | Bypass proposer/original-reviewer independence, remove configured administrator authority through the UI, remove the final effective administrator, or erase audit history. |
 | System | Validate structure, normalize duplicate keys, count eligible votes/wins, create queue cases, enforce status transitions, and record immutable events. | Make final content suitability decisions unless a specific deterministic rule has been approved. |
 
 The landing page uses generated public aliases and honors profile opt-out as specified in v2.6. Do not expose moderator-only fields or nomination histories as leaderboard data. If player-selected labels are used publicly, the display-name policy must define reserved/prohibited strings, report/removal handling, and how a disabled label is represented. These choices belong to the landing-page decision register, not the nomination review queue unless the product owner explicitly connects the workflows.
@@ -215,4 +219,4 @@ Moderation is complete for a release only when every approved moderation criteri
 
 ## 13. Resolved policy and remaining technical review
 
-The product policy checklist is resolved by requirements v2.6; there are no open product decisions for nomination count, nomination eligibility, moderation roles, appeal count, lifetime-win scope, public aliases, or retention. Phase 0 approved the technical role assignment, authorization/RLS, state transitions, concurrent threshold enforcement, audit transaction boundaries, and test interfaces. Implementation follows the global mock-validation gate; real database guarantees remain separate TR integration evidence.
+The product policy checklist is resolved by requirements v2.6; there are no open product decisions for nomination count, nomination eligibility, moderation roles, appeal count, lifetime-win scope, public aliases, or retention. Phase 0 approved the technical role assignment, authorization/RLS, state transitions, concurrent threshold enforcement, audit transaction boundaries, and test interfaces. Phase 5 implemented the community workflow; the [administration/ACL extension](admin_acl_design.md) supplies the dedicated pages and audited role management. Real database guarantees remain separate TR integration evidence.

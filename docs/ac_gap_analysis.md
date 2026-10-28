@@ -5,13 +5,13 @@
 **Active criteria:** 45 (AC-01–33, AC-37–39, AC-41–47, AC-50–51)  
 **Retired identifiers:** AC-34, AC-35, AC-36, AC-40, AC-48, AC-49 (reserved; TR/operational verification only)
 
-## Current Phase 6 candidate
+## Current completion status
 
-Phases 1–5 independently exited at 99/99. The Phase 6 candidate maps all 45 active ACs, 67 primary cases and 27 supplemental cases to actual production or local process assertions in `evidence/phase6/acceptance-mapping.json`. The original mock oracles and semantic controls remain intact. Thirteen gameplay oracles run unchanged on actual observations; documented counterparts handle incompatible historical fixtures, including fixed eight-round completion, actual category assets, canonical targets with zero alternatives, and measured contrast above the 4.5 threshold.
+Phases 1–6 independently exited at 99/99. Phase 6 maps all 45 active ACs, 67 primary cases and 27 supplemental cases to actual production or local process assertions in `evidence/phase6/acceptance-mapping.json`. The original mock oracles and semantic controls remain intact. Thirteen gameplay oracles run unchanged on actual observations; documented counterparts handle incompatible historical fixtures, including fixed eight-round completion, actual category assets, canonical targets with zero alternatives, and measured contrast above the 4.5 threshold.
 
-Candidate regression passes 494 tests in 39 files and 25 Chromium journeys, with zero failures/skips. Typecheck and source lint pass. Separate TR runs pass 34 PostgreSQL tests, SQL checks and four actual Realtime tests. The detailed commands, raw observations, source hashes, scope and evidence limits are in `phase6_execution.md` and `evidence/phase6/`. These results replace the historical planned/pending implementation status below; they do not turn database/deployment evidence into AC proof.
+Final Phase 6 review records 494 tests in 39 files and 26 Chromium journeys, with zero failures/skips. Typecheck, source lint and the production build passed. Separate TR runs passed 34 PostgreSQL tests, SQL checks and four actual Realtime tests. The detailed commands, raw observations, source hashes, scope and evidence limits are in [Phase 6 execution](phase6_execution.md) and `evidence/phase6/`. These results replace the historical planned/pending implementation status below; they do not turn database/deployment evidence into AC proof.
 
-The remaining exit conditions are independent exact-commit Phase 6 hostile validation and the plan's separate human phone-validation requirement. Automated viewport checks and the agent's screenshot inspection are recorded honestly as such. Deployment/account/operational release work remains Phase 7.
+Exact-commit Phase 6 hostile validation approved completion at 99/99. The former personal phone-sign-off requirement was an unsupported agent interpretation and has been corrected; optional human feedback is described in [the phone review note](phase6_phone_review.md). No human testing is claimed. The subsequent [administration extension](admin_acl_design.md) has its own [review receipt](admin_acl_review_receipt.json) and passing regression results listed in [testing](testing.md). Deployment/account/operational release work remains Phase 7.
 
 ## Historical pre-implementation assessment
 

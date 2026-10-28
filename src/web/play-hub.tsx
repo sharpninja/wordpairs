@@ -1,101 +1,99 @@
 "use client";
-import { useRef, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import type { OwnProfile } from "../application/identity";
 import { IdentityPanel } from "./identity-panel";
+import { usePrivateDraftState } from "./private-draft";
+import { privateIdentityRevision } from "./private-state";
+import { usePrivateIntent } from "./use-private-intent";
 export function PlayHub({ oidcEnabled }: { oidcEnabled: boolean }) {
   const [profile, setProfile] = useState<OwnProfile | null>(null);
   return (
     <>
       <IdentityPanel oidcEnabled={oidcEnabled} onProfile={setProfile} />
-      {profile && <RoomMenu key={profile.id} profile={profile} />}
+      {profile && (
+        <RoomMenu
+          key={`${profile.id}:${privateIdentityRevision()}`}
+          profile={profile}
+        />
+      )}
     </>
   );
 }
 function RoomMenu({ profile }: { profile: OwnProfile }) {
-  const [capacity, setCapacity] = useState(4);
-  const [discoverable, setDiscoverable] = useState(false);
-  const [code, setCode] = useState("");
-  const [busy, setBusy] = useState(false);
+  const router = useRouter();
+  const [capacity, setCapacity] = usePrivateDraftState(
+    profile.id,
+    "room-capacity",
+    4,
+  );
+  const [discoverable, setDiscoverable] = usePrivateDraftState(
+    profile.id,
+    "room-listed",
+    false,
+  );
+  const [code, setCode] = usePrivateDraftState(profile.id, "room-code", "");
   const [error, setError] = useState("");
-  const [pendingKind, setPendingKind] = useState<string | null>(null);
-  const pending = useRef<Record<string, unknown> | null>(null);
-  const send = async (action: "create" | "quick-match") => {
-    if (busy) return;
-    setBusy(true);
-    setError("");
-    const input = pending.current ?? {
-      action,
-      commandId: crypto.randomUUID(),
-      expectedProfileId: profile.id,
-      ...(action === "create"
-        ? { roomId: crypto.randomUUID(), capacity, discoverable }
-        : {}),
-    };
-    pending.current = input;
-    setPendingKind(action);
-    try {
-      const response = await fetch("/api/rooms", {
-        method: "POST",
-        signal: AbortSignal.timeout(10000),
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        if (response.status < 500) {
-          pending.current = null;
-          setPendingKind(null);
-        }
-        throw new Error(
-          response.status === 409
-            ? "The room or account changed. Try again, browse, or create a room."
-            : "The request was not confirmed. Retry to check the same request.",
-        );
-      }
-      pending.current = null;
+  const [pendingKind, setPendingKind] = usePrivateDraftState<string | null>(
+    profile.id,
+    "room-intent-kind",
+    null,
+  );
+  const intent = usePrivateIntent(
+    profile.id,
+    async (result) => {
+      if (!result) return;
       setPendingKind(null);
-      const roomId = action === "create" ? result.roomId : result.joined;
-      if (roomId)
-        window.location.assign(`/rooms/${encodeURIComponent(roomId)}`);
+      const roomId = result.roomId ?? result.joined;
+      if (typeof roomId === "string")
+        router.push(`/rooms/${encodeURIComponent(roomId)}`);
       else
         setError(
           "No joinable rooms right now. Browse the community board or create a room.",
         );
-    } catch (problem) {
-      setError(
-        problem instanceof Error
-          ? problem.message
-          : "Room access is unavailable. Try again.",
-      );
-    } finally {
-      setBusy(false);
-    }
+    },
+    () => setError("Your session changed. Refresh your profile."),
+    "room-menu",
+  );
+  const send = async (action: "create" | "quick-match") => {
+    setError("");
+    setPendingKind(action);
+    await intent.send("/api/rooms", {
+      action,
+      ...(action === "create"
+        ? { roomId: crypto.randomUUID(), capacity, discoverable }
+        : {}),
+    });
   };
   return (
     <section
       className="panel room-menu"
       aria-labelledby="find-room"
-      aria-busy={busy}
+      aria-busy={intent.busy}
     >
       <p className="eyebrow">A room full of connections</p>
       <h2 id="find-room">Find your people</h2>
-      {error && <p role="status">{error}</p>}
+      {(error || intent.error) && <p role="alert">{error || intent.error}</p>}
+      {intent.busy && <p role="status">Opening your room…</p>}
       <div className="hero-actions">
         <button
           type="button"
           className="button"
-          disabled={busy || pendingKind === "create"}
+          disabled={intent.busy || (intent.pending && pendingKind === "create")}
           onClick={() => void send("quick-match")}
         >
-          {pendingKind === "quick-match" ? "Retry quick match" : "Quick match"}
+          {intent.pending && pendingKind === "quick-match"
+            ? "Retry quick match"
+            : "Quick match"}
         </button>
-        <a href="/#community">Browse open rooms</a>
+        <Link href="/#community">Browse open rooms</Link>
       </div>
       <form
         onSubmit={(event) => {
           event.preventDefault();
           if (/^[0-9A-HJKMNP-TV-Z]{8}$/.test(code.trim().toUpperCase()))
-            window.location.assign(`/rooms/${code.trim().toUpperCase()}`);
+            router.push(`/rooms/${code.trim().toUpperCase()}`);
           else setError("Enter the eight-character room code.");
         }}
       >
@@ -110,7 +108,7 @@ function RoomMenu({ profile }: { profile: OwnProfile }) {
             maxLength={8}
             required
           />
-          <button type="submit" disabled={busy}>
+          <button type="submit" disabled={intent.locked}>
             Open room
           </button>
         </div>
@@ -130,14 +128,14 @@ function RoomMenu({ profile }: { profile: OwnProfile }) {
           max={25}
           value={capacity}
           onChange={(event) => setCapacity(Number(event.target.value))}
-          disabled={busy || pendingKind !== null}
+          disabled={intent.locked}
           required
         />
         <label className="checkbox-label">
           <input
             type="checkbox"
             checked={discoverable}
-            disabled={busy || pendingKind !== null}
+            disabled={intent.locked}
             onChange={(event) => setDiscoverable(event.target.checked)}
           />{" "}
           List this room on the community board
@@ -148,9 +146,13 @@ function RoomMenu({ profile }: { profile: OwnProfile }) {
         <button
           className="button secondary"
           type="submit"
-          disabled={busy || pendingKind === "quick-match"}
+          disabled={
+            intent.busy || (intent.pending && pendingKind === "quick-match")
+          }
         >
-          {pendingKind === "create" ? "Retry room creation" : "Create room"}
+          {intent.pending && pendingKind === "create"
+            ? "Retry room creation"
+            : "Create room"}
         </button>
       </form>
     </section>

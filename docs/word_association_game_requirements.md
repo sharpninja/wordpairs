@@ -3,6 +3,8 @@
 **Functional behavior, technical requirements, and acceptance criteria**  
 Version 2.6 · 26 October 2026 · Approved baseline
 
+The baseline below is retained historically. Current QBrain requirements for product **Word Pairs** (`PROD-WORDPAIRS`) also include the [operator-directed UI gap decisions](testing/ui/decisions.md), [documented UI cases](testing/ui/index.md), and their [verified requirement export](testing/ui/requirements.json). New change-request, candidate-hold, navigation/draft, request-feedback, accessibility-detail and responsive-matrix requirements remain pending implementation and verification; they do not retroactively change historical acceptance evidence.
+
 ## Purpose and scope
 
 This document defines a real-time word-pair game for 2–25 players who join one room from their own devices. Each curated prompt belongs to a relationship category with a predefined background. Players submit guesses through a sequence of hint stages, with more points awarded for solving earlier. Players who solve before any hint can nominate candidate answers for future curated content.
@@ -167,6 +169,8 @@ Deployment and provisioning begin only after coding Phases 1–6 are complete. P
 **FR-15 Responsive screens — Confirmed.** Profile, lobby, active round, hint stage, scorecard, round summary, category picker, and final standings remain usable on phone-sized screens in portrait and landscape orientation.
 
 ## Direct dependency set
+
+The following paragraphs preserve the original v2.6 dependency plan. The completed implementation uses six runtime packages, explicit transport parsers and application-owned opaque sessions. Zod and `@supabase/ssr` are reviewed options, not installed dependencies. The exact current set and package purposes are in [`package.json`](../package.json) and [attributions](ATTRIBUTIONS.md); the implementation disposition is recorded in the [architecture decision](architecture_decision_record.md). Deployment-specific generator installation remains Phase 7 work. This status note does not change the functional requirements or acceptance criteria below.
 
 The game is licensed under GNU GPL version 2 only (`GPL-2.0-only`), with the complete license text in the repository root `LICENSE` file. The planned runtime dependencies are Next.js, React, React DOM, `@supabase/supabase-js`, `@supabase/ssr`, `openid-client`, and Zod. Next.js provides the Vercel application framework; Supabase packages provide database and Realtime access plus server-rendered session handling; `openid-client` implements the OpenID Connect flow; Zod validates untrusted input at application boundaries.
 

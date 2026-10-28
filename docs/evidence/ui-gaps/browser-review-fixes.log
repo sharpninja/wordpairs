@@ -1,0 +1,80 @@
+
+[WebServer] (node:1150773) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1150790) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 27 tests using 1 worker
+
+(node:1151066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/27] tests/browser/admin.phase6.spec.ts:122:1 › phone catalog form creates and edits all three hints, and retries an uncertain save without duplicating content
+[2/27] tests/browser/admin.phase6.spec.ts:195:1 › administrator searches users, grants/revokes moderation and clears private results after authorization loss
+[3/27] tests/browser/admin.phase6.spec.ts:325:1 › ordinary players cannot see the catalog or user directory on administration pages
+[4/27] tests/browser/admin.phase6.spec.ts:372:3 › late authorized users GET cannot restore private data after a mutation is denied
+[5/27] tests/browser/admin.phase6.spec.ts:372:3 › late authorized moderation GET cannot restore private data after a mutation is denied
+[6/27] tests/browser/recovery.phase6.spec.ts:164:1 › AC-20/21/46 guest clear/reset, repeated member entry, uncertain preference retry and changed shared session recover privately
+[7/27] tests/browser/recovery.phase6.spec.ts:218:1 › AC-37/45 unavailable game reads recover authoritative stage and expired perspective is removed
+
+[WebServer] (node:1152642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[8/27] tests/browser/recovery.phase6.spec.ts:320:1 › AC-23/37 empty and lost-seat quick match offer browse/create; service limit creation retries once to confirmed success
+[WebServer] (node:1152889) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[9/27] tests/browser/ui-gaps.phase6.spec.ts:20:1 › TEST-REVIEWCHANGES-140 independent reasoned change request and proposer-only audited revision
+[10/27] tests/browser/ui-gaps.phase6.spec.ts:114:1 › TEST-CANDIDATEHOLD-141 holds preserve nominations and forbid review until reasoned resume
+[11/27] tests/browser/ui-gaps.phase6.spec.ts:149:1 › TEST-NAVIGATIONDRAFTS-142 same-document Back preserves drafts; Discard, reload and identity change clear them
+[12/27] tests/browser/ui-gaps.phase6.spec.ts:206:1 › TEST-REQUESTFEEDBACK-143 busy and uncertain writes retain exact command through navigation
+[13/27] tests/browser/ui-gaps.phase6.spec.ts:262:1 › TEST-REQUESTFEEDBACK-143 distinct loading, empty and safe read failure with explicit retry
+[14/27] tests/browser/ui-gaps.phase6.spec.ts:307:1 › TEST-NAVIGATIONDRAFTS-142 profile Cancel sends no write, preserves saved alias/icon and returns focus
+[WebServer] (node:1153832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[15/27] tests/browser/ui-gaps.phase6.spec.ts:348:1 › TEST-NAVIGATIONDRAFTS-142 privileged editor Back, Cancel and revocation clear private values
+[16/27] tests/browser/ui-gaps.phase6.spec.ts:388:1 › TEST-REQUESTFEEDBACK-143 previous-profile write completion cannot restore private state or success
+[17/27] tests/browser/ui-gaps.phase6.spec.ts:452:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 320x568 game/content/editor reflow and controls
+[WebServer] (node:1154233) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[18/27] tests/browser/ui-gaps.phase6.spec.ts:452:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 390x844 game/content/editor reflow and controls
+[WebServer] (node:1154555) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[19/27] tests/browser/ui-gaps.phase6.spec.ts:452:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 844x390 game/content/editor reflow and controls
+[WebServer] (node:1155042) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[20/27] tests/browser/ui-gaps.phase6.spec.ts:452:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 1280-at400%-equivalent game/content/editor reflow and controls
+[WebServer] (node:1155406) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:1155497) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[21/27] tests/browser/ui-gaps.phase6.spec.ts:452:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 200%-text game/content/editor reflow and controls
+[WebServer] (node:1155864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[22/27] tests/browser/ui-gaps.phase6.spec.ts:589:1 › TEST-NAVIGATIONDRAFTS-142 replacement session for the same profile clears drafts
+[23/27] tests/browser/ui-gaps.phase6.spec.ts:613:1 › TEST-REQUESTFEEDBACK-143 completed private room creation survives navigation without another mutation
+[24/27] tests/browser/ui-gaps.phase6.spec.ts:656:1 › TEST-ACCESSIBILITYDETAILS-144 stage, score and errors announce without moving the answer focus
+
+[WebServer] (node:1156248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[25/27] tests/browser/ui-gaps.phase6.spec.ts:700:3 › TEST-REQUESTFEEDBACK-143 game denial prevents an older private GET from returning
+
+[WebServer] (node:1156374) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[26/27] tests/browser/ui-gaps.phase6.spec.ts:700:3 › TEST-REQUESTFEEDBACK-143 social denial prevents an older private GET from returning
+[WebServer] (node:1156479) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[27/27] tests/browser/ui-gaps.phase6.spec.ts:700:3 › TEST-REQUESTFEEDBACK-143 room denial prevents an older private GET from returning
+
+[WebServer] (node:1156602) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  27 passed (1.2m)
