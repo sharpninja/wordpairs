@@ -1,5 +1,90 @@
 # TEST-ADMINUI-136 - Administration browser flows and private-state invalidation
 
+Current release supersession: [owner-only GitHub admin cases](../../../admin_pwa_release.md). Only verified sharpninja can access administration; /admin/users and its API no longer provide delegation. Public /content is inactive. The historical multi-role cases below retain their original evidence; the current TEST record carries updated unsatisfied release criteria pending final review.
+
+
+## Current local rendered decision evidence - 30 October 2026
+
+Traceability remains `FR-ADMINPAGES-023#FR-23-C01` and
+`TEST-ADMINUI-136#FR-23-C01`; no acceptance criterion or satisfaction state is
+added or changed by this supplement. Current owner-only release obligations
+remain in progress and unsatisfied where already marked. The historical
+multi-role scenarios below are not restored as current public features.
+
+The seven added Chromium cases in `tests/browser/admin.phase6.spec.ts` use the
+independent HTTP snapshots in `tests/browser/admin-decision-fixture.ts`. They
+render the actual administration UI with a synthetic owner session and isolated
+pending/appealed legacy content. They do not authenticate GitHub or exercise
+PostgreSQL authority. The fixture and the test's expected semantic outcomes are
+separate; the snapshot provider imports no production policy or projection.
+
+Use case `legacy-decision-case` / `Legacy Orbit`, ten nominations, aggregate
+version 7, and reason `Reviewed the retained legacy evidence.`. Search and status
+filters must remove `Unrelated legacy case`; an opposite-result filter must show
+the explicit empty state after the decision. Expand history before and after the
+write. Await visible conditions, the matching POST response and the changed
+status; use no fixed sleeps. Close owned browser contexts; fixture state is
+context-local and no real content is reset.
+
+- **Approve/reject:** submit the selected review decision once. Assert HTTP 200,
+  a nonempty command ID, actor `owner`, expected version 7, exact case/reason and
+  selected decision. The rendered status and reason match; the visible audit
+  contains the exact actor, revision 1, pending-to-result transition and ten
+  nominations. Approval is eligible for curation and remains unplayable.
+- **Independent legacy appeal:** uphold or overturn a rejection originally made
+  by `legacy-reviewer` and appealed by `legacy-proposer`. Assert the exact resolve
+  outcome, rejected/approved result, preserved two-entry prior history, and a
+  visible revision-3 upheld/overturned audit by `owner`. Old review/resolve
+  approval and overturn controls disappear and exactly one POST occurred. Overturn still does not make
+  the content playable.
+- **Owner is original reviewer or proposer:** the appealed case retains its exact
+  status/history, both appeal-resolution buttons are absent, and no POST occurs.
+  These rendered capability checks use disclosed HTTP fixtures; server-side
+  denial and provider identity remain separate evidence.
+- **Five wrong-provider controls:** the same semantic oracle must reject
+  `approve/wrong-status`, `reject/wrong-reason`, `overturn/missing-history`,
+  `original-reviewer/self-resolution` and `proposer/self-resolution`. Each caught
+  failure must identify `FR-23-C01 semantic outcome`; an unrelated timeout is not
+  accepted as a successful negative control. These are expected rejection checks
+  inside one passing test, not unresolved test failures.
+
+```gherkin
+Scenario Outline: Owner decisions retain the existing case and audit
+  Given the isolated owner can decide the pending or independently appealed Legacy Orbit case
+  When the owner submits <decision> with the exact retained-evidence reason
+  Then exactly one command names the owner, case and expected aggregate version 7
+  And the rendered result is <status> with the exact reason and ordered decision history
+  And the content remains unplayable
+  Examples:
+    | decision | status   |
+    | approve  | approved |
+    | reject   | rejected |
+    | uphold   | rejected |
+    | overturn | approved |
+
+Scenario Outline: An involved owner cannot resolve their own legacy appeal
+  Given the owner is the case's <relationship>
+  When the owner opens the appealed case
+  Then no uphold or overturn control is rendered
+  And the original history remains unchanged and no command is sent
+  Examples:
+    | relationship      |
+    | original reviewer |
+    | proposer          |
+```
+
+Retained local receipts are `docs/evidence/release15/admin-decision-ui/`:
+`assertion-gate-v3` run `533871c8-fbbb-48d8-a144-e43c946443ef` contains 7 passed,
+0 failed, 0 skipped; `admin-file-v3` run
+`fcaf5626-b63c-4f5f-abc1-fcfbd6bf18bc` contains all 11 administration cases passed,
+0 failed, 0 skipped. Each directory retains `invocation.json`, `browser.xml` and
+`browser.log`, with exact test/application source hashes. The application build
+is `b8400dc6f7aeb42a991861ac98e36f297eae8bb3`; the added tests are dirty and
+source-hashed. This documentation sync reviewed those existing receipts and did
+not rerun tests. These observations do not establish hosted success, independent
+hostile approval, or completion of the compound release requirements.
+
+
 Linked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.
 
 | Field | Specification |
@@ -44,6 +129,37 @@ Feature: Administration browser flows and private-state invalidation
 ```
 
 ## Boundaries
+
+## Navigation regression extension — 28October2026
+
+Traceability: `FR-ADMINPAGES-023#FR-23-C05` →
+`TR-ACL-AUTHORIZATION-032` → `TEST-ADMINUI-136`. Source: operator's hosted
+UI defect report and [permission-aware navigation design](../../../admin_acl_design.md).
+Inspect both `/play` profile details and direct `/admin` entry as anonymous,
+ordinary player, moderator and administrator. Only effective server permissions
+may enable links: moderation and content for moderators; users/access only for
+administrators. Await the verified session response; no fixed sleeps. Revoke
+roles, return focus, fail a refresh, and sign out; links must disappear. Delay
+guest POST and sign-out DELETE while focusing the tab; a stale GET must not
+restore the former identity or links. Clean up only fixture browser contexts.
+
+Automation: `tests/browser/auth-navigation.phase6.spec.ts` uses real rendered
+pages with isolated HTTP session/content ports; `tests/web/identity-navigation.test.ts`
+provides deterministic deferred-response race checks. The browser regression and
+existing administration suite passed10/10; API/React targeted checks passed14/14.
+These fixtures do not prove real OpenAI registration or provider sign-in.
+
+```gherkin
+Scenario: Administration navigation follows current server permissions
+  Given an ordinary player has a verified session with no management permissions
+  When they open profile details and then visit the administration page directly
+  Then no administration navigation links are rendered
+  And the administration page states that moderation access is required
+  When an administrator opens the same pages in an independent authorized session
+  Then moderation, word-pair management and user-access links are available
+  When that administrator signs out while a focus event occurs
+  Then their old profile and all administration links remain absent
+```
 
 
 

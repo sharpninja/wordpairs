@@ -29,8 +29,11 @@ export async function connectGame(
   const roster = Array.from({ length: playerCount }, (_, i) => `p${i + 1}`);
   const catalog = value(buildCatalog(seed.categories, seed.pairs as never));
   const initial = value(
-    createMatch(roomId, roomId, roster, { integer: (a) => a }, 0),
+    createMatch(roomId, roomId, roster.slice(0, 10), { integer: (a) => a }, 0),
   );
+  // Explicit stored-state fixture for the supported historical upgrade path.
+  // It does not ask the current createMatch/newRoom APIs to create >10 players.
+  if (playerCount > 10) initial.roster = [...roster];
   initial.usedPairIds = catalog.pairs
     .filter((p) => p.categoryId === category)
     .slice(0, pairIndex)
@@ -42,12 +45,26 @@ export async function connectGame(
   let now = stage * 20000 + 1;
   const room = {
     ...roomFixture(
-      roster,
-      playerCount === 25
-        ? roster.map((id, i) => ({ id: `o${i + 1}`, follows: id }))
-        : [],
-      playerCount,
+      roster.slice(0, 10),
+      [],
+      Math.min(playerCount, 10),
     ),
+    capacity: playerCount,
+    players: roster.map((profileId) => ({
+      profileId,
+      ready: true,
+      joinedAt: 0,
+      disconnectedAt: null,
+      lastSeenAt: 0,
+    })),
+    observers: playerCount >= 10
+      ? Array.from({ length: 25 }, (_, i) => ({
+          profileId: `o${i + 1}`,
+          followedPlayerId: roster[i % roster.length],
+          arrivalSequence: i,
+          joinedAt: 0,
+        }))
+      : [],
     id: roomId,
     status: "playing" as const,
     startedRoster: roster,

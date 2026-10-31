@@ -1,0 +1,34 @@
+{
+  "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "reports": [
+    {
+      "name": "strict-ui",
+      "kind": "strict-ui",
+      "expectedCount": 1,
+      "runId": "d941371c-59de-40e1-875e-5c3b90778adb",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T20:30:45",
+      "finishedAt": "2026-10-30T20:31:47",
+      "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "producerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "scripts/run-local-ui-integration.ps1",
+        "-StrictPush",
+        "-MaxMinutes",
+        "30"
+      ],
+      "exitCode": 1,
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/strict-ui.xml",
+      "junitSha256": "FD333E5EC0FBA741FDC50C41C47C7FF6D0DAC477DC920FEC2AE1D85B3EC45E48",
+      "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/source-after.json",
+      "sourceAfterFailure": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "readAtLocal": "2026-10-30T19:42:41",
+  "method": "workflow.triage.queryRuns",
+  "params": {
+    "workspacePath": "\u003Chome\u003E/github/McpServer",
+    "groupId": "triage-group-c198e07edd07ee87"
+  },
+  "totalCount": 1,
+  "runs": [
+    {
+      "runId": "triage-run-83e3ef59534d4daf880788b62c2ce201",
+      "groupId": "triage-group-c198e07edd07ee87",
+      "status": "failed",
+      "groupStatus": "failed",
+      "groupTitle": "MCP server /health hangs; plugin trust bootstrap and triage submit time out",
+      "groupSummary": "The wordpairs workspace MCP server process is alive but GET /health?nonce=... does not answer (5 s, 30 s and 90 s client timeouts), workflow.triage.report times out in qbrain-ai-repl after 30 s, and the plugin writes no failsafe record for the failed triage submit. A hostile-validation reviewer therefore cannot load memories, read QBrain or write its session-log turn.",
+      "reportCount": 1,
+      "startedUtc": {
+        "year": 2026,
+        "dayOfYear": 302,
+        "utcDateTime": "2026-10-29T04:52:18.7360330Z",
+        "timeOfDay": "04:52:18.7360330",
+        "totalOffsetMinutes": 0,
+        "millisecond": 736,
+        "localDateTime": "2026-10-28T23:52:18.7360330-05:00",
+        "minute": 52,
+        "microsecond": 33,
+        "utcTicks": 639288463387360330,
+        "nanosecond": 0,
+        "hour": 4,
+        "second": 18,
+        "ticks": 639288463387360330,
+        "dateTime": "2026-10-29T04:52:18.7360330",
+        "month": 10,
+        "dayOfWeek": "Thursday",
+        "date": "2026-10-29T00:00:00.0000000",
+        "offset": "00:00:00",
+        "day": 29
+      },
+      "completedUtc": {
+        "year": 2026,
+        "dayOfYear": 302,
+        "utcDateTime": "2026-10-29T04:52:19.4652875Z",
+        "timeOfDay": "04:52:19.4652875",
+        "totalOffsetMinutes": 0,
+        "millisecond": 465,
+        "localDateTime": "2026-10-28T23:52:19.4652875-05:00",
+        "minute": 52,
+        "microsecond": 287,
+        "utcTicks": 639288463394652875,
+        "nanosecond": 500,
+        "hour": 4,
+        "second": 19,
+        "ticks": 639288463394652875,
+        "dateTime": "2026-10-29T04:52:19.4652875",
+        "month": 10,
+        "dayOfWeek": "Thursday",
+        "date": "2026-10-29T00:00:00.0000000",
+        "offset": "00:00:00",
+        "day": 29
+      },
+      "createdTodoId": null,
+      "error": "Triage agent failed with state Error with exit code 1. See captured agent output for details.",
+      "agentExitCode": 1,
+      "groupSnapshot": {
+        "groupId": "triage-group-c198e07edd07ee87",
+        "status": "processing",
+        "reportCount": 1,
+        "workspacePath": "\u003Chome\u003E/github/McpServer",
+        "title": "MCP server /health hangs; plugin trust bootstrap and triage submit time out",
+        "summary": "The wordpairs workspace MCP server process is alive but GET /health?nonce=... does not answer (5 s, 30 s and 90 s client timeouts), workflow.triage.report times out in qbrain-ai-repl after 30 s, and the plugin writes no failsafe record for the failed triage submit. A hostile-validation reviewer therefore cannot load memories, read QBrain or write its session-log turn.",
+        "quietDeadlineUtc": "2026-10-28T23:51:37.9883837-05:00",
+        "reports": [
+          {
+            "reportId": "triage-report-3e0873bbca604ad8bc8d467921de01e9",
+            "groupId": "triage-group-c198e07edd07ee87",
+            "status": "grouped",
+            "title": "MCP server /health hangs; plugin trust bootstrap and triage submit time out",
+            "summary": "The wordpairs workspace MCP server process is alive but GET /health?nonce=... does not answer (5 s, 30 s and 90 s client timeouts), workflow.triage.report times out in qbrain-ai-repl after 30 s, and the plugin writes no failsafe record for the failed triage submit. A hostile-validation reviewer therefore cannot load memories, read QBrain or write its session-log turn.",
+            "originalWorkspacePath": "\u003Crepo\u003E",
+            "workspacePath": "\u003Chome\u003E/github/McpServer",
+            "createdUtc": "2026-10-28T23:36:37.9883837-05:00"
+          }
+        ]
+      },
+      "qualification": "Only the retained group input is projected. Raw model prompt/output/stdout/stderr are excluded."
+    }
+  ],
+  "qualification": "Supported explicit workspace/group read. Research failure does not imply intake failure or resolution. Original failsafe origin requires exact provenance beyond matching title."
+}

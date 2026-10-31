@@ -1,0 +1,540 @@
+{
+  "recordedAt": "2026-10-30T18:44:53.9038596-05:00",
+  "kind": "read-only-ten-player-ui-acknowledgement-diagnosis-not-HV",
+  "sourceHead": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "runId": "0f337bfa-39c7-4650-b35d-6ee8d698be0f",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T233723Z-turn-a09f",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "preservation": {
+    "manifest": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/manifest.json",
+      "sha256": "040E98F87E549BD41356FFE98D1BF8080D11BD2A0BD59ED86ED2624228285DD8",
+      "bytes": 17495
+    },
+    "verifiedCopies": 33,
+    "originalPathsRetained": true,
+    "allRetainedCopyHashesMatch": true,
+    "qualification": "Original source paths may later change; retained frozen bytes are authoritative. No private runtime settings were copied."
+  },
+  "native": {
+    "pin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/live-ui.xml",
+      "sha256": "5B62E4A09EDA4AE8FEE82B1C60D3DEEE8EFB79E3AF46661406DB1FE8C06ECC6F",
+      "bytes": 10186
+    },
+    "cases": 14,
+    "passed": 8,
+    "failed": 1,
+    "skipped": 5,
+    "failedPlayers": 10,
+    "seconds": "92.434",
+    "aggregateOriginals": [
+      "page.waitForRequest timeout30000ms",
+      "Your answer disabled timeout30000ms"
+    ],
+    "disabledInputValue": "Late",
+    "inputIdMeaning": "Shared room UUID, not actor identity",
+    "sourceStackAnchors": [
+      "ui-command-capture.ts:29",
+      "ui-command-capture.ts:43",
+      "live-player-counts.integration.spec.ts:148-149"
+    ],
+    "originalFailureTextRetained": true,
+    "errorContext": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/browser-artifacts/live-player-counts.integra-ea605-rs-complete-eight-UI-rounds/error-context.md",
+      "sha256": "22E2F4E773F2E221D114FC7EBF475791E97C0ACBC67E9F78D10DB38F40CEDDC1",
+      "bytes": 14687
+    }
+  },
+  "runtime": {
+    "pin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-receipts/live-scale-10.json",
+      "sha256": "B34BC02F4B967050C14705D6D2BE3E7898A2027C3A33DDC0858A8F31149F25A4",
+      "bytes": 21465
+    },
+    "phase": "UI round 2",
+    "completed": false,
+    "rounds": null,
+    "uiConfirmedSolves": 17,
+    "uncertainUiRetries": 0,
+    "commandBodyFailures": [],
+    "cleanupFailures": 0,
+    "requestFailureTotal": 12,
+    "diagnosticFailureTotal": 0,
+    "pendingAtDispose": 1,
+    "qualification": "uiSolves counts driver-observed successful JSON, not proof the frontend retired pending. Final slow-response list includes cleanup reads; all10failure UI snapshots precede cleanup."
+  },
+  "actorSnapshots": {
+    "pin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-receipts/live-scale-10-failure-ui.json",
+      "sha256": "F9FC542F3EB0E6A12FF412637B58D82ECA7E4D402FC95F85B61990EB1D0BD44C",
+      "bytes": 44106
+    },
+    "actors": [
+      {
+        "player": 0,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 1,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 2,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 3,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 4,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 5,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 6,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": false,
+        "solvedScorecardRowCount": 8,
+        "hasOwnSolvedStatus": true,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 7,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": true,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": true,
+        "solvedScorecardRowCount": 7,
+        "hasOwnSolvedStatus": false,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 8,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": true,
+        "solvedScorecardRowCount": 7,
+        "hasOwnSolvedStatus": false,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      },
+      {
+        "player": 9,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "roster": "10 / 10 players",
+        "roundNumbers": [
+          "2"
+        ],
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "hasSubmitAnswer": true,
+        "solvedScorecardRowCount": 7,
+        "hasOwnSolvedStatus": false,
+        "pendingControlEnabled": "UNKNOWN: innerText does not encode enabled state"
+      }
+    ],
+    "page7": {
+      "currentRound": 2,
+      "stage": 1,
+      "currentPrompt": "Open",
+      "pendingGameRetryText": true,
+      "submitAnswerText": true,
+      "solvedScorecardRows": 7,
+      "pendingEnabled": "UNKNOWN",
+      "qualification": "Player7 identity comes from explicit uiStates index. Any Solved text from another scorecard row is not evidence that page7 itself solved."
+    }
+  },
+  "slowAnswerResponses": [
+    {
+      "status": 409,
+      "durationMs": 4063.974,
+      "action": "answer"
+    },
+    {
+      "status": 409,
+      "durationMs": 27.938,
+      "action": "answer"
+    },
+    {
+      "status": 200,
+      "durationMs": 11601.008,
+      "action": "answer"
+    },
+    {
+      "status": 409,
+      "durationMs": 39.431,
+      "action": "answer"
+    },
+    {
+      "status": 409,
+      "durationMs": 42.367,
+      "action": "answer"
+    },
+    {
+      "status": 409,
+      "durationMs": 22.815,
+      "action": "answer"
+    },
+    {
+      "status": 409,
+      "durationMs": 34.843,
+      "action": "answer"
+    }
+  ],
+  "slowSuccessfulAnswerAboveSourceTimeout": {
+    "responses": [
+      {
+        "status": 200,
+        "durationMs": 11601.008,
+        "action": "answer"
+      }
+    ],
+    "frontendSignalTimeoutMs": 10000,
+    "exactActorCommandJoin": "UNKNOWN",
+    "causalConclusion": "Plausible frontend/driver acknowledgement divergence, not proven by these unjoined timing entries. AbortSignal scheduling and actual transport/body outcome were not recorded peractor."
+  },
+  "sourcePins": [
+    {
+      "path": "src/domain/match.ts",
+      "sha256": "4F92070120E3767042F9E99225D48E30FA24B138EAC0FCD20656D7C9D32B70C3",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/src/domain/match.ts",
+      "currentStillMatches": true
+    },
+    {
+      "path": "src/web/game-panel.tsx",
+      "sha256": "3B99A07B9F6B21A099728FB1C94875776BD323489849D3A1B871F9D25D55D821",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/src/web/game-panel.tsx",
+      "currentStillMatches": true
+    },
+    {
+      "path": "src/web/room-screen.tsx",
+      "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/src/web/room-screen.tsx",
+      "currentStillMatches": true
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/tests/browser/live-multiplayer.integration.spec.ts",
+      "currentStillMatches": true
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/tests/browser/live-player-counts.integration.spec.ts",
+      "currentStillMatches": true
+    },
+    {
+      "path": "tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/tests/browser/ui-command-capture.contract.ts",
+      "currentStillMatches": true
+    },
+    {
+      "path": "tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/tests/browser/ui-command-capture.test.ts",
+      "currentStillMatches": true
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/disabled-input-supplement/retained/tests/browser/ui-command-capture.ts",
+      "currentStillMatches": true
+    }
+  ],
+  "confirmedSourceChain": [
+    "pending input is set before fetch and frontend busy, preserved on fetch/body error.",
+    "successful driver result.json returns from commitUiCommand before any actual frontend acknowledgement check.",
+    "authoritative refresh advances view and clears error but does not clear pending.",
+    "input locked is busy OR pending OR confirmed greater than view version; pending alone can block a new-round input.",
+    "retry button reuses existing pending object; source idanswer uses room identity only.",
+    "new request waiter can time out while action fails before dispatch at disabled-input precondition; current AggregateError preserves both originals."
+  ],
+  "siblingBoundaryAssessment": [
+    {
+      "path": "matrix commitUi ready/choose/answer",
+      "finding": "All share driver-only JSON success. Hold original command through observable acknowledgement before advancing/counter increment."
+    },
+    {
+      "path": "strict command/answer helpers",
+      "finding": "Also return driver JSON/version. Push+authorizedread proves server projection, not frontend pending retirement. Preserve four-conflict-only semantics unless separately amended in approved test plan."
+    },
+    {
+      "path": "room-screen mutation/presence",
+      "finding": "Canonical pending room commands similarly consume bodies before clearing. Current10snapshots show no pending room retry; no room mutation regression is claimed."
+    },
+    {
+      "path": "future attribution",
+      "finding": "Body-error-only observer is empty here; observability should bind driver-success/frontend-ack outcome to the original Request identity. Never reconstruct missing historical keys from equal content or timing."
+    }
+  ],
+  "requirements": {
+    "effectiveSnapshot": {
+      "path": "/tmp/wordpairs-disabled-input-effective.json",
+      "sha256": "ECC514A85AEAFF517B4E4DCC29B5045BA182CDD3F8FEDD03250FAA5F567758D8",
+      "bytes": 869675
+    },
+    "criteria": [
+      {
+        "reference": "TR-CONNECTION-RECOVERY-009#TR-09-C01",
+        "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C01",
+        "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+        "isSatisfiedAtRead": false
+      },
+      {
+        "reference": "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C02",
+        "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TR-ROOM-SYNCRECOVERY-038#LIVE-05",
+        "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TR-ROOM-SYNCRECOVERY-038#LIVE-07",
+        "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+        "isSatisfiedAtRead": false
+      },
+      {
+        "reference": "TEST-CONNECTIONRECOVERY-109#VERIFY-TR-09",
+        "text": "Simulate lost response, reconnect, expiry and stale commands; assert same-command canonical retry, unchanged committed state and authoritative recovery.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TEST-CONNECTIONRECOVERY-109#TR-09-C01",
+        "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TEST-MULTIPLAYERINTEGRATION-134#TR-34-C01",
+        "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+        "isSatisfiedAtRead": false
+      },
+      {
+        "reference": "TEST-MULTIPLAYERINTEGRATION-134#TR-34-C02",
+        "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TEST-ROOMSYNC-139#LIVE-05",
+        "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+        "isSatisfiedAtRead": true
+      },
+      {
+        "reference": "TEST-ROOMSYNC-139#LIVE-07",
+        "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+        "isSatisfiedAtRead": false
+      }
+    ],
+    "interpretation": "TR09-C01 and TEST109 VERIFY-TR-09 require canonical lost-response retry and authoritative recovery; TR34-C02 covers conflict/retry assertions; TR34-C01/LIVE07 require actual rendered complete games and remain unsatisfied. LIVE05 applies to presence and is not relabeled game support. No new rule/AC/cap or state mutation."
+  },
+  "axes": [
+    {
+      "axis": "crash_restart_replay",
+      "assessment": "existing_canonical_recovery_applies",
+      "finding": "HTTP/driver completion and frontend acknowledgement are separate observers. Retain original command input through actual UI acknowledgement or exact canonical pending retry. Never count a prior command replay as the next requested intent. Existing server idempotence supports recovery but does not prove frontend acknowledgement.",
+      "pins": [
+        "game-panel.tsx:173-240",
+        "ui-command-capture.ts:42-47"
+      ]
+    },
+    {
+      "axis": "ordering_concurrency",
+      "assessment": "confirmed_test_acknowledgement_boundary_gap",
+      "finding": "Two answer UIs per batch and allSettled remain correct. The helper can return driver JSON while frontend state is still busy/pending; later authoritative view can render a new round without retiring that pending command. No new matching POST is expected while the next UI action remains blocked at its enabled-input precondition. The AggregateError truthfully retains waiter and action timeouts.",
+      "pins": [
+        "live-player-counts.integration.spec.ts:146-158",
+        "ui-command-capture.ts:10-35",
+        "game-panel.tsx:131-136",
+        "game-panel.tsx:243-244"
+      ]
+    },
+    {
+      "axis": "boundary_malformed",
+      "assessment": "preserve_existing_failure_discrimination",
+      "finding": "The disabled-input failure is an invoke failure, not a successful-body lookup error. Do not broaden a catch into blind UI retries or fabricate status0. Preserve original errors, absent/disabled pending rejection, full-payload mismatch controls and12attempt bounds. The slow11601.008ms successful response is above source10s signal duration but has no actor/command join.",
+      "pins": [
+        "ui-command-capture.ts:43-68",
+        "game-panel.tsx:194-209"
+      ]
+    },
+    {
+      "axis": "supported_host_inert_unsupported",
+      "assessment": "actual_local_failure_cause_partly_unknown",
+      "finding": "All10 snapshots retained browser/live connection and full roster. Local source/transport status and runtime resource load cannot be inferred from timing alone. No physical/hosted/tunnel capacity or driver-only cause is established. Another source-load audit is separately owned.",
+      "pins": [
+        "native",
+        "actorSnapshots",
+        "slowAnswerResponses"
+      ]
+    },
+    {
+      "axis": "lifecycle_terminal",
+      "assessment": "pending_state_survives_authoritative_refresh",
+      "finding": "Refresh may advance view and clear error but intentionally does not retire pending. Pending presence alone is sufficient for locked even when a new round is visible; busy and confirmed-version guards are additional independent causes. Only parsed successful mutation or defined terminal denial clears pending. Cleanup0 is preserved; later404 reads appear in the final diagnostic list and cannot override all10 pre-cleanup room snapshots.",
+      "pins": [
+        "game-panel.tsx:85-148",
+        "game-panel.tsx:173-244",
+        "live-player-counts.integration.spec.ts:175-201"
+      ]
+    },
+    {
+      "axis": "workspace_session_agent_isolation",
+      "assessment": "explicit_actor_snapshot_not_exact_request_join",
+      "finding": "uiStates explicitly names player7 for pending text. Native answer input id uses shared roomId, not profile ID. Successful response timing lacks actor,command ID and absolute event timestamp; no content/order/duration join can supply those missing keys. Existing new body-error attribution is empty because this lane observed no driver body errors.",
+      "pins": [
+        "game-panel.tsx:450-453",
+        "runtime.commandBodyFailures",
+        "actorSnapshots"
+      ]
+    },
+    {
+      "axis": "legacy_upgrade",
+      "assessment": "no_new_product_rule_or_cap_change",
+      "finding": "Existing lost-response retry and truthful renderedUI integration obligations support fixing test acknowledgement. No cap, observer limit, holdout, score, stage deadline, legacy match policy or product implementation change follows from this diagnosis. Preserve priorCCA body lookup and older failure histories separately.",
+      "pins": [
+        "requirements",
+        "failedHistory"
+      ]
+    },
+    {
+      "axis": "user_visible_output",
+      "assessment": "confirmed_real_pending_ui_blocks_next_action",
+      "finding": "Page7 shows a genuine pending game control with current round2 promptOpen. Native failing locator repeatedly sees disabled input valueLate; exact locator actor is not independently encoded. Test success must include observable frontend acknowledgement rather than HTTP JSON alone. The same boundary exists in matrix ready/choose/answer and strict command/answer; do not silently extend strict four-conflict-only semantics without its approved repair plan.",
+      "pins": [
+        "actorSnapshots",
+        "native",
+        "ui-command-capture.ts:47",
+        "live-multiplayer.integration.spec.ts:62-84"
+      ]
+    }
+  ],
+  "repairConstraints": [
+    "Require real observable frontend acknowledgement while retaining the exact original command across existing UI pending recovery.",
+    "Never treat old pending replay acknowledgement as completion of a newer round/action.",
+    "Do not catch arbitrary invoke failures as success or blindly issue new/API requests.",
+    "Use independent good/wrong mock controls for driver200/frontendpending, delayedfrontendack, exactcanonicalretry and wrongcommand/noUI rejection before any implementation.",
+    "Preserve current capture58 ownership/body/error discrimination, status/conflict rules, deadlines, attempt bounds, cap15, two-answer batches, cleanup and final assertions.",
+    "Full frozen suites, all14ordinary UI games and separate strict push plus independent Cline/Beam/High review are still required; a helper gate is not actual-game acceptance."
+  ],
+  "unknowns": [
+    "Exact pending payload/action/round/command ID on page7.",
+    "Exact successful11601.008ms response actor/command and whether actual frontend timeout caused page7 pending.",
+    "Actual enabled state of pending button in the innerText snapshot.",
+    "Exact native locator actor beyond sharedroom DOM id; timing/batch narrative is inference.",
+    "Underlying latency/browser/worker/backpressure cause; no measured bottleneck established by this audit.",
+    "Success of any proposed repair in actual full matrix/strict/hosted operation."
+  ],
+  "noSourceTestProviderRequirementChanges": true,
+  "testsBuildsModelsRunByThisAgent": false,
+  "accuracy": 99,
+  "completeness": 97,
+  "scoreQualification": "Bounded source/native evidence diagnosis with explicit missing runtime joins; not hostile approval or release completion."
+}

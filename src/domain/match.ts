@@ -6,6 +6,7 @@ import {
 } from "./catalog";
 import type { Match, Round, Solve } from "./model";
 import { failure, type Result, success } from "./result";
+import { MAX_ROOM_PLAYERS } from "./rooms";
 
 export const ANSWER_STAGE_MS = 20000;
 export const MATCH_ROUNDS = 8;
@@ -30,7 +31,7 @@ export function createMatch(
     !id ||
     !roomId ||
     roster.length < 2 ||
-    roster.length > 25 ||
+    roster.length > MAX_ROOM_PLAYERS ||
     new Set(roster).size !== roster.length ||
     roster.some((p) => !p) ||
     !Number.isFinite(now)

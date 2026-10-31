@@ -1,5 +1,8 @@
 # Administration and access control
 
+> Current release policy (28 October 2026): [Guest game and GitHub admin PWA](admin_pwa_release.md) supersedes the public-install/OpenAI/multi-account delegation scope below. Public play is guest-only; only verified sharpninja administers through GitHub, and only admin remains installable. The following original design and approval evidence is historical and does not approve the changed release.
+
+
 Implementation extension requested 27 October 2026, after the completed Phase 0–6 baseline. Historical phase approvals remain historical evidence; this extension receives its own hostile validation.
 
 ## Screens and operations
@@ -22,6 +25,27 @@ Appeal reviewers must remain independent of the proposer and original reviewer, 
 `WORDPAIRS_ADMIN_PROFILE_IDS` is a server-only comma-separated list of existing, stable profile IDs. It is never exposed as a public environment variable or accepted in HTTP input. The authenticated profile screen displays the current profile ID so an operator can configure the first administrator. Configured administrators receive the admin role in trusted identity/content composition and SQL access checks; the entire allowlist is never returned to a client. Their administrator permission cannot be revoked through the UI. Changing the allowlist requires restarting/redeploying the server. Other administrator and moderator grants persist in PostgreSQL and are reloaded on every authenticated request.
 
 ## Transaction boundaries
+
+### Permission-aware navigation
+
+`FR-ADMINPAGES-023/FR-23-C05` requires administration links to follow the same
+permission matrix. The private, no-store session response projects only the
+current actor's effective permissions; it never exports the bootstrap allowlist,
+provider subject or server role context. Anonymous and ordinary player sessions
+render no administration links, including on direct `/admin` entry. Moderators
+can navigate to moderation and word pairs/hints; only administrators see users
+and access. Existing route/application/SQL checks remain authoritative for every
+read and write.
+
+The identity panel refreshes permissions every15 seconds and on tab focus.
+Failed refreshes remove links. Session mutations retire prior reads and clear
+navigation immediately; focus/poll refreshes cannot overtake a pending guest
+entry or sign-out. Successful guest entry reloads the verified session before
+showing any permission-based links. Missing permission fields fail closed.
+`tests/browser/auth-navigation.phase6.spec.ts` covers the rendered role matrix,
+direct entry, revocation, failure and logout. Deferred POST/DELETE regressions in
+`tests/web/identity-navigation.test.ts` verify focus cannot restore an old session.
+
 
 ```mermaid
 flowchart LR

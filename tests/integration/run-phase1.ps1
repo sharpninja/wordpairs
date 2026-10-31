@@ -1,16 +1,31 @@
 # Local TR-31 verification. No ports, credentials, or data from external services are used.
-param([string]$ContainerName = ('wordpairs-verification-' + [guid]::NewGuid().ToString('N').Substring(0,10)),[switch]$Realtime,[switch]$Multiplayer,[switch]$Administration)
+[CmdletBinding(SupportsShouldProcess)]
+param([string]$ContainerName = ('wordpairs-verification-' + [guid]::NewGuid().ToString('N').Substring(0,10)),[switch]$Realtime,[switch]$Multiplayer,[switch]$Administration,[switch]$CapacityUpgrade,[switch]$CapacityFresh,[string]$ReportDirectory,[ValidatePattern('^tests/integration/[A-Za-z0-9.-]+\.integration\.ts$')][string[]]$TestPath,[switch]$VolatileStorage)
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $createdContainerId = $null
 $createdRealtimeId = $null
+if ($TestPath -and ($Multiplayer -or $Administration -or $CapacityUpgrade)) { throw 'Choose explicit TestPath or a named test subset, not both' }
+if ($CapacityFresh -and -not $CapacityUpgrade) { throw 'CapacityFresh requires the CapacityUpgrade subset so legacy cases are explicitly outside this fresh denominator' }
+if (-not $PSCmdlet.ShouldProcess($ContainerName, 'Create disposable database, run integration assertions and clean up owned resources')) { return }
+$reportOptions = @()
+$realtimeReportOptions = @()
+if ($ReportDirectory) {
+    $reportPath = [IO.Path]::GetFullPath($ReportDirectory)
+    $null = New-Item -ItemType Directory -Path $reportPath -Force
+    $reportOptions = @('--reporter=default','--reporter=junit',("--outputFile.junit=" + (Join-Path $reportPath 'postgres.xml')))
+    $realtimeReportOptions = @('--reporter=default','--reporter=junit',("--outputFile.junit=" + (Join-Path $reportPath 'realtime.xml')))
+}
 
 function Invoke-TestSql([string]$Sql) {
     $result = $Sql | & docker exec -i $ContainerName psql -U postgres -d wordpairs -v ON_ERROR_STOP=1 -At
     if ($LASTEXITCODE -ne 0) { throw 'Database test command failed' }
     return $result
 }
-function Start-TestSql([string]$Sql) {
+function Start-TestSql {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Justification='Runs only inside the root ShouldProcess-approved disposable database fixture; never accepts an external database.')]
+    [CmdletBinding()]
+    param([string]$Sql)
     $info = [Diagnostics.ProcessStartInfo]::new('docker')
     $info.UseShellExecute = $false
     $info.RedirectStandardInput = $true
@@ -26,9 +41,12 @@ function Start-TestSql([string]$Sql) {
 try {
     $portOptions = @('-p','127.0.0.1::5432')
     $databaseOptions = @()
+    # Optional disposable RAM-backed fixture storage. SQL transactions/locks are
+    # real; this mode does not establish disk durability or crash recovery.
+    $storageOptions = if ($VolatileStorage) { @('--tmpfs','/var/lib/postgresql/data') } else { @() }
     if ($Realtime) { $portOptions += @('-p','127.0.0.1::4000') }
     if ($Realtime) { $databaseOptions = @('-c','wal_level=logical','-c','max_replication_slots=10') }
-    $created = & docker run --detach --name $ContainerName @portOptions -e POSTGRES_PASSWORD=wordpairs-local-test -e POSTGRES_DB=wordpairs 'postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b' @databaseOptions
+    $created = & docker run --detach --name $ContainerName @portOptions @storageOptions -e POSTGRES_PASSWORD=wordpairs-local-test -e POSTGRES_DB=wordpairs 'postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b' @databaseOptions
     if ($LASTEXITCODE -ne 0) { throw 'Could not start disposable test database' }
     $createdContainerId = "$created".Trim()
     if ($createdContainerId -notmatch '^[0-9a-f]{64}$') { $createdContainerId=$null; throw 'Unexpected container identity' }
@@ -40,7 +58,18 @@ try {
     }
     if (-not $ready) { & docker logs --tail 30 $createdContainerId;throw 'Disposable database did not become ready' }
     Invoke-TestSql 'create role anon; create role authenticated; create role service_role;'
-    foreach ($migration in (Get-ChildItem (Join-Path $repoRoot 'src/infrastructure/migrations') -Filter '*.sql' | Sort-Object Name)) { Invoke-TestSql (Get-Content $migration.FullName -Raw) }
+    $migrationSteps=[Collections.Generic.List[object]]::new()
+    foreach ($migration in (Get-ChildItem (Join-Path $repoRoot 'src/infrastructure/migrations') -Filter '*.sql' | Sort-Object Name)) {
+        if ($migration.Name -eq '013_player_capacity.sql' -and -not $CapacityFresh) {
+            Invoke-TestSql (Get-Content (Join-Path $PSScriptRoot 'capacity-upgrade-seed.sql') -Raw)
+            $migrationSteps.Add([pscustomobject]@{kind='seed';name='capacity-upgrade-seed.sql';sha256=(Get-FileHash (Join-Path $PSScriptRoot 'capacity-upgrade-seed.sql')).Hash})
+        }
+        Invoke-TestSql (Get-Content $migration.FullName -Raw)
+        $migrationSteps.Add([pscustomobject]@{kind='migration';name=$migration.Name;sha256=(Get-FileHash $migration.FullName).Hash})
+    }
+    $migrationPlan=[pscustomobject]@{mode=$(if($CapacityFresh){'fresh'}else{'upgrade'});legacyCasesExpected=(-not $CapacityFresh);steps=@($migrationSteps)}
+    if(-not (& (Join-Path $PSScriptRoot '../powershell/Assert-CapacityMigrationPlan.ps1') -Plan $migrationPlan)){throw 'Migration fixture plan was not verified'}
+    if($ReportDirectory){$migrationPlan|ConvertTo-Json -Depth 10|Set-Content (Join-Path $reportPath 'migration-plan.json')}
     Invoke-TestSql (Get-Content (Join-Path $PSScriptRoot 'phase1-contract.sql') -Raw)
 
     # Exercise actual unprivileged sessions, not merely catalog grant inspection.
@@ -73,14 +102,17 @@ insert into wordpairs.room_members(room_id,profile_id,membership_kind,roster_pos
     $portBinding = & docker port $ContainerName 5432/tcp
     $localPort = ($portBinding -split ':')[-1]
     $priorTestUrl = $env:WORDPAIRS_TEST_DATABASE_URL
+    $priorCapacityMode=$env:WORDPAIRS_CAPACITY_MODE
     try {
         $env:WORDPAIRS_TEST_DATABASE_URL = "postgresql://postgres:wordpairs-local-test@127.0.0.1:${localPort}/wordpairs"
+        $env:WORDPAIRS_CAPACITY_MODE=if($CapacityFresh){'fresh'}else{'upgrade'}
         Push-Location $repoRoot
         try {
-            $testFiles = @()
+            $testFiles = @($TestPath)
             if ($Multiplayer) { $testFiles = @('tests/integration/multiplayer.integration.ts') }
             if ($Administration) { $testFiles = @('tests/integration/admin.integration.ts') }
-            & npm exec vitest -- run --config vitest.postgres.config.ts @testFiles
+            if ($CapacityUpgrade) { $testFiles = @('tests/integration/capacity.integration.ts') }
+            & npm exec vitest -- run --config vitest.postgres.config.ts @testFiles @reportOptions
             if ($LASTEXITCODE -ne 0) { throw 'Real adapter integration tests failed' }
             if ($Realtime) {
                 Invoke-TestSql "create role supabase_admin superuser login password 'wordpairs-local-test'; create role dashboard_user nologin; grant anon,authenticated,service_role to supabase_admin with admin option; create schema _realtime; create schema auth; alter role service_role bypassrls; create function auth.uid() returns uuid language sql stable as 'select nullif(current_setting(''request.jwt.claims'',true)::jsonb->>''sub'','''')::uuid'; create function auth.jwt() returns jsonb language sql stable as 'select current_setting(''request.jwt.claims'',true)::jsonb';"
@@ -108,13 +140,13 @@ insert into wordpairs.room_members(room_id,profile_id,membership_kind,roster_pos
                 try {
                     $env:WORDPAIRS_TEST_REALTIME_URL="http://127.0.0.1:$realtimePort"
                     $env:WORDPAIRS_TEST_REALTIME_JWT_SECRET=$fixtureSecret
-                    & npm exec vitest -- run --config vitest.realtime.config.ts
+                    & npm exec vitest -- run --config vitest.realtime.config.ts @realtimeReportOptions
                     if($LASTEXITCODE -ne 0){$logPath=Join-Path ([IO.Path]::GetTempPath()) "$ContainerName-realtime.log";& docker logs $createdRealtimeId 2>&1 | Set-Content $logPath;"Realtime diagnostics: $logPath";Get-Content $logPath | Select-String -Pattern 'error_code=|Failed' -Context 0,4;throw 'Real Realtime transport integration failed'}
                 }finally{$env:WORDPAIRS_TEST_REALTIME_URL=$priorRealtimeUrl;$env:WORDPAIRS_TEST_REALTIME_JWT_SECRET=$priorRealtimeSecret}
             }
         }
         finally { Pop-Location }
-    } finally { $env:WORDPAIRS_TEST_DATABASE_URL = $priorTestUrl }
+    } finally { $env:WORDPAIRS_TEST_DATABASE_URL = $priorTestUrl; $env:WORDPAIRS_CAPACITY_MODE=$priorCapacityMode }
     'PASS: TR-31 migration, direct-role denial, canonical retry/conflict, durable outbox, rollback fault, and concurrent final-seat checks'
 } finally {
     if ($createdRealtimeId) { & docker rm --force $createdRealtimeId *> $null }

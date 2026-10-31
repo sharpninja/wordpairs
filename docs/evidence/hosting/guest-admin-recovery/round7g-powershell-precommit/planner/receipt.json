@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-10-29T11:24:05",
+  "runId": "e8a671f1-4775-4aad-9226-784ed7dc20c5",
+  "parentRunId": "b695aa52-50bf-459b-8540-9aa10df90697",
+  "hostName": "[PRIVATE HOST]",
+  "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+  "producer": "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+  "producerSha256": "E132D9A27F70522253C6B6DB20B5FD2A20AD0154241A9AA32A9958B0DD506534",
+  "invocation": [
+    "pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+    "-ReportDirectory",
+    "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round7g-powershell-precommit/planner",
+    "-ParentRunId",
+    "b695aa52-50bf-459b-8540-9aa10df90697"
+  ],
+  "mockCases": 6,
+  "realCases": 6,
+  "testSha256": "5EDE3C1F559BC322E7CFF1C7C09B945E44029483F3DB8BE2172A84A9F9C4A303",
+  "runs": [
+    {
+      "name": "negative-controls",
+      "runId": "e8a671f1-4775-4aad-9226-784ed7dc20c5",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T11:24:01",
+      "finishedAt": "2026-10-29T11:24:04",
+      "invocation": [
+        "pwsh",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round7g-powershell-precommit/planner",
+        "-ParentRunId",
+        "b695aa52-50bf-459b-8540-9aa10df90697"
+      ],
+      "step": "Run-HostingSchemaMockGate.ps1",
+      "outcome": "passed",
+      "report": "controls/mock-gate.json"
+    },
+    {
+      "name": "planner-mock",
+      "runId": "e8a671f1-4775-4aad-9226-784ed7dc20c5",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T11:24:04",
+      "finishedAt": "2026-10-29T11:24:04",
+      "invocation": [
+        "pwsh",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round7g-powershell-precommit/planner",
+        "-ParentRunId",
+        "b695aa52-50bf-459b-8540-9aa10df90697"
+      ],
+      "step": "Invoke-Pester -Configuration $config",
+      "outcome": "passed",
+      "failedCount": 0,
+      "report": "mock.xml",
+      "module": "\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.MockCorrect.psm1"
+    },
+    {
+      "name": "planner-real",
+      "runId": "e8a671f1-4775-4aad-9226-784ed7dc20c5",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T11:24:04",
+      "finishedAt": "2026-10-29T11:24:05",
+      "invocation": [
+        "pwsh",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round7g-powershell-precommit/planner",
+        "-ParentRunId",
+        "b695aa52-50bf-459b-8540-9aa10df90697"
+      ],
+      "step": "Run-HostingSchemaRealGate.ps1",
+      "outcome": "passed",
+      "report": "real.xml"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[WebServer] (node:1092380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+(node:1092450) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] tests/browser/invitation-copy.phase2.spec.ts:140:1 › INVITE-COPY-01 copies the generated invitation and confirms it
+  1) tests/browser/invitation-copy.phase2.spec.ts:140:1 › INVITE-COPY-01 copies the generated invitation and confirms it 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 0
+
+      Object {
+        "action": "invite",
+    -   "expectedProfileId": "p1",
+      }
+
+      143 |   expect(await observeCopied(page)).toEqual({ displayed: invitation, copied: invitation });
+      144 |   expect(invitations).toHaveLength(1);
+    > 145 |   expect(invitations[0]).toMatchObject({ action: "invite", expectedProfileId: "p1" });
+          |                          ^
+      146 | });
+      147 |
+      148 | test("INVITE-COPY-01 uses writeText when ClipboardItem is unavailable", async ({ page }) => {
+        at /tmp/wordpairs-invite-round4-isolated-retry/tests/browser/invitation-copy.phase2.spec.ts:145:26
+
+    Error Context: test-results/invitation-copy.phase2-INV-56273--invitation-and-confirms-it/error-context.md
+
+
+  1 failed
+    tests/browser/invitation-copy.phase2.spec.ts:140:1 › INVITE-COPY-01 copies the generated invitation and confirms it 

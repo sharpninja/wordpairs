@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-31T14:14:02",
+  "parentRevision": "007afa52bb2e7bd34f561bf0683b5e6659ab7227",
+  "sourcePins": [
+    {
+      "path": "scripts/HostingSchemaPlanner.psm1",
+      "sha256": "D6EF4CE416557FFFA8A9361D1E643279BA8A96EF4D4FF6B5D5163A627B15D119"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.Tests.ps1",
+      "sha256": "1F5D0D8CA8795F07A465897200FAD0F3C09C0660638F2B908F5EFCB13F62E2A6"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.CatalogFixture.psm1",
+      "sha256": "C94D872A5C6A0F751695D4342EE455217D74C015D5404687E53DAB5ABC209983"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockCorrect.psm1",
+      "sha256": "564AEAC94236EA0A53BE8D127C45AE1B3D0B0C4F7B0CB9227C18C6AB5E21D637"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockWrong.psm1",
+      "sha256": "B47FF46F404CB295A34C0E57CF7FC07B47AEB3DBDA5F6CA39201955BF67FCC50"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockWrongEmpty.psm1",
+      "sha256": "6DBFB5328C5D16ADAC8706E30EC1FDD60A647EBAA178BFA20A937D831330223C"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockWrongOmitted.psm1",
+      "sha256": "5D675C52523CB819CE9FDF0DBFE4109946C08C83BB9A3734F06A19A271F47533"
+    },
+    {
+      "path": "tests/powershell/Run-HostingSchemaMockGate.ps1",
+      "sha256": "E851F5C1BA4769166EAA7C9DC79D96B641D09E76F7129BA48AA53970D3FB0F74"
+    },
+    {
+      "path": "tests/powershell/Run-HostingSchemaRealGate.ps1",
+      "sha256": "7CB8DE79E153EA51C58507C9E5916CD85978C63F212EA5ABBD4614E61A166F62"
+    },
+    {
+      "path": "scripts/Run-HostingPlannerEvidence.ps1",
+      "sha256": "3ACCBC5B750799C03E94D401B4F2260336B999AD6A3588663CBB41B25DD68AA5"
+    },
+    {
+      "path": "scripts/Run-ReviewPowerShellEvidence.ps1",
+      "sha256": "E8A21F19D19B4540CB2050923A75C3F486CBD09634B4CCBBC88ED8CBEA5A9319"
+    },
+    {
+      "path": "scripts/Prepare-ReviewEvidence.ps1",
+      "sha256": "E4D587E6ADD990DF8CA35696AF524938F5191A48F27FA242E18B6422FFC57E8D"
+    },
+    {
+      "path": "tests/integration/hosting-schema.test.ts",
+      "sha256": "B089D032D74F46DBEB995E7714E2C8C49708F2BB7A2B6CB86FC646366E518802"
+    }
+  ],
+  "documentPins": [
+    {
+      "path": "docs/deployment_plan.md",
+      "sha256": "D645F1EFF041A86950ADFB7B34B1418DB5C3070DA9D6953702E37B3BE46FF64F"
+    },
+    {
+      "path": "docs/hosting_execution.md",
+      "sha256": "BD827774FDAB076F229102674DD1E360AC3213A8189BC27269BCC873A99A503E"
+    },
+    {
+      "path": "docs/release15-completion-plan.md",
+      "sha256": "B09E82544DFCF15E71455EFEFC8C1B9AC5A8560AF4E35425B25C180FC5E90F34"
+    },
+    {
+      "path": "docs/wiki.yaml",
+      "sha256": "6D70FAF8D8328B1138B908651C8A868F9227302F79EC3739E2ECB4E9035F1436"
+    }
+  ],
+  "powerShellCases": 50,
+  "reviewPreparationCases": 22,
+  "typescriptHostingCases": 6,
+  "failed": 0,
+  "skipped": 0,
+  "mockBeforeProduction": true,
+  "qualification": "Reviewed bounded source freeze only. Dirty workspace focused receipts do not establish frozen full gate, independent HV, hosted migration or deployment completion."
+}

@@ -1,0 +1,117 @@
+{
+  "startedAt": "2026-10-30T16:58:23",
+  "finishedAt": "2026-10-30T16:58:24",
+  "change": "Brace-only callback body around the identical socket.close call; no behavior/assertion/timeouts change",
+  "priorReceipt": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/receipt.json",
+  "priorReceiptSha256": "F462ACFDE74359EB088C5878B95B8C5B5C2722E470B16C90159C9221BB0FBD1C",
+  "preStyleSource": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/before-style-live-multiplayer.ts.txt",
+  "preStyleSourceSha256": "BB381AEADCC8FF5AE43DCAB1DE7658BFED9D2CD2F90B1BD5B2344D6D0C0D0F81",
+  "priorOptionalLint": {
+    "errors": 1,
+    "warnings": 10,
+    "preserved": true
+  },
+  "lint": {
+    "warnings": 10,
+    "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/five-file-lint-after-style.log",
+    "logSha256": "D509849F9F37C8FBBDD126835A45FB433132D1BDAAE4727FD885F7D77395C791",
+    "arguments": [
+      "exec",
+      "biome",
+      "--",
+      "lint",
+      "tests/browser/request-diagnostics.contract.ts",
+      "tests/browser/request-diagnostics.test.ts",
+      "tests/browser/request-diagnostics.ts",
+      "tests/browser/live-player-counts.integration.spec.ts",
+      "tests/browser/live-multiplayer.integration.spec.ts"
+    ],
+    "exitCode": 0,
+    "errors": 0,
+    "qualification": "Ten unchanged baseline warnings retained; callback-return error removed by authorized braces.",
+    "executable": "npm"
+  },
+  "sourceDiffCheckExit": 0,
+  "files": [
+    {
+      "path": "tests/browser/request-diagnostics.contract.ts",
+      "sha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B"
+    },
+    {
+      "path": "tests/browser/request-diagnostics.test.ts",
+      "sha256": "45627E32328574C0B8F8075DDEE1CA8A61C24B02DA4CB869E37B08B5B01550B4"
+    },
+    {
+      "path": "tests/browser/request-diagnostics.ts",
+      "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "F522AA7DC8619D51D12A12C11F03FFA059AC1C5563198070059516618AD27895"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "91DDCE4F77598432ED973FEA2DC3E0548DF2CBD30D45BBA14AA79E5BF533648E"
+    }
+  ],
+  "editVerifications": [
+    {
+      "timestamp": "2026-10-30T16:47:57",
+      "file": "tests/browser/request-diagnostics.contract.ts",
+      "sha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T164752-request-diagnostics.contract.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:48:43",
+      "file": "tests/browser/request-diagnostics.test.ts",
+      "sha256": "D5C6D290491CE35C12DE93FD5A85529C7B940E30F0EF0BAB7B301BAAEC701C7B",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T164838-request-diagnostics.test.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:50:04",
+      "file": "tests/browser/request-diagnostics.ts",
+      "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T164958-request-diagnostics.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:50:24",
+      "file": "tests/browser/request-diagnostics.test.ts",
+      "sha256": "45627E32328574C0B8F8075DDEE1CA8A61C24B02DA4CB869E37B08B5B01550B4",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165018-request-diagnostics.test.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:51:36",
+      "file": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "F522AA7DC8619D51D12A12C11F03FFA059AC1C5563198070059516618AD27895",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165131-live-player-counts.integration.spec.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:51:56",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "BB381AEADCC8FF5AE43DCAB1DE7658BFED9D2CD2F90B1BD5B2344D6D0C0D0F81",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165152-live-multiplayer.integration.spec.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:58:10",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "91DDCE4F77598432ED973FEA2DC3E0548DF2CBD30D45BBA14AA79E5BF533648E",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165805-live-multiplayer.integration.spec.ts.log"
+    }
+  ],
+  "oracleUnchangedSha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+  "qualification": "No further test run needed for brace-only formatting; prior real22 oracle binding unchanged. Parent full freeze/rerun and independent HV still required."
+}

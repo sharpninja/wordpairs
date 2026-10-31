@@ -1,0 +1,21 @@
+tests/browser/live-multiplayer.integration.spec.ts:12:import { captureUiCommand } from "./ui-command-capture";
+tests/browser/live-multiplayer.integration.spec.ts:64:    const result = await captureUiCommand(
+tests/browser/live-multiplayer.integration.spec.ts:65:      () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/`)),
+tests/browser/live-multiplayer.integration.spec.ts:69:    return (await result.json() as { version: number }).version;
+tests/browser/live-multiplayer.integration.spec.ts:72:    for (let attempt = 0; attempt < 4; attempt++) {
+tests/browser/live-multiplayer.integration.spec.ts:76:      const result = await captureUiCommand(
+tests/browser/live-multiplayer.integration.spec.ts:77:        () => page.waitForRequest((r) => r.method() === "POST" && r.url().endsWith("/match") && r.postDataJSON()?.action === "answer"),
+tests/browser/live-multiplayer.integration.spec.ts:80:      if (result.ok()) { const solved = await result.json() as { correct: boolean; version: number }; expect(solved.correct).toBe(true); return solved.version; }
+tests/browser/live-multiplayer.integration.spec.ts:150:            const data = await response.json() as { version: number };
+tests/browser/live-multiplayer.integration.spec.ts:163:          const access = await response.json() as { expiresAt: number };
+tests/browser/live-player-counts.integration.spec.ts:9:import { captureUiCommand, commitUiCommand } from "./ui-command-capture";
+tests/browser/live-player-counts.integration.spec.ts:18:  test.setTimeout(600000);
+tests/browser/live-player-counts.integration.spec.ts:37:  const commandBodyFailures: { player: number; phase: string; action: string | null; commandId: string | null; expectedProfileId: string | null; status: number; pendingControl: "visible-enabled" | "not-observed-enabled" }[] = [];
+tests/browser/live-player-counts.integration.spec.ts:52:    return captureUiCommand(
+tests/browser/live-player-counts.integration.spec.ts:53:      () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
+tests/browser/live-player-counts.integration.spec.ts:59:    return commitUiCommand<{ version: number; correct: boolean }>(action, {
+tests/browser/live-player-counts.integration.spec.ts:73:        commandBodyFailures.push({ player: pages.indexOf(page), phase, action: typeof payload.action === "string" && ["ready", "leave", "choose", "answer", "continue"].includes(payload.action) ? payload.action : null, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), status, pendingControl: enabled ? "visible-enabled" : "not-observed-enabled" });
+tests/browser/live-player-counts.integration.spec.ts:120:      const room = await response.json();
+tests/browser/live-player-counts.integration.spec.ts:171:    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+tests/browser/live-player-counts.integration.spec.ts:173:    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
+tests/browser/live-player-counts.integration.spec.ts:193:      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));

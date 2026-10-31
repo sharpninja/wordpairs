@@ -1,0 +1,673 @@
+{
+  "observationQualification": "Connected Vercel read-only allowlist projections only. Environment values were never rendered or persisted. Explicit teamId queries returned403; implicit account queries for the exact immutable project IDs report the expected accountId.",
+  "implicitScopeObservations": [
+    {
+      "logical": "staging",
+      "kind": "project",
+      "isError": false,
+      "returnedFields": [
+        "id",
+        "name",
+        "framework",
+        "accountId",
+        "createdAt",
+        "updatedAt",
+        "nodeVersion",
+        "live",
+        "latestDeployment",
+        "domains",
+        "passwordProtection",
+        "ssoProtection",
+        "trustedIps"
+      ],
+      "id": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+      "name": "wordpairs",
+      "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+      "framework": "nextjs",
+      "nodeVersion": "24.x",
+      "domains": [
+        "wordpairs.vercel.app",
+        "wordpairs-sharp-ninja1.vercel.app",
+        "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+      ],
+      "ssoProtection": {
+        "deploymentType": "all_except_custom_domains"
+      },
+      "latestDeployment": {
+        "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+        "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+        "target": "production",
+        "readyState": "READY"
+      },
+      "buildSettingsFieldsPresent": []
+    },
+    {
+      "logical": "staging",
+      "kind": "domains",
+      "isError": false,
+      "returnedFields": [
+        "domains",
+        "pagination"
+      ],
+      "domains": [
+        {
+          "name": "wordpairs.vercel.app",
+          "verified": true,
+          "gitBranch": null,
+          "redirect": null
+        }
+      ],
+      "pagination": {
+        "next": null,
+        "count": 1
+      }
+    },
+    {
+      "logical": "staging",
+      "kind": "environmentNames",
+      "isError": false,
+      "returnedFields": [
+        "envs",
+        "hiddenProductionEnvCount"
+      ],
+      "variables": [
+        {
+          "name": "WORDPAIRS_GITHUB_CLIENT_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_GITHUB_CLIENT_ID",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_DATABASE_CA",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_DATABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_INVITE_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_SCHEDULER_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_SUPABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_SUPABASE_ANON_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_ORIGIN",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_PRISMA_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_URL_NON_POOLING",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_USER",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_HOST",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_DATABASE",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_JWT_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_ANON_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_SERVICE_ROLE_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_PUBLISHABLE_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_SECRET_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+          "targets": [
+            "production"
+          ]
+        }
+      ],
+      "qualification": "All values discarded without rendering or persistence; decrypt=false requested."
+    },
+    {
+      "logical": "staging",
+      "kind": "canonicalDeployment",
+      "isError": false,
+      "returnedFields": [
+        "id",
+        "name",
+        "url",
+        "type",
+        "state",
+        "createdAt",
+        "creator",
+        "project",
+        "meta",
+        "alias",
+        "target",
+        "regions",
+        "buildingAt",
+        "ready",
+        "readyState",
+        "aliasError"
+      ],
+      "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+      "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+      "target": "production",
+      "readyState": "READY",
+      "state": "READY",
+      "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+      "alias": [
+        "wordpairs.vercel.app",
+        "wordpairs-sharp-ninja1.vercel.app",
+        "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+      ],
+      "aliasErrorPresent": false
+    },
+    {
+      "logical": "production",
+      "kind": "project",
+      "isError": false,
+      "returnedFields": [
+        "id",
+        "name",
+        "framework",
+        "accountId",
+        "createdAt",
+        "updatedAt",
+        "nodeVersion",
+        "live",
+        "latestDeployment",
+        "domains",
+        "passwordProtection",
+        "ssoProtection",
+        "trustedIps"
+      ],
+      "id": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+      "name": "wordpairs-j9jf",
+      "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+      "framework": "nextjs",
+      "nodeVersion": "24.x",
+      "domains": [
+        "wordpairs-j9jf-sharp-ninja1.vercel.app",
+        "wordpairs-j9jf-git-main-sharp-ninja1.vercel.app"
+      ],
+      "ssoProtection": {
+        "deploymentType": "all_except_custom_domains"
+      },
+      "latestDeployment": {
+        "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+        "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+        "target": "production",
+        "readyState": "CANCELED"
+      },
+      "buildSettingsFieldsPresent": []
+    },
+    {
+      "logical": "production",
+      "kind": "domains",
+      "isError": false,
+      "returnedFields": [
+        "domains",
+        "pagination"
+      ],
+      "domains": [
+        {
+          "name": "wordpairs-j9jf.vercel.app",
+          "verified": true,
+          "gitBranch": null,
+          "redirect": null
+        }
+      ],
+      "pagination": {
+        "next": null,
+        "count": 1
+      }
+    },
+    {
+      "logical": "production",
+      "kind": "environmentNames",
+      "isError": false,
+      "returnedFields": [
+        "envs",
+        "hiddenProductionEnvCount"
+      ],
+      "variables": [
+        {
+          "name": "WORDPAIRS_GITHUB_CLIENT_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_GITHUB_CLIENT_ID",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_DATABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_INVITE_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_SCHEDULER_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_DATABASE_CA",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_SUPABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_SUPABASE_ANON_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "WORDPAIRS_ORIGIN",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_PRISMA_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_URL_NON_POOLING",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_USER",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_HOST",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "POSTGRES_DATABASE",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_JWT_SECRET",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_ANON_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_SERVICE_ROLE_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_PUBLISHABLE_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "SUPABASE_SECRET_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_URL",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+          "targets": [
+            "production"
+          ]
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+          "targets": [
+            "production"
+          ]
+        }
+      ],
+      "qualification": "All values discarded without rendering or persistence; decrypt=false requested."
+    },
+    {
+      "logical": "production",
+      "kind": "canonicalDeployment",
+      "isError": true,
+      "errorCode": "not_found",
+      "errorStatus": 404
+    }
+  ],
+  "actualProtectionAndReadyHistory": [
+    {
+      "logical": "staging",
+      "kind": "protectionActualFlags",
+      "isError": false,
+      "passwordProtection": {
+        "enabled": false,
+        "deploymentType": null
+      },
+      "trustedIps": {
+        "enabled": false,
+        "deploymentType": null,
+        "protectionMode": null
+      },
+      "ssoProtection": {
+        "deploymentType": "all_except_custom_domains"
+      }
+    },
+    {
+      "logical": "staging",
+      "kind": "readyProductionDeployments",
+      "isError": false,
+      "deployments": [
+        {
+          "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+          "name": "wordpairs",
+          "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+          "target": "production",
+          "state": "READY",
+          "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf"
+        }
+      ],
+      "pagination": {
+        "count": 1
+      }
+    },
+    {
+      "logical": "production",
+      "kind": "protectionActualFlags",
+      "isError": false,
+      "passwordProtection": {
+        "enabled": false,
+        "deploymentType": null
+      },
+      "trustedIps": {
+        "enabled": false,
+        "deploymentType": null,
+        "protectionMode": null
+      },
+      "ssoProtection": {
+        "deploymentType": "all_except_custom_domains"
+      }
+    },
+    {
+      "logical": "production",
+      "kind": "readyProductionDeployments",
+      "isError": false,
+      "deployments": [],
+      "pagination": {
+        "count": 0
+      }
+    }
+  ],
+  "environmentVisibility": [
+    {
+      "logical": "staging",
+      "kind": "environmentVisibility",
+      "isError": false,
+      "returnedNames": 25,
+      "hiddenProductionEnvCount": 0,
+      "valueHandling": "decrypt=false; values discarded before output or storage"
+    },
+    {
+      "logical": "production",
+      "kind": "environmentVisibility",
+      "isError": false,
+      "returnedNames": 25,
+      "hiddenProductionEnvCount": 0,
+      "valueHandling": "decrypt=false; values discarded before output or storage"
+    }
+  ],
+  "immutableDeployments": [
+    {
+      "logical": "staging",
+      "kind": "immutableDeploymentIdentity",
+      "isError": false,
+      "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+      "name": "wordpairs",
+      "project": {
+        "id": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+        "name": "wordpairs"
+      },
+      "target": "production",
+      "readyState": "READY",
+      "state": "READY",
+      "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+      "alias": [
+        "wordpairs.vercel.app",
+        "wordpairs-sharp-ninja1.vercel.app",
+        "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+      ],
+      "aliasErrorPresent": false,
+      "gitSourcePresent": false,
+      "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+      "returnedFields": [
+        "id",
+        "name",
+        "url",
+        "type",
+        "state",
+        "createdAt",
+        "creator",
+        "project",
+        "meta",
+        "alias",
+        "target",
+        "regions",
+        "buildingAt",
+        "ready",
+        "readyState",
+        "aliasError"
+      ]
+    },
+    {
+      "logical": "production",
+      "kind": "immutableDeploymentIdentity",
+      "isError": false,
+      "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+      "name": "wordpairs-j9jf",
+      "project": {
+        "id": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+        "name": "wordpairs-j9jf"
+      },
+      "target": "production",
+      "readyState": "CANCELED",
+      "state": "CANCELED",
+      "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+      "alias": [
+        "wordpairs-j9jf-sharp-ninja1.vercel.app",
+        "wordpairs-j9jf-git-main-sharp-ninja1.vercel.app"
+      ],
+      "aliasErrorPresent": false,
+      "gitSourcePresent": false,
+      "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+      "returnedFields": [
+        "id",
+        "name",
+        "url",
+        "type",
+        "state",
+        "createdAt",
+        "creator",
+        "project",
+        "meta",
+        "alias",
+        "target",
+        "regions",
+        "buildingAt",
+        "ready",
+        "readyState",
+        "source",
+        "errorLink"
+      ]
+    }
+  ],
+  "explicitTeamQueryFailure": {
+    "errorCode": "forbidden",
+    "httpStatus": 403,
+    "teamId": "team_bWASsr4U8yJQls10eWgbkxKH",
+    "qualification": "Initial explicit-team queries failed. They prove neither absent configuration nor current hosted failure. Exact project IDs were subsequently read under default connector scope and expected accountId verified."
+  },
+  "localFallback": {
+    "cliFound": false,
+    "checked": "PATH, standard user/global bins, mise/node installations, npm global root and npm npx cache package metadata",
+    "cuaInventoryBrowsers": 0,
+    "qualification": "No CLI installed in checked routes. No browser was available in this agent inventory; parent separately observed Vercel login and performed no login/action."
+  },
+  "formattingObservations": [
+    "A response projection initially treated protection object presence as configuration; actual enabled fields were read and retained instead. Only actual flags are authoritative.",
+    "The deployment-list wrapper nests an array under deployments.deployments. A formatter rejected that first shape; the corrected allowlist read is retained. No provider operation failed or changed because of this local formatting error."
+  ]
+}

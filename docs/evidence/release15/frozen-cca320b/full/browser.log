@@ -1,0 +1,90 @@
+
+Running 86 tests using 1 worker
+
+[1/86] tests/browser/accessibility.phase6.spec.ts:5:1 › AC-05-T01 counterpart artwork retry renders the successfully probed URL
+[2/86] tests/browser/accessibility.phase6.spec.ts:64:1 › AC-05-T01 counterpart artwork failure shows an accessible fallback with usable answer controls
+[3/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 390
+[4/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 1440
+[5/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 1 at 390
+[6/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 1 at 1440
+[7/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real colors asset for pair 0 at 390
+[8/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real colors asset for pair 0 at 1440
+[9/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real years asset for pair 0 at 390
+[10/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real years asset for pair 0 at 1440
+[11/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real directors asset for pair 0 at 390
+[12/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real directors asset for pair 0 at 1440
+[13/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real singers asset for pair 0 at 390
+[14/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real singers asset for pair 0 at 1440
+[15/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real opposites asset for pair 0 at 390
+[16/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real opposites asset for pair 0 at 1440
+[17/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 320x568 keyboard and touch
+[18/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 568x320 keyboard and touch
+[19/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 390x844 keyboard and touch
+[20/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 844x390 keyboard and touch
+[21/86] tests/browser/accessibility.phase6.spec.ts:440:1 › AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings
+[22/86] tests/browser/accessibility.phase6.spec.ts:533:37 › maximum supported 15-player scorecard remains usable on a phone
+[23/86] tests/browser/accessibility.phase6.spec.ts:533:37 › historical legacy 25-player scorecard remains usable on a phone
+[24/86] tests/browser/admin.phase6.spec.ts:128:1 › phone catalog form creates and edits all three hints, and retries an uncertain save without duplicating content
+[25/86] tests/browser/admin.phase6.spec.ts:202:1 › fixed-owner administration has no user-delegation UI and its former endpoint stays disabled
+[26/86] tests/browser/admin.phase6.spec.ts:211:1 › guest game sessions cannot reveal private administration pages
+[27/86] tests/browser/admin.phase6.spec.ts:224:1 › late authorized moderation GET cannot restore private content after a denied mutation
+[28/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner approve of an existing legacy case preserves reason and decision history
+[29/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner reject of an existing legacy case preserves reason and decision history
+[30/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner uphold of an existing legacy case preserves reason and decision history
+[31/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner overturn of an existing legacy case preserves reason and decision history
+[32/86] tests/browser/admin.phase6.spec.ts:337:3 › FR-23-C01 original-reviewer owner has no appeal-resolution controls or writes
+[33/86] tests/browser/admin.phase6.spec.ts:337:3 › FR-23-C01 proposer owner has no appeal-resolution controls or writes
+[34/86] tests/browser/admin.phase6.spec.ts:341:1 › FR-23-C01 rendered assertion gate rejects wrong status, reason, history and self-resolution fixtures
+[35/86] tests/browser/auth-navigation.phase6.spec.ts:3:1 › GA-10 admin context does not appear in the public guest leaderboard
+[36/86] tests/browser/auth-navigation.phase6.spec.ts:16:1 › public player navigation ignores admin grants and exposes guest play only
+[37/86] tests/browser/auth-navigation.phase6.spec.ts:25:1 › admin entry has no guest continuation and explains failed GitHub callbacks
+[38/86] tests/browser/auth-navigation.phase6.spec.ts:34:1 › admin authorization loss, failed session refresh and logout remove privileged links
+[39/86] tests/browser/content.phase5.spec.ts:3:1 › guest release disables community content entry instead of exposing secured submission forms
+[40/86] tests/browser/identity.phase2.spec.ts:2:1 › AC-21/46 concurrent fresh tabs create one browser credential before requests, surviving lost responses
+[41/86] tests/browser/invitation-copy.phase2.spec.ts:114:1 › INVITE-COPY mock gate accepts correct copy and fallback and rejects corrupted outcomes
+[42/86] tests/browser/invitation-copy.phase2.spec.ts:140:1 › INVITE-COPY-01 copies the generated invitation and confirms it
+[43/86] tests/browser/invitation-copy.phase2.spec.ts:148:1 › INVITE-COPY-01 uses writeText when ClipboardItem is unavailable
+[44/86] tests/browser/invitation-copy.phase2.spec.ts:154:1 › INVITE-COPY-02 preserves the link when clipboard access is denied
+[45/86] tests/browser/invitation-copy.phase2.spec.ts:160:1 › INVITE-COPY-02 preserves the link when the clipboard API is unavailable
+[46/86] tests/browser/invitation-copy.phase2.spec.ts:169:1 › INVITE-COPY creation failure does not claim or perform a copy
+[47/86] tests/browser/invitation-copy.phase2.spec.ts:181:1 › INVITE-COPY missing invitation URL does not claim or perform a copy
+[48/86] tests/browser/invitation-copy.phase2.spec.ts:193:1 › INVITE-COPY-01 writes to the actual Chromium clipboard
+[49/86] tests/browser/lobby.phase3.spec.ts:35:1 › two actual clients ready, lock their roster and close below two without promoting the observer
+[50/86] tests/browser/lobby.phase3.spec.ts:51:1 › uncertain readiness retains its canonical request and blocks conflicting controls until retry
+[51/86] tests/browser/matches.phase4.spec.ts:199:1 › actual players and bound observer preserve solved hints, scoring and the same uncertain answer retry
+[52/86] tests/browser/matches.phase4.spec.ts:280:1 › eight authoritative no-solver rounds show uniform category continuation, reveal and shared final ranking on a phone
+[53/86] tests/browser/matches.phase4.spec.ts:334:1 › TEST-NOSOLVERFALLBACK-146 two idle clients reveal zero scores and enter server-selected round2 without commands
+[54/86] tests/browser/privacy.phase2.spec.ts:2:1 › AC-46 switching from a member to a guest clears private room projections, links and roster
+[55/86] tests/browser/privacy.phase2.spec.ts:28:1 › AC-37 stalled room creation releases busy state and retries the identical command
+[56/86] tests/browser/pwa.spec.ts:11:1 › admin-only manifest, real worker scope, icons and Chromium installation prerequisites
+[57/86] tests/browser/pwa.spec.ts:54:1 › real admin worker provides generic offline launch and never caches private pages or APIs
+[58/86] tests/browser/pwa.spec.ts:99:1 › phone guidance, prompt lifecycle and standalone presentation are admin-only
+[59/86] tests/browser/pwa.spec.ts:118:1 › welcome card retains phone and desktop whitespace without horizontal overflow
+[60/86] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+[61/86] tests/browser/recovery.phase6.spec.ts:164:1 › AC-20/21/46 guest clear/reset, repeated member entry, uncertain preference retry and changed shared session recover privately
+[62/86] tests/browser/recovery.phase6.spec.ts:218:1 › AC-37/45 unavailable game reads recover authoritative stage and expired perspective is removed
+[63/86] tests/browser/recovery.phase6.spec.ts:320:1 › AC-23/37 empty and lost-seat quick match offer browse/create; service limit creation retries once to confirmed success
+[64/86] tests/browser/rooms.phase2.spec.ts:5:1 › AC-26/27 signed full-room link bypasses browsing and keeps the inviter binding through observer entry
+[65/86] tests/browser/rooms.phase2.spec.ts:24:1 › AC-25/27 manual code entry offers current players as inviter choices without consuming a player slot
+[66/86] tests/browser/rooms.phase2.spec.ts:37:1 › AC-24 creation uses private defaults and retains an uncertain command for a safe explicit retry
+[67/86] tests/browser/seat-recovery.phase6.spec.ts:153:1 › TEST-LOBBYMATCHING-117 discovery last-seat loser returns to a fresh first-page board with honest retry
+[68/86] tests/browser/seat-recovery.phase6.spec.ts:193:1 › TEST-LOBBYMATCHING-117 accepted last-seat winner retains uncertain join and is never bounced by full preview
+[69/86] tests/browser/seat-recovery.phase6.spec.ts:226:1 › TEST-ROOMCODES-110 invalid and rate-limited code can be corrected without leaking another room code
+[70/86] tests/browser/seat-recovery.phase6.spec.ts:278:1 › TEST-LOBBYMATCHING-117 direct full-room link retains read-only observation
+[71/86] tests/browser/seat-recovery.phase6.spec.ts:306:1 › TEST-LOBBYMATCHING-117 a pre-join full preview cannot bounce the successful new member
+[72/86] tests/browser/ui-gaps.phase6.spec.ts:6:1 › TEST-CANDIDATEHOLD-141 holds preserve nominations and forbid review until reasoned resume
+[73/86] tests/browser/ui-gaps.phase6.spec.ts:41:1 › TEST-NAVIGATIONDRAFTS-142 profile Cancel sends no write, preserves saved alias/icon and returns focus
+[74/86] tests/browser/ui-gaps.phase6.spec.ts:90:1 › TEST-NAVIGATIONDRAFTS-142 privileged editor Back, Cancel and revocation clear private values
+[75/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 320x568 game/editor reflow and controls
+[76/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 390x844 game/editor reflow and controls
+[77/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 844x390 game/editor reflow and controls
+[78/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 1280-at400%-equivalent game/editor reflow and controls
+[79/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 200%-text game/editor reflow and controls
+[80/86] tests/browser/ui-gaps.phase6.spec.ts:280:1 › TEST-REQUESTFEEDBACK-143 completed private room creation survives navigation without another mutation
+[81/86] tests/browser/ui-gaps.phase6.spec.ts:323:1 › TEST-ACCESSIBILITYDETAILS-144 stage, score and errors announce without moving the answer focus
+[82/86] tests/browser/ui-gaps.phase6.spec.ts:367:3 › TEST-REQUESTFEEDBACK-143 game denial prevents an older private GET from returning
+[83/86] tests/browser/ui-gaps.phase6.spec.ts:367:3 › TEST-REQUESTFEEDBACK-143 social denial prevents an older private GET from returning
+[84/86] tests/browser/ui-gaps.phase6.spec.ts:367:3 › TEST-REQUESTFEEDBACK-143 room denial prevents an older private GET from returning
+[85/86] tests/browser/ui-gaps.phase6.spec.ts:482:3 › TEST-REQUESTFEEDBACK-143 malformed room GET never renders parser body or raw exception
+[86/86] tests/browser/ui-gaps.phase6.spec.ts:482:3 › TEST-REQUESTFEEDBACK-143 malformed room POST never renders parser body or raw exception
+  86 passed (1.4m)

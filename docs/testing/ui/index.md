@@ -1,8 +1,14 @@
 # Wordpairs UI test cases
 
-**VERIFIED QBrain READBACK.** Word Pairs / `PROD-WORDPAIRS`; owning workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1`. [Product receipt](product-receipt.json) and [synchronization receipt](receipt.json).
+Current amendment persistence: [19-record QBrain readback](../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
 
-58 UI case specifications are synchronized with the exact full TEST notes. The source inventory covers293screens/states/flows/transitions/messages. Seven SVG flow/sequence diagrams were visually inspected; no separate pixel wireframes were found. Original sources and new operator-directed gap decisions are distinguished in [sources.json](sources.json).
+**Original QBrain readback retained.** Word Pairs / `PROD-WORDPAIRS`; owning workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1`. [Product receipt](product-receipt.json) and [historical synchronization receipt](receipt.json).
+
+The original 58 case specifications were synchronized with their TEST notes at the recorded source revision. Their inventory covers 293 screens/states/flows/transitions/messages. Seven original SVG diagrams were visually inspected; no separate pixel wireframes were found. [sources.json](sources.json) retains those original inspected bytes; later amendments do not rewrite that provenance.
+
+Current rules v2.8 (31 October 2026) amend new games to 2 through 10 players, with 25 observers unchanged and a 35-person audience. The service/UI matrix is 9 games, 54 player participations and 432 accepted solves. Current room-joining, player-limit, capacity and live-sync case specifications below reflect that amendment and have current QBrain amendment readback and still require matching case/export reconciliation and exact-source execution evidence. `FR-ROOMACCESS-001#CAP15-LEGACY` additionally preserves larger running matches and stored results; above-limit waiting/countdown rooms retain Leave and a compatibility notice, block oversized new admission/start and do not force eviction.
+
+The [current guest/admin release](../../admin_pwa_release.md) supersedes public OpenAI sign-in, public PWA installation, role delegation and public nomination/suggestion cases in this original index. Those records/diagrams remain historical, not open current-release prerequisites. The [completion plan](../../release15-completion-plan.md) defines current source/hosted verification; this documentation edit does not claim persistence or test execution.
 
 [Coverage matrix](coverage.md) · [Criterion audit](gaps.md) · [Resolved questions/dependencies](questions.md) · [Gap decisions](decisions.md) · [Persistence/reruns](persistence.md) · [Authoritative requirement export](requirements.json) · [Validation](validation.json)
 

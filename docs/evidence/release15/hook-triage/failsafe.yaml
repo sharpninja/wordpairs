@@ -1,0 +1,30 @@
+method: workflow.triage.report
+label: capacity15-code-verify-triage
+timestamp: 20261030T151334
+params:
+  title: Investigate Codex code-verify TypeScript success/input mismatch
+  summary: TypeScript source hook returned succeeded while direct compiler subsequently found test typing errors. Investigate documented input path and unsupported project detection before relying on hook output for a TypeScript build claim.
+  component: mcpserver-codex-plugin
+  errorSignature: code_verify_typescript_status_succeeded_without_package_detection
+  dedupeKey: codex-code-verify-typescript-project-detection
+  evidence: 'Observed: documented code-verify pipeline calls from /tmp/Capacity15Mcp.ps1 returned literal status succeeded in exec sessions3939,5499,65607,9085, while a separate npm run typecheck in exec session42275 reported TS2345 at capacity.integration.ts54 and TS2353 at capacity-ui.test.ts30,39,40. No before-compiler log file was saved; these were tool-return observations, now fixed. Own cache current-turn showed codeEdits2 despite multiple source-hook calls. Source inspection: lib/plugin-hook.ps1 Invoke-CodeVerify lines1418-1457 searches only *.csproj, initializes buildStatus=succeeded and returns it when no project is found; no package.json or TypeScript compiler path appears in that function. Skill enforcement claims matching package.json/tsc detection. Input-contract or source implementation mismatch is not yet independently reproduced with a deliberately failing isolated TS fixture; do not treat this as proof of a general plugin failure. Direct npm typecheck is authoritative for this release.'
+  reporterAgent: Codex
+  workspacePath: <repo>
+  sessionId: Codex-20261030T194703Z-plugin-session
+  turnId: req-20261030T194706Z-turn-052d
+  idempotencyKey: wordpairs-capacity15-code-verify-20261030
+  affectedPaths:
+    - lib/plugin-hook.ps1
+    - lib/code-verify.ps1
+    - skills/enforcement/SKILL.md
+    - /tmp/Capacity15Mcp.ps1
+  affectedSymbols:
+    - Invoke-CodeVerify
+  reproductionHints:
+    - Use documented structured file_path input on an isolated package.json TypeScript fixture and inspect compiler invocation and cache counters.
+    - Compare Invoke-CodeVerify to its skill package.json/tsc contract; do not modify Wordpairs product to reproduce.
+  tags:
+    - incidental
+    - hook
+    - typescript
+    - needs-reproduction

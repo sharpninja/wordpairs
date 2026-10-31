@@ -1,0 +1,46 @@
+{
+  "runId": "330971a2-d9ec-40e3-b75d-093b463c8f68",
+  "hostName": "[PRIVATE HOST]",
+  "startedAt": "2026-10-29T12:11:11",
+  "finishedAt": "2026-10-29T12:11:15",
+  "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+  "status": "failed",
+  "failure": "lint failed with exit code 1",
+  "steps": [
+    {
+      "name": "typecheck",
+      "runId": "330971a2-d9ec-40e3-b75d-093b463c8f68",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T12:11:11",
+      "finishedAt": "2026-10-29T12:11:14",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "log": "typecheck.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "lint",
+      "runId": "330971a2-d9ec-40e3-b75d-093b463c8f68",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T12:11:14",
+      "finishedAt": "2026-10-29T12:11:15",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "lint"
+      ],
+      "exitCode": 1,
+      "log": "lint.log",
+      "junit": "",
+      "junitSha256": null
+    }
+  ],
+  "qualification": "Local source validation with disposable PostgreSQL and a local browser server."
+}

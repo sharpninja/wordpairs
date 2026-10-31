@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="69" failures="0" errors="1" time="10.129251712">
+    <testsuite name="tests/integration/admin.integration.ts" timestamp="2026-10-29T03:07:52.525Z" hostname="[PRIVATE HOST]" tests="9" failures="0" errors="0" skipped="0" time="4.322466637">
+        <testcase classname="tests/integration/admin.integration.ts" name="configured root grants and revokes roles with canonical retries, fresh directory authorization, bounded private projections and protected configuration" time="0.148206031">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="concurrent administrators cannot cross-revoke every administrator or replay grants after losing authority" time="0.111277192">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="role and canonical records roll back together when the audit insert fails" time="0.035918051">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="browser database roles cannot read ACL tables or invoke privileged functions" time="0.018611932">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="editorial revisions preserve exact historical records, never resurrect excluded older versions, and reject unauthorized/stale saves" time="0.248237845">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="a content writer waiting behind revocation reloads roles after the shared ACL lock" time="0.058092003">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available" time="2.486969761">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL" time="0.757535392">
+        </testcase>
+        <testcase classname="tests/integration/admin.integration.ts" name="UI review status migration, one-open SQL uniqueness, atomic revision audits and canonical retries" time="0.305387512">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/content.integration.ts" timestamp="2026-10-29T03:07:52.530Z" hostname="[PRIVATE HOST]" tests="6" failures="0" errors="0" skipped="0" time="1.190646681">
+        <testcase classname="tests/integration/content.integration.ts" name="TR unique normalization, eligible-round/profile invariants and concurrent threshold crossing commit with one audit per vote" time="0.233924906">
+        </testcase>
+        <testcase classname="tests/integration/content.integration.ts" name="TR roles/reasons, one independent appeal and rollback preserve committed audits without publishing" time="0.131040374">
+        </testcase>
+        <testcase classname="tests/integration/content.integration.ts" name="TR curated activation changes only future pools; disablement preserves immutable history and invalidates catalog caches" time="0.065589758">
+        </testcase>
+        <testcase classname="tests/integration/content.integration.ts" name="TR ten authoritative lifetime wins unlock one open three-pair suggestion and private projections hide voter identities" time="0.071948884">
+        </testcase>
+        <testcase classname="tests/integration/content.integration.ts" name="TR a rejected suggestion cannot appeal over a newer open suggestion; rejection preserves state, audit and idempotency" time="0.083672111">
+        </testcase>
+        <testcase classname="tests/integration/content.integration.ts" name="TR excluding original seed pairs preserves startup, rejects the final exclusion and conflicts stale category draws" time="0.251675303">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/identity.integration.ts" timestamp="2026-10-29T03:07:52.534Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.138744463">
+        <testcase classname="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; restores a browser guest after session expiry, isolates a cleared browser, and serializes concurrent first entry" time="0.066350731">
+        </testcase>
+        <testcase classname="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; persists icon/opt-in/generated alias using the canonical command transaction, then replays and rejects conflicts" time="0.019204941">
+        </testcase>
+        <testcase classname="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; consumes browser-bound OIDC state once, associates only verified issuer/subject and never links the guest" time="0.015397057">
+        </testcase>
+        <testcase classname="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; does not establish a member when the provider rejects the token" time="0.002590534">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/live-postgres.integration.ts" timestamp="2026-10-29T03:07:52.535Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.094495152">
+        <testcase classname="tests/integration/live-postgres.integration.ts" name="TR-31 real server adapter on disposable PostgreSQL &gt; serializes concurrent duplicate commands before invoking the decision" time="0.042274238">
+        </testcase>
+        <testcase classname="tests/integration/live-postgres.integration.ts" name="TR-31 real server adapter on disposable PostgreSQL &gt; rejects digest reuse and stale competitors before another decision" time="0.005835237">
+        </testcase>
+        <testcase classname="tests/integration/live-postgres.integration.ts" name="TR-31 real server adapter on disposable PostgreSQL &gt; rolls back state, result, audit, and deadline on an outbox uniqueness fault" time="0.01434581">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/lobby.integration.ts" timestamp="2026-10-29T03:07:52.536Z" hostname="[PRIVATE HOST]" tests="7" failures="0" errors="0" skipped="0" time="0.485079661">
+        <testcase classname="tests/integration/lobby.integration.ts" name="persists promotion, compaction and canonical departure under actual aggregate locking" time="0.074262433">
+        </testcase>
+        <testcase classname="tests/integration/lobby.integration.ts" name="serializes a ready/leave race with one canonical winner" time="0.035423443">
+        </testcase>
+        <testcase classname="tests/integration/lobby.integration.ts" name="applies an overdue holdout under the room lock while its durable job is leased elsewhere" time="0.053531546">
+        </testcase>
+        <testcase classname="tests/integration/lobby.integration.ts" name="leases jobs exclusively, recovers abandoned leases and commits only one canonical prompt" time="0.058169144">
+        </testcase>
+        <testcase classname="tests/integration/lobby.integration.ts" name="denies browser-role claims and creation retry does not duplicate scheduled work" time="0.022505436">
+        </testcase>
+        <testcase classname="tests/integration/lobby.integration.ts" name="locks countdown atomically, refuses observer substitution and expires the closed room code" time="0.032466573">
+        </testcase>
+        <testcase classname="tests/integration/lobby.integration.ts" name="concurrent same-version heartbeats renew both live players without starvation across repeated ticks" time="0.129497858">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/matches.integration.ts" timestamp="2026-10-29T03:07:52.540Z" hostname="[PRIVATE HOST]" tests="8" failures="0" errors="0" skipped="0" time="3.301584688">
+        <testcase classname="tests/integration/matches.integration.ts" name="loads 60 complete pairs and atomically snapshots one start/anchor despite concurrent bootstrap" time="0.081594246">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="serializes same-time correct submissions, replays canonically and rejects observers without writes" time="0.09680752">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="binds observer hint visibility to the inviter and never persists incorrect guess text" time="2.412513295">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="leases actual stage jobs and catches up all elapsed stages once, with an automatic next-category draw" time="0.142865872">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="replays accepted actor commands after departure, rejects changed digest and denies every new departed-player command" time="0.06153688">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="refuses new scoring and private perspective after grace expiry even while the reconnect job is leased elsewhere" time="0.071436115">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="rolls back final standings/profile awards/room closure together on failure, then awards once on canonical retry" time="0.249435705">
+        </testcase>
+        <testcase classname="tests/integration/matches.integration.ts" name="UI-NOSOLVER catalog revision race retains the valid summary deadline for eventual real SQL advancement" time="0.075660417">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/multiplayer.integration.ts" timestamp="2026-10-29T03:07:52.541Z" hostname="[PRIVATE HOST]" tests="24" failures="0" errors="0" skipped="0" time="0">
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="0.785890628">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="1.117592347">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="1.581689612">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="1.955310102">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="2.952890562">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="3.561944002">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="4.116965819">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="4.629304313">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="5.909604494">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="6.116757802">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="6.858369664">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="7.626347896">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="8.866081704">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="9.642045312">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 16 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="10.503455812">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 17 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="12.418944122">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 18 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="13.669262976">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 19 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="15.286471601">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 20 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="16.878065349">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 21 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="18.529557694">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 22 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="20.31878524">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 23 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="0">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 24 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="0">
+        </testcase>
+        <testcase classname="tests/integration/multiplayer.integration.ts" name="complete multiplayer games on real PostgreSQL &gt; 25 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards" time="0">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/public-read.integration.ts" timestamp="2026-10-29T03:07:52.546Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.08605945">
+        <testcase classname="tests/integration/public-read.integration.ts" name="TR-30 real public query is bounded, ordered, opt-out aware, and private fields never reach the projection" time="0.05737386">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/reactions.integration.ts" timestamp="2026-10-29T03:07:52.546Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.282642841">
+        <testcase classname="tests/integration/reactions.integration.ts" name="TR concurrent same-player reactions serialize the 2-second rate, canonical retry and full observer audience without game changes" time="0.049814444">
+        </testcase>
+        <testcase classname="tests/integration/reactions.integration.ts" name="TR exact server expiry hides late events and a failed outbox insert rolls back stream/rate/idempotency together" time="0.022193562">
+        </testcase>
+        <testcase classname="tests/integration/reactions.integration.ts" name="TR browser roles cannot read new content/exclusion/reaction authority or execute privileged context RPCs" time="0.07827339">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/rooms.integration.ts" timestamp="2026-10-29T03:07:52.547Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.227532139">
+        <testcase classname="tests/integration/rooms.integration.ts" name="TR-31 actual create/join/assignment transactions &gt; creates private by default, returns canonical creation retry, and atomically claims only one final seat" time="0.095735843">
+        </testcase>
+        <testcase classname="tests/integration/rooms.integration.ts" name="TR-31 actual create/join/assignment transactions &gt; limits room-code attempts to ten per rolling minute and makes unknown and closed codes generic" time="0.011740547">
+        </testcase>
+        <testcase classname="tests/integration/rooms.integration.ts" name="TR-31 actual create/join/assignment transactions &gt; selects the oldest eligible room with stable ID ties and keeps assignment/replay stable after other rooms become eligible" time="0.048121656">
+        </testcase>
+    </testsuite>
+    <testsuite name="vitest unhandled errors" timestamp="2026-10-29T03:07:52.548Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="1" skipped="0" time="0">
+        <testcase classname="vitest unhandled errors" name="Unhandled Error: [vitest-pool]: Worker forks emitted error." time="0">
+            <error message="[vitest-pool]: Worker forks emitted error." type="Error">
+Error: [vitest-pool]: Worker forks emitted error.
+Caused by: Caused by: Error: Worker exited unexpectedly with signal SIGKILL during started state while running test file <repo>/tests/integration/multiplayer.integration.ts
+            </error>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,474 @@
+{
+  "players": 6,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 48,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "readinessObservations": [
+    {
+      "phase": "prepared",
+      "player": 1,
+      "expectedProfileId": "b7aeb7ef-3bd9-482b-9d5d-e3238830dd1f",
+      "actorId": "b7aeb7ef-3bd9-482b-9d5d-e3238830dd1f",
+      "uiRosterCount": 6,
+      "version": 5
+    },
+    {
+      "phase": "prepared",
+      "player": 2,
+      "expectedProfileId": "790b8ce9-45eb-4700-a935-ea3a87779db3",
+      "actorId": "790b8ce9-45eb-4700-a935-ea3a87779db3",
+      "uiRosterCount": 6,
+      "version": 5
+    },
+    {
+      "phase": "prepared",
+      "player": 0,
+      "expectedProfileId": "b681b595-a16f-422e-9049-6e1bd46e168f",
+      "actorId": "b681b595-a16f-422e-9049-6e1bd46e168f",
+      "uiRosterCount": 6,
+      "version": 5
+    },
+    {
+      "phase": "prepared",
+      "player": 3,
+      "expectedProfileId": "fc407f82-2354-4fd7-b0bd-09d605d05aeb",
+      "actorId": "fc407f82-2354-4fd7-b0bd-09d605d05aeb",
+      "uiRosterCount": 6,
+      "version": 5
+    },
+    {
+      "phase": "prepared",
+      "player": 5,
+      "expectedProfileId": "46729308-5d5d-4155-b01b-d1c34a61652e",
+      "actorId": "46729308-5d5d-4155-b01b-d1c34a61652e",
+      "uiRosterCount": 6,
+      "version": 5
+    },
+    {
+      "phase": "prepared",
+      "player": 4,
+      "expectedProfileId": "d103793f-82b6-4b47-8ace-b7a35f52c34f",
+      "actorId": "d103793f-82b6-4b47-8ace-b7a35f52c34f",
+      "uiRosterCount": 6,
+      "version": 5
+    },
+    {
+      "phase": "ready",
+      "player": 0,
+      "expectedProfileId": "b681b595-a16f-422e-9049-6e1bd46e168f",
+      "actorId": "b681b595-a16f-422e-9049-6e1bd46e168f",
+      "uiRosterCount": 6,
+      "version": 6
+    },
+    {
+      "phase": "ready",
+      "player": 1,
+      "expectedProfileId": "b7aeb7ef-3bd9-482b-9d5d-e3238830dd1f",
+      "actorId": "b7aeb7ef-3bd9-482b-9d5d-e3238830dd1f",
+      "uiRosterCount": 6,
+      "version": 7
+    },
+    {
+      "phase": "ready",
+      "player": 2,
+      "expectedProfileId": "790b8ce9-45eb-4700-a935-ea3a87779db3",
+      "actorId": "790b8ce9-45eb-4700-a935-ea3a87779db3",
+      "uiRosterCount": 6,
+      "version": 8
+    },
+    {
+      "phase": "ready",
+      "player": 3,
+      "expectedProfileId": "fc407f82-2354-4fd7-b0bd-09d605d05aeb",
+      "actorId": "fc407f82-2354-4fd7-b0bd-09d605d05aeb",
+      "uiRosterCount": 6,
+      "version": 9
+    },
+    {
+      "phase": "ready",
+      "player": 4,
+      "expectedProfileId": "d103793f-82b6-4b47-8ace-b7a35f52c34f",
+      "actorId": "d103793f-82b6-4b47-8ace-b7a35f52c34f",
+      "uiRosterCount": 6,
+      "version": 10
+    },
+    {
+      "phase": "ready",
+      "player": 5,
+      "expectedProfileId": "46729308-5d5d-4155-b01b-d1c34a61652e",
+      "actorId": "46729308-5d5d-4155-b01b-d1c34a61652e",
+      "uiRosterCount": 6,
+      "version": 11
+    }
+  ],
+  "commandBodyFailures": [],
+  "requestFailureTotal": 11,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1698,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1699,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1701,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1701,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1701,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1703,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1703,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1703,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2117,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2175,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2176,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2980.593,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2994.449,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2952.785,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2991.435,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2963.164,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2965.32,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 27.662,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 39.337,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 24.487,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.801,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 39.088,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 15.805,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2847.656,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2870.531,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2873.06,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2865.447,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2889.627,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2880.861,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2863.312,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.138,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.54,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.187,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.459,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 18.497,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 39.242,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.366,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 43.694,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 39.553,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.668,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 26.678,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 25.928,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 33.094,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.199,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 36.264,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 25.446,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 24.85,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/96810fcc-9730-4ce6-98da-cae355bce160/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 24.922,
+      "action": "answer"
+    }
+  ],
+  "requestDiagnostics": {
+    "failureTotal": 0,
+    "failures": [],
+    "failuresTruncated": false,
+    "pendingAtDispose": 2,
+    "qualification": "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown."
+  },
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

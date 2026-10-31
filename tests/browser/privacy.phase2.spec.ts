@@ -15,7 +15,7 @@ test('AC-46 switching from a member to a guest clears private room projections, 
   });
   await page.goto(`/rooms/${reference}`);
   await expect(page.getByText('SECRET12',{exact:true})).toBeVisible();
-  await page.getByRole('button',{name:'Create invitation link'}).click();
+  await page.getByRole('button',{name:'Copy Invitation Link'}).click();
   await expect(page.getByLabel('Shareable invitation link')).toBeVisible();
   await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByRole('button',{name:'Continue as guest'}).click();

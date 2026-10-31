@@ -1,0 +1,106 @@
+
+ RUN  v5.0.5 <repo>
+
+ ✓ tests/web/pwa-manifest.test.ts (2 tests) 5445ms
+   ✓ PWA-02 supplies real PNG dimensions and opaque backgrounds 5299ms
+ ✓ tests/acceptance/coverage-map.test.ts (1 test) 2256ms
+   ✓ binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions 2252ms
+ ✓ tests/integration/hosted-sbom.test.ts (4 tests) 2634ms
+   ✓ hosted build inventory, isolated fixture only (4)
+     ✓ includes scoped, nested, development and optional packages with dependency edges 1276ms
+     ✓ fails closed for unsafe metadata --sha 633ms
+     ✓ fails closed for unsafe metadata --url 400ms
+     ✓ fails closed for unsafe metadata --url 313ms
+ ✓ tests/integration/hosting-schema.test.ts (6 tests) 17349ms
+   ✓ hosting schema planner reruns, isolated history fixtures (6)
+     ✓ handles matching history without a live connection 3556ms
+     ✓ handles changed-source history without a live connection 4362ms
+     ✓ handles missing-earlier history without a live connection 2870ms
+     ✓ handles unknown history without a live connection 2660ms
+     ✓ preserves the deployed thirteen-migration prefix before the guest-privacy extension 2248ms
+     ✓ rejects an unknown target before any connection 1623ms
+ ✓ tests/web/landing.test.ts (7 tests) 2175ms
+   ✓ AC-43 anonymous landing states (7)
+     ✓ retains cache bypass when conflict recovery fails, and does not relabel old rows while navigating 1085ms
+     ✓ renders duplicate aliases without retaining removed rows on a refresh 515ms
+ ✓ tests/web/identity-navigation.test.ts (3 tests) 1555ms
+   ✓ focus during delayed POST cannot overtake the session mutation 1266ms
+ ✓ tests/integration/admin-session-isolation.test.ts (1 test) 988ms
+   ✓ actual composition separates guest/admin token namespaces, strips guest roles and revokes admin independently 969ms
+ ✓ tests/web/pwa-support.test.ts (9 tests) 1278ms
+   ✓ PWA-03 registers securely in admin scope with fresh updates; errors preserve manual guidance 549ms
+   ✓ PWA-05 retains safe areas when installed UI is hidden and panel padding survives the actual cascade 379ms
+ ✓ tests/architecture/phase1a-bootstrap.test.ts (6 tests) 740ms
+   ✓ Phase 1A application skeleton and module boundaries (6)
+     ✓ keeps domain modules free of UI, framework, and infrastructure imports 617ms
+ ✓ tests/ac-contracts/oracle-validation.test.ts (222 tests) 330ms
+ ✓ tests/web/social-panel.test.ts (1 test) 260ms
+ ✓ tests/acceptance/lobby-content-counterparts.test.ts (8 tests) 817ms
+   ✓ AC-18/47 primary and supplemental audit fields follow threshold, review, one appeal and independent resolution without forbidden mutations or publication 329ms
+ ✓ tests/web/live-races.test.ts (5 tests) 545ms
+   ✓ LIVE-HV-002 a push during an older game GET schedules exactly one newer read 332ms
+ ✓ tests/integration/oidc.test.ts (11 tests) 511ms
+ ✓ tests/web/private-state.test.ts (4 tests) 330ms
+ ✓ tests/web/heartbeat-body.test.ts (2 tests) 559ms
+   ✓ LIVE production heartbeat drains its response before refreshing 303ms
+ ✓ tests/web/pwa-worker.test.ts (5 tests) 867ms
+   ✓ PWA-06 returns live HTTP errors unchanged and static offline navigation only on network failure 646ms
+ ✓ tests/web/identity-api.test.ts (11 tests) 189ms
+ ✓ tests/web/room-live-resume.test.ts (2 tests) 346ms
+   ✓ LIVE resume bursts coalesce an actual RoomSession GET and retain one follow-up 307ms
+ ✓ tests/acceptance/boundary-counterparts.test.ts (4 tests) 324ms
+ ✓ tests/web/content-api.test.ts (4 tests) 267ms
+ ✓ tests/web/matches-api.test.ts (5 tests) 238ms
+ ✓ tests/web/lobby-api.test.ts (4 tests) 171ms
+ ✓ tests/web/rooms-api.test.ts (3 tests) 456ms
+   ✓ creates an actually signed invitation, persisting only its digest and the server-derived inviter 375ms
+ ✓ tests/web/github-admin-api.test.ts (7 tests) 386ms
+ ✓ tests/web/admin-api.test.ts (1 test) 152ms
+ ✓ tests/web/reactions-api.test.ts (2 tests) 327ms
+ ✓ tests/web/social-live-cadence.test.ts (2 tests) 149ms
+ ✓ tests/web/landing-api.test.ts (1 test) 269ms
+ ✓ tests/application/match.test.ts (11 tests) 661ms
+ ✓ tests/web/deadlines-api.test.ts (5 tests) 394ms
+ ✓ tests/application/catalog-seed.test.ts (2 tests) 270ms
+ ✓ tests/integration/realtime.test.ts (3 tests) 308ms
+ ✓ tests/acceptance/eight-round-counterpart.test.ts (1 test) 76ms
+ ✓ tests/acceptance/real-gameplay.test.ts (13 tests) 299ms
+ ✓ tests/application/lobby.test.ts (21 tests) 215ms
+ ✓ tests/traceability/ac-inventory.test.ts (5 tests) 182ms
+ ✓ tests/application/content.test.ts (7 tests) 128ms
+ ✓ tests/application/ui-autocontinue.test.ts (3 tests) 53ms
+ ✓ tests/application/command.test.ts (14 tests) 84ms
+ ✓ tests/tr-contracts/reaction-contracts.test.ts (4 tests) 65ms
+ ✓ tests/integration/github-admin.test.ts (13 tests) 169ms
+ ✓ tests/application/identity.test.ts (4 tests) 120ms
+ ✓ tests/application/catalog-admin.test.ts (3 tests) 224ms
+ ✓ tests/application/rooms.test.ts (4 tests) 49ms
+ ✓ tests/application/public-service.test.ts (5 tests) 49ms
+ ✓ tests/application/content-service.test.ts (1 test) 22ms
+ ✓ tests/integration/postgres-store.test.ts (7 tests) 91ms
+ ✓ tests/ac-contracts/admin-profile-privacy.test.ts (3 tests) 96ms
+ ✓ tests/application/public-projections.test.ts (4 tests) 70ms
+ ✓ tests/application/reactions.test.ts (2 tests) 138ms
+ ✓ tests/application/ui-content-workflows.test.ts (2 tests) 35ms
+ ✓ tests/application/matches.test.ts (3 tests) 95ms
+ ✓ tests/application/reaction-service.test.ts (1 test) 42ms
+ ✓ tests/integration/public-read.test.ts (3 tests) 41ms
+ ✓ tests/integration/postgres-pool.test.ts (9 tests) 119ms
+ ✓ tests/acceptance/source-archive.test.ts (1 test) 76089ms
+   ✓ AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering 76078ms
+ ✓ tests/integration/invitations.test.ts (1 test) 13ms
+ ✓ tests/integration/hosting-environment.test.ts (2 tests) 57ms
+ ✓ tests/application/access.test.ts (2 tests) 13ms
+ ✓ tests/ac-contracts/oracle-supplemental-validation.test.ts (85 tests) 137208ms
+   ✓ AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator 84826ms
+   ✓ AC-42 validates complete GPL and the actual Recursive-bearing SVG notice 52166ms
+
+ Test Files  61 passed (61)
+      Tests  587 passed (587)
+   Start at  22:44:02
+   Duration  139.73s (tests 81%, environment 11%, import 6%, transform 1%, worker 1%)
+
+    Isolate  61 workers spawned · ~1.41s startup each (spawn + environment, per file)
+             at least ~20.05s faster with isolate: false — reuses workers across files instead of one per file
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/round3-full-1c22727/unit.xml

@@ -55,7 +55,12 @@ export function sameOrigin(request: Request) {
     request.headers.get("Sec-Fetch-Site") !== "cross-site"
   );
 }
-export function cookie(request: Request, name: "wp_session" | "wp_login") {
+type SessionCookieName =
+  | "wp_session"
+  | "wp_login"
+  | "wp_admin"
+  | "wp_admin_login";
+export function cookie(request: Request, name: SessionCookieName) {
   return (
     request.headers
       .get("Cookie")
@@ -67,7 +72,7 @@ export function cookie(request: Request, name: "wp_session" | "wp_login") {
 }
 export function sessionCookie(
   request: Request,
-  name: "wp_session" | "wp_login",
+  name: SessionCookieName,
   value: string,
   maxAge: number,
 ) {

@@ -1,0 +1,122 @@
+{
+  "atLocal": "2026-10-30T20:53:41.0436933-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T014545Z-dataapi-key-input",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "classification": "Read-only source feasibility, not executed hosted smoke or acceptance",
+  "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "sourcePins": [
+    {
+      "path": "src/app/api/session/route.ts",
+      "sha256": "1E37D7AB0033C263FAB38F0FEF1AFCE21E76CFECC46BC9EFC0BADB1D5CA29137",
+      "bytes": 2436
+    },
+    {
+      "path": "src/app/api/realtime/route.ts",
+      "sha256": "8FEA2BF272D582C7FC17933E2D35B92B38534C4C6AF27090FBE1DE910047FB1E",
+      "bytes": 858
+    },
+    {
+      "path": "src/application/identity.ts",
+      "sha256": "F9922A091B03EC0514129AAC858ADC36EC2609686EA1F56DDDBEBE056F251907",
+      "bytes": 8439
+    },
+    {
+      "path": "src/infrastructure/identity-repository.ts",
+      "sha256": "49003C1D7FA6CD9451466B9F7D9D211CE68FB968B7BDB58C9F5F030B84CB56B3",
+      "bytes": 2687
+    },
+    {
+      "path": "src/infrastructure/migrations/003_identity.sql",
+      "sha256": "6F6B267A5B4EABF82F19C6EE40DC8A306D0773216A1F5489A97D2451A14C7672",
+      "bytes": 6677
+    },
+    {
+      "path": "src/infrastructure/migrations/005_outbox.sql",
+      "sha256": "38150D374975254F57FDF30D897F9454428E1C7AA5E36F2CEA03EAF9BA3408E8",
+      "bytes": 1420
+    },
+    {
+      "path": "src/infrastructure/realtime.ts",
+      "sha256": "7B2030BA8616FDDFA4ADD530804E2D2F3E5784018105447730A5286FDC878A82",
+      "bytes": 3654
+    },
+    {
+      "path": "src/infrastructure/runtime.ts",
+      "sha256": "ADC454269563DC6C5D3507F303A67061110023E3E3B8914AFE4FB64AA7EA415D",
+      "bytes": 9612
+    },
+    {
+      "path": "src/application/outbox.ts",
+      "sha256": "CE760225B3BE774449100C2AA9B7196B7D6B25C35E692A26C52D55CF69A111E7",
+      "bytes": 831
+    },
+    {
+      "path": "src/infrastructure/outbox.ts",
+      "sha256": "46B72933333D7DB5353652E09A97E0A918CB2AED68D6B66FC94A7A3634B7C598",
+      "bytes": 1218
+    },
+    {
+      "path": "src/web/server-http.ts",
+      "sha256": "8BDDAEEF30679913A986CA1F77AD517C78AEC33F719454359B0AD9972DD217D6",
+      "bytes": 3335
+    }
+  ],
+  "inputDiscovery": {
+    "sha256": "C8DA7522896C35A9A9873C71E698B474925DF03B3ED36FD5EE1505D00A1FA16E",
+    "path": "docs/evidence/release15/hosting-readiness/dataapi-key-input-20261030T204544-verified.json"
+  },
+  "sourceObserved": [
+    "POST /api/session accepts an empty JSON object, requires exact configured Origin and a non-cross-site Sec-Fetch-Site value if supplied. Success returns profile, guestCredential and sessionGeneration with HttpOnly SameSite=Lax wp_session cookie; Secure when configured HTTPS.",
+    "New guest persists profile, aggregate, guest credential hash, a 30-day session and ProfileEstablished outbox event. The same guest transaction also deletes all expired sessions according to supplied current time. This is application data mutation.",
+    "GET /api/realtime requires a valid guest session and configured URL/anonKey/serviceKey/JWT secret. It returns url, anonKey, a separate authenticated 120-second Realtime token, profileId and expiresAt. No room is required.",
+    "GET /api/realtime calls deliverOutbox with default limit 1 before returning. Without an existing active relay it can publish and mark the globally oldest pending outbox event, possibly unrelated to this guest. It is not strictly read-only.",
+    "DELETE /api/session requires same Origin, deletes the matching session and expires its cookie. It does not remove the guest profile, aggregate, credential or outbox event.",
+    "Source settings validation accepts sb_publishable_ or a decoded role=anon key and returns only anonKey, not serviceKey/JWT secret. Decoding a legacy key role is classification, not independent cryptographic validation."
+  ],
+  "proposedFlowNotAuthorized": [
+    "STAGING ONLY: native PowerShell WebRequestSession/cookie container; no redirects or cross-origin forwarding; exact canonical https://wordpairs.vercel.app.",
+    "After separate root authorization, POST JSON {} to /api/session with exact Origin header; retain all credentials and cookies in process only.",
+    "GET /api/realtime using that cookie container; require returned HTTPS origin exactly https://jshjkaigwbxsbnnogfxs.supabase.co and no userinfo/query/fragment. Classify the anonKey in process, reject secret/service_role/unknown types. Never use or log returned authenticated Realtime token.",
+    "Use a separate native HTTP client without app cookies, key only in apikey header, and no Authorization bearer for opaque publishable keys. If legacy anon JWT, supported header treatment must follow current official docs. GET only /rest/v1/ with Accept-Profile for public, wordpairs and wordpairs_hosting; no RPC, mutation or table-row query. Save only statuses, error code and safe schema metadata, never response bodies, key values or authenticated token.",
+    "Always attempt same-session logout in finally; preserve failure qualification. Do not claim full guest-data cleanup, because logout removes only session. No production guest, provider changes, key creation/rotation, private schema grant or SQL deletion."
+  ],
+  "documentation": [
+    {
+      "href": "https://supabase.com/docs/guides/getting-started/api-keys",
+      "retrieval": "Connected Supabase search_docs on this turn",
+      "supports": "Publishable and legacy anon are public application keys. Without user session the publishable role is anon. Do not use authenticated Realtime token for an anonymous-role probe; opaque publishable is not JWT."
+    },
+    {
+      "href": "https://supabase.com/docs/guides/api/creating-routes",
+      "retrieval": "Connected Supabase search_docs on this turn",
+      "supports": "REST project endpoint is /rest/v1 with apikey header. No endpoint was called here."
+    },
+    {
+      "href": "https://docs.postgrest.org/en/latest/references/api/schemas.html",
+      "retrieval": "Official primary-source web search on this turn",
+      "supports": "GET/HEAD schema selection uses Accept-Profile. Rejected configured-schema selection produces PGRST106. Actual deployed version and responses remain unmeasured."
+    }
+  ],
+  "existingHostedHelper": {
+    "path": "/tmp/WordpairsSelfcheckHostedRead.ps1",
+    "sha256": "225D860E99A5FE3E1BDA642D0A69B0FC643FBB95C1A579DEE36574ACC09CEA30",
+    "scope": "Existing public GET smoke over both canonical sites; no guest POST or realtime retrieval. Inspected only, not executed."
+  },
+  "unknowns": [
+    "Actual hosted route revision and environment configuration/settings validity.",
+    "Actual staging/production Data API exposed-schema allowlist and role behavior; no provider probe performed.",
+    "Whether settings, protection, current host availability or a redirect would prevent the proposed flow.",
+    "A rejection at root OpenAPI may reflect authentication/permissions/configuration; it is not blanket proof of inaccessible tables/functions. Only exact observed endpoint/schema/role outcomes could be claimed.",
+    "No exact removal of guest/profile/credential/outbox is provided by logout. Outbox delivery side effects can affect unrelated pending events.",
+    "No suitable key file was found only in the specified immediate credential-name/four-config scope; other locations were neither searched nor ruled out."
+  ],
+  "noHostedRequest": true,
+  "noGuestWrite": true,
+  "noProviderProbe": true,
+  "noDashboardAccess": true,
+  "noValuesPrinted": true,
+  "noApplicationSourceChanged": true,
+  "noTestsBuildsOrModels": true
+}

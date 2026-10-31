@@ -1,0 +1,95 @@
+it("real request handlers compose server-configured bootstrap, authenticated ACL grants, editorial saves and fresh revocation against PostgreSQL", async () => {
+  vi.stubEnv("WORDPAIRS_DATABASE_URL", url);
+  vi.stubEnv("WORDPAIRS_ADMIN_PROFILE_IDS", root);
+  vi.stubEnv("WORDPAIRS_ORIGIN", "https://admin-fixture.test");
+  vi.stubEnv("WORDPAIRS_OIDC_ISSUER", "");
+  const runtime = await import("../../src/infrastructure/runtime");
+  runtimePool = runtime.getDatabasePool();
+  const users = await import("../../src/app/api/admin/users/route");
+  const contents = await import("../../src/app/api/content/route");
+  const request = (path: string, actor = 0, body?: unknown) =>
+    new Request(`https://admin-fixture.test${path}`, {
+      method: body ? "POST" : "GET",
+      headers: {
+        Cookie: `wp_session=${tokens[actor]}`,
+        Origin: "https://admin-fixture.test",
+        "Content-Type": "application/json",
+      },
+      ...(body ? { body: JSON.stringify(body) } : {}),
+    });
+  const directory = await users.GET(request("/api/admin/users"));
+  expect(directory.status).toBe(200);
+  const view = await directory.json();
+  expect(
+    view.users.find((p: { id: string }) => p.id === root).configuredAdmin,
+  ).toBe(true);
+  const grant = {
+    profileId: player,
+    role: "moderator",
+    grant: true,
+    reason: "HTTP reviewer",
+    expectedProfileId: root,
+    expectedVersion: view.version,
+    commandId: ids.next(),
+  };
+  expect((await users.POST(request("/api/admin/users", 0, grant))).status).toBe(
+    200,
+  );
+  expect((await users.POST(request("/api/admin/users", 0, grant))).status).toBe(
+    200,
+  );
+  expect((await users.GET(request("/api/admin/users", 2))).status).toBe(403);
+  const editor = await contents.GET(request("/api/content", 2));
+  const editable = await editor.json();
+  expect(editable.canModerate).toBe(true);
+  const original = value(await catalog.pair("opposites-01", 0));
+  const pair = {
+    ...original,
+    id: `admin-http-${randomUUID()}`,
+    selectable: undefined,
+    version: 0,
+    prompt: "HTTP authored pair",
+    hints: ["First HTTP clue", "Second HTTP clue", "Third HTTP clue"],
+  };
+  const save = {
+    action: "save-pair",
+    pair,
+    reason: "Verify real server composition",
+    expectedProfileId: player,
+    expectedVersion: editable.version,
+    commandId: ids.next(),
+  };
+  expect((await contents.POST(request("/api/content", 2, save))).status).toBe(
+    200,
+  );
+  expect(value(await catalog.pair(pair.id, 0)).hints).toEqual(pair.hints);
+  const current = await (await users.GET(request("/api/admin/users"))).json();
+  expect(
+    (
+      await users.POST(
+        request("/api/admin/users", 0, {
+          ...grant,
+          grant: false,
+          expectedVersion: current.version,
+          commandId: ids.next(),
+        }),
+      )
+    ).status,
+  ).toBe(200);
+  const revoked = await (await contents.GET(request("/api/content", 2))).json();
+  expect(revoked.canModerate).toBe(false);
+  expect(revoked.catalogPairs).toEqual([]);
+  expect(
+    (
+      await contents.POST(
+        request("/api/content", 2, {
+          ...save,
+          pair: { ...pair, version: 1 },
+          expectedVersion: revoked.version,
+          commandId: ids.next(),
+        }),
+      )
+    ).status,
+  ).toBe(403);
+});
+

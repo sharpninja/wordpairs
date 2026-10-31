@@ -1,0 +1,481 @@
+{
+  "players": 10,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 80,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "requestFailureTotal": 5,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 3734,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 3763,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 3765,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 3767,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 3777,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 23.343,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.086,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.955,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 23.548,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 17.25,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.081,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.445,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 29.651,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 26.122,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 14.113,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.514,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 37.636,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 29.782,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 40.763,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.623,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 35.92,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 23.785,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.941,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.55,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 13.525,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.658,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 26.632,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 42.481,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.517,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 33.176,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3466.521,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3401.241,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3381.21,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3393.656,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3307.818,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3378.678,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3391.251,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3409.254,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 2313.753,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3392.767,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/lobby",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 3472.268,
+      "action": "presence"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 68.198,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 13.085,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1204.997,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1212.288,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1204.596,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1203.037,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1206.984,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1181.919,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1213.131,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1185.572,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 31.924,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 29.883,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 25.588,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 35.667,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 6054.519,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 6064.415,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 6048.231,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 6051.867,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 6057.973,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 6042.306,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 2303.328,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 23.043,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/abc35e02-916b-41df-9383-fa59389f83ef/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.292,
+      "action": "answer"
+    }
+  ],
+  "requestDiagnostics": {
+    "failureTotal": 0,
+    "failures": [],
+    "failuresTruncated": false,
+    "pendingAtDispose": 0,
+    "qualification": "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown."
+  },
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

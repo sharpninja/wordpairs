@@ -1,0 +1,70 @@
+{
+  "startedAt": "2026-10-30T18:51:34",
+  "finishedAt": "2026-10-30T18:51:36",
+  "binding": "mock",
+  "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "dirtyTestSource": true,
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/ui-command-acknowledgement.test.ts",
+    "tests/browser/ui-command-capture.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 118,
+  "failed": 0,
+  "skipped": 0,
+  "expectedNewPositive": 30,
+  "expectedNewNegative": 30,
+  "priorCaptureCases": 58,
+  "negativeControls": 59,
+  "sourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "49AC81575B581A26550C6B710B50D16784AF345E5E41960A192C57214F8C3B29",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-acknowledgement.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "3391553632420FD20D9643AAF93CD208755DBEC5873FC9783784024DEF7103A5",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-acknowledgement.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-capture.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-capture.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+      "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-capture.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/live-player-counts.integration.spec.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/live-multiplayer.integration.spec.ts"
+    }
+  ],
+  "producerSha256": "3F3C8CC0EECADD8F839230C90735D7F5B2237496A0D20B578D0538A1F1A3634C",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/unit.xml",
+  "junitSha256": "5D16BC6787B0BD2114C06903BDECA1E5F041070A963D0496E75F2F8649819C43",
+  "qualification": "Isolated provider/real test-helper evidence, including unchanged58 prior capture cases. No actual UI/full game, latency or transport acceptance is established."
+}

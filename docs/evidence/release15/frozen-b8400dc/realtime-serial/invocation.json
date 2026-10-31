@@ -1,0 +1,32 @@
+{
+  "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "reports": [
+    {
+      "name": "realtime",
+      "kind": "realtime",
+      "expectedCount": 4,
+      "runId": "eef46ae8-fcb5-412e-8acb-43b96ba961cd",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T15:41:44",
+      "finishedAt": "2026-10-30T15:43:41",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "tests/integration/run-phase1.ps1",
+        "-Realtime",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial",
+        "-VolatileStorage"
+      ],
+      "exitCode": 1,
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial/realtime.xml",
+      "junitSha256": "140805059443FAF8506C968865E8C4E12BB3200293F80E62D82CF590A686068F",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial/source-after.json"
+    }
+  ]
+}

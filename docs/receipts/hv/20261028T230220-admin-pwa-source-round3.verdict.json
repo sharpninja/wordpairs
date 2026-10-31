@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-10-28T23:24:41",
+  "gate": "admin-pwa-source-round3",
+  "reviewedRevision": "1c2272714fb02091e390f751510341e6824e3d22",
+  "request": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.request.jsonl",
+  "response": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.response.jsonl",
+  "reviewer": {
+    "agent": "ClaudeCode",
+    "model": "claude-opus-5-5",
+    "modelSource": "runtime init receipt, response.jsonl line 7",
+    "effort": "high",
+    "effortSource": "launch command only (not runtime-verified)",
+    "plugin": "mcpserver 1.121.0"
+  },
+  "parent": {
+    "sessionId": "Codex-20261027T100516Z-plugin-session",
+    "requestId": "req-20261029T032428Z-prompt-7f5b"
+  },
+  "reviewStatus": "INCOMPLETE",
+  "stopReason": "MCP_UNTRUSTED (health nonce never answered) and triage submission failed; marker rule: \"If triage submission fails, stop work and notify the user. Keep the failsafe YAML report for later replay.\"",
+  "OverallVerdict": "DISAGREE",
+  "verdictBasis": "Incomplete review. No candidate conclusion is made; DISAGREE records that no AGREE can be issued, not that a candidate defect was found.",
+  "accuracy": 98,
+  "completeness": 4,
+  "scoreBasis": "Both scores rate this incomplete review record, not the candidate. Accuracy: every statement is backed by a tool output or file anchor. Completeness: only bootstrap was performed; none of the four mandatory surfaces was evaluated.",
+  "counts": {
+    "PASS": 6,
+    "FAIL": 3,
+    "UNKNOWN": 7,
+    "total": 16
+  },
+  "items": [
+    {
+      "id": "P1",
+      "result": "PASS",
+      "statement": "add-profile SKILL.md read in full (73 lines).",
+      "anchor": "\u003Chome\u003E/.codex/skills/add-profile/SKILL.md:1-73"
+    },
+    {
+      "id": "P2",
+      "result": "PASS",
+      "statement": "All non-skill profile markdown read in full: 1 file, PROFILE-MERGED.md (376 lines).",
+      "anchor": "\u003Chome\u003E/.claude/profile/PROFILE-MERGED.md:1-376"
+    },
+    {
+      "id": "P3",
+      "result": "UNKNOWN",
+      "statement": "Live Global memories not loaded: marker trust failed (MCP_UNTRUSTED), so workflow.memory.list was not called. add-profile is INCOMPLETE; 0 Global memories counted as loaded.",
+      "anchor": "docs/receipts/hv/claude-opus-round3-tools/R3-01-Bootstrap.ps1 output 2026-10-28T23:09:29"
+    },
+    {
+      "id": "P4",
+      "result": "UNKNOWN",
+      "statement": "Live Workspace memories not loaded for the same reason; not a verified empty scope.",
+      "anchor": "same as P3"
+    },
+    {
+      "id": "P5",
+      "result": "PASS",
+      "statement": "Plugin identity from its own manifest: mcpserver 1.121.0 at \u003Chome\u003E/github/mcpserver-claude-code-plugin. Informational drift: marker agent_plugins.agents.Claude.plugin_version says 1.26.0.",
+      "anchor": "\u003Chome\u003E/github/mcpserver-claude-code-plugin/.claude-plugin/plugin.json:3; AGENTS-README-FIRST.yaml:104"
+    },
+    {
+      "id": "P6",
+      "result": "PASS",
+      "statement": "Workspace AGENTS.md (14 lines) and the full marker (398 lines) read; credential values not echoed.",
+      "anchor": "AGENTS.md:1-14; AGENTS-README-FIRST.yaml:1-398"
+    },
+    {
+      "id": "P7",
+      "result": "PASS",
+      "statement": "Marker HMAC-SHA256 signature recomputed by the plugin Test-MarkerSignature: valid.",
+      "anchor": "lib/marker-resolver.ps1:112-193; R3-01 output MARKER-SIGNATURE-VALID: True"
+    },
+    {
+      "id": "P8",
+      "result": "FAIL",
+      "statement": "Health nonce check failed: 5 plugin attempts (5 s), one 90 s attempt and 10 polls (30 s) from 23:04:56 to 23:23:12 local all timed out. Per marker trust_bootstrap.fallback this is MCP_UNTRUSTED. Server pid 597684 is alive.",
+      "anchor": "R3-01a-Health.ps1, R3-01b-HealthLong.ps1, R3-03-WaitHealth.ps1 outputs; AGENTS-README-FIRST.yaml:72"
+    },
+    {
+      "id": "P9",
+      "result": "FAIL",
+      "statement": "Triage submission of the MCP failure failed: workflow.triage.report returned internal_server_error \"qbrain-ai-repl timed out after 30s\" and the plugin wrote no failsafe record (failsafeCount 0). The reviewer queued the report in the plugin failsafe directory for later replay.",
+      "anchor": "R3-02-TriageHealth.ps1 output 2026-10-28T23:10:26; \u003Crepo\u003E/.mcpServer/failsafe/Claude/workspaces/L2hvbWUvc2hhcnBuaW5qYS9naXRodWIvV29yZEdhbWUvLm1jcFNlcnZlci93b3JkcGFpcnM/pending/20261029T042440Z-triage-report-5ca5.yaml"
+    },
+    {
+      "id": "P10",
+      "result": "FAIL",
+      "statement": "Reviewer MCP session-log turn not created and verdict not persisted: the UserPromptSubmit hook for this prompt ended cancelled (exit 1) and the server does not answer. No history query is possible; no persistence receipt exists.",
+      "anchor": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.response.jsonl lines 3-6"
+    },
+    {
+      "id": "P11",
+      "result": "PASS",
+      "statement": "Actual model from the runtime init receipt: claude-opus-5-5 (claude_code_version 2.1.300, permissionMode dontAsk).",
+      "anchor": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.response.jsonl line 7"
+    },
+    {
+      "id": "P12",
+      "result": "UNKNOWN",
+      "statement": "Effort: the init receipt carries no effort value (only a per_turn_effort_active key); \"high\" comes from the launch command in the request receipt, not from a runtime receipt.",
+      "anchor": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.request.jsonl line 1 launchCommand"
+    },
+    {
+      "id": "S1",
+      "result": "UNKNOWN",
+      "statement": "Surface 1 (requested source and validation claims, including invitation copy, round2 G1-G4 dispositions, retry-test change and evidence index): not evaluated; work stopped under the marker failure-reporting rule.",
+      "anchor": "AGENTS-README-FIRST.yaml:225"
+    },
+    {
+      "id": "S2",
+      "result": "UNKNOWN",
+      "statement": "Surface 2 (workspace and profile rules, BDPv4 chronology, receipts): not evaluated.",
+      "anchor": "AGENTS-README-FIRST.yaml:225"
+    },
+    {
+      "id": "S3",
+      "result": "UNKNOWN",
+      "statement": "Surface 3 (live QBrain requirements, structured criteria, native mappings): not evaluated; live QBrain is unreachable and local readbacks do not replace it.",
+      "anchor": "AGENTS-README-FIRST.yaml:72"
+    },
+    {
+      "id": "S4",
+      "result": "UNKNOWN",
+      "statement": "Surface 4 (current plan holistically): not evaluated.",
+      "anchor": "AGENTS-README-FIRST.yaml:225"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R3-ENV-1",
+      "severity": "blocking",
+      "class": "review-environment",
+      "summary": "MCP server /health does not answer although its process is alive; trust bootstrap fails, so live memories, live QBrain and session logging are unavailable.",
+      "anchor": "R3-01a, R3-01b, R3-03 outputs"
+    },
+    {
+      "id": "R3-ENV-2",
+      "severity": "high",
+      "class": "plugin",
+      "summary": "workflow.triage.report failure left no failsafe record (failsafeCount 0), although the marker requires a failsafe YAML for MCP failures. Observation only; the plugin code path was not traced further.",
+      "anchor": "R3-02 output; AGENTS-README-FIRST.yaml:221"
+    },
+    {
+      "id": "R3-ENV-3",
+      "severity": "medium",
+      "class": "plugin-hook",
+      "summary": "The UserPromptSubmit hook for this reviewer prompt ended cancelled (exit 1), so no reviewer turn was opened.",
+      "anchor": "response.jsonl lines 3-6"
+    }
+  ],
+  "candidateFindings": [],
+  "failsafeRecord": "\u003Crepo\u003E/.mcpServer/failsafe/Claude/workspaces/L2hvbWUvc2hhcnBuaW5qYS9naXRodWIvV29yZEdhbWUvLm1jcFNlcnZlci93b3JkcGFpcnM/pending/20261029T042440Z-triage-report-5ca5.yaml",
+  "sessionLog": {
+    "sessionId": null,
+    "requestId": null,
+    "persisted": false,
+    "reason": "server unreachable; no turn created; no history query possible"
+  },
+  "operatorDecisionsNeeded": [
+    "Restore the MCP server (pid 597684 is alive but /health hangs), then relaunch round3 so that memories, live QBrain and the session-log turn are available. Recommended.",
+    "Or explicitly authorize a round3 review without MCP (no live memories, no live QBrain, no session-log turn). That review could not satisfy surfaces 2 and 3 or the session-log receipt rule and could not return AGREE."
+  ],
+  "missingTests": [],
+  "missingTestsNote": "Not determined: the candidate was not reviewed.",
+  "writes": [
+    "docs/receipts/hv/claude-opus-round3-tools/*.ps1",
+    "\u003Crepo\u003E/.mcpServer/failsafe/Claude/workspaces/L2hvbWUvc2hhcnBuaW5qYS9naXRodWIvV29yZEdhbWUvLm1jcFNlcnZlci93b3JkcGFpcnM/pending/20261029T042440Z-triage-report-5ca5.yaml",
+    "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.verdict.json"
+  ]
+}

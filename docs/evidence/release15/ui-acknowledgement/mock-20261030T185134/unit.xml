@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="118" failures="0" errors="0" time="0.098574327">
+    <testsuite name="tests/browser/ui-command-acknowledgement.test.ts" timestamp="2026-10-30T23:51:36.076Z" hostname="[PRIVATE HOST]" tests="60" failures="0" errors="0" skipped="0" time="0.054947715">
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves busy-newer" time="0.003313586">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves pending-newer" time="0.000388126">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves disabled-pending" time="0.000279505">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves strict-pending" time="0.006991739">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves unknown-pending" time="0.000827734">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-scope" time="0.000902625">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves missing" time="0.007885024">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves denied" time="0.000817894">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves stale" time="0.000286405">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves malformed" time="0.005599715">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wait-for-ack" time="0.001540256">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves pending-identical" time="0.00119349">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves changed-command" time="0.001380294">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves changed-payload" time="0.0005895">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-intent" time="0.000374366">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves probe-error" time="0.000328886">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves bounded-pending" time="0.001026797">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves permanent-denial" time="0.0023556">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves conflict-retired" time="0.000548339">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves body-error-distinct" time="0.000414597">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves observer-error" time="0.000263654">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves drain-ack-error" time="0.000410176">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves own-current" time="0.000157332">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-actor" time="0.00054103">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-row" time="0.000315695">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-round" time="0.000288785">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves unsolved" time="0.000274595">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves preexisting-blocks-action" time="0.000153643">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wait-for-preparation" time="0.000213384">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-profile" time="0.000293115">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong busy-newer provider" time="0.00118718">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong pending-newer provider" time="0.000293635">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong disabled-pending provider" time="0.000241765">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong strict-pending provider" time="0.000342766">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong unknown-pending provider" time="0.000274574">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-scope provider" time="0.000316246">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong missing provider" time="0.000355956">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong denied provider" time="0.000262485">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong stale provider" time="0.000274754">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong malformed provider" time="0.000360976">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wait-for-ack provider" time="0.000422217">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong pending-identical provider" time="0.000482728">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong changed-command provider" time="0.000269545">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong changed-payload provider" time="0.000267374">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-intent provider" time="0.000239984">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong probe-error provider" time="0.000317955">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong bounded-pending provider" time="0.000750013">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong permanent-denial provider" time="0.000304325">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong conflict-retired provider" time="0.000481388">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong body-error-distinct provider" time="0.000444148">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong observer-error provider" time="0.000344866">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong drain-ack-error provider" time="0.000501808">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong own-current provider" time="0.000465437">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-actor provider" time="0.000247424">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-row provider" time="0.000258044">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-round provider" time="0.000295225">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong unsolved provider" time="0.000260494">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong preexisting-blocks-action provider" time="0.000324696">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wait-for-preparation provider" time="0.001129319">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-profile provider" time="0.000318676">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/browser/ui-command-capture.test.ts" timestamp="2026-10-30T23:51:36.086Z" hostname="[PRIVATE HOST]" tests="58" failures="0" errors="0" skipped="0" time="0.043626612">
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture eager-response" time="0.004228642">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture eager-body" time="0.000695582">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture request-identity" time="0.000425997">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture cached-body" time="0.000406757">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture null-response" time="0.000465708">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture conflict-no-json" time="0.000399367">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture server-no-json" time="0.000350896">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture body-error" time="0.001255142">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture wait-error" time="0.000491369">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture response-error" time="0.000503709">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture action-error" time="0.000320825">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture sync-action-error" time="0.000298595">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture capture-drains-action" time="0.000355486">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture action-drains-body" time="0.000255724">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture sync-wait-error" time="0.000211473">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture dual-errors" time="0.000459498">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture body-action-errors" time="0.000347256">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit success" time="0.001544287">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit conflict-fresh-command" time="0.00057817">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit server-pending-identical" time="0.000447048">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit null-pending-identical" time="0.000415337">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-pending-identical" time="0.000643791">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-no-pending" time="0.00054542">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-disabled-pending" time="0.000388976">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-wrong-command" time="0.001397613">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit bounded-attempts" time="0.000685611">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit unrelated-invoke-error" time="0.000329935">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit probe-error-original" time="0.000373117">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit observer-error-preserves-failure" time="0.000444738">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture eager-response/late-response" time="0.003343947">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture eager-body/late-body" time="0.000620861">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture request-identity/swap-request" time="0.000653011">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture cached-body/repeat-body" time="0.000500229">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture null-response/fabricate-null" time="0.000342796">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture conflict-no-json/parse-error" time="0.000345216">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture server-no-json/parse-error" time="0.000326035">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture body-error/swallow-body" time="0.006132395">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture wait-error/swallow-capture" time="0.000627001">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture response-error/swallow-capture" time="0.000412947">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture action-error/swallow-action" time="0.000385387">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture sync-action-error/swallow-action" time="0.000300445">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture capture-drains-action/fail-fast" time="0.000307455">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture action-drains-body/fail-fast" time="0.000339865">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture sync-wait-error/sync-wait-starts-action" time="0.000438008">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture dual-errors/drop-secondary" time="0.00058623">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture body-action-errors/drop-body-error" time="0.000422997">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit success/wrong-result" time="0.00059007">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit conflict-fresh-command/conflict-pending" time="0.000397026">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit server-pending-identical/forget-pending" time="0.000423368">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit null-pending-identical/forget-pending" time="0.000370416">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-pending-identical/forget-pending" time="0.000380627">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-no-pending/retry-without-ui" time="0.000374046">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-disabled-pending/retry-without-ui" time="0.000388436">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-wrong-command/ignore-payload" time="0.000349166">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit bounded-attempts/wrong-limit" time="0.000600161">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit unrelated-invoke-error/swallow-invoke" time="0.000338026">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit probe-error-original/probe-overwrites" time="0.000509778">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit observer-error-preserves-failure/observer-swallow" time="0.000331355">
+        </testcase>
+    </testsuite>
+</testsuites>

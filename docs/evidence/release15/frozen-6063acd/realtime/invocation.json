@@ -1,0 +1,35 @@
+{
+  "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "reports": [
+    {
+      "name": "realtime",
+      "kind": "realtime",
+      "expectedCount": 4,
+      "runId": "d941371c-59de-40e1-875e-5c3b90778adb",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T20:10:46",
+      "finishedAt": "2026-10-30T20:12:30",
+      "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "producerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "tests/integration/run-phase1.ps1",
+        "-Realtime",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/realtime",
+        "-VolatileStorage"
+      ],
+      "exitCode": 0,
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/realtime/realtime.xml",
+      "junitSha256": "51FE993BC820487C3BB9BB3D76B9653891829E9BF34258C0D6A19B57022D4975",
+      "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/realtime/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/realtime/source-after.json",
+      "sourceAfterFailure": null
+    }
+  ]
+}

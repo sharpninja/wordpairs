@@ -1,0 +1,55 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/game-social-routing.test.ts (3 tests | 1 failed) 1101ms
+   ✓ match refreshes do not change the reaction refresh key 69ms
+   ✓ room or moderation refreshes advance the reaction refresh key 10ms
+   × leaving an active round triggers a social refresh for the summary 1020ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/game-social-routing.test.ts > leaving an active round triggers a social refresh for the summary
+AssertionError: expected 'round-1' to be 'none' // Object.is equality
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        data-key="7"
+        data-round="round-1"
+        data-testid="social-view"
+      />
+    </div>
+  </body>
+</html>
+
+Expected: "none"
+Received: "round-1"
+
+ ❯ tests/web/game-social-routing.test.ts:51:94
+     49|   await waitFor(() => expect(rendered.getByTestId("social-view").getAt…
+     50|   summary(); rendered.rerender(React.createElement(GamePanel, { ...pro…
+     51|   await waitFor(() => expect(rendered.getByTestId("social-view").getAt…
+       |                                                                                              ^
+     52| });
+     53|
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:97:7
+ ❯ waitFor node_modules/@testing-library/dom/dist/wait-for.js:36:10
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:164:54
+ ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:164:35
+ ❯ tests/web/game-social-routing.test.ts:51:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  12:39:50
+   Duration  2.35s (tests 51%, environment 40%, import 8%, transform 1%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/game-social-mock/wrong-round.xml

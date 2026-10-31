@@ -1,0 +1,56 @@
+<TestRun id="9d5975b4-8527-408e-8be8-8c88b670de5f" name="JUnit adapter: docs.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times start="2026-10-29T10:16:19.5803553-05:00" creation="2026-10-29T10:16:19.5803553-05:00" queuing="2026-10-29T10:16:19.5803553-05:00" finish="2026-10-29T10:16:19.5803553-05:00" />
+  <Results>
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1 :: Current release documentation drift.accepts a current release reference" relativeResultsDirectory="88853589-7bc5-4600-bdc9-fedceab6cb2f" executionId="88853589-7bc5-4600-bdc9-fedceab6cb2f" testId="c7be7299-53a1-0b13-3088-44b4f4362761" computerName="[PRIVATE HOST]" duration="00:00:00.2930000" outcome="Passed" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1 :: Current release documentation drift.rejects a missing current release reference" relativeResultsDirectory="99090dca-c77f-47ef-a18e-a87a6dd5b0e1" executionId="99090dca-c77f-47ef-a18e-a87a6dd5b0e1" testId="8b8346a1-a00c-2cfa-25b3-ae272bf8615a" computerName="[PRIVATE HOST]" duration="00:00:00.0270000" outcome="Passed" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1 :: Current release documentation drift.rejects a superseded administrator bootstrap instruction" relativeResultsDirectory="9223bae1-8a7a-4723-a526-39f4b0ba5900" executionId="9223bae1-8a7a-4723-a526-39f4b0ba5900" testId="4f1fd991-6f8e-c641-72f1-4eadd52fa183" computerName="[PRIVATE HOST]" duration="00:00:00.0090000" outcome="Passed" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1 :: Current release documentation drift.rejects a superseded public installation instruction" relativeResultsDirectory="56926cbe-d505-42cf-82fd-17a8fb98bcee" executionId="56926cbe-d505-42cf-82fd-17a8fb98bcee" testId="2535fdad-3b01-09d5-7013-434d3345fd2f" computerName="[PRIVATE HOST]" duration="00:00:00.0110000" outcome="Passed" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1 :: Current release documentation drift.rejects a superseded OpenAI setup instruction" relativeResultsDirectory="86c4271e-2fa0-4125-9e80-f825cfd8c127" executionId="86c4271e-2fa0-4125-9e80-f825cfd8c127" testId="2b862568-b4a5-e565-019b-1bf953e83dc0" computerName="[PRIVATE HOST]" duration="00:00:00.0110000" outcome="Passed" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1 :: Current release documentation drift.checks the current operations and plan documents" relativeResultsDirectory="1259d8f9-4412-4abe-b463-c9df2076ca88" executionId="1259d8f9-4412-4abe-b463-c9df2076ca88" testId="90fd54b3-938f-2ceb-7ee1-5b10ccbe444c" computerName="[PRIVATE HOST]" duration="00:00:00.0700000" outcome="Passed" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest storage="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" name="Current release documentation drift.accepts a current release reference" id="c7be7299-53a1-0b13-3088-44b4f4362761">
+      <Execution id="88853589-7bc5-4600-bdc9-fedceab6cb2f" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="Current release documentation drift.accepts a current release reference" className="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" codeBase="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" />
+    </UnitTest>
+    <UnitTest storage="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" name="Current release documentation drift.rejects a missing current release reference" id="8b8346a1-a00c-2cfa-25b3-ae272bf8615a">
+      <Execution id="99090dca-c77f-47ef-a18e-a87a6dd5b0e1" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="Current release documentation drift.rejects a missing current release reference" className="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" codeBase="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" />
+    </UnitTest>
+    <UnitTest storage="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" name="Current release documentation drift.rejects a superseded administrator bootstrap instruction" id="4f1fd991-6f8e-c641-72f1-4eadd52fa183">
+      <Execution id="9223bae1-8a7a-4723-a526-39f4b0ba5900" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="Current release documentation drift.rejects a superseded administrator bootstrap instruction" className="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" codeBase="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" />
+    </UnitTest>
+    <UnitTest storage="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" name="Current release documentation drift.rejects a superseded public installation instruction" id="2535fdad-3b01-09d5-7013-434d3345fd2f">
+      <Execution id="56926cbe-d505-42cf-82fd-17a8fb98bcee" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="Current release documentation drift.rejects a superseded public installation instruction" className="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" codeBase="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" />
+    </UnitTest>
+    <UnitTest storage="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" name="Current release documentation drift.rejects a superseded OpenAI setup instruction" id="2b862568-b4a5-e565-019b-1bf953e83dc0">
+      <Execution id="86c4271e-2fa0-4125-9e80-f825cfd8c127" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="Current release documentation drift.rejects a superseded OpenAI setup instruction" className="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" codeBase="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" />
+    </UnitTest>
+    <UnitTest storage="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" name="Current release documentation drift.checks the current operations and plan documents" id="90fd54b3-938f-2ceb-7ee1-5b10ccbe444c">
+      <Execution id="1259d8f9-4412-4abe-b463-c9df2076ca88" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="Current release documentation drift.checks the current operations and plan documents" className="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" codeBase="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry executionId="88853589-7bc5-4600-bdc9-fedceab6cb2f" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="c7be7299-53a1-0b13-3088-44b4f4362761" />
+    <TestEntry executionId="99090dca-c77f-47ef-a18e-a87a6dd5b0e1" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="8b8346a1-a00c-2cfa-25b3-ae272bf8615a" />
+    <TestEntry executionId="9223bae1-8a7a-4723-a526-39f4b0ba5900" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="4f1fd991-6f8e-c641-72f1-4eadd52fa183" />
+    <TestEntry executionId="56926cbe-d505-42cf-82fd-17a8fb98bcee" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="2535fdad-3b01-09d5-7013-434d3345fd2f" />
+    <TestEntry executionId="86c4271e-2fa0-4125-9e80-f825cfd8c127" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="2b862568-b4a5-e565-019b-1bf953e83dc0" />
+    <TestEntry executionId="1259d8f9-4412-4abe-b463-c9df2076ca88" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="90fd54b3-938f-2ceb-7ee1-5b10ccbe444c" />
+  </TestEntries>
+  <TestLists>
+    <TestList id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" name="JUnit cases" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters error="0" timeout="0" total="6" notExecuted="0" passed="6" failed="0" inProgress="0" completed="6" aborted="0" executed="6" disconnected="0" pending="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" />
+    <RunInfos>
+      <RunInfo timestamp="2026-10-29T10:16:19.5803553-05:00" computerName="[PRIVATE HOST]" outcome="Completed">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/docs/docs.xml; SHA256=3607094E63B2369C32545ABFA99F64AE6547897D0FB60AAD4006901C295F1269; reviewed revision=3fb4a49a28ce5281ab91fa88c4d488458762ea27</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

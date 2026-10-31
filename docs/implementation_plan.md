@@ -1,6 +1,22 @@
 # Wordpairs Implementation Plan
 
-**Status:** Coding Phases 0–6 complete and independently approved; administration/ACL extension reviewed; Phase 7 deployment remains future work
+Current release override, 28 October 2026: [guest game and GitHub admin PWA](admin_pwa_release.md)
+defines the authorized guest-only public surface and fixed-owner GitHub admin PWA.
+Earlier public OpenAI, community submission, delegation and public installation
+portions below are historical. The current slice requires unit, PostgreSQL and
+rendered-browser evidence, independent hostile validation, then deployment of the
+exact reviewed commit to staging before production. Physical phone installation
+and hosted OAuth continuity remain separate observations and are never inferred
+from browser fixtures.
+
+The operator's latest 30 October reviewer override selects Cline with model Beam
+and High effort until Monday, 2 November 2026. It supersedes the pending
+Cursor/Grok and Claude Opus selections. Acceptance still requires at least 98%
+accuracy and 98% completeness; historical reviewer receipts remain unchanged.
+
+The operator's 31 October amendment sets new room capacities and match rosters to 2 through 10 players, with up to 25 observers and a 35-person maximum audience for the new release. The [current completion plan](release15-completion-plan.md) owns the remaining implementation, verification, review and rollout sequence. Its matrix is 9 games, 54 player participations and 432 accepted round solves. Preserve larger running matches, their stored results and Leave; legacy waiting/countdown rooms above 10 must explain the limit and prevent oversized starts/admission without forcing players out. Original phase results below remain historical evidence for their recorded bytes.
+
+**Status:** Historical coding Phases 0–6 and administration/ACL extension reviewed; current guest/admin and 10-player release remains in progress
 **Planning baseline:** Requirements v2.6, 26 October 2026
 **Process:** Byrd Development Process draft v4  
 **Target repository:** `sharpninja/wordpairs`  
@@ -8,11 +24,11 @@
 
 Current execution evidence is in [`phase6_execution.md`](phase6_execution.md), with subsequent administration behavior and validation in [`admin_acl_design.md`](admin_acl_design.md) and [`admin_acl_review_receipt.json`](admin_acl_review_receipt.json). The ordered gates below describe the completed coding sequence and the remaining deployment contract. They do not reopen completed phase approvals or impose a personal human sign-off gate.
 
-The subsequent [phone PWA extension](pwa_design.md) adds home-screen installation, standalone launch and a private-data-safe offline reconnect screen. It is tracked separately from historical coding-phase approvals and does not claim a hosted release or physical-phone installation from browser emulation.
+The earlier [phone PWA extension](pwa_design.md) documented public installation. It is historical for this release; the current [admin-only PWA](admin_pwa_release.md) retains separate hosted and physical-device verification.
 
 ## 1. Purpose and governing documents
 
-This plan decomposes the current requirements into reviewable coding increments, each with explicit acceptance-criterion coverage and a mock-first test gate. Deployment and release operations are a separate post-coding phase. The functional and technical requirements and acceptance criteria in [`word_association_game_requirements.md`](word_association_game_requirements.md) remain authoritative. This plan does not silently weaken any acceptance criterion.
+This plan records the original reviewable coding increments and their acceptance-criterion coverage and mock-first gates. QBrain is authoritative; [`word_association_game_requirements.md`](word_association_game_requirements.md) retains the linked historical baseline, and [the current completion plan](release15-completion-plan.md) records the approved amendment. Deployment and release operations remain separate from source verification. Changed criteria require fresh evidence; prior approvals do not approve later bytes.
 
 Deployment, provisioning, SWBOM generation, environment isolation, and deployment-build gates are TR-bound technical work, not AC-bound behaviors. Their mockable checks are test-first, while live deployment/account checks remain technical integration/operational evidence and cannot satisfy AC coverage.
 
@@ -24,13 +40,13 @@ The work follows the [Byrd Development Process v4](https://github.com/sharpninja
 2. **100% acceptance-criterion traceability.** Every active AC has at least one named test case before its behavior is implemented. No AC is counted as covered merely because a nearby scenario happens to exercise it.
 3. **Global mock-oracle gate before project implementation.** After Phase 0 is approved and expected behavior is fixed, bootstrap only the reviewed test toolchain/configuration (no product behavior), then author all active-AC contract oracles. For each oracle, validate that a conforming scripted mock trace is accepted and a deliberately violating trace is rejected before writing production implementation code. This proves the test assertions are sensitive; it does not prove the application behavior. Keep the same oracles and run them against each real implementation increment. Database concurrency, RLS, transactional durability, deployment, and other system-level integration tests are additional evidence tiers: define their contract assertions before implementation, validate the application/domain contracts with mocks, then run the separate real-system tests against disposable environments after adapters exist. These integration checks are TR/operational evidence only and never count toward AC coverage. A mock does not prove a database invariant or external platform fact. Do not replace a failing test, relax an assertion, or label a valid test invalid to make progress.
 4. **Green regression suite at every increment boundary.** Run all tests for the current increment and all earlier increments before marking the increment complete.
-5. **No GitHub Actions dependency.** Use Vercel Git integration for branch previews and production. Run provisioning and release packaging manually from an authenticated workstation, as specified in the requirements.
+5. **No GitHub Actions dependency.** Use the two existing Vercel projects and controlled exact-commit staging before production. Prevent automatic Git deployment from bypassing that order. Run provisioning and release packaging manually from an authenticated workstation.
 6. **Free-tier boundary.** Use Vercel Hobby and Supabase Free only. Do not silently enable paid services, usage, add-ons, or upgrades.
-7. **GPL and supply-chain records.** Keep project source under GPL-2.0-only; review every distributed dependency and asset for compatibility and notices. Generate a commit-specific CycloneDX SWBOM for each Preview and Production deployment and include the matching SWBOM plus `LICENSE` in each release archive; deployment behavior is TR-bound, while source-archive contents remain independently fixture-testable under AC-41/42.
+7. **GPL and supply-chain records.** Keep project source under GPL-2.0-only; review every distributed dependency and asset for compatibility and notices. Generate a commit-specific CycloneDX SWBOM for each named staging/production deployment and include the matching report plus `LICENSE` in each release archive; deployment behavior is TR-bound, while archive contents remain independently fixture-testable under AC-41/42.
 
 ### Validation responsibility clarification
 
-The user's execution goal requires independent hostile validation by GPT-6 Astra/high at each coding-phase exit. On 26 October 2026 the user corrected the personal-sign-off interpretation: "I don't recall adding human review gates". The plan's human-validation method wording was not a separately requested mandatory user sign-off. Automated acceptance and independent agent visual/usability review establish the coding-phase UX evidence; human feedback is optional unless the user explicitly requests a human gate. This corrects an agent-added blocker. It does not claim that human testing occurred or that the user waived an explicitly requested gate. Product ACs, test assertions, review thresholds and the Phase 7 deployment boundary remain unchanged.
+The original coding-phase execution goal selected independent hostile validation by GPT-6 Astra/high at each phase exit. That reviewer selection is historical; the current temporary reviewer override is stated above. On 26 October 2026 the user corrected the personal-sign-off interpretation: "I don't recall adding human review gates". The plan's human-validation method wording was not a separately requested mandatory user sign-off. Automated acceptance and independent agent visual/usability review establish the coding-phase UX evidence; human feedback is optional unless the user explicitly requests a human gate. This corrects an agent-added blocker. It does not claim that human testing occurred or that the user waived an explicitly requested gate. Product ACs, test assertions, review thresholds and the Phase 7 deployment boundary remain unchanged.
 
 ## 2. Approved Phase 0 baseline: architecture and interfaces
 
@@ -47,7 +63,7 @@ Requirements v2.6 resolves product decisions that affect active AC expected resu
 
 The following design artifacts were reviewed and approved at Phase 0 exit:
 
-- Architecture decision record recording the selected Next.js/TypeScript/npm stack and detailing Vercel/Supabase adapters, guest/OpenAI OIDC identity, and server-authoritative game state. Vercel and Supabase are requirements (TR-20–TR-24); the v2.6 baseline selects the framework and language.
+- Historical architecture decision record describing the selected Next.js/TypeScript/npm stack, Vercel/Supabase adapters, guest/OpenAI OIDC identity, and server-authoritative game state. The current guest/admin identity override is linked above.
 - Pattern decision record in [`architecture_patterns.md`](architecture_patterns.md) covering DDD boundaries, ports/adapters, pure policy testing, room transactions, idempotency, and transactional outbox.
 - Context/container diagram and trust-boundary notes. Identify browser, Next.js server/API, Supabase database, Realtime, identity provider, Vercel deployment, and operator workstation responsibilities.
 - Domain model and state-transition diagrams for room/lobby readiness, membership/observer promotion, match, round/hint stages, nominations, moderation, and suggestions.
@@ -97,11 +113,13 @@ The phase table gives each phase's boundaries. This breakdown makes the implemen
 
 ### Post-coding deployment environments (topology finalized at Phase 7 entry)
 
-The environment mapping below is a planning proposal. Confirm the branch-to-environment mapping, project allocation, account capacity, and service settings at Phase 7 entry, after coding Phases 1–6 are complete. These operational choices do not gate Phase 0 or change the AC contract expectations.
+The operator selected the following environment mapping on 27 October. It supersedes the former single-project Staging Preview proposal. Reverify account capacity, bindings and service settings from live provider state before rollout; these operational checks do not change mock AC expectations.
 
 - **Development:** local Next.js and local test/mocked services; disposable Supabase project or isolated local database for integration testing where practical.
-- **Staging:** a persistent Vercel Preview target (for example, a protected `staging` branch) and isolated Supabase project/configuration. Validate migrations, quotas, OIDC callback, and release packaging without Production data.
-- **Production:** Vercel Production deployments from `main`, connected only to the Production Supabase project and production secrets.
+- **Staging:** Vercel project `wordpairs`, production target at `https://wordpairs.vercel.app`, bound only to Supabase `jshjkaigwbxsbnnogfxs`. Validate the reviewed commit and forward migrations with owned synthetic data.
+- **Production:** Vercel project `wordpairs-j9jf`, production target at `https://wordpairs-j9jf.vercel.app`, bound only to Supabase `krdcuuhcynmdfcjlpbsf`. Deploy the same reviewed commit only after staging verification.
+
+Disable unsafe feature previews; they may not inherit production credentials. GitHub owner callbacks use each target's registered `/api/auth/github/callback`. See [hosting execution](hosting_execution.md) for automatic-build suppression and controlled rollout.
 
 Each environment has separately scoped credentials and Supabase/Vercel variables. Provisioning scripts must be repeatable and safe to rerun, print identifiers/status but never secret values, and make paid resource configuration impossible by default. Document free-plan limits and verify current account quotas at provisioning/release time.
 
@@ -152,7 +170,7 @@ Phase 0 is approved. Before any production implementation code, author and mock-
 8. **Run increment and regression suites:** run all tests for this increment plus all previous increments. Keep production integration separate from the mock contract tests.
 9. **Integrate real adapters:** after unit tests pass, add integration tests against disposable/local services; only use test credentials and seeded data. Do not replace mock-first unit tests with integration-only coverage.
 10. **Review evidence:** verify AC mapping, test output, security boundaries, accessibility, docs, migrations, and artifact effects. Update the matrix whenever requirements change.
-11. **Close increment:** merge only when checks pass and the work is reviewable. Validate the branch locally and against disposable services. Vercel Preview deployment and its SWBOM occur only in Phase 7, after coding Phases 1–6 are complete. Record agent visual/usability review and any optional human feedback separately; a mandatory personal sign-off applies only if explicitly requested by the user.
+11. **Close increment:** merge only when checks pass and the work is reviewable. Validate the branch locally and against disposable services. Hosted staging/production deployments and their SWBOMs follow source verification under the current rollout plan. Record agent visual/usability review and optional human feedback separately; a mandatory personal sign-off applies only if explicitly requested by the user.
 
 Mock fidelity is reviewed: mocks implement the documented interface, model failures/timeouts and authorization results, and do not encode implementation internals. Use fixed clocks, seeded random sources, transaction fakes, event capture, and deterministic fixtures. Add contract tests to compare real adapters with the same interface so mocks cannot drift.
 
@@ -192,7 +210,7 @@ This section preserves the original planning boundary map. The implemented layou
 
 ### 7.3 Critical data invariants
 
-- Active player count never exceeds room capacity (2–25); assignment is atomic under concurrency.
+- New room capacities and new match rosters are 2 through 10; assignment is atomic under concurrency. The independent observer limit remains 25. Preserve larger historical running matches; legacy waiting/countdown rooms above 10 stay readable, allow Leave and reject oversized admission/start without forced eviction.
 - A player appears once in an active roster; order is explicit and stable except the confirmed pre-countdown compaction rule.
 - Promotion only occurs before countdown start, selects the earliest observer, places them last, shifts other players up without reordering them, and preserves remaining observers.
 - Start countdown and roster lock happen atomically when all players are ready, or when an expired holdout is removed from a room with more than two players. In an exactly two-player room, expiry leaves the holdout in place and does not start the countdown. After lock, departures create a vacancy and never trigger replacement.
@@ -201,9 +219,9 @@ This section preserves the original planning boundary map. The implemented layou
 - The target answer is never sent before reveal; incorrect guess text is never broadcast to other players or observers.
 - Observer identity is bound to approved invite context; observer commands are read-only and scoreless.
 - The landing page uses a public read-only projection with an allowlist of approved leaderboard/lobby fields; it cannot query private room state or mutate game state.
-- OIDC authentication creates an authenticated profile only after server validation of the configured provider's signature and required claims.
+- Public play issues guest sessions only. Current administration requires verified fixed-owner GitHub identity and a separate admin cookie namespace; the earlier public OIDC flow is inactive.
 - Moderation and catalog activation are separately authorized; candidate approval never directly makes incomplete content playable.
-- Provisioning separates Preview/Staging and Production targets and can be safely repeated without exposing secrets or erasing user data.
+- Provisioning separates the named staging and production projects and can be safely repeated without exposing secrets or erasing user data.
 - Domain policies are pure and framework-independent; each room mutation uses a transactional lock/version check, idempotency key, and same-transaction outbox event.
 - Only approved, complete content records are playable; nominations/suggestions cannot bypass moderation or catalog validation.
 
@@ -211,7 +229,7 @@ This section preserves the original planning boundary map. The implemented layou
 
 This section applies only after coding Phases 1–6 are complete. Deployment is not part of those coding phases.
 
-Vercel Git integration creates Preview deployments for non-production branches and Production deployments from `main`. Configure a persistent Staging Preview path plus Development and Production credentials. The app build command first runs the complete test suite. After tests pass, generate a CycloneDX JSON 1.6 SWBOM from the exact committed lockfile and Vercel build metadata, then build the app so the report is included at `public/sbom/<commit-sha>.cdx.json` in that immutable deployment. The report includes direct/transitive runtime and development components, declared licenses, package URLs, dependency relationships, build timestamp, commit SHA, deployment environment, and deployment URL; it contains no secrets.
+Deploy the exact reviewed Git commit to the production target of `wordpairs` first, then to the production target of `wordpairs-j9jf` after staging passes. Use separate database bindings and credentials. Suppress automatic production Git builds while staged validation is in progress, as [hosting execution](hosting_execution.md) specifies. The app build command first runs the complete test suite. After tests pass, generate a CycloneDX JSON 1.6 SWBOM from the exact committed lockfile and Vercel build metadata, then build the app so the report is included at `public/sbom/<commit-sha>.cdx.json` in that immutable deployment. The report includes direct/transitive runtime and development components, declared licenses, package URLs, dependency relationships, build timestamp, commit SHA, deployment environment, and deployment URL; it contains no secrets.
 
 For each release, a manual, reproducible packaging command obtains the SWBOM for the selected Production deployment and verifies schema, hash/commit identity, and required metadata. It creates a source archive containing the complete source for that release, root `LICENSE`, attribution notices, and the same report at `sbom/<commit-sha>.cdx.json`. Validate the archive contents and open/read the SWBOM before publishing the release. Fail closed if the report is missing, invalid, secret-bearing, or references a different commit. Do not substitute a newly generated report from a different dependency lockfile or a Preview deployment.
 
@@ -226,7 +244,7 @@ Before locking dependencies, review direct/transitive licenses and whether shipp
 | Concurrent joins overfill rooms. | Atomic database reservation and concurrency integration tests; quick-match uses the same reservation path as direct join. |
 | OIDC assumptions fail against the chosen provider. | Verify discovery metadata and token-validation contract in planning; mock success/failure first; no token trust from browser input. |
 | Realtime exposes hidden answers or private guesses. | Explicit event allowlist and per-recipient projections; security tests assert secret fields are absent. |
-| Free-tier pause/quota disrupts play. | Isolated quota adapter, recoverable UX, validate the fixed v2.6 target of one full 25-player room plus up to 25 observers during Phase 7 quota simulation; no paid fallback. |
+| Free-tier pause/quota disrupts play. | Isolated quota adapter, recoverable UX, validate the amended target of one full 10-player room plus up to 25 observers (35-person audience) during operational quota simulation; no paid fallback. |
 | GPL conflict in runtime/transitive bundle or artwork. | Lockfile/SWBOM/license review before adding or shipping each component; preserve notices; release gate blocks unresolved licenses. |
 | Mock differs from Supabase/OIDC behavior. | Adapter contract tests plus staged integration test suite after mock-first unit tests. |
 | Build artifact and source archive describe different commits. | Embed commit SHA in SWBOM; verify deployment, source tag, lockfile, and archive all match before publication. |

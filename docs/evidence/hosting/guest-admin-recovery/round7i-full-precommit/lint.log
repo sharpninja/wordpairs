@@ -1,0 +1,24 @@
+
+> wordpairs@0.1.0 lint
+> biome check src tests/architecture
+
+src/web/use-room-updates.ts format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    100 100 │               seen.add(event.eventId);
+    101 101 │               if (event.aggregateId !== roomId) return;
+    102     │ - ············if·(event.aggregateType·===·"match")·void·(refreshMatch·??·refresh)();
+        102 │ + ············if·(event.aggregateType·===·"match")
+        103 │ + ··············void·(refreshMatch·??·refresh)();
+    103 104 │               else if (["room", "moderation"].includes(event.aggregateType))
+    104 105 │                 void refresh();
+  
+
+Checked 94 files in 79ms. No fixes applied.
+Found 1 error.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

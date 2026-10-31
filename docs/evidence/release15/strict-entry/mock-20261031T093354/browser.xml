@@ -1,0 +1,125 @@
+<testsuites id="" name="" tests="28" failures="1" skipped="20" errors="0" time="131.772771">
+<testsuite name="ui-command-entry.phase6.spec.ts" timestamp="2026-10-31T14:33:55.092Z" hostname="" tests="28" failures="1" skipped="20" time="1.553" errors="0">
+<testcase name="UI entry correct delayed-room-action" classname="ui-command-entry.phase6.spec.ts" time="0.349">
+</testcase>
+<testcase name="UI entry rejects wrong delayed-room-action" classname="ui-command-entry.phase6.spec.ts" time="0.155">
+</testcase>
+<testcase name="UI entry correct visible-loading-panel" classname="ui-command-entry.phase6.spec.ts" time="0.205">
+</testcase>
+<testcase name="UI entry rejects wrong visible-loading-panel" classname="ui-command-entry.phase6.spec.ts" time="0.17">
+</testcase>
+<testcase name="UI entry correct disabled-action" classname="ui-command-entry.phase6.spec.ts" time="0.172">
+</testcase>
+<testcase name="UI entry rejects wrong disabled-action" classname="ui-command-entry.phase6.spec.ts" time="0.167">
+</testcase>
+<testcase name="UI entry correct hidden-action" classname="ui-command-entry.phase6.spec.ts" time="0.165">
+</testcase>
+<testcase name="UI entry rejects wrong hidden-action" classname="ui-command-entry.phase6.spec.ts" time="0.17">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../test-results/ui-command-entry.phase6-UI-entry-rejects-wrong-hidden-action/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).rejects.toThrow()" type="expect.rejects">
+<![CDATA[  ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong hidden-action ──────────────────────
+
+    Error: expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: undefined
+
+      68 |   });
+      69 |   test(`UI entry rejects wrong ${name}`, async ({ page }) => {
+    > 70 |     await expect(assertEntryCase(name, independent(name), page)).rejects.toThrow();
+         |                                                                          ^
+      71 |   });
+      72 | }
+      73 |
+        at <repo>/tests/browser/ui-command-entry.phase6.spec.ts:70:74
+
+    Error Context: ../../test-results/ui-command-entry.phase6-UI-entry-rejects-wrong-hidden-action/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="UI entry correct same-page-control" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong same-page-control" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct game-input-entry" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong game-input-entry" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct missing-perspective" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong missing-perspective" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct denied-perspective" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong denied-perspective" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct malformed-projection" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong malformed-projection" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct unknown-pending" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong unknown-pending" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct rejected-probe-attribution" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong rejected-probe-attribution" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct rejected-probe-observer-error" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong rejected-probe-observer-error" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct failure-before-cleanup" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong failure-before-cleanup" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry correct diagnostic-failure-truthful" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="UI entry rejects wrong diagnostic-failure-truthful" classname="ui-command-entry.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>

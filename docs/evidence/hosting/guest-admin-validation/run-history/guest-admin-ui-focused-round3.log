@@ -1,0 +1,15 @@
+[WebServer] (node:48853) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 4 tests using 1 worker
+
+(node:49137) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/4] tests/browser/matches.phase4.spec.ts:199:1 › actual players and bound observer preserve solved hints, scoring and the same uncertain answer retry
+[2/4] tests/browser/matches.phase4.spec.ts:274:1 › eight authoritative no-solver rounds show uniform category continuation, reveal and shared final ranking on a phone
+[3/4] tests/browser/matches.phase4.spec.ts:328:1 › TEST-NOSOLVERFALLBACK-146 two idle clients reveal zero scores and enter server-selected round2 without commands
+[4/4] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+  4 passed (37.9s)

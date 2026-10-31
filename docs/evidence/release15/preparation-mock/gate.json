@@ -1,0 +1,204 @@
+{
+  "timestamp": "2026-10-30T15:07:56",
+  "mode": "Mock",
+  "testSha256": "81FDF8B8A173CFEDCDEB482CA839DA0A74702583240895E0B4CD99AFE5994361",
+  "runs": [
+    {
+      "binding": "Correct",
+      "module": "\u003Crepo\u003E/tests/powershell/ReviewEvidencePreparation.MockCorrect.psm1",
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControlExpected": false,
+      "tests": [
+        {
+          "name": "accepts the complete independent expected inventory",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects another revision",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects an unverified path set",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects missing source entries",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects changed source bytes",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects omitted current source paths",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects zero caller expectations",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects fractional caller expectations",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects an executed count different from the expected inventory",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects failed cases",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects skipped cases",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects empty executed reports",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing required report",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects duplicate report identities",
+          "result": "Passed"
+        },
+        {
+          "name": "accepts real transport plus the full fourteen-case matrix and strict journey",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing strict journey",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a partial matrix count",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects fourteen duplicated player-count names",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects an incorrect transport count",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a failed strict journey",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects skipped matrix cases",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a mislabeled strict case",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "binding": "Wrong",
+      "module": "\u003Crepo\u003E/tests/powershell/ReviewEvidencePreparation.MockWrong.psm1",
+      "passed": 2,
+      "failed": 20,
+      "skipped": 0,
+      "negativeControlExpected": true,
+      "tests": [
+        {
+          "name": "accepts the complete independent expected inventory",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects another revision",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects an unverified path set",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects missing source entries",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects changed source bytes",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects omitted current source paths",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects zero caller expectations",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects fractional caller expectations",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects an executed count different from the expected inventory",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects failed cases",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects skipped cases",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects empty executed reports",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a missing required report",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects duplicate report identities",
+          "result": "Failed"
+        },
+        {
+          "name": "accepts real transport plus the full fourteen-case matrix and strict journey",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing strict journey",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a partial matrix count",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects fourteen duplicated player-count names",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects an incorrect transport count",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a failed strict journey",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects skipped matrix cases",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a mislabeled strict case",
+          "result": "Failed"
+        }
+      ]
+    }
+  ],
+  "qualification": "Mock Wrong failures are expected rejection controls inside this successful gate, not a production-bound test pass."
+}

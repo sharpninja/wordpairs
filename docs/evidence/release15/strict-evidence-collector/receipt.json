@@ -1,0 +1,407 @@
+{
+  "schema": "wordpairs-strict-evidence-collector-repair-v1",
+  "recordedAt": "2026-10-30T20:47:55.9317294-05:00",
+  "classification": "Approved bounded operational artifact collection repair;not product implementation,testoracle or HV",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T014229Z-turn-b018",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "profile": {
+    "files": 1,
+    "globalMemories": 9,
+    "workspaceMemories": 0,
+    "excluded": "PRIVATE-MEMORY-REFERENCE-007"
+  },
+  "before": {
+    "recordedAt": "2026-10-30T20:42:55.9767157-05:00",
+    "originalProducer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+    "originalProducerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+    "retainedOriginal": "\u003Crepo\u003E/docs/evidence/release15/strict-evidence-collector/RunWordpairsRelease15Evidence.original.ps1",
+    "priorStrictPreservation": {
+      "manifest": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/strict-observations-amendment/manifest.json",
+      "manifestSha256": "E6219BFE8BEF62B340DE77BFE7015DEF8B0768B7322A770159F81AF861EB5010",
+      "retainedObservation": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/strict-observations-amendment/live-ui-observations.json",
+      "retainedObservationSha256": "118CEC13D7915D97BF71BF28D2191AF2149ADE1F8FAF282189EE8F165E96B5BA",
+      "originalRetained": true,
+      "atLocal": "2026-10-30T20:40:41"
+    },
+    "originalParserErrors": 0,
+    "originalPssaWarningsErrors": 0,
+    "classification": "Operational collector preservation,no live rerun/source modification"
+  },
+  "currentProducer": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+    "sha256": "5567FD524E532EBA8A71A496A44E3FDF2375626546D38B627A62CCC765448444",
+    "bytes": 6152
+  },
+  "sourceDiff": [
+    {
+      "line": 58,
+      "before": "  foreach($file in Get-ChildItem (Join-Path $root 'docs/evidence/room-sync') -File|Where-Object {$_.LastWriteTime -ge $startedInstant -and ($_.Name -like 'live-local-*' -or ($Lane -eq 'live-ui' -and $_.Name -match '^live-scale-(?:[2-9]|1[0-5])(?:-failure-ui)?\\.json$'))}){",
+      "after": "  foreach($file in Get-ChildItem (Join-Path $root 'docs/evidence/room-sync') -File|Where-Object {$_.LastWriteTime -ge $startedInstant -and ($_.Name -like 'live-local-*' -or ($Lane -eq 'live-ui' -and $_.Name -match '^live-scale-(?:[2-9]|1[0-5])(?:-failure-ui)?\\.json$') -or ($Lane -eq 'strict-ui' -and $_.Name -cin @('live-ui-observations.json','live-ui-failure-ui.json')))}){"
+    }
+  ],
+  "isolatedFixture": {
+    "recordedAt": "2026-10-30T20:45:27.399865-05:00",
+    "classification": "Operational collector fixtures only,no app/test/build/model/provider execution",
+    "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+    "producerSha256": "5567FD524E532EBA8A71A496A44E3FDF2375626546D38B627A62CCC765448444",
+    "fixtureSha256": "0CC9156B1673A5915783EAC88B5733AE7B6395FA999B7829021AB77E6E4152A6",
+    "fixtureRoot": "/tmp/wordpairs-strict-collector-fixture-20261030T204526-f09010ce747f4ada8c716338281c7f0a",
+    "cutoff": "2026-10-30T20:45:26.968-05:00",
+    "cases": [
+      {
+        "case": "normal-fresh",
+        "lane": "live-ui",
+        "expectedCount": 30,
+        "copiedCount": 30,
+        "passed": true,
+        "allCopyHashesVerified": true,
+        "manifestPath": "/tmp/wordpairs-strict-collector-fixture-20261030T204526-f09010ce747f4ada8c716338281c7f0a/normal-fresh/runtime-copy-manifest.json",
+        "manifestSha256": "2E21A395B5DF1338763164B2911B4F0FC15573DDB14AE0D36CD6F03DD3C468A1",
+        "files": [
+          {
+            "name": "live-local-boundary.json",
+            "sha256": "864082DBF6804CE36CCA2B4E17B21912C0AC28931D197109864B46181FE5E291",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-local-current.json",
+            "sha256": "39151A6F73496AD81D61F5A835704E9BD56F812B3A4262FDECE248497C0477FF",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-10-failure-ui.json",
+            "sha256": "CF80541BEADB1E88C09E95FECE71D6B625599DF6CCB2A0E954FEF3D4C021FF7A",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-10.json",
+            "sha256": "32C8F2E5A17FDF2BC327CA1DF0C4407B67FC5A46A05FB49B8C1E7B9C84CD5F84",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-11-failure-ui.json",
+            "sha256": "92E426D8A82A1DB3F553DE2DBF1FDE74AEDC4B8CFF8390B44E0AEA720EF3DA26",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-11.json",
+            "sha256": "CFC1D20E39325BF2050ACA08313CA2E3C4FF401CF99AACF51B5BB09C476B7A90",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-12-failure-ui.json",
+            "sha256": "A2026231CAC52A9A12E118FC39D160D37617B6BF9EDE9BCCEB678D24A167D54E",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-12.json",
+            "sha256": "44A3676E06A09DC699DE40262F5079295662748405BB122633360DBEBAF18159",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-13-failure-ui.json",
+            "sha256": "A4EA3FAB3C26DA714270243FDA110DD784BB502A129AD69328C37559274663BB",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-13.json",
+            "sha256": "701698C3DF70E9E010802E0D96EAEAE16BE8CE5AA7491FF3A5189DEC5CC0A712",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-14-failure-ui.json",
+            "sha256": "C3F407CE3803767EFB05B8ACD32D3001537C18EE4A7FC0E3F0D0448C76A84570",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-14.json",
+            "sha256": "6E037D0698B078249C0CB19F2C415A4EAF364F31BF770B600334ED7470B49E10",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-15-failure-ui.json",
+            "sha256": "11D16B9C94A22EB1A7FCBAD42438C45655C259565275711A767D61D057E33A6B",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-15.json",
+            "sha256": "D48A3E8789A851B715F3AF115A332D11D8DE48A67A75D25FDF5028C39DC80901",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-2-failure-ui.json",
+            "sha256": "B732EF3E2464DAADA306B9573F80B2A22B36E3F4F8E623A3607841F7999C4C61",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-2.json",
+            "sha256": "338B6365003D7ABE3079FFCD814EB6FC53D84A8B8E72D8171CCA207EC4A26395",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-3-failure-ui.json",
+            "sha256": "1EE0B99EB0B350750750683EDB1E1D6A49991021882C561D8A3F58EF0EBD9E89",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-3.json",
+            "sha256": "4B7841DE2619277C2782EDE54E11B97F203070F2BC48C03B0786E81D5724ADF5",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-4-failure-ui.json",
+            "sha256": "34E8D2CD3E91D1D3FC45DEB46D89000FD810CC6EDB7F92B94CD05B4003F1DA90",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-4.json",
+            "sha256": "8854A1DEC077DE4715EEE03F08BAF4A820C6574FA61DC4C5A6983F6B77BAC054",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-5-failure-ui.json",
+            "sha256": "DAD0B4E198BC2E463E599651238BB9F459578B1D3ED43C5E06ABF9E0E7446341",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-5.json",
+            "sha256": "731802DD0277FC2218421B5007E862B0EBD18D249388CF34B378DBFBE23B1A43",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-6-failure-ui.json",
+            "sha256": "A7DF00A610BC073ED3C00FB1013AB69E623E075351ECDEA4931C65AFA6ECCF06",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-6.json",
+            "sha256": "C4C7EBD52B12EBE0438977A85A840A2D762CAC02CFC7BE604B838497F8831D60",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-7-failure-ui.json",
+            "sha256": "A70A38B468431F73FFEF2DF8D082D79942BC52AF1952832E08AA73257D32DCFC",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-7.json",
+            "sha256": "B6354D50B4BF268FE24EBD236D1048DD7515D91D136A1B5B70550D145725E888",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-8-failure-ui.json",
+            "sha256": "9C8587F4BAEB8335B36E0E5B48F537A24FA2A44C710828687ED26BAB22863C89",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-8.json",
+            "sha256": "2FF81652B9DF49B89681A7C303CF6FEE05CAC85E201F97F54963164BD6D6444D",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-9-failure-ui.json",
+            "sha256": "4941C6A602907CB737CBEBE048692589D6FE782A878493802ECCB35CA9920174",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-scale-9.json",
+            "sha256": "2C120DFEAB3B00664C5173B52AE445119E51B79785112BFCF5DDAA894EE2FAA7",
+            "sourceRetained": true,
+            "copyVerified": true
+          }
+        ]
+      },
+      {
+        "case": "strict-fresh",
+        "lane": "strict-ui",
+        "expectedCount": 4,
+        "copiedCount": 4,
+        "passed": true,
+        "allCopyHashesVerified": true,
+        "manifestPath": "/tmp/wordpairs-strict-collector-fixture-20261030T204526-f09010ce747f4ada8c716338281c7f0a/strict-fresh/runtime-copy-manifest.json",
+        "manifestSha256": "7041C9484B3C120EB127BD209FDBC0538819FF8AA3B670319609138EFDC3C92B",
+        "files": [
+          {
+            "name": "live-local-boundary.json",
+            "sha256": "864082DBF6804CE36CCA2B4E17B21912C0AC28931D197109864B46181FE5E291",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-local-current.json",
+            "sha256": "39151A6F73496AD81D61F5A835704E9BD56F812B3A4262FDECE248497C0477FF",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-ui-failure-ui.json",
+            "sha256": "4BECDAECDCC5C66D8592B680E259BD375FDB801EDA9962064BE63C546EA0BAB5",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-ui-observations.json",
+            "sha256": "9FF1A9F45AD070C6A3E121A92FB5C9AF6D3E00B9087945FDBDAAD8765D0C834E",
+            "sourceRetained": true,
+            "copyVerified": true
+          }
+        ]
+      },
+      {
+        "case": "strict-stale",
+        "lane": "strict-ui",
+        "expectedCount": 2,
+        "copiedCount": 2,
+        "passed": true,
+        "allCopyHashesVerified": true,
+        "manifestPath": "/tmp/wordpairs-strict-collector-fixture-20261030T204526-f09010ce747f4ada8c716338281c7f0a/strict-stale/runtime-copy-manifest.json",
+        "manifestSha256": "738EB8F295CFB520129C1962EF29936AACF9F35661C47C8F1D14609E7734C67F",
+        "files": [
+          {
+            "name": "live-local-boundary.json",
+            "sha256": "864082DBF6804CE36CCA2B4E17B21912C0AC28931D197109864B46181FE5E291",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-local-current.json",
+            "sha256": "39151A6F73496AD81D61F5A835704E9BD56F812B3A4262FDECE248497C0477FF",
+            "sourceRetained": true,
+            "copyVerified": true
+          }
+        ]
+      },
+      {
+        "case": "normal-stale",
+        "lane": "live-ui",
+        "expectedCount": 2,
+        "copiedCount": 2,
+        "passed": true,
+        "allCopyHashesVerified": true,
+        "manifestPath": "/tmp/wordpairs-strict-collector-fixture-20261030T204526-f09010ce747f4ada8c716338281c7f0a/normal-stale/runtime-copy-manifest.json",
+        "manifestSha256": "0F42957EBB83796198E9A7B8B185F2820A50F4E2A8980447D307B8B5A6460E22",
+        "files": [
+          {
+            "name": "live-local-boundary.json",
+            "sha256": "864082DBF6804CE36CCA2B4E17B21912C0AC28931D197109864B46181FE5E291",
+            "sourceRetained": true,
+            "copyVerified": true
+          },
+          {
+            "name": "live-local-current.json",
+            "sha256": "39151A6F73496AD81D61F5A835704E9BD56F812B3A4262FDECE248497C0477FF",
+            "sourceRetained": true,
+            "copyVerified": true
+          }
+        ]
+      }
+    ],
+    "passed": 4,
+    "failed": 0,
+    "copiesVerified": 38,
+    "allSourceFixtureFilesRetained": true,
+    "normalNameVariantsCovered": 28,
+    "exactStrictNames": [
+      "live-ui-observations.json",
+      "live-ui-failure-ui.json"
+    ],
+    "excludedNameControls": [
+      "live-local-stale.json",
+      "live-ui-observations.json.bak",
+      "live-ui-observation.json",
+      "Live-ui-observations.json",
+      "live-ui-failure-ui.json.extra",
+      "live-ui-failure.json",
+      "runtime.json",
+      "input-runtime.json",
+      "private-runtime.json",
+      "hosting-production-admin.json",
+      "live-scale-1.json",
+      "live-scale-16.json",
+      "live-scale-25.json",
+      "live-scale-02.json",
+      "live-scale-15.json.bak",
+      "live-scale-15-failure-ui.json.bak",
+      "live-scale-2-private.json",
+      "live-ui-failure-ui.private.json"
+    ],
+    "exactCutoffCommonFileIncluded": true,
+    "strictStaleExactNamesExcluded": true,
+    "normalStaleNamesExcluded": true,
+    "onlyApprovedPredicateAddition": true,
+    "parserErrors": 0,
+    "pssaWarningsErrors": 0,
+    "qualification": "Actual AST copy loop and existing manifest pipeline run against owned temporary files only. Original timestamps/lane branches/live-localwildcard and normal2..15regex remain unchanged. No full orchestrator or live lane executed;copies are not game success."
+  },
+  "scriptChecks": [
+    {
+      "source": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "sha256": "5567FD524E532EBA8A71A496A44E3FDF2375626546D38B627A62CCC765448444"
+    },
+    {
+      "source": "/tmp/Check-WordpairsStrictCollectorFixture.ps1",
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "sha256": "0CC9156B1673A5915783EAC88B5733AE7B6395FA999B7829021AB77E6E4152A6"
+    },
+    {
+      "source": "/tmp/Complete-WordpairsStrictCollector.ps1",
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "sha256": "7EEE122E79B73699459F0902D93428333E2AB1465C21434125942DBF8D5D7FD1"
+    }
+  ],
+  "contract": "Keep originaltimestampcutoff and laneisolation/live-localwildcard/normal live-scale2..15 logic;strict-ui only adds case-sensitive exactlive-ui-observations.json andlive-ui-failure-ui.json. Existingcopy/hashverify/manifest path is unchanged,so copied files participate in the existing recursive launcher binding.",
+  "fixtureHistory": "Before data execution,the firstWhatIf rejected an overbroad ASTpipeline selection which included nestedJoin-Path. Filter corrected to the unique actual multipart manifestpipeline;subsequentWhatIf andfouractualisolatedcases passed. Initialunused-variable analyzerwarning resolved by verifying copied collection equals manifest count. Consolefixture caseprojection usedSelect-Object on dictionaries and printednulls;canonical fixture-result.json was separately read bykeys and confirms30/4/2/2. No receipt was overwritten or live lane rerun.",
+  "preserved": "Originalcollector retained/copied/hashverified before edit;prior606strict observation preservationE6219BFE...readbackverified. All38 fixturecopies hashverified andallownedsourcefixture files retained. Existinghash-failure behavior,sourcechecks,reporting,artifactcopy and invocation controls unchanged.",
+  "unknowns": [
+    "Actual next frozen strictcollector/runtime capture has not executed. This operational fixture proof does not repair or pass the historical606strict test or establish game/HV acceptance."
+  ],
+  "noApplicationTestsOtherOrchestratorsPreparerProviderOrModelChangesByThisAgent": true,
+  "noLiveRerunFullSuiteOrNewProductRequirement": true,
+  "counts": {
+    "pass": 4,
+    "fail": 0,
+    "copiesVerified": 38,
+    "normalFilenameVariants": 28,
+    "nonallowlistedNameControls": 18,
+    "unknown": 1
+  },
+  "overallVerdict": "NOT_HV",
+  "accuracy": 99,
+  "completeness": 100,
+  "ratingQualification": "Exact one-line diff and actual copy/manifest AST exercised with owned temporary files;no live application/test execution or reviewer approval inferred."
+}

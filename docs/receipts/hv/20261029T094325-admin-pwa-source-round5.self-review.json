@@ -1,0 +1,158 @@
+{
+  "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+  "checks": {
+    "holisticReview": "Review canonical release and plan overrides, source, browser invitation cases, requirements and retained prior verdicts.",
+    "mappingLint": "Check native FR-to-TR/TEST links and criterion-level references against live QBrain rather than rely on a local claim.",
+    "phaseBoundaries": "Source readiness only; hosted migration, live consent, physical admin installation and production rollout remain unverified.",
+    "searchBeforeAdding": "Existing planner and invitation cases extended; stable criterion IDs and existing records preserved.",
+    "scope": "User directed guest-only gameplay, GitHub admin PWA, admin access for sharpninja, welcome-card whitespace, and a Copy Invitation Link button that copies.",
+    "propagationAudit": "QBrain FR and TEST INVITE-COPY-03, planner TR-23-C02, case docs and exported wiki read back; check native links and detect any drift.",
+    "whatIf": "Check success, missing or failing invitation response, denied or unavailable clipboard, stale identity, private auth and migration history drift.",
+    "processLimit": "Original mock chronology is not recreated by the retrospective replay; the user granted one exception for the original admin slice only. Preserve all unsuccessful and incomplete reviews."
+  },
+  "timestamp": "2026-10-29T09:43:25",
+  "reports": [
+    {
+      "name": "unit",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-full-6071b2d/unit.xml",
+      "junitSha256": "B35E61962500A9B2716BBC46B4F00ECD653BAA9C4F4EDA1EBC91D36A2254CF45",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-frozen-evidence-6071b2d/unit.trx",
+      "trxSha256": "2A4FD7BF042C4E6C9C9E21511B9B6A675A7C1F288C58FE58899A67F97BF7A1F3",
+      "cases": 588,
+      "failed": 0,
+      "skipped": 0,
+      "run": {
+        "name": "unit",
+        "runId": "b79af43e-224b-461c-beb9-c5c82059b9c3",
+        "hostName": "[PRIVATE HOST]",
+        "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+        "startedAt": "2026-10-29T09:36:44",
+        "finishedAt": "2026-10-29T09:37:09",
+        "executable": "npm",
+        "arguments": [
+          "exec",
+          "vitest",
+          "--",
+          "run",
+          "--maxWorkers=4",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile.junit=\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-full-6071b2d/unit.xml"
+        ],
+        "exitCode": 0,
+        "log": "unit.log",
+        "junit": "unit.xml"
+      }
+    },
+    {
+      "name": "postgres",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-full-6071b2d/postgres.xml",
+      "junitSha256": "BFCB9D6B9275D75C041649B9577BEC9E3C264635686A7356135A61F8DE80F07B",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-frozen-evidence-6071b2d/postgres.trx",
+      "trxSha256": "6F9EB638D8DA14C6BE558D01B128E13BA6F29F31E5E274ACD1A2E1A047BD53D4",
+      "cases": 68,
+      "failed": 0,
+      "skipped": 0,
+      "run": {
+        "name": "postgres",
+        "runId": "b79af43e-224b-461c-beb9-c5c82059b9c3",
+        "hostName": "[PRIVATE HOST]",
+        "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+        "startedAt": "2026-10-29T09:37:09",
+        "finishedAt": "2026-10-29T09:41:24",
+        "executable": "pwsh",
+        "arguments": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "tests/integration/run-phase1.ps1",
+          "-ReportDirectory",
+          "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-full-6071b2d",
+          "-VolatileStorage"
+        ],
+        "exitCode": 0,
+        "log": "postgres.log",
+        "junit": "postgres.xml"
+      }
+    },
+    {
+      "name": "browser",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-full-6071b2d/browser.xml",
+      "junitSha256": "7156C0EF2446E29AC5151D9A3A7822305533DE241BB61876D14C8B3A23ED30A3",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-frozen-evidence-6071b2d/browser.trx",
+      "trxSha256": "A21AE10FFE4A0AA6EF444692183FF4992ED33934E41A1D2F707D30F06B728FA3",
+      "cases": 78,
+      "failed": 0,
+      "skipped": 0,
+      "run": {
+        "name": "browser",
+        "runId": "b79af43e-224b-461c-beb9-c5c82059b9c3",
+        "hostName": "[PRIVATE HOST]",
+        "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+        "startedAt": "2026-10-29T09:41:31",
+        "finishedAt": "2026-10-29T09:42:52",
+        "executable": "npm",
+        "arguments": [
+          "exec",
+          "playwright",
+          "--",
+          "test",
+          "--config=playwright.pwa.config.ts",
+          "--reporter=line,junit"
+        ],
+        "exitCode": 0,
+        "log": "browser.log",
+        "junit": "browser.xml"
+      }
+    },
+    {
+      "name": "planner-real",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance/real.xml",
+      "junitSha256": "7F7E6531C372399DABC65C6B57CF6B12D018DD7CD1032B09234AF3086BCEAF25",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-frozen-evidence-6071b2d/planner-real.trx",
+      "trxSha256": "79EF71700B3AF4256CF1F68EE1F735E5EDF76B751CF9DE755074F25124DBFD71",
+      "cases": 6,
+      "failed": 0,
+      "skipped": 0,
+      "run": {
+        "name": "planner-real",
+        "runId": "e347597a-4c9c-4af7-8498-9bd480d86e7e",
+        "hostName": "[PRIVATE HOST]",
+        "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+        "startedAt": "2026-10-29T09:38:39",
+        "finishedAt": "2026-10-29T09:38:39",
+        "command": [
+          "\u003Crepo\u003E/tests/powershell/Run-HostingSchemaRealGate.ps1",
+          "-ReportDirectory",
+          "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance"
+        ],
+        "report": "real.xml"
+      }
+    },
+    {
+      "name": "planner-mock",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance/mock.xml",
+      "junitSha256": "62590B0A195F7130D0D510C19430EFEFE89CE177E7404A6F66D1E107ABC5D043",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round5-frozen-evidence-6071b2d/planner-mock.trx",
+      "trxSha256": "5D04618485F21D894E632A6D33B3298BF22DFC7600D90A56BF2A87D9A43E5209",
+      "cases": 6,
+      "failed": 0,
+      "skipped": 0,
+      "run": {
+        "name": "planner-mock",
+        "runId": "e347597a-4c9c-4af7-8498-9bd480d86e7e",
+        "hostName": "[PRIVATE HOST]",
+        "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+        "startedAt": "2026-10-29T09:38:38",
+        "finishedAt": "2026-10-29T09:38:39",
+        "command": [
+          "Invoke-Pester",
+          "-Configuration",
+          "Run.Path=\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.Tests.ps1; Run.PassThru=true; TestResult.Enabled=true; OutputFormat=JUnitXml; OutputPath=\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance/mock.xml"
+        ],
+        "report": "mock.xml",
+        "module": "\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.MockCorrect.psm1"
+      }
+    }
+  ]
+}

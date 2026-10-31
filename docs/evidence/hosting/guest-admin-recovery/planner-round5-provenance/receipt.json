@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-10-29T09:38:39",
+  "runId": "e347597a-4c9c-4af7-8498-9bd480d86e7e",
+  "hostName": "[PRIVATE HOST]",
+  "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+  "mockCases": 6,
+  "realCases": 6,
+  "testSha256": "5EDE3C1F559BC322E7CFF1C7C09B945E44029483F3DB8BE2172A84A9F9C4A303",
+  "runs": [
+    {
+      "name": "negative-controls",
+      "runId": "e347597a-4c9c-4af7-8498-9bd480d86e7e",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+      "startedAt": "2026-10-29T09:38:36",
+      "finishedAt": "2026-10-29T09:38:38",
+      "command": [
+        "\u003Crepo\u003E/tests/powershell/Run-HostingSchemaMockGate.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance/controls"
+      ],
+      "report": "controls/mock-gate.json"
+    },
+    {
+      "name": "planner-mock",
+      "runId": "e347597a-4c9c-4af7-8498-9bd480d86e7e",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+      "startedAt": "2026-10-29T09:38:38",
+      "finishedAt": "2026-10-29T09:38:39",
+      "command": [
+        "Invoke-Pester",
+        "-Configuration",
+        "Run.Path=\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.Tests.ps1; Run.PassThru=true; TestResult.Enabled=true; OutputFormat=JUnitXml; OutputPath=\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance/mock.xml"
+      ],
+      "report": "mock.xml",
+      "module": "\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.MockCorrect.psm1"
+    },
+    {
+      "name": "planner-real",
+      "runId": "e347597a-4c9c-4af7-8498-9bd480d86e7e",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "6071b2d6750b875864ce11011f1aff26243f29e6",
+      "startedAt": "2026-10-29T09:38:39",
+      "finishedAt": "2026-10-29T09:38:39",
+      "command": [
+        "\u003Crepo\u003E/tests/powershell/Run-HostingSchemaRealGate.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/planner-round5-provenance"
+      ],
+      "report": "real.xml"
+    }
+  ]
+}

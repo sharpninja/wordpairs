@@ -1,0 +1,167 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1 --reporter=line,junit
+
+
+Running 14 tests using 1 worker
+
+[1/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+LIVE_SCALE players=2 round=1
+
+LIVE_SCALE players=2 round=2
+
+LIVE_SCALE players=2 round=3
+
+LIVE_SCALE players=2 round=4
+
+LIVE_SCALE players=2 round=5
+
+LIVE_SCALE players=2 round=6
+
+LIVE_SCALE players=2 round=7
+
+LIVE_SCALE players=2 round=8
+
+[2/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+LIVE_SCALE players=3 round=1
+
+LIVE_SCALE players=3 round=2
+
+LIVE_SCALE players=3 round=3
+
+LIVE_SCALE players=3 round=4
+
+LIVE_SCALE players=3 round=5
+
+LIVE_SCALE players=3 round=6
+
+LIVE_SCALE players=3 round=7
+
+LIVE_SCALE players=3 round=8
+
+[3/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+LIVE_SCALE players=4 round=1
+
+LIVE_SCALE players=4 round=2
+
+LIVE_SCALE players=4 round=3
+
+LIVE_SCALE players=4 round=4
+
+LIVE_SCALE players=4 round=5
+
+LIVE_SCALE players=4 round=6
+
+LIVE_SCALE players=4 round=7
+
+LIVE_SCALE players=4 round=8
+
+[4/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 5 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 5 real browser players complete eight UI rounds
+LIVE_SCALE players=5 round=1
+
+LIVE_SCALE players=5 round=2
+
+LIVE_SCALE players=5 round=3
+
+LIVE_SCALE players=5 round=4
+
+LIVE_SCALE players=5 round=5
+
+LIVE_SCALE players=5 round=6
+
+LIVE_SCALE players=5 round=7
+
+LIVE_SCALE players=5 round=8
+
+[5/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 6 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 6 real browser players complete eight UI rounds
+LIVE_SCALE players=6 round=1
+
+LIVE_SCALE players=6 round=2
+
+LIVE_SCALE players=6 round=3
+
+LIVE_SCALE players=6 round=4
+
+LIVE_SCALE players=6 round=5
+
+LIVE_SCALE players=6 round=6
+
+LIVE_SCALE players=6 round=7
+
+LIVE_SCALE players=6 round=8
+
+[6/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 7 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 7 real browser players complete eight UI rounds
+LIVE_SCALE players=7 round=1
+
+LIVE_SCALE players=7 round=2
+
+LIVE_SCALE players=7 round=3
+
+LIVE_SCALE players=7 round=4
+
+LIVE_SCALE players=7 round=5
+
+LIVE_SCALE players=7 round=6
+
+LIVE_SCALE players=7 round=7
+
+LIVE_SCALE players=7 round=8
+
+[7/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 8 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 8 real browser players complete eight UI rounds
+LIVE_SCALE players=8 round=1
+
+LIVE_SCALE players=8 round=2
+
+LIVE_SCALE players=8 round=3
+
+LIVE_SCALE players=8 round=4
+
+LIVE_SCALE players=8 round=5
+
+LIVE_SCALE players=8 round=6
+
+LIVE_SCALE players=8 round=7
+
+LIVE_SCALE players=8 round=8
+
+[8/14] tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 9 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 9 real browser players complete eight UI rounds
+LIVE_SCALE players=9 round=1
+
+LIVE_SCALE players=9 round=2
+
+  1) tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 9 real browser players complete eight UI rounds 
+
+    Error: response.json: Protocol error (Network.getResponseBody): No data found for resource with given identifier
+    Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.
+
+      58 |       ok: () => response?.ok() ?? false,
+      59 |       status: () => response?.status() ?? 0,
+    > 60 |       json: async () => response ? response.json() : null,
+         |                                             ^
+      61 |       request: () => request,
+      62 |     };
+      63 |   }
+        at Object.json (<repo>/tests/browser/live-player-counts.integration.spec.ts:60:45)
+        at commitUi (<repo>/tests/browser/live-player-counts.integration.spec.ts:73:38)
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:157:24
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:156:27
+
+    Error Context: test-results/live-local/live-player-counts.integra-d0d17-rs-complete-eight-UI-rounds/error-context.md
+
+
+Testing stopped early after 1 maximum allowed failures.
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:16:29 › LIVE-SCALE 9 real browser players complete eight UI rounds 
+  6 did not run
+  7 passed (4.4m)
+  1 error was not a part of any test, see above for details
+

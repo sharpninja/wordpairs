@@ -1,0 +1,411 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/capacity-ui.test.ts (4 tests | 2 failed) 2245ms
+   × CAP15 exposes a 2 through 15 creation input and browser validation blocks16 1040ms
+   × CAP15 creation sends fifteen and leaves the observer setting separate 1008ms
+   ✓ CAP15 legacy waiting room explains the block and retains Leave without readiness 184ms
+   ✓ CAP15 legacy countdown room explains the block and retains Leave without readiness 12ms
+ ❯ tests/application/capacity-policy.test.ts (11 tests | 4 failed) 32ms
+   ❯ CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 (11)
+     ✓ admits each integer capacity 2 through 15 and preserves the private default 6ms
+     × rejects 1,16,20,25,26 and malformed capacity inputs 7ms
+     ✓ draws the anchor from both inclusive endpoints of a frozen fifteen-player roster 1ms
+     × rejects every new match above fifteen before drawing an anchor 4ms
+     × admits the fifteenth player but rejects a sixteenth in a legacy capacity25 room without mutation 4ms
+     ✓ preserves the separate twenty-five-observer capacity 1ms
+     × projects the effective fifteen-seat waiting limit without negative slots 2ms
+     ✓ preserves oversized waiting members while denying readiness and automatic holdout or start 2ms
+     ✓ blocks an old oversized countdown without removing members 0ms
+     ✓ keeps Leave functional in oversized waiting and countdown rooms without promoting above fifteen 1ms
+     ✓ preserves historical running room capacity and leaves without marking it blocked 1ms
+ ✓ tests/application/legacy-match-capacity.test.ts (1 test) 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/capacity-policy.test.ts > CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > rejects 1,16,20,25,26 and malformed capacity inputs
+AssertionError: invalid capacity 16: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/application/capacity-policy.test.ts:31:79
+     29|   it("rejects 1,16,20,25,26 and malformed capacity inputs", () => {
+     30|     for (const count of [1,16,20,25,26,2.5,"15",null,undefined,NaN,Inf…
+     31|       expect(policy.roomCapacity(count), `invalid capacity ${String(co…
+       |                                                                               ^
+     32|     for (const count of [1,16,25]) expect(policy.newRoom("r","p1",coun…
+     33|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/application/capacity-policy.test.ts > CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > rejects every new match above fifteen before drawing an anchor
+AssertionError: expected { ok: true, value: { id: 'm', …(11) } } to deeply equal { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "VALIDATION_ERROR",
++   "ok": true,
++   "value": {
++     "anchorId": "p1",
++     "autoCategoryId": null,
++     "chooserId": "p1",
++     "finishedAt": null,
++     "id": "m",
++     "roomId": "r",
++     "roster": [
++       "p1",
++       "p2",
++       "p3",
++       "p4",
++       "p5",
++       "p6",
++       "p7",
++       "p8",
++       "p9",
++       "p10",
++       "p11",
++       "p12",
++       "p13",
++       "p14",
++       "p15",
++       "p16",
++     ],
++     "rounds": [],
++     "startedAt": 0,
++     "status": "choosing",
++     "usedPairIds": [],
++     "version": 0,
+    },
+-   "ok": false,
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:46:92
+     44|     for (const count of [16,20,25]) {
+     45|       let draws = 0;
+     46|       expect(policy.createMatch("m","r",roster(count),{integer:a=>{dra…
+       |                                                                                            ^
+     47|       expect(draws).toBe(0);
+     48|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/application/capacity-policy.test.ts > CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > admits the fifteenth player but rejects a sixteenth in a legacy capacity25 room without mutation
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "ROOM_FULL",
++   "ok": true,
++   "value": {
++     "capacity": 25,
++     "changedAt": 0,
++     "closedAt": null,
++     "code": "ABCDEFGH",
++     "countdownDueAt": null,
++     "createdAt": 0,
++     "creatorId": "p1",
++     "discoverable": false,
++     "holdoutDueAt": 5000,
++     "holdoutId": "p1",
++     "id": "legacy",
++     "idlePromptedVersion": null,
++     "lockedRoster": [],
++     "nextObserverSequence": 0,
++     "observers": [],
++     "players": [
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p1",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p2",
++         "ready": true,
+        },
+-   "ok": false,
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p3",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p4",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p5",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p6",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p7",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p8",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p9",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p10",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p11",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p12",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p13",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 0,
++         "lastSeenAt": 0,
++         "profileId": "p14",
++         "ready": true,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 1,
++         "lastSeenAt": 1,
++         "profileId": "p15",
++         "ready": false,
++       },
++       {
++         "disconnectedAt": null,
++         "joinedAt": 2,
++         "lastSeenAt": 2,
++         "profileId": "p16",
++         "ready": false,
++       },
++     ],
++     "status": "waiting",
++     "version": 0,
++   },
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:56:57
+     54|     if (!result.ok) throw new Error("Fifteenth seat was not admitted");
+     55|     const full = structuredClone(result.value);
+     56|     expect(policy.joinRoom(full,"p16","player",null,2)).toEqual({ok:fa…
+       |                                                         ^
+     57|     expect(full).toEqual(result.value);
+     58|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/application/capacity-policy.test.ts > CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > projects the effective fifteen-seat waiting limit without negative slots
+AssertionError: expected { capacity: 25, …(2) } to match object { capacity: 15, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "availableSlots": 1,
++   "availableSlots": 11,
+    "canJoinPlayer": true,
+-   "capacity": 15,
++   "capacity": 25,
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:68:60
+     66|   });
+     67|   it("projects the effective fifteen-seat waiting limit without negati…
+     68|     expect(policy.roomProjection(legacy(14),"outside",[])).toMatchObje…
+       |                                                            ^
+     69|     expect(policy.roomProjection(legacy(15),"outside",[])).toMatchObje…
+     70|     expect(policy.roomProjection(legacy(20),"p1",[])).toMatchObject({c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/web/capacity-ui.test.ts > CAP15 exposes a 2 through 15 creation input and browser validation blocks16
+TestingLibraryElementError: Unable to find a label with the text of: Maximum players (2–15)
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form>
+      <label
+        for="capacity"
+      >
+        Maximum players (2–25)
+      </label>
+      <input
+        id="capacity"
+        max="25"
+        min="2"
+        type="number"
+        value="4"
+      />
+      <button
+        type="submit"
+      >
+        Create room
+      </button>
+    </form>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form>
+      <label
+        for="capacity"
+      >
+        Maximum players (2–25)
+      </label>
+      <input
+        id="capacity"
+        max="25"
+        min="2"
+        type="number"
+        value="4"
+      />
+      <button
+        type="submit"
+      >
+        Create room
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/web/capacity-ui.test.ts:19:26
+     17|   vi.stubGlobal("React",React);
+     18|   const view=render(React.createElement(Hub,{oidcEnabled:false}));
+     19|   const input=await view.findByLabelText("Maximum players (2–15)") as …
+       |                          ^
+     20|   expect(input.min).toBe("2");expect(input.max).toBe("15");
+     21|   fireEvent.change(input,{target:{value:"16"}});expect(input.checkVali…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/web/capacity-ui.test.ts > CAP15 creation sends fifteen and leaves the observer setting separate
+TestingLibraryElementError: Unable to find a label with the text of: Maximum players (2–15)
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form>
+      <label
+        for="capacity"
+      >
+        Maximum players (2–25)
+      </label>
+      <input
+        id="capacity"
+        max="25"
+        min="2"
+        type="number"
+        value="4"
+      />
+      <button
+        type="submit"
+      >
+        Create room
+      </button>
+    </form>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form>
+      <label
+        for="capacity"
+      >
+        Maximum players (2–25)
+      </label>
+      <input
+        id="capacity"
+        max="25"
+        min="2"
+        type="number"
+        value="4"
+      />
+      <button
+        type="submit"
+      >
+        Create room
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/web/capacity-ui.test.ts:29:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  6 failed | 10 passed (16)
+   Start at  14:53:29
+   Duration  4.40s (tests 58%, environment 33%, import 7%, transform 1%)
+
+    Isolate  3 workers spawned · ~556ms startup each (spawn + environment, per file)
+             at least ~1.11s faster with isolate: false — reuses workers across files instead of one per file
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-mock-gate-v2/wrong-player-limit.xml

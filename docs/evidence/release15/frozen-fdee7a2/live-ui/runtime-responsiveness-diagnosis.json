@@ -1,0 +1,642 @@
+{
+  "recordedAt": "2026-10-30T18:49:04.1674911-05:00",
+  "classification": "Read-only operational diagnosis, not hostile validation or release acceptance",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T233950Z-runtime-responsiveness-diagnosis",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "sourceRevision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "manifestCount": 348,
+  "manifestSha256": "BB13A91CEAF7EC2DE54A5D24369C92BB96A0ACCF3CF47FA0142C35EF2BC2F4BB",
+  "inspectedSourcePins": [
+    {
+      "path": "src/infrastructure/postgres-pool.ts",
+      "sha256": "DF6953B452FEF7FCBD5CFC72A7E8ABF7B3BE736F6C77FE2B780DEC667F5EA455",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/runtime.ts",
+      "sha256": "ADC454269563DC6C5D3507F303A67061110023E3E3B8914AFE4FB64AA7EA415D",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/identity-repository.ts",
+      "sha256": "49003C1D7FA6CD9451466B9F7D9D211CE68FB968B7BDB58C9F5F030B84CB56B3",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/room-repository.ts",
+      "sha256": "D78739DEECA432ABA46E3DFF241707587D1ED49378B84210EB5E30E9FDC08961",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/match-repository.ts",
+      "sha256": "FF656DD160A8DF1D3A5B21C44B0735C6A4730AE712CDF3B1A4D9FCBCA03CB86B",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/catalog-repository.ts",
+      "sha256": "0249D4EFFEB0EAAA1FF100F1DCD243A93CFEE67D20E5632A03374A84795FDD56",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/supabase-postgres.ts",
+      "sha256": "6E3D9378B754BFD6B507E151E943042A0DC70A51D1B1FCEDAF1B9755AF0EF5DF",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/outbox.ts",
+      "sha256": "46B72933333D7DB5353652E09A97E0A918CB2AED68D6B66FC94A7A3634B7C598",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/realtime.ts",
+      "sha256": "7B2030BA8616FDDFA4ADD530804E2D2F3E5784018105447730A5286FDC878A82",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/deadlines.ts",
+      "sha256": "9F796AF3D200AF2F5F1E6F2C7D1F5498B146D753799C939DF07295D81674BF6B",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/application/outbox.ts",
+      "sha256": "CE760225B3BE774449100C2AA9B7196B7D6B25C35E692A26C52D55CF69A111E7",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/application/matches.ts",
+      "sha256": "9E059792D487D23510A375D123A913ECCB78B39B4A31B3AE01ADA178F8E68593",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/application/lobby.ts",
+      "sha256": "AE3FDD03FD5CA2BEBB9F3CCAF835ED414F6A9BDCA273A538ADF2DE4C1D06ADB8",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/application/identity.ts",
+      "sha256": "F9922A091B03EC0514129AAC858ADC36EC2609686EA1F56DDDBEBE056F251907",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/app/api/session/route.ts",
+      "sha256": "1E37D7AB0033C263FAB38F0FEF1AFCE21E76CFECC46BC9EFC0BADB1D5CA29137",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/app/api/rooms/[reference]/route.ts",
+      "sha256": "668E6C5EFD4854D66D81883BCEEAEBFEDADE97D9983CBDEDC3B9D70050AA7192",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/app/api/rooms/[reference]/match/route.ts",
+      "sha256": "1994448A577C0DE063882050324AB1BD56F2EF5CADFBCEB4E8A2564E2EDCBB41",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/app/api/rooms/[reference]/lobby/route.ts",
+      "sha256": "42A952A7D2D548E07B751B0DB4CE1109A126E6FA7F58894390A750759E1603DB",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/app/api/rooms/[reference]/reactions/route.ts",
+      "sha256": "725D0F9BC3DA3238902118F2DEB1063AF7E98D3E16D1D98AE25B1C269ACC4788",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/app/api/internal/deadlines/route.ts",
+      "sha256": "28C5D19E19A07CE648E776557DA1C78155B6AE39A8BCC92CE23977544C29056E",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/web/game-panel.tsx",
+      "sha256": "3B99A07B9F6B21A099728FB1C94875776BD323489849D3A1B871F9D25D55D821",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/web/room-screen.tsx",
+      "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/web/use-room-updates.ts",
+      "sha256": "E6E58C64855EF455565F9BA489059B5DEDF3466B0FF3718D8EC2C56518297EF1",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/web/identity-panel.tsx",
+      "sha256": "7FF4C2B1BA82143E8501DA70A18FD891822C2ACDC77286DBC8889616A15A6B05",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/web/social-panel.tsx",
+      "sha256": "09759F2041C6D9B30991A69F176F2D97E84DB5C657A5C9438A7F0BCF16A013C7",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/migrations/003_identity.sql",
+      "sha256": "6F6B267A5B4EABF82F19C6EE40DC8A306D0773216A1F5489A97D2451A14C7672",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/migrations/004_rooms.sql",
+      "sha256": "2B28CEB90B698EABF61370427A7EE3A67EA56E3F68490E692C35D272A8AF4467",
+      "matchesFrozen": true
+    },
+    {
+      "path": "src/infrastructure/migrations/007_matches.sql",
+      "sha256": "8416D2B2028EF3F498CE185EDC1473403CF6FBC1849CF2FBB94AF8131F737108",
+      "matchesFrozen": true
+    },
+    {
+      "path": "scripts/run-local-ui-integration.ps1",
+      "sha256": "E6292FFB137D6CBCEE8E0BEE4993C00A8262C135BEAFA0853FA76A68875E43CB",
+      "matchesFrozen": true
+    },
+    {
+      "path": "scripts/run-local-tls.mjs",
+      "sha256": "E8DA673B3804042B6B36F05491E5415BD7C7F2BD3A26619A5303CD40A98D430D",
+      "matchesFrozen": true
+    },
+    {
+      "path": "scripts/start-local-realtime.ps1",
+      "sha256": "86A6A01B273FD39B3D2E951E098A51EA934A283390F63066FA6693F1BDF72A8A",
+      "matchesFrozen": true
+    },
+    {
+      "path": "scripts/run-local-app.ps1",
+      "sha256": "83917A87869C4A2549A2C28A6D438CFCB21AFFB30004AB26CB7A08CD294FB2F0",
+      "matchesFrozen": true
+    },
+    {
+      "path": "scripts/run-local-scheduler.ps1",
+      "sha256": "ECBFBFFC68677BA05EA56683F082C206ADFC23A28E76BBD60B7983347E566009",
+      "matchesFrozen": true
+    },
+    {
+      "path": "tests/browser/request-diagnostics.ts",
+      "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28",
+      "matchesFrozen": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "EF5A30905CE33FED9E9654ECC73829F3788FB13AE4AC489B6D03DEEF61917E3E",
+      "matchesFrozen": true
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-receipts/live-scale-10.json",
+      "sha256": "B34BC02F4B967050C14705D6D2BE3E7898A2027C3A33DDC0858A8F31149F25A4"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-receipts/live-scale-10-failure-ui.json",
+      "sha256": "F9FC542F3EB0E6A12FF412637B58D82ECA7E4D402FC95F85B61990EB1D0BD44C"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-receipts/live-local-harness.json",
+      "sha256": "3C5BFCDC707D7C4B5C5183AAAED8B4EB3C65122FF189E3E91F0B1D29EB83141E"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-receipts/live-local-scheduler-final.json",
+      "sha256": "C15327E32300F041D4E5748F30DEFB88BCDEE005883B5CA6405D0834E122A94F"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/invocation.json",
+      "sha256": "AAEC656308F5E207AD70A7435FD4F42D93F6D547B79A6AB0D820D41126D863A2"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/live-ui.xml",
+      "sha256": "5B62E4A09EDA4AE8FEE82B1C60D3DEEE8EFB79E3AF46661406DB1FE8C06ECC6F"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-effective.json",
+      "sha256": "7607098FCBCA5D041204C0586FC93B32D3720C50CF040A43F9D7FF176104BEAA"
+    }
+  ],
+  "observation": {
+    "nativeGameCompleted": false,
+    "players": 10,
+    "phase": "UI round 2",
+    "uiSolves": 17,
+    "driverUncertainUiRetries": 0,
+    "driverBodyFailures": 0,
+    "diagnosticFailureTotal": 0,
+    "diagnosticPendingAtDispose": 1,
+    "retainedDetailCount": 79,
+    "longCompletedResponses": [
+      {
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 8450.764,
+        "action": null
+      },
+      {
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 8479.199,
+        "action": null
+      },
+      {
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 8534.727,
+        "action": null
+      },
+      {
+        "path": "/api/rooms/384e5b4e-71cf-4474-8433-5b52b78a4897/match",
+        "method": "POST",
+        "status": 200,
+        "durationMs": 11601.008,
+        "action": "answer"
+      },
+      {
+        "path": "/api/rooms/384e5b4e-71cf-4474-8433-5b52b78a4897/match",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 11731.103,
+        "action": null
+      },
+      {
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 8473.206,
+        "action": null
+      },
+      {
+        "path": "/api/rooms/384e5b4e-71cf-4474-8433-5b52b78a4897/lobby",
+        "method": "POST",
+        "status": 200,
+        "durationMs": 10861.253,
+        "action": "presence"
+      }
+    ],
+    "requestFailureTotal": 12,
+    "qualification": "Completed timing is browser Request.timing().responseEnd captured synchronously at requestfinished. Details retain status>=400 or duration>1000 with100-entry cap, not all requests or a latency percentile population. Request-failure elapsedMs is case-relative capture time, not request duration. Detail records omit actor, canonical command ID, start/header/abort timestamps and request identity; cannot link11.601s answer to page7 pending intent. No body error is evidence for this case; old CCA9 body failure is separate."
+  },
+  "sourceSupportedChain": [
+    "Pool is a module-level process singleton shared by services, max3 checked-out connections; checkout/connection timeout5000ms and idle timeout10000ms. These are not a whole HTTP/SQL response budget. Installed pg-pool queues checkout when full and applies its timeout to pending checkout. No pool wait telemetry retained.",
+    "Match POST context awaits identity session RPC, possible deadline catch-up, and room RPC. MatchService.act reads catalog revision before its transaction; cached catalog still checks revision. Transaction holds one connection through BEGIN, room FOR UPDATE, replay snapshot, catalog revision lock, match FOR UPDATE, canonical snapshot/decision/commit RPC and COMMIT. Server routes/store do not forward Request.signal into PG or set query/statement/lock timeout in the inspected path.",
+    "After durable command result the route awaits deliverOutbox. It skips joining an active relay for a foreground limit1; otherwise it can read one pending event, await broadcast with3000ms AbortSignal, then mark published. One broadcast contains distinct per-profile audience messages. This provides a possible post-commit response delay, not proof it occurred here.",
+    "Deadline owner can itself drain25lobby jobs, ensure up to25starting matches and25stage jobs. Foreground skips an already-active dispatcher. Worker POST waits for the active result, then delivers25events; local worker starts the next request after previous completion plus1000ms. Only final worker200/zero-applied/zero-published is retained; it is not an interval latency history.",
+    "Game GET calls MatchService.view -> open -> repository.ensure even for an existing match; ensure uses a transaction and room FOR UPDATE before reading existing match. Answer and presence operations share that room lock. Thus read/write contention is a source-supported sibling path; measured lock wait/holder evidence is missing.",
+    "Distinct MatchChanged notifications fan out to audience profiles, each triggering an authorized game refetch. Room refresh also increments game/social refresh keys. Connected game/social safety reads use15s, disconnected1s; room reads15s except countdown/holdout1s; session reads15s; presence20s. Individual panels coalesce one follow-up; there is no proven runtime global request population here.",
+    "GamePanel POST uses AbortSignal.timeout10000. Uncertain transport/body failure retains canonical pending payload and locks new answer controls. A newer GET can show next prompt while pending remains; Retry invokes send with the original command. Refresh does not acknowledge that mutation. Source permits this state and retained page7 symptoms are consistent, but exact abort/request causality is unproven."
+  ],
+  "topology": "Owned Chromium contexts -> loopback Node HTTPS3443 -> Caddy3004. App routes proxy to production Next start3005; realtime websocket/broadcast paths proxy to separately owned Supabase Realtime container and its separate internal PG. App PG is a separate owned postgres17 container with strict certificate TLS, fsync/synchronous_commit on, volatile tmpfs test storage. Worker directly calls Next internal deadlines endpoint. Local evidence is not Vercel/Supabase hosted capacity evidence.",
+  "hypotheses": [
+    {
+      "missing": "Contemporaneous checkout wait, active/idle/total connection counts, PG lock/blocker/query-age spans correlated to command.",
+      "support": "Pool3, repeated RPC roundtrips, reads and writes share room lock, fanout refetches",
+      "name": "Shared pool checkout/backpressure and same-room lock serialization",
+      "proved": false
+    },
+    {
+      "missing": "Per-step server timing, publication start/end/status and batch ownership during exact affected request.",
+      "support": "Awaited deadline owner and one-event relay before route response",
+      "name": "Foreground catch-up/publication adds critical-path delay",
+      "proved": false
+    },
+    {
+      "missing": "Contemporaneous owned cgroup/process CPU/RSS, event loop delay, gateway timing, browser request start/header/body/abort timestamps. Broad latency does not prove CPU saturation.",
+      "support": "Broad delayed session/room/match/presence completed timings in same retained case",
+      "name": "Browser/Node/gateway scheduling or local host pressure",
+      "proved": false
+    }
+  ],
+  "currentRequirements": {
+    "readAt": "2026-10-30T18:49:04.1819516-05:00",
+    "layer": "layer-1",
+    "functionalCount": 31,
+    "technicalCount": 43,
+    "testingCount": 94,
+    "selectedRecords": [
+      {
+        "id": "FR-REQUESTFEEDBACK-030",
+        "title": "Accessible request feedback and safe retry",
+        "status": "completed",
+        "body": "Specify loading, empty, failed, uncertain-write, conflict and denied UI outcomes without losing safe user input or duplicating commands.",
+        "condition": null,
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-01",
+            "text": "Pending reads expose accessible loading feedback; empty results are distinct from unavailable results and offer an allowed next action."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-02",
+            "text": "Pending mutations show busy feedback and prevent duplicate submission while preserving entered data."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-03",
+            "text": "Failures show a user-safe explanation and valid Retry action while retaining safe drafts; raw errors, credentials and private data are not exposed."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-04",
+            "text": "An uncertain-write retry uses identical command identity/payload; conflicts refresh authoritative state without silently replaying a changed command or claiming success."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-05",
+            "text": "Authorization denial clears privileged data/drafts and rejects stale response restoration; connection recovery retains accepted state without duplicate writes."
+          }
+        ]
+      },
+      {
+        "id": "TR-CONNECTION-RECOVERY-009",
+        "title": "Connection handling",
+        "status": "completed",
+        "body": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+        "condition": null,
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "TR-09-C01",
+            "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "DEC-17",
+            "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session."
+          }
+        ]
+      },
+      {
+        "id": "TR-FREETIER-OPERATION-021",
+        "title": "Free-tier operation",
+        "status": "in_progress",
+        "body": "The deployment must remain on free tiers: Vercel Hobby and Supabase Free. Do not enable paid add-ons, metered upgrades, or paid external services. The product is personal and non-commercial while using Vercel Hobby. Current Supabase Free constraints include a 500 MB database, 200 concurrent Realtime connections, 100 Realtime messages per second, 2 million Realtime messages per month, and automatic pause after one week of inactivity. Treat these as capacity limits and provide graceful handling when service quotas are reached.",
+        "condition": null,
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": false,
+            "evidence": "Local implementation/fixtures may cover part of this obligation; Phase7 operational completion is not claimed.",
+            "id": "TR-21-C01",
+            "text": "The deployment must remain on free tiers: Vercel Hobby and Supabase Free. Do not enable paid add-ons, metered upgrades, or paid external services. The product is personal and non-commercial while using Vercel Hobby. Current Supabase Free constraints include a 500 MB database, 200 concurrent Realtime connections, 100 Realtime messages per second, 2 million Realtime messages per month, and automatic pause after one week of inactivity. Treat these as capacity limits and provide graceful handling when service quotas are reached."
+          },
+          {
+            "isSatisfied": false,
+            "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+            "id": "DEC-20",
+            "text": "Quota behavior and initial load target: Initial supported target is one full 15-player room plus up to 25 observers. Quota rejection returns a recoverable `SERVICE_LIMIT`, preserves the last committed state, and allows retry with the same command ID; no paid fallback or non-idempotent automatic retry."
+          }
+        ]
+      },
+      {
+        "id": "TR-REALTIME-SYNC-002",
+        "title": "Real-time synchronization",
+        "status": "completed",
+        "body": "The service synchronizes room membership and round updates to all connected players. A confirmed correct answer updates the live scorecard, and all clients progress through the same hint stage.",
+        "condition": null,
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "TR-02-C01",
+            "text": "The service synchronizes room membership and round updates to all connected players. A confirmed correct answer updates the live scorecard, and all clients progress through the same hint stage."
+          }
+        ]
+      },
+      {
+        "id": "TR-ROOM-SYNCRECOVERY-038",
+        "title": "Private live multiplayer delivery and autonomous progression",
+        "status": "in_progress",
+        "body": "Configure authenticated Realtime and an independent durable deadline/outbox worker. Game state must propagate end to end to players and bound observers without relying on periodic browser reads. Preserve authority, privacy, idempotency and owned temporary-runtime cleanup.",
+        "condition": null,
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-01",
+            "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-02",
+            "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-03",
+            "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-04",
+            "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-05",
+            "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-06",
+            "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition."
+          },
+          {
+            "isSatisfied": false,
+            "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+            "id": "LIVE-07",
+            "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded."
+          }
+        ]
+      },
+      {
+        "id": "TEST-MULTIPLAYERINTEGRATION-134",
+        "title": "Verify Integration games for every supported player count",
+        "status": "in_progress",
+        "body": null,
+        "condition": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..15, using disposable infrastructure.",
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": false,
+            "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+            "id": "TR-34-C01",
+            "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "TR-34-C02",
+            "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "TR-34-C03",
+            "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "DEC-02",
+            "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+            "id": "DEC-01",
+            "text": "Match length and stage timer: Eight rounds. Each of the four answer stages has a 20-second deadline; a stage closes early when all unsolved players submit."
+          }
+        ]
+      },
+      {
+        "id": "TEST-REQUESTFEEDBACK-143",
+        "title": "Loading, empty, failure and canonical retry feedback",
+        "status": "completed",
+        "body": null,
+        "condition": "Verify the documented UI behavior: Loading, empty, failure and canonical retry feedback.",
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-01",
+            "text": "Pending reads expose accessible loading feedback; empty results are distinct from unavailable results and offer an allowed next action."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-02",
+            "text": "Pending mutations show busy feedback and prevent duplicate submission while preserving entered data."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-03",
+            "text": "Failures show a user-safe explanation and valid Retry action while retaining safe drafts; raw errors, credentials and private data are not exposed."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-04",
+            "text": "An uncertain-write retry uses identical command identity/payload; conflicts refresh authoritative state without silently replaying a changed command or claiming success."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+            "id": "UI-FEEDBACK-05",
+            "text": "Authorization denial clears privileged data/drafts and rejects stale response restoration; connection recovery retains accepted state without duplicate writes."
+          }
+        ]
+      },
+      {
+        "id": "TEST-ROOMSYNC-139",
+        "title": "Real browser multiplayer, private push and recovery integration",
+        "status": "in_progress",
+        "body": null,
+        "condition": "Run repeatable UI integration against an explicitly selected actual database-backed runtime with real private WebSockets and no HTTP fixtures, plus focused concurrency, lifecycle, scheduler and negative authorization regressions. Exercise2 through15 players and an observer, retain evidence and distinguish local runtime proof from hosted deployment.",
+        "scopeStartLayerKey": "layer-1",
+        "acceptanceCriteria": [
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-01",
+            "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-02",
+            "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-03",
+            "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-04",
+            "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-05",
+            "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command."
+          },
+          {
+            "isSatisfied": true,
+            "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+            "id": "LIVE-06",
+            "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition."
+          },
+          {
+            "isSatisfied": false,
+            "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+            "id": "LIVE-07",
+            "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded."
+          }
+        ]
+      }
+    ],
+    "assessment": "No numeric HTTP latency/p95/p99 SLA found in current normative bodies/conditions/ACs by mechanical keyword/number search and focused full criterion review. Responsive ACs address viewport geometry. Do not invent a10s SLA from frontend abort or harness waits. LIVE-07 and TR-34-C01 require complete2..15UI/service matrix, currently unsatisfied. Recovery/feedback criteria require busy/retained draft, valid Retry and exact canonical identity; completing by Retry cannot waive unchanged user-visible latency or20s stage behavior."
+  },
+  "recoveryAssessment": "Native UI acknowledgement/retry gating can correctly exercise supported recovery without replacing a pending command or submitting a new answer prematurely. A passing replay establishes that recovery/completion outcome, not why the request delayed or that normal gameplay is responsive. Retain explicit latency qualification and missing measurements. No timeout, pool, worker or cap increase is proposed merely to pass.",
+  "minimalNextMeasurements": [
+    "Root runs unchanged focused10and15-player replay after approved test-only acknowledgement repair. Preserve failed fdee receipts. Bind new source/run/host and exact runtime ownership; no test or runtime launched by this agent.",
+    "Use an external owned-cgroup observer at a modest interval to record cumulative CPU deltas, RSS/memory, PG backend state/query age/wait type/event, pg_blocking_pids and granted/ungranted lock metadata without SQL text. Record sampler duration, missed intervals, native exit/error and ownership validity. Sampling cannot directly measure JS pg-pool checkout waits or sub-interval stalls.",
+    "Keep existing per-page command/recovery diagnostics correlated by page index and canonical command identity, browser start/header/completion/abort observations and game phase. No new app instrumentation authorized here. If unavailable, explicitly retain exact-command/critical-path causality as unknown.",
+    "Retain worker interval outcomes if existing external collection permits; final200 alone cannot exclude earlier backlog. Do not treat observer-based absence of a sampled lock wait as proof no lock wait existed. Separate PostgreSQL query age from execution time and browser responseEnd from server latency."
+  ],
+  "result": {
+    "scopeVerdict": "QUALIFIED_DIAGNOSIS_ONLY",
+    "knownFail": [
+      "Native10-player game incomplete at round2 with17solves; not a completed release matrix."
+    ],
+    "unknown": [
+      "Exact pending request/abort cause and association with11.601s completed answer.",
+      "Pool checkout occupancy/wait duration.",
+      "PG wait/lock holder and SQL durations at incident.",
+      "Node/browser/gateway scheduling/CPU/memory at incident.",
+      "Worker/publication critical-path latency and interval backlog.",
+      "Focused repaired10/15replay and full fresh matrix not run by this agent."
+    ],
+    "accuracyPercent": 99,
+    "completenessPercent": 95,
+    "ratingBasis": "Exact source/effective requirements and retained browser measurements verified; causal attribution deliberately unresolved and operational monitor/replay not executed."
+  },
+  "limitations": [
+    "No source edits, builds, tests, runtime launch, provider writes, requirement/status changes or HV performed.",
+    "Only listed frozen source pins verified; no whole working-tree unchanged claim.",
+    "Questionable direct file path scripts/run-local-gateway.mjs did not exist; corrected to actual Caddy configuration in start-local-realtime.ps1. No evidence lost.",
+    "An initial broad QBrain rendering was truncated; exact effective response retained, focused normative records/criteria subsequently read without notes/output truncation.",
+    "Installed pg-pool source is dependency evidence outside frozen source set; package-lock is pinned."
+  ],
+  "dependencyPin": {
+    "sha256": "6F304776EDAABDE2954CBF8C4366FA6D9512BFBA0E408E78CC56B3C46C69D058",
+    "frozenSourcePin": false,
+    "path": "node_modules/pg-pool/index.js"
+  }
+}

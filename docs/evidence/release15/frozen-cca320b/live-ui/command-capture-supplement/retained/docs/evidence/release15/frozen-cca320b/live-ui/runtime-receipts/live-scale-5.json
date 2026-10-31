@@ -1,0 +1,303 @@
+{
+  "players": 5,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 40,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "readinessObservations": [
+    {
+      "phase": "prepared",
+      "player": 2,
+      "expectedProfileId": "52e52249-6ec7-4d16-a191-b2ec8d94f4e2",
+      "actorId": "52e52249-6ec7-4d16-a191-b2ec8d94f4e2",
+      "uiRosterCount": 5,
+      "version": 4
+    },
+    {
+      "phase": "prepared",
+      "player": 1,
+      "expectedProfileId": "d159c822-87f3-4239-b273-2859fa38b09e",
+      "actorId": "d159c822-87f3-4239-b273-2859fa38b09e",
+      "uiRosterCount": 5,
+      "version": 4
+    },
+    {
+      "phase": "prepared",
+      "player": 0,
+      "expectedProfileId": "bdcbc515-da50-41fd-80d4-54b8628c505d",
+      "actorId": "bdcbc515-da50-41fd-80d4-54b8628c505d",
+      "uiRosterCount": 5,
+      "version": 4
+    },
+    {
+      "phase": "prepared",
+      "player": 3,
+      "expectedProfileId": "ebb47a75-58b3-47e0-a174-670d36004c18",
+      "actorId": "ebb47a75-58b3-47e0-a174-670d36004c18",
+      "uiRosterCount": 5,
+      "version": 4
+    },
+    {
+      "phase": "prepared",
+      "player": 4,
+      "expectedProfileId": "8f1590c5-c65f-4ed0-90e8-a09736b0e45a",
+      "actorId": "8f1590c5-c65f-4ed0-90e8-a09736b0e45a",
+      "uiRosterCount": 5,
+      "version": 4
+    },
+    {
+      "phase": "ready",
+      "player": 0,
+      "expectedProfileId": "bdcbc515-da50-41fd-80d4-54b8628c505d",
+      "actorId": "bdcbc515-da50-41fd-80d4-54b8628c505d",
+      "uiRosterCount": 5,
+      "version": 5
+    },
+    {
+      "phase": "ready",
+      "player": 1,
+      "expectedProfileId": "d159c822-87f3-4239-b273-2859fa38b09e",
+      "actorId": "d159c822-87f3-4239-b273-2859fa38b09e",
+      "uiRosterCount": 5,
+      "version": 6
+    },
+    {
+      "phase": "ready",
+      "player": 2,
+      "expectedProfileId": "52e52249-6ec7-4d16-a191-b2ec8d94f4e2",
+      "actorId": "52e52249-6ec7-4d16-a191-b2ec8d94f4e2",
+      "uiRosterCount": 5,
+      "version": 7
+    },
+    {
+      "phase": "ready",
+      "player": 3,
+      "expectedProfileId": "ebb47a75-58b3-47e0-a174-670d36004c18",
+      "actorId": "ebb47a75-58b3-47e0-a174-670d36004c18",
+      "uiRosterCount": 5,
+      "version": 8
+    },
+    {
+      "phase": "ready",
+      "player": 4,
+      "expectedProfileId": "8f1590c5-c65f-4ed0-90e8-a09736b0e45a",
+      "actorId": "8f1590c5-c65f-4ed0-90e8-a09736b0e45a",
+      "uiRosterCount": 5,
+      "version": 9
+    }
+  ],
+  "requestFailureTotal": 4,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 3727,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 3737,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 3745,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 3745,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2062.586,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1860.955,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 2064.361,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 255.118,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1181.905,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1187.024,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1188.412,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 200,
+      "durationMs": 2229.042,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.95,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.101,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 18.376,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 46.176,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 16.558,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.422,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.978,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.696,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.492,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 29.581,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.959,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 26.288,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 24.86,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 18.389,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/3ae9e2f8-01b3-47b9-b377-5cb6d4cffda1/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 18.396,
+      "action": "answer"
+    }
+  ],
+  "requestDiagnostics": {
+    "failureTotal": 0,
+    "failures": [],
+    "failuresTruncated": false,
+    "pendingAtDispose": 2,
+    "qualification": "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown."
+  },
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

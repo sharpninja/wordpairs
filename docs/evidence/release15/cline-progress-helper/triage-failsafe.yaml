@@ -1,0 +1,25 @@
+method: workflow.triage.report
+label: cline-progress-triage
+timestamp: 20261030T203259
+params:
+  title: Codex beginTurn SubmitAsync rejects transient database exception
+  summary: New own read-only operational helper turn beginTurn rejected with literal SQL transient failure guidance and normal session_submit failsafe; preserve/replay same request,no rawREST. No claim about database outage or rootcause. This report does not claim local cache ID loss.
+  component: McpServer SessionLog SubmitAsync
+  errorSignature: SubmitAsync_McpServerException_transient_EnableRetryOnFailure
+  dedupeKey: codex-session-submit-transient-db-rejection
+  evidence: At20:30:44 ownreqa6a9 SubmitAsync returned method_invocation_error,McpServer.Client.McpServerException,message An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding EnableRetryOnFailure to UseSqlServer. Wrapper failedexit1,persistedfalse,retryablefalse. Normal6311failsafe retained. Earlier own8477 rejection replayed and completed. No provider/model invocation occurred.
+  reporterAgent: Codex
+  workspacePath: <repo>
+  sessionId: Codex-20261030T194703Z-plugin-session
+  turnId: req-20261031T013044Z-turn-a6a9
+  idempotencyKey: wordpairs-cline-progress-session-transient-20261030
+  affectedPaths:
+    - lib/repl-invoke.ps1
+    - Invoke-CodexMcpPlugin.ps1
+  affectedSymbols:
+    - workflow.sessionlog.beginTurn
+    - client.SessionLog.SubmitAsync
+  tags:
+    - incidental
+    - sessionlog
+    - transient

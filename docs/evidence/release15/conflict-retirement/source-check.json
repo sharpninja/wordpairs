@@ -1,0 +1,189 @@
+{
+  "recordedAt": "2026-10-30T19:24:38",
+  "lintExit": 0,
+  "diffExit": 0,
+  "typecheckExit": 0,
+  "lintLog": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/20261030T192432-biome.log",
+  "diffLog": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/20261030T192432-diff.log",
+  "typecheckLog": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/20261030T192432-tsc.log",
+  "sourcePins": [
+    {
+      "path": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1"
+    },
+    {
+      "path": "tests/browser/ui-command-retirement.test.ts",
+      "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460"
+    }
+  ],
+  "sameOracle": [
+    {
+      "path": "ui-command-retirement.contract.ts",
+      "mockSha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "realSha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "identical": true,
+      "currentMatches": true
+    },
+    {
+      "path": "ui-command-retirement.test.ts",
+      "mockSha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "realSha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "identical": true,
+      "currentMatches": true
+    }
+  ],
+  "priorCaseAssertionsAndInputsUnchanged": true,
+  "priorContractOnlyModeAndCallbackTypes": true,
+  "old124FilesNotClaimedByteIdentical": true,
+  "mockCases": 162,
+  "realCases": 162,
+  "negativeControls": 81,
+  "newUnitDelta": 38,
+  "expectedFullUnitCountInferenceOnly": 846,
+  "editChecks": [
+    {
+      "timestamp": "2026-10-30T19:18:13",
+      "file": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "2A586E436A2DADD1D21AA1EDDECDE6C6A26E3AC069C78F3318B0F36E7CED7DA0",
+      "hookExitCode": 0,
+      "typecheckExitCode": 2,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T191808-ui-command-retirement.contract.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:18:28",
+      "file": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84BF5E05BAD55A6426CBE19DCC3E6F28CC8D52306586970AFF0E235DA8915949",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T191823-ui-command-retirement.contract.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:19:09",
+      "file": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "8E78208665BB5BADC6C5BE059276B2550B0532B591DC17CA4677B073C52CFCB3",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T191904-ui-command-retirement.contract.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:19:17",
+      "file": "tests/browser/ui-command-retirement.test.ts",
+      "sha256": "A445A7F592184FE14EE2659C58914D9AD3983CF77A00E631FAEBDB4753E6CC56",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T191912-ui-command-retirement.test.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:20:03",
+      "file": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "C2EB1EE11EBB8B6AFF993507E5FE4D38040E4A9A69AA22730B73C8FDE67A4465",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T191956-ui-command-retirement.contract.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:20:29",
+      "file": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192020-ui-command-retirement.contract.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:20:36",
+      "file": "tests/browser/ui-command-retirement.test.ts",
+      "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192031-ui-command-retirement.test.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:22:16",
+      "file": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "hookExitCode": 0,
+      "typecheckExitCode": 2,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192210-ui-command-acknowledgement.contract.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:22:23",
+      "file": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2",
+      "hookExitCode": 0,
+      "typecheckExitCode": 2,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192218-ui-command-acknowledgement.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:22:47",
+      "file": "tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "hookExitCode": 0,
+      "typecheckExitCode": 2,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192242-ui-command-capture.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:22:57",
+      "file": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192249-ui-command-acknowledgement.test.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:23:22",
+      "file": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192316-live-player-counts.integration.spec.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T19:23:30",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/edit-verification/20261030T192324-live-multiplayer.integration.spec.ts.log",
+      "qualification": "Known hook project detection issue already triaged; direct tsc is authoritative."
+    }
+  ],
+  "retainedIntermediateTypecheckFailures": 4,
+  "finalDirectTypecheckZero": true,
+  "qualification": "Focused test-only checks, not actual DOM/full runtime or HV. Intermediate type adaptation tsc errors are retained; final direct tsc is authoritative. Root owns full frozen collection and runtime lanes."
+}

@@ -1,5 +1,7 @@
 # Acceptance-Criteria Gap Analysis
 
+Current amendment, 31 October 2026: QBrain and [the release completion plan](release15-completion-plan.md) now require rules v2.8 with 2 through 10 players, 25 observers unchanged and a 35-person new-release audience. The full matrix is 9 games, 54 player participations and 432 accepted round solves. Preserve larger running matches/results and above-limit legacy waiting/countdown membership; provide Leave and explicit compatibility feedback without forced eviction or oversized new starts/admission. The original assessment and approvals below are historical and do not approve these changed criteria or deployed bytes.
+
 **Baseline reviewed:** `word_association_game_requirements.md` v2.6  
 **Review date:** 26 October 2026  
 **Active criteria:** 45 (AC-01–33, AC-37–39, AC-41–47, AC-50–51)  

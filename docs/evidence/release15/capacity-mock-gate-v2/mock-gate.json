@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-10-30T14:53:42",
+  "gate": "preimplementation-capacity15",
+  "requirements": [
+    "FR-ROOMACCESS-001",
+    "TR-ROOM-CODES-010",
+    "TR-ANCHOR-RANDOMNESS-013",
+    "TEST-CONFIGUREDCAPACITY-024"
+  ],
+  "inputs": [
+    {
+      "path": "tests/application/capacity-policy.test.ts",
+      "sha256": "67701C7BC81FCA8AE3E9C547D242B477C24A7344BCF90D1ACE74ED4C94FBF7D0"
+    },
+    {
+      "path": "tests/web/capacity-ui.test.ts",
+      "sha256": "FEE2217B26D1439B30637DB8F54E7989462AA4D74D4BBB87499E2FF46CE05807"
+    },
+    {
+      "path": "tests/application/legacy-match-capacity.test.ts",
+      "sha256": "EC4CDEF3F0AE259065078AF0E7DE4C5C7E36C422DA38841C05DB7FEF3EAC6B4E"
+    },
+    {
+      "path": "tests/application/capacity-contract-fixture.ts",
+      "sha256": "BF9B25A224B44C38ADCFB36449604C834BD14F93E1B9D99A14FEB47C248CB518"
+    },
+    {
+      "path": "tests/web/capacity-ui-fixture.ts",
+      "sha256": "AAFABD4F1CDC7A480DCF1DA8C06981883B9585B2FE10749FDB33189F83B6D886"
+    }
+  ],
+  "runs": [
+    {
+      "fixture": "correct",
+      "exitCode": 0,
+      "cases": 16,
+      "failed": 0,
+      "skipped": 0,
+      "rejectedAssertions": [],
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-mock-gate-v2/correct.xml",
+      "reportSha256": "FE465710E0927AA2579A2F381E6A362FA58CC1FB6711D56939FC0428B85F2DB1"
+    },
+    {
+      "fixture": "wrong-player-limit",
+      "exitCode": 1,
+      "cases": 16,
+      "failed": 6,
+      "skipped": 0,
+      "rejectedAssertions": [
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > rejects 1,16,20,25,26 and malformed capacity inputs",
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > rejects every new match above fifteen before drawing an anchor",
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > admits the fifteenth player but rejects a sixteenth in a legacy capacity25 room without mutation",
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > projects the effective fifteen-seat waiting limit without negative slots",
+        "CAP15 exposes a 2 through 15 creation input and browser validation blocks16",
+        "CAP15 creation sends fifteen and leaves the observer setting separate"
+      ],
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-mock-gate-v2/wrong-player-limit.xml",
+      "reportSha256": "640E73E96ED9728DF2CB0CF3F10B6A1EFC5C7397E035D7852524FAA198899C60"
+    },
+    {
+      "fixture": "wrong-observer-limit",
+      "exitCode": 1,
+      "cases": 16,
+      "failed": 1,
+      "skipped": 0,
+      "rejectedAssertions": [
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > preserves the separate twenty-five-observer capacity"
+      ],
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-mock-gate-v2/wrong-observer-limit.xml",
+      "reportSha256": "B93EACF36405472D0DCF9B3C756CA6D7A0EAE30020A4B9C3DCBBE816B653D21E"
+    },
+    {
+      "fixture": "wrong-legacy",
+      "exitCode": 1,
+      "cases": 16,
+      "failed": 6,
+      "skipped": 0,
+      "rejectedAssertions": [
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > projects the effective fifteen-seat waiting limit without negative slots",
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > preserves oversized waiting members while denying readiness and automatic holdout or start",
+        "CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 > blocks an old oversized countdown without removing members",
+        "CAP15-LEGACY preserves every historical twenty-five-player answer and completes eight rounds",
+        "CAP15 legacy waiting room explains the block and retains Leave without readiness",
+        "CAP15 legacy countdown room explains the block and retains Leave without readiness"
+      ],
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-mock-gate-v2/wrong-legacy.xml",
+      "reportSha256": "B394F04B6F79C8541D3B0E7B01C2D0E97C201D5CFBBC9E2D815C49A3D3350550"
+    }
+  ]
+}

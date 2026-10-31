@@ -1,0 +1,270 @@
+{
+  "players": 4,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 32,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "readinessObservations": [
+    {
+      "phase": "prepared",
+      "player": 0,
+      "expectedProfileId": "4c7f05fd-17f2-4dda-8ff9-e0447a4ac62c",
+      "actorId": "4c7f05fd-17f2-4dda-8ff9-e0447a4ac62c",
+      "uiRosterCount": 4,
+      "version": 3
+    },
+    {
+      "phase": "prepared",
+      "player": 1,
+      "expectedProfileId": "d7522f4e-0999-42ac-8ffe-bb5f7b817073",
+      "actorId": "d7522f4e-0999-42ac-8ffe-bb5f7b817073",
+      "uiRosterCount": 4,
+      "version": 3
+    },
+    {
+      "phase": "prepared",
+      "player": 2,
+      "expectedProfileId": "e8c346f3-f20e-4c2f-89f0-09f2813ec9b9",
+      "actorId": "e8c346f3-f20e-4c2f-89f0-09f2813ec9b9",
+      "uiRosterCount": 4,
+      "version": 3
+    },
+    {
+      "phase": "prepared",
+      "player": 3,
+      "expectedProfileId": "8952d388-b62f-48ce-8e2f-a02545fa3758",
+      "actorId": "8952d388-b62f-48ce-8e2f-a02545fa3758",
+      "uiRosterCount": 4,
+      "version": 3
+    },
+    {
+      "phase": "ready",
+      "player": 0,
+      "expectedProfileId": "4c7f05fd-17f2-4dda-8ff9-e0447a4ac62c",
+      "actorId": "4c7f05fd-17f2-4dda-8ff9-e0447a4ac62c",
+      "uiRosterCount": 4,
+      "version": 4
+    },
+    {
+      "phase": "ready",
+      "player": 1,
+      "expectedProfileId": "d7522f4e-0999-42ac-8ffe-bb5f7b817073",
+      "actorId": "d7522f4e-0999-42ac-8ffe-bb5f7b817073",
+      "uiRosterCount": 4,
+      "version": 5
+    },
+    {
+      "phase": "ready",
+      "player": 2,
+      "expectedProfileId": "e8c346f3-f20e-4c2f-89f0-09f2813ec9b9",
+      "actorId": "e8c346f3-f20e-4c2f-89f0-09f2813ec9b9",
+      "uiRosterCount": 4,
+      "version": 6
+    },
+    {
+      "phase": "ready",
+      "player": 3,
+      "expectedProfileId": "8952d388-b62f-48ce-8e2f-a02545fa3758",
+      "actorId": "8952d388-b62f-48ce-8e2f-a02545fa3758",
+      "uiRosterCount": 4,
+      "version": 7
+    }
+  ],
+  "requestFailureTotal": 8,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1082,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1114,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1115,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1119,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1162,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1162,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1163,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1164,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.603,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 40.549,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.434,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 31.437,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.191,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 62.753,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 27.697,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 32.052,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 27.234,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 212.422,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.034,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.849,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.486,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.089,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 24.373,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/4951002d-dcbd-4c89-b695-494e15f72744/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 20.191,
+      "action": "answer"
+    }
+  ],
+  "requestDiagnostics": {
+    "failureTotal": 0,
+    "failures": [],
+    "failuresTruncated": false,
+    "pendingAtDispose": 1,
+    "qualification": "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown."
+  },
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

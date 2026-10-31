@@ -1,0 +1,34 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="1" time="6.879108">
+<testsuite name="live-multiplayer.integration.spec.ts" timestamp="2026-10-31T01:31:22.399Z" hostname="" tests="1" failures="0" skipped="0" time="3.811" errors="1">
+<testcase name="LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect" classname="live-multiplayer.integration.spec.ts" time="3.811">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../test-results/live-local/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md]]
+]]>
+</system-out>
+<error message="Command perspective missing or denied" type="AssertionError">
+<![CDATA[  live-multiplayer.integration.spec.ts:24:1 › LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect 
+
+    AssertionError: Command perspective missing or denied
+
+       at ui-command-acknowledgement.ts:10
+
+       8 | export function commandUiState(value: UiCommandState, scope: Scope, minimum: number, mode: AckMode): AckOutcome {
+       9 |   assert.equal(value.scope, scope, "Command acknowledgement scope changed");
+    > 10 |   assert(value.present && value.visible && !value.denied, "Command perspective missing or denied");
+         |   ^
+      11 |   assert(Number.isSafeInteger(minimum) && minimum >= 0, "Malformed command response version");
+      12 |   assert(value.busy === "true" || value.busy === "false", "Malformed command busy state");
+      13 |   assert(value.version !== null && /^\d+$/.test(value.version) && Number.isSafeInteger(Number(value.version)), "Malformed rendered command version");
+        at commandUiState (<repo>/tests/browser/ui-command-acknowledgement.ts:10:3)
+        at <repo>/tests/browser/ui-command-acknowledgement.ts:61:19
+        at waitCommandState (<repo>/tests/browser/ui-command-acknowledgement.ts:58:5)
+        at command (<repo>/tests/browser/live-multiplayer.integration.spec.ts:81:5)
+        at <repo>/tests/browser/live-multiplayer.integration.spec.ts:225:27
+
+    Error Context: ../../test-results/live-local/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md
+]]>
+</error>
+</testcase>
+</testsuite>
+</testsuites>

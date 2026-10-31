@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/deadline-worker-isolation.test.ts (4 tests | 1 failed) 15ms
+   × LIVE-03 foreground does not join a pending deadline worker batch 11ms
+   ✓ LIVE-03 concurrent worker calls wait for and share the same batch 1ms
+   ✓ LIVE-03 a foreground request still starts catch-up when no batch is running 1ms
+   ✓ LIVE-03 failed worker batches reach waiting workers and permit a later retry 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/deadline-worker-isolation.test.ts > LIVE-03 foreground does not join a pending deadline worker batch
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/web/deadline-worker-isolation.test.ts:55:23
+     53|   try {
+     54|     await Promise.resolve(); await Promise.resolve(); await Promise.re…
+     55|     expect(completed).toBe(true);
+       |                       ^
+     56|     expect(foregroundResult).toEqual({ ok: true, value: 0 });
+     57|     expect(drain).toHaveBeenCalledTimes(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  12:29:00
+   Duration  289ms (import 46%, transform 39%, tests 11%, worker 3%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/deadline-worker-mock-v2/wrong.xml

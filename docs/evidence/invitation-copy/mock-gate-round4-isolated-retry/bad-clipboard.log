@@ -1,0 +1,35 @@
+[WebServer] (node:1092913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+
+(node:1093040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/1] tests/browser/invitation-copy.phase2.spec.ts:193:1 › INVITE-COPY-01 writes to the actual Chromium clipboard
+  1) tests/browser/invitation-copy.phase2.spec.ts:193:1 › INVITE-COPY-01 writes to the actual Chromium clipboard 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "https://wordpairs.example.test/rooms/ABCDEFGH?invite=synthetic"
+    Received: "https://wrong.example.test/"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      196 |   await page.getByRole("button", { name: "Copy Invitation Link", exact: true }).click();
+      197 |   await expect(page.getByRole("status").filter({ hasText: copiedMessage })).toBeVisible();
+    > 198 |   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe(invitation);
+          |                                                                                ^
+      199 |   await expect(page.getByLabel("Shareable invitation link")).toHaveValue(invitation);
+      200 | });
+      201 |
+        at /tmp/wordpairs-invite-round4-isolated-retry/tests/browser/invitation-copy.phase2.spec.ts:198:80
+
+    Error Context: test-results/invitation-copy.phase2-INV-f5421-e-actual-Chromium-clipboard/error-context.md
+
+
+  1 failed
+    tests/browser/invitation-copy.phase2.spec.ts:193:1 › INVITE-COPY-01 writes to the actual Chromium clipboard 

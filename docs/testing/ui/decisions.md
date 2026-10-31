@@ -1,5 +1,9 @@
 # UI gap decisions and requirement synchronization
 
+Current amendment persistence: [19-record QBrain readback](../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
+
+Current release amendment: rules v2.8 (31 October 2026) use 2 through 10 players and the separate 25-observer limit. Preserve above-limit legacy membership/results with the compatibility contract in [the completion plan](../../release15-completion-plan.md). The [guest/admin contract](../../admin_pwa_release.md) makes public OpenAI sign-in, public installation, delegation and public community submissions inactive. Original decisions and evidence below retain their historical source scope; current owner moderation/editor and active guest navigation/recovery remain subject to current QBrain criteria.
+
 27 October 2026. Source authority: operator instructions **"Fill gaps"** and **"The documentation should be kept in sync with reqs."** These decisions refine the prior inspected designs; they are new specified requirements, not claims that the original SVGs already contained them. They were initially documented without execution; the subsequent [implementation and verification](implementation.md) realizes these decisions within [the execution receipt](implementation-receipt.json) boundaries. Historical documentation receipts remain archived.
 
 | Decision | Specified behavior | Canonical records |
@@ -21,4 +25,4 @@ QBrain remains authoritative. Source notes identify this decision document and t
 
 ## External execution prerequisites
 
-Design decisions above are resolved. Real OpenAI OIDC registration/entitlement and physical phone installation at an HTTPS origin remain execution dependencies, not missing product decisions. The full live 2..25 UI matrix remains an existing uncompleted execution obligation. No documentation work changes those results.
+The original product decisions are resolved. Public OpenAI registration is historical and inactive, not a release dependency. Actual owner GitHub consent and admin-only phone installation/standalone continuity require observed HTTPS evidence. The current full live 2 through 10 UI matrix remains pending fresh exact-source execution; former 2 through 25 results are retained as history. Documentation does not change any test result.

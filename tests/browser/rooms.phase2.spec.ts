@@ -40,9 +40,13 @@ test('AC-24 creation uses private defaults and retains an uncertain command for 
   await page.route('**/api/rooms',async route=>{commands.push(route.request().postDataJSON());return route.fulfill({status:503,json:{error:{code:'SERVICE_LIMIT'}}});});
   await page.goto('/play');
   await expect(page.getByLabel('List this room on the community board')).not.toBeChecked();
-  await page.getByLabel('Maximum players (2–25)').fill('25');
+  await page.getByLabel('Maximum players (2–10)').fill('11');
+  await page.getByRole('button',{name:'Create room',exact:true}).click();
+  expect(commands).toHaveLength(0);
+  await expect.poll(()=>page.getByLabel('Maximum players (2–10)').evaluate(input=>(input as HTMLInputElement).validity.rangeOverflow)).toBe(true);
+  await page.getByLabel('Maximum players (2–10)').fill('10');
   await page.getByRole('button',{name:'Create room',exact:true}).click();
   await page.getByRole('button',{name:'Retry room creation'}).click();
   await expect.poll(()=>commands.length).toBe(2);
-  expect(commands[0]).toEqual(commands[1]);expect(commands[0]).toMatchObject({capacity:25,discoverable:false,expectedProfileId:profile.id});
+  expect(commands[0]).toEqual(commands[1]);expect(commands[0]).toMatchObject({capacity:10,discoverable:false,expectedProfileId:profile.id});
 });

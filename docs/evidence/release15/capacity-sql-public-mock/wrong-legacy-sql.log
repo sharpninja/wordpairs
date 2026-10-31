@@ -1,0 +1,60 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/integration/capacity.integration.ts (3 tests | 2 failed) 14ms
+   ✓ CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries 2ms
+   × CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave 8ms
+   × CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave
+AssertionError: expected { before: 25, after: 15, …(3) } to deeply equal { before: 25, after: 24, …(3) }
+
+- Expected
++ Received
+
+  {
+-   "after": 24,
++   "after": 15,
+    "before": 25,
+-   "blocked": true,
++   "blocked": false,
+    "canJoin": false,
+    "capacity": 25,
+  }
+
+ ❯ tests/integration/capacity.integration.ts:74:118
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards
+AssertionError: expected { roster: 15, rounds: 8, …(4) } to deeply equal { roster: 25, rounds: 8, …(4) }
+
+- Expected
++ Received
+
+  {
+    "awards": 25,
+    "roomStatus": "closed",
+-   "roster": 25,
++   "roster": 15,
+    "rounds": 8,
+-   "solves": 200,
++   "solves": 120,
+    "status": "finished",
+  }
+
+ ❯ tests/integration/capacity.integration.ts:75:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  14:59:24
+   Duration  229ms (import 53%, transform 28%, tests 14%, worker 5%)
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-sql-public-mock/wrong-legacy-sql.xml

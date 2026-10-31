@@ -1,0 +1,28 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/application/capacity-public.test.ts (2 tests | 1 failed) 9ms
+   × CAP15 publishes the same fifteen-player rules with release2.7 metadata 6ms
+   ✓ CAP15 public discovery hides legacy rooms at fifteen and advertises only effective free seats 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/capacity-public.test.ts > CAP15 publishes the same fifteen-player rules with release2.7 metadata
+AssertionError: expected [ Array(1) ] to include 'Play eight rounds with 2–15 players. …'
+ ❯ tests/application/capacity-public.test.ts:7:17
+      5|   const rules=kind ? [`Play eight rounds with 2–${kind === "wrong-play…
+      6|   const metadata=kind ? {version:"2.7",updated:"2026-10-30"} : RULES_M…
+      7|   expect(rules).toContain("Play eight rounds with 2–15 players. Each a…
+       |                 ^
+      8|   expect(rules.join(" ")).not.toMatch(/2[–-]25 players/);
+      9|   expect(metadata).toMatchObject({version:"2.7",updated:"2026-10-30"});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  15:05:51
+   Duration  179ms (import 38%, transform 30%, tests 20%, worker 11%)
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-discovery-mock/wrong-player-limit-public.xml

@@ -1,0 +1,84 @@
+{
+  "startedAtLocal": "2026-10-31T09:33:01.1853151-05:00",
+  "finishedAtLocal": "2026-10-31T09:33:03.5260199-05:00",
+  "sessionId": "Codex-20261031T143030Z-plugin-session",
+  "requestId": "req-20261031T143033Z-hosting-resume",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261031T142639Z-release-resume",
+  "classification": "Authorized existing STAGING APP smoke plus read-only anonymous-role Data API schema-selection GETs. Whole flow is not read-only.",
+  "origin": "https://wordpairs.vercel.app",
+  "expectedProjectOrigin": "https://jshjkaigwbxsbnnogfxs.supabase.co",
+  "createdGuestResponseConfirmed": true,
+  "ownedProfileId": "83af5e94-df58-4032-8bc2-2fcd1d302e85",
+  "projectAndProfileBound": true,
+  "keyClassification": "legacy-anon-jwt-role-classified-not-independently-verified",
+  "steps": [
+    {
+      "atLocal": "2026-10-31T09:33:02.6013202-05:00",
+      "phase": "guest-post",
+      "status": 200
+    },
+    {
+      "atLocal": "2026-10-31T09:33:03.2409678-05:00",
+      "phase": "realtime-get",
+      "status": 200
+    },
+    {
+      "atLocal": "2026-10-31T09:33:03.5242148-05:00",
+      "phase": "owned-session-logout",
+      "status": 204
+    }
+  ],
+  "schemaProbes": [
+    {
+      "atLocal": "2026-10-31T09:33:03.4052228-05:00",
+      "method": "GET",
+      "path": "/rest/v1/",
+      "acceptProfile": "wordpairs_release_probe_20261031",
+      "status": 401,
+      "errorCode": null,
+      "reportedSchemaAllowlist": [],
+      "anonymousApplicationKeyOnly": true,
+      "authenticatedRealtimeTokenUsed": false
+    }
+  ],
+  "failure": {
+    "phase": "dataapi-schema-get",
+    "exceptionType": "System.InvalidOperationException",
+    "qualification": "Exact branch stopped. No exception message, response body, header, cookie, key or token is retained."
+  },
+  "ownedSessionLogoutAttempted": true,
+  "ownedSessionLogout204": true,
+  "producer": {
+    "sha256": "2C5115BD14A63949E5D5B0825267D44578AC73C46B4EFADCC692DF9CEC98A61B",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/dataapi-staging-20261031T093253/ProbeWordpairsStagingDataApi.ps1",
+    "retainedBeforeNetwork": true,
+    "analysisSha256": "19772F621BD5AFEBFFEE1E62F2B32CC42EA42382C793F30BA6C2A89380D62D9A"
+  },
+  "sourceFeasibility": {
+    "hostedSourceRevisionNotVerified": true,
+    "sha256": "0291BB835D681809B5A60C05B035A7565FD95A1233EEEC8D4AFC00F8F037F22D",
+    "path": "docs/evidence/release15/hosting-readiness/dataapi-key-input-20261030T204544-route-feasibility.json",
+    "localRevision": "6063acd9d6869fd71a33f75ee5c940c736c99124"
+  },
+  "sourceSupportedSideEffects": "Guest POST normally creates profile, aggregate, credential, session and outbox event and deletes globally expired sessions. Realtime GET may deliver and mark oldest pending event. HTTP alone does not prove exact DB row effects or which event was delivered. Logout removes only owned session; guest profile/aggregate/credential/outbox remain without direct SQL cleanup.",
+  "limits": [
+    "Exact GET /rest/v1/ schema-selection outcomes only, not table/function/RLS/data confidentiality verification.",
+    "No hosted source-revision binding, independent JWT signature validation, complete provider allowlist proof unless explicitly returned, production probe or deployment acceptance.",
+    "No private row query or OpenAPI/response-body persistence.",
+    "If guest creation succeeded, its profile/aggregate/credential/outbox remain after logout; no direct DB removal or provider mutation.",
+    "No exact row-count/delivery attribution inferred from source effects alone."
+  ],
+  "officialDocs": [
+    "https://supabase.com/docs/guides/getting-started/api-keys",
+    "https://supabase.com/docs/guides/api/creating-routes",
+    "https://docs.postgrest.org/en/latest/references/api/schemas.html",
+    "https://supabase.com/changelog/cbc-tls-ciphers-deprecated"
+  ],
+  "changelog": "Markdown fetch unsupported by tool; HTML changelog and relevant Oct12 HTTP TLS-cipher change inspected. Fresh Oct31 HTML changelog inspected; both projects already 17.11.0.003 resolving Oct30 timezone notice. No TLS validation bypass or obsolete cipher forcing.",
+  "noValuesPrinted": true,
+  "noDashboardAccess": true,
+  "noProductionTraffic": true,
+  "noNewKeysOrProviderConfiguration": true,
+  "noApplicationSourceEditOrTestsBuildsModels": true
+}

@@ -1,0 +1,49 @@
+{
+  "runId": "d941371c-59de-40e1-875e-5c3b90778adb",
+  "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "hostName": "[PRIVATE HOST]",
+  "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunNextWordpairsEvidenceChain.ps1",
+  "producerSha256": "4AB13CB58BED65D04998BA0290D14D5F48B5BD4266FE4B1F7556C1A5CF1D1EAE",
+  "startedAt": "2026-10-30T20:06:00",
+  "finishedAt": "2026-10-30T20:31:48",
+  "phases": [
+    {
+      "lane": "full",
+      "startedAt": "2026-10-30T20:06:00",
+      "finishedAt": "2026-10-30T20:10:26",
+      "exitCode": 0,
+      "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full"
+    },
+    {
+      "lane": "powershell",
+      "startedAt": "2026-10-30T20:10:26",
+      "finishedAt": "2026-10-30T20:10:45",
+      "exitCode": 0,
+      "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/powershell"
+    },
+    {
+      "lane": "realtime",
+      "startedAt": "2026-10-30T20:10:46",
+      "finishedAt": "2026-10-30T20:12:30",
+      "exitCode": 0,
+      "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/realtime"
+    },
+    {
+      "lane": "live-ui",
+      "startedAt": "2026-10-30T20:12:31",
+      "finishedAt": "2026-10-30T20:30:44",
+      "exitCode": 0,
+      "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/live-ui"
+    },
+    {
+      "lane": "strict-ui",
+      "startedAt": "2026-10-30T20:30:44",
+      "finishedAt": "2026-10-30T20:31:48",
+      "exitCode": 1,
+      "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui"
+    }
+  ],
+  "preparation": [],
+  "failure": "Validation lane strict-ui failed; retained all available receipts",
+  "qualification": "Operational validation orchestration. Neither successful local tests nor these receipts establish independent review or hosted rollout."
+}

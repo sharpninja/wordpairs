@@ -1,0 +1,29 @@
+method: workflow.triage.report
+label: dataapi-turn-triage
+timestamp: 20261030T201846
+params:
+  title: Codex beginTurn produces rejected persistence with null current request ID
+  summary: A trusted required Codex beginTurn for a read-only DataAPI probe exited0 with no YAML result. Subsequent supported Status and local outcome inspection show code rejected,persistedfalse,request8477 and one retained session_submit failsafe; current-turn requestIdnull. Exact backend cause is unknown. Earlier own491c completed/readback passed.
+  component: mcpserver-codex-plugin session persistence
+  errorSignature: begin_turn_rejected_request_id_null_exit0
+  dedupeKey: codex-beginturn-persistence-rejected-null-request
+  evidence: Measured20:17:23 beginTurn attempted req-20261031T011723Z-turn-8477 under Codex-20261030T194703Z-plugin-session. Outcome says Session log persistence failed; code rejected,retryablefalse,persistedfalse,degradedfalse,queuedfalse. Normal session_submit failsafe20261031T011724Z-session_submit-435d.yaml retained. Status20:18 reports pluginavailable,hasCurrentTurntrue,pendingCount1,failsafeCount1. No signature/health/401 failure observed. No key fetch/probe occurred.
+  reporterAgent: Codex
+  workspacePath: <repo>
+  sessionId: Codex-20261030T194703Z-plugin-session
+  turnId: req-20261031T011723Z-turn-8477
+  idempotencyKey: wordpairs-dataapi-turn-rejected-20261030
+  affectedPaths:
+    - Invoke-CodexMcpPlugin.ps1
+    - lib/session-turn.ps1
+    - lib/session-submit.ps1
+  affectedSymbols:
+    - workflow.sessionlog.beginTurn
+    - client.SessionLog.SubmitAsync
+  reproductionHints:
+    - Invoke same matching Codex beginTurn through explicit isolated cache; inspect actual YAML result and outcome. Do not replace plugin with rawREST or infer serveroutage.
+  tags:
+    - incidental
+    - sessionlog
+    - persistence
+    - plugin

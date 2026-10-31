@@ -1,0 +1,25 @@
+method: workflow.triage.report
+label: dataapi-turn-correction
+timestamp: 20261030T202642
+params:
+  title: 'Correction: Codex turnRequestId is valid after rejected persistence replay'
+  summary: Correction to reportdf5a3d8b84db4acb833f3536f215f47b:the caller inspected nonexistent cache requestId. Canonical turnRequestId is8477 and valid. Withdraw null-ID part. Actual initial persistedfalse rejection/session_submit failsafe is retained; queue replay succeeded and livehistory8477 is in_progress. No cache repair or duplicate turn occurred; backend rejection cause remains unknown.
+  component: mcpserver-codex-plugin session persistence
+  errorSignature: begin_turn_rejected_request_id_null_exit0
+  dedupeKey: codex-beginturn-persistence-rejected-null-request
+  evidence: 'Original diagnostic correction only: local cache field is turnRequestId,notrequestId. Original req-20261031T011723Z-turn-8477 exists canonicalhistory under Codex-20261030T194703Z-plugin-session. Acceptedtriage may research initial persistence rejection,but must not infer cacheIDloss/serveroutage from caller field-selection mistake.'
+  reporterAgent: Codex
+  workspacePath: <repo>
+  sessionId: Codex-20261030T194703Z-plugin-session
+  turnId: req-20261031T011723Z-turn-8477
+  idempotencyKey: wordpairs-dataapi-turn-rejected-20261030-correction1
+  affectedPaths:
+    - Invoke-CodexMcpPlugin.ps1
+    - lib/repl-invoke.ps1
+  affectedSymbols:
+    - workflow.sessionlog.beginTurn
+    - client.SessionLog.SubmitAsync
+  tags:
+    - correction
+    - incidental
+    - sessionlog

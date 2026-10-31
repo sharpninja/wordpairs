@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-10-30T17:43:44",
+  "revision": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "runId": "cdfa9899-c115-4621-aae2-fa8c51035d5c",
+  "unit": "wordpairs-release15-cca320b-chain",
+  "executable": "systemd-run",
+  "arguments": [
+    "--user",
+    "--collect",
+    "--unit=wordpairs-release15-cca320b-chain",
+    "--property",
+    "WorkingDirectory=\u003Crepo\u003E",
+    "--property",
+    "StandardOutput=append:\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/service.stdout.log",
+    "--property",
+    "StandardError=append:\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/service.stderr.log",
+    "--",
+    "/usr/bin/pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunNextWordpairsEvidenceChain.ps1",
+    "-Directory",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b"
+  ],
+  "exitCode": 0,
+  "output": [
+    "Running as unit: wordpairs-release15-cca320b-chain.service; invocation ID: 4f1f2f6468f546aaadb3537803acfaa5"
+  ],
+  "qualification": "Launch acknowledgement only. Native lane receipts and chain completion establish results."
+}

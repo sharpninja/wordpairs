@@ -1,0 +1,148 @@
+{
+  "atLocal": "2026-10-30T20:46:50",
+  "head": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261031T013439Z-strict-first-failure",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "classification": "Read-only test-harness diagnosis and plan; not implementation, runtime repair proof, hostile validation or release acceptance",
+  "native": {
+    "normalCases": 14,
+    "normalFailures": 0,
+    "normalSkipped": 0,
+    "strictCases": 1,
+    "strictFailures": 1,
+    "strictSkipped": 0,
+    "strictDurationSeconds": 3.811,
+    "strictMessage": "Command perspective missing or denied",
+    "strictBody": "  live-multiplayer.integration.spec.ts:24:1 \u203A LIVE real two-player and observer UI: private push, all eight rounds, autonomous deadlines, renewal and reconnect \n\n    AssertionError: Command perspective missing or denied\n\n       at ui-command-acknowledgement.ts:10\n\n       8 | export function commandUiState(value: UiCommandState, scope: Scope, minimum: number, mode: AckMode): AckOutcome {\n       9 |   assert.equal(value.scope, scope, \u0022Command acknowledgement scope changed\u0022);\n    \u003E 10 |   assert(value.present \u0026\u0026 value.visible \u0026\u0026 !value.denied, \u0022Command perspective missing or denied\u0022);\n         |   ^\n      11 |   assert(Number.isSafeInteger(minimum) \u0026\u0026 minimum \u003E= 0, \u0022Malformed command response version\u0022);\n      12 |   assert(value.busy === \u0022true\u0022 || value.busy === \u0022false\u0022, \u0022Malformed command busy state\u0022);\n      13 |   assert(value.version !== null \u0026\u0026 /^\\d\u002B$/.test(value.version) \u0026\u0026 Number.isSafeInteger(Number(value.version)), \u0022Malformed rendered command version\u0022);\n        at commandUiState (\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts:10:3)\n        at \u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts:61:19\n        at waitCommandState (\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts:58:5)\n        at command (\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts:81:5)\n        at \u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts:225:27\n\n    Error Context: ../../test-results/live-local/live-multiplayer.integrati-7521b-lines-renewal-and-reconnect/error-context.md\n"
+  },
+  "originalPreservation": {
+    "path": "docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/manifest.json",
+    "sha256": "04F49847F0EFBC0FF6E1BA10092B5EBFB0D5C44CEAE7E3F09F2B6041C62144DA",
+    "files": 27,
+    "pngProduced": false,
+    "domSnapshotProduced": false
+  },
+  "observationAmendment": {
+    "manifest": "docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/strict-observations-amendment/manifest.json",
+    "manifestSha256": "E6219BFE8BEF62B340DE77BFE7015DEF8B0768B7322A770159F81AF861EB5010",
+    "fileSha256": "118CEC13D7915D97BF71BF28D2191AF2149ADE1F8FAF282189EE8F165E96B5BA",
+    "sourceMtimeLocal": "2026-10-30T20:31:27.4654769-05:00",
+    "invocationStart": "2026-10-30T20:30:45",
+    "invocationEnd": "2026-10-30T20:31:47",
+    "explicitRunKeyInJson": false,
+    "qualification": "Source mtime falls in invocation; exact temporal association is not a per-event run key.",
+    "milestones": {
+      "periodicPollsSuppressed": true,
+      "httpMocks": false
+    },
+    "commandAcknowledgements": 0,
+    "authorizedReadsByPage": [
+      3,
+      0,
+      0
+    ],
+    "noticesByPage": [
+      1,
+      0,
+      0
+    ],
+    "responseInstrumentation": {
+      "failureTotal": 0,
+      "failures": [],
+      "qualifiedReadFailureTotal": 0,
+      "qualifiedReadFailures": [],
+      "qualification": "Every response-body task is observed and drained while contexts remain open. Navigation-cancelled room reads retain their original tolerance; token/body observer failures remain explicit and fail a completed journey."
+    },
+    "cleanup": {
+      "cleanupFailures": 0,
+      "roomClosed": false,
+      "unresolvedPlayerIndices": []
+    },
+    "elapsedMs": 3718
+  },
+  "observed": [
+    "Strict failed at its fresh guard before command capture at first join, with the combined missing-or-denied assertion.",
+    "No actual rejected UiCommandState, DOM snapshot or PNG exists in the retained first failure.",
+    "Fixed-name strict observation exists and is now additively preserved; operational collector omitted it.",
+    "Source has no action-specific readiness before strict first join fresh guard. Room panel can be absent before identity or present without loaded room/version while finding the room.",
+    "Normal matrix readiness waits actual connected state, complete roster and visible/enabled ready actions before submissions.",
+    "Strict contexts close in finally before framework error snapshot; normal matrix explicitly captures failure UI before cleanup."
+  ],
+  "inference": [
+    "Initial identity/authorized room-read mount is a source-supported explanation for missing perspective, but cannot be proved uniquely from the source-only failure context.",
+    "An action-entry boundary before the unchanged fresh guard addresses the observed source ordering gap without bypassing denial, malformed state, unknown pending or private-push assertions."
+  ],
+  "unknown": [
+    "Actual absent versus hidden versus denied state at the failed historical probe.",
+    "The precise sequence of polling probe states; no rejected-state observer existed.",
+    "Network/transport/load causation; no captured join request/response exists to join.",
+    "Complete strict private-push, eight-round, renewal and reconnect outcomes on the candidate; execution stopped during setup."
+  ],
+  "plan": {
+    "path": "docs/evidence/release15/strict-entry/plan.md",
+    "sha256": "8701744E54D164ABFEFD0CD087EBE4B00EA71B5C4FE43487DE641DEA64A4F3AF",
+    "status": "Awaiting parent read; no implementation or tests executed",
+    "requirements": "docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/effective-requirements.json",
+    "requirementsSha256": "62872E0C1D0B46491469010D1FD66FACA90BCACBD3C51B772BDE3D0E2F2B4131",
+    "cases": "ENTRY-01 through ENTRY-14, actual DOM correct and wrong controls before helper changes",
+    "collectorOwner": "capacity15, strict-only exact auxiliary whitelist, separate operational slice"
+  },
+  "sourcePins": [
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751",
+      "bytes": 25981
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15",
+      "bytes": 18692
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706",
+      "bytes": 7751
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "bytes": 3868
+    },
+    {
+      "path": "src/web/room-screen.tsx",
+      "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951",
+      "bytes": 23300
+    },
+    {
+      "path": "src/web/game-panel.tsx",
+      "sha256": "3B99A07B9F6B21A099728FB1C94875776BD323489849D3A1B871F9D25D55D821",
+      "bytes": 21013
+    },
+    {
+      "path": "playwright.live.config.ts",
+      "sha256": "1A0319261FD05860E2714E02E4AE1302702F0A98ACC5D57B64E4367DAF3B6900",
+      "bytes": 1191
+    },
+    {
+      "path": "docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "sha256": "5567FD524E532EBA8A71A496A44E3FDF2375626546D38B627A62CCC765448444",
+      "bytes": 6152
+    },
+    {
+      "path": "docs/evidence/release15/strict-entry/plan.md",
+      "sha256": "8701744E54D164ABFEFD0CD087EBE4B00EA71B5C4FE43487DE641DEA64A4F3AF",
+      "bytes": 16069
+    }
+  ],
+  "applicationEdits": false,
+  "testEdits": false,
+  "testRuns": false,
+  "requirementsChanged": false,
+  "providersChanged": false,
+  "accuracy": 99,
+  "accuracyQualification": "Exact native/source/retained observation claims pinned; transient state and causal alternatives explicitly unknown",
+  "completeness": 98,
+  "completenessQualification": "Bounded diagnosis, original preservation and decision-complete proposed repair; full strict outcome and independent review remain pending"
+}

@@ -1,5 +1,9 @@
 # TEST-ROOMJOINING-001 - AC-01: Room joining
 
+Current amendment persistence: [19-record QBrain readback](../../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
+
+Current rules v2.8 amendment (31 October 2026): 2 through 10 players, 25 observers unchanged. [Completion contract](../../../release15-completion-plan.md). Original design hashes and execution receipts below remain historical; current notes/export and execution require separate readback.
+
 Linked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.
 
 | Field | Specification |
@@ -13,7 +17,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | Priority | high |
 | Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |
 | Preconditions/roles | Alice has a waiting room; Bob has an independent browser profile and no room membership. |
-| Test data | Generated active room code, Alice owl icon, Bob fox icon; repeat for capacities 2, 8 and 25. |
+| Test data | Generated active room code, Alice owl icon, Bob fox icon; repeat for capacities 2, 8 and 10. |
 | Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |
 | Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |
 | Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |
@@ -33,7 +37,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 Feature: AC-01: Room joining
   Scenario: TEST-ROOMJOINING-001 design verification
     Given Alice has a waiting room; Bob has an independent browser profile and no room membership.
-    And the fixture data is Generated active room code, Alice owl icon, Bob fox icon; repeat for capacities 2, 8 and 25.
+    And the fixture data is Generated active room code, Alice owl icon, Bob fox icon; repeat for capacities 2, 8 and 10.
     When As Bob enter the generated room code and choose player join.
     Then Bob enters Alice's room with the fox icon.
     When Observe Alice's room without manually refreshing.
@@ -42,6 +46,6 @@ Feature: AC-01: Room joining
 
 ## Boundaries
 
-Run separate-device browser contexts; extend the fixture to all counts 2..25 under TEST-MULTIPLAYERINTEGRATION-134. This case alone does not establish every count or a live latency bound.
+Run separate-device browser contexts; extend the fixture to every count 2 through 10 under TEST-MULTIPLAYERINTEGRATION-134 and TEST-ROOMSYNC-139. The 9-game matrix requires 54 player participations and 432 accepted round solves. This case alone does not establish the matrix or a latency bound. Larger historical matches retain their separate compatibility coverage.
 
 Criterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.

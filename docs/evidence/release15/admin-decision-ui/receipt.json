@@ -1,0 +1,107 @@
+{
+  "timestamp": "2026-10-30T16:21:25",
+  "requirementReferences": [
+    "TEST-ADMINUI-136#FR-23-C01",
+    "FR-ADMINPAGES-023#FR-23-C01"
+  ],
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T210822Z-admin-decision-ui",
+  "sourceFiles": [
+    "tests/browser/admin.phase6.spec.ts",
+    "tests/browser/admin-decision-fixture.ts"
+  ],
+  "sourceHashes": [
+    {
+      "path": "tests/browser/admin.phase6.spec.ts",
+      "sha256": "CC5EE9309AD2F0B600508D5586FE1D8AA56DE208CD04E9065E087C9DAFAD25CD"
+    },
+    {
+      "path": "tests/browser/admin-decision-fixture.ts",
+      "sha256": "690DC0847466CB4CF9D1299E7046D1171AD654EA61CB85B8252C836520D6BA43"
+    },
+    {
+      "path": "src/web/content-panel.tsx",
+      "sha256": "47B13186DBC176A7D04CBFC29E61F7F5234CE2738A04110F90CA0CF0DF1F44F5"
+    },
+    {
+      "path": "src/domain/content.ts",
+      "sha256": "96415D3568DE91769D2C86BA5974B4D1564B1544B068316EC2905E1BBA3F9670"
+    },
+    {
+      "path": "src/application/content.ts",
+      "sha256": "DCE7440F073CB81EC247444756913F59E62512F8980B6B6A5328B1C7AA20417A"
+    }
+  ],
+  "retainedProducer": "docs/evidence/release15/admin-decision-ui/producer.ps1",
+  "producerSha256": "798F114021ED92B81F62541795674D20D06E9FAC06A9A2B95EA9FEBCFCBA1BAC",
+  "originalProducerRetained": "/tmp/RunWordpairsAdminDecisionUi.ps1",
+  "gateRunId": "533871c8-fbbb-48d8-a144-e43c946443ef",
+  "adminFileRunId": "fcaf5626-b63c-4f5f-abc1-fcfbd6bf18bc",
+  "correctRenderedScenarios": 6,
+  "negativeControls": [
+    "approve/wrong-status",
+    "reject/wrong-reason",
+    "overturn/missing-history",
+    "original-reviewer/self-resolution",
+    "proposer/self-resolution"
+  ],
+  "gateCases": 7,
+  "wholeAdminFileCases": 11,
+  "finalFailed": 0,
+  "finalSkipped": 0,
+  "directTypecheck": "npm run typecheck: exit0 after final edit",
+  "focusedLint": "npm exec biome -- lint tests/browser/admin.phase6.spec.ts tests/browser/admin-decision-fixture.ts: exit0,0warnings after final edit",
+  "perEditCodeHooks": "5 immediate successful hook calls retained in own MCP actions; known plugin limitation means hook success does not establish TypeScript compilation.",
+  "productionSourceModified": false,
+  "requirementsOrProvidersModified": false,
+  "chronology": "Actual UI assertions and independent correct/wrong HTTP fixtures were written and checked; no product fix was required or made. This does not reconstruct the historical original admin-slice mock gate.",
+  "qualification": "Actual rendered React UI and Chromium over isolated HTTP snapshots, existing unchanged application build. Prior policy/PostgreSQL and live GitHub/hosting evidence are separate. Dirty test-source hashes retained; parent must rebuild and rerun full frozen source before HV. No requirement satisfaction, hostile approval or release completion claimed.",
+  "observedFixtures": [
+    "approve/reject existing nominal legacy nomination with reason/status, one command, non-playable curation and decision history",
+    "uphold/overturn legacy appeal where owner differs from proposer/original reviewer; preserves prior history",
+    "original-reviewer/proposer owner sees no resolution controls and sends no writes"
+  ],
+  "reports": [
+    {
+      "folder": "docs/evidence/release15/admin-decision-ui/assertion-gate",
+      "nativeJUnitSha256": "C046F0DA48DB914101867A00857DE2220CF848919F8E16F8E07C27C2DEAAFECB",
+      "nativeCaseCount": 7,
+      "nativeFailures": 2,
+      "nativeSkipped": 5,
+      "logSha256": "99077BC4F1F4CA455ABA6C0291D70DC1A24E08DF71BD31365B7228120D49B4F3",
+      "disposition": "Interrupted after repeated newly authored test-locator failures; diagnostic only, not an acceptance run."
+    },
+    {
+      "folder": "docs/evidence/release15/admin-decision-ui/assertion-gate-v2",
+      "nativeJUnitSha256": "80E8AB0FDB933C8F308521539AA82A1453F37C2455756BAD2E27D785F0DB78BE",
+      "nativeCaseCount": 7,
+      "nativeFailures": 2,
+      "nativeSkipped": 5,
+      "logSha256": "43E495D683665EEF670BD40E461AC025AF7C82B3620EBF3496A62A96B72D6B3C",
+      "disposition": "Interrupted after repeated newly authored test-locator failures; diagnostic only, not an acceptance run."
+    },
+    {
+      "folder": "docs/evidence/release15/admin-decision-ui/assertion-gate-v3",
+      "nativeJUnitSha256": "560FAFDC8D3DF0DA49E4BE794425C69459CE1B61955135F7D01E3C6EA7E76A02",
+      "nativeCaseCount": 7,
+      "nativeFailures": 0,
+      "nativeSkipped": 0,
+      "logSha256": "9D7392AE3FD87B801F500B46D494E74A681B6816B38C6EE84B2B434D99A20866",
+      "disposition": "Passing completed local fixture/browser execution."
+    },
+    {
+      "folder": "docs/evidence/release15/admin-decision-ui/admin-file-v3",
+      "nativeJUnitSha256": "0FECEA3548D491B3081BBFF2F93387430C513C9BC2A68C94529C195D73546D38",
+      "nativeCaseCount": 11,
+      "nativeFailures": 0,
+      "nativeSkipped": 0,
+      "logSha256": "5ADC514C6DCED095D41EC98EC78AB19CF475CBFC053C14E6361F359F8FA48A6E",
+      "disposition": "Passing completed local fixture/browser execution."
+    }
+  ],
+  "accuracy": 99,
+  "completeness": 99,
+  "assessmentScope": "Test-only delegated browser coverage correction, not whole release or independent hostile validation."
+}

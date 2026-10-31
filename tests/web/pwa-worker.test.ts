@@ -5,7 +5,7 @@ import { expect, it, vi } from "vitest";
 function worker(failInstall = false) {
   const handlers = new Map<string, (e: any) => void>();
   const stores = new Map<string, Map<string, Response>>([
-    ["wordpairs-pwa-v0", new Map()],
+    ["wordpairs-admin-pwa-v0", new Map()],
     ["other-app", new Map()],
   ]);
   const network = vi.fn(async () => new Response("live", { status: 200 }));
@@ -27,9 +27,9 @@ function worker(failInstall = false) {
       };
     },
   };
-  runInNewContext(readFileSync("public/sw.js", "utf8"), {
+  runInNewContext(readFileSync("public/admin-sw.js", "utf8"), {
     self: {
-      location: new URL("https://wordpairs.test/sw.js"),
+      location: new URL("https://wordpairs.test/admin-sw.js"),
       addEventListener: (type: string, cb: any) => handlers.set(type, cb),
       skipWaiting,
       clients: { claim },
@@ -71,18 +71,21 @@ it("PWA-06 returns live HTTP errors unchanged and static offline navigation only
   w.network.mockResolvedValueOnce(
     new Response("server error", { status: 503 }),
   );
-  expect((await w.request("/play"))?.status).toBe(503);
+  expect((await w.request("/admin"))?.status).toBe(503);
   w.network.mockRejectedValueOnce(new Error("disconnected"));
-  expect(await (await w.request("/rooms/private-room"))?.text()).toBe(
+  expect(await (await w.request("/admin/words"))?.text()).toBe(
     "static offline",
   );
-  expect(await (await w.request("/play"))?.text()).toBe("live");
+  expect(await (await w.request("/admin"))?.text()).toBe("live");
 });
 
 it("PWA-07 excludes all API/auth/realtime/mutations and RSC from fallback and private caching", async () => {
   const w = worker();
   await w.lifecycle("install");
   for (const [path, mode, method] of [
+    ["/play", "navigate", "GET"],
+    ["/rooms/private-room", "navigate", "GET"],
+    ["/administrator", "navigate", "GET"],
     ["/api/session", "navigate", "GET"],
     ["/api/auth/callback?code=secret", "navigate", "GET"],
     ["/auth/callback", "navigate", "GET"],
@@ -94,11 +97,11 @@ it("PWA-07 excludes all API/auth/realtime/mutations and RSC from fallback and pr
     expect(await w.request(path, mode, method)).toBeUndefined();
   }
   await w.request("/admin");
-  await w.request("/rooms/private-room");
-  const cached = [...w.stores.get("wordpairs-pwa-v1")!.keys()];
+  await w.request("/admin/words");
+  const cached = [...w.stores.get("wordpairs-admin-pwa-v1")!.keys()];
   expect(cached.sort()).toEqual(
     [
-      "/offline.html",
+      "/admin-offline.html",
       "/icons/icon-192.png",
       "/icons/icon-512.png",
       "/icons/maskable-512.png",
@@ -110,13 +113,13 @@ it("PWA-07 excludes all API/auth/realtime/mutations and RSC from fallback and pr
 it("PWA-08 removes only owned old caches after activation without forcing an update", async () => {
   const w = worker();
   await w.lifecycle("install");
-  expect(w.stores.has("wordpairs-pwa-v0")).toBe(true);
+  expect(w.stores.has("wordpairs-admin-pwa-v0")).toBe(true);
   expect(w.skipWaiting).not.toHaveBeenCalled();
   expect(w.claim).not.toHaveBeenCalled();
   await w.lifecycle("activate");
   expect([...w.stores.keys()].sort()).toEqual([
     "other-app",
-    "wordpairs-pwa-v1",
+    "wordpairs-admin-pwa-v1",
   ]);
   expect(w.skipWaiting).not.toHaveBeenCalled();
 });
@@ -124,8 +127,28 @@ it("PWA-08 removes only owned old caches after activation without forcing an upd
 it("PWA-08 failed precache rejects installation and preserves the previously usable cache", async () => {
   const w = worker(true);
   await expect(w.lifecycle("install")).rejects.toThrow("offline during update");
-  expect(w.stores.has("wordpairs-pwa-v0")).toBe(true);
+  expect(w.stores.has("wordpairs-admin-pwa-v0")).toBe(true);
   expect(w.stores.has("other-app")).toBe(true);
   expect(w.skipWaiting).not.toHaveBeenCalled();
   expect(w.claim).not.toHaveBeenCalled();
 });
+it("PWA-09 legacy public worker unregisters and removes only the former public caches", async () => {
+  const handlers = new Map<string, (e: any) => void>();
+  const unregister = vi.fn().mockResolvedValue(true);
+  const skipWaiting = vi.fn().mockResolvedValue(undefined);
+  const keys = new Set(["wordpairs-pwa-v0", "wordpairs-pwa-v1", "wordpairs-admin-pwa-v1", "other-app"]);
+  runInNewContext(readFileSync("public/sw.js", "utf8"), {
+    self: { addEventListener: (type: string, callback: any) => handlers.set(type, callback), skipWaiting, registration: { unregister } },
+    caches: { keys: async () => [...keys], delete: async (key: string) => keys.delete(key) },
+  });
+  expect(handlers.has("fetch")).toBe(false);
+  for (const type of ["install", "activate"]) {
+    let pending: Promise<unknown> | undefined;
+    handlers.get(type)!({ waitUntil: (value: Promise<unknown>) => { pending = value; } });
+    await pending;
+  }
+  expect(skipWaiting).toHaveBeenCalledTimes(1);
+  expect(unregister).toHaveBeenCalledTimes(1);
+  expect([...keys]).toEqual(["wordpairs-admin-pwa-v1", "other-app"]);
+});
+

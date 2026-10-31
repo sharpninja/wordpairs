@@ -1,0 +1,63 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/application/live-scale-cleanup.test.ts (10 tests | 2 failed) 21ms
+   ❯ TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup (10)
+     × confirms absence after a successful leave instead of trusting the write response 8ms
+     × reports a membership still present after every successful leave response 6ms
+     ✓ reports repeated server failures and preserves the exact uncertain command 2ms
+     ✓ retries transport uncertainty with the same command before verified absence 1ms
+     ✓ bounds conflicts and does not silently accept exhausted retries 1ms
+     ✓ does not treat lost authentication or malformed reads as removed membership 1ms
+     ✓ accepts an authenticated empty membership or missing owned room without a write 0ms
+     ✓ preserves a completed closed room and requires the expected actor identity 0ms
+     ✓ cleans only supplied actors in reverse order and reports exact unresolved indices 0ms
+     ✓ also verifies observer departure if an owned actor's membership changed 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > confirms absence after a successful leave instead of trusting the write response
+AssertionError: expected 1 to be greater than or equal to 2
+ ❯ tests/application/live-scale-cleanup.test.ts:32:27
+     30|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+     31|     expect(probe.commands).toEqual([{ expectedVersion: 1, commandId: "…
+     32|     expect(probe.reads()).toBeGreaterThanOrEqual(2);
+       |                           ^
+     33|   });
+     34|   it("reports a membership still present after every successful leave …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > reports a membership still present after every successful leave response
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:36:53
+     34|   it("reports a membership still present after every successful leave …
+     35|     const probe = actor([member()]);
+     36|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+       |                                                     ^
+     37|     expect(probe.commands).toHaveLength(4);
+     38|     expect(probe.reads()).toBeGreaterThanOrEqual(5);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 8 passed (10)
+   Start at  15:15:54
+   Duration  214ms (tests 43%, import 31%, transform 16%, worker 10%)
+
+JUNIT report written to <repo>/docs/evidence/release15/cleanup-mock-reusable/wrong-no-readback.xml

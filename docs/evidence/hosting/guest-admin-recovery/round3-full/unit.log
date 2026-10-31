@@ -1,0 +1,139 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/acceptance/source-archive.test.ts (1 test | 1 failed) 30ms
+   × AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering 27ms
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts (0 test)
+ ✓ tests/ac-contracts/oracle-validation.test.ts (222 tests) 517ms
+ ✓ tests/acceptance/boundary-counterparts.test.ts (4 tests) 186ms
+ ✓ tests/acceptance/lobby-content-counterparts.test.ts (8 tests) 227ms
+ ✓ tests/integration/admin-session-isolation.test.ts (1 test) 600ms
+   ✓ actual composition separates guest/admin token namespaces, strips guest roles and revokes admin independently 595ms
+ ✓ tests/integration/oidc.test.ts (11 tests) 163ms
+ ✓ tests/web/pwa-worker.test.ts (5 tests) 294ms
+ ✓ tests/architecture/phase1a-bootstrap.test.ts (6 tests) 375ms
+   ✓ Phase 1A application skeleton and module boundaries (6)
+     ✓ keeps domain modules free of UI, framework, and infrastructure imports 318ms
+ ✓ tests/web/private-state.test.ts (4 tests) 146ms
+ ✓ tests/web/reactions-api.test.ts (2 tests) 189ms
+ ✓ tests/web/lobby-api.test.ts (4 tests) 167ms
+ ✓ tests/web/content-api.test.ts (4 tests) 204ms
+ ✓ tests/acceptance/eight-round-counterpart.test.ts (1 test) 147ms
+ ✓ tests/web/identity-api.test.ts (11 tests) 336ms
+ ❯ tests/integration/hosted-sbom.test.ts (4 tests | 1 failed) 2687ms
+   ❯ hosted build inventory, isolated fixture only (4)
+     × includes scoped, nested, development and optional packages with dependency edges 1319ms
+     ✓ fails closed for unsafe metadata --sha 646ms
+     ✓ fails closed for unsafe metadata --url 329ms
+     ✓ fails closed for unsafe metadata --url 386ms
+ ✓ tests/web/admin-api.test.ts (1 test) 198ms
+ ✓ tests/web/github-admin-api.test.ts (7 tests) 282ms
+ ✓ tests/application/catalog-seed.test.ts (2 tests) 195ms
+ ✓ tests/web/deadlines-api.test.ts (5 tests) 230ms
+ ✓ tests/web/pwa-manifest.test.ts (2 tests) 4124ms
+   ✓ PWA-01 validates actual manifest and rejects weakened identity, launch and icon controls 471ms
+   ✓ PWA-02 supplies real PNG dimensions and opaque backgrounds 3647ms
+ ✓ tests/application/match.test.ts (11 tests) 267ms
+ ✓ tests/web/pwa-support.test.ts (9 tests) 1131ms
+   ✓ PWA-03 registers securely in admin scope with fresh updates; errors preserve manual guidance 475ms
+   ✓ PWA-05 retains safe areas when installed UI is hidden and panel padding survives the actual cascade 398ms
+ ✓ tests/web/identity-navigation.test.ts (3 tests) 1430ms
+   ✓ focus during delayed POST cannot overtake the session mutation 1108ms
+ ✓ tests/web/matches-api.test.ts (5 tests) 361ms
+   ✓ hashes the answer intent, derives server actor and keeps guess text out of response 302ms
+ ✓ tests/traceability/ac-inventory.test.ts (5 tests) 187ms
+ ✓ tests/web/heartbeat-body.test.ts (2 tests) 552ms
+   ✓ LIVE production heartbeat drains its response before refreshing 398ms
+ ✓ tests/integration/github-admin.test.ts (13 tests) 73ms
+ ✓ tests/acceptance/real-gameplay.test.ts (13 tests) 244ms
+ ✓ tests/application/identity.test.ts (4 tests) 22ms
+ ✓ tests/application/lobby.test.ts (21 tests) 89ms
+ ✓ tests/web/landing.test.ts (7 tests) 2241ms
+   ✓ AC-43 anonymous landing states (7)
+     ✓ retains cache bypass when conflict recovery fails, and does not relabel old rows while navigating 1397ms
+     ✓ renders duplicate aliases without retaining removed rows on a refresh 335ms
+ ✓ tests/web/landing-api.test.ts (1 test) 133ms
+ ✓ tests/integration/realtime.test.ts (3 tests) 147ms
+ ✓ tests/application/ui-autocontinue.test.ts (3 tests) 118ms
+ ✓ tests/web/rooms-api.test.ts (3 tests) 337ms
+ ✓ tests/tr-contracts/reaction-contracts.test.ts (4 tests) 97ms
+ ✓ tests/application/content.test.ts (7 tests) 70ms
+ ✓ tests/application/command.test.ts (14 tests) 52ms
+ ✓ tests/acceptance/coverage-map.test.ts (1 test) 4642ms
+   ✓ binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions 4634ms
+ ✓ tests/application/public-service.test.ts (5 tests) 27ms
+ ✓ tests/application/reactions.test.ts (2 tests) 39ms
+ ✓ tests/application/ui-content-workflows.test.ts (2 tests) 68ms
+ ✓ tests/web/live-races.test.ts (5 tests) 316ms
+ ✓ tests/web/social-panel.test.ts (1 test) 388ms
+   ✓ accepts healthy responses slower than polling and still enables eligible nomination after serialized reads 378ms
+ ✓ tests/integration/postgres-pool.test.ts (9 tests) 34ms
+ ✓ tests/application/public-projections.test.ts (4 tests) 38ms
+ ✓ tests/application/matches.test.ts (3 tests) 17ms
+ ✓ tests/application/rooms.test.ts (4 tests) 15ms
+ ✓ tests/application/catalog-admin.test.ts (3 tests) 28ms
+ ✓ tests/integration/invitations.test.ts (1 test) 23ms
+ ✓ tests/application/content-service.test.ts (1 test) 24ms
+ ✓ tests/integration/public-read.test.ts (3 tests) 15ms
+ ✓ tests/application/access.test.ts (2 tests) 35ms
+ ✓ tests/integration/postgres-store.test.ts (7 tests) 33ms
+ ✓ tests/ac-contracts/admin-profile-privacy.test.ts (3 tests) 60ms
+ ✓ tests/web/social-live-cadence.test.ts (2 tests) 171ms
+ ✓ tests/web/room-live-resume.test.ts (2 tests) 137ms
+ ✓ tests/application/reaction-service.test.ts (1 test) 16ms
+ ✓ tests/integration/hosting-environment.test.ts (2 tests) 15ms
+ ✓ tests/integration/hosting-schema.test.ts (6 tests) 10197ms
+   ✓ hosting schema planner reruns, isolated history fixtures (6)
+     ✓ handles matching history without a live connection 1691ms
+     ✓ handles changed-source history without a live connection 2859ms
+     ✓ handles missing-earlier history without a live connection 2600ms
+     ✓ handles unknown history without a live connection 1178ms
+     ✓ preserves the deployed thirteen-migration prefix before the guest-privacy extension 1147ms
+     ✓ rejects an unknown target before any connection 706ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ac-contracts/oracle-supplemental-validation.test.ts [ tests/ac-contracts/oracle-supplemental-validation.test.ts ]
+Error: spawnSync git EPERM
+ ❯ tests/ac-contracts/oracle-supplemental-validation.test.ts:42:29
+     40|   components: [],
+     41| });
+     42| const preparedSourcePaths = execFileSync('git', ['ls-files', '--cached…
+       |                             ^
+     43|   .trim().split('\n').filter(Boolean).filter(path => existsSync(resolv…
+     44| const preparedSource = Object.fromEntries(preparedSourcePaths.map((pat…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/acceptance/source-archive.test.ts > AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering
+Error: spawnSync git EPERM
+ ❯ tests/acceptance/source-archive.test.ts:18:18
+     16| // Acceptance fixture only: no publication, deployment inventory or re…
+     17| it("AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete…
+     18|   const commit = execFileSync("git", ["rev-parse", "HEAD"], {
+       |                  ^
+     19|     encoding: "utf8",
+     20|   }).trim();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/integration/hosted-sbom.test.ts > hosted build inventory, isolated fixture only > includes scoped, nested, development and optional packages with dependency edges
+Error: spawnSync <home>/.local/share/mise/installs/node/26.8.2/bin/node EPERM
+ ❯ tests/integration/hosted-sbom.test.ts:20:7
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  3 failed | 58 passed (61)
+      Tests  2 failed | 500 passed (502)
+   Start at  21:23:09
+   Duration  10.66s (tests 45%, environment 26%, import 19%, transform 7%, worker 2%)
+
+    Isolate  61 workers spawned · ~843ms startup each (spawn + environment, per file)
+             at least ~2.58s faster with isolate: false — reuses workers across files instead of one per file
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/round3-full/unit.xml

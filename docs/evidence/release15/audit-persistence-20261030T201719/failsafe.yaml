@@ -1,0 +1,27 @@
+method: workflow.triage.report
+label: triage-session-persistence
+timestamp: 20261030T201719
+params:
+  title: Session-log append rejected by unreachable storage backend during release audit
+  summary: Existing trusted Codex plugin session appendActions failed with persisted=false and storage backend unreachable; full audit readback was not reached. Preserve pending session failsafe and investigate persistence/replay without changing Wordpairs product.
+  component: McpServer session-log persistence
+  errorSignature: SessionLog_SubmitAsync_storage_backend_unreachable
+  dedupeKey: wordpairs-sessionlog-storage-unreachable-20261030
+  evidence: 'At local 2026-10-30T20:13:54 root release progress helper called workflow.sessionlog.appendDialog then appendActions in existing Codex turn. appendActions exited1 with code rejected, persisted=false, queued=false; underlying client.SessionLog.SubmitAsync returned method_invocation_error/McpServerException: The storage backend is currently unreachable. Retry the operation once connectivity is restored. Wrapper retained normal 20261031T011354Z-session_submit-2019.yaml failsafe. Exact session Codex-20261027T100516Z-plugin-session, request req-20261030T203656Z-cline-beam-release. No claim is made that either append persisted without readback. Read helper /tmp/LogWordpairsReleaseProgress.ps1. This is occurrence 2, separate from independently running frozen browser test chain. Earlier occurrence accepted as triage-report-114b209eb1c940faac37afbde493656f.'
+  reporterAgent: Codex
+  workspacePath: <repo>
+  sessionId: Codex-20261027T100516Z-plugin-session
+  turnId: req-20261030T203656Z-cline-beam-release
+  idempotencyKey: wordpairs-sessionlog-storage-unreachable-20261030-occurrence-2
+  affectedPaths:
+    - /tmp/LogWordpairsReleaseProgress.ps1
+  affectedSymbols:
+    - workflow.sessionlog.appendActions
+    - client.SessionLog.SubmitAsync
+  reproductionHints:
+    - Read retained 20261031T011354Z-session_submit-2019.yaml in normal Codex failsafe queue. Inspect storage/backend at failure time and supported retry/replay behavior. No raw REST or application repair.
+  tags:
+    - incidental
+    - sessionlog
+    - persistence
+    - failsafe

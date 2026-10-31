@@ -42,6 +42,7 @@ Feature: AC-29: In-round emoji reaction
 
 ## Boundaries
 
+Local browser coverage is implemented in [reactions.phase5.spec.ts](https://github.com/sharpninja/wordpairs/blob/6071b2d6750b875864ce11011f1aff26243f29e6/tests/browser/reactions.phase5.spec.ts), using synchronized fixture clocks to check player and observer delivery, cooldown across display ticks, expiry and unchanged game state. The component case in [social-panel.test.ts](https://github.com/sharpninja/wordpairs/blob/6071b2d6750b875864ce11011f1aff26243f29e6/tests/web/social-panel.test.ts) checks the control at exactly 1,999 ms and 2,000 ms. The repository's `docs/evidence/hosting/guest-admin-recovery/reaction-failure-analysis.md` records retained failures and the limits of these local results.
 
 
 Criterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.

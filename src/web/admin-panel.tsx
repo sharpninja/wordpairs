@@ -36,7 +36,11 @@ export function AdminScreen({
   const [profile, setProfile] = useState<OwnProfile | null>(null);
   return (
     <>
-      <IdentityPanel oidcEnabled={oidcEnabled} onProfile={setProfile} />
+      <IdentityPanel
+        oidcEnabled={oidcEnabled}
+        onProfile={setProfile}
+        administration
+      />
       {profile &&
         (page === "words" ? (
           <WordManager

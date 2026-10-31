@@ -1,0 +1,55 @@
+{
+  "atLocal": "2026-10-31T09:40:25",
+  "binding": "real",
+  "exitCode": 0,
+  "cases": 28,
+  "failed": 0,
+  "skipped": 0,
+  "names": [
+    "UI entry correct delayed-room-action",
+    "UI entry rejects wrong delayed-room-action",
+    "UI entry correct visible-loading-panel",
+    "UI entry rejects wrong visible-loading-panel",
+    "UI entry correct disabled-action",
+    "UI entry rejects wrong disabled-action",
+    "UI entry correct hidden-action",
+    "UI entry rejects wrong hidden-action",
+    "UI entry correct same-page-control",
+    "UI entry rejects wrong same-page-control",
+    "UI entry correct game-input-entry",
+    "UI entry rejects wrong game-input-entry",
+    "UI entry correct missing-perspective",
+    "UI entry rejects wrong missing-perspective",
+    "UI entry correct denied-perspective",
+    "UI entry rejects wrong denied-perspective",
+    "UI entry correct malformed-projection",
+    "UI entry rejects wrong malformed-projection",
+    "UI entry correct unknown-pending",
+    "UI entry rejects wrong unknown-pending",
+    "UI entry correct rejected-probe-attribution",
+    "UI entry rejects wrong rejected-probe-attribution",
+    "UI entry correct rejected-probe-observer-error",
+    "UI entry rejects wrong rejected-probe-observer-error",
+    "UI entry correct failure-before-cleanup",
+    "UI entry rejects wrong failure-before-cleanup",
+    "UI entry correct diagnostic-failure-truthful",
+    "UI entry rejects wrong diagnostic-failure-truthful"
+  ],
+  "pins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.contract.ts",
+      "sha256": "50EE040AD439FA98EA7FEE47935F494D5C8A964AAF8E804A1F93B4CD36500D28"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.phase6.spec.ts",
+      "sha256": "27C57EB43E4719AD60E330629EF13081C24307E41200099295901A0ADDF042E8"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.ts",
+      "sha256": "CB4F6FE8A82A9D3394971A44A6862BA35AFAA268D3B206E786E844AA2E28F689"
+    }
+  ],
+  "ackSha256": "90FA56D65B0E815034B8959AA67ED68E3AA4C25E0B04BB6B1A8F3775051CD4D5",
+  "strictSha256": "F4B2C96B09C9824F7C681F2A818D1163FEB533F7A08A0210FA0BED26F23E76AA",
+  "junitSha256": "75D56CA916ECA6839D15F666F1FB5BF19B23E0A7CD68E37F9495D2563C56C820"
+}

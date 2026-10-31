@@ -1,0 +1,20 @@
+<testsuites id="" name="" tests="8" failures="0" skipped="0" errors="0" time="18.581872000000004">
+<testsuite name="invitation-copy.phase2.spec.ts" timestamp="2026-10-29T05:34:57.503Z" hostname="" tests="8" failures="0" skipped="0" time="10.307" errors="0">
+<testcase name="INVITE-COPY mock gate accepts correct copy and fallback and rejects corrupted outcomes" classname="invitation-copy.phase2.spec.ts" time="1.953">
+</testcase>
+<testcase name="INVITE-COPY-01 copies the generated invitation and confirms it" classname="invitation-copy.phase2.spec.ts" time="1.466">
+</testcase>
+<testcase name="INVITE-COPY-01 uses writeText when ClipboardItem is unavailable" classname="invitation-copy.phase2.spec.ts" time="1.081">
+</testcase>
+<testcase name="INVITE-COPY-02 preserves the link when clipboard access is denied" classname="invitation-copy.phase2.spec.ts" time="1.355">
+</testcase>
+<testcase name="INVITE-COPY-02 preserves the link when the clipboard API is unavailable" classname="invitation-copy.phase2.spec.ts" time="1.283">
+</testcase>
+<testcase name="INVITE-COPY creation failure does not claim or perform a copy" classname="invitation-copy.phase2.spec.ts" time="1.162">
+</testcase>
+<testcase name="INVITE-COPY missing invitation URL does not claim or perform a copy" classname="invitation-copy.phase2.spec.ts" time="0.869">
+</testcase>
+<testcase name="INVITE-COPY-01 writes to the actual Chromium clipboard" classname="invitation-copy.phase2.spec.ts" time="1.138">
+</testcase>
+</testsuite>
+</testsuites>

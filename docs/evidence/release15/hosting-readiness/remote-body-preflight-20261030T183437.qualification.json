@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-10-30T18:35:53",
+  "originalReceipt": "remote-body-preflight-20261030T183437.json",
+  "originalSha256": "D1D58ABE31425885D51F4E1C9684294D8A30ED214664DF936C61B4B47958FC04",
+  "clarification": "The bodyProof sentence uses only too narrowly. Exact existing Get-HostingSchemaBody behavior normalizes CRLF to LF, trims leading/trailing whitespace, removes outer BEGIN/COMMIT wrappers while retaining leading comments, then trims again. Canonical equality is not raw byte equality. No native result or producer changed.",
+  "normalizationSteps": [
+    "CRLF to LF",
+    "Trim leading/trailing whitespace",
+    "Strip outer BEGIN after optional leading comments",
+    "Strip final outer COMMIT",
+    "Trim leading/trailing whitespace"
+  ],
+  "statusResultsUnchanged": true,
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T233149Z-remote-migration-body-status",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release"
+}

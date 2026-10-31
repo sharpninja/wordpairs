@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="3" failures="1" errors="0" time="0.018945254">
+    <testsuite name="tests/integration/capacity.integration.ts" timestamp="2026-10-30T20:05:52.561Z" hostname="[PRIVATE HOST]" tests="3" failures="1" errors="0" skipped="0" time="0.018945254">
+        <testcase classname="tests/integration/capacity.integration.ts" name="CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries" time="0.014710999">
+            <failure message="expected { new15: true, new16: true, …(10) } to deeply equal { new15: true, new16: false, …(10) }" type="AssertionError">
+AssertionError: expected { new15: true, new16: true, …(10) } to deeply equal { new15: true, new16: false, …(10) }
+
+- Expected
++ Received
+
+@@ -2,12 +2,12 @@
+    &quot;discover&quot;: [
+      &quot;cap15-upgrade-partial&quot;,
+    ],
+    &quot;finalSeatWinners&quot;: 1,
+    &quot;new15&quot;: true,
+-   &quot;new16&quot;: false,
+-   &quot;newMatch16Rejected&quot;: true,
++   &quot;new16&quot;: true,
++   &quot;newMatch16Rejected&quot;: false,
+    &quot;observer26Rejected&quot;: true,
+    &quot;observers&quot;: 25,
+    &quot;players&quot;: 15,
+    &quot;publicRows&quot;: [
+      {
+@@ -15,8 +15,8 @@
+        &quot;id&quot;: &quot;cap15-upgrade-partial&quot;,
+        &quot;playerCount&quot;: 14,
+      },
+    ],
+    &quot;quickJoined&quot;: &quot;cap15-upgrade-partial&quot;,
+-   &quot;raise16Rejected&quot;: true,
+-   &quot;sql16Rejected&quot;: true,
++   &quot;raise16Rejected&quot;: false,
++   &quot;sql16Rejected&quot;: false,
+  }
+
+ ❯ tests/integration/capacity.integration.ts:88:135
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/capacity.integration.ts" name="CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave" time="0.000891226">
+        </testcase>
+        <testcase classname="tests/integration/capacity.integration.ts" name="CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards" time="0.000683162">
+        </testcase>
+    </testsuite>
+</testsuites>

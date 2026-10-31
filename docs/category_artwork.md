@@ -1,5 +1,7 @@
 # Category artwork
 
+Current rules v2.8, dated 31 October 2026, use 2 through 10 players and preserve the separate 25-observer limit. Public installation is inactive; only the GitHub owner admin app is installable. The original artwork receipts below keep their historical scope. Reverify the current maximum 10-player phone scorecard in the changed release; an earlier 25-player fixture is not evidence for those bytes. See [the completion plan](release15-completion-plan.md) and [admin PWA contract](admin_pwa_release.md).
+
 The operator approved cel-shaded comic panels and a translucent content panel on 27 October 2026. This replaces the initial abstract SVG patterns with six distinct illustrated environments.
 
 ![Six landscape category illustrations](images/readme/category-artwork.webp)

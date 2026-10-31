@@ -1,0 +1,22 @@
+diff --git i/tests/acceptance/coverage-map.ts w/tests/acceptance/coverage-map.ts
+index 98a92f2..689d482 100644
+--- i/tests/acceptance/coverage-map.ts
++++ w/tests/acceptance/coverage-map.ts
+@@ -40,7 +40,7 @@ const capacity = proof(
+     "src/domain/rooms.ts",
+     "src/application/matches.ts",
+   ],
+-  "Populate 2, 8 and 25-player rooms, reject overflow without mutation, populate 25 bound observers and reject observer 26. Competing actual RoomService commands through a serialized port admit only one final player; stale loser conflicts and a fresh full attempt changes nothing. At maximum size, all 25 score exactly once, observers have the corresponding player projection and cannot mutate; room event audience includes all 50 profiles.",
++  "Populate 2, 8 and 15-player rooms, reject overflow without mutation, populate 25 bound observers and reject observer 26. Competing actual RoomService commands through a serialized port admit only one final player; stale loser conflicts and a fresh full attempt changes nothing. At maximum size, all 15 score exactly once, observers have the corresponding player projection and cannot mutate; room event audience includes all 40 profiles.",
+   "Port fake serialization is use-case evidence only; it does not claim PostgreSQL durability.",
+ );
+ const gameplay = proof(
+@@ -170,7 +170,7 @@ export const coverageProofs: Record<string, Proof> = {
+   "AC-15": proof(
+     [browser("accessibility.phase6")],
+     ["src/app/globals.css", "src/web/game-panel.tsx"],
+-    "At 320×568, 568×320, 390×844 and 844×390, answer/hints/scorecard are visible by normal vertical scroll, no horizontal overflow occurs, keyboard Tab/Enter and touch submit actual answers; 25-player/25-observer long roster also renders on 320-pixel phone.",
++    "At 320×568, 568×320, 390×844 and 844×390, answer/hints/scorecard are visible by normal vertical scroll, no horizontal overflow occurs, keyboard Tab/Enter and touch submit actual answers; the supported 15-player/25-observer roster renders on a 320-pixel phone, with a separate historical 25-player/25-observer scorecard fixture.",
+   ),
+   "AC-16": proof(
+     [

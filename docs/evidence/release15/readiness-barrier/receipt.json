@@ -1,0 +1,305 @@
+{
+  "kind": "failed-eleven-player-diagnosis-and-authorized-test-only-readiness-repair",
+  "timestamp": "2026-10-30T17:39:22",
+  "baseCandidate": "131269a590046a3c1c83314d11ff79f2b731799c",
+  "currentHeadAtReceipt": "131269a590046a3c1c83314d11ff79f2b731799c",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T222122Z-matrix-eleven-diagnosis",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "preservation": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-131269a/live-ui/diagnostic-supplement/manifest.json",
+    "files": 40,
+    "copiesVerified": true,
+    "bytes": 526256.0,
+    "sha256": "0E6433BB8915E73B1834673E1A3DB4D91F8E29C46357F59EBD4FF2E143E807AF",
+    "originalsRetained": true
+  },
+  "historicalMatrix": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-131269a/live-ui/live-ui.xml",
+    "skipped": 4,
+    "passed": 9,
+    "failed": 1,
+    "sha256": "08DC7F7F0846758CD0AEADB4FEEBED770F1618D32462D503967A1D29C7CAA5A3",
+    "approved": false
+  },
+  "diagnosis": {
+    "observed": "Ten connected, ready players in a ten-player round0 choosing match; only final player has room-not-found with a guest profile.",
+    "oldPerPageActorIdsCaptured": false,
+    "runtimeDatabaseSnapshotCaptured": false,
+    "transportFailureEstablished": false,
+    "limits": "Request aborts and blank database-error logs do not establish cause. Ephemeral runtime was already removed; source/UI fit is not a reconstructed authoritative event history.",
+    "deadlineEventRetained": false,
+    "sourceSupportedInference": "Existing five-second sole-unready holdout can remove the final player while the old interleaved harness waits for that connection. Private UUID nonmember resolution returns404."
+  },
+  "scope": {
+    "applicationSourceChanged": false,
+    "twoAnswerUisPreserved": true,
+    "sequentialReadyPreserved": true,
+    "testOnlyPaths": [
+      {
+        "path": "tests/browser/readiness-barrier.contract.ts",
+        "sha256": "DDF4C3D14A10C7DE73C63654EAF7E5FDDD02BEB7CEBDFDA858ECCB57B19EABA0"
+      },
+      {
+        "path": "tests/browser/readiness-barrier.test.ts",
+        "sha256": "1DE8162C05AA5420F19A88EC0E057167AA539095F77D49D8B2BF27A9A2259CA1"
+      },
+      {
+        "path": "tests/browser/readiness-barrier.ts",
+        "sha256": "83E370376318AEA277E6B30FFFD50E27C271739C0554014A6CC4FE001FDD0429"
+      },
+      {
+        "path": "tests/browser/live-player-counts.integration.spec.ts",
+        "sha256": "4578B449F82E83430CAC300360C0CBBE204F216B4A70EB4F36C8516BA5F68C05"
+      }
+    ],
+    "normalPollingPreserved": true,
+    "schemaPolicyCapTimeoutRetryChanges": false,
+    "sourceEditsStopped": true
+  },
+  "gates": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-20261030T172924/receipt.json",
+      "sha256": "DD10D75F467A6264D64AB1DCDD71B772D63CE16F92EDE9CF7969370D93744921",
+      "startedAt": "2026-10-30T17:29:24",
+      "finishedAt": "2026-10-30T17:29:25",
+      "binding": "mock",
+      "increment": "v1",
+      "cases": 18,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControls": 9,
+      "helperAbsent": true,
+      "unchangedPreDeltaHelperSha256": null,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.contract.ts",
+          "sha256": "11B280E48D07277BF145B5D0F42B2B6B71C34A7AAC4DB5FD599289966696DF8D",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-20261030T172924/readiness-barrier.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.test.ts",
+          "sha256": "DE014C3DADEA403125ABD36887D5CC68111A914BBE01EE696DE812B725E17530",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-20261030T172924/readiness-barrier.test.ts"
+        }
+      ],
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-20261030T172924/unit.xml",
+      "junitSha256": "09BA99F9CA71D211AF97CBFC21F4D2028606A4C73DE4EF19E9D7F961A0F21022"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/receipt.json",
+      "sha256": "FBCD17E755C36C11EFFBB05D3A80603E37DA48206F0FEFFF2EA67CD635C2520D",
+      "startedAt": "2026-10-30T17:30:27",
+      "finishedAt": "2026-10-30T17:30:28",
+      "binding": "real",
+      "increment": "v1",
+      "cases": 18,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControls": 9,
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": null,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.contract.ts",
+          "sha256": "11B280E48D07277BF145B5D0F42B2B6B71C34A7AAC4DB5FD599289966696DF8D",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/readiness-barrier.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.test.ts",
+          "sha256": "DE014C3DADEA403125ABD36887D5CC68111A914BBE01EE696DE812B725E17530",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/readiness-barrier.test.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.ts",
+          "sha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/readiness-barrier.ts"
+        }
+      ],
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/unit.xml",
+      "junitSha256": "3F7E5753A848F64D3726D6C89A378FF9C629CBD91D2294F7387C6E02048BD739"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/receipt.json",
+      "sha256": "B2B81BDA69EC7BE9B70E900E41C3A7C0A71D3FB8F9EDBAE4E8C26553DC7D0E50",
+      "startedAt": "2026-10-30T17:34:42",
+      "finishedAt": "2026-10-30T17:34:42",
+      "binding": "mock",
+      "increment": "v2",
+      "cases": 22,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControls": 11,
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.contract.ts",
+          "sha256": "DDF4C3D14A10C7DE73C63654EAF7E5FDDD02BEB7CEBDFDA858ECCB57B19EABA0",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/readiness-barrier.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.test.ts",
+          "sha256": "1DE8162C05AA5420F19A88EC0E057167AA539095F77D49D8B2BF27A9A2259CA1",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/readiness-barrier.test.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.ts",
+          "sha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/readiness-barrier.ts"
+        }
+      ],
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/unit.xml",
+      "junitSha256": "7DCFD1BBAA25C59B8AFCE92E62B48BFA47CAC2DE9E724C6229E64F3BDEC57276"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-v2-20261030T173542/receipt.json",
+      "sha256": "5B1BAE8477689DEA75E14C365C2795BB70816FC5DDBF4C8C26DBAB1A03D5838D",
+      "startedAt": "2026-10-30T17:35:43",
+      "finishedAt": "2026-10-30T17:35:43",
+      "binding": "real",
+      "increment": "v2",
+      "cases": 22,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControls": 11,
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": null,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.contract.ts",
+          "sha256": "DDF4C3D14A10C7DE73C63654EAF7E5FDDD02BEB7CEBDFDA858ECCB57B19EABA0",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-v2-20261030T173542/readiness-barrier.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.test.ts",
+          "sha256": "1DE8162C05AA5420F19A88EC0E057167AA539095F77D49D8B2BF27A9A2259CA1",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-v2-20261030T173542/readiness-barrier.test.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.ts",
+          "sha256": "83E370376318AEA277E6B30FFFD50E27C271739C0554014A6CC4FE001FDD0429",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-v2-20261030T173542/readiness-barrier.ts"
+        }
+      ],
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-v2-20261030T173542/unit.xml",
+      "junitSha256": "A1D5E5978139E2B182CBE894267451835DFE0F3A0072DFD07780E7D882E2B106"
+    }
+  ],
+  "ownershipFollowup": {
+    "plan": "ownership-followup-plan.md",
+    "firstFailurePreserved": true,
+    "mockBeforeHelperDelta": true,
+    "failureClass": "Preparation failure must not abandon pending sibling work or let a synchronous callback abort ownership capture.",
+    "source": "Capacity15 read-only sibling audit and root authorization"
+  },
+  "editVerifications": [
+    {
+      "timestamp": "2026-10-30T17:28:24",
+      "file": "tests/browser/readiness-barrier.contract.ts",
+      "sha256": "11B280E48D07277BF145B5D0F42B2B6B71C34A7AAC4DB5FD599289966696DF8D",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T172819-readiness-barrier.contract.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T17:28:54",
+      "file": "tests/browser/readiness-barrier.test.ts",
+      "sha256": "DE014C3DADEA403125ABD36887D5CC68111A914BBE01EE696DE812B725E17530",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T172849-readiness-barrier.test.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T17:29:59",
+      "file": "tests/browser/readiness-barrier.ts",
+      "sha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T172955-readiness-barrier.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T17:31:09",
+      "file": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "4578B449F82E83430CAC300360C0CBBE204F216B4A70EB4F36C8516BA5F68C05",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T173104-live-player-counts.integration.spec.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T17:33:36",
+      "file": "tests/browser/readiness-barrier.contract.ts",
+      "sha256": "DDF4C3D14A10C7DE73C63654EAF7E5FDDD02BEB7CEBDFDA858ECCB57B19EABA0",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T173332-readiness-barrier.contract.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T17:34:19",
+      "file": "tests/browser/readiness-barrier.test.ts",
+      "sha256": "1DE8162C05AA5420F19A88EC0E057167AA539095F77D49D8B2BF27A9A2259CA1",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T173415-readiness-barrier.test.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T17:35:27",
+      "file": "tests/browser/readiness-barrier.ts",
+      "sha256": "83E370376318AEA277E6B30FFFD50E27C271739C0554014A6CC4FE001FDD0429",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/edit-verification/20261030T173523-readiness-barrier.ts.log",
+      "hookQualification": "Known plugin csproj-only verification issue already triaged; direct TypeScript result is authoritative."
+    }
+  ],
+  "finalSourceCheck": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/source-check-final.json",
+    "expectedFullUnitCountQualification": "662baseline plus22 new tests; root must collect and run new frozen candidate.",
+    "sourceDiffCheckExit": 0,
+    "unitDelta": 22,
+    "sha256": "1CB9FB4AB7DD86EBAEA47927CC659C0D2016447B8A57ADE8B0F9D88309C42F8D",
+    "expectedFullUnitCount": 684,
+    "lintExit": 0
+  },
+  "priorValidationMistake": {
+    "retained": true,
+    "corrected": true,
+    "description": "ESLint was incorrectly invoked in the Biome project; whole-tree diff included verbatim historical runner whitespace; stale unitDelta18 corrected in final receipt. No raw evidence normalized.",
+    "path": "source-check.json"
+  },
+  "currentRequirementObservations": {
+    "layer": "layer-1",
+    "references": [
+      "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C01",
+      "TEST-MULTIPLAYERINTEGRATION-134#TR-34-C01",
+      "TR-ROOM-SYNCRECOVERY-038#LIVE-07",
+      "TEST-ROOMSYNC-139#LIVE-07"
+    ],
+    "readAtLocal": "2026-10-30T17:35:52",
+    "route": "Codex plugin workflow.requirements.effective",
+    "selectedCriteriaSatisfied": false,
+    "requirementMutations": false
+  },
+  "assessment": {
+    "sha256": "08FA4048C456EB21E884F549A4F5C32BE19D46F81B64BC5C2F1B172AEE6235E3",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/assessment.md"
+  },
+  "actualBrowserRerunPerformed": false,
+  "reviewerInvoked": false,
+  "releaseAccepted": false,
+  "pending": [
+    "Root new source freeze, complete suite and fourteen actual browser games plus strict journey.",
+    "Actual final source/evidence binding and independent Cline/Beam/High HV with all required native/TRX.",
+    "Hosted rollout and physical-device evidence remain separately qualified."
+  ],
+  "accuracy": 99,
+  "completeness": 98,
+  "qualification": "Focused implementation evidence only. No current full-game pass, requirement satisfaction or release approval claimed."
+}

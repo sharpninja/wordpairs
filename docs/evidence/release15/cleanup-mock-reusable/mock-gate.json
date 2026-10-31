@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-10-30T15:15:55",
+  "requirement": "TEST-ROOMSYNC-139#LIVE-07 truthful bounded cleanup",
+  "qualification": "Correct fixture assertions pass; nonzero wrong-provider test exits are expected discriminating negative controls, not production-suite failures. The original preimplementation gate is retained separately.",
+  "inputs": [
+    {
+      "sha256": "11DBC19B96E7275C95550365A5660D15AA03EBAA35737909E0803462423998BA",
+      "path": "tests/application/live-scale-cleanup.test.ts"
+    },
+    {
+      "sha256": "90550BE1979AAA649C34234E9513F1D20F1C8630DA8030107162CC0D66BC90A2",
+      "path": "tests/application/live-scale-cleanup-fixture.ts"
+    }
+  ],
+  "runs": [
+    {
+      "exitCode": 0,
+      "sha256": "53F0725D018B80BCC3022ECA0F707816416C100DAA4BD3072F9D9319127F6424",
+      "provider": "correct",
+      "skipped": 0,
+      "tests": 10,
+      "rejections": 0
+    },
+    {
+      "exitCode": 1,
+      "sha256": "59D847EDE46E07CFB45DEDC4A37DB6CFA16B7565D57B106DA63E7941F75AD7FF",
+      "provider": "wrong-silent-failure",
+      "skipped": 0,
+      "tests": 10,
+      "rejections": 6
+    },
+    {
+      "exitCode": 1,
+      "sha256": "A5A52C7C1972A4DE3B1EF68F4D89BE42EFF95CD3BABE42D9E451CC60F0253A8E",
+      "provider": "wrong-no-readback",
+      "skipped": 0,
+      "tests": 10,
+      "rejections": 2
+    },
+    {
+      "exitCode": 1,
+      "sha256": "582ED249656C873ADA1F11BFFE9D86AA193009EC951736E8956A0BE471DDE611",
+      "provider": "wrong-identity",
+      "skipped": 0,
+      "tests": 10,
+      "rejections": 3
+    }
+  ]
+}

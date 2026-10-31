@@ -1,0 +1,171 @@
+<testsuites id="" name="" tests="14" failures="1" skipped="4" errors="0" time="422.219559">
+<testsuite name="live-player-counts.integration.spec.ts" timestamp="2026-10-30T22:11:39.876Z" hostname="" tests="14" failures="1" skipped="4" time="419.7" errors="0">
+<testcase name="LIVE-SCALE 2 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="17.009">
+<system-out>
+<![CDATA[LIVE_SCALE players=2 round=1
+LIVE_SCALE players=2 round=2
+LIVE_SCALE players=2 round=3
+LIVE_SCALE players=2 round=4
+LIVE_SCALE players=2 round=5
+LIVE_SCALE players=2 round=6
+LIVE_SCALE players=2 round=7
+LIVE_SCALE players=2 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 3 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="18.17">
+<system-out>
+<![CDATA[LIVE_SCALE players=3 round=1
+LIVE_SCALE players=3 round=2
+LIVE_SCALE players=3 round=3
+LIVE_SCALE players=3 round=4
+LIVE_SCALE players=3 round=5
+LIVE_SCALE players=3 round=6
+LIVE_SCALE players=3 round=7
+LIVE_SCALE players=3 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 4 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="22.588">
+<system-out>
+<![CDATA[LIVE_SCALE players=4 round=1
+LIVE_SCALE players=4 round=2
+LIVE_SCALE players=4 round=3
+LIVE_SCALE players=4 round=4
+LIVE_SCALE players=4 round=5
+LIVE_SCALE players=4 round=6
+LIVE_SCALE players=4 round=7
+LIVE_SCALE players=4 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 5 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="21.835">
+<system-out>
+<![CDATA[LIVE_SCALE players=5 round=1
+LIVE_SCALE players=5 round=2
+LIVE_SCALE players=5 round=3
+LIVE_SCALE players=5 round=4
+LIVE_SCALE players=5 round=5
+LIVE_SCALE players=5 round=6
+LIVE_SCALE players=5 round=7
+LIVE_SCALE players=5 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 6 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="25.394">
+<system-out>
+<![CDATA[LIVE_SCALE players=6 round=1
+LIVE_SCALE players=6 round=2
+LIVE_SCALE players=6 round=3
+LIVE_SCALE players=6 round=4
+LIVE_SCALE players=6 round=5
+LIVE_SCALE players=6 round=6
+LIVE_SCALE players=6 round=7
+LIVE_SCALE players=6 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 7 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="30.944">
+<system-out>
+<![CDATA[LIVE_SCALE players=7 round=1
+LIVE_SCALE players=7 round=2
+LIVE_SCALE players=7 round=3
+LIVE_SCALE players=7 round=4
+LIVE_SCALE players=7 round=5
+LIVE_SCALE players=7 round=6
+LIVE_SCALE players=7 round=7
+LIVE_SCALE players=7 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 8 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="86.928">
+<system-out>
+<![CDATA[LIVE_SCALE players=8 round=1
+LIVE_SCALE players=8 round=2
+LIVE_SCALE players=8 round=3
+LIVE_SCALE players=8 round=4
+LIVE_SCALE players=8 round=5
+LIVE_SCALE players=8 round=6
+LIVE_SCALE players=8 round=7
+LIVE_SCALE players=8 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 9 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="60.339">
+<system-out>
+<![CDATA[LIVE_SCALE players=9 round=1
+LIVE_SCALE players=9 round=2
+LIVE_SCALE players=9 round=3
+LIVE_SCALE players=9 round=4
+LIVE_SCALE players=9 round=5
+LIVE_SCALE players=9 round=6
+LIVE_SCALE players=9 round=7
+LIVE_SCALE players=9 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 10 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="80.344">
+<system-out>
+<![CDATA[LIVE_SCALE players=10 round=1
+LIVE_SCALE players=10 round=2
+LIVE_SCALE players=10 round=3
+LIVE_SCALE players=10 round=4
+LIVE_SCALE players=10 round=5
+LIVE_SCALE players=10 round=6
+LIVE_SCALE players=10 round=7
+LIVE_SCALE players=10 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 11 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="56.149">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../test-results/live-local/live-player-counts.integra-d2736-rs-complete-eight-UI-rounds/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  live-player-counts.integration.spec.ts:15:29 › LIVE-SCALE 11 real browser players complete eight UI rounds 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('● Live updates connected', { exact: true })
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('● Live updates connected', { exact: true }) with timeout 30000ms
+      - waiting for getByText('● Live updates connected', { exact: true })
+
+
+      113 |     for (const page of pages) {
+      114 |       phase = "UI readiness";
+    > 115 |       await expect(page.getByText("● Live updates connected", { exact: true })).toBeVisible();
+          |                                                                                 ^
+      116 |       await commitUi(page, "ready", () => page.getByRole("button", { name: "Mark ready", exact: true }).click(), "room");
+      117 |     }
+      118 |     for (let round = 1; round <= 8; round++) {
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:115:81
+
+    Error Context: ../../test-results/live-local/live-player-counts.integra-d2736-rs-complete-eight-UI-rounds/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="LIVE-SCALE 12 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 13 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 14 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 15 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>

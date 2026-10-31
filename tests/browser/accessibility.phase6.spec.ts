@@ -5,7 +5,7 @@ import { connectGame, roomId } from "./phase6-fixture";
 test("AC-05-T01 counterpart artwork retry renders the successfully probed URL", async ({
   browser,
 }, info) => {
-  const context = await browser.newContext();
+  const context = await browser.newContext({ viewport: { width: 1440, height: 960 } });
   try {
     await connectGame(context);
     await context.route("**/backgrounds/heroes-16x9.webp*", (route) =>
@@ -182,9 +182,6 @@ for (const [category, index] of [
               );
             };
             const topbar = getComputedStyle(document.querySelector(".topbar")!);
-            const install = getComputedStyle(
-              document.querySelector(".pwa-install")!,
-            );
             const backdrop = document.querySelector(".game-backdrop")!;
             const background = getComputedStyle(backdrop).backgroundImage;
             const image = new Image();
@@ -203,10 +200,6 @@ for (const [category, index] of [
                 prompt.color,
               ),
               headerContrast: contrastFor(topbar.backgroundColor, topbar.color),
-              installContrast: contrastFor(
-                install.backgroundColor,
-                install.color,
-              ),
               surfaceOpacity: Number(
                 surface.backgroundColor.match(/[\d.]+/g)![3] ?? 1,
               ),
@@ -229,7 +222,7 @@ for (const [category, index] of [
         );
         expect(observed.promptContrast).toBeGreaterThanOrEqual(4.5);
         expect(observed.headerContrast).toBeGreaterThanOrEqual(4.5);
-        expect(observed.installContrast).toBeGreaterThanOrEqual(4.5);
+        await expect(page.locator(".pwa-install")).toHaveCount(0);
         expect(observed.surfaceOpacity).toBeGreaterThanOrEqual(0.85);
         expect(observed.surfaceOpacity).toBeLessThan(1);
         expect(observed.backdropFilter).toContain("blur");
@@ -247,7 +240,7 @@ for (const [category, index] of [
           `/backgrounds/${category}-${viewport.width < viewport.height ? "9x16" : "16x9"}.webp`,
         );
         await page
-          .locator(".game-surface, .topbar, .pwa-install")
+          .locator(".game-surface, .topbar")
           .evaluateAll((elements) => {
             for (const element of elements) {
               (element as HTMLElement).style.backdropFilter = "none";
@@ -258,14 +251,14 @@ for (const [category, index] of [
             }
           });
         const withoutBlur = await page
-          .locator(".game-surface, .topbar, .pwa-install")
+          .locator(".game-surface, .topbar")
           .evaluateAll((elements) =>
             elements.map((e) => ({
               fill: getComputedStyle(e).backgroundColor,
               blur: getComputedStyle(e).backdropFilter,
             })),
           );
-        expect(withoutBlur).toHaveLength(3);
+        expect(withoutBlur).toHaveLength(2);
         for (const style of withoutBlur) {
           expect(style.fill).toBe(observed.surfaceBackground);
           expect(style.blur).toBe("none");
@@ -537,18 +530,18 @@ function valueForBrowser<T>(
   return result.value;
 }
 
-test("maximum room roster and 25-player scorecard remain usable on a phone", async ({
+for (const playerCount of [10, 25]) test(`${playerCount === 10 ? "maximum supported" : "historical legacy"} ${playerCount}-player scorecard remains usable on a phone`, async ({
   browser,
 }, info) => {
   const context = await browser.newContext({
     viewport: { width: 320, height: 568 },
   });
   try {
-    await connectGame(context, "heroes", 0, 1, 25);
+    await connectGame(context, "heroes", 0, 1, playerCount);
     const page = await context.newPage();
     await page.goto(`/rooms/${roomId}`);
     await expect(
-      page.getByText("25 / 25 players · 0 open player slots · playing"),
+      page.getByText(`${playerCount} / ${playerCount} players · 0 open player slots · playing`),
     ).toBeVisible();
     await expect(
       page.getByRole("heading", { name: "Observers (25 / 25)" }),
@@ -557,9 +550,9 @@ test("maximum room roster and 25-player scorecard remain usable on a phone", asy
       name: "Round 1 scorecard",
       exact: true,
     });
-    await expect(table.getByRole("row")).toHaveCount(26);
+    await expect(table.getByRole("row")).toHaveCount(playerCount + 1);
     await table.getByRole("row").last().scrollIntoViewIfNeeded();
-    await expect(table.getByRole("row").last()).toContainText("Guest p25");
+    await expect(table.getByRole("row").last()).toContainText(`Guest p${playerCount}`);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -569,7 +562,7 @@ test("maximum room roster and 25-player scorecard remain usable on a phone", asy
       info.outputPath("maximum-room.json"),
       JSON.stringify(
         {
-          players: 25,
+          players: playerCount,
           observers: 25,
           scoreRows: (await table.getByRole("row").count()) - 1,
           viewport: { width: 320, height: 568 },

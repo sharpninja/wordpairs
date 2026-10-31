@@ -1,0 +1,75 @@
+{
+  "timestampLocal": "2026-10-30T18:35:16",
+  "kind": "read-only-applied-correction-and-retention-followup-not-HV",
+  "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T233205Z-launcher-retention-followup",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "priorReceipt": {
+    "path": "docs/evidence/release15/frozen-fdee7a2/launcher-selfcheck.json",
+    "sha256": "4FCF9342F4F34A9AEFEA720A16D854257BA1AEBF3E9E75E63D6110A619CC88E6",
+    "ownRequestId": "req-20261030T232254Z-frozen-launcher-selfcheck",
+    "retainedUnchanged": true,
+    "qualification": "Recommendation-stage notes described earlier source; retained snapshot/hash captured corrected source after concurrent parent edits. Do not treat the three prior recommendations as still open against35DEC94A."
+  },
+  "correctedInput": {
+    "path": "docs/evidence/release15/frozen-fdee7a2/launcher-selfcheck-inputs/PrepareWordpairsClineReview.ps1",
+    "sha256": "35DEC94A9FFE66EA9348BA803F71AC4024CAC9B57533587BF7AE032CCE4C37C9",
+    "fullReadAtLocal": "2026-10-30T18:31:07",
+    "checks": {
+      "commandCaptureV2": true,
+      "causalityQualified": true,
+      "testDriverAttribution": true
+    }
+  },
+  "note": {
+    "path": "docs/evidence/release15/frozen-fdee7a2/launcher-retention-final.md",
+    "sha256": "FC04771A4C0CB67F0737B9BA5B7391D46D646495594CCC329D09DEDEFA350B36"
+  },
+  "historicalProvenanceGap": {
+    "preparerSource": "/tmp/PrepareWordpairsClineReview.ps1",
+    "preparerSha256": "35DEC94A9FFE66EA9348BA803F71AC4024CAC9B57533587BF7AE032CCE4C37C9",
+    "preparerLines": "18-19,74,84",
+    "launcherSource": "/tmp/InvokeWordpairsClineHv.ps1",
+    "launcherSha256": "971986028BDCB9E7963C044EDCB7CCE0F953841935E871E471DF680474A4E0FF",
+    "launcherLines": "63-75,100-102",
+    "observation": "Only preparer digest recorded; template read from/tmp; input bytes and review-preparation.json not bound by these historical inspected versions.",
+    "scope": "Operational preparation provenance, same failure class as historical ClaudeF-R6-1; no executed-HV failure claim."
+  },
+  "currentSourceDelta": {
+    "inputCapture": "docs/evidence/release15/frozen-fdee7a2/launcher-retention-current-inputs/input-capture.json",
+    "inputCaptureSha256": "B9DAD1DA7A7961AD7347548494AB16286B5923F7B88D274F5AF233D8B7D54A8A",
+    "pins": [
+      {
+        "path": "/tmp/InvokeWordpairsClineHv.ps1",
+        "sha256": "1141ED71BA2ECA8874E1ED68CDCBAF3237686A932FA06C96ED1F77AC5C4FA70C",
+        "retainedCopy": "docs/evidence/release15/frozen-fdee7a2/launcher-retention-current-inputs/InvokeWordpairsClineHv.ps1",
+        "originalRetained": true
+      },
+      {
+        "path": "/tmp/PrepareWordpairsClineReview.ps1",
+        "sha256": "ECD5762974E97097E5885A0411904C66A469348E940A05B4119CB83313D685DF",
+        "retainedCopy": "docs/evidence/release15/frozen-fdee7a2/launcher-retention-current-inputs/PrepareWordpairsClineReview.ps1",
+        "originalRetained": true
+      }
+    ],
+    "inspectedAtLocal": "2026-10-30T18:33:57",
+    "sourceLevelGapAddressed": true,
+    "blockingDefectObserved": false,
+    "actualPreparationExecutedByThisAgent": false
+  },
+  "appliedSourceRemedy": [
+    "Copy/hash-verify/retain actual preparer and template with write-once targets",
+    "Consume retained template; recheck original and copy hashes before output writes",
+    "Add retained input pins to self.inspectedFiles for existing launch/post-drift checks",
+    "Bind preparation output/run/brief/self hashes separately in launcher, avoiding circular self-review hash dependency"
+  ],
+  "noInspectedInputEdits": true,
+  "noLaunchTestBuildProviderRuns": true,
+  "noExistingReceiptRewrite": true,
+  "actualRetentionExecutionVerified": false,
+  "accuracyPercent": 99,
+  "completenessPercent": 98,
+  "qualification": "Bounded same-family follow-up; recommendations and corrected-input inspection only, not actual new producer retention/execution or independent acceptance."
+}

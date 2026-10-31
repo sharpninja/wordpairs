@@ -1,0 +1,36 @@
+{
+  "startedAtLocal": "2026-10-30T20:35:40.5774195-05:00",
+  "finishedAtLocal": "2026-10-30T20:35:41.0579282-05:00",
+  "environment": "production",
+  "mode": "WhatIf",
+  "executable": "/usr/lib/powershell-7/pwsh",
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/Invoke-WordpairsEncryptedBackup-refresh.ps1",
+    "-Environment",
+    "production",
+    "-WhatIf"
+  ],
+  "exitCode": 0,
+  "producer": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/Invoke-WordpairsEncryptedBackup-refresh.ps1",
+  "producerSha256": "B4BA738228AF74ADF82E6642F11BB3305C38DAA6B48DAE07E4DF7185727979F9",
+  "producerUnchanged": true,
+  "runnerCopy": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/RunWordpairsBackupRefresh.ps1",
+  "runnerSha256": "4E7B439440BA27A3DFC2367FBD6C9B3F6AB87AD253F0AA344994ECCCA6F4277F",
+  "newReceiptPaths": [],
+  "privateStdout": {
+    "sha256": "EDE8D633E56653DB3D610F47785DCAACCD1EFFB579CC23A5EACF08F4855102BB",
+    "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/operation-logs/backup-refresh-20261030T203154/production-whatif.stdout.log"
+  },
+  "privateStderr": {
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/operation-logs/backup-refresh-20261030T203154/production-whatif.stderr.log"
+  },
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T013147Z-app-backup-refresh",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "qualification": "Operational producer invocation only, no source test/build or hosted mutation. Full native streams retained privately without printing contents."
+}

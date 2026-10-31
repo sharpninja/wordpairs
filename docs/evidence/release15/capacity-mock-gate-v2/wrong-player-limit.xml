@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="16" failures="6" errors="0" time="2.294910758">
+    <testsuite name="tests/application/capacity-policy.test.ts" timestamp="2026-10-30T19:53:34.419Z" hostname="[PRIVATE HOST]" tests="11" failures="4" errors="0" skipped="0" time="0.032055312">
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; admits each integer capacity 2 through 15 and preserves the private default" time="0.006352294">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; rejects 1,16,20,25,26 and malformed capacity inputs" time="0.007341453">
+            <failure message="invalid capacity 16: expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: invalid capacity 16: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/application/capacity-policy.test.ts:31:79
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; draws the anchor from both inclusive endpoints of a frozen fifteen-player roster" time="0.001084031">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; rejects every new match above fifteen before drawing an anchor" time="0.004140771">
+            <failure message="expected { ok: true, value: { id: &apos;m&apos;, …(11) } } to deeply equal { ok: false, …(1) }" type="AssertionError">
+AssertionError: expected { ok: true, value: { id: &apos;m&apos;, …(11) } } to deeply equal { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   &quot;error&quot;: {
+-     &quot;code&quot;: &quot;VALIDATION_ERROR&quot;,
++   &quot;ok&quot;: true,
++   &quot;value&quot;: {
++     &quot;anchorId&quot;: &quot;p1&quot;,
++     &quot;autoCategoryId&quot;: null,
++     &quot;chooserId&quot;: &quot;p1&quot;,
++     &quot;finishedAt&quot;: null,
++     &quot;id&quot;: &quot;m&quot;,
++     &quot;roomId&quot;: &quot;r&quot;,
++     &quot;roster&quot;: [
++       &quot;p1&quot;,
++       &quot;p2&quot;,
++       &quot;p3&quot;,
++       &quot;p4&quot;,
++       &quot;p5&quot;,
++       &quot;p6&quot;,
++       &quot;p7&quot;,
++       &quot;p8&quot;,
++       &quot;p9&quot;,
++       &quot;p10&quot;,
++       &quot;p11&quot;,
++       &quot;p12&quot;,
++       &quot;p13&quot;,
++       &quot;p14&quot;,
++       &quot;p15&quot;,
++       &quot;p16&quot;,
++     ],
++     &quot;rounds&quot;: [],
++     &quot;startedAt&quot;: 0,
++     &quot;status&quot;: &quot;choosing&quot;,
++     &quot;usedPairIds&quot;: [],
++     &quot;version&quot;: 0,
+    },
+-   &quot;ok&quot;: false,
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:46:92
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; admits the fifteenth player but rejects a sixteenth in a legacy capacity25 room without mutation" time="0.004188282">
+            <failure message="expected { ok: true, …(1) } to deeply equal { ok: false, …(1) }" type="AssertionError">
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   &quot;error&quot;: {
+-     &quot;code&quot;: &quot;ROOM_FULL&quot;,
++   &quot;ok&quot;: true,
++   &quot;value&quot;: {
++     &quot;capacity&quot;: 25,
++     &quot;changedAt&quot;: 0,
++     &quot;closedAt&quot;: null,
++     &quot;code&quot;: &quot;ABCDEFGH&quot;,
++     &quot;countdownDueAt&quot;: null,
++     &quot;createdAt&quot;: 0,
++     &quot;creatorId&quot;: &quot;p1&quot;,
++     &quot;discoverable&quot;: false,
++     &quot;holdoutDueAt&quot;: 5000,
++     &quot;holdoutId&quot;: &quot;p1&quot;,
++     &quot;id&quot;: &quot;legacy&quot;,
++     &quot;idlePromptedVersion&quot;: null,
++     &quot;lockedRoster&quot;: [],
++     &quot;nextObserverSequence&quot;: 0,
++     &quot;observers&quot;: [],
++     &quot;players&quot;: [
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p1&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p2&quot;,
++         &quot;ready&quot;: true,
+        },
+-   &quot;ok&quot;: false,
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p3&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p4&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p5&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p6&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p7&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p8&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p9&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p10&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p11&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p12&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p13&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p14&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 1,
++         &quot;lastSeenAt&quot;: 1,
++         &quot;profileId&quot;: &quot;p15&quot;,
++         &quot;ready&quot;: false,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 2,
++         &quot;lastSeenAt&quot;: 2,
++         &quot;profileId&quot;: &quot;p16&quot;,
++         &quot;ready&quot;: false,
++       },
++     ],
++     &quot;status&quot;: &quot;waiting&quot;,
++     &quot;version&quot;: 0,
++   },
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:56:57
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; preserves the separate twenty-five-observer capacity" time="0.000673917">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; projects the effective fifteen-seat waiting limit without negative slots" time="0.001711837">
+            <failure message="expected { capacity: 25, …(2) } to match object { capacity: 15, …(2) }" type="AssertionError">
+AssertionError: expected { capacity: 25, …(2) } to match object { capacity: 15, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;availableSlots&quot;: 1,
++   &quot;availableSlots&quot;: 11,
+    &quot;canJoinPlayer&quot;: true,
+-   &quot;capacity&quot;: 15,
++   &quot;capacity&quot;: 25,
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:68:60
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; preserves oversized waiting members while denying readiness and automatic holdout or start" time="0.002192732">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; blocks an old oversized countdown without removing members" time="0.000496535">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; keeps Leave functional in oversized waiting and countdown rooms without promoting above fifteen" time="0.000570495">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; preserves historical running room capacity and leaves without marking it blocked" time="0.000936619">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/legacy-match-capacity.test.ts" timestamp="2026-10-30T19:53:34.430Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.018134772">
+        <testcase classname="tests/application/legacy-match-capacity.test.ts" name="CAP15-LEGACY preserves every historical twenty-five-player answer and completes eight rounds" time="0.016740168">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/capacity-ui.test.ts" timestamp="2026-10-30T19:53:34.430Z" hostname="[PRIVATE HOST]" tests="4" failures="2" errors="0" skipped="0" time="2.244720674">
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 exposes a 2 through 15 creation input and browser validation blocks16" time="1.039770939">
+            <failure message="Unable to find a label with the text of: Maximum players (2–15)
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;" type="TestingLibraryElementError">
+TestingLibraryElementError: Unable to find a label with the text of: Maximum players (2–15)
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/web/capacity-ui.test.ts:19:26
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 creation sends fifteen and leaves the observer setting separate" time="1.00796771">
+            <failure message="Unable to find a label with the text of: Maximum players (2–15)
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;" type="TestingLibraryElementError">
+TestingLibraryElementError: Unable to find a label with the text of: Maximum players (2–15)
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;form&gt;
+      &lt;label
+        for=&quot;capacity&quot;
+      &gt;
+        Maximum players (2–25)
+      &lt;/label&gt;
+      &lt;input
+        id=&quot;capacity&quot;
+        max=&quot;25&quot;
+        min=&quot;2&quot;
+        type=&quot;number&quot;
+        value=&quot;4&quot;
+      /&gt;
+      &lt;button
+        type=&quot;submit&quot;
+      &gt;
+        Create room
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/web/capacity-ui.test.ts:29:26
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 legacy waiting room explains the block and retains Leave without readiness" time="0.183593291">
+        </testcase>
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 legacy countdown room explains the block and retains Leave without readiness" time="0.011508326">
+        </testcase>
+    </testsuite>
+</testsuites>

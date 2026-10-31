@@ -228,7 +228,13 @@ test("actual players and bound observer preserve solved hints, scoring and the s
     await expect(
       a.getByRole("button", { name: "Retry pending game request" }),
     ).toBeVisible();
+    const retryRequest = a.waitForRequest((request) =>
+      new URL(request.url()).pathname.endsWith("/match") &&
+      request.method() === "POST",
+    );
     await a.getByRole("button", { name: "Retry pending game request" }).click();
+    expect((await (await retryRequest).response())?.status()).toBe(200);
+    await expect.poll(() => writes.filter((w) => w.action === "answer").length).toBe(2);
     await expect(a.getByText(/Your score is locked/).first()).toBeVisible();
     const answers = writes.filter((w) => w.action === "answer");
     expect(answers).toHaveLength(2);
@@ -255,7 +261,14 @@ test("actual players and bound observer preserve solved hints, scoring and the s
       0,
     );
     await b.getByLabel("Your answer", { exact: true }).fill(state.answer());
+    const submitted = b.waitForResponse((response) =>
+      new URL(response.url()).pathname.endsWith("/match") &&
+      response.request().method() === "POST",
+    );
     await b.getByRole("button", { name: "Submit answer", exact: true }).click();
+    const answerResponse = await submitted;
+    expect(answerResponse.status()).toBe(200);
+    await answerResponse.finished();
     await expect(
       b.getByText("Correct answer:", { exact: false }),
     ).toBeVisible();

@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-10-29T00:09:35",
+  "root": "\u003Crepo\u003E",
+  "test": "\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.Tests.ps1",
+  "testSha256": "5EDE3C1F559BC322E7CFF1C7C09B945E44029483F3DB8BE2172A84A9F9C4A303",
+  "correctMockSha256": "D8C946707CBC5B5DAF2725EFAC05575D63DA374278DD86161A2841FE3D8E332D",
+  "wrongMockSha256": "048E96562E0F55A5FF6FB0EEB424E0E4E68C675773FEFA9E466C2F94D2E324BD",
+  "wrongEmptyMockSha256": "BEA9C1694E197D299FF62579A38B992460218B5B677898640EEC6029528AD552",
+  "runs": [
+    {
+      "name": "correct",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "proposes only 012 after the recorded thirteen-migration hosted prefix",
+          "result": "Passed"
+        },
+        {
+          "name": "proposes the whole catalog for an empty history",
+          "result": "Passed"
+        },
+        {
+          "name": "proposes hosted scheduler, private realtime, then 012 after core 001 through 011",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects 012 inserted before hosted 101 without opening a connection",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects source drift at an otherwise matching migration",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects history longer than the declared migration set",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "name": "wrong",
+      "passed": 1,
+      "failed": 5,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "proposes only 012 after the recorded thirteen-migration hosted prefix",
+          "result": "Failed"
+        },
+        {
+          "name": "proposes the whole catalog for an empty history",
+          "result": "Passed"
+        },
+        {
+          "name": "proposes hosted scheduler, private realtime, then 012 after core 001 through 011",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects 012 inserted before hosted 101 without opening a connection",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects source drift at an otherwise matching migration",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects history longer than the declared migration set",
+          "result": "Failed"
+        }
+      ]
+    },
+    {
+      "name": "wrong-empty",
+      "passed": 0,
+      "failed": 6,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "proposes only 012 after the recorded thirteen-migration hosted prefix",
+          "result": "Failed"
+        },
+        {
+          "name": "proposes the whole catalog for an empty history",
+          "result": "Failed"
+        },
+        {
+          "name": "proposes hosted scheduler, private realtime, then 012 after core 001 through 011",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects 012 inserted before hosted 101 without opening a connection",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects source drift at an otherwise matching migration",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects history longer than the declared migration set",
+          "result": "Failed"
+        }
+      ]
+    }
+  ],
+  "qualification": "Catch-up mock sensitivity check. This receipt does not backdate or replace the original pre-implementation gate."
+}

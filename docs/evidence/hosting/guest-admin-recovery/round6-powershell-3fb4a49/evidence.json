@@ -1,0 +1,113 @@
+{
+  "timestamp": "2026-10-29T10:16:20",
+  "runId": "01d8f57f-6574-4f37-a99e-b8f82a59a723",
+  "hostName": "[PRIVATE HOST]",
+  "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+  "reports": [
+    {
+      "name": "planner-mock",
+      "runId": "01d8f57f-6574-4f37-a99e-b8f82a59a723",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:15:51",
+      "finishedAt": "2026-10-29T10:15:58",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner"
+      ],
+      "exitCode": 0,
+      "producerSha256": "EAEEA7541ABD8D94611AC1F1E3E537B1ACBD31E5F1A7367626B2324D7A5F5D6F",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner/mock.xml",
+      "junitSha256": "59E733E17C92EE838181F1DCAE26DE59935CA37B481A85867814C5CCA24E36FD",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner-mock.trx",
+      "trxSha256": "4C1276CDC0AF0FE5B2D9FDE212E9763F40FFD46A3DBEE909C888388705798DA5",
+      "cases": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "planner-real",
+      "runId": "01d8f57f-6574-4f37-a99e-b8f82a59a723",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:15:51",
+      "finishedAt": "2026-10-29T10:15:58",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-HostingPlannerEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner"
+      ],
+      "exitCode": 0,
+      "producerSha256": "EAEEA7541ABD8D94611AC1F1E3E537B1ACBD31E5F1A7367626B2324D7A5F5D6F",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner/real.xml",
+      "junitSha256": "F07B4765EE1262048F0B20D03B6D024C6CF2EBDDD653DFCE2F440F1148CCABFE",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner-real.trx",
+      "trxSha256": "E66BA41D2F8602B44DA8A5105C99DFA43A330553CD70B9637138C630BBCCC111",
+      "cases": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "contracts-contracts",
+      "runId": "01d8f57f-6574-4f37-a99e-b8f82a59a723",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:16:00",
+      "finishedAt": "2026-10-29T10:16:12",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-LocalScriptContracts.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/contracts"
+      ],
+      "exitCode": 0,
+      "producerSha256": "F52C70BED2411110C85D22AE4C6064FF8DAE5ADE85BF79CF54AF143BEC8F75E7",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/contracts/contracts.xml",
+      "junitSha256": "4361D0A9ED9B3374CB426AD55C9D657A73A1097CCFA81E2D25E83FC5EACB682D",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/contracts-contracts.trx",
+      "trxSha256": "50E7CA2613A9947E9C9D1366DFC5863943DA514897EF5D88CD2294ED40F17A20",
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "docs-docs",
+      "runId": "01d8f57f-6574-4f37-a99e-b8f82a59a723",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:16:13",
+      "finishedAt": "2026-10-29T10:16:18",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/Run-CurrentReleaseDocsTests.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/docs"
+      ],
+      "exitCode": 0,
+      "producerSha256": "825E39598E6104058CA7DA05F488EBB8115295ABCE4775A019D793CB9F77CBE1",
+      "junit": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/docs/docs.xml",
+      "junitSha256": "3607094E63B2369C32545ABFA99F64AE6547897D0FB60AAD4006901C295F1269",
+      "trx": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/docs-docs.trx",
+      "trxSha256": "E858C4F5992D24C0040FED0CFC0E35725871F5946FC5F1A01408E415373E78DC",
+      "cases": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "plannerControls": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49/planner/controls/mock-gate.json"
+}

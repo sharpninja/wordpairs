@@ -148,7 +148,7 @@ describe("Phase 2A anonymous public projections", () => {
     expect(landingProjection([], [], 0)).toEqual({
       leaderboard: [],
       lobbies: [],
-      rules: { version: "2.6", updated: "2026-10-26" },
+      rules: { version: "2.8", updated: "2026-10-31" },
     });
   });
 });

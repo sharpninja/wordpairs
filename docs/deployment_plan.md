@@ -1,7 +1,18 @@
 # Wordpairs Deployment and Release Plan
 
+Current release override, 28 October 2026: [guest game and GitHub admin PWA](admin_pwa_release.md)
+is the current identity and installation contract. Public play has no manifest or
+installation controls; `/admin/manifest.webmanifest` and `/admin-sw.js` serve the
+admin PWA. Only verified GitHub owner sharpninja may administer it; profile-ID
+bootstrap and user delegation are inactive. Both existing Vercel projects use
+their production target, with explicit reviewed-commit staging deployment before
+production. Earlier Preview/public-PWA/OpenAI/bootstrap proposals and their
+original diagrams are historical. No GitHub Actions are added.
+
+The [31 October 2026 release amendment](release15-completion-plan.md) sets rules v2.8: new room capacities and match rosters are 2 through 10, with the independent 25-observer limit unchanged (35-person maximum audience). The complete service/UI matrix requires 9 eight-round games, 54 player participations and 432 accepted solves. Preserve larger historical running matches and stored results; above-limit waiting/countdown rooms keep Leave and an explicit compatibility notice rather than forced eviction or oversized start. Apply forward migrations with staging-first verification and never rewrite existing migration file bytes.
+
 **Status:** Hosted setup in progress; see [execution and current blockers](hosting_execution.md)
-**Requirements baseline:** `word_association_game_requirements.md` v2.6  
+**Requirements baseline:** current QBrain layer and rules v2.8; `word_association_game_requirements.md` v2.6 is historical
 **Implementation sequence:** `implementation_plan.md`  
 **Hosting constraint:** Vercel Hobby and Supabase Free; no paid add-ons or fallback  
 **Automation constraint:** no GitHub Actions
@@ -11,16 +22,16 @@
 The operator selected two existing projects: `wordpairs` for logical Staging and
 `wordpairs-j9jf` for Production. Each uses its own stable Vercel production-target
 domain and matching isolated Supabase project. This supersedes the single-project
-Staging Preview proposal below. The [execution record](hosting_execution.md)
+Staging Preview proposal. The [execution record](hosting_execution.md)
 documents the current server-only configuration, scheduler, migrations and evidence.
 
-Phone home-screen installation is implemented in the [PWA extension](pwa_design.md). Production must serve the application, `/manifest.webmanifest`, `/sw.js`, `/offline.html` and `/icons/*` from the same HTTPS origin. Preserve the worker's no-cache/no-store JavaScript headers and root scope. Operational checks must install and relaunch on actual Android/iPhone devices, verify standalone `/play`, offline reconnect guidance and recovery online. Local Chromium diagnostics and iPhone user-agent tests do not establish a physical-device installation or a hosted release. No deployment was performed as part of adding PWA support.
+The current installation contract is the admin-only PWA in [guest game and GitHub admin PWA](admin_pwa_release.md). The public game has no installation prompt or manifest; `/sw.js` retires the former public worker. Operational checks for the admin app must separately verify hosted GitHub sign-in, installation and relaunch on physical devices. Local Chromium diagnostics do not establish those observations.
 
 This document defines how Wordpairs will be provisioned, built, deployed, operated, rolled back, and released under the project's current constraints. Deployment, provisioning, build/SWBOM, and environment-isolation checks are bound to technical requirements TR-20–TR-29, not to ACs. Any live deployment/account/database checks are TR-only integration or operational evidence and cannot satisfy the AC mock-coverage gate. The public landing behavior remains covered by active AC-43 and AC-50 tests against local components and mocked projections; deployed smoke checks are operational diagnostics only.
 
 The system uses Vercel Git integration for deployment from `sharpninja/wordpairs` and Supabase Postgres/Realtime for durable and live room data. Next.js/TypeScript is the selected application stack recorded in the approved Phase 0 technical ADR. GitHub Actions is not used. Provisioning and release archive creation are manually invoked from an authenticated workstation. The build and release gates are implemented only after the project's planning and mock-first TDD gates pass.
 
-![Vercel deployment workflow](word_association_vercel_deployment.svg)
+![Historical single-project deployment proposal; current two-project mapping is specified below](word_association_vercel_deployment.svg)
 
 ## 2.1 TR-only verification, separate from AC coverage
 
@@ -28,10 +39,10 @@ The following contract tests are specified before implementation and validated a
 
 | TR | Mock-first technical contract | Later TR-only integration/operational evidence |
 |---|---|---|
-| TR-20, TR-24 | `TR-20-T01` / `TR-24-T01`: fake Vercel configuration metadata verifies branch-to-Preview/Production mapping and no GitHub Actions dependency. | Verify the connected repository and branch settings in Vercel; this is not AC evidence. |
+| TR-20, TR-24 | `TR-20-T01` / `TR-24-T01`: fake Vercel configuration metadata verifies distinct staging/production project bindings, ordered exact-SHA rollout and no GitHub Actions dependency. | Verify both named projects and automatic-build controls in Vercel; this is not AC evidence. |
 | TR-21 | `TR-21-T01`: configuration policy rejects paid tiers, add-ons, and metered resources. | Confirm actual account plan/eligibility and deployed resource settings before provisioning/release. |
 | TR-22 | `TR-22-T01`: application ports handle repository/Realtime success, failure, retry, and stale-state responses without assuming process memory is durable. | Disposable Supabase integration verifies persistence, RLS, transactions, and Realtime behavior. |
-| TR-23 | `TR-23-T01`–`TR-23-T03`: fake CLI/temp filesystem verifies idempotent create/link, migration reporting, Preview/Production variable separation, and secret redaction. | Run safe provisioning and migration checks against isolated Staging/Production targets. |
+| TR-23 | `TR-23-T01`–`TR-23-T03`: fake CLI/temp filesystem verifies idempotent link/status, migration reporting, separate project variables and secret redaction. | Run safe provisioning and migration checks against the isolated named staging/production projects. |
 | TR-26 | `TR-26-T01`: fake test runner proves the build orchestrator fails closed on test failure and orders checks before build. | Inspect actual Vercel build command/configuration; operational evidence only. |
 | TR-27 | `TR-27-T01`: fixture lockfile and mocked build metadata produce a valid CycloneDX 1.6 SWBOM in a temporary pre-deployment build output with no secrets. | Verify the real build/deployment inventory and served endpoint; this remains TR-only and is not AC coverage. |
 | TR-28, TR-29 | `TR-28-T01` / `TR-29-T01`: temporary source archive with fixture SWBOM/license verifies exact-commit paths and required notices. | Inspect the release archive and publication record; AC-41/42 also have independent mock-backed archive tests. |
@@ -41,8 +52,8 @@ The following contract tests are specified before implementation and validated a
 1. **No paid usage:** keep Vercel on Hobby and Supabase on Free. Never add a card-backed resource, paid add-on, metered service, or automatic paid fallback. A quota error is a recoverable application state, not permission to spend.
 2. **Hobby is personal/non-commercial:** Vercel documents Hobby as personal, non-commercial use. Confirm continued eligibility before launch and whenever the project's use changes. If use becomes commercial, this deployment target no longer satisfies the requirement; stop and revise the hosting decision before continuing.
 3. **Repository and author requirements:** the repo is public under the `sharpninja` account. Keep Vercel connected to the matching personal Git provider account. Vercel's current Hobby Git rules require the commit author to own the destination Hobby team; verify this on the first deployment and after changing Git identities. Private repositories in GitHub organizations are not deployable to Hobby under current Vercel rules.
-4. **Environment separation:** local Development, Vercel Preview/Staging, and Vercel Production must use distinct secrets and data. Never pass Production credentials to a Preview deployment.
-5. **Git is the deployment trigger:** pushes to non-production branches produce Preview deployments; pushes/merges to `main` produce Production deployments. Do not add a second deploy trigger that can race or bypass the approved path.
+4. **Environment separation:** local Development, `wordpairs` staging and `wordpairs-j9jf` production use distinct secrets and data. Disable unsafe feature previews; never provide production credentials to a preview or staging deployment.
+5. **Control deployment order:** deploy the same reviewed Git commit to `wordpairs` first and `wordpairs-j9jf` after staging passes. Suppress automatic production Git builds during staged validation, using the existing controls in [hosting execution](hosting_execution.md), so a push cannot bypass this sequence.
 6. **Migrations are versioned:** schema changes live in reviewed migration files. No manual dashboard schema edits in a hosted environment; make any emergency repair immediately reproducible in a migration.
 7. **Deployment is not a release:** every Vercel build has its own SWBOM. A public release additionally requires a source archive containing the same Production build's SWBOM and the complete GPL license.
 8. **Landing-page data is public by design:** expose only an explicit, approved read model for leaderboard and discoverable lobby metadata. A landing-page query is never a shortcut to the private room API.
@@ -54,19 +65,19 @@ Vercel and Supabase plans, quotas, CLI behavior, and terms can change. This plan
 | Environment | Hosting and branch | Database | Data and access rules |
 |---|---|---|---|
 | **Development** | Local Next.js server; local Supabase stack where the developer has a compatible container runtime. | Local disposable database; deterministic seeded content. | Mocked external services for unit/component tests; no Production data or credentials. `.env.local` and `.vercel/` are ignored by Git. |
-| **Staging** | Persistent non-production branch (proposed name: `staging`) deploys to Vercel Preview. | Dedicated Supabase Free project. | Synthetic profiles, rooms, content, and test sessions only. Protect the Preview URL with Vercel's available deployment protection; reviewer access is explicitly granted. |
-| **Feature Preview** | Each non-production branch/PR receives an immutable Vercel Preview URL. | Default to the Staging Supabase project with per-test unique identifiers; allow a branch-specific override only when a separately approved free project exists. | No Production secrets/data. Use branch-specific Vercel Preview variables to target `staging`; feature branches inherit the safe Preview defaults. Ensure tests clean up only their own seeded rows. |
-| **Production** | Vercel Production deployments from `main`. | Dedicated Production Supabase Free project. | Real users/data; least-privilege keys; change control and release verification. Never use this environment for automated acceptance or destructive tests. |
+| **Staging** | Project `wordpairs`, production target, `https://wordpairs.vercel.app`. | Supabase Free project `jshjkaigwbxsbnnogfxs`. | Owned synthetic profiles/rooms/content for validation; isolated staging credentials; verify the reviewed commit before production. |
+| **Feature Preview** | Disabled until a safe non-production binding is explicitly configured. | No production binding or inherited production secrets. | Feature builds cannot bypass staged rollout or use real production users/data. |
+| **Production** | Project `wordpairs-j9jf`, production target, `https://wordpairs-j9jf.vercel.app`. | Supabase Free project `krdcuuhcynmdfcjlpbsf`. | The same reviewed commit after staging passes; real data preserved; non-destructive smoke checks only. |
 
-Vercel Hobby currently provides Local, Preview, and Production environments; named custom environments are documented for Pro/Enterprise. Therefore “Staging” is a persistent protected Preview branch and isolated Supabase project, not a paid custom Vercel environment. Branch-specific Preview variables allow that branch to use its staging database while other Preview deployments inherit the non-production default. Local Supabase development is free but requires a Docker API-compatible container runtime; if unavailable, use mock-backed tests and do integration checks in Staging with strictly synthetic data.
+Staging is a logical label for the production target of its own existing project; it is not a paid custom environment or the former single-project protected Preview proposal. Both named projects have independent database and variable bindings. Local Supabase development requires a Docker-compatible container runtime; local fixtures and synthetic staging data have separate evidence boundaries.
 
-Supabase Free currently permits two free projects across an owner's/admin's organizations. Allocate those projects to Staging and Production; confirm account availability before provisioning. Do not create a new hosted Supabase project for each branch. Make branch previews data-safe through opaque test prefixes, short-lived fixtures, cleanup scoped to the fixture owner, and no assumption that the shared staging database is empty.
+Keep the two existing Supabase projects for staging and production; verify current account limits and allocation before provisioning. Do not create a new hosted project for each branch. Isolate staging fixtures with opaque test prefixes and cleanup scoped to their owner, without assuming the database is empty.
 
 ## 4. Provisioning plan
 
 ### Administration configuration
 
-Apply migration `010_access_control.sql` before using the [administration/ACL extension](admin_acl_design.md). Set `WORDPAIRS_ADMIN_PROFILE_IDS` only in the server environment to a comma-separated list of existing profile IDs. The authenticated profile panel shows the current ID. Never use a `NEXT_PUBLIC_` variable for this setting and never set it from browser input. Restart/redeploy when changing the allowlist. An empty value grants no bootstrap authority; there is no default administrator account or password. Persisted grants can then be managed at `/admin/users` by an effective administrator. Use durable signed-in profiles for operational administrators; losing guest browser data loses access to that guest identity. Separate Preview and Production administrator lists and databases.
+The earlier profile-ID bootstrap and role-delegation workflow in the [administration/ACL extension](admin_acl_design.md) is historical for this release. The current server-only GitHub App configuration and fixed-owner authorization are specified in [guest game and GitHub admin PWA](admin_pwa_release.md); `/admin/users` does not manage grants in the current release. Staging and production retain separate configuration and databases.
 
 ### 4.1 Preconditions
 
@@ -79,14 +90,14 @@ Apply migration `010_access_control.sql` before using the [administration/ACL ex
 
 ### 4.2 Repeatable provisioning command
 
-Implement one manually invoked provisioning entry point, backed by pinned Supabase CLI and Vercel CLI versions. Select a shell or Node-based wrapper during Phase 7 post-coding deployment design, before provisioning scripts are implemented; declare the tools as direct development/build dependencies or provide a pinned documented installation mechanism, and add their purpose, license, and upstream source to `ATTRIBUTIONS.md`. Final branch/project topology and account-capacity confirmation are Phase 7 deployment-entry decisions after coding, not Phase 0 exit gates.
+Implement one manually invoked PowerShell provisioning entry point, backed by pinned Supabase CLI and Vercel CLI versions. The current schema planner is `scripts/hosting-schema.ps1`; the earlier Node fallback is retired. Declare tools as direct development/build dependencies or provide a pinned documented installation mechanism, and add their purpose, license, and upstream source to `ATTRIBUTIONS.md`. Final branch/project topology and account-capacity confirmation are Phase 7 deployment-entry decisions after coding, not Phase 0 exit gates.
 
 The command has explicit subcommands, a safe default dry-run/plan mode, and confirmation for destructive changes:
 
 1. `doctor`: report CLI versions, linked accounts/project IDs, repository/branch, and required variable *names*; never print token or secret values.
-2. `plan`: show the intended project/environment/migration/variable actions without mutation. Fail if the selected project plan is not Free, if a target project is ambiguous, or if an action could point Preview at Production.
-3. `provision staging`: create or link the Staging Supabase project and Vercel project configuration; apply approved migrations; set only Preview variables, using a branch-specific override for `staging`; verify the settings without echoing values.
-4. `provision production`: create or link the Production Supabase project; apply the same migration sequence after Staging validation; set only Production variables; require an explicit operator confirmation and verify the target project ID before applying.
+2. `plan`: show the intended project/environment/migration/variable actions without mutation. Fail if the selected plan is not Free, the target is ambiguous, or staging/preview could point at production.
+3. `provision staging`: link the existing `wordpairs` and `jshjkaigwbxsbnnogfxs` projects; apply approved migrations and staging-only variables to that Vercel production target; verify settings without echoing values.
+4. `provision production`: link the existing `wordpairs-j9jf` and `krdcuuhcynmdfcjlpbsf` projects; apply the same migration sequence after staging validation; set only that project's production-target variables and verify the exact project ID before applying. The operator has authorized this rollout; target confirmation is a safety check rather than a new personal approval gate.
 5. `status`: show project IDs, regions, plan names, migration version, deployment branch mapping, and secret variable names/presence only.
 6. `backup` / `restore-check`: create a database export to an operator-controlled encrypted location, record checksum and schema version, and restore it to a disposable local/Staging database to prove recoverability. Never commit dumps or retain them in a public artifact.
 
@@ -107,18 +118,18 @@ Do not connect the repository to Vercel or execute deployments during coding Pha
 1. Connect the existing `sharpninja/wordpairs` repository to a Vercel Hobby project owned by the matching personal Vercel account.
 2. Select the production branch `main`; verify the framework preset, root directory, install command, test/build command, and output handling from the implemented Next.js app.
 3. Enable deployment comments/links where available. Review fork deployment authorization and Preview protection so an untrusted pull request cannot access secrets or run against Production.
-4. Add Preview and Production environment variables with least privilege. Apply a branch-specific Preview override for `staging`; Preview defaults still point only to Staging/non-production infrastructure.
+4. Add least-privilege variables independently to each project's production target. Disable unsafe feature previews; they must never inherit production secrets or database bindings.
 5. Enable Vercel-provided environment metadata needed by the build (commit SHA, branch, deployment URL/environment). Treat all build-time environment values as secrets unless explicitly classified as public.
-6. Verify one feature branch Preview and one `main` Production deployment. Confirm the author rule and that no GitHub Actions workflow is involved.
+6. Verify the exact reviewed commit on `wordpairs` staging before deploying it to `wordpairs-j9jf` production. Confirm author eligibility and that no GitHub Actions workflow is involved.
 7. Verify the anonymous landing-page route is reachable without authentication and returns only the public projection; inspect rendered HTML, network responses, cache headers, logs, and the SWBOM endpoint for accidental secrets or private lobby/game fields.
 
 ### 5.2 Normal change path
 
 1. Start from current `main`; create a short-lived feature branch named for the work item and AC IDs.
 2. Before implementation, pass the increment's mock-first TDD gate. The build cannot proceed if tests fail.
-3. Push the branch. Vercel automatically builds a Preview. The build sequence is: install from lockfile → static/type/content checks → full test suite → generate and validate deployment SWBOM → production framework build including the SWBOM.
-4. Validate the Preview URL, environment label, branch, commit, database target, and SWBOM endpoint. Execute acceptance/browser tests against synthetic staging data; review accessibility and log/errors.
-5. Merge only after review and all gates. Vercel deploys the new `main` commit to Production. Migration ordering must be safe for old and new application revisions during rollout.
+3. Freeze and push the candidate with automatic production builds suppressed. Deploy the reviewed SHA to the production target of `wordpairs`. The build sequence is lockfile install, static/type/content checks, the full test suite, SWBOM generation/validation, then the framework build containing that report.
+4. Validate staging's immutable URL, logical environment, source commit, database target and SWBOM endpoint. Run real multiplayer/admin checks with owned synthetic staging data; review accessibility and errors.
+5. After staging passes, apply the same compatible forward migrations and deploy the same reviewed SHA to the production target of `wordpairs-j9jf`. Verify the canonical domain as well as its immutable deployment. Preserve both projects' global Ignored Build Step commands as `exit 0` throughout and afterward; never restore automatic builds as part of this rollout. Use only the exact-SHA Dashboard Redeploy dialog's one-time unchecked **Use project's Ignore Build Step** checkbox, with no persistent project-setting or `ignoreCommand` override, as specified in the [guarded rollout procedure](evidence/release15/hosting-readiness/guarded-rollout-procedure.md).
 6. Run a post-deploy smoke checklist against the immutable Production deployment URL and canonical domain; inspect errors and quota dashboard. Do not run destructive tests against Production.
 
 ### 5.3 Build command and gates
@@ -133,13 +144,13 @@ The eventual package scripts should make the sequence explicit and exit non-zero
 | Application | Next.js production build; include report at `public/sbom/<commit-sha>.cdx.json`; verify exact endpoint path is part of output. | Vercel deployment fails. |
 | Deployment | Verify Vercel environment and source commit; check expected Supabase project binding; run smoke checks, including anonymous landing-page and public-data privacy checks. | Do not promote/announce release; use rollback procedure if Production is degraded. |
 
-Every successful Preview and Production deployment serves its own immutable `/sbom/<commit-sha>.cdx.json`. Include the Vercel deployment URL, `VERCEL_ENV`, branch and commit metadata available at build time. Ensure metadata is escaped/validated and does not disclose environment variables. Preview and Production deployments from the same SHA still have distinct build/deployment metadata and each report belongs to the URL that serves it.
+Every successful staging and production deployment serves its own immutable `/sbom/<commit-sha>.cdx.json`. Include the actual Vercel deployment URL, `VERCEL_ENV`, branch and commit metadata. Both named targets use Vercel production mode, so record the project and logical environment in the deployment receipt rather than inferring them from that mode alone. Escape/validate metadata without disclosing secret values. Builds from the same SHA still have distinct project/deployment identity, and each report belongs to its served URL.
 
 ## 6. Database migration and change strategy
 
 - Develop each migration locally or against a disposable database; run schema and RLS tests against mocks first, then the Supabase local stack or Staging.
 - Keep migrations forward-compatible across the currently deployed and candidate application versions. Prefer expand → deploy compatible code → migrate/backfill → contract in later work. Do not drop/rename a live column in the same release that first stops reading it.
-- Apply the same ordered migration set to Staging, then Production. Verify migration history/version before and after. A production migration command requires the selected project ID to match an allowlisted Production ID and a human confirmation.
+- Apply the same ordered migration set to staging, then production. Verify migration source bodies/history before and after. The production command must match the exact allowlisted project ID; retain its dry-run and apply receipt under the already authorized rollout.
 - Seed only curated public content through reviewed, idempotent migration/seed files. Keep synthetic test accounts separate from real user data.
 - Define transaction and lock behavior for online changes. Estimate table size and lock duration before applying any expensive migration under the Free database resource limit.
 - Supabase Free currently lists a 500 MB database per project, 5 GB egress, 200 Realtime peak connections, 2 million Realtime messages/month, and pausing after a week of low activity; its pricing page also lists no automatic backups. The requirements additionally set 100 Realtime messages/second as an operating threshold. Treat all of these as hard ceilings and verify the live project dashboard before deployment; design a buffer below each ceiling and test the recoverable quota response.
@@ -199,9 +210,9 @@ During Phase 0, set realistic recovery-time and recovery-point expectations suit
 
 ### Build and deployment
 
-- [ ] A feature branch gets a Preview; `main` gets Production; no GitHub Actions workflow is required.
+- [ ] The reviewed SHA passes `wordpairs` staging before the identical SHA reaches `wordpairs-j9jf` production; automatic builds cannot bypass that order; no GitHub Actions workflow is required.
 - [ ] Build order runs checks/tests before SWBOM and app build; failed tests fail deployment.
-- [ ] Preview uses Staging credentials; Production uses Production credentials; protected fork deployment cannot expose secrets.
+- [ ] The two projects use separate matching credentials/databases; disabled or safely bound feature previews and fork deployment cannot expose production secrets.
 - [ ] TR-27 operational check confirms each deployment serves the SWBOM for its exact commit, lockfile, environment, and URL without secret values; this is TR evidence, not AC coverage.
 - [ ] Smoke checks confirm the anonymous landing page, approved leaderboard projection, discoverable/joinable lobby summary, rules content, identity, room creation/join, quota error handling, and expected environment labeling.
 - [ ] AC-43 and AC-50 contract tests pass against local components with mocked public projections before implementation. Any deployed smoke check is diagnostic only and does not count toward AC coverage.

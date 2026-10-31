@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="210" failures="0" errors="0" time="0.324458394">
+    <testsuite name="tests/browser/ui-command-acknowledgement.test.ts" timestamp="2026-10-31T01:00:03.024Z" hostname="[PRIVATE HOST]" tests="66" failures="0" errors="0" skipped="0" time="0.109680655">
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves busy-newer" time="0.004703816">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves pending-newer" time="0.00052932">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves disabled-pending" time="0.000477079">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves strict-pending" time="0.009781687">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves unknown-pending" time="0.000979748">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-scope" time="0.000876006">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves missing" time="0.00774142">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves denied" time="0.00110356">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves stale" time="0.000451989">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves malformed" time="0.007861273">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wait-for-ack" time="0.001925985">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves pending-identical" time="0.001290763">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves changed-command" time="0.001563698">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves changed-payload" time="0.002996245">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-intent" time="0.004535552">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves probe-error" time="0.002782941">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves bounded-pending" time="0.009471982">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves permanent-denial" time="0.001486147">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves conflict-retired" time="0.001032028">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves body-error-distinct" time="0.000836595">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves observer-error" time="0.000384207">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves drain-ack-error" time="0.000738543">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves own-current" time="0.000371207">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-actor" time="0.000975358">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-row" time="0.000625941">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-round" time="0.000592541">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves unsolved" time="0.000559231">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves preexisting-blocks-action" time="0.000269395">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wait-for-preparation" time="0.000361076">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-profile" time="0.00056305">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves conflict-drains-retirement" time="0.000740263">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves retirement-error" time="0.000648512">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; preserves wrong-aggregate" time="0.000736053">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong busy-newer provider" time="0.001713981">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong pending-newer provider" time="0.000756954">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong disabled-pending provider" time="0.000566431">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong strict-pending provider" time="0.000670472">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong unknown-pending provider" time="0.000471369">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-scope provider" time="0.000474529">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong missing provider" time="0.001362465">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong denied provider" time="0.001848074">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong stale provider" time="0.000964128">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong malformed provider" time="0.002023847">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wait-for-ack provider" time="0.000991058">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong pending-identical provider" time="0.001060769">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong changed-command provider" time="0.000559941">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong changed-payload provider" time="0.000499359">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-intent provider" time="0.000435478">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong probe-error provider" time="0.000637761">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong bounded-pending provider" time="0.001488097">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong permanent-denial provider" time="0.000615971">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong conflict-retired provider" time="0.002102429">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong body-error-distinct provider" time="0.001003218">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong observer-error provider" time="0.000747753">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong drain-ack-error provider" time="0.002885613">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong own-current provider" time="0.000834755">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-actor provider" time="0.000542759">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-row provider" time="0.000489098">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-round provider" time="0.000443748">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong unsolved provider" time="0.000503119">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong preexisting-blocks-action provider" time="0.001038059">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wait-for-preparation provider" time="0.002510635">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-profile provider" time="0.000641501">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong conflict-drains-retirement provider" time="0.000982428">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong retirement-error provider" time="0.001226792">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-acknowledgement.test.ts" name="UI acknowledgement oracle (independent correct provider) &gt; rejects wrong wrong-aggregate provider" time="0.000702873">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/browser/ui-command-capture.test.ts" timestamp="2026-10-31T01:00:03.035Z" hostname="[PRIVATE HOST]" tests="58" failures="0" errors="0" skipped="0" time="0.065084198">
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture eager-response" time="0.00551689">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture eager-body" time="0.0011155">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture request-identity" time="0.000620892">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture cached-body" time="0.000613291">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture null-response" time="0.000691692">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture conflict-no-json" time="0.000641312">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture server-no-json" time="0.000605971">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture body-error" time="0.001901464">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture wait-error" time="0.000770184">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture response-error" time="0.000854685">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture action-error" time="0.000473648">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture sync-action-error" time="0.000492419">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture capture-drains-action" time="0.000438838">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture action-drains-body" time="0.000379406">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture sync-wait-error" time="0.000328546">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture dual-errors" time="0.000614771">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves capture body-action-errors" time="0.000447908">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit success" time="0.002538346">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit conflict-fresh-command" time="0.000785064">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit server-pending-identical" time="0.000677153">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit null-pending-identical" time="0.000753454">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-pending-identical" time="0.000896596">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-no-pending" time="0.000697103">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-disabled-pending" time="0.000711003">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit body-wrong-command" time="0.002168819">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit bounded-attempts" time="0.001136311">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit unrelated-invoke-error" time="0.000538999">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit probe-error-original" time="0.000628861">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; preserves commit observer-error-preserves-failure" time="0.000699792">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture eager-response/late-response" time="0.004477021">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture eager-body/late-body" time="0.000687103">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture request-identity/swap-request" time="0.000833175">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture cached-body/repeat-body" time="0.000920627">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture null-response/fabricate-null" time="0.000818255">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture conflict-no-json/parse-error" time="0.00059261">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture server-no-json/parse-error" time="0.00057898">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture body-error/swallow-body" time="0.008164468">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture wait-error/swallow-capture" time="0.001046719">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture response-error/swallow-capture" time="0.000795745">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture action-error/swallow-action" time="0.001373545">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture sync-action-error/swallow-action" time="0.000728273">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture capture-drains-action/fail-fast" time="0.000624541">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture action-drains-body/fail-fast" time="0.000710863">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture sync-wait-error/sync-wait-starts-action" time="0.000786284">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture dual-errors/drop-secondary" time="0.000922837">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong capture body-action-errors/drop-body-error" time="0.000628061">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit success/wrong-result" time="0.000990737">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit conflict-fresh-command/conflict-pending" time="0.00055712">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit server-pending-identical/forget-pending" time="0.00052499">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit null-pending-identical/forget-pending" time="0.000507939">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-pending-identical/forget-pending" time="0.00058684">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-no-pending/retry-without-ui" time="0.00053913">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-disabled-pending/retry-without-ui" time="0.00054081">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit body-wrong-command/ignore-payload" time="0.000483669">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit bounded-attempts/wrong-limit" time="0.000733433">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit unrelated-invoke-error/swallow-invoke" time="0.000571451">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit probe-error-original/probe-overwrites" time="0.000804424">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-capture.test.ts" name="UI command capture oracle (real helper) &gt; rejects wrong commit observer-error-preserves-failure/observer-swallow" time="0.00055395">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/browser/ui-command-freshness.test.ts" timestamp="2026-10-31T01:00:03.045Z" hostname="[PRIVATE HOST]" tests="48" failures="0" errors="0" skipped="0" time="0.081892253">
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves room-stale" time="0.005944298">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves game-stale" time="0.000979187">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves explicit-higher" time="0.000880936">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves captured-higher" time="0.000728223">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves zero" time="0.000766704">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves max-valid" time="0.001004358">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves no-advance" time="0.000690113">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves deferred-next" time="0.002333392">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves observer-attribution" time="0.000721663">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves observer-error" time="0.000444978">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves status-first" time="0.007660949">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-missing" time="0.007122899">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-null" time="0.001609649">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-string" time="0.002249741">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-boolean" time="0.002031796">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-fraction" time="0.001498427">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-negative" time="0.001206872">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-nan" time="0.001048629">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-infinity" time="0.00163693">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-unsafe" time="0.001757001">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves version-max-safe" time="0.002363383">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves minimum-negative" time="0.000923937">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves minimum-nan" time="0.001458606">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; preserves payload-null" time="0.001770043">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong room-stale provider" time="0.004781017">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong game-stale provider" time="0.006869164">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong explicit-higher provider" time="0.000812415">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong captured-higher provider" time="0.001257623">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong zero provider" time="0.00109657">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong max-valid provider" time="0.002121568">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong no-advance provider" time="0.000842306">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong deferred-next provider" time="0.001516028">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong observer-attribution provider" time="0.002399073">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong observer-error provider" time="0.000779484">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong status-first provider" time="0.000657142">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-missing provider" time="0.000688602">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-null provider" time="0.00056952">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-string provider" time="0.000454368">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-boolean provider" time="0.000441538">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-fraction provider" time="0.000390167">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-negative provider" time="0.000432228">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-nan provider" time="0.000443508">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-infinity provider" time="0.000458618">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-unsafe provider" time="0.000499539">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong version-max-safe provider" time="0.000508529">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong minimum-negative provider" time="0.000462219">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong minimum-nan provider" time="0.000365737">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-freshness.test.ts" name="Captured conflict freshness (independent correct provider) &gt; rejects wrong payload-null provider" time="0.000314256">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/browser/ui-command-retirement.test.ts" timestamp="2026-10-31T01:00:03.057Z" hostname="[PRIVATE HOST]" tests="38" failures="0" errors="0" skipped="0" time="0.067801288">
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-busy-game" time="0.005950888">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-busy-room" time="0.001056189">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-enabled" time="0.000763114">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-version" time="0.000773864">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-scope" time="0.006998637">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-missing" time="0.009569973">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-denied" time="0.001286514">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-malformed" time="0.002724059">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-non409" time="0.001486627">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-probe-error" time="0.000506669">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-observer-error" time="0.000306625">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-wait-error" time="0.000237144">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-drains-wait" time="0.000490329">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-blocks-next" time="0.00112258">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-error-blocks-next" time="0.000379297">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves fresh-guard" time="0.004082944">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves strict-guard" time="0.000824665">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves request-attribution" time="0.000844205">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; preserves retire-wait-probe-errors" time="0.000941407">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-busy-game provider" time="0.003440663">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-busy-room provider" time="0.001400716">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-enabled provider" time="0.001227313">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-version provider" time="0.000670412">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-scope provider" time="0.000610101">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-missing provider" time="0.00052929">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-denied provider" time="0.000626431">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-malformed provider" time="0.00059242">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-non409 provider" time="0.00057159">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-probe-error provider" time="0.000455139">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-observer-error provider" time="0.000417158">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-wait-error provider" time="0.000480378">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-drains-wait provider" time="0.004307658">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-blocks-next provider" time="0.002625127">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-error-blocks-next provider" time="0.001348805">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong fresh-guard provider" time="0.000671013">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong strict-guard provider" time="0.000492219">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong request-attribution provider" time="0.001582439">
+        </testcase>
+        <testcase classname="tests/browser/ui-command-retirement.test.ts" name="Captured409 retirement oracle (independent correct provider) &gt; rejects wrong retire-wait-probe-errors provider" time="0.001394595">
+        </testcase>
+    </testsuite>
+</testsuites>

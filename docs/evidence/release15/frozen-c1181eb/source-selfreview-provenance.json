@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-10-30T19:37:49.9284347-05:00",
+  "sourceHead": "c1181eb4eb01825c8b12f3521f92286080addfba",
+  "runId": "169e6d93-632f-423c-8572-be3cccb96a00",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T003209Z-turn-e272",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "producer": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-selfreview-producer.ps1",
+    "sha256": "34E22B80CE359060142907122477E0C346DCED6B0B6DCCE314B6C938E39B1720",
+    "bytes": 37342
+  },
+  "producerAnalysis": "PowerShell parser and PSScriptAnalyzer Warning/Error zero before WhatIf and real evidence write; no tests/builds executed.",
+  "outputs": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-what-if-supplement.json",
+      "sha256": "DC8A7AC3A22CDDFC414B2C81FCB66FEBA61DAF678925794EC19F5216670E6EF9",
+      "bytes": 374414
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-selfreview.md",
+      "sha256": "FF5F716F0D4CE6782CABD94E4CBEB33CDD8795EC61A6E7BD5E8E05539DF44385",
+      "bytes": 6649
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-selfreview-effective-requirements.json",
+      "sha256": "5A505E8F8711D3A62D323968287FCC21D63EADDA63A70A9DDBE46A15F6C2247B",
+      "bytes": 869675
+    }
+  ],
+  "manifest": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-inventory.json",
+    "sha256": "51D43BF7B3FBA06F34086E8E13EFF7AC5DFE1B132640B425523F68EC82FD6028",
+    "bytes": 53318
+  },
+  "scope": "Only new candidate evidence files and own MCP audit logging; original evidence retained, no app/test/provider/requirements mutations.",
+  "refinedAt": "2026-10-30T19:39:11.9986661-05:00",
+  "initialReviewHistory": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-selfreview-history/initial-20261030T193749",
+  "refinementProducer": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/source-selfreview-refinement-producer.ps1",
+    "sha256": "C5F98622D40064810FDF2CAD7DC0E6E28FA7E5C95F04736E0B98AB67B7FDC0F2",
+    "bytes": 6031
+  },
+  "refinementQualification": "Only zero-node non-JUnit fixture qualification and human-readable spacing changed. Original five artifacts retained by exact copied bytes. No native/source/requirement changes or executions."
+}

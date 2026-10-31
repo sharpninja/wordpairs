@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="5" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-29" time="11:25:27">
+  <environment user="sharpninja" platform="Linux" user-domain="" os-version="7.2.5-3-omarchy" nunit-version="2.5.8.0" clr-version="10.0.13" cwd="<repo>" machine-name="[PRIVATE HOST]" />
+  <culture-info current-culture="" current-uiculture="" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="0.494" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" executed="True" result="Failure" success="False" time="0.494" asserts="0" description="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="hosting migration prefix contract" executed="True" result="Failure" success="False" time="0.3564" asserts="0" description="hosting migration prefix contract">
+            <results>
+              <test-case description="proposes only 012 after the recorded thirteen-migration hosted prefix" name="hosting migration prefix contract.proposes only 012 after the recorded thirteen-migration hosted prefix" time="0.1651" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 'wordpairs_012_guest_public_profiles', but got @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...4 more).</message>
+                  <stack-trace>at $pending.name | Should -Be @('wordpairs_012_guest_public_profiles'), <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:20
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:20</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="proposes the whole catalog for an empty history" name="hosting migration prefix contract.proposes the whole catalog for an empty history" time="0.0348" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="proposes hosted scheduler, private realtime, then 012 after core 001 through 011" name="hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 after core 001 through 011" time="0.0352" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected @('wordpairs_hosted_scheduler', 'wordpairs_private_realtime', 'wordpairs_012_guest_public_profiles'), but got @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...4 more).</message>
+                  <stack-trace>at $pending.name | Should -Be @('wordpairs_hosted_scheduler','wordpairs_private_realtime','wordpairs_012_guest_public_profiles'), <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:30
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:30</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="rejects 012 inserted before hosted 101 without opening a connection" name="hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" time="0.0312" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.</message>
+                  <stack-trace>at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:36
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:36</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="rejects source drift at an otherwise matching migration" name="hosting migration prefix contract.rejects source drift at an otherwise matching migration" time="0.0282" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.</message>
+                  <stack-trace>at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:42
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:42</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="rejects history longer than the declared migration set" name="hosting migration prefix contract.rejects history longer than the declared migration set" time="0.0256" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected an exception with message like '*Unknown migration history*' to be thrown, but no exception was thrown.</message>
+                  <stack-trace>at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*Unknown migration history*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:48
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:48</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

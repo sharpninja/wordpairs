@@ -1,0 +1,172 @@
+{
+  "recordedAt": "2026-10-30T20:37:11.6362175-05:00",
+  "scope": "Isolated native-object fixture checks of the actual extracted trusted helper function;no full helper/live stream/model execution",
+  "helperSha256": "1C9812B9E07629131BFC13381B8409C588B1C1B121E6CAEAF27879E0ACA4BA9D",
+  "fixtureSha256": "4528F36929D082F1BF062C47D927F824782371BA0A57D5D3DAB45813D3AFE5CF",
+  "parserErrors": 0,
+  "pssaWarningsErrors": 0,
+  "caseCount": 24,
+  "passed": 24,
+  "failed": 0,
+  "excludedInputControls": 15,
+  "cases": [
+    {
+      "name": "direct numeric pair preserved",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "direct numeric strings preserved",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "native assistant content end",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "native assistant content start",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "native accumulated complete JSON",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "fenced multiline structured progress",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "newline complete structured entry",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "identical text and accumulated do not duplicate",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "zero progress and ETA accepted",
+      "expectedObservationCount": 1,
+      "observedCount": 1,
+      "passed": true
+    },
+    {
+      "name": "tool end text excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "tool update text excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "reasoning text excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "notice text excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "tool result nested JSON excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "tool marked text excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "non-native payload wrapper excluded",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "nested object is not root progress",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "nested numeric strings rejected",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "nested boolean rejected",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "percent above100 rejected",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "negative percent rejected",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "negative ETA rejected",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "missing ETA rejected",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    },
+    {
+      "name": "partial fragment remains inconclusive",
+      "expectedObservationCount": 0,
+      "observedCount": 0,
+      "passed": true
+    }
+  ],
+  "preservedSourceLiterals": [
+    "bytes=$item.Length",
+    "lastWriteTime=$item.LastWriteTime.ToString('s')",
+    "lines=$lines",
+    "unparsedLines=$unparsed",
+    "eventTypes=$types",
+    "runtimeStarts=$starts",
+    "runtimeResults=$results",
+    "directProgress=$progress",
+    "[IO.FileShare]::ReadWrite",
+    "systemctl --user show"
+  ],
+  "arbitraryTextEscaped": false,
+  "qualification": "Only complete structured JSON entries in proven native assistant text/accumulated are recognized. Partial/prose/other-wrapper progress can remain unrecognized;empty extraction is inconclusive. Cumulative stream events can repeat numeric observations. Existing direct parser remains unchanged."
+}

@@ -1,0 +1,84 @@
+tests/browser/live-player-counts.integration.spec.ts:18:18 lint/style/noNonNullAssertion ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    16 │ for (const count of counts) test(`LIVE-SCALE ${count} real browser players complete eight UI rounds`, async ({ browser }, info) => {
+    17 │   test.setTimeout(600000);
+  > 18 │   const origin = process.env.WORDPAIRS_LIVE_ORIGIN!;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    19 │   const contexts: BrowserContext[] = [];
+    20 │   const pages: Page[] = [];
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:144:23 lint/style/noNonNullAssertion ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    142 │       console.log(`LIVE_SCALE players=${count} round=${round}`);
+    143 │       await expect.poll(async () => (await Promise.all(pages.map((p) => p.getByRole("button", { name: "Opposites", exact: true }).isVisible()))).filter(Boolean).length, { timeout: 20000 }).toBe(1);
+  > 144 │       const chooser = (await Promise.all(pages.map(async (p) => (await p.getByRole("button", { name: "Opposites", exact: true }).isVisible()) ? p : null))).find((p) => p)!;
+        │                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    145 │       const chosen = await commitUi(chooser, "choose", () => chooser.getByRole("button", { name: "Opposites", exact: true }).click());
+    146 │       const categoryVersion = chosen.version;
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:152:22 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    150 │         await expect(p.locator(".answer-reveal")).toHaveCount(0);
+    151 │       }));
+  > 152 │       const prompt = (await pages[0].locator(".game-prompt").textContent())!.trim();
+        │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    153 │       const pair = seed.pairs.find((p) => p.categoryId === "opposites" && p.prompt === prompt);
+    154 │       if (!pair) throw new Error("The seeded Opposites catalog is required for live UI answer lookup");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    150 150 │           await expect(p.locator(".answer-reveal")).toHaveCount(0);
+    151 151 │         }));
+    152     │ - ······const·prompt·=·(await·pages[0].locator(".game-prompt").textContent())!.trim();
+        152 │ + ······const·prompt·=·(await·pages[0].locator(".game-prompt").textContent())?.trim();
+    153 153 │         const pair = seed.pairs.find((p) => p.categoryId === "opposites" && p.prompt === prompt);
+    154 154 │         if (!pair) throw new Error("The seeded Opposites catalog is required for live UI answer lookup");
+  
+
+tests/browser/live-player-counts.integration.spec.ts:179:184 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    177 │     await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    178 │   } catch (error) {
+  > 179 │     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
+        │                                                                                                                                                                                        ^^^^^^^^^
+    180 │     await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    181 │     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    177 177 │       await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    178 178 │     } catch (error) {
+    179     │ - ····const·uiStates·=·await·Promise.all(pages.map(async·(page,·player)·=>·({·player,·closed:·page.isClosed(),·browserConnected:·browser.isConnected(),·body:·await·page.locator("body").innerText({·timeout:·2000·}).catch((problem:·unknown)·=>·`Page·unavailable:·${problem·instanceof·Error·?·problem.message.slice(0,·500)·:·"Unknown·error"}`)·})));
+        179 │ + ····const·uiStates·=·await·Promise.all(pages.map(async·(page,·player)·=>·({·player,·closed:·page.isClosed(),·browserConnected:·browser.isConnected(),·body:·await·page.locator("body").textContent({·timeout:·2000·}).catch((problem:·unknown)·=>·`Page·unavailable:·${problem·instanceof·Error·?·problem.message.slice(0,·500)·:·"Unknown·error"}`)·})));
+    180 180 │       await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    181 181 │       await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+  
+
+Checked 4 files in 17ms. No fixes applied.
+Found 4 warnings.

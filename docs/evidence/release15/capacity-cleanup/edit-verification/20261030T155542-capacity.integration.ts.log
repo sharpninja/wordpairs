@@ -1,0 +1,4 @@
+{"status":"succeeded"}
+tests/integration/capacity.integration.ts(140,41): error TS2322: Type '(sql: string, parameters?: unknown[]) => Promise<QueryResult<any>>' is not assignable to type '{ <T extends Submittable>(queryStream: T): T; <R extends any[] = any[], I = any[]>(queryConfig: QueryArrayConfig<I>, values?: QueryConfigValues<I> | undefined): Promise<...>; <R extends QueryResultRow = any, I = any[]>(queryConfig: QueryConfig<...>): Promise<...>; <R extends QueryResultRow = any, I = any[]>(queryTex...'.
+  Types of parameters 'sql' and 'queryConfig' are incompatible.
+    Type 'QueryArrayConfig<any>' is not assignable to type 'string'.

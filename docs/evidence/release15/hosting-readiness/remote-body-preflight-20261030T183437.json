@@ -1,0 +1,470 @@
+{
+  "schema": "wordpairs-remote-migration-body-preflight/v1",
+  "timestamp": "2026-10-30T18:34:40",
+  "sourceHead": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T233149Z-remote-migration-body-status",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "producerPins": [
+    {
+      "originalPath": "\u003Crepo\u003E/scripts/hosting-schema.ps1",
+      "retainedCopy": "docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437/hosting-schema.ps1",
+      "sha256": "D47914412511DAD25DF438A74FC8D8C0296A327F2E06467E751BC2DFC90EF689",
+      "parserErrors": 0,
+      "analyzerWarningErrorCount": 0
+    },
+    {
+      "originalPath": "\u003Crepo\u003E/scripts/HostingSchemaPlanner.psm1",
+      "retainedCopy": "docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437/HostingSchemaPlanner.psm1",
+      "sha256": "F002924A2F673F39A4B3260965D32486988EA71EE32F8402C27BA74725773DA0",
+      "parserErrors": 0,
+      "analyzerWarningErrorCount": 0
+    },
+    {
+      "originalPath": "/tmp/ReadWordpairsRemoteMigrationBodies.ps1",
+      "retainedCopy": "docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437/ReadWordpairsRemoteMigrationBodies.ps1",
+      "sha256": "C3E2BDB81996EF91C8FB6F0F3D1D984559D1378FFD398D112E31B96B01D1FA2F",
+      "parserErrors": 0,
+      "analyzerWarningErrorCount": 0
+    }
+  ],
+  "catalogCount": 15,
+  "catalog": [
+    {
+      "version": "20261027000001",
+      "name": "wordpairs_001_foundation",
+      "sha256": "fac5387942cbc0dd4de5f053270f252e6435194b6968764a2043d46973e34a5f"
+    },
+    {
+      "version": "20261027000002",
+      "name": "wordpairs_002_public_reads",
+      "sha256": "503aa197d99f213a8f99de8636bd6e74eef5cfd68b5632b19fb45d931f992730"
+    },
+    {
+      "version": "20261027000003",
+      "name": "wordpairs_003_identity",
+      "sha256": "6f6b267a5b4eabf82f19c6ee40dc8a306d0773216a1f5489a97d2451a14c7672"
+    },
+    {
+      "version": "20261027000004",
+      "name": "wordpairs_004_rooms",
+      "sha256": "2b28ceb90b698eabf61370427a7ee3a67ea56e3f68490e692c35d272a8af4467"
+    },
+    {
+      "version": "20261027000005",
+      "name": "wordpairs_005_outbox",
+      "sha256": "38150d374975254f57fdf30d897f9454428e1c7aa5e36f2cea03eaf9ba3408e8"
+    },
+    {
+      "version": "20261027000006",
+      "name": "wordpairs_006_lobby_deadlines",
+      "sha256": "0c1d14eec35aa8656356171601867891ae3642b62e1c17c2df62ac349d25b8ba"
+    },
+    {
+      "version": "20261027000007",
+      "name": "wordpairs_007_matches",
+      "sha256": "8416d2b2028ef3f498ce185edc1473403cf6fbc1849cf2fbb94af8131f737108"
+    },
+    {
+      "version": "20261027000008",
+      "name": "wordpairs_008_content",
+      "sha256": "819f89c79440b0466ee919e61e1680d4c0e850ff992eceedb6e1fcefe22ad4f6"
+    },
+    {
+      "version": "20261027000009",
+      "name": "wordpairs_009_reactions",
+      "sha256": "46e88fe195ec632191ee6a356682eea376a52df86d4067e7c9d63546c55e568d"
+    },
+    {
+      "version": "20261027000010",
+      "name": "wordpairs_010_access_control",
+      "sha256": "98a101c9e99ee80fc4f2548c42c0a0f61a1788587a3bb6ec5c368624cb69e5af"
+    },
+    {
+      "version": "20261027000011",
+      "name": "wordpairs_011_content_review_states",
+      "sha256": "2f4188a6835986c48268346ddd4f2d25e493d8e8dd236dd49caaff9e6beb56dd"
+    },
+    {
+      "version": "20261027000101",
+      "name": "wordpairs_hosted_scheduler",
+      "sha256": "bb6b22fec2469e3d662eac01e39826367b6432fb845ff1562014812ca1f08585"
+    },
+    {
+      "version": "20261027000102",
+      "name": "wordpairs_private_realtime",
+      "sha256": "0d64cefc30fe90e133a337fd2bb0ac20e6bf332c05c1e3cbe1601513cfb71cab"
+    },
+    {
+      "version": "20261027000012",
+      "name": "wordpairs_012_guest_public_profiles",
+      "sha256": "b85bec54713448ed2052ab802ae147839d52d37e7ac653fa5be2595eda339c7f"
+    },
+    {
+      "version": "20261027000013",
+      "name": "wordpairs_013_player_capacity",
+      "sha256": "cbe351b1f8343a42aa9a3e5611d515710be2e1e004c9e8848ad89b0ca124c5f2"
+    }
+  ],
+  "results": [
+    {
+      "environment": "staging",
+      "project": "jshjkaigwbxsbnnogfxs",
+      "startedAt": "2026-10-30T18:34:37",
+      "finishedAt": "2026-10-30T18:34:38",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/hosting-schema.ps1",
+        "-Environment",
+        "staging",
+        "-Mode",
+        "status",
+        "-Config",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-staging-admin.json",
+        "-ConfirmProject",
+        "jshjkaigwbxsbnnogfxs"
+      ],
+      "exitCode": 0,
+      "mode": "status",
+      "caProvided": true,
+      "sslMode": "verify-full",
+      "nativeStatus": {
+        "mode": "status",
+        "project": "jshjkaigwbxsbnnogfxs",
+        "applied": [
+          {
+            "version": "20261028043237",
+            "name": "wordpairs_001_foundation"
+          },
+          {
+            "version": "20261028043240",
+            "name": "wordpairs_002_public_reads"
+          },
+          {
+            "version": "20261028043311",
+            "name": "wordpairs_003_identity"
+          },
+          {
+            "version": "20261028043317",
+            "name": "wordpairs_004_rooms"
+          },
+          {
+            "version": "20261028043320",
+            "name": "wordpairs_005_outbox"
+          },
+          {
+            "version": "20261028043323",
+            "name": "wordpairs_006_lobby_deadlines"
+          },
+          {
+            "version": "20261028043432007",
+            "name": "wordpairs_007_matches"
+          },
+          {
+            "version": "20261028043435",
+            "name": "wordpairs_008_content"
+          },
+          {
+            "version": "20261028043436",
+            "name": "wordpairs_009_reactions"
+          },
+          {
+            "version": "20261028043438",
+            "name": "wordpairs_010_access_control"
+          },
+          {
+            "version": "20261028043440",
+            "name": "wordpairs_011_content_review_states"
+          },
+          {
+            "version": "20261028045345",
+            "name": "wordpairs_hosted_scheduler"
+          },
+          {
+            "version": "20261028045501",
+            "name": "wordpairs_private_realtime"
+          }
+        ],
+        "pending": [
+          {
+            "version": "20261027000012",
+            "name": "wordpairs_012_guest_public_profiles",
+            "sha256": "b85bec54713448ed2052ab802ae147839d52d37e7ac653fa5be2595eda339c7f"
+          },
+          {
+            "version": "20261027000013",
+            "name": "wordpairs_013_player_capacity",
+            "sha256": "cbe351b1f8343a42aa9a3e5611d515710be2e1e004c9e8848ad89b0ca124c5f2"
+          }
+        ]
+      },
+      "appliedCount": 13,
+      "pendingCount": 2,
+      "normalizedBodyOrderAccepted": true,
+      "appliedCatalogHashes": [
+        {
+          "version": "20261027000001",
+          "name": "wordpairs_001_foundation",
+          "sha256": "fac5387942cbc0dd4de5f053270f252e6435194b6968764a2043d46973e34a5f"
+        },
+        {
+          "version": "20261027000002",
+          "name": "wordpairs_002_public_reads",
+          "sha256": "503aa197d99f213a8f99de8636bd6e74eef5cfd68b5632b19fb45d931f992730"
+        },
+        {
+          "version": "20261027000003",
+          "name": "wordpairs_003_identity",
+          "sha256": "6f6b267a5b4eabf82f19c6ee40dc8a306d0773216a1f5489a97d2451a14c7672"
+        },
+        {
+          "version": "20261027000004",
+          "name": "wordpairs_004_rooms",
+          "sha256": "2b28ceb90b698eabf61370427a7ee3a67ea56e3f68490e692c35d272a8af4467"
+        },
+        {
+          "version": "20261027000005",
+          "name": "wordpairs_005_outbox",
+          "sha256": "38150d374975254f57fdf30d897f9454428e1c7aa5e36f2cea03eaf9ba3408e8"
+        },
+        {
+          "version": "20261027000006",
+          "name": "wordpairs_006_lobby_deadlines",
+          "sha256": "0c1d14eec35aa8656356171601867891ae3642b62e1c17c2df62ac349d25b8ba"
+        },
+        {
+          "version": "20261027000007",
+          "name": "wordpairs_007_matches",
+          "sha256": "8416d2b2028ef3f498ce185edc1473403cf6fbc1849cf2fbb94af8131f737108"
+        },
+        {
+          "version": "20261027000008",
+          "name": "wordpairs_008_content",
+          "sha256": "819f89c79440b0466ee919e61e1680d4c0e850ff992eceedb6e1fcefe22ad4f6"
+        },
+        {
+          "version": "20261027000009",
+          "name": "wordpairs_009_reactions",
+          "sha256": "46e88fe195ec632191ee6a356682eea376a52df86d4067e7c9d63546c55e568d"
+        },
+        {
+          "version": "20261027000010",
+          "name": "wordpairs_010_access_control",
+          "sha256": "98a101c9e99ee80fc4f2548c42c0a0f61a1788587a3bb6ec5c368624cb69e5af"
+        },
+        {
+          "version": "20261027000011",
+          "name": "wordpairs_011_content_review_states",
+          "sha256": "2f4188a6835986c48268346ddd4f2d25e493d8e8dd236dd49caaff9e6beb56dd"
+        },
+        {
+          "version": "20261027000101",
+          "name": "wordpairs_hosted_scheduler",
+          "sha256": "bb6b22fec2469e3d662eac01e39826367b6432fb845ff1562014812ca1f08585"
+        },
+        {
+          "version": "20261027000102",
+          "name": "wordpairs_private_realtime",
+          "sha256": "0d64cefc30fe90e133a337fd2bb0ac20e6bf332c05c1e3cbe1601513cfb71cab"
+        }
+      ],
+      "safeFailure": null,
+      "stderrPresent": false,
+      "nativeStatusFile": "docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437/staging-status.json",
+      "nativeStatusFileSha256": "5BB8D9B1E20A7F5CCBD9C976081A836CA5E3F830C17750F1D0CF0EFEE7B7DA99"
+    },
+    {
+      "environment": "production",
+      "project": "krdcuuhcynmdfcjlpbsf",
+      "startedAt": "2026-10-30T18:34:39",
+      "finishedAt": "2026-10-30T18:34:40",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/scripts/hosting-schema.ps1",
+        "-Environment",
+        "production",
+        "-Mode",
+        "status",
+        "-Config",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-production-admin.json",
+        "-ConfirmProject",
+        "krdcuuhcynmdfcjlpbsf"
+      ],
+      "exitCode": 0,
+      "mode": "status",
+      "caProvided": true,
+      "sslMode": "verify-full",
+      "nativeStatus": {
+        "mode": "status",
+        "project": "krdcuuhcynmdfcjlpbsf",
+        "applied": [
+          {
+            "version": "20261028230936",
+            "name": "wordpairs_001_foundation"
+          },
+          {
+            "version": "20261028230938",
+            "name": "wordpairs_002_public_reads"
+          },
+          {
+            "version": "20261028230940",
+            "name": "wordpairs_003_identity"
+          },
+          {
+            "version": "20261028230942",
+            "name": "wordpairs_004_rooms"
+          },
+          {
+            "version": "20261028230944",
+            "name": "wordpairs_005_outbox"
+          },
+          {
+            "version": "20261028230946",
+            "name": "wordpairs_006_lobby_deadlines"
+          },
+          {
+            "version": "20261028230950",
+            "name": "wordpairs_007_matches"
+          },
+          {
+            "version": "20261028230952",
+            "name": "wordpairs_008_content"
+          },
+          {
+            "version": "20261028230954",
+            "name": "wordpairs_009_reactions"
+          },
+          {
+            "version": "20261028230956",
+            "name": "wordpairs_010_access_control"
+          },
+          {
+            "version": "20261028230959",
+            "name": "wordpairs_011_content_review_states"
+          },
+          {
+            "version": "20261028231028",
+            "name": "wordpairs_hosted_scheduler"
+          },
+          {
+            "version": "20261028231046",
+            "name": "wordpairs_private_realtime"
+          }
+        ],
+        "pending": [
+          {
+            "version": "20261027000012",
+            "name": "wordpairs_012_guest_public_profiles",
+            "sha256": "b85bec54713448ed2052ab802ae147839d52d37e7ac653fa5be2595eda339c7f"
+          },
+          {
+            "version": "20261027000013",
+            "name": "wordpairs_013_player_capacity",
+            "sha256": "cbe351b1f8343a42aa9a3e5611d515710be2e1e004c9e8848ad89b0ca124c5f2"
+          }
+        ]
+      },
+      "appliedCount": 13,
+      "pendingCount": 2,
+      "normalizedBodyOrderAccepted": true,
+      "appliedCatalogHashes": [
+        {
+          "version": "20261027000001",
+          "name": "wordpairs_001_foundation",
+          "sha256": "fac5387942cbc0dd4de5f053270f252e6435194b6968764a2043d46973e34a5f"
+        },
+        {
+          "version": "20261027000002",
+          "name": "wordpairs_002_public_reads",
+          "sha256": "503aa197d99f213a8f99de8636bd6e74eef5cfd68b5632b19fb45d931f992730"
+        },
+        {
+          "version": "20261027000003",
+          "name": "wordpairs_003_identity",
+          "sha256": "6f6b267a5b4eabf82f19c6ee40dc8a306d0773216a1f5489a97d2451a14c7672"
+        },
+        {
+          "version": "20261027000004",
+          "name": "wordpairs_004_rooms",
+          "sha256": "2b28ceb90b698eabf61370427a7ee3a67ea56e3f68490e692c35d272a8af4467"
+        },
+        {
+          "version": "20261027000005",
+          "name": "wordpairs_005_outbox",
+          "sha256": "38150d374975254f57fdf30d897f9454428e1c7aa5e36f2cea03eaf9ba3408e8"
+        },
+        {
+          "version": "20261027000006",
+          "name": "wordpairs_006_lobby_deadlines",
+          "sha256": "0c1d14eec35aa8656356171601867891ae3642b62e1c17c2df62ac349d25b8ba"
+        },
+        {
+          "version": "20261027000007",
+          "name": "wordpairs_007_matches",
+          "sha256": "8416d2b2028ef3f498ce185edc1473403cf6fbc1849cf2fbb94af8131f737108"
+        },
+        {
+          "version": "20261027000008",
+          "name": "wordpairs_008_content",
+          "sha256": "819f89c79440b0466ee919e61e1680d4c0e850ff992eceedb6e1fcefe22ad4f6"
+        },
+        {
+          "version": "20261027000009",
+          "name": "wordpairs_009_reactions",
+          "sha256": "46e88fe195ec632191ee6a356682eea376a52df86d4067e7c9d63546c55e568d"
+        },
+        {
+          "version": "20261027000010",
+          "name": "wordpairs_010_access_control",
+          "sha256": "98a101c9e99ee80fc4f2548c42c0a0f61a1788587a3bb6ec5c368624cb69e5af"
+        },
+        {
+          "version": "20261027000011",
+          "name": "wordpairs_011_content_review_states",
+          "sha256": "2f4188a6835986c48268346ddd4f2d25e493d8e8dd236dd49caaff9e6beb56dd"
+        },
+        {
+          "version": "20261027000101",
+          "name": "wordpairs_hosted_scheduler",
+          "sha256": "bb6b22fec2469e3d662eac01e39826367b6432fb845ff1562014812ca1f08585"
+        },
+        {
+          "version": "20261027000102",
+          "name": "wordpairs_private_realtime",
+          "sha256": "0d64cefc30fe90e133a337fd2bb0ac20e6bf332c05c1e3cbe1601513cfb71cab"
+        }
+      ],
+      "safeFailure": null,
+      "stderrPresent": false,
+      "nativeStatusFile": "docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437/production-status.json",
+      "nativeStatusFileSha256": "09B53E3388B37F82595AE0D079D69CDC492B918B66422E72B010A16CC58E931C"
+    }
+  ],
+  "mode": "status-only",
+  "providerMutations": 0,
+  "bodyProof": "Existing canonical planner sorted remote versions, required exact expected name and one statement per applied row, and compared each normalized remote statement to local source. Normalization changes CRLF and strips outer BEGIN/COMMIT only. Raw remote bodies remained inside child process and were not printed/persisted.",
+  "clientProducerRetention": "docs/evidence/release15/frozen-fdee7a2/client-boundary-producers/retention-manifest.json",
+  "clientProducerRetentionSha256": "2DCBA6C19D644AF0CABB98A6CFAAC87387B81DA213AAC7F54F4D5B42DAC30E55",
+  "documentation": [
+    "https://supabase.com/changelog",
+    "https://supabase.com/docs/guides/database/connecting-to-postgres",
+    "https://supabase.com/docs/guides/api/securing-your-api"
+  ],
+  "documentationAccess": "Markdown endpoints returned unsupported-content-type from search service; public HTML documentation and supported Supabase search_docs read successfully. No dashboard/browser access attempted.",
+  "limitations": [
+    "Status accepts canonicalized body/order, not byte equality of raw remote SQL whitespace/outer transaction wrappers or equality of catalog-generated version labels to historical timestamps.",
+    "This SELECT-only history snapshot does not establish no future concurrent changes; apply and all provider/config/schema mutations were excluded.",
+    "Data API exposed-schema dashboard allowlist is not verified. A null pgrst.db_schemas value would not prove safety.",
+    "No current grants/RLS/scheduler/Vault presence, advisors, actual hosted gameplay, OAuth or rollout readiness claimed from migration history alone.",
+    "Existing private config credentials were consumed only by reviewed status process; values and raw SQL/history were not retained.",
+    "Client producer retention is provenance only; existing receipt, current application source and full build/test proof were not changed."
+  ],
+  "readinessClaim": false
+}

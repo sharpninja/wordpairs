@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-29" time="00:37:47">
+  <environment cwd="<home>/github/WordGame" os-version="7.2.5-3-omarchy" clr-version="10.0.13" user-domain="" user="sharpninja" machine-name="[PRIVATE HOST]" platform="Linux" nunit-version="2.5.8.0" />
+  <culture-info current-culture="" current-uiculture="" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="2.1747" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" executed="True" result="Success" success="True" time="2.1747" asserts="0" description="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="hosting migration prefix contract" executed="True" result="Success" success="True" time="1.1756" asserts="0" description="hosting migration prefix contract">
+            <results>
+              <test-case description="proposes only 012 after the recorded thirteen-migration hosted prefix" name="hosting migration prefix contract.proposes only 012 after the recorded thirteen-migration hosted prefix" time="0.6983" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="proposes the whole catalog for an empty history" name="hosting migration prefix contract.proposes the whole catalog for an empty history" time="0.0398" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="proposes hosted scheduler, private realtime, then 012 after core 001 through 011" name="hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 after core 001 through 011" time="0.0352" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects 012 inserted before hosted 101 without opening a connection" name="hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" time="0.1489" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects source drift at an otherwise matching migration" name="hosting migration prefix contract.rejects source drift at an otherwise matching migration" time="0.0356" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects history longer than the declared migration set" name="hosting migration prefix contract.rejects history longer than the declared migration set" time="0.0426" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

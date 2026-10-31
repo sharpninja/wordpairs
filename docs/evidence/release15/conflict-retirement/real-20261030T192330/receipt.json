@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-10-30T19:23:30",
+  "finishedAt": "2026-10-30T19:23:32",
+  "binding": "real",
+  "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+  "dirtyTestSource": true,
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/ui-command-retirement.test.ts",
+    "tests/browser/ui-command-acknowledgement.test.ts",
+    "tests/browser/ui-command-capture.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 162,
+  "failed": 0,
+  "skipped": 0,
+  "newPositive": 19,
+  "newExpectedNegative": 19,
+  "priorCases": 124,
+  "negativeControls": 81,
+  "sourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-retirement.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.test.ts",
+      "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-retirement.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-acknowledgement.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-acknowledgement.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-acknowledgement.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-capture.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-capture.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/ui-command-capture.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/live-player-counts.integration.spec.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/live-multiplayer.integration.spec.ts"
+    }
+  ],
+  "producerSha256": "0CEF8C00E2E7B9C567E361FE18954DB814843896CEEC7E0905CC200738A7BCC8",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/unit.xml",
+  "junitSha256": "BDF42C1FBD2770412DFFCDE1F03F3ACC1283B26775ACE9FAE094DC506AF8900A",
+  "qualification": "Isolated SAME wait/classifier/coordinator oracle, not actual DOM/network/runtime capacity. Original124 cases retained; existing contract type changes, if any, are separately disclosed."
+}

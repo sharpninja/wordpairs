@@ -28,7 +28,7 @@ const admission = p(
   "store.state",
 );
 const capacity = boundary(
-  "fills capacities 2/8/25",
+  "fills capacities 2/8/10",
   "joinRoom",
   "room",
   "calls",
@@ -139,7 +139,7 @@ export const primaryBindings: Record<string, AssertionBinding[]> = {
   "AC-01-T01": [admission],
   "AC-02-T01": [
     capacity,
-    a("rooms", "enforces the 2–25 capacity range", "roomCapacity"),
+    a("rooms", "enforces the 2–10 capacity range", "roomCapacity"),
   ],
   "AC-02-T02": [admission],
   "AC-03-T01": [icon],
@@ -242,7 +242,7 @@ export const primaryBindings: Record<string, AssertionBinding[]> = {
   "AC-23-T02": [p("oldest-room port contract", "raced", "stores.every", "p3")],
   "AC-24-T01": [
     capacity,
-    a("rooms", "enforces the 2–25 capacity range", "roomCapacity"),
+    a("rooms", "enforces the 2–10 capacity range", "roomCapacity"),
   ],
   "AC-25-T01": [admission],
   "AC-26-T01": [
@@ -267,7 +267,7 @@ export const primaryBindings: Record<string, AssertionBinding[]> = {
   ],
   "AC-28-T01": [
     a("lobby", "rejects observers and outsiders", "setReady", "presence"),
-    boundary("maximum 25 players", "observer", "h.act", "scorecard"),
+    boundary("maximum 10 players", "observer", "h.act", "scorecard"),
     b(
       "tests/web/lobby-api.test.ts",
       "returns canonical observer denial",

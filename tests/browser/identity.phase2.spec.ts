@@ -1,11 +1,12 @@
 import {test,expect} from '@playwright/test';
 test('AC-21/46 concurrent fresh tabs create one browser credential before requests, surviving lost responses',async({context})=>{
-  const received:string[]=[];let loseFirst=true;
+  const received:string[]=[];let loseFirst=true;let signedIn=false;
+  const profile={id:'guest-shared-browser',version:0,kind:'guest',alias:'Guest Shared',icon:'owl',publicLeaderboard:false,wins:0,points:0,earliestWinAt:null};
   await context.route('**/api/session',async route=>{
-    if(route.request().method()==='GET')return route.fulfill({status:401,json:{error:{code:'NOT_AUTHENTICATED'}}});
+    if(route.request().method()==='GET')return signedIn?route.fulfill({json:{profile,permissions:[]}}):route.fulfill({status:401,json:{error:{code:'NOT_AUTHENTICATED'}}});
     const input=route.request().postDataJSON();received.push(input.guestCredential);
     if(loseFirst){loseFirst=false;return route.abort('failed');}
-    return route.fulfill({json:{profile:{id:'guest-shared-browser',version:0,kind:'guest',alias:'Guest Shared',icon:'owl',publicLeaderboard:false,wins:0,points:0,earliestWinAt:null},guestCredential:input.guestCredential}});
+    signedIn=true; return route.fulfill({json:{profile,guestCredential:input.guestCredential}});
   });
   const first=await context.newPage();const second=await context.newPage();
   await Promise.all([first.goto('/play'),second.goto('/play')]);
@@ -19,6 +20,7 @@ test('AC-21/46 concurrent fresh tabs create one browser credential before reques
   await failed.getByRole('button',{name:'Continue as guest'}).click();
   await expect(failed.getByText('Guest Shared',{exact:true})).toBeVisible();
   expect(received).toEqual([received[0],received[0],received[0]]);
+  signedIn=false; // Expire only the session; retain the same browser guest credential.
   await first.reload();
   await first.getByRole('button',{name:'Continue as guest'}).click();
   await expect.poll(()=>received.length).toBe(4);

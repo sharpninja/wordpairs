@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T23:46:00.982652+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "User changed release scope after contestbrief verified guest/no-login wording. New explicit scope: public game guests only, disable secured public UI/features; exception admin page asPWA using GitHub signin ONLY sharpninja, add/configure GitHubApp. DisablepublicPWAinstallation; adminPWAretained. Implementation underway; please read-only adversarial architecture review now to catch design issues, later finalreceipt. New GithubAdminProvider fixed numericid16146732+loginsharpninja (gh api verified), AuthorizationCode+S256PKCE, tokenexchangeclientidsecret then GEThttpsapi.github.com/user; no repo/org/email/scopes requested, no provideraccess/refresh tokens persisted. runtime getAdminIdentityService uses IdentityService with separate secrets.hash('github-admin\\0'+value) namespace for challenge/session DBdigests and wp_admin/wp_admin_login cookies; onlyGithubfixedownerflow canissue these, publicguesttokens cannotresolveevenifcopiedintoadmincookie. Public getIdentityService is guestOnly:true: memberprofile sessionsdenied and actorroles forcedplayer; noOIDCprovider. adminSession helper requiresmember inadminnamespace, yieldsadminactor. Content/usersAPIcontext useadminSession and injectonlyverifiedprofileidintoexistingPostgresrepo configured-admin parameter; public /api/session permissions[], noOAuthentry; formerOpenAIlogin/callback404. Public /contentredirectplay; game nomination/communityUIdisabled, reactions retained. Admin identityUIuses/api/admin/session, noGuestbutton/profilepreferences. AdminGET/DELETEsession routes; GitHublogin/callbackroutes separate so wp_session guestremainsuntouched. ExistingIdentityService stateDBone-timeconsume/expiry validation reused. DBmember sessions1day samecookieMaxAge; logoutrevokesDB. NewclientregistrationpreparedprivateGitHubApp no repo/org/accountperms/webhooks, callbacksprod+staging, selectedonlysharpninjaaccount; notcreatedyet. AdminPWAmanifestmovedsrc/app/admin/manifest.ts scope/start/id/admin; register/admin-sw.js scope/admin withnarrowServiceWorkerAllowed; workeronlyadminnavigationsfallbackgenericstatic/noAPI/RSC/privatecache. Root/sw.jsretiresoldrootcache/registration; rootlayoutcleanupremovesonlylegacyrootworker andwordpairs-pwa-* caches preservingadminprefix. Sourcehooksaftereveryeditpassing, formatting/testsnotyetupdated. No live writes. Please report concrete concerns now, preserve designreviewreceipt later new docs/evidence/hosting/guest-admin-review-round1.json; do notmodifyappsource.",
+  "scope": "Incremental architecture/source review while the new guest-only public release and owner-only GitHub admin implementation is under construction. Not a final release gate.",
+  "verdict": "changes_required",
+  "accuracyScore": null,
+  "completenessScore": null,
+  "scoreExplanation": "Deliberately unscored interim review: source/tests/registration are still under construction. Prior 99/99 auth/navigation approval belongs to the superseded release scope, not this new architecture.",
+  "rubric": {
+    "finalThreshold": "99 accuracy /99 completeness and no unresolved material source issue after final scoped evidence",
+    "criteria": [
+      "Public guest and admin token/challenge namespace isolation",
+      "Verified fixed GitHub owner, state/PKCE/replay/expiry controls",
+      "No public secured-content/admin access or provider login",
+      "Admin-only installability and cache privacy with legacy worker retirement",
+      "Truthful failure feedback, role-management semantics and release-scope documentation"
+    ]
+  },
+  "findings": [
+    {
+      "id": "GUEST-ADMIN-HV-001",
+      "priority": "P1",
+      "file": "src/app/admin/manifest.ts",
+      "line": 1,
+      "title": "Nested manifest.ts is not a Next.js metadata route",
+      "problem": "The installed Next.js metadata matcher recognizes /manifest.ts but not /admin/manifest.ts. Moving the special file under admin does not create the required served manifest/link, so the retained admin PWA lacks its installability manifest.",
+      "independentEvidence": "Executed isMetadataRouteFile from next/dist/lib/metadata/is-metadata-route with page extensions js/jsx/ts/tsx: /manifest.ts returned true; /admin/manifest.ts returned false. Installed documentation explicitly locates this special convention at the app root.",
+      "requiredChange": "Use an explicit admin manifest route, such as app/admin/manifest.webmanifest/route.ts with application/manifest+json, and set metadata.manifest only in the admin layout. Keep root/public metadata without a manifest.",
+      "validation": "Production HTML for admin has the exact manifest link; endpoint200 returns correct id/start_url/scope/icons; public / and /play have no manifest or install UI; actual admin worker/controller/offline checks pass."
+    },
+    {
+      "id": "GUEST-ADMIN-HV-002",
+      "priority": "P2",
+      "file": "src/web/github-auth-http.ts",
+      "line": 23,
+      "relatedFile": "src/app/admin/page.tsx",
+      "title": "Display the controlled OAuth failure state",
+      "problem": "Callback errors redirect to /admin?auth=failed, but the admin page does not read that parameter and no UI handles it. A denied account, invalid state, expired challenge or provider failure returns to an indistinguishable sign-in screen without explaining rejection/recovery.",
+      "requiredChange": "Render a controlled admin-only failure message and retry link/button for this flag. Do not echo provider error descriptions, codes, tokens or arbitrary query text.",
+      "validation": "Wrong-account and callback-error fixture paths show safe feedback and no admin content; refresh/retry remains usable."
+    }
+  ],
+  "designFollowups": [
+    {
+      "id": "GUEST-ADMIN-NOTE-001",
+      "file": "src/web/admin-panel.tsx",
+      "topic": "User access management semantics",
+      "detail": "Existing Users and access text says granted moderators/admins gain site capabilities. Under the new fixed-owner gate they cannot authenticate to admin even if database roles are granted. Remove/disable obsolete delegation controls or clearly label retained roles as historical/inactive under this release. Do not imply granting a role permits a second GitHub user. This is a scope/UX inconsistency, not an identified server bypass."
+    },
+    {
+      "id": "GUEST-ADMIN-NOTE-002",
+      "topic": "Legacy public PWA lifecycle",
+      "detail": "Root retirement/unregistration and namespaced cache deletion are appropriate. Test an already-controlled root client plus an existing admin registration. Do not claim that code can remove an already-installed OS icon or prevent generic browser bookmark creation. Explain any required reload/uninstall separately."
+    },
+    {
+      "id": "GUEST-ADMIN-NOTE-003",
+      "topic": "Admin PWA OAuth continuity",
+      "detail": "Verify that standalone admin navigation can leave for GitHub and return with the admin cookie in the intended browser/PWA context. Browser fixture routing cannot certify physical iOS installation or cookie-context continuity."
+    }
+  ],
+  "positiveArchitectureAssessment": [
+    "Separate admin digest domain and wp_admin/wp_admin_login cookies preserve guest/admin token isolation; a raw token copied between cookies hashes differently. Public member sessions are denied and public actors forced to player.",
+    "Fixed numeric GitHub ID plus login check is stronger than trusting login hint or profile name. Both must match the verified /user response before member-session creation.",
+    "S256 PKCE, random state, single-use expiring challenge, fixed provider URLs, redirect:error and server-side client secret/token handling align with official GitHub App web authentication. No provider access/refresh token persistence was found.",
+    "Admin content/users routes derive their actor from adminSession and pass only that verified ID into trusted repository configuration. Public role claims and old configured-admin allowlists do not open these routes.",
+    "Admin worker caches only generic offline/icons, intercepts admin GET navigations only, and does not cache API/RSC/private pages or queue mutations. Legacy cleanup targets only prior Wordpairs root worker/cache names."
+  ],
+  "finalEvidenceRequired": [
+    "Unit/transport wrong ID with correct login, wrong login with correct ID, bad state/PKCE, replay, expired challenge, provider failure and unsupported redirect tests.",
+    "Actual composition tests copy guest token into admin cookie and admin token into guest cookie; both fail. Old member/public and role-bearing guest sessions remain player-only or denied as appropriate.",
+    "Admin callback success sets only admin cookies, preserves existing guest session/room identity, and logout revokes the admin DB session without signing out the guest. No admin guest-creation endpoint exists.",
+    "Admin API/direct-page denial for guests and non-owner GitHub identity, including client-supplied profile/role fields.",
+    "Manifest/worker production checks including retirement of old public registration, no public install UI/manifest, no private CacheStorage entries, admin offline fallback and API network failure.",
+    "Record actual GitHub App permissions, callbacks and owner restriction after creation; no provider-success claim before a real authorized flow. Preserve historical approvals/tests as superseded evidence rather than silently changing their claimed scope."
+  ],
+  "officialSources": [
+    {
+      "url": "https://github.blog/changelog/2025-07-14-pkce-support-for-oauth-and-github-app-authentication/",
+      "use": "Confirms GitHub Apps support S256 PKCE."
+    },
+    {
+      "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app",
+      "use": "Confirms code/client-secret exchange, redirect URI, state and verifier flow, and verified user API request."
+    }
+  ],
+  "localDocumentation": "node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/01-metadata/manifest.md",
+  "snapshot": {
+    "localHead": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+    "files": [
+      {
+        "path": "src/infrastructure/github-admin.ts",
+        "sha256": "b06f1afcb793d4b0cb4ec22b7862b689f7d114b75b19ebe9aafdc29fa3208342",
+        "bytes": 3177
+      },
+      {
+        "path": "src/infrastructure/runtime.ts",
+        "sha256": "1a92948be885369e22240a0d578de436437b1d5a308135a6caf66b75656d0944",
+        "bytes": 9268
+      },
+      {
+        "path": "src/application/identity.ts",
+        "sha256": "de34ccb4664e000f6e27b168c659866981bdc1d8001c7e745a9f66f0ee3d248f",
+        "bytes": 8256
+      },
+      {
+        "path": "src/web/admin-session.ts",
+        "sha256": "38196927118dd179c01977dff325c0d45afcf22e582255844a721d0dcac43296",
+        "bytes": 716
+      },
+      {
+        "path": "src/web/github-auth-http.ts",
+        "sha256": "aaa745cf79a559a717b46d7ed11283f7f2bbe80015874a7b651ed5e1dc74d00b",
+        "bytes": 1574
+      },
+      {
+        "path": "src/web/identity-panel.tsx",
+        "sha256": "eecac3add4400abad43e0d1f55f2766531e86eebf642ae1c90b9014c665e3f8c",
+        "bytes": 15056
+      },
+      {
+        "path": "src/web/pwa-support.tsx",
+        "sha256": "b3323aeb39ebe20b3fc060700194e20d51ea24cb26dac7260c03ffe76e82f559",
+        "bytes": 4397
+      },
+      {
+        "path": "src/app/api/admin/session/route.ts",
+        "sha256": "fb547ba9619a3ad9f18dda32a88fdd1d07d57040b13d1d90e960750ce9c41878",
+        "bytes": 1300
+      },
+      {
+        "path": "src/app/api/admin/users/route.ts",
+        "sha256": "05b058a1f35c66c53e526f60031c810dc7ccbdb423c58371347c542687018467",
+        "bytes": 471
+      },
+      {
+        "path": "src/app/api/content/route.ts",
+        "sha256": "9add215812c2abda0ea94216b470eeb9c2f81ed8a0135c7b4ec8954dc7bf4c4c",
+        "bytes": 2562
+      },
+      {
+        "path": "src/app/admin/layout.tsx",
+        "sha256": "3731335d2cb0fa4c2822e19de1de5cb29d28efd1a02d5af65c6e6770ff49e874",
+        "bytes": 690
+      },
+      {
+        "path": "src/app/admin/page.tsx",
+        "sha256": "74fb6fefa04bcba0b0aff3ae0d7020e5baf0f2aa7db9f9dc24f3a3f1fdba945e",
+        "bytes": 295
+      },
+      {
+        "path": "src/app/layout.tsx",
+        "sha256": "c360d7540c586336024ebaa1bf1c509f3b917c806ef98e07dfa42cc507daa646",
+        "bytes": 836
+      },
+      {
+        "path": "public/admin-sw.js",
+        "sha256": "5e01ee818bae518ec98ff5429490a4a4f0fe4208a34bc34e32e26917d4262a0f",
+        "bytes": 1718
+      },
+      {
+        "path": "public/sw.js",
+        "sha256": "5031fbf1587dd105308849d37d97637932ff3df0f9261d843c67411cf1382e21",
+        "bytes": 446
+      },
+      {
+        "path": "next.config.ts",
+        "sha256": "c23b55766c8e33e33d296d72f51d6d688fe137b6cc01d3ed3997975be4077a36",
+        "bytes": 914
+      }
+    ]
+  },
+  "limits": [
+    "No live service/app registration/browser/provider interaction, source mutation or application test suite run by reviewer.",
+    "Provider numeric identity verification is parent-reported; this review checked its use in code, not the account lookup independently.",
+    "Implementation is changing concurrently; findings refer to inspected files/behavior, and final source/evidence review is still required.",
+    "No contest compliance, new deployment, GitHub login success, physical PWA or complete live capacity claim."
+  ],
+  "disposition": "Repair the manifest route and controlled callback-error feedback; reconcile obsolete ACL UI semantics. Identity separation is a sound direction with no concrete bypass found in this read-only pass, but final approval requires the listed boundary and production-PWA evidence."
+}

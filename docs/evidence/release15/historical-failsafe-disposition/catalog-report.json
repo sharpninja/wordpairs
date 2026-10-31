@@ -1,0 +1,15 @@
+{
+  "readAtLocal": "2026-10-30T19:40:58",
+  "method": "workflow.triage.queryGroups",
+  "params": {
+    "workspacePath": "\u003Chome\u003E/github/McpServer"
+  },
+  "groupId": "triage-group-c198e07edd07ee87",
+  "groupStatus": "failed",
+  "title": "MCP server /health hangs; plugin trust bootstrap and triage submit time out",
+  "summary": "The wordpairs workspace MCP server process is alive but GET /health?nonce=... does not answer (5 s, 30 s and 90 s client timeouts), workflow.triage.report times out in qbrain-ai-repl after 30 s, and the plugin writes no failsafe record for the failed triage submit. A hostile-validation reviewer therefore cannot load memories, read QBrain or write its session-log turn.",
+  "reportCount": 1,
+  "reports": [],
+  "lastError": "Triage agent failed with state Error with exit code 1. See captured agent output for details.",
+  "qualification": "Exact catalog group readback. Research status and intake/replay identity are separate claims."
+}

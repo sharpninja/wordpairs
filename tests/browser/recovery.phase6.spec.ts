@@ -421,7 +421,7 @@ test("AC-23/37 empty and lost-seat quick match offer browse/create; service limi
       "The room or account changed. Try again, browse, or create a room.",
     ),
   ).toBeVisible();
-  await page.getByLabel("Maximum players (2–25)").fill("8");
+  await page.getByLabel("Maximum players (2–10)").fill("8");
   await page.getByRole("button", { name: "Create room", exact: true }).click();
   await page.getByRole("button", { name: "Retry room creation" }).click();
   await expect(

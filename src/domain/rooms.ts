@@ -2,6 +2,17 @@ import { lobbyOverdue, reconcileLobby } from "./lobby";
 import type { Room } from "./model";
 import { failure, type Result, success } from "./result";
 export const ROOM_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+export const MAX_ROOM_PLAYERS = 10;
+/** Existing running games retain their stored roster and capacity. */
+export function roomCapacityBlocked(room: Room): boolean {
+  return (
+    (room.status === "waiting" || room.status === "countdown") &&
+    room.players.length > MAX_ROOM_PLAYERS
+  );
+}
+export function effectiveRoomCapacity(room: Room): number {
+  return Math.min(room.capacity, MAX_ROOM_PLAYERS);
+}
 export function isRoomId(value: string) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
     value,
@@ -9,7 +20,9 @@ export function isRoomId(value: string) {
 }
 export function roomCapacity(value: unknown): value is number {
   return (
-    Number.isInteger(value) && (value as number) >= 2 && (value as number) <= 25
+    Number.isInteger(value) &&
+    (value as number) >= 2 &&
+    (value as number) <= MAX_ROOM_PLAYERS
   );
 }
 export function normalizeRoomCode(value: string): string | null {
@@ -86,7 +99,8 @@ export function joinRoom(
   if (mode === "player") {
     if (room.status !== "waiting" || room.lockedRoster.length)
       return failure("ROOM_CLOSED");
-    if (room.players.length >= room.capacity) return failure("ROOM_FULL");
+    if (room.players.length >= effectiveRoomCapacity(room))
+      return failure("ROOM_FULL");
     return success(
       reconcileLobby(
         {
@@ -109,10 +123,14 @@ export function joinRoom(
       ),
     );
   }
+  if (roomCapacityBlocked(room)) return failure("ROOM_CLOSED");
   if (room.observers.length >= 25) return failure("ROOM_FULL");
   if (!inviterId || !room.players.some((p) => p.profileId === inviterId))
     return failure("NOT_AUTHORIZED");
-  if (room.status === "waiting" && room.players.length < room.capacity)
+  if (
+    room.status === "waiting" &&
+    room.players.length < effectiveRoomCapacity(room)
+  )
     return failure("VALIDATION_ERROR");
   return success(
     reconcileLobby(

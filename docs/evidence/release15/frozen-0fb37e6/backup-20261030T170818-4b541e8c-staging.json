@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-10-30T17:08:18",
+  "runId": "backup-20261030T170818-4b541e8c",
+  "environment": "staging",
+  "projectReference": "jshjkaigwbxsbnnogfxs",
+  "scope": "APP/game logical schema+data backup, not full Supabase project backup",
+  "sourceReadOnly": true,
+  "sslMode": "verify-full",
+  "hostedMutation": false,
+  "plaintextDumpFile": false,
+  "schemas": [
+    "wordpairs",
+    "wordpairs_hosting",
+    "public",
+    "supabase_migrations"
+  ],
+  "image": "postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b",
+  "dumpJobs": 1,
+  "restoreJobs": 1,
+  "sourceSessionClient": "psql18.6compatiblewithserver17",
+  "dumpClientMajor": 17,
+  "restoreClientMajor": 17,
+  "cpuLimit": 1,
+  "memoryLimit": "512m",
+  "restoreNetwork": "none",
+  "restoreHostPorts": [],
+  "storage": "tmpfs; this proves logical restore, not disk durability/crash recovery",
+  "recipientPublicSha256": "B97FFDDACA958E2FFFE3A98C10EBC03D5E6B82D535D17AE21E589389E62980A2",
+  "recipientPublicFingerprint": "SHA256:p3N5H4DpEmfWQecPs49ULE8WzGPAJAX1IpkZDv1Z7kg",
+  "identityPath": "\u003Chome\u003E/.ssh/[PRIVATE SSH KEY NAME]_[PRIVATE HOST]",
+  "ageVersion": "1.3.2",
+  "ageBinarySha256": "EB7DD1B518F0A307C99CD97782623C5321DA049154B04ACD2D98D21AA7BC9B2C",
+  "privateBackupPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170818-4b541e8c-staging/staging.pgdump.age",
+  "sourceConfigRetained": true,
+  "ownerNormalization": "Restore uses --no-owner into local postgres; role credentials/membership/global attributes are not restored.",
+  "limits": [
+    "Excludes managed auth,storage,Vault contents/keys,cron schedules,net queues,Realtime policies/settings/publications,EdgeFunctions and external OAuth/Vercel settings.",
+    "wordpairs_hosting scheduler definition/state is retained but never invoked on restore; pg_cron/pg_net/Vault require separate managed reprovisioning and purpose-secret configuration.",
+    "Existing private runtime/provider configuration files are preserved at their original locations; no new secret store/key is created and these files are not copied into public evidence.",
+    "Source row fingerprints use one exported read-only REPEATABLE READ snapshot shared with pg_dump. PostgreSQL sequence state is not MVCC; source values must remain stable before/after dump for exact comparison.",
+    "This operator-held local ciphertext is not an independently stored off-site backup and existing SSH private identity must be retained to decrypt it."
+  ],
+  "status": "failed",
+  "nativeExitCodes": {
+    "dump": 0,
+    "encrypt": 0,
+    "sourceRead": 0
+  },
+  "schemaComparisonScope": "Eight projected sections: columns/defaults/types, constraints, indexes, function definition SHA256/security-definer/config, table RLS flags, triggers, policies, and effective relation/function ACL. Namespace ACL/default privileges, standalone view/type/sequence definitions are included by selected-schema pg_dump but are not independently compared by this projection. Object ownership is normalized; global role credentials/membership/settings require separate provisioning.",
+  "producer": {
+    "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+    "sha256": "F35D3C6E0155C68197F14DCAC1EB3D841B81EC3CA74BA0B0F5E918557BAB893E",
+    "archivedPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170818-4b541e8c-staging/Invoke-WordpairsEncryptedBackup.ps1",
+    "archivedSha256": "F35D3C6E0155C68197F14DCAC1EB3D841B81EC3CA74BA0B0F5E918557BAB893E",
+    "pinnedBeforeHostedRead": true,
+    "originalRetained": true
+  },
+  "caSha256": "700723581420DD1AC98FD7E9AC529F0EF210EADCAF87FC868A3AD7D114C2F3B7",
+  "snapshotId": "00000023-00001D1A-1",
+  "sourceServerVersion": "17.11",
+  "sourceTransactionReadOnly": true,
+  "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+  "ciphertextSha256": "3D4E4293FCCFE1D19D2E4AB2ACF0B56C043AD745FE501ED6F1EDB7DF02512630",
+  "ciphertextBytes": 224446,
+  "sourceSequenceStable": true,
+  "restoreContainerId": "39b920e933637ebccb5f9ffcee95f09efa77e21baa9320c33f37400006940033",
+  "dumpContainerId": "308e23bfff3bb793498fdcf0ec8869086e822daa8a2e162b577fdfd1e7968f48",
+  "cleanup": [
+    {
+      "id": "39b920e933637ebccb5f9ffcee95f09efa77e21baa9320c33f37400006940033",
+      "removedExitCode": 0,
+      "absenceVerified": true
+    },
+    {
+      "id": "308e23bfff3bb793498fdcf0ec8869086e822daa8a2e162b577fdfd1e7968f48",
+      "alreadyAbsent": true,
+      "absenceVerified": true
+    }
+  ],
+  "failures": [
+    "Owned restore SQL failed; private encrypted diagnostic retained"
+  ],
+  "finishedAt": "2026-10-30T17:08:30"
+}

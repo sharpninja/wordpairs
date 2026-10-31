@@ -1,5 +1,9 @@
 # TEST-FREETIERQUOTAHANDLING-037 - AC-37: Free-tier quota handling
 
+Current amendment persistence: [19-record QBrain readback](../../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
+
+Current release target under rules v2.8 (31 October 2026): one new room with 10 players and up to 25 observers, an audience of 35. [The completion plan](../../../release15-completion-plan.md) and `TR-FREETIER-OPERATION-021#DEC-20` amend the old 25-player target. A fixture quota response does not establish actual provider capacity or billing behavior.
+
 Linked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.
 
 | Field | Specification |

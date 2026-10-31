@@ -1,0 +1,113 @@
+<testsuites id="" name="" tests="14" failures="0" skipped="11" errors="1" time="59.684582999999996">
+<testsuite name="live-player-counts.integration.spec.ts" timestamp="2026-10-31T00:09:10.691Z" hostname="" tests="14" failures="0" skipped="11" time="57.78" errors="1">
+<testcase name="LIVE-SCALE 2 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="17.185">
+<system-out>
+<![CDATA[LIVE_SCALE players=2 round=1
+LIVE_SCALE players=2 round=2
+LIVE_SCALE players=2 round=3
+LIVE_SCALE players=2 round=4
+LIVE_SCALE players=2 round=5
+LIVE_SCALE players=2 round=6
+LIVE_SCALE players=2 round=7
+LIVE_SCALE players=2 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 3 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="23.108">
+<system-out>
+<![CDATA[LIVE_SCALE players=3 round=1
+LIVE_SCALE players=3 round=2
+LIVE_SCALE players=3 round=3
+LIVE_SCALE players=3 round=4
+LIVE_SCALE players=3 round=5
+LIVE_SCALE players=3 round=6
+LIVE_SCALE players=3 round=7
+LIVE_SCALE players=3 round=8
+]]>
+</system-out>
+</testcase>
+<testcase name="LIVE-SCALE 4 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts" time="17.487">
+<system-out>
+<![CDATA[LIVE_SCALE players=4 round=1
+LIVE_SCALE players=4 round=2
+LIVE_SCALE players=4 round=3
+
+[[ATTACHMENT|../../../../../test-results/live-local/live-player-counts.integra-bacd2-rs-complete-eight-UI-rounds/error-context.md]]
+]]>
+</system-out>
+<error message="Unknown pending command blocks a new intent" type="AssertionError">
+<![CDATA[  live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+
+    AssertionError: Unknown pending command blocks a new intent
+    actual expected
+
+    'disablsednt'
+
+
+       at ui-command-acknowledgement.ts:13
+
+      11 |   assert(value.version !== null && /^\d+$/.test(value.version) && Number.isSafeInteger(Number(value.version)), "Malformed rendered command version");
+      12 |   assert(["absent", "disabled", "enabled"].includes(value.pending), "Malformed pending state");
+    > 13 |   if (mode === "fresh") assert.equal(value.pending, "absent", "Unknown pending command blocks a new intent");
+         |                                ^
+      14 |   if (value.busy === "true") return "waiting";
+      15 |   if (value.pending !== "absent") {
+      16 |     if (value.pending === "disabled") return "waiting";
+        at commandUiState (<repo>/tests/browser/ui-command-acknowledgement.ts:13:32)
+        at expect.poll.message (<repo>/tests/browser/ui-command-acknowledgement.ts:55:15)
+        at awaitCommandUi (<repo>/tests/browser/ui-command-acknowledgement.ts:53:3)
+        at Object.retired (<repo>/tests/browser/live-player-counts.integration.spec.ts:86:30)
+        at commitUiCommand (<repo>/tests/browser/ui-command-capture.ts:78:7)
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:176:24
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:175:27
+
+    Error Context: ../../test-results/live-local/live-player-counts.integra-bacd2-rs-complete-eight-UI-rounds/error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="LIVE-SCALE 5 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 6 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 7 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 8 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 9 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 10 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 11 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 12 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 13 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 14 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="LIVE-SCALE 15 real browser players complete eight UI rounds" classname="live-player-counts.integration.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>

@@ -62,7 +62,7 @@ describe('TR identity/session persistence through actual service-role RPCs',()=>
     if (!login.ok) throw new Error('Login failed');
     expect(login.value.profile.kind).toBe('member');
     expect(login.value.profile.id).not.toBe(guest.value.profile.id);
-    expect(login.value.profile.publicLeaderboard).toBe(true);
+    expect(login.value.profile.publicLeaderboard).toBe(false);
     expect(JSON.stringify(login)).not.toContain('PRIVATE-TEST-SUBJECT');
     expect(await service.completeLogin(begin.value.browserToken,'code','state')).toEqual(failure('NOT_AUTHENTICATED'));
     const again=await service.beginLogin();

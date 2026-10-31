@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-10-30T15:41:44",
+  "jobName": "wordpairs-release15-realtime-serial",
+  "lane": "realtime",
+  "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial",
+  "command": "systemd-run",
+  "arguments": [
+    "--user",
+    "--quiet",
+    "--collect",
+    "--unit=wordpairs-release15-realtime-serial",
+    "--property=WorkingDirectory=\u003Crepo\u003E",
+    "--property=StandardOutput=append:\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial/service.stdout.log",
+    "--property=StandardError=append:\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial/service.stderr.log",
+    "--",
+    "/usr/bin/pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "/tmp/RunWordpairsRelease15Evidence.ps1",
+    "-Lane",
+    "realtime",
+    "-ReportDirectory",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/realtime-serial",
+    "-EvidenceRunId",
+    "eef46ae8-fcb5-412e-8acb-43b96ba961cd"
+  ],
+  "state": [
+    "Id=wordpairs-release15-realtime-serial.service",
+    "ActiveState=active",
+    "SubState=running",
+    "MainPID=490892",
+    "ExecMainStartTimestamp=Fri 2026-10-30 15:41:44 CDT"
+  ]
+}

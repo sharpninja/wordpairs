@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-28T21:11:21",
+  "root": "\u003Crepo\u003E",
+  "test": "\u003Crepo\u003E/tests/powershell/HostingSchemaPlanner.Tests.ps1",
+  "testSha256": "449A8F8090319285B57AC3D674E71A1D1E802180E3577A6B5F31A64F3C9BC02D",
+  "correctMockSha256": "734DBDF371BA0121226B601F404698CF6331746AECE6111E93694F415B9CAC4C",
+  "wrongMockSha256": "996A80EE2F7B20CB9E9CE0DF8A0D08312E39B7FA825587F3AE6A221F5BA90E3B",
+  "runs": [
+    {
+      "name": "correct",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "wrong",
+      "passed": 0,
+      "failed": 5,
+      "skipped": 0
+    }
+  ],
+  "qualification": "The same Pester scenarios will be rebound to the PowerShell production planner after this mock gate."
+}

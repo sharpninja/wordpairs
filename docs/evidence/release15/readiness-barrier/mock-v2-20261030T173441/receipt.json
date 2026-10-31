@@ -1,0 +1,51 @@
+{
+  "startedAt": "2026-10-30T17:34:42",
+  "finishedAt": "2026-10-30T17:34:42",
+  "binding": "mock",
+  "increment": "v2",
+  "revision": "131269a590046a3c1c83314d11ff79f2b731799c",
+  "dirtyTestSource": true,
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/readiness-barrier.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 22,
+  "failed": 0,
+  "skipped": 0,
+  "positiveCases": 11,
+  "expectedNegativeControls": 11,
+  "actualNegativeControls": 11,
+  "helperAbsent": false,
+  "unchangedPreDeltaHelperSha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+  "sourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.contract.ts",
+      "sha256": "DDF4C3D14A10C7DE73C63654EAF7E5FDDD02BEB7CEBDFDA858ECCB57B19EABA0",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/readiness-barrier.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.test.ts",
+      "sha256": "1DE8162C05AA5420F19A88EC0E057167AA539095F77D49D8B2BF27A9A2259CA1",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/readiness-barrier.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.ts",
+      "sha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/readiness-barrier.ts"
+    }
+  ],
+  "producerSha256": "BDBB279C0E5F3606AC0F80FF72CF82ADD1DBAB0271A162F5B352559A3AE15272",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/mock-v2-20261030T173441/unit.xml",
+  "junitSha256": "7DCFD1BBAA25C59B8AFCE92E62B48BFA47CAC2DE9E724C6229E64F3BDEC57276",
+  "qualification": "Expected negative controls are passing rejection checks inside the suite. Test-only callback coordination evidence, not actual browser/transport/full-game acceptance. V2 mock retains unchanged V1 helper while proving the newly added ownership oracle before the helper delta."
+}

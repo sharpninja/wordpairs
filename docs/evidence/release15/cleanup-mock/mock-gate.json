@@ -1,0 +1,49 @@
+{
+  "runs": [
+    {
+      "rejections": 0,
+      "exitCode": 0,
+      "provider": "correct",
+      "sha256": "F05CB3C9EC2DE197741C920FA62435A0E140BE625ACCC59FBBC58B27048E77F0",
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "rejections": 6,
+      "exitCode": 1,
+      "provider": "wrong-silent-failure",
+      "sha256": "75EFE38FCCC9AFF16052EA02F847FA7B62EC02F5E5178DADA90C0D224D0C1151",
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "rejections": 2,
+      "exitCode": 1,
+      "provider": "wrong-no-readback",
+      "sha256": "B274CC199684D1ADE1A81720B7893CF1E635C3827684B541E19253A023AC51B7",
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "rejections": 3,
+      "exitCode": 1,
+      "provider": "wrong-identity",
+      "sha256": "99312C27741CE9F84C3925075F326AA98544163D5FA75C2A425F3D053697DB45",
+      "tests": 10,
+      "skipped": 0
+    }
+  ],
+  "qualification": "Correct fixture assertions pass; nonzero wrong-provider test exits are expected discriminating negative controls, not production-suite failures.",
+  "timestamp": "2026-10-30T15:08:09",
+  "requirement": "TEST-ROOMSYNC-139#LIVE-07 truthful bounded cleanup",
+  "inputs": [
+    {
+      "sha256": "11DBC19B96E7275C95550365A5660D15AA03EBAA35737909E0803462423998BA",
+      "path": "tests/application/live-scale-cleanup.test.ts"
+    },
+    {
+      "sha256": "90550BE1979AAA649C34234E9513F1D20F1C8630DA8030107162CC0D66BC90A2",
+      "path": "tests/application/live-scale-cleanup-fixture.ts"
+    }
+  ]
+}

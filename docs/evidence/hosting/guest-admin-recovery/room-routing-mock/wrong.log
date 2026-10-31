@@ -1,0 +1,35 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/room-match-routing.test.ts (2 tests | 1 failed) 75ms
+   ✓ discovers a newly created match through an authorized room read 53ms
+   × refreshes an already mounted match without rereading the room 20ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/room-match-routing.test.ts > refreshes an already mounted match without rereading the room
+AssertionError: expected 3 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 3
+
+ ❯ tests/web/room-match-routing.test.ts:40:27
+     38|   await fixture.notify();
+     39|   await waitFor(() => expect(Number(fixture.view.getByTestId("game-ref…
+     40|   expect(fixture.reads()).toBe(initialReads);
+       |                           ^
+     41| });
+     42|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  11:46:23
+   Duration  1.13s (environment 72%, import 15%, tests 7%, transform 5%, worker 1%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/room-routing-mock/wrong.xml

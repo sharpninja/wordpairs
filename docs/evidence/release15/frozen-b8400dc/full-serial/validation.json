@@ -1,0 +1,129 @@
+{
+  "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+  "hostName": "[PRIVATE HOST]",
+  "startedAt": "2026-10-30T15:34:40",
+  "finishedAt": "2026-10-30T15:38:32",
+  "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "status": "passed",
+  "failure": null,
+  "steps": [
+    {
+      "name": "typecheck",
+      "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "startedAt": "2026-10-30T15:34:40",
+      "finishedAt": "2026-10-30T15:34:42",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "log": "typecheck.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "lint",
+      "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "startedAt": "2026-10-30T15:34:42",
+      "finishedAt": "2026-10-30T15:34:43",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "log": "lint.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "unit",
+      "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "startedAt": "2026-10-30T15:34:43",
+      "finishedAt": "2026-10-30T15:35:14",
+      "executable": "npm",
+      "arguments": [
+        "exec",
+        "vitest",
+        "--",
+        "run",
+        "--maxWorkers=4",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/full-serial/unit.xml"
+      ],
+      "exitCode": 0,
+      "log": "unit.log",
+      "junit": "unit.xml",
+      "junitSha256": "9BA80F7F2AF412AC32E378FEEC2F7F5A8452619E089D2DC36D311B963DD05E98"
+    },
+    {
+      "name": "postgres",
+      "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "startedAt": "2026-10-30T15:35:14",
+      "finishedAt": "2026-10-30T15:36:43",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "tests/integration/run-phase1.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/full-serial",
+        "-VolatileStorage"
+      ],
+      "exitCode": 0,
+      "log": "postgres.log",
+      "junit": "postgres.xml",
+      "junitSha256": "3956F4A31E03C3AD7A88787E85CC2F33FE41673B5EA5EF17A9CB3C6296BC3097"
+    },
+    {
+      "name": "build",
+      "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "startedAt": "2026-10-30T15:36:43",
+      "finishedAt": "2026-10-30T15:37:03",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "log": "build.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "browser",
+      "runId": "3237ffbd-c424-43be-8dca-eaee5cf0e98b",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "startedAt": "2026-10-30T15:37:03",
+      "finishedAt": "2026-10-30T15:38:32",
+      "executable": "npm",
+      "arguments": [
+        "exec",
+        "playwright",
+        "--",
+        "test",
+        "--config=playwright.pwa.config.ts",
+        "--reporter=line,junit"
+      ],
+      "exitCode": 0,
+      "log": "browser.log",
+      "junit": "browser.xml",
+      "junitSha256": "D55EEAB7023EE7A766136EE8210C5D20A31930DF8F6EEC54F9A890AC8D927AA0"
+    }
+  ],
+  "qualification": "Local source validation with disposable PostgreSQL and a local browser server."
+}

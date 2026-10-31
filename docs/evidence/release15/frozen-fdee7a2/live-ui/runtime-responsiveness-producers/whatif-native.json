@@ -1,0 +1,65 @@
+{
+  "recordedAt": "2026-10-30T18:54:34.6621973-05:00",
+  "startedAt": "2026-10-30T18:54:34.2522544-05:00",
+  "finishedAt": "2026-10-30T18:54:34.6621973-05:00",
+  "executable": "pwsh",
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/WatchWordpairsOwnedRuntime.ps1",
+    "-UnitName",
+    "wordpairs-replay-example.service",
+    "-ControlGroup",
+    "/user.slice/wordpairs-replay-example.service",
+    "-InvocationId",
+    "00000000000000000000000000000000",
+    "-RuntimeDirectory",
+    "\u003Crepo\u003E/.mcpServer/ui-00000000000000000000000000000000",
+    "-RunId",
+    "00000000-0000-0000-0000-000000000000",
+    "-SourceHead",
+    "fdee7a2569bb4742e008977e2a9cd7d312def859",
+    "-SourceManifest",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/source-inventory.json",
+    "-OutputDirectory",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/observer-whatif-placeholder",
+    "-WhatIf"
+  ],
+  "exitCode": 0,
+  "stdout": {
+    "sha256": "149D410963BD708893A208C925F889EE83FF53A61BF99D95990435BFFFD415DB",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/observer-whatif.stdout.log"
+  },
+  "stderr": {
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/observer-whatif.stderr.log",
+    "length": 0
+  },
+  "preparation": {
+    "sha256": "CE9460B3BC01D5DD4D9DE524410A319A59B54142637F5943FDF8A08268D3CD03",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/preparation.json",
+    "unchanged": true
+  },
+  "producerReadback": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/WatchWordpairsOwnedRuntime.ps1",
+      "sha256": "946F92B05E1629855654E00ADB6F160C10B6096F2BE3E35107D09BEA3531B88D",
+      "matches": true
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/InspectWordpairsResponsiveness.ps1",
+      "sha256": "0F66178E23C536CBA816BA53DB3A638F6CAB633C2DC651384C0AEF1B99AFE9D0",
+      "matches": true
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/RetainWordpairsResponsivenessObserver.ps1",
+      "sha256": "56C351B970416C3174B97989B26CB405982AA6E9F553BFF9558A2726C590DC8A",
+      "matches": true
+    }
+  ],
+  "scope": "Native placeholder-only WhatIf, no systemctl/docker/database or measurement operations executed. Earlier preparation.message was empty because in-process ShouldProcess host output was not captured; this append-only receipt preserves actual native stdout.",
+  "measurementOutputCreated": false,
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T233950Z-runtime-responsiveness-diagnosis"
+}

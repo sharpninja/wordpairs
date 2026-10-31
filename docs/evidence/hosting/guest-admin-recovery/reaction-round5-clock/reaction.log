@@ -1,0 +1,109 @@
+
+[WebServer] (node:2485629) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:2485706) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/3] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+  1) tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  getByRole('button', { name: 'React with 🎉', exact: true })
+    Expected: enabled
+    Received: disabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: 'React with 🎉', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'React with 🎉', exact: true })
+        14 × locator resolved to <button disabled type="button" aria-label="React with 🎉">🎉</button>
+           - unexpected value "disabled"
+
+
+       7 |  const labels=['p1','p2','o1'].map(id=>({id,alias:`Guest ${id}`,icon:'owl'}));async function connect(context:BrowserContext,actorId:string){await context.route('**/api/session',r=>r.fulfill({json:{profile:{id:actorId,version:0,kind:'guest',alias:`Guest ${actorId}`,icon:'owl',publicLeaderboard:false,wins:0,points:0,earliestWinAt:null}}}));await context.route('**/api/realtime',r=>r.fulfill({status:503,json:{}}));await context.route('**/api/rooms/**',async r=>{const path=new URL(r.request().url()).pathname;if(path.endsWith('/reactions')){if(r.request().method()==='GET')return r.fulfill({json:val(await service.view(id,actorId))});const body=r.request().postDataJSON();writes.push(body);const result=await service.send({aggregateId:id,actorId,commandId:body.commandId,expectedVersion:body.expectedVersion,requestDigest:JSON.stringify(body.emoji)},body.emoji);if(!failed){failed=true;return r.fulfill({status:503,json:{}});}return r.fulfill({status:result.ok?200:429,json:result.ok?result.value:result});}if(path.endsWith('/match'))return r.fulfill({json:{...val(await game.view(room,actorId)),actorId,role:actorId==='o1'?'observer':'player',labels,serverNow:now}});return r.fulfill({json:{...roomProjection(room,actorId,labels),actorId,inviterId:null,serverNow:now}});});}
+       8 |  const contexts=await Promise.all([browser.newContext(),browser.newContext(),browser.newContext()]);try{await Promise.all(contexts.map((c,i)=>connect(c,['p1','p2','o1'][i])));const pages=await Promise.all(contexts.map(c=>c.newPage()));const fixedTime=new Date('2026-01-01T00:00:00.000Z');await Promise.all(pages.map(async p=>{await p.clock.install({time:fixedTime});await p.clock.pauseAt(fixedTime);await p.goto(`/rooms/${id}`);}));const [p,b,o]=pages;await p.getByText('Send a reaction',{exact:true}).click();await p.getByRole('button',{name:'React with 👍',exact:true}).click();await expect(p.getByRole('button',{name:'Retry pending social request'})).toBeVisible();await p.getByRole('button',{name:'Retry pending social request'}).click();await expect.poll(()=>writes.length).toBe(2);expect(writes[0]).toEqual(writes[1]);expect(state.reactions).toHaveLength(1);await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeDisabled();await expect(o.getByText('Send a reaction',{exact:true})).toHaveCount(0);
+    >  9 |  now+=1999;await Promise.all(pages.map(page=>page.clock.fastForward(1999)));for(const page of pages)await expect(page.getByRole('list',{name:'Room reactions'}).getByRole('img',{name:'👍',exact:true})).toBeVisible();await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeDisabled();now+=1;await Promise.all(pages.map(page=>page.clock.fastForward(1)));await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeEnabled();now+=3000;await Promise.all(pages.map(page=>page.clock.fastForward(3000)));for(const page of pages)await expect(page.getByRole('list',{name:'Room reactions'}).getByRole('img',{name:'👍',exact:true})).toHaveCount(0);expect({room,match}).toEqual(initial);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      10 |  }finally{await Promise.all(contexts.map(c=>c.close()));}
+      11 | });
+      12 |
+        at <repo>/tests/browser/reactions.phase5.spec.ts:9:440
+
+    Error Context: test-results/reactions.phase5-menu-reac-bbd15--leave-game-state-unchanged/error-context.md
+
+
+
+(node:2486291) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2/3] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+  2) tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  getByRole('button', { name: 'React with 🎉', exact: true })
+    Expected: enabled
+    Received: disabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: 'React with 🎉', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'React with 🎉', exact: true })
+        14 × locator resolved to <button disabled type="button" aria-label="React with 🎉">🎉</button>
+           - unexpected value "disabled"
+
+
+       7 |  const labels=['p1','p2','o1'].map(id=>({id,alias:`Guest ${id}`,icon:'owl'}));async function connect(context:BrowserContext,actorId:string){await context.route('**/api/session',r=>r.fulfill({json:{profile:{id:actorId,version:0,kind:'guest',alias:`Guest ${actorId}`,icon:'owl',publicLeaderboard:false,wins:0,points:0,earliestWinAt:null}}}));await context.route('**/api/realtime',r=>r.fulfill({status:503,json:{}}));await context.route('**/api/rooms/**',async r=>{const path=new URL(r.request().url()).pathname;if(path.endsWith('/reactions')){if(r.request().method()==='GET')return r.fulfill({json:val(await service.view(id,actorId))});const body=r.request().postDataJSON();writes.push(body);const result=await service.send({aggregateId:id,actorId,commandId:body.commandId,expectedVersion:body.expectedVersion,requestDigest:JSON.stringify(body.emoji)},body.emoji);if(!failed){failed=true;return r.fulfill({status:503,json:{}});}return r.fulfill({status:result.ok?200:429,json:result.ok?result.value:result});}if(path.endsWith('/match'))return r.fulfill({json:{...val(await game.view(room,actorId)),actorId,role:actorId==='o1'?'observer':'player',labels,serverNow:now}});return r.fulfill({json:{...roomProjection(room,actorId,labels),actorId,inviterId:null,serverNow:now}});});}
+       8 |  const contexts=await Promise.all([browser.newContext(),browser.newContext(),browser.newContext()]);try{await Promise.all(contexts.map((c,i)=>connect(c,['p1','p2','o1'][i])));const pages=await Promise.all(contexts.map(c=>c.newPage()));const fixedTime=new Date('2026-01-01T00:00:00.000Z');await Promise.all(pages.map(async p=>{await p.clock.install({time:fixedTime});await p.clock.pauseAt(fixedTime);await p.goto(`/rooms/${id}`);}));const [p,b,o]=pages;await p.getByText('Send a reaction',{exact:true}).click();await p.getByRole('button',{name:'React with 👍',exact:true}).click();await expect(p.getByRole('button',{name:'Retry pending social request'})).toBeVisible();await p.getByRole('button',{name:'Retry pending social request'}).click();await expect.poll(()=>writes.length).toBe(2);expect(writes[0]).toEqual(writes[1]);expect(state.reactions).toHaveLength(1);await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeDisabled();await expect(o.getByText('Send a reaction',{exact:true})).toHaveCount(0);
+    >  9 |  now+=1999;await Promise.all(pages.map(page=>page.clock.fastForward(1999)));for(const page of pages)await expect(page.getByRole('list',{name:'Room reactions'}).getByRole('img',{name:'👍',exact:true})).toBeVisible();await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeDisabled();now+=1;await Promise.all(pages.map(page=>page.clock.fastForward(1)));await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeEnabled();now+=3000;await Promise.all(pages.map(page=>page.clock.fastForward(3000)));for(const page of pages)await expect(page.getByRole('list',{name:'Room reactions'}).getByRole('img',{name:'👍',exact:true})).toHaveCount(0);expect({room,match}).toEqual(initial);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      10 |  }finally{await Promise.all(contexts.map(c=>c.close()));}
+      11 | });
+      12 |
+        at <repo>/tests/browser/reactions.phase5.spec.ts:9:440
+
+    Error Context: test-results/reactions.phase5-menu-reac-bbd15--leave-game-state-unchanged-repeat1/error-context.md
+
+
+
+(node:2486805) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[3/3] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+  3) tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  getByRole('button', { name: 'React with 🎉', exact: true })
+    Expected: enabled
+    Received: disabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: 'React with 🎉', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'React with 🎉', exact: true })
+        14 × locator resolved to <button disabled type="button" aria-label="React with 🎉">🎉</button>
+           - unexpected value "disabled"
+
+
+       7 |  const labels=['p1','p2','o1'].map(id=>({id,alias:`Guest ${id}`,icon:'owl'}));async function connect(context:BrowserContext,actorId:string){await context.route('**/api/session',r=>r.fulfill({json:{profile:{id:actorId,version:0,kind:'guest',alias:`Guest ${actorId}`,icon:'owl',publicLeaderboard:false,wins:0,points:0,earliestWinAt:null}}}));await context.route('**/api/realtime',r=>r.fulfill({status:503,json:{}}));await context.route('**/api/rooms/**',async r=>{const path=new URL(r.request().url()).pathname;if(path.endsWith('/reactions')){if(r.request().method()==='GET')return r.fulfill({json:val(await service.view(id,actorId))});const body=r.request().postDataJSON();writes.push(body);const result=await service.send({aggregateId:id,actorId,commandId:body.commandId,expectedVersion:body.expectedVersion,requestDigest:JSON.stringify(body.emoji)},body.emoji);if(!failed){failed=true;return r.fulfill({status:503,json:{}});}return r.fulfill({status:result.ok?200:429,json:result.ok?result.value:result});}if(path.endsWith('/match'))return r.fulfill({json:{...val(await game.view(room,actorId)),actorId,role:actorId==='o1'?'observer':'player',labels,serverNow:now}});return r.fulfill({json:{...roomProjection(room,actorId,labels),actorId,inviterId:null,serverNow:now}});});}
+       8 |  const contexts=await Promise.all([browser.newContext(),browser.newContext(),browser.newContext()]);try{await Promise.all(contexts.map((c,i)=>connect(c,['p1','p2','o1'][i])));const pages=await Promise.all(contexts.map(c=>c.newPage()));const fixedTime=new Date('2026-01-01T00:00:00.000Z');await Promise.all(pages.map(async p=>{await p.clock.install({time:fixedTime});await p.clock.pauseAt(fixedTime);await p.goto(`/rooms/${id}`);}));const [p,b,o]=pages;await p.getByText('Send a reaction',{exact:true}).click();await p.getByRole('button',{name:'React with 👍',exact:true}).click();await expect(p.getByRole('button',{name:'Retry pending social request'})).toBeVisible();await p.getByRole('button',{name:'Retry pending social request'}).click();await expect.poll(()=>writes.length).toBe(2);expect(writes[0]).toEqual(writes[1]);expect(state.reactions).toHaveLength(1);await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeDisabled();await expect(o.getByText('Send a reaction',{exact:true})).toHaveCount(0);
+    >  9 |  now+=1999;await Promise.all(pages.map(page=>page.clock.fastForward(1999)));for(const page of pages)await expect(page.getByRole('list',{name:'Room reactions'}).getByRole('img',{name:'👍',exact:true})).toBeVisible();await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeDisabled();now+=1;await Promise.all(pages.map(page=>page.clock.fastForward(1)));await expect(p.getByRole('button',{name:'React with 🎉',exact:true})).toBeEnabled();now+=3000;await Promise.all(pages.map(page=>page.clock.fastForward(3000)));for(const page of pages)await expect(page.getByRole('list',{name:'Room reactions'}).getByRole('img',{name:'👍',exact:true})).toHaveCount(0);expect({room,match}).toEqual(initial);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      10 |  }finally{await Promise.all(contexts.map(c=>c.close()));}
+      11 | });
+      12 |
+        at <repo>/tests/browser/reactions.phase5.spec.ts:9:440
+
+    Error Context: test-results/reactions.phase5-menu-reac-bbd15--leave-game-state-unchanged-repeat2/error-context.md
+
+
+  3 failed
+    tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+    tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+    tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 

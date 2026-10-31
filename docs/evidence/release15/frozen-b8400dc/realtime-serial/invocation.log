@@ -1,0 +1,442 @@
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+BEGIN
+CREATE FUNCTION
+UPDATE 1
+COMMIT
+INSERT 0 26
+DO
+BEGIN
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/integration/multiplayer.integration.ts [2m([22m[2m14 tests[22m[2m)[22m[33m 72494[2mms[22m[39m
+   [32m✓[39m complete multiplayer games on real PostgreSQL [2m(14)[22m
+     [33m[2m✓[22m[39m 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 884[2mms[22m[39m
+     [33m[2m✓[22m[39m 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1308[2mms[22m[39m
+     [33m[2m✓[22m[39m 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1725[2mms[22m[39m
+     [33m[2m✓[22m[39m 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2243[2mms[22m[39m
+     [33m[2m✓[22m[39m 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3084[2mms[22m[39m
+     [33m[2m✓[22m[39m 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3744[2mms[22m[39m
+     [33m[2m✓[22m[39m 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5316[2mms[22m[39m
+     [33m[2m✓[22m[39m 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 4677[2mms[22m[39m
+     [33m[2m✓[22m[39m 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5365[2mms[22m[39m
+     [33m[2m✓[22m[39m 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 6868[2mms[22m[39m
+     [33m[2m✓[22m[39m 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 7824[2mms[22m[39m
+     [33m[2m✓[22m[39m 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 8823[2mms[22m[39m
+     [33m[2m✓[22m[39m 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 9691[2mms[22m[39m
+     [33m[2m✓[22m[39m 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 10696[2mms[22m[39m
+ [32m✓[39m tests/integration/capacity.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 6232[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries[33m 491[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards[33m 5721[2mms[22m[39m
+ [32m✓[39m tests/integration/admin.integration.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 2571[2mms[22m[39m
+   [33m[2m✓[22m[39m 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available[33m 1798[2mms[22m[39m
+ [32m✓[39m tests/integration/content.integration.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 1197[2mms[22m[39m
+ [32m✓[39m tests/integration/matches.integration.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 917[2mms[22m[39m
+ [32m✓[39m tests/integration/lobby.integration.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 457[2mms[22m[39m
+ [32m✓[39m tests/integration/reactions.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 296[2mms[22m[39m
+ [32m✓[39m tests/integration/rooms.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 205[2mms[22m[39m
+ [32m✓[39m tests/integration/identity.integration.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 145[2mms[22m[39m
+ [32m✓[39m tests/integration/public-read.integration.ts [2m([22m[2m1 test[22m[2m)[22m[32m 106[2mms[22m[39m
+ [32m✓[39m tests/integration/live-postgres.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 92[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+[2m      Tests [22m [1m[32m61 passed[39m[22m[90m (61)[39m
+[2m   Start at [22m 15:41:51
+[2m   Duration [22m 86.96s[2m (tests 99%, import 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-b8400dc/realtime-serial/postgres.xml
+CREATE ROLE
+CREATE ROLE
+GRANT ROLE
+CREATE SCHEMA
+CREATE SCHEMA
+ALTER ROLE
+CREATE FUNCTION
+CREATE FUNCTION
+NOTICE:  policy "wordpairs_own_notifications" for relation "realtime.messages" does not exist, skipping
+BEGIN
+ALTER TABLE
+DROP POLICY
+CREATE POLICY
+COMMIT
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [31m❯[39m tests/integration/transport.realtime.integration.ts [2m([22m[2m4 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[33m 11331[2mms[22m[39m
+   [33m[2m✓[22m[39m TR Realtime rejects a private subscription to another profile’s channel[33m 5108[2mms[22m[39m
+[31m   [31m×[31m TR committed room/observer transitions reach their actual private recipients through durable outbox delivery, without payload leakage[39m[33m 1613[2mms[22m[39m
+[31m   [31m×[31m TR committed match changes notify players and their observer without sending private answers or hints[39m[33m 3408[2mms[22m[39m
+[31m   [31m×[31m TR reaction notifications reach the actual room players/observer, exclude outsiders and refetch only visible allowlisted reactions[39m[32m 109[2mms[22m[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/transport.realtime.integration.ts > TR committed room/observer transitions reach their actual private recipients through durable outbox delivery, without payload leakage
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/integration/transport.realtime.integration.ts:66:232
+
+
+Caused by: Error: Matcher did not succeed in time.
+ ❯ tests/integration/transport.realtime.integration.ts:66:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/integration/transport.realtime.integration.ts > TR committed match changes notify players and their observer without sending private answers or hints
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/integration/transport.realtime.integration.ts:93:167
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/integration/transport.realtime.integration.ts > TR reaction notifications reach the actual room players/observer, exclude outsiders and refetch only visible allowlisted reactions
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/integration/transport.realtime.integration.ts:103:465
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 15:43:27
+[2m   Duration [22m 11.76s[2m (tests 98%, transform 1%, import 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-b8400dc/realtime-serial/realtime.xml
+Realtime diagnostics: /tmp/wordpairs-verification-4b3007e738-realtime.log
+
+> 20:43:21.752 [warning] [7mFailed [0m[7m[0mto [0m[7m[0mload [0m[7m[0mOTP-trusted [0m[7m[0mCAs: [0m
+[7m[0m:error::function_clause, [0m[7m[0mfalling [0m[7m[0mback [0m[7m[0mto [0m[7m[0mhardcoded [0m[7m[0mauthorities[0m
+[7m[0m  20:43:21.814 [info] Loading 121 CA(s) from :hardcoded store[0m
+[7m [0m[7m [0m[7m[0m20:43:21.939 [0m[7m[0m[info] [0m[7m[0m[driver: [0m[7m[0m:tcp, [0m[7m[0mport: [0m[7m[0m5369, [0m[7m[0msocket: [0m[7m[0m[~c"#Port<0.5>"], [0m
+[7m[0mmsg: [0m[7m[0m~c"server_setup_successfully"][0m
+[7m [0m[7m [0m[7m[0m20:43:21.944 [0m[7m[0m[info] [0m[7m[0m[domain: [0m[7m[0m[:gen_rpc, [0m[7m[0m:dispatcher], [0m[7m[0m"$kind": [0m
+[7m[0m:gen_rpc_dispatcher_start][0m
+[7m [0m[7m [0m[7m[0m20:43:22.098 [0m[7m[0m[notice] [0m[7m [0m[7m [0m[7m [0m[7m [0m[7m[0m:alarm_handler: [0m[7m[0m{:set, [0m[7m[0m{{:disk_almost_full, [0m
+[7m[0m~c"/"}, [0m[7m[0m[]}}[0m
+> 20:43:23.257 project=realtime-dev external_id=realtime-dev 
+[7merror_code=[0mDatabaseIpVersionIsIpv4 [0m[7m[0m[warning] [0m[7m[0mDatabaseIpVersionIsIpv4: [0m[7m[0mTenant [0m
+[7m[0mdatabase [0m[7m[0mhost [0m[7m[0m127.0.0.1 [0m[7m[0mresolved [0m[7m[0mto [0m[7m[0man [0m[7m[0mIPv4 [0m[7m[0maddress[0m
+[7m [0m[7m [0m[7m[0m20:43:23.261 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mApplying [0m
+[7m[0mmigrations [0m[7m[0mto [0m[7m[0m127.0.0.1[0m
+[7m [0m[7m [0m[7m[0m20:43:23.349 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mFinished [0m
+[7m[0mloading [0m[7m[0mthe [0m[7m[0mdump [0m[7m[0mof [0m[7m[0m91 [0m[7m[0mmigrations [0m[7m[0mfor [0m[7m[0mtenant [0m[7m[0mrealtime-dev [0m[7m[0min [0m[7m[0m85ms[0m
+> 20:43:23.381 [7merror_code=[0mDatabaseIpVersionIsIpv4 [0m[7m[0m[warning] [0m
+[7m[0mDatabaseIpVersionIsIpv4: [0m[7m[0mTenant [0m[7m[0mdatabase [0m[7m[0mhost [0m[7m[0m127.0.0.1 [0m[7m[0mresolved [0m[7m[0mto [0m[7m[0man [0m[7m[0mIPv4 [0m
+[7m[0maddress[0m
+[7m[0m  20:43:23.390 [info] Creating partitions for realtime.messages[0m
+[7m[0m  20:43:23.451 [info] Tenant set-up successfully[0m
+[7m[0m  Starting Realtime[0m
+[7m[0m  10000[0m
+> [7mFailed [0m[7m[0mto [0m[7m[0mload [0m[7m[0mOTP-trusted [0m[7m[0mCAs: [0m[7m[0merror:function_clause, [0m[7m[0mfalling [0m[7m[0mback [0m[7m[0mto [0m
+[7m[0mhardcoded [0m[7m[0mauthorities[0m
+[7m [0m[7m [0m[7m[0m20:43:26.211 [0m[7m[0m[info] [0m[7m[0m[driver: [0m[7m[0m:tcp, [0m[7m[0mport: [0m[7m[0m5369, [0m[7m[0msocket: [0m[7m[0m[~c"#Port<0.7>"], [0m
+[7m[0mmsg: [0m[7m[0m~c"server_setup_successfully"][0m
+[7m [0m[7m [0m[7m[0m20:43:26.211 [0m[7m[0m[info] [0m[7m[0m[domain: [0m[7m[0m[:gen_rpc, [0m[7m[0m:dispatcher], [0m[7m[0m"$kind": [0m
+[7m[0m:gen_rpc_dispatcher_start][0m
+[7m[0m  20:43:26.236 [notice] [scope: RegionNodes, event: :tables_created][0m
+[7m [0m[7m [0m[7m[0m20:43:26.236 [0m[7m[0m[notice] [0m[7m [0m[7m [0m[7m [0m[7m [0m[7m[0m:alarm_handler: [0m[7m[0m{:set, [0m
+[7m[0m{:system_memory_high_watermark, [0m[7m[0m[]}}[0m
+> 20:43:27.881 project=realtime-dev external_id=realtime-dev 
+[7merror_code=[0mDatabaseIpVersionIsIpv4 [0m[7m[0m[warning] [0m[7m[0mDatabaseIpVersionIsIpv4: [0m[7m[0mTenant [0m
+[7m[0mdatabase [0m[7m[0mhost [0m[7m[0m127.0.0.1 [0m[7m[0mresolved [0m[7m[0mto [0m[7m[0man [0m[7m[0mIPv4 [0m[7m[0maddress[0m
+> 20:43:27.897 project=realtime-dev external_id=realtime-dev 
+[7merror_code=[0mDatabaseIpVersionIsIpv4 [0m[7m[0m[warning] [0m[7m[0mDatabaseIpVersionIsIpv4: [0m[7m[0mTenant [0m
+[7m[0mdatabase [0m[7m[0mhost [0m[7m[0m127.0.0.1 [0m[7m[0mresolved [0m[7m[0mto [0m[7m[0man [0m[7m[0mIPv4 [0m[7m[0maddress[0m
+[7m [0m[7m [0m[7m[0m20:43:27.898 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m
+[7m[0mRealtime.Tenants.Connect.CheckConnection [0m[7m[0mexecuted [0m[7m[0min [0m[7m[0m16 [0m[7m[0mms[0m
+[7m [0m[7m [0m[7m[0m20:43:27.898 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m
+[7m[0mRealtime.Tenants.Connect.ReconcileMigrations [0m[7m[0mexecuted [0m[7m[0min [0m[7m[0m0 [0m[7m[0mms[0m
+[7m [0m[7m [0m[7m[0m20:43:27.898 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m
+[7m[0mRealtime.Tenants.Connect.RegisterProcess [0m[7m[0mexecuted [0m[7m[0min [0m[7m[0m0 [0m[7m[0mms[0m
+[7m [0m[7m [0m[7m[0m20:43:27.898 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mTenant [0m
+[7m[0mrealtime-dev [0m[7m[0mis [0m[7m[0minitializing: [0m[7m[0m:"realtime@127.0.0.1"[0m
+> 20:43:27.918 [7merror_code=[0mDatabaseIpVersionIsIpv4 [0m[7m[0m[warning] [0m
+[7m[0mDatabaseIpVersionIsIpv4: [0m[7m[0mTenant [0m[7m[0mdatabase [0m[7m[0mhost [0m[7m[0m127.0.0.1 [0m[7m[0mresolved [0m[7m[0mto [0m[7m[0man [0m[7m[0mIPv4 [0m
+[7m[0maddress[0m
+[7m [0m[7m [0m[7m[0m20:43:27.919 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m
+[7m[0mInitializing [0m[7m[0mconnection [0m[7m[0mwith [0m[7m[0mthe [0m[7m[0mstatus: [0m
+[7m[0m%Realtime.Tenants.ReplicationConnection{[0m
+[7m[0m    tenant_id: "realtime-dev",[0m
+[7m[0m    opts: [],[0m
+[7m[0m    step: :disconnected,[0m
+> 20:43:27.928 project=realtime-dev external_id=realtime-dev 
+[7merror_code=[0mUnauthorized [0m[7m[0msub=22222222-2222-4222-8222-222222222222 [0m[7m[0miss=wordpairs [0m
+[7m[0mexp=1793393127 [0m[7m[0m[error] [0m[7m[0mUnauthorized: [0m[7m[0mYou [0m[7m[0mdo [0m[7m[0mnot [0m[7m[0mhave [0m[7m[0mpermissions [0m[7m[0mto [0m[7m[0mread [0m[7m[0mfrom [0m
+[7m[0mthis [0m[7m[0mChannel [0m[7m[0mtopic: [0m[7m[0mwordpairs-profile:11111111-1111-4111-8111-111111111111[0m
+[7m [0m[7m [0m[7m[0m20:43:27.931 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mCheck [0m
+[7m[0mpublication [0m[7m[0msupabase_realtime_messages_publication [0m[7m[0mfor [0m[7m[0mtable [0m[7m[0mrealtime.messages [0m
+[7m[0mexists[0m
+[7m [0m[7m [0m[7m[0m20:43:27.932 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mCreate [0m
+[7m[0mpublication [0m[7m[0msupabase_realtime_messages_publication [0m[7m[0mfor [0m[7m[0mtable [0m[7m[0mrealtime.messages[0m
+[7m [0m[7m [0m[7m[0m20:43:27.936 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mCreate [0m
+[7m[0mreplication [0m[7m[0mslot [0m[7m[0msupabase_realtime_messages_replication_slot_ [0m[7m[0musing [0m[7m[0mplugin [0m
+[7m[0mpgoutput[0m
+[7m [0m[7m [0m[7m[0m20:43:27.938 [0m[7m[0mproject=realtime-dev [0m[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m
+[7m[0m#PID<0.4012.0> [0m[7m[0mStarting [0m[7m[0mstream [0m[7m[0mreplication [0m[7m[0mfor [0m[7m[0mslot [0m
+[7m[0msupabase_realtime_messages_replication_slot_ [0m[7m[0musing [0m[7m[0mpublication [0m
+[7m[0msupabase_realtime_messages_publication [0m[7m[0mand [0m[7m[0mprotocol [0m[7m[0mversion [0m[7m[0m2[0m
+> 20:43:33.936 project=realtime-dev external_id=realtime-dev 
+[7merror_code=[0mUnauthorized [0m[7m[0mexp=1793396607 [0m[7m[0m[error] [0m[7m[0mUnauthorized: [0m[7m[0mYou [0m[7m[0mdo [0m[7m[0mnot [0m[7m[0mhave [0m
+[7m[0mpermissions [0m[7m[0mto [0m[7m[0mread [0m[7m[0mfrom [0m[7m[0mthis [0m[7m[0mChannel [0m[7m[0mtopic: [0m
+[7m[0mwordpairs-profile:11111111-1111-4111-8111-111111111111[0m
+[7m[0m  20:43:34.801 request_id=GONpcfXjN-QpkicAAAVy [info] POST /api/broadcast[0m
+[7m [0m[7m [0m[7m[0m20:43:34.828 [0m[7m[0mrequest_id=GONpcfXjN-QpkicAAAVy [0m[7m[0mproject=realtime-dev [0m
+[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mPOST [0m[7m[0m/api/broadcast [0m[7m[0m- [0m[7m[0mSent [0m[7m[0m202 [0m[7m[0min [0m[7m[0m27ms[0m
+[7m[0m  20:43:34.832 request_id=GONpcfe8FdnVVOUAABAx [info] POST /api/broadcast[0m
+[7m [0m[7m [0m[7m[0m20:43:34.862 [0m[7m[0mrequest_id=GONpcfe8FdnVVOUAABAx [0m[7m[0mproject=realtime-dev [0m
+[7m[0mexternal_id=realtime-dev [0m[7m[0m[info] [0m[7m[0mPOST [0m[7m[0m/api/broadcast [0m[7m[0m- [0m[7m[0mSent [0m[7m[0m202 [0m[7m[0min [0m[7m[0m30ms[0m
+Exception: <repo>/tests/integration/run-phase1.ps1:135
+Line |
+ 135 |  … led' -Context 0,4;throw 'Real Realtime transport integration failed'}
+     |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Real Realtime transport integration failed

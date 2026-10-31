@@ -1,0 +1,109 @@
+{
+  "players": 2,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 16,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "requestFailureTotal": 4,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 950,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 952,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 952,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 953,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.552,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.714,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.094,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 33.384,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.106,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.01,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 32.763,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/81708d43-9966-4723-b554-4102a2455370/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 25.416,
+      "action": "answer"
+    }
+  ],
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

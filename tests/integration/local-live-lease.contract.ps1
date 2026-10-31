@@ -1,3 +1,6 @@
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidOverwritingBuiltInCmdlets','',Justification='The scoped Invoke-RestMethod, Start-Sleep and Get-Process fakes deliberately intercept calls to verify cleanup without accessing real services.')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions','',Justification='The scoped Start-Sleep fake only writes disposable fixture data; it does not execute the real cmdlet.')]
+param()
 $ErrorActionPreference='Stop'
 $repo=Split-Path (Split-Path $PSScriptRoot)
 $scratch=Join-Path ([IO.Path]::GetTempPath()) ('wordpairs-lease-test-'+[Guid]::NewGuid().ToString('N'))

@@ -1,0 +1,42 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/integration/capacity.integration.ts (3 tests | 1 failed) 14ms
+   × CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries 11ms
+   ✓ CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave 1ms
+   ✓ CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries
+AssertionError: expected { new15: true, new16: false, …(10) } to deeply equal { new15: true, new16: false, …(10) }
+
+- Expected
++ Received
+
+@@ -5,11 +5,11 @@
+    "finalSeatWinners": 1,
+    "new15": true,
+    "new16": false,
+    "newMatch16Rejected": true,
+    "observer26Rejected": true,
+-   "observers": 25,
++   "observers": 15,
+    "players": 15,
+    "publicRows": [
+      {
+        "capacity": 15,
+        "id": "cap15-upgrade-partial",
+
+ ❯ tests/integration/capacity.integration.ts:88:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  15:05:56
+   Duration  241ms (import 54%, transform 27%, tests 14%, worker 4%)
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-discovery-mock/wrong-observer-limit-sql.xml

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T23:12:25.600679+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "AUTH-NAV-HV-001 corrected: focus handler returns while running.current; quiet interval already skips mutations, mutation start clears grants and advances generation (retiring prior GETs); POST refreshes authoritative GET internally, DELETE acceptsnull. tests/web/identity-navigation.test.ts exercises real React with deferredPOST/DELETE, dispatchfocus whilemutationpending, assertsnoextraGET, clearednavigation, finalidentity and exactlyonePOSTfollowupGET; enabledproviderlink tested. Targeted14/14passed ../wordpairs-local/auth-navigation-targeted.log. Browser final10tests rerunning ../wordpairs-local/auth-navigation-ui-final.log (first9/10 onlyambiguousalertselector, correctednarrowfilter). Please independent finalreview+race test and preserve round2receipt. Operationaldocs beingupdated next asyourequested; noapprovecurrentcloudnewsourceyet.",
+  "scope": "Final source-only review of authentication/navigation repair and independent focused API/React regressions. This does not represent the new UI as deployed.",
+  "verdict": "approve_source_readiness",
+  "accuracyScore": 99,
+  "completenessScore": 99,
+  "rubric": {
+    "threshold": "99 accuracy and99 completeness with no unresolved material source finding",
+    "accuracy": "Verified-session permission projection, existing role matrix, honest sign-in state and request ownership agree with implementation.",
+    "completeness": "Role loss, denied refresh, session mutation/focus race and provider-link presentation are sufficiently covered for the scoped change. Hosted rollout and actual OIDC remain separate.",
+    "scores": "Reviewer judgments, not statistical probabilities."
+  },
+  "unresolvedSourceFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "AUTH-NAV-HV-001",
+      "status": "resolved",
+      "file": "src/web/identity-panel.tsx",
+      "correction": "Focus handler returns while a session mutation is running; quiet polling already does so. Mutation start advances generation and clears permissions. DELETE accepts null directly; POST accepts its response then awaits one authoritative session GET. Prior reads cannot reclaim generation ownership.",
+      "independentRegressionEvidence": [
+        "Deferred DELETE plus focus causes no extra GET, removes navigation immediately, and ends with guest-entry UI and no old alias/navigation.",
+        "Deferred POST plus focus causes no competing GET; successful completion renders the correct identity and grants after exactly one follow-up GET.",
+        "Configured provider-link test verifies the application /api/auth/login endpoint without claiming provider authentication success."
+      ]
+    }
+  ],
+  "independentChecks": {
+    "command": "npx vitest run tests/web/identity-api.test.ts tests/web/identity-navigation.test.ts",
+    "result": "14/14 passed in2 files;1.34 seconds",
+    "scope": "Actual React component and actual session API route with isolated service/fetch fixtures. No live database or provider involved.",
+    "sourceInspection": "Rechecked the changed focus handler, mutation generation/permissions transitions, internal refresh and prior permission/navigation projections."
+  },
+  "browserEvidence": {
+    "path": "../wordpairs-local/auth-navigation-ui-final.log",
+    "observedStatus": "10/10 passed",
+    "sha256AtRead": "740ea252250e1411a9097173d30de8be4b9df4f43a4cd4d559fb0d4e89535af7",
+    "provenance": "Implementer-run browser suite, read from its retained log; reviewer did not launch another browser/server.",
+    "fixtureQualification": "Real pages and React with session/content HTTP fixtures. Supports UI behavior, not hosted server authorization or real OpenAI OIDC success.",
+    "historicalFailure": "Parent reports first run9/10 with ambiguous alert locator, then narrowed the selector; retained prior evidence is not relabeled as an original pass."
+  },
+  "priorRound": {
+    "path": "docs/evidence/hosting/auth-navigation-review-round1.json",
+    "sha256": "b96d88ba88cd34db294bed5153f476074a71306d56d0a2c20296f92e2a93d081",
+    "preserved": true,
+    "disposition": "Original rejection and race reproduction remain intact; superseded by this source repair approval."
+  },
+  "snapshot": {
+    "localHead": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+    "files": [
+      {
+        "path": "src/web/identity-panel.tsx",
+        "sha256": "1a3c135a2c4f801dfa0d07f31515f936f69a2c8b84b853b24592f66a86a4cc5b",
+        "bytes": 14633
+      },
+      {
+        "path": "src/web/admin-panel.tsx",
+        "sha256": "a56f2c06b8e95d8048f530aef1ae7c6096058527ccb0bbc555b554e747a2f921",
+        "bytes": 21641
+      },
+      {
+        "path": "src/web/content-panel.tsx",
+        "sha256": "e5cb27e1f4f919b2304adcbbeda028ce2c79a12f829999598a9e1a03699f8a25",
+        "bytes": 27849
+      },
+      {
+        "path": "src/app/admin/layout.tsx",
+        "sha256": "0d712bfdc562c3ebbfdc130d4729a1aeb55c513b58deda9cce3420ea9201f0d9",
+        "bytes": 519
+      },
+      {
+        "path": "src/app/api/session/route.ts",
+        "sha256": "9cb37915f862be56f7f6c7da41b397aa43bac47d7870c4690f22db9ea9226dce",
+        "bytes": 2519
+      },
+      {
+        "path": "tests/web/identity-api.test.ts",
+        "sha256": "fb56d9c4c24337b18417b946796c29b3bdfb2e296a21a9d01c630cda10d498db",
+        "bytes": 7959
+      },
+      {
+        "path": "tests/web/identity-navigation.test.ts",
+        "sha256": "c0a51639a49036890adbdcc7e89cc16d8eb5b6c3baa8cc4ab03dab58e0042db5",
+        "bytes": 2935
+      },
+      {
+        "path": "tests/browser/auth-navigation.phase6.spec.ts",
+        "sha256": "f26c5c6399978bad7cd979b418079fd7cd4dece57b329bc7c79632a7297e40e0",
+        "bytes": 4272
+      }
+    ]
+  },
+  "operationalLimits": [
+    "New auth/navigation source is not claimed deployed. Prior real staging UI evidence applies only to its recorded older deployment.",
+    "ChatGPT sign-in remains unavailable until a valid approved website client/configuration exists; visible disabled UI is honest, not an OIDC success claim.",
+    "Seven reported private-function search_path advisories remain qualified as in round1; this UI review does not certify the database advisory-clean.",
+    "Operational documentation is being refreshed separately; no full production rollout, contest compliance, physical-device installation or full live2..25 capacity approval.",
+    "No source/live state changed by reviewer. Only this new receipt written."
+  ],
+  "disposition": "APPROVE auth/navigation source readiness at99/99. AUTH-NAV-HV-001 is resolved; no further material source finding. Finish any pending browser/build validation and then verify the exact new deployment separately before reporting the new behavior hosted."
+}

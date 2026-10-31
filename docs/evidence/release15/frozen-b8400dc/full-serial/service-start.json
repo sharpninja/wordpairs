@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-10-30T15:34:38",
+  "jobName": "wordpairs-release15-full-serial",
+  "lane": "full",
+  "reportDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/full-serial",
+  "command": "systemd-run",
+  "arguments": [
+    "--user",
+    "--quiet",
+    "--collect",
+    "--unit=wordpairs-release15-full-serial",
+    "--property=WorkingDirectory=\u003Crepo\u003E",
+    "--property=StandardOutput=append:\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/full-serial/service.stdout.log",
+    "--property=StandardError=append:\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/full-serial/service.stderr.log",
+    "--",
+    "/usr/bin/pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "/tmp/RunWordpairsRelease15Evidence.ps1",
+    "-Lane",
+    "full",
+    "-ReportDirectory",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/full-serial",
+    "-EvidenceRunId",
+    "eef46ae8-fcb5-412e-8acb-43b96ba961cd"
+  ],
+  "state": [
+    "Id=wordpairs-release15-full-serial.service",
+    "ActiveState=active",
+    "SubState=running",
+    "MainPID=454970",
+    "ExecMainStartTimestamp=Fri 2026-10-30 15:34:38 CDT"
+  ]
+}

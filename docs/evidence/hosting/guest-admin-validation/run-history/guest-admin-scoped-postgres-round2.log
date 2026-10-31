@@ -1,0 +1,273 @@
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/integration/admin.integration.ts (9 tests | 9 skipped) 14580ms
+   ↓ configured root grants and revokes roles with canonical retries, fresh directory authorization, bounded private projections and protected configuration
+   ↓ concurrent administrators cannot cross-revoke every administrator or replay grants after losing authority
+   ↓ role and canonical records roll back together when the audit insert fails
+   ↓ browser database roles cannot read ACL tables or invoke privileged functions
+   ↓ editorial revisions preserve exact historical records, never resurrect excluded older versions, and reject unauthorized/stale saves
+   ↓ a content writer waiting behind revocation reloads roles after the shared ACL lock
+   ↓ 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available
+   ↓ real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL
+   ↓ UI review status migration, one-open SQL uniqueness, atomic revision audits and canonical retries
+ ✓ tests/integration/identity.integration.ts (4 tests) 10041ms
+   ✓ TR identity/session persistence through actual service-role RPCs (4)
+     ✓ consumes browser-bound OIDC state once, associates only verified issuer/subject and never links the guest 9643ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/admin.integration.ts [ tests/integration/admin.integration.ts ]
+Error: Hook timed out in 10000ms.
+If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+ ❯ tests/integration/admin.integration.ts:107:1
+    105|   );
+    106| }
+    107| beforeAll(async () => {
+       | ^
+    108|   for (let n = 0; n < 5; n++) {
+    109|     const guest = value(await identity.guest(null));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/integration/admin.integration.ts [ tests/integration/admin.integration.ts ]
+error: update or delete on table "profiles" violates foreign key constraint "sessions_profile_id_fkey" on table "sessions"
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ tests/integration/admin.integration.ts:159:5
+    157|       [people],
+    158|     );
+    159|     await admin.query(
+       |     ^
+    160|       "delete from wordpairs.profiles where id=any($1::text[])",
+    161|       [people],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  4 passed | 9 skipped (13)
+   Start at  19:42:57
+   Duration  25.47s (tests 98%, transform 1%, import 1%)
+
+JUNIT report written to <home>/github/WordGame/.mcpServer/wordpairs-local/guest-admin-scoped-postgres-round2/postgres.xml

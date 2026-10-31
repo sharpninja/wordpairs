@@ -482,99 +482,76 @@ it("4096 to 4097 historical versions rejects atomically and keeps existing catal
     );
   }
 });
-it("real request handlers compose server-configured bootstrap, authenticated ACL grants, editorial saves and fresh revocation against PostgreSQL", async () => {
+it("real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL", async () => {
   vi.stubEnv("WORDPAIRS_DATABASE_URL", url);
   vi.stubEnv("WORDPAIRS_ADMIN_PROFILE_IDS", root);
   vi.stubEnv("WORDPAIRS_ORIGIN", "https://admin-fixture.test");
-  vi.stubEnv("WORDPAIRS_OIDC_ISSUER", "");
-  const runtime = await import("../../src/infrastructure/runtime");
-  runtimePool = runtime.getDatabasePool();
-  const users = await import("../../src/app/api/admin/users/route");
-  const contents = await import("../../src/app/api/content/route");
-  const request = (path: string, actor = 0, body?: unknown) =>
-    new Request(`https://admin-fixture.test${path}`, {
-      method: body ? "POST" : "GET",
-      headers: {
-        Cookie: `wp_session=${tokens[actor]}`,
-        Origin: "https://admin-fixture.test",
-        "Content-Type": "application/json",
-      },
-      ...(body ? { body: JSON.stringify(body) } : {}),
-    });
-  const directory = await users.GET(request("/api/admin/users"));
-  expect(directory.status).toBe(200);
-  const view = await directory.json();
-  expect(
-    view.users.find((p: { id: string }) => p.id === root).configuredAdmin,
-  ).toBe(true);
-  const grant = {
-    profileId: player,
-    role: "moderator",
-    grant: true,
-    reason: "HTTP reviewer",
-    expectedProfileId: root,
-    expectedVersion: view.version,
-    commandId: ids.next(),
-  };
-  expect((await users.POST(request("/api/admin/users", 0, grant))).status).toBe(
-    200,
-  );
-  expect((await users.POST(request("/api/admin/users", 0, grant))).status).toBe(
-    200,
-  );
-  expect((await users.GET(request("/api/admin/users", 2))).status).toBe(403);
-  const editor = await contents.GET(request("/api/content", 2));
-  const editable = await editor.json();
-  expect(editable.canModerate).toBe(true);
-  const original = value(await catalog.pair("opposites-01", 0));
-  const pair = {
-    ...original,
-    id: `admin-http-${randomUUID()}`,
-    selectable: undefined,
-    version: 0,
-    prompt: "HTTP authored pair",
-    hints: ["First HTTP clue", "Second HTTP clue", "Third HTTP clue"],
-  };
-  const save = {
-    action: "save-pair",
-    pair,
-    reason: "Verify real server composition",
-    expectedProfileId: player,
-    expectedVersion: editable.version,
-    commandId: ids.next(),
-  };
-  expect((await contents.POST(request("/api/content", 2, save))).status).toBe(
-    200,
-  );
-  expect(value(await catalog.pair(pair.id, 0)).hints).toEqual(pair.hints);
-  const current = await (await users.GET(request("/api/admin/users"))).json();
-  expect(
-    (
-      await users.POST(
-        request("/api/admin/users", 0, {
-          ...grant,
-          grant: false,
-          expectedVersion: current.version,
-          commandId: ids.next(),
-        }),
-      )
-    ).status,
-  ).toBe(200);
-  const revoked = await (await contents.GET(request("/api/content", 2))).json();
-  expect(revoked.canModerate).toBe(false);
-  expect(revoked.catalogPairs).toEqual([]);
-  expect(
-    (
-      await contents.POST(
-        request("/api/content", 2, {
-          ...save,
-          pair: { ...pair, version: 1 },
-          expectedVersion: revoked.version,
-          commandId: ids.next(),
-        }),
-      )
-    ).status,
-  ).toBe(403);
+  vi.stubEnv("WORDPAIRS_GITHUB_CLIENT_ID", "fixture-client");
+  vi.stubEnv("WORDPAIRS_GITHUB_CLIENT_SECRET", "fixture-secret");
+  const provider = vi.fn(async (input: string | URL | Request) => {
+    const target = String(input);
+    if (target === "https://github.com/login/oauth/access_token") return Response.json({ access_token: "fixture-provider-token", token_type: "bearer" });
+    if (target === "https://api.github.com/user") return Response.json({ id: 16146732, login: "sharpninja" });
+    throw new Error("Unexpected external request in isolated fixture");
+  });
+  vi.stubGlobal("fetch", provider);
+  try {
+    const runtime = await import("../../src/infrastructure/runtime");
+    runtimePool = runtime.getDatabasePool();
+    const users = await import("../../src/app/api/admin/users/route");
+    const contents = await import("../../src/app/api/content/route");
+    const session = await import("../../src/app/api/session/route");
+    const adminSession = await import("../../src/app/api/admin/session/route");
+    const auth = await import("../../src/web/github-auth-http");
+    const request = (path: string, cookies = `wp_session=${tokens[0]}`, body?: unknown, method?: string) =>
+      new Request("https://admin-fixture.test" + path, { method: method ?? (body ? "POST" : "GET"),
+        headers: { Cookie: cookies, Origin: "https://admin-fixture.test", "Content-Type": "application/json" },
+        ...(body ? { body: JSON.stringify(body) } : {}) });
+    expect((await users.GET(request("/api/admin/users"))).status).toBe(404);
+    expect((await users.POST(request("/api/admin/users", undefined, { role: "admin", grant: true }))).status).toBe(404);
+    expect((await contents.GET(request("/api/content"))).status).toBe(401);
+    const publicGuest = await (await session.GET(request("/api/session"))).json();
+    expect(publicGuest.permissions).toEqual([]);
+    const begin = await auth.githubLogin(request("/api/auth/github/login"));
+    expect(begin.status).toBe(302);
+    const browserToken = begin.headers.get("Set-Cookie")!.match(/wp_admin_login=([A-Za-z0-9_-]{43})/)![1];
+    const state = new URL(begin.headers.get("Location")!).searchParams.get("state")!;
+    const callbackPath = "/api/auth/github/callback?code=fixture-code&state=" + encodeURIComponent(state);
+    const cookies = `wp_session=${tokens[0]}; wp_admin_login=${browserToken}`;
+    const callback = await auth.githubCallback(request(callbackPath, cookies));
+    expect(callback.headers.get("Location")).toBe("https://admin-fixture.test/admin");
+    const adminToken = callback.headers.get("Set-Cookie")!.match(/\bwp_admin=([A-Za-z0-9_-]{43})/)![1];
+    expect(callback.headers.get("Set-Cookie")).not.toContain("wp_session=");
+    expect((await adminSession.GET(request("/api/admin/session", `wp_admin=${tokens[0]}`))).status).toBe(401);
+    expect((await session.GET(request("/api/session", `wp_session=${adminToken}`))).status).toBe(401);
+    const current = await adminSession.GET(request("/api/admin/session", `wp_admin=${adminToken}`));
+    expect(current.status).toBe(200);
+    const owner = await current.json();
+    people.push(owner.profile.id);
+    expect(owner.permissions).toEqual(["moderate", "manage-content", "resolve-appeals"]);
+    expect(owner.profile.kind).toBe("member");
+    expect(owner.profile.publicLeaderboard).toBe(false);
+    const publicRows = (await admin.query('select public.wordpairs_public_profiles(0,25,null) as value')).rows[0].value.rows;
+    expect(publicRows.map((row: { id: string }) => row.id)).not.toContain(owner.profile.id);
+    expect(JSON.stringify(owner)).not.toMatch(/fixture-provider-token|fixture-secret/);
+    const editor = await contents.GET(request("/api/content", `wp_admin=${adminToken}`));
+    expect(editor.status).toBe(200);
+    const editable = await editor.json();
+    expect(editable.canModerate).toBe(true);
+    const original = value(await catalog.pair("opposites-01", 0));
+    const pair = { ...original, id: `admin-http-${randomUUID()}`, selectable: undefined, version: 0, prompt: "HTTP authored pair", hints: ["First HTTP clue", "Second HTTP clue", "Third HTTP clue"] };
+    const save = { action: "save-pair", pair, reason: "Verify owner-only server composition", expectedProfileId: owner.profile.id, expectedVersion: editable.version, commandId: ids.next() };
+    expect((await contents.POST(request("/api/content", `wp_admin=${adminToken}`, save))).status).toBe(200);
+    expect(value(await catalog.pair(pair.id, 0)).hints).toEqual(pair.hints);
+    const replay = await auth.githubCallback(request(callbackPath, cookies));
+    expect(replay.headers.get("Location")).toBe("https://admin-fixture.test/admin?auth=failed");
+    expect(replay.headers.get("Set-Cookie")).not.toContain("wp_admin=" + adminToken);
+    expect(provider).toHaveBeenCalledTimes(2);
+    expect((await adminSession.DELETE(request("/api/admin/session", `wp_admin=${adminToken}`, undefined, "DELETE"))).status).toBe(204);
+    expect((await adminSession.GET(request("/api/admin/session", `wp_admin=${adminToken}`))).status).toBe(401);
+    expect((await contents.GET(request("/api/content", `wp_admin=${adminToken}`))).status).toBe(401);
+    expect((await session.GET(request("/api/session"))).status).toBe(200);
+  } finally { vi.unstubAllGlobals(); }
 });
 it("UI review status migration, one-open SQL uniqueness, atomic revision audits and canonical retries", async () => {
   await admin.query("update wordpairs.profiles set wins=10 where id=$1", [a]);

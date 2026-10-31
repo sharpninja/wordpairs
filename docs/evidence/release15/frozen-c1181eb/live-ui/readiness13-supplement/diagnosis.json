@@ -1,0 +1,418 @@
+{
+  "recordedAtLocal": "2026-10-30T19:54:53",
+  "classification": "Read-only self diagnosis, not HV or runtime approval",
+  "sourceHead": "c1181eb4eb01825c8b12f3521f92286080addfba",
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261031T005003Z-readiness13-diagnosis",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "preservationManifest": "manifest.json",
+  "preservationSha256": "544004513F2F223D4595713EBF6B9B0E8F26B25E0CCE1572BB94E5DA2A31EDA6",
+  "native": {
+    "skipped": 2,
+    "failedPlayers": 13,
+    "failed": 1,
+    "diagnosticFailures": 0,
+    "strict": "unrun",
+    "passed": 11,
+    "phase": "UI readiness",
+    "uiSolves": 0,
+    "uncertainUiRetries": 1,
+    "cleanupFailures": 0
+  },
+  "observed": [
+    "Every one of13 browser snapshots remains open, browser connected, live updates connected and13of13 roster; eleven ready and two not ready.",
+    "Player11/profile b5ec4f50-f913-4f72-92a8-172108c523c6 emitted twelve distinct ready command IDs at attempts1..12, all409, each retirement recorded rendered version32, idle and pending absent. Player8 accounts for the other409 and then succeeds.",
+    "Player11 snapshot contains the explicit Refresh and try again instruction; player12 was not reached by sequential readiness.",
+    "No driver successful-body parsing failure was recorded. One uncertain retry exists; the cancelled ready POST lacks actor/command join."
+  ],
+  "conflictObservations": [
+    {
+      "player": 8,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "84cae12a-d075-4adf-ba59-5a2910c3236a",
+      "expectedProfileId": "cc248a37-e704-41a0-bd77-3b1417b6fc4f",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 23,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 1
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "ce8cc0e9-f2b6-444b-9eaf-e9055b5d4476",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 1
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "82931554-beec-4d3c-b39e-899836a1f482",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 2
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "5f80b2e0-05d3-4dd3-ab42-036311ddcad9",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 3
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "d79dc4c0-47ce-4fe8-8e1e-87494296c10d",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 4
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "29fc56e0-7ae6-4719-9e04-93e962cb3d6c",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 5
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "234331db-b79c-4952-8e3b-6f5ad79d2363",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 6
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "9eff062b-97b5-4ef3-b5c0-826199ca48c3",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 7
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "96c86d7e-3f65-4595-97e7-94f827de41c3",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 8
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "8aaf41fc-b334-456c-b69d-8d0eb9e06755",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 9
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "118d5518-5d8c-498f-8558-52d70bd4e5d9",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 10
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "cac57da3-498b-4c47-a12e-dc2fb3126815",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 11
+    },
+    {
+      "player": 11,
+      "phase": "UI readiness",
+      "scope": "room",
+      "action": "ready",
+      "commandId": "919f35c7-d5d1-4a9e-a776-7d3ec25ec794",
+      "expectedProfileId": "b5ec4f50-f913-4f72-92a8-172108c523c6",
+      "roundId": null,
+      "status": 409,
+      "responseVersion": null,
+      "renderedVersion": 32,
+      "busy": "false",
+      "pending": "absent",
+      "outcome": "acknowledged",
+      "attempt": 12
+    }
+  ],
+  "uiStates": [
+    {
+      "player": 0,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 1,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 2,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 3,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 4,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 5,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 6,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 7,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 8,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 9,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 10,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    },
+    {
+      "player": 11,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": true
+    },
+    {
+      "player": 12,
+      "closed": false,
+      "browserConnected": true,
+      "live": true,
+      "fullRoster": true,
+      "readyCount": 11,
+      "notReadyCount": 2,
+      "refreshInstruction": false
+    }
+  ],
+  "sourceFindings": [
+    "matrix retired callback lines84..87 passes minimum0; shared retirement78..81 accepts idle/pending-free projection without comparing captured expectedVersion.",
+    "RoomScreen308..310 binds fresh expectedVersion to rendered room.version;347..365 clears pending after409 and tells user Refresh and try again, without mandatory refresh except discovery join.",
+    "Strict answer114..116 already waits rendered version greater than pre-command before retirement; keep this requirement and four-attempt/no-uncertain-retry semantics.",
+    "GamePanel209..220 clears confirmed conflict pending and attempts refresh, but shared retirement should still validate fresh projection instead of trusting return of a refresh."
+  ],
+  "inference": "Observed distinct409 commands on unchanged rendered32 and source minimum0 expose missing conflict freshness. The exact server reason and exact submitted expectedVersion remain unproved because request payload versions and409 response bodies were not persisted. No transport/load root cause established.",
+  "missing": [
+    "Actual expectedVersion and ready boolean per historic command;409 response error code/current server version.",
+    "Absolute actor/command linkage for slow/cancelled HTTP observations, contemporaneous pool/lock/CPU data."
+  ],
+  "recommendation": "Bounded test-only retirement floor max(explicit minimum, captured expectedVersion+1), with actual409 and safe nonnegative integer/overflow validation before probes, SAME independently discriminated mock-first fixtures, no new UI intent before fresh projection. Preserve twelve/four bounds, all prior162 fixtures and app semantics. No promise that underlying latency or full15 runtime succeeds.",
+  "sourcePins": [
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460"
+    },
+    {
+      "path": "src/web/room-screen.tsx",
+      "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951"
+    },
+    {
+      "path": "src/web/game-panel.tsx",
+      "sha256": "3B99A07B9F6B21A099728FB1C94875776BD323489849D3A1B871F9D25D55D821"
+    },
+    {
+      "path": "src/application/lobby.ts",
+      "sha256": "AE3FDD03FD5CA2BEBB9F3CCAF835ED414F6A9BDCA273A538ADF2DE4C1D06ADB8"
+    },
+    {
+      "path": "src/application/command.ts",
+      "sha256": "36A421CFA65CF9A302FD8330402DE4A11B8244EAC17D2AAB1423D87191766241"
+    }
+  ],
+  "processNote": "Read-only inspection script briefly executed after PSSA emitted a Unicode/BOM warning; corrected to ASCII literals and parser/PSSA returned0 before final analysis. No product/test files edited and no tests/builds executed in diagnosis."
+}

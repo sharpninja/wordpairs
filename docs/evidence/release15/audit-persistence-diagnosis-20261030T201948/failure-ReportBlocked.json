@@ -1,0 +1,36 @@
+{
+  "atLocal": "2026-10-30T20:25:14.5316775-05:00",
+  "failedMethod": "workflow.agenthelp.submitTurn terminated_guardrail",
+  "error": "Original supported Agent Help request was read-only. Help session help-20261031012225-ba0679997a004be8ab58299b7a686dea / turn-0001 returned terminated_guardrail, incident 013ebf2a1e48480483012aeb3a3bfa92, rule injection.api-key-exfiltration. The exact matched snippet came from a protective Never print instruction: print marker/API keys, private histories, credential. Original request and response retained in \u003Crepo\u003E/docs/evidence/release15/audit-persistence-diagnosis-20261030T201948/answer.json. No expert answer was generated; no retry, rephrasing, bypass or repair attempted. Root current canonical metadata independently reads51actions/51dialogs with latest observation matching order51; do not infer ongoing storage outage or a cause.",
+  "failsafePath": "\u003Crepo\u003E/.mcpServer/failsafe/Codex/workspaces/L2hvbWUvc2hhcnBuaW5qYS9naXRodWIvV29yZEdhbWUvLm1jcFNlcnZlci93b3JkcGFpcnM/pending/20261030T202500-triage-agenthelp-diagnosis.yaml",
+  "triage": {
+    "quietDeadlineUtc": {
+      "minute": 40,
+      "dateTime": "2026-10-31T01:40:02.2700347",
+      "month": 10,
+      "ticks": 639290076022700347,
+      "date": "2026-10-31T00:00:00.0000000",
+      "dayOfWeek": "Saturday",
+      "hour": 1,
+      "totalOffsetMinutes": 0,
+      "timeOfDay": "01:40:02.2700347",
+      "year": 2026,
+      "offset": "00:00:00",
+      "localDateTime": "2026-10-30T20:40:02.2700347-05:00",
+      "millisecond": 270,
+      "day": 31,
+      "nanosecond": 700,
+      "utcDateTime": "2026-10-31T01:40:02.2700347Z",
+      "second": 2,
+      "dayOfYear": 304,
+      "utcTicks": 639290076022700347,
+      "microsecond": 34
+    },
+    "reportId": "triage-report-774617a0413d4b15b82aaba6220dd151",
+    "success": true,
+    "workspacePath": "\u003Chome\u003E/github/McpServer",
+    "groupId": "triage-group-aac9b58c74653652",
+    "status": "collecting"
+  },
+  "qualification": "Intake only, no diagnosis/resolution or repair inferred."
+}

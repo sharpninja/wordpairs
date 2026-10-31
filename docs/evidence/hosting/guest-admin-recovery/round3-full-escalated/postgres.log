@@ -1,0 +1,259 @@
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+BEGIN
+CREATE FUNCTION
+UPDATE 1
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+ RUN  v5.0.5 <repo>
+
+ ✓ tests/integration/multiplayer.integration.ts (24 tests) 266747ms
+   ✓ complete multiplayer games on real PostgreSQL (24)
+     ✓ 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 993ms
+     ✓ 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 1314ms
+     ✓ 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 2075ms
+     ✓ 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 2441ms
+     ✓ 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 2748ms
+     ✓ 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 4408ms
+     ✓ 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 4866ms
+     ✓ 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 5601ms
+     ✓ 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 6276ms
+     ✓ 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 7182ms
+     ✓ 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 7922ms
+     ✓ 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 9908ms
+     ✓ 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 12175ms
+     ✓ 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 12794ms
+     ✓ 16 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 12627ms
+     ✓ 17 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 13278ms
+     ✓ 18 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 14641ms
+     ✓ 19 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 15791ms
+     ✓ 20 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 16065ms
+     ✓ 21 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 18140ms
+     ✓ 22 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 20512ms
+     ✓ 23 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 24320ms
+     ✓ 24 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 24351ms
+     ✓ 25 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 25643ms
+ ✓ tests/integration/admin.integration.ts (9 tests) 2451ms
+   ✓ 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available 1727ms
+ ✓ tests/integration/content.integration.ts (6 tests) 1139ms
+ ✓ tests/integration/matches.integration.ts (8 tests) 761ms
+ ✓ tests/integration/lobby.integration.ts (7 tests) 432ms

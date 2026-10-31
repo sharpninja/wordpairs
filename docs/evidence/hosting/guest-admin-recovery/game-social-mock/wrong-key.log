@@ -1,0 +1,89 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/game-social-routing.test.ts (3 tests | 2 failed) 2061ms
+   × match refreshes do not change the reaction refresh key 1040ms
+   × room or moderation refreshes advance the reaction refresh key 1007ms
+   ✓ leaving an active round triggers a social refresh for the summary 12ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/game-social-routing.test.ts > match refreshes do not change the reaction refresh key
+AssertionError: expected '0' to be '7' // Object.is equality
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        data-key="0"
+        data-round="round-1"
+        data-testid="social-view"
+      />
+    </div>
+  </body>
+</html>
+
+Expected: "7"
+Received: "0"
+
+ ❯ tests/web/game-social-routing.test.ts:35:92
+     33| it("match refreshes do not change the reaction refresh key", async () …
+     34|   const { rendered, props, fetcher } = setup();
+     35|   await waitFor(() => expect(rendered.getByTestId("social-view").getAt…
+       |                                                                                            ^
+     36|   const before = fetcher.mock.calls.length;
+     37|   rendered.rerender(React.createElement(GamePanel, { ...props, refresh…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ MutationObserver.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+ ❯ MutationObserver.invokeTheCallbackFunction node_modules/jsdom/lib/generated/idl/MutationCallback.js:19:26
+ ❯ notifyMutationObservers node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:194:22
+ ❯ node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:165:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/web/game-social-routing.test.ts > room or moderation refreshes advance the reaction refresh key
+AssertionError: expected '0' to be '7' // Object.is equality
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        data-key="0"
+        data-round="round-1"
+        data-testid="social-view"
+      />
+    </div>
+  </body>
+</html>
+
+Expected: "7"
+Received: "0"
+
+ ❯ tests/web/game-social-routing.test.ts:43:92
+     41| it("room or moderation refreshes advance the reaction refresh key", as…
+     42|   const { rendered, props } = setup();
+     43|   await waitFor(() => expect(rendered.getByTestId("social-view").getAt…
+       |                                                                                            ^
+     44|   rendered.rerender(React.createElement(GamePanel, { ...props, socialR…
+     45|   await waitFor(() => expect(rendered.getByTestId("social-view").getAt…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ MutationObserver.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+ ❯ MutationObserver.invokeTheCallbackFunction node_modules/jsdom/lib/generated/idl/MutationCallback.js:19:26
+ ❯ notifyMutationObservers node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:194:22
+ ❯ node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:165:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  12:39:45
+   Duration  3.14s (tests 69%, environment 25%, import 5%, transform 1%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/game-social-mock/wrong-key.xml

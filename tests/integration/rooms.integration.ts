@@ -65,7 +65,7 @@ describe('TR-31 actual create/join/assignment transactions',()=>{
     expect(await service.quickMatch(['p2','p3'][winner],`rooms-quick-${['p2','p3'][winner]}`,'changed')).toEqual({ok:false,error:{code:'IDEMPOTENCY_CONFLICT'}});
     const stored=await repository.get('rooms-a');expect(stored.ok&&stored.value.players.length).toBe(2);
     expect(await service.quickMatch('rooms-observer','rooms-empty','empty')).toEqual({ok:true,value:{joined:null,fallback:['browse','create']}});
-    expect((await service.create(command('rooms-c','p1','rooms-create-c'),25,true)).ok).toBe(true);
+    expect((await service.create(command('rooms-c','p1','rooms-create-c'),10,true)).ok).toBe(true);
     const sameRoom=await Promise.all(['p2','p3'].map(actor=>service.quickMatch(actor,`rooms-large-${actor}`,'large')));
     expect(sameRoom.map(result=>result.ok&&result.value.joined)).toEqual(['rooms-c','rooms-c']);
     const current=await repository.get('rooms-c');expect(current.ok&&current.value.players.length).toBe(3);

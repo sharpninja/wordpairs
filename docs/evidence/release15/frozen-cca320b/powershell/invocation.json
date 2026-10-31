@@ -1,0 +1,33 @@
+{
+  "revision": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "reports": [
+    {
+      "name": "powershell",
+      "kind": "powershell",
+      "expectedCount": 0,
+      "runId": "cdfa9899-c115-4621-aae2-fa8c51035d5c",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T17:47:36",
+      "finishedAt": "2026-10-30T17:47:57",
+      "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "producerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "scripts/Run-ReviewPowerShellEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/powershell"
+      ],
+      "exitCode": 0,
+      "junit": null,
+      "junitSha256": null,
+      "revision": "cca320b02596d21683cec38ab604d7fe31a5c672",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/powershell/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/powershell/source-after.json",
+      "sourceAfterFailure": null
+    }
+  ]
+}

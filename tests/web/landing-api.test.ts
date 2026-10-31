@@ -5,7 +5,7 @@ vi.mock("../../src/infrastructure/runtime",()=>({ getPublicService:()=>({read:mo
 import { GET } from "../../src/app/api/landing/route";
 beforeEach(()=>{mocks.read.mockReset();});
 it("keeps freshness ownership in the bounded server cache without extending it through downstream caching", async () => {
-  const projection = {leaderboard:[],lobbies:[],rules:{version:"2.6",updated:"2026-10-26"}};
+  const projection = {leaderboard:[],lobbies:[],rules:{version:"2.8",updated:"2026-10-31"}};
   mocks.read.mockResolvedValue(success({projection,leaderboard:{revision:2,next:"1:leaderboard:2:25"},lobbies:{revision:3,next:null}}));
   const response = await GET(new Request("https://wordpairs.test/api/landing"));
   expect(response.status).toBe(200);

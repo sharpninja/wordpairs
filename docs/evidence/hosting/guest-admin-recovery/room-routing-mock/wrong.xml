@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="2" failures="1" errors="0" time="0.074628219">
+    <testsuite name="tests/web/room-match-routing.test.ts" timestamp="2026-10-29T16:46:24.637Z" hostname="[PRIVATE HOST]" tests="2" failures="1" errors="0" skipped="0" time="0.074628219">
+        <testcase classname="tests/web/room-match-routing.test.ts" name="discovers a newly created match through an authorized room read" time="0.0527104">
+        </testcase>
+        <testcase classname="tests/web/room-match-routing.test.ts" name="refreshes an already mounted match without rereading the room" time="0.020166078">
+            <failure message="expected 3 to be 2 // Object.is equality" type="AssertionError">
+AssertionError: expected 3 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 3
+
+ ❯ tests/web/room-match-routing.test.ts:40:27
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

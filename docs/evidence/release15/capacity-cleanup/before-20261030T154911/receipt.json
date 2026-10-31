@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-10-30T15:49:41",
+  "phase": "Before",
+  "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "hostName": "[PRIVATE HOST]",
+  "containerName": "wordpairs-capacity-cleanup-before-061ff0d3",
+  "startedAt": "2026-10-30T15:49:11.3220107-05:00",
+  "finishedAt": "2026-10-30T15:49:41.3272071-05:00",
+  "executable": "pwsh",
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/tests/integration/run-phase1.ps1",
+    "-ContainerName",
+    "wordpairs-capacity-cleanup-before-061ff0d3",
+    "-CapacityUpgrade",
+    "-Realtime",
+    "-VolatileStorage",
+    "-ReportDirectory",
+    "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/before-20261030T154911"
+  ],
+  "exitCode": 1,
+  "observationPath": "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/before-20261030T154911/outbox-observations.jsonl",
+  "samples": 94,
+  "largestCapacityPending": null,
+  "reports": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/before-20261030T154911/postgres.xml",
+      "sha256": "C2F8FA5681CA436D045F3170BED49220977C834CF72C18B21CE53B21D42028BB",
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/before-20261030T154911/realtime.xml",
+      "sha256": "3838DBFA9488AF3579975C2566B51E5DA5C6C3D21812A410C42A0B2CEC4B38D5",
+      "cases": 4,
+      "failed": 3,
+      "skipped": 0
+    }
+  ],
+  "qualification": "Owned disposable fixture inspection; first25 records are actual pending ordering. Observations alone do not establish broker causation without matching transport results/logs."
+}

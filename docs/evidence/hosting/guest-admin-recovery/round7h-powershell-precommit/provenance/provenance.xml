@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<testsuites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="junit_schema_4.xsd" name="Pester" tests="9" errors="0" failures="0" disabled="0" time="0.736">
+  <testsuite name="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" tests="9" errors="0" failures="0" hostname="[PRIVATE HOST]" id="0" skipped="0" disabled="0" package="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" time="0.736">
+    <properties>
+      <property name="machine-name" value="[PRIVATE HOST]" />
+      <property name="os-version" value="7.2.5-3-omarchy" />
+      <property name="platform" value="Linux" />
+      <property name="user-domain" value="" />
+      <property name="clr-version" value="10.0.13" />
+      <property name="junit-version" value="4" />
+      <property name="cwd" value="<repo>" />
+      <property name="user" value="sharpninja" />
+      <property name="framework-version" value="5.9.1" />
+    </properties>
+    <testcase name="Review evidence provenance.accepts a complete matching chain" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.131" />
+    <testcase name="Review evidence provenance.accepts an aggregate-run report without a producer receipt" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.010" />
+    <testcase name="Review evidence provenance.rejects a different parent run" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.011" />
+    <testcase name="Review evidence provenance.rejects a different revision" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Review evidence provenance.rejects a nonzero exit" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Review evidence provenance.rejects a different JUnit report" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.014" />
+    <testcase name="Review evidence provenance.rejects an unlinked producer receipt" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.006" />
+    <testcase name="Review evidence provenance.rejects different producer bytes" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.006" />
+    <testcase name="Review evidence provenance.rejects a modified producer receipt" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.007" />
+  </testsuite>
+</testsuites>

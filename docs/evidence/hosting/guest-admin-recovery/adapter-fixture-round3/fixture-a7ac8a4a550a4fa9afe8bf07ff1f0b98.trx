@@ -1,0 +1,44 @@
+<TestRun id="2cb3ff6b-f0a1-4172-8a06-d7305452d603" name="JUnit adapter: junit-outcomes.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times finish="2026-10-28T21:19:13.0141148-05:00" start="2026-10-28T21:19:13.0141148-05:00" queuing="2026-10-28T21:19:13.0141148-05:00" creation="2026-10-28T21:19:13.0141148-05:00" />
+  <Results>
+    <UnitTestResult duration="00:00:00.1000000" executionId="309818cd-89cd-4a83-be34-7af5f6203183" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testId="972b43b7-22c1-6c2a-85e9-3e5c0006d4d6" relativeResultsDirectory="309818cd-89cd-4a83-be34-7af5f6203183" computerName="[PRIVATE HOST]" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="fixture :: pass" />
+    <UnitTestResult duration="00:00:00.2000000" executionId="9647244c-ff24-4d2d-ab72-efb9e3704648" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testId="6b72d732-b5c5-7f2f-5842-7e724a21e132" relativeResultsDirectory="9647244c-ff24-4d2d-ab72-efb9e3704648" computerName="[PRIVATE HOST]" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="fixture :: fail">
+      <Output>
+        <ErrorInfo>
+          <Message>expected negative control</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult duration="00:00:00" executionId="76eb88bb-00f7-4a26-83f5-2edd3b810122" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testId="2698b541-33c6-d30e-29b4-c76deb3d1cad" relativeResultsDirectory="76eb88bb-00f7-4a26-83f5-2edd3b810122" computerName="[PRIVATE HOST]" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testName="fixture :: skip" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest storage="fixture" name="pass" id="972b43b7-22c1-6c2a-85e9-3e5c0006d4d6">
+      <Execution id="309818cd-89cd-4a83-be34-7af5f6203183" />
+      <TestMethod codeBase="fixture" className="fixture" name="pass" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest storage="fixture" name="fail" id="6b72d732-b5c5-7f2f-5842-7e724a21e132">
+      <Execution id="9647244c-ff24-4d2d-ab72-efb9e3704648" />
+      <TestMethod codeBase="fixture" className="fixture" name="fail" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest storage="fixture" name="skip" id="2698b541-33c6-d30e-29b4-c76deb3d1cad">
+      <Execution id="76eb88bb-00f7-4a26-83f5-2edd3b810122" />
+      <TestMethod codeBase="fixture" className="fixture" name="skip" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="972b43b7-22c1-6c2a-85e9-3e5c0006d4d6" executionId="309818cd-89cd-4a83-be34-7af5f6203183" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="6b72d732-b5c5-7f2f-5842-7e724a21e132" executionId="9647244c-ff24-4d2d-ab72-efb9e3704648" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="2698b541-33c6-d30e-29b4-c76deb3d1cad" executionId="76eb88bb-00f7-4a26-83f5-2edd3b810122" />
+  </TestEntries>
+  <TestLists>
+    <TestList id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" name="JUnit cases" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters pending="0" error="0" total="3" passed="1" failed="1" notExecuted="1" aborted="0" timeout="0" notRunnable="0" completed="2" inconclusive="0" executed="2" inProgress="0" disconnected="0" passedButRunAborted="0" />
+    <RunInfos>
+      <RunInfo outcome="Completed" timestamp="2026-10-28T21:19:13.0141148-05:00" computerName="[PRIVATE HOST]">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/tests/fixtures/junit-outcomes.xml; SHA256=3EBCC94C283DFDF3414B1CEC41BB1DC876209AEF6DC7FAC15E08839CB22756F6; reviewed revision=synthetic-fixture-only</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

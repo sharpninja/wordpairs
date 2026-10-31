@@ -2,115 +2,7 @@ import { expect, type Page, test } from "@playwright/test";
 import { connectGame, roomId } from "./phase6-fixture";
 import { uiContentFixture } from "./ui-gaps-fixture";
 
-const fillProposal = async (page: Page) => {
-  await page.getByLabel("Proposed category", { exact: true }).fill("Space");
-  for (const [i, pair] of [
-    { prompt: "Earth", target: "Moon" },
-    { prompt: "Sun", target: "Star" },
-    { prompt: "Mars", target: "Planet" },
-  ].entries()) {
-    await page
-      .getByLabel(`Pair ${i + 1} prompt`, { exact: true })
-      .fill(pair.prompt);
-    await page
-      .getByLabel(`Pair ${i + 1} target`, { exact: true })
-      .fill(pair.target);
-  }
-};
-test("TEST-REVIEWCHANGES-140 independent reasoned change request and proposer-only audited revision", async ({
-  browser,
-}) => {
-  const f = uiContentFixture();
-  const contexts = await Promise.all([
-    browser.newContext(),
-    browser.newContext(),
-    browser.newContext(),
-  ]);
-  try {
-    await Promise.all(
-      contexts.map((c, i) => f.connect(c, ["alice", "bob", "mallory"][i])),
-    );
-    const [a, b, m] = await Promise.all(contexts.map((c) => c.newPage()));
-    await a.goto("/content");
-    await fillProposal(a);
-    await a
-      .getByRole("button", { name: "Submit suggestion", exact: true })
-      .click();
-    await expect(a.getByText("pending", { exact: true })).toBeVisible();
-    await b.goto("/admin");
-    await b
-      .getByRole("button", { name: "Request changes", exact: true })
-      .click();
-    expect(f.state().cases[0].status).toBe("pending");
-    await b.getByLabel("Decision reason").fill("Clarify the space pairs");
-    await b
-      .getByRole("button", { name: "Request changes", exact: true })
-      .click();
-    await expect(
-      b.getByText("changes_requested", { exact: true }),
-    ).toBeVisible();
-    await a.getByRole("button", { name: "Refresh submissions" }).click();
-    await expect(a.getByLabel("Revised category")).toHaveValue("Space");
-    await expect(
-      a.getByRole("button", { name: "Submit suggestion", exact: true }),
-    ).toHaveCount(0);
-    await m.goto("/content");
-    const before = structuredClone(f.state());
-    const status = await m.evaluate(
-      async (caseId) =>
-        (
-          await fetch("/api/content", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              action: "resubmit",
-              caseId,
-              expectedProfileId: "mallory",
-              expectedVersion: 2,
-              commandId: "forged-revision",
-              proposal: {
-                category: "Stolen",
-                pairs: [
-                  { prompt: "A", target: "B" },
-                  { prompt: "C", target: "D" },
-                  { prompt: "E", target: "F" },
-                ],
-              },
-            }),
-          })
-        ).status,
-      f.state().cases[0].id,
-    );
-    expect(status).toBe(403);
-    expect(f.state()).toEqual(before);
-    await a.getByLabel("Revised category").fill("Space revised");
-    await a.getByLabel("Revised pair 3 target").fill("");
-    await a.getByRole("button", { name: "Resubmit suggestion" }).click();
-    expect(f.state()).toEqual(before);
-    await a.getByLabel("Revised pair 3 target").fill("Planet");
-    await a.getByRole("button", { name: "Resubmit suggestion" }).click();
-    await expect(a.getByText("pending_review", { exact: true })).toBeVisible();
-    await b.getByRole("button", { name: "Refresh submissions" }).click();
-    await expect(
-      b.getByRole("button", { name: "Approve for curation" }),
-    ).toBeVisible();
-    expect(f.state().cases[0]).toMatchObject({
-      appealed: false,
-      playable: false,
-      version: 2,
-    });
-    expect(f.state().publications).toHaveLength(0);
-    const revision = f.audits.find((r) => r.action === "resubmit");
-    expect(revision?.details).toMatchObject({
-      previousStatus: "changes_requested",
-      status: "pending_review",
-      previousProposal: { category: "Space" },
-      proposal: { category: "Space revised" },
-    });
-  } finally {
-    await Promise.all(contexts.map((c) => c.close()));
-  }
-});
+// Current guest/admin release; superseded community UI journeys are retained in docs/testing/historical/.
 test("TEST-CANDIDATEHOLD-141 holds preserve nominations and forbid review until reasoned resume", async ({
   browser,
 }) => {
@@ -143,164 +35,6 @@ test("TEST-CANDIDATEHOLD-141 holds preserve nominations and forbid review until 
     expect(f.state().cases[0].nominatorIds).toHaveLength(10);
     expect(f.audits.map((a) => a.action)).toEqual(["hold", "resume"]);
   } finally {
-    await context.close();
-  }
-});
-test("TEST-NAVIGATIONDRAFTS-142 same-document Back preserves drafts; Discard, reload and identity change clear them", async ({
-  browser,
-}) => {
-  const context = await browser.newContext();
-  const f = uiContentFixture();
-  try {
-    const account = await f.connect(context, "alice");
-    const page = await context.newPage();
-    await page.goto("/content");
-    await page
-      .getByLabel("Proposed category", { exact: true })
-      .fill("Private Space");
-    const documentId = await page.evaluate(() => {
-      const id = crypto.randomUUID();
-      (window as unknown as { fixtureId: string }).fixtureId = id;
-      return id;
-    });
-    await page.getByRole("link", { name: "Find a room", exact: true }).click();
-    await expect(page).toHaveURL(/\/play$/);
-    await page.goBack();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("Private Space");
-    expect(
-      await page.evaluate(
-        () => (window as unknown as { fixtureId: string }).fixtureId,
-      ),
-    ).toBe(documentId);
-    expect(f.writes).toHaveLength(0);
-    await page.getByRole("button", { name: "Discard suggestion" }).click();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("");
-    await page
-      .getByLabel("Proposed category", { exact: true })
-      .fill("Do not reload");
-    await page.reload();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("");
-    await page
-      .getByLabel("Proposed category", { exact: true })
-      .fill("Alice secret");
-    account.identity("mallory");
-    await page.getByRole("link", { name: "Find a room", exact: true }).click();
-    await expect(
-      page.getByText("Guest mallory", { exact: true }),
-    ).toBeVisible();
-    await page.goBack();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("");
-    expect(f.writes).toHaveLength(0);
-  } finally {
-    await context.close();
-  }
-});
-test("TEST-REQUESTFEEDBACK-143 busy and uncertain writes retain exact command through navigation", async ({
-  browser,
-}) => {
-  const context = await browser.newContext();
-  const f = uiContentFixture();
-  let release!: () => void;
-  f.hold(
-    new Promise<void>((resolve) => {
-      release = resolve;
-    }),
-  );
-  f.lose();
-  try {
-    await f.connect(context, "alice");
-    const page = await context.newPage();
-    await page.goto("/content");
-    await fillProposal(page);
-    await page
-      .getByRole("button", { name: "Submit suggestion", exact: true })
-      .click();
-    await expect(
-      page.getByText("Saving your request…", { exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: "Discard suggestion" }),
-    ).toBeDisabled();
-    expect(f.writes).toHaveLength(1);
-    await page.getByRole("link", { name: "Find a room", exact: true }).click();
-    await expect(page).toHaveURL(/\/play$/);
-    await page.goBack();
-    await expect(
-      page.getByRole("button", { name: "Submit suggestion", exact: true }),
-    ).toBeDisabled();
-    release();
-    f.hold(null);
-    await expect(
-      page.getByRole("button", { name: "Retry pending content request" }),
-    ).toBeEnabled();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("Space");
-    await expect(
-      page.getByText("DO-NOT-DISPLAY-SECRET", { exact: false }),
-    ).toHaveCount(0);
-    await page
-      .getByRole("button", { name: "Retry pending content request" })
-      .click();
-    await expect(page.getByText("pending", { exact: true })).toBeVisible();
-    expect(f.writes).toHaveLength(2);
-    expect(f.writes[1]).toEqual(f.writes[0]);
-    expect(f.state().cases).toHaveLength(1);
-  } finally {
-    release();
-    await context.close();
-  }
-});
-test("TEST-REQUESTFEEDBACK-143 distinct loading, empty and safe read failure with explicit retry", async ({
-  browser,
-}) => {
-  const context = await browser.newContext();
-  const f = uiContentFixture();
-  let release!: () => void;
-  const gate = new Promise<void>((resolve) => {
-    release = resolve;
-  });
-  try {
-    const account = await f.connect(context, "alice");
-    account.reads(async (route, data) => {
-      await gate;
-      await route.fulfill({ json: data });
-    });
-    const page = await context.newPage();
-    await page.goto("/content");
-    await expect(
-      page.getByText("Loading your submissions…", { exact: true }),
-    ).toBeVisible();
-    release();
-    await expect(page.getByText(/No submissions yet/)).toBeVisible();
-    account.reads(async (route) => {
-      await route.fulfill({
-        status: 500,
-        json: { message: "DO-NOT-DISPLAY-SECRET" },
-      });
-    });
-    await page.getByRole("button", { name: "Refresh submissions" }).click();
-    await expect(
-      page.locator(".content-panel").getByRole("alert"),
-    ).toContainText("Submission updates are unavailable");
-    await expect(
-      page.getByText("DO-NOT-DISPLAY-SECRET", { exact: false }),
-    ).toHaveCount(0);
-    account.reads(null);
-    await page.getByRole("button", { name: "Refresh submissions" }).click();
-    await expect(page.locator(".content-panel").getByRole("alert")).toHaveCount(
-      0,
-    );
-  } finally {
-    release();
     await context.close();
   }
 });
@@ -393,57 +127,6 @@ test("TEST-NAVIGATIONDRAFTS-142 privileged editor Back, Cancel and revocation cl
     await context.close();
   }
 });
-test("TEST-REQUESTFEEDBACK-143 previous-profile write completion cannot restore private state or success", async ({
-  browser,
-}) => {
-  const context = await browser.newContext();
-  const f = uiContentFixture();
-  let release!: () => void;
-  f.hold(
-    new Promise<void>((resolve) => {
-      release = resolve;
-    }),
-  );
-  try {
-    const account = await f.connect(context, "alice");
-    const page = await context.newPage();
-    await page.goto("/content");
-    await fillProposal(page);
-    await page
-      .getByRole("button", { name: "Submit suggestion", exact: true })
-      .click();
-    await expect.poll(() => f.writes.length).toBe(1);
-    await page.getByRole("link", { name: "Find a room", exact: true }).click();
-    await expect(page).toHaveURL(/\/play$/);
-    account.identity("mallory");
-    await page.goBack();
-    await expect(
-      page.getByText("Guest mallory", { exact: true }),
-    ).toBeVisible();
-    const completed = page.waitForResponse(
-      (r) =>
-        new URL(r.url()).pathname === "/api/content" &&
-        r.request().method() === "POST",
-    );
-    release();
-    f.hold(null);
-    await (await completed).finished();
-    await page.getByRole("button", { name: "Refresh submissions" }).click();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("");
-    await expect(
-      page.getByRole("button", { name: "Retry pending content request" }),
-    ).toHaveCount(0);
-    await expect(
-      page.locator(".content-panel").getByText("Saved.", { exact: true }),
-    ).toHaveCount(0);
-    expect(f.state().cases[0].proposerId).toBe("alice");
-  } finally {
-    release();
-    await context.close();
-  }
-});
 for (const configuration of [
   { name: "320x568", width: 320, height: 568, scale: 1, text: 1 },
   { name: "390x844", width: 390, height: 844, scale: 1, text: 1 },
@@ -457,10 +140,10 @@ for (const configuration of [
   },
   { name: "200%-text", width: 390, height: 844, scale: 1, text: 2 },
 ]) {
-  test(`TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 ${configuration.name} game/content/editor reflow and controls`, async ({
+  test(`TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 ${configuration.name} game/editor reflow and controls`, async ({
     browser,
   }, info) => {
-    for (const screen of ["game", "content", "editor"]) {
+    for (const screen of ["game", "editor"]) {
       const context = await browser.newContext({
         viewport: { width: configuration.width, height: configuration.height },
         deviceScaleFactor: configuration.scale,
@@ -594,30 +277,6 @@ for (const configuration of [
     }
   });
 }
-test("TEST-NAVIGATIONDRAFTS-142 replacement session for the same profile clears drafts", async ({
-  browser,
-}) => {
-  const context = await browser.newContext();
-  const f = uiContentFixture();
-  try {
-    const account = await f.connect(context, "alice");
-    const page = await context.newPage();
-    await page.goto("/content");
-    await page
-      .getByLabel("Proposed category", { exact: true })
-      .fill("Previous session secret");
-    account.replaceSession();
-    await page.getByRole("link", { name: "Find a room", exact: true }).click();
-    await expect(page).toHaveURL(/\/play$/);
-    await page.goBack();
-    await expect(
-      page.getByLabel("Proposed category", { exact: true }),
-    ).toHaveValue("");
-    expect(f.writes).toHaveLength(0);
-  } finally {
-    await context.close();
-  }
-});
 test("TEST-REQUESTFEEDBACK-143 completed private room creation survives navigation without another mutation", async ({
   browser,
 }) => {
@@ -645,15 +304,15 @@ test("TEST-REQUESTFEEDBACK-143 completed private room creation survives navigati
       .click();
     await expect.poll(() => writes.length).toBe(1);
     await page
-      .getByRole("link", { name: "Community content", exact: true })
+      .getByRole("link", { name: "Community board", exact: true })
       .click();
-    await expect(page).toHaveURL(/\/content$/);
+    await expect(page).toHaveURL(/\/$/);
     const complete = page.waitForResponse(
       (r) => new URL(r.url()).pathname === "/api/rooms",
     );
     release();
     await (await complete).finished();
-    await page.getByRole("link", { name: "Find a room", exact: true }).click();
+    await page.goBack();
     await expect(page).toHaveURL(new RegExp(`/rooms/${roomId}$`));
     expect(writes).toHaveLength(1);
   } finally {
@@ -778,7 +437,7 @@ for (const surface of ["game", "social", "room"] as const) {
           .click();
       } else
         await page
-          .getByRole("button", { name: "Create invitation link", exact: true })
+          .getByRole("button", { name: "Copy Invitation Link", exact: true })
           .click();
       await expect.poll(() => denied).toBe(true);
       const complete = page.waitForResponse(
@@ -807,89 +466,11 @@ for (const surface of ["game", "social", "room"] as const) {
         await expect(page.locator(".roster li")).toHaveCount(0);
         await expect(
           page.getByRole("button", {
-            name: "Create invitation link",
+            name: "Copy Invitation Link",
             exact: true,
           }),
         ).toHaveCount(0);
       }
-    } finally {
-      release();
-      await context.close();
-    }
-  });
-}
-
-for (const surface of ["game-read", "game-write", "social-read"] as const) {
-  test(`TEST-REQUESTFEEDBACK-143 obsolete ${surface} denial cannot clear a replacement profile draft`, async ({
-    browser,
-  }) => {
-    const context = await browser.newContext();
-    let release!: () => void;
-    let started!: () => void;
-    const gate = new Promise<void>((r) => {
-      release = r;
-    });
-    const waiting = new Promise<void>((r) => {
-      started = r;
-    });
-    try {
-      await connectGame(context);
-      const page = await context.newPage();
-      await page.clock.install();
-      await page.goto(`/rooms/${roomId}`);
-      await expect(
-        page.getByLabel("Your answer", { exact: true }),
-      ).toBeVisible();
-      const endpoint = `/api/rooms/${roomId}/${surface === "social-read" ? "reactions" : "match"}`;
-      const method = surface === "game-write" ? "POST" : "GET";
-      await context.route(`**${endpoint}`, async (r) => {
-        if (r.request().method() !== method) return r.fallback();
-        started();
-        await gate;
-        return r.fulfill({ status: 403, body: "Obsolete denial" });
-      });
-      if (surface === "game-write") {
-        await page.getByLabel("Your answer", { exact: true }).fill("Cold");
-        await page
-          .getByRole("button", { name: "Submit answer", exact: true })
-          .click();
-      } else if (surface === "social-read") await page.clock.fastForward(1000);
-      else
-        await page
-          .getByRole("button", { name: "Refresh game", exact: true })
-          .click();
-      await waiting;
-      await uiContentFixture().connect(context, "alice");
-      await page
-        .getByRole("link", {
-          name: "Your submissions and community content",
-          exact: true,
-        })
-        .click();
-      const draft = page.getByLabel("Proposed category", { exact: true });
-      await draft.fill("Replacement profile draft");
-      const complete = page.waitForResponse(
-        (r) =>
-          new URL(r.url()).pathname === endpoint &&
-          r.request().method() === method &&
-          r.status() === 403,
-      );
-      release();
-      await (await complete).finished();
-      await page.evaluate(
-        () =>
-          new Promise<void>((r) =>
-            requestAnimationFrame(() => requestAnimationFrame(() => r())),
-          ),
-      );
-      await expect(draft).toHaveValue("Replacement profile draft");
-      await page
-        .getByRole("link", { name: "Find a room", exact: true })
-        .click();
-      await expect(page).toHaveURL(/\/play$/);
-      await page.goBack();
-      await expect(page).toHaveURL(/\/content$/);
-      await expect(draft).toHaveValue("Replacement profile draft");
     } finally {
       release();
       await context.close();
@@ -909,7 +490,7 @@ for (const method of ["GET", "POST"] as const) {
       await page.goto(`/rooms/${roomId}`);
       await expect(
         page.getByRole("button", {
-          name: "Create invitation link",
+          name: "Copy Invitation Link",
           exact: true,
         }),
       ).toBeVisible();
@@ -925,7 +506,7 @@ for (const method of ["GET", "POST"] as const) {
       });
       await page
         .getByRole("button", {
-          name: method === "GET" ? "Refresh room" : "Create invitation link",
+          name: method === "GET" ? "Refresh room" : "Copy Invitation Link",
           exact: true,
         })
         .click();

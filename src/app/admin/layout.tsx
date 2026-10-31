@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+export const metadata: Metadata = {
+  title: "Wordpairs Admin",
+  manifest: "/admin/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Wordpairs Admin",
+    statusBarStyle: "default",
+  },
+};
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <main className="site-shell">
@@ -9,14 +19,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         </Link>
         <nav aria-label="Main navigation">
           <Link href="/play">Find a room</Link>
-          <Link href="/content">Community content</Link>
         </nav>
       </header>
-      <nav className="admin-nav" aria-label="Administration">
-        <Link href="/admin">Moderation</Link>
-        <Link href="/admin/words">Word pairs and hints</Link>
-        <Link href="/admin/users">Users and access</Link>
-      </nav>
       {children}
     </main>
   );

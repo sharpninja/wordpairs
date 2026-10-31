@@ -208,7 +208,7 @@ async function gameFixture(playerCount: number) {
 }
 
 describe("complete multiplayer games on real PostgreSQL", () => {
-  it.each(Array.from({ length: 24 }, (_, index) => index + 2))(
+  it.each(Array.from({ length: 9 }, (_, index) => index + 2))(
     "%i players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards",
     async (playerCount) => {
       const h = await gameFixture(playerCount);
@@ -402,7 +402,7 @@ describe("complete multiplayer games on real PostgreSQL", () => {
         ).rows[0].count,
       ).toBe(playerCount * 8);
     },
-    // Real PostgreSQL commits for 25 players across eight rounds can exceed a
+    // Real PostgreSQL commits for ten players across eight rounds can exceed a
     // minute on a busy developer/CI host; this is not a gameplay deadline.
     120_000,
   );

@@ -1,0 +1,70 @@
+{
+  "readAtLocal": "2026-10-30T19:44:34",
+  "context": {
+    "method": "client.Context.SearchAsync",
+    "hasExactFilename": true,
+    "hasNativeReportId": false,
+    "topLevelKeys": [
+      "query",
+      "sourceKeys",
+      "chunks"
+    ],
+    "params": {
+      "query": "20261029T042440Z-triage-report-5ca5.yaml",
+      "limit": 20
+    },
+    "hasOriginalHash": false
+  },
+  "history": {
+    "exactReferenceTurns": [
+      {
+        "sessionId": "ClaudeCode-20261029T152513Z-plugin-session",
+        "requestId": "req-20261029T152519Z-prompt-94ed",
+        "title": "HV round6: Claude Opus staging-readiness review of wordpairs 3fb4a49",
+        "status": "completed",
+        "hasExactFilename": true,
+        "hasNativeReportId": false,
+        "hasOriginalFileHash": false,
+        "qualification": "Co-occurrence is only a search lead, not proof of replay acknowledgement."
+      },
+      {
+        "sessionId": "ClaudeCode-20261029T144329Z-plugin-session",
+        "requestId": "req-20261029T144333Z-prompt-73ea",
+        "title": "HV round5: Claude Opus staging-readiness review of wordpairs 6071b2d",
+        "status": "completed",
+        "hasExactFilename": true,
+        "hasNativeReportId": false,
+        "hasOriginalFileHash": false,
+        "qualification": "Co-occurrence is only a search lead, not proof of replay acknowledgement."
+      },
+      {
+        "sessionId": "ClaudeCode-20261029T140011Z-plugin-session",
+        "requestId": "req-20261029T140016Z-prompt-ba89",
+        "title": "HV round4: Claude Opus staging-readiness review of wordpairs f35b696",
+        "status": "completed",
+        "hasExactFilename": true,
+        "hasNativeReportId": false,
+        "hasOriginalFileHash": false,
+        "qualification": "Co-occurrence is only a search lead, not proof of replay acknowledgement."
+      },
+      {
+        "sessionId": "ClaudeCode-20261029T010023Z-plugin-session",
+        "requestId": "req-20261029T044251Z-hv-admin-pwa-round3-retry",
+        "title": "HV round3 retry: admin PWA source candidate 1c22727 staging readiness (Claude Opus reviewer)",
+        "status": "completed",
+        "hasExactFilename": true,
+        "hasNativeReportId": false,
+        "hasOriginalFileHash": false,
+        "qualification": "Co-occurrence is only a search lead, not proof of replay acknowledgement."
+      }
+    ],
+    "returnedSessions": 7,
+    "params": {
+      "limit": 100,
+      "agent": "ClaudeCode",
+      "offset": 0
+    },
+    "method": "client.SessionLog.QueryAsync"
+  },
+  "qualification": "Read-only supported literal cross-reference search. No unrelated text or private context content retained; no universal absence/replay claim from missing indexed matches."
+}

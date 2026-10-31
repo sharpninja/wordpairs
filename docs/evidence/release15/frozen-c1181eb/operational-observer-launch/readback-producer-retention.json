@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-30T19:38:28.5004343-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T003052Z-c118-operational-evidence",
+  "producerPins": [
+    {
+      "original": "/tmp/ReadWordpairsC118ObserverEvidence.ps1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/operational-observer-launch/ReadWordpairsC118ObserverEvidence.ps1",
+      "sha256": "60A02303391FFCA326655EF058B58B58B4A74744306036BDD7AF3772F6EDA20E"
+    },
+    {
+      "original": "/tmp/RetainWordpairsC118OperationalHelpers.ps1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/operational-observer-launch/RetainWordpairsC118OperationalHelpers.ps1",
+      "sha256": "42E3AA13E9608A111B5D7B0AF62A272C9F32FA47672A21749DE5B997F73BE29F"
+    }
+  ],
+  "existingCheckpoint": {
+    "sha256": "436AE392E75CEA3142A8E5CE8F5F6CB917D1FE487836E3DBD3EA859CFDC0D265",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/operational-observer-launch/checkpoint-readback.json"
+  },
+  "chronology": "Helper copied after the existing partial checkpoint; no claim of pre-checkpoint retention. Exact copy retained before any future terminal readback. Existing checkpoint bytes remain unchanged. Actual observer measurement producer was retained before launch separately.",
+  "originalsRetained": true,
+  "qualification": "Operational producer retention only, not new sampling, tests/builds or acceptance proof."
+}

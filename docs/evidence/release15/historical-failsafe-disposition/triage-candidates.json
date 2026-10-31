@@ -1,0 +1,68 @@
+{
+  "readAtLocal": "2026-10-30T19:38:12",
+  "method": "workflow.triage.queryGroups",
+  "params": {
+    "workspacePath": "\u003Chome\u003E/github/McpServer"
+  },
+  "totalCount": 220,
+  "returnedItems": 220,
+  "firstItemFields": [
+    "summary",
+    "workspacePath",
+    "quietDeadlineUtc",
+    "reports",
+    "status",
+    "groupId",
+    "reportCount",
+    "title"
+  ],
+  "candidates": [
+    {
+      "fields": [
+        "summary",
+        "workspacePath",
+        "quietDeadlineUtc",
+        "reports",
+        "status",
+        "lastError",
+        "groupId",
+        "reportCount",
+        "title"
+      ],
+      "id": null,
+      "groupId": "triage-group-c198e07edd07ee87",
+      "status": "failed",
+      "title": "MCP server /health hangs; plugin trust bootstrap and triage submit time out",
+      "summary": "The wordpairs workspace MCP server process is alive but GET /health?nonce=... does not answer (5 s, 30 s and 90 s client timeouts), workflow.triage.report times out in qbrain-ai-repl after 30 s, and the plugin writes no failsafe record for the failed triage submit. A hostile-validation reviewer therefore cannot load memories, read QBrain or write its session-log turn.",
+      "errorSignature": null,
+      "dedupeKey": null,
+      "reportIds": null,
+      "reportCount": 1,
+      "exactDedupePresent": false
+    },
+    {
+      "fields": [
+        "summary",
+        "workspacePath",
+        "quietDeadlineUtc",
+        "reports",
+        "status",
+        "lastError",
+        "groupId",
+        "reportCount",
+        "title"
+      ],
+      "id": null,
+      "groupId": "triage-group-4d9f942a7aa57058",
+      "status": "failed",
+      "title": "MCP health connection refused while processing shared memory",
+      "summary": "Observed: the Codex prompt hook returned no-session with health-failed, and workflow.memory.get was blocked by MCP_UNTRUSTED after Connection refused. Expected: trusted server health and a readable shared coordination record. Severity medium: blocks operator-requested coordination review. Current memory is unknown; last side-chat report was PRIVATE-MEMORY-REFERENCE-007 v6. No memory acknowledgments, plan changes, or implementation resumed.",
+      "errorSignature": null,
+      "dedupeKey": null,
+      "reportIds": null,
+      "reportCount": 1,
+      "exactDedupePresent": false
+    }
+  ],
+  "qualification": "Keyword candidates are leads only. No candidate is joined to the historical failsafe without an exact dedupe/payload/source identity."
+}

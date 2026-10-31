@@ -1,0 +1,112 @@
+{
+  "timestamp": "2026-10-29T10:47:42",
+  "testSha256": "20BE813DA104D340FCC9E12B0AAFED2ADB5B5C68584F7895E283E0B72916A9A2",
+  "runs": [
+    {
+      "fixture": "Correct",
+      "moduleSha256": "BF2E2F0103B8B55E21122B4D09AB030727E6ADD964386FA770273794914A4BCC",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "accepts a current release reference",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing current release reference",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a superseded administrator bootstrap instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a superseded public installation instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a superseded OpenAI setup instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded profile bootstrap without markdown quoting",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded grant instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a root manifest instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded public installation instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "accepts a locally qualified historical instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "checks the current operations and plan documents",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "fixture": "Wrong",
+      "moduleSha256": "924C5F4B13B138063AA159A09128E27941405A638E0C67E4B5559120D5BC5B13",
+      "passed": 3,
+      "failed": 8,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "accepts a current release reference",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing current release reference",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a superseded administrator bootstrap instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a superseded public installation instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a superseded OpenAI setup instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded profile bootstrap without markdown quoting",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded grant instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a root manifest instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded public installation instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "accepts a locally qualified historical instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "checks the current operations and plan documents",
+          "result": "Passed"
+        }
+      ]
+    }
+  ]
+}

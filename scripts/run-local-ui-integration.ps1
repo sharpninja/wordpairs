@@ -1,15 +1,19 @@
 # Real browser/API/TLS PostgreSQL/private WebSocket integration. No HTTP fixtures.
+[CmdletBinding(SupportsShouldProcess)]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseApprovedVerbs','',Justification='Private-File and Random-Secret are internal helpers, not exported commands.')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions','',Justification='Start-Child and Stop-Child are private owned-resource lifecycle helpers; the entry point gates the complete operation and cleanup must not be skipped independently.')]
 param(
     [string]$RuntimePath,
     [string]$BrowserPath=$env:WORDPAIRS_BROWSER_PATH,
     [string]$ScratchRoot,
-    [string]$PlayerCounts='2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25',
+    [string]$PlayerCounts='2,3,4,5,6,7,8,9,10',
     [ValidateRange(1,2)][int]$Workers=1,
     [ValidateRange(1,120)][int]$MaxMinutes=90,
     [int]$TlsPort=3443,[int]$GatewayPort=3004,[int]$AppPort=3005,
     [switch]$StrictPush,
     [switch]$HeartbeatBody
 )
+if(-not $PSCmdlet.ShouldProcess('owned local UI test resources','Create, test and clean up the isolated runtime')){return}
 $ErrorActionPreference='Stop'
 $repo=Split-Path $PSScriptRoot
 $owner=[Guid]::NewGuid().ToString('N')
@@ -120,14 +124,15 @@ try {
     $ready=$false
     for($i=0;$i -lt 120;$i++) {
         if(@($children | Where-Object {$_.process.HasExited}).Count){throw 'An owned runtime child exited during startup'}
-        try {$r=Invoke-WebRequest ($origin+'/play') -SkipCertificateCheck -TimeoutSec 2 -SkipHttpErrorCheck; if($r.StatusCode -eq 200){$ready=$true;break}}catch{}
+        try {$r=Invoke-WebRequest ($origin+'/play') -SkipCertificateCheck -TimeoutSec 2 -SkipHttpErrorCheck; if($r.StatusCode -eq 200){$ready=$true;break}}catch{ $null=$_ # The bounded readiness loop retries connection failures.
+        }
         Start-Sleep -Milliseconds 500
     }
     if(-not $ready){throw 'Private real UI runtime did not become ready'}
     $null=Start-Child 'worker' 'pwsh' @('-NoProfile','-File',(Join-Path $PSScriptRoot 'run-local-scheduler.ps1'),'-RuntimePath',$livePath,'-Port',"$AppPort",'-UntilUtc',$until.ToString('o'))
     $testEnv=@{NODE_EXTRA_CA_CERTS=$cert;WORDPAIRS_LIVE_ORIGIN=$origin;WORDPAIRS_LIVE_LOCAL_TLS='1';WORDPAIRS_LIVE_RUNTIME_PATH=$livePath;WORDPAIRS_LIVE_PLAYER_COUNTS=$PlayerCounts;WORDPAIRS_BROWSER_PATH=$BrowserPath;TMPDIR=$scratch}
     $spec=if($StrictPush){'live-multiplayer.integration.spec.ts'}elseif($HeartbeatBody){'heartbeat.integration.spec.ts'}else{'live-player-counts.integration.spec.ts'}
-    $test=Start-Child 'playwright' 'npm' @('run','test:live-ui','--',$spec,'--output=test-results/live-local',"--workers=$Workers",'--fully-parallel','--max-failures=1') $testEnv
+    $test=Start-Child 'playwright' 'npm' @('run','test:live-ui','--',$spec,'--output=test-results/live-local',"--workers=$Workers",'--fully-parallel','--max-failures=1','--reporter=line,junit') $testEnv
     Write-Output ('Private real UI integration started; counts='+$PlayerCounts+'; bounded until '+$until.ToString('o'))
     while(-not $test.process.HasExited) {
         if([DateTimeOffset]::UtcNow -ge $until){throw 'Private integration lifetime expired'}

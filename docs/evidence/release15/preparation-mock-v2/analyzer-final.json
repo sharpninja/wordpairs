@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-10-30T15:15:25",
+  "command": "PowerShell Parser.ParseFile and Invoke-ScriptAnalyzer -Severity Warning,Error",
+  "version": "1.25.0",
+  "files": [
+    {
+      "path": "tests/powershell/ReviewEvidencePreparation.Tests.ps1",
+      "sha256": "34FCE77E23A3C3CC62F3183E5D75645C54A3EC1661730C418D2640BED8E9E305",
+      "parserErrors": 0,
+      "analyzerIssues": []
+    },
+    {
+      "path": "tests/powershell/ReviewEvidencePreparation.MockCorrect.psm1",
+      "sha256": "12CF47632E326D2CC0F2EAEA4DA68CA8783E59D7A241272251674A8F83515AED",
+      "parserErrors": 0,
+      "analyzerIssues": []
+    },
+    {
+      "path": "tests/powershell/ReviewEvidencePreparation.MockWrong.psm1",
+      "sha256": "7091241861DF93BAE43C3D1E1B06044C54D41D34F6EF230CA244EE4B1B516532",
+      "parserErrors": 0,
+      "analyzerIssues": []
+    },
+    {
+      "path": "tests/powershell/Run-ReviewEvidencePreparationGate.ps1",
+      "sha256": "2A957C41F7444E5A29A9817B0A7BFF35A087357B389260007431FBF755F795ED",
+      "parserErrors": 0,
+      "analyzerIssues": []
+    },
+    {
+      "path": "scripts/Prepare-ReviewEvidence.ps1",
+      "sha256": "AAD8583D287924745DC3DBFF1D3F25EAE437F08656623879251BF6C08E1BE35A",
+      "parserErrors": 0,
+      "analyzerIssues": []
+    },
+    {
+      "path": "scripts/Prepare-ReviewSupplementalEvidence.ps1",
+      "sha256": "0701E6346B47FEA4D0E9625415A2FFD904ADC872B2DA7A2ECF6944BEAA772339",
+      "parserErrors": 0,
+      "analyzerIssues": []
+    }
+  ]
+}

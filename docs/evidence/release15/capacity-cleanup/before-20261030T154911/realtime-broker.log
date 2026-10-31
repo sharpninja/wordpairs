@@ -1,0 +1,513 @@
+65536
+Setting RLIMIT_NOFILE to 10000
++ ulimit -n
++ '[' -n 10000 ']'
++ echo 'Setting RLIMIT_NOFILE to 10000'
++ ulimit -Sn 10000
++ export ERL_CRASH_DUMP=/tmp/erl_crash.dump
++ ERL_CRASH_DUMP=/tmp/erl_crash.dump
++ '[' false = true ']'
++ [[ -n '' ]]
++ echo 'Running migrations'
++ /app/bin/migrate
+Running migrations
+20:49:23.219 [info] == Running 20210706140551 Realtime.Repo.Migrations.CreateTenants.change/0 forward
+20:49:23.225 [info] create table tenants
+20:49:23.233 [info] create index tenants_external_id_index
+20:49:23.236 [info] == Migrated 20210706140551 in 0.0s
+20:49:23.265 [info] == Running 20220329161857 Realtime.Repo.Migrations.AddExtensionsTable.change/0 forward
+20:49:23.265 [info] create table extensions
+20:49:23.271 [info] create index extensions_tenant_external_id_type_index
+20:49:23.273 [info] == Migrated 20220329161857 in 0.0s
+20:49:23.275 [info] == Running 20220410212326 Realtime.Repo.Migrations.AddTenantMaxEps.up/0
+20:49:23.275 [info] alter table tenants
+20:49:23.276 [info] == Migrated 20220410212326 in 0.0s
+20:49:23.277 [info] == Running 20220506102948 Realtime.Repo.Migrations.RenamePollIntervalToPollIntervalMs.up/0
+20:49:23.287 [info] == Migrated 20220506102948 in 0.0s
+20:49:23.288 [info] == Running 20220527210857 Realtime.Repo.Migrations.AddExternalIdUniqIndex.change/0 forward
+20:49:23.289 [info] execute "alter table tenants add constraint uniq_external_id unique (external_id)"
+20:49:23.290 [info] == Migrated 20220527210857 in 0.0s
+20:49:23.291 [info] == Running 20220815211129 Realtime.Repo.Migrations.NewMaxEventsPerSecondDefault.change/0 forward
+20:49:23.291 [info] alter table tenants
+20:49:23.294 [info] == Migrated 20220815211129 in 0.0s
+20:49:23.295 [info] == Running 20220815215024 Realtime.Repo.Migrations.SetCurrentMaxEventsPerSecond.change/0 forward
+20:49:23.295 [info] execute "update tenants set max_events_per_second = 1000"
+20:49:23.296 [info] == Migrated 20220815215024 in 0.0s
+20:49:23.296 [info] == Running 20220818141501 Realtime.Repo.Migrations.ChangeLimitsDefaults.change/0 forward
+20:49:23.297 [info] alter table tenants
+20:49:23.299 [info] == Migrated 20220818141501 in 0.0s
+20:49:23.300 [info] == Running 20221018173709 Realtime.Repo.Migrations.AddCdcDefault.up/0
+20:49:23.300 [info] alter table tenants
+20:49:23.301 [info] == Migrated 20221018173709 in 0.0s
+20:49:23.302 [info] == Running 20221102172703 Realtime.Repo.Migrations.RenamePgType.up/0
+20:49:23.302 [info] execute "update extensions set type = 'postgres_cdc_rls'"
+20:49:23.303 [info] == Migrated 20221102172703 in 0.0s
+20:49:23.304 [info] == Running 20221223010058 Realtime.Repo.Migrations.DropTenantsUniqExternalIdIndex.change/0 forward
+20:49:23.304 [info] execute "ALTER TABLE IF EXISTS tenants DROP CONSTRAINT IF EXISTS uniq_external_id"
+20:49:23.306 [info] == Migrated 20221223010058 in 0.0s
+20:49:23.308 [info] == Running 20230110180046 Realtime.Repo.Migrations.AddLimitsFieldsToTenants.change/0 forward
+20:49:23.308 [info] alter table tenants
+20:49:23.311 [info] == Migrated 20230110180046 in 0.0s
+20:49:23.313 [info] == Running 20230810220907 Realtime.Repo.Migrations.AlterTenantsTableColumnsToText.change/0 forward
+20:49:23.313 [info] alter table tenants
+20:49:23.324 [info] == Migrated 20230810220907 in 0.0s
+20:49:23.325 [info] == Running 20230810220924 Realtime.Repo.Migrations.AlterExtensionsTableColumnsToText.change/0 forward
+20:49:23.325 [info] alter table extensions
+20:49:23.330 [info] == Migrated 20230810220924 in 0.0s
+20:49:23.331 [info] == Running 20231024094642 :"Elixir.Realtime.Repo.Migrations.Add-tenant-suspend-flag".change/0 forward
+20:49:23.331 [info] alter table tenants
+20:49:23.332 [info] == Migrated 20231024094642 in 0.0s
+20:49:23.333 [info] == Running 20240306114423 Realtime.Repo.Migrations.AdddTenantJwtJwksColumn.change/0 forward
+20:49:23.333 [info] alter table tenants
+20:49:23.334 [info] == Migrated 20240306114423 in 0.0s
+20:49:23.335 [info] == Running 20240418082835 Realtime.Repo.Migrations.AddAuthorizationFlag.change/0 forward
+20:49:23.335 [info] alter table tenants
+20:49:23.336 [info] == Migrated 20240418082835 in 0.0s
+20:49:23.336 [info] == Running 20240625211759 Realtime.Repo.Migrations.RemoveEnableAuthorizationFlag.change/0 forward
+20:49:23.336 [info] alter table tenants
+20:49:23.337 [info] == Migrated 20240625211759 in 0.0s
+20:49:23.338 [info] == Running 20240704172020 :"Elixir.Realtime.Repo.Migrations.Add-notify-private-alpha".change/0 forward
++ '[' true = true ']'
+20:49:23.338 [info] alter table tenants
+20:49:23.339 [info] == Migrated 20240704172020 in 0.0s
+20:49:23.340 [info] == Running 20240902173232 Realtime.Repo.Migrations.AddExtensionExternalIdIndex.change/0 forward
+20:49:23.340 [info] create index if not exists extensions_tenant_external_id_index
+20:49:23.341 [info] == Migrated 20240902173232 in 0.0s
+20:49:23.342 [info] == Running 20241106103258 Realtime.Repo.Migrations.AddPrivateOnlyFlagColumnToTenant.change/0 forward
+20:49:23.342 [info] alter table tenants
+20:49:23.343 [info] == Migrated 20241106103258 in 0.0s
+20:49:23.343 [info] == Running 20250424203323 Realtime.Repo.Migrations.AddMigrationsRanToTenant.change/0 forward
+20:49:23.343 [info] alter table tenants
+20:49:23.344 [info] == Migrated 20250424203323 in 0.0s
+20:49:23.345 [info] == Running 20250613072131 Realtime.Repo.Migrations.AddTenantBroadcastAdapter.change/0 forward
+20:49:23.345 [info] alter table tenants
+20:49:23.346 [info] == Migrated 20250613072131 in 0.0s
+20:49:23.347 [info] == Running 20250711044927 Realtime.Repo.Migrations.ChangeDefaultBroadcastAdapterToGenRpc.change/0 forward
+20:49:23.347 [info] alter table tenants
+20:49:23.349 [info] == Migrated 20250711044927 in 0.0s
+20:49:23.350 [info] == Running 20250811121559 Realtime.Repo.Migrations.AddMaxPresenceEventsPerSecond.change/0 forward
+20:49:23.350 [info] alter table tenants
+20:49:23.352 [info] == Migrated 20250811121559 in 0.0s
+20:49:23.352 [info] == Running 20250926223044 Realtime.Repo.Migrations.SetDefaultPresenceValue.change/0 forward
+20:49:23.352 [info] alter table tenants
+20:49:23.354 [info] == Migrated 20250926223044 in 0.0s
+20:49:23.355 [info] == Running 20251204170944 Realtime.Repo.Migrations.NullableJwtSecrets.change/0 forward
+20:49:23.355 [info] alter table tenants
+20:49:23.355 [info] create check constraint jwt_secret_or_jwt_jwks_required on table tenants
+20:49:23.356 [info] == Migrated 20251204170944 in 0.0s
+20:49:23.357 [info] == Running 20251218000543 Realtime.Repo.Migrations.EnsureJwtSecretIsText.change/0 forward
+20:49:23.358 [info] alter table tenants
+20:49:23.359 [info] == Migrated 20251218000543 in 0.0s
+20:49:23.360 [info] == Running 20260209232800 Realtime.Repo.Migrations.AddMaxClientPresenceEventsPerSecond.change/0 forward
+20:49:23.360 [info] alter table tenants
+20:49:23.362 [info] == Migrated 20260209232800 in 0.0s
+20:49:23.363 [info] == Running 20260304000000 Realtime.Repo.Migrations.AddPresenceEnabledToTenants.change/0 forward
+20:49:23.363 [info] alter table tenants
+20:49:23.365 [info] == Migrated 20260304000000 in 0.0s
+20:49:23.366 [info] == Running 20260422000000 Realtime.Repo.Migrations.CreateFeatureFlags.change/0 forward
+20:49:23.366 [info] create table feature_flags
+20:49:23.368 [info] create index feature_flags_name_index
+20:49:23.369 [info] alter table tenants
+20:49:23.374 [info] == Migrated 20260422000000 in 0.0s
+20:49:23.375 [info] == Running 20260709151810 Realtime.Repo.Migrations.AddFeatureFlagRolloutPercentage.change/0 forward
+20:49:23.375 [info] alter table feature_flags
+20:49:23.377 [info] create check constraint rollout_percentage_must_be_between_0_and_100 on table feature_flags
+20:49:23.377 [info] == Migrated 20260709151810 in 0.0s
+20:49:23.378 [info] == Running 20260805000000 Realtime.Repo.Migrations.AddGcmMigratedAtToTenants.change/0 forward
+20:49:23.378 [info] alter table tenants
+20:49:23.379 [info] == Migrated 20260805000000 in 0.0s
++ echo 'Seeding selfhosted Realtime'
++ /app/bin/realtime eval 'Realtime.Release.seeds(Realtime.Repo)'
+Seeding selfhosted Realtime
+20:49:23.939 [warning] Failed to load OTP-trusted CAs: :error::function_clause, falling back to hardcoded authorities
+20:49:23.977 [info] Loading 121 CA(s) from :hardcoded store
+20:49:24.075 [info] [driver: :tcp, port: 5369, socket: [~c"#Port<0.5>"], msg: ~c"server_setup_successfully"]
+20:49:24.079 [info] [domain: [:gen_rpc, :dispatcher], "$kind": :gen_rpc_dispatcher_start]
+20:49:24.199 [notice]     :alarm_handler: {:set, {{:disk_almost_full, ~c"/"}, []}}
+20:49:24.201 [notice]     :alarm_handler: {:set, {{:disk_almost_full, ~c"/etc/hosts"}, []}}
+20:49:24.202 [notice]     :alarm_handler: {:set, {:system_memory_high_watermark, []}}
+20:49:24.268 [notice] [scope: RegionNodes, event: :tables_created]
+20:49:24.273 [notice] [scope: RegionNodes, handler: :registry, event: :discovering_cluster]
+20:49:24.275 [notice] [scope: RegionNodes, handler: :pg, event: :discovering_cluster]
+20:49:24.275 [notice] [scope: RegionNodes, event: :scope_added]
+20:49:24.275 [notice] [scope: Realtime.Tenants.Connect, event: :tables_created]
+20:49:24.275 [notice] [scope: Realtime.Tenants.Connect, handler: :registry, event: :discovering_cluster]
+20:49:24.275 [notice] [scope: Realtime.Tenants.Connect, event: :scope_added]
+20:49:24.275 [notice] [scope: Realtime.Tenants.Connect, handler: :pg, event: :discovering_cluster]
+20:49:24.696 [warning] MFA {Realtime.PromEx.Plugins.TenantGlobal, :execute_global_connection_metrics, []} encountered an error but has not been detached: %ArgumentError{message: "errors were found at the given arguments:\n\n  * 1st argument: the table identifier does not refer to an existing ETS table\n"}
+20:49:24.696 [warning] MFA {Realtime.PromEx.Plugins.Tenant, :execute_tenant_metrics, []} encountered an error but has not been detached: %ArgumentError{message: "errors were found at the given arguments:\n\n  * 1st argument: the table identifier does not refer to an existing ETS table\n"}
+20:49:24.719 [info] [libcluster:postgres] Connected to Postgres database
+20:49:24.726 [info] Muster[nonode@nohost|realtime_channels_local] Starting
+20:49:24.742 [info] Forum[nonode@nohost|users] Starting
+20:49:24.789 [info] Starting Reconnector
+20:49:24.834 [info] Running RealtimeWeb.Endpoint with cowboy 2.18.0 at :::4000 (http)
+20:49:24.835 [info] Access RealtimeWeb.Endpoint at http://realtime.supabase.co:443
+20:49:25.006 [notice] [scope: :realtime_postgres_cdc_0, event: :tables_created]
+20:49:25.006 [notice] [scope: :realtime_postgres_cdc_0, handler: :registry, event: :discovering_cluster]
+20:49:25.006 [notice] [scope: :realtime_postgres_cdc_0, handler: :pg, event: :discovering_cluster]
+20:49:25.006 [notice] [scope: :realtime_postgres_cdc_0, event: :scope_added]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_1, event: :tables_created]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_1, handler: :registry, event: :discovering_cluster]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_1, handler: :pg, event: :discovering_cluster]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_1, event: :scope_added]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_2, event: :tables_created]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_2, handler: :registry, event: :discovering_cluster]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_2, handler: :pg, event: :discovering_cluster]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_2, event: :scope_added]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_3, event: :tables_created]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_3, handler: :registry, event: :discovering_cluster]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_3, event: :scope_added]
+20:49:25.007 [notice] [scope: :realtime_postgres_cdc_3, handler: :pg, event: :discovering_cluster]
+20:49:25.008 [notice] [scope: :realtime_postgres_cdc_4, event: :tables_created]
+20:49:25.008 [notice] [scope: :realtime_postgres_cdc_4, handler: :registry, event: :discovering_cluster]
+20:49:25.008 [notice] [scope: :realtime_postgres_cdc_4, event: :scope_added]
+20:49:25.008 [notice] [scope: :realtime_postgres_cdc_4, handler: :pg, event: :discovering_cluster]
+20:49:25.008 [info] Janitor started
+20:49:25.008 [info] Starting MetricsCleaner
+20:49:25.150 [warning] Zero region nodes for us-east-1 using :nonode@nohost
+20:49:25.153 project=realtime-dev external_id=realtime-dev error_code=DatabaseIpVersionIsIpv4 [warning] DatabaseIpVersionIsIpv4: Tenant database host 127.0.0.1 resolved to an IPv4 address
+20:49:25.156 project=realtime-dev external_id=realtime-dev [info] Applying migrations to 127.0.0.1
+20:49:25.225 project=realtime-dev external_id=realtime-dev [info] Finished loading the dump of 91 migrations for tenant realtime-dev in 67ms
+20:49:25.251 error_code=DatabaseIpVersionIsIpv4 [warning] DatabaseIpVersionIsIpv4: Tenant database host 127.0.0.1 resolved to an IPv4 address
+20:49:25.259 [info] Creating partitions for realtime.messages
+20:49:25.301 [info] Tenant set-up successfully
+[os_mon] memory supervisor port (memsup): Erlang has closed
+[os_mon] cpu supervisor port (cpu_sup): Erlang has closed
++ echo 'Starting Realtime'
++ ulimit -n
++ exec /app/bin/server
+Starting Realtime
+10000
+=WARNING REPORT==== 30-Oct-2026::20:49:27.339814 ===
+Failed to load OTP-trusted CAs: error:function_clause, falling back to hardcoded authorities
+20:49:27.398 [info] [driver: :tcp, port: 5369, socket: [~c"#Port<0.7>"], msg: ~c"server_setup_successfully"]
+20:49:27.398 [info] [domain: [:gen_rpc, :dispatcher], "$kind": :gen_rpc_dispatcher_start]
+20:49:27.419 [notice]     :alarm_handler: {:set, {:system_memory_high_watermark, []}}
+20:49:27.421 [notice]     :alarm_handler: {:set, {{:disk_almost_full, ~c"/"}, []}}
+20:49:27.421 [notice] [scope: RegionNodes, event: :tables_created]
+20:49:27.421 [notice]     :alarm_handler: {:set, {{:disk_almost_full, ~c"/etc/hosts"}, []}}
+20:49:27.421 [notice] [scope: RegionNodes, handler: :pg, event: :discovering_cluster]
+20:49:27.421 [notice] [scope: RegionNodes, handler: :registry, event: :discovering_cluster]
+20:49:27.422 [notice] [scope: RegionNodes, event: :scope_added]
+20:49:27.422 [notice] [scope: Realtime.Tenants.Connect, event: :tables_created]
+20:49:27.422 [notice] [scope: Realtime.Tenants.Connect, handler: :registry, event: :discovering_cluster]
+20:49:27.422 [notice] [scope: Realtime.Tenants.Connect, handler: :pg, event: :discovering_cluster]
+20:49:27.422 [notice] [scope: Realtime.Tenants.Connect, event: :scope_added]
+20:49:27.461 [warning] MFA {Realtime.PromEx.Plugins.TenantGlobal, :execute_global_connection_metrics, []} encountered an error but has not been detached: %ArgumentError{message: "errors were found at the given arguments:\n\n  * 1st argument: the table identifier does not refer to an existing ETS table\n"}
+20:49:27.490 [warning] MFA {Realtime.PromEx.Plugins.Tenant, :execute_tenant_metrics, []} encountered an error but has not been detached: %ArgumentError{message: "errors were found at the given arguments:\n\n  * 1st argument: the table identifier does not refer to an existing ETS table\n"}
+20:49:27.491 [info] Muster[realtime@127.0.0.1|realtime_channels_local] Starting
+20:49:27.492 [info] Forum[realtime@127.0.0.1|users] Starting
+20:49:27.494 [info] [libcluster:postgres] Connected to Postgres database
+20:49:27.494 [info] Starting Reconnector
+20:49:27.500 [info] Running RealtimeWeb.Endpoint with cowboy 2.18.0 at :::4000 (http)
+20:49:27.500 [info] Access RealtimeWeb.Endpoint at http://realtime.supabase.co:443
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_0, event: :tables_created]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_0, handler: :registry, event: :discovering_cluster]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_0, handler: :pg, event: :discovering_cluster]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_0, event: :scope_added]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_1, event: :tables_created]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_1, handler: :registry, event: :discovering_cluster]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_1, event: :scope_added]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_1, handler: :pg, event: :discovering_cluster]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_2, event: :tables_created]
+20:49:27.501 [notice] [scope: :realtime_postgres_cdc_2, handler: :registry, event: :discovering_cluster]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_2, event: :scope_added]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_2, handler: :pg, event: :discovering_cluster]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_3, event: :tables_created]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_3, handler: :registry, event: :discovering_cluster]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_3, handler: :pg, event: :discovering_cluster]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_3, event: :scope_added]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_4, event: :tables_created]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_4, handler: :registry, event: :discovering_cluster]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_4, handler: :pg, event: :discovering_cluster]
+20:49:27.502 [notice] [scope: :realtime_postgres_cdc_4, event: :scope_added]
+20:49:27.503 [info] Janitor started
+20:49:27.503 [info] Starting MetricsCleaner
+20:49:27.768 request_id=GONpxCRiNMTizIIAAAzR [info] GET /api/tenants/realtime-dev/health
+20:49:27.768 request_id=GONpxCRiNMTizIIAAAzR [info] GET /api/tenants/realtime-dev/health - Sent 403 in 0ms
+20:49:28.987 [info] Starting Elixir.Realtime.RateCounter for: {:channel, :joins, "realtime-dev"}
+20:49:29.001 [info] Starting Elixir.Realtime.RateCounter for: {:database, :connect, "realtime-dev"}
+20:49:29.001 project=realtime-dev external_id=realtime-dev [info] Realtime.Tenants.Connect.GetTenant executed in 0 ms
+20:49:29.001 project=realtime-dev external_id=realtime-dev error_code=DatabaseIpVersionIsIpv4 [warning] DatabaseIpVersionIsIpv4: Tenant database host 127.0.0.1 resolved to an IPv4 address
+20:49:29.017 project=realtime-dev external_id=realtime-dev error_code=DatabaseIpVersionIsIpv4 [warning] DatabaseIpVersionIsIpv4: Tenant database host 127.0.0.1 resolved to an IPv4 address
+20:49:29.018 project=realtime-dev external_id=realtime-dev [info] Realtime.Tenants.Connect.CheckConnection executed in 16 ms
+20:49:29.018 project=realtime-dev external_id=realtime-dev [info] Realtime.Tenants.Connect.ReconcileMigrations executed in 0 ms
+20:49:29.018 project=realtime-dev external_id=realtime-dev [info] Realtime.Tenants.Connect.RegisterProcess executed in 0 ms
+20:49:29.018 [info] Starting Elixir.Realtime.RateCounter for: {:channel, :authorization_errors, "realtime-dev"}
+20:49:29.018 project=realtime-dev external_id=realtime-dev [info] Tenant realtime-dev is initializing: :"realtime@127.0.0.1"
+20:49:29.018 project=realtime-dev external_id=realtime-dev [info] Creating partitions for realtime.messages
+20:49:29.033 [info] Starting Elixir.Realtime.RateCounter for: {:channel, :events, "realtime-dev"}
+20:49:29.033 [info] Starting Elixir.Realtime.RateCounter for: {:channel, :presence_events, "realtime-dev"}
+20:49:29.036 [info] Starting replication for Broadcast Changes
+20:49:29.036 error_code=DatabaseIpVersionIsIpv4 [warning] DatabaseIpVersionIsIpv4: Tenant database host 127.0.0.1 resolved to an IPv4 address
+20:49:29.036 project=realtime-dev external_id=realtime-dev [info] Initializing connection with the status: %Realtime.Tenants.ReplicationConnection{
+  tenant_id: "realtime-dev",
+  opts: [],
+  step: :disconnected,
+  publication_name: "supabase_realtime_messages_publication",
+  replication_slot_name: "supabase_realtime_messages_replication_slot_",
+  output_plugin: "pgoutput",
+  proto_version: 2,
+  relations: %{},
+  buffer: [],
+  monitored_pid: #PID<0.4000.0>,
+  latency_committed_at: nil,
+  query_timeout: 240000,
+  pg_version: nil
+}
+20:49:29.039 project=realtime-dev external_id=realtime-dev [info] Checking if replication slot supabase_realtime_messages_replication_slot_ exists
+20:49:29.045 project=realtime-dev external_id=realtime-dev error_code=Unauthorized sub=22222222-2222-4222-8222-222222222222 iss=wordpairs exp=1793393489 [error] Unauthorized: You do not have permissions to read from this Channel topic: wordpairs-profile:11111111-1111-4111-8111-111111111111
+20:49:29.046 project=realtime-dev external_id=realtime-dev [info] Check publication supabase_realtime_messages_publication for table realtime.messages exists
+20:49:29.047 project=realtime-dev external_id=realtime-dev [info] Create publication supabase_realtime_messages_publication for table realtime.messages
+20:49:29.049 project=realtime-dev external_id=realtime-dev [info] Create replication slot supabase_realtime_messages_replication_slot_ using plugin pgoutput
+20:49:29.050 project=realtime-dev external_id=realtime-dev [info] #PID<0.4012.0> Starting stream replication for slot supabase_realtime_messages_replication_slot_ using publication supabase_realtime_messages_publication and protocol version 2
+20:49:32.491 project=realtime-dev [info] Billing metrics: [:realtime, :connections]
+20:49:34.145 request_id=GONpxaCCKymPS-IAAAPS [info] POST /api/broadcast
+20:49:34.146 [info] Starting Elixir.Realtime.RateCounter for: {:plug, :requests, "realtime-dev"}
+20:49:34.155 request_id=GONpxaCCKymPS-IAAAPS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 9ms
+20:49:34.169 request_id=GONpxaHhnAEGU0kAAAQS [info] POST /api/broadcast
+20:49:34.171 request_id=GONpxaHhnAEGU0kAAAQS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 2ms
+20:49:34.177 request_id=GONpxaJnoPWDY2AAAAQi [info] POST /api/broadcast
+20:49:34.181 request_id=GONpxaJnoPWDY2AAAAQi project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 3ms
+20:49:34.185 request_id=GONpxaLdTh-AX8UAAAQy [info] POST /api/broadcast
+20:49:34.191 request_id=GONpxaLdTh-AX8UAAAQy project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 5ms
+20:49:34.196 request_id=GONpxaOEmjacymwAAARC [info] POST /api/broadcast
+20:49:34.203 request_id=GONpxaOEmjacymwAAARC project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 6ms
+20:49:34.207 request_id=GONpxaQ0ROygGMYAAARS [info] POST /api/broadcast
+20:49:34.216 request_id=GONpxaQ0ROygGMYAAARS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 8ms
+20:49:34.220 request_id=GONpxaT6ujz3eHEAAARi [info] POST /api/broadcast
+20:49:34.231 request_id=GONpxaT6ujz3eHEAAARi project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 10ms
+20:49:34.239 request_id=GONpxaYOO2JnY7QAAARy [info] POST /api/broadcast
+20:49:34.245 request_id=GONpxaYOO2JnY7QAAARy project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 6ms
+20:49:34.252 request_id=GONpxabgwMM-b68AAASC [info] POST /api/broadcast
+20:49:34.263 request_id=GONpxabgwMM-b68AAASC project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 10ms
+20:49:34.267 request_id=GONpxafAsfEAyJkAAASS [info] POST /api/broadcast
+20:49:34.276 request_id=GONpxafAsfEAyJkAAASS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 8ms
+20:49:34.279 request_id=GONpxah0kVo02J0AAASi [info] POST /api/broadcast
+20:49:34.289 request_id=GONpxah0kVo02J0AAASi project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 10ms
+20:49:34.293 request_id=GONpxalK9qgD_WgAAASy [info] POST /api/broadcast
+20:49:34.306 request_id=GONpxalK9qgD_WgAAASy project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 12ms
+20:49:34.309 request_id=GONpxao_w5YA60IAAATC [info] POST /api/broadcast
+20:49:34.322 request_id=GONpxao_w5YA60IAAATC project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 12ms
+20:49:34.325 request_id=GONpxasztMjofOIAAATS [info] POST /api/broadcast
+20:49:34.342 request_id=GONpxasztMjofOIAAATS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 17ms
+20:49:34.347 request_id=GONpxax9n6SpuUEAAATi [info] POST /api/broadcast
+20:49:34.364 request_id=GONpxax9n6SpuUEAAATi project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 17ms
+20:49:34.368 request_id=GONpxa3Cpb6t920AAATy [info] POST /api/broadcast
+20:49:34.383 request_id=GONpxa3Cpb6t920AAATy project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 15ms
+20:49:34.387 request_id=GONpxa7rSCzqEYIAAAUC [info] POST /api/broadcast
+20:49:34.407 request_id=GONpxa7rSCzqEYIAAAUC project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 20ms
+20:49:34.410 request_id=GONpxbBM9lmBUc4AAAUS [info] POST /api/broadcast
+20:49:34.434 request_id=GONpxbBM9lmBUc4AAAUS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:34.438 request_id=GONpxbHt2FqDktgAAAUi [info] POST /api/broadcast
+20:49:34.461 request_id=GONpxbHt2FqDktgAAAUi project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:34.465 request_id=GONpxbOJNVyPoU8AAAUy [info] POST /api/broadcast
+20:49:34.484 request_id=GONpxbOJNVyPoU8AAAUy project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 19ms
+20:49:34.488 request_id=GONpxbTqc_hX5XsAAAVC [info] POST /api/broadcast
+20:49:34.510 request_id=GONpxbTqc_hX5XsAAAVC project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 22ms
+20:49:34.514 request_id=GONpxbZ7XeTXpxYAAAVS [info] POST /api/broadcast
+20:49:34.544 request_id=GONpxbZ7XeTXpxYAAAVS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:34.547 request_id=GONpxbhuAuh3GUYAAAVi [info] POST /api/broadcast
+20:49:34.568 request_id=GONpxbhuAuh3GUYAAAVi project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 21ms
+20:49:34.571 request_id=GONpxbnmo8zGGPQAAAVy [info] POST /api/broadcast
+20:49:34.603 request_id=GONpxbnmo8zGGPQAAAVy project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 31ms
+20:49:35.049 project=realtime-dev external_id=realtime-dev error_code=Unauthorized exp=1793396968 [error] Unauthorized: You do not have permissions to read from this Channel topic: wordpairs-profile:11111111-1111-4111-8111-111111111111
+20:49:35.814 request_id=GONpxgP8G2IpkicAAA8R [info] POST /api/broadcast
+20:49:35.860 request_id=GONpxgP8G2IpkicAAA8R project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 45ms
+20:49:35.865 request_id=GONpxgcDa_3VVOUAAA8h [info] POST /api/broadcast
+20:49:35.905 request_id=GONpxgcDa_3VVOUAAA8h project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 40ms
+20:49:35.910 request_id=GONpxgm1zqxHdMQAAAaS [info] POST /api/broadcast
+20:49:35.953 request_id=GONpxgm1zqxHdMQAAAaS project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 42ms
+20:49:35.957 request_id=GONpxgx-iqwTyDQAAAai [info] POST /api/broadcast
+20:49:35.998 request_id=GONpxgx-iqwTyDQAAAai project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 40ms
+20:49:36.002 request_id=GONpxg8lBUEwKBgAAAay [info] POST /api/broadcast
+20:49:36.034 request_id=GONpxg8lBUEwKBgAAAay project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:36.039 request_id=GONpxhFYYk9xNeUAAAbC [info] POST /api/broadcast
+20:49:36.067 request_id=GONpxhFYYk9xNeUAAAbC project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 28ms
+20:49:36.071 request_id=GONpxhM_wTdPi7MAAA8x [info] POST /api/broadcast
+20:49:36.105 request_id=GONpxhM_wTdPi7MAAA8x project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 34ms
+20:49:36.109 request_id=GONpxhWOQ_ebWe8AAA9B [info] POST /api/broadcast
+20:49:36.142 request_id=GONpxhWOQ_ebWe8AAA9B project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:36.145 request_id=GONpxhe2YVuChGUAAA9R [info] POST /api/broadcast
+20:49:36.180 request_id=GONpxhe2YVuChGUAAA9R project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 35ms
+20:49:36.185 request_id=GONpxhoNVXqppEYAAA9h [info] POST /api/broadcast
+20:49:36.224 request_id=GONpxhoNVXqppEYAAA9h project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 39ms
+20:49:36.228 request_id=GONpxhykX65VYBoAAA9x [info] POST /api/broadcast
+20:49:36.266 request_id=GONpxhykX65VYBoAAA9x project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 38ms
+20:49:36.271 request_id=GONpxh8sc7wrFLQAAA-B [info] POST /api/broadcast
+20:49:36.319 request_id=GONpxh8sc7wrFLQAAA-B project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 48ms
+20:49:36.325 request_id=GONpxiJkCqgdCm8AAA-R [info] POST /api/broadcast
+20:49:36.366 request_id=GONpxiJkCqgdCm8AAA-R project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 41ms
+20:49:36.370 request_id=GONpxiUYY39avTUAAA-h [info] POST /api/broadcast
+20:49:36.416 request_id=GONpxiUYY39avTUAAA-h project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 45ms
+20:49:36.420 request_id=GONpxigXoAVuFLwAAA-x [info] POST /api/broadcast
+20:49:36.475 request_id=GONpxigXoAVuFLwAAA-x project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 54ms
+20:49:36.480 request_id=GONpxiui2OcBHXkAAA_B [info] POST /api/broadcast
+20:49:36.520 request_id=GONpxiui2OcBHXkAAA_B project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 40ms
+20:49:36.524 request_id=GONpxi5C2OapjEkAAA_R [info] POST /api/broadcast
+20:49:36.556 request_id=GONpxi5C2OapjEkAAA_R project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:36.560 request_id=GONpxjBs3HnUHxUAAA_h [info] POST /api/broadcast
+20:49:36.578 request_id=GONpxjBs3HnUHxUAAA_h project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 17ms
+20:49:36.581 request_id=GONpxjGqLHphI20AAA_x [info] POST /api/broadcast
+20:49:36.610 request_id=GONpxjGqLHphI20AAA_x project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:36.614 request_id=GONpxjOi2YtAPB8AABAB [info] POST /api/broadcast
+20:49:36.643 request_id=GONpxjOi2YtAPB8AABAB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:36.647 request_id=GONpxjWfne45DkkAABAR [info] POST /api/broadcast
+20:49:36.680 request_id=GONpxjWfne45DkkAABAR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:36.683 request_id=GONpxjfHiJRFUnoAABAh [info] POST /api/broadcast
+20:49:36.717 request_id=GONpxjfHiJRFUnoAABAh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 33ms
+20:49:36.722 request_id=GONpxjoOQZ-KEbMAABAx [info] POST /api/broadcast
+20:49:36.753 request_id=GONpxjoOQZ-KEbMAABAx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 31ms
+20:49:36.758 request_id=GONpxjw24LSTSSoAABBB [info] POST /api/broadcast
+20:49:36.786 request_id=GONpxjw24LSTSSoAABBB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 28ms
+20:49:36.789 request_id=GONpxj4YSZstVHkAABBR [info] POST /api/broadcast
+20:49:36.812 request_id=GONpxj4YSZstVHkAABBR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 22ms
+20:49:36.817 request_id=GONpxj-7jR04qtEAABBh [info] POST /api/broadcast
+20:49:36.838 request_id=GONpxj-7jR04qtEAABBh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 21ms
+20:49:36.842 request_id=GONpxkE38-JkAL4AABBx [info] POST /api/broadcast
+20:49:36.865 request_id=GONpxkE38-JkAL4AABBx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:36.868 request_id=GONpxkLNCcHGK8MAABCB [info] POST /api/broadcast
+20:49:36.899 request_id=GONpxkLNCcHGK8MAABCB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 30ms
+20:49:36.903 request_id=GONpxkTb7tvouKsAABCR [info] POST /api/broadcast
+20:49:36.934 request_id=GONpxkTb7tvouKsAABCR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 30ms
+20:49:36.938 request_id=GONpxkbxxVVGdgcAABCh [info] POST /api/broadcast
+20:49:36.971 request_id=GONpxkbxxVVGdgcAABCh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 33ms
+20:49:36.976 request_id=GONpxkk6D6I1sQUAABCx [info] POST /api/broadcast
+20:49:37.008 request_id=GONpxkk6D6I1sQUAABCx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 31ms
+20:49:37.012 request_id=GONpxktjSSs2DzgAABDB [info] POST /api/broadcast
+20:49:37.041 request_id=GONpxktjSSs2DzgAABDB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 28ms
+20:49:37.045 request_id=GONpxk1bp7j9WQUAABDR [info] POST /api/broadcast
+20:49:37.075 request_id=GONpxk1bp7j9WQUAABDR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:37.080 request_id=GONpxk9v4oxgFucAABDh [info] POST /api/broadcast
+20:49:37.111 request_id=GONpxk9v4oxgFucAABDh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 30ms
+20:49:37.114 request_id=GONpxlF2g9QtXeMAABDx [info] POST /api/broadcast
+20:49:37.139 request_id=GONpxlF2g9QtXeMAABDx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 25ms
+20:49:37.144 request_id=GONpxlM2Y4jS4HUAABEB [info] POST /api/broadcast
+20:49:37.167 request_id=GONpxlM2Y4jS4HUAABEB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:37.171 request_id=GONpxlTV0lItabkAABER [info] POST /api/broadcast
+20:49:37.194 request_id=GONpxlTV0lItabkAABER project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:37.199 request_id=GONpxlZ9tSFX0oUAABEh [info] POST /api/broadcast
+20:49:37.233 request_id=GONpxlZ9tSFX0oUAABEh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 34ms
+20:49:37.236 request_id=GONpxli41Ja3daYAABEx [info] POST /api/broadcast
+20:49:37.264 request_id=GONpxli41Ja3daYAABEx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 27ms
+20:49:37.268 request_id=GONpxlqaM5vT4VAAABFB [info] POST /api/broadcast
+20:49:37.303 request_id=GONpxlqaM5vT4VAAABFB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 35ms
+20:49:37.307 request_id=GONpxlz2jUaOmb4AABFR [info] POST /api/broadcast
+20:49:37.343 request_id=GONpxlz2jUaOmb4AABFR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 35ms
+20:49:37.347 request_id=GONpxl9X5MfC3pQAABFh [info] POST /api/broadcast
+20:49:37.372 request_id=GONpxl9X5MfC3pQAABFh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 24ms
+20:49:37.377 request_id=GONpxmEYRQo4YDYAABFx [info] POST /api/broadcast
+20:49:37.405 request_id=GONpxmEYRQo4YDYAABFx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 28ms
+20:49:37.408 request_id=GONpxmL2IAEiarcAABGB [info] POST /api/broadcast
+20:49:37.431 request_id=GONpxmL2IAEiarcAABGB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:37.434 request_id=GONpxmSLDNITnJkAABGR [info] POST /api/broadcast
+20:49:37.469 request_id=GONpxmSLDNITnJkAABGR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 34ms
+20:49:37.472 request_id=GONpxmbMFAZfye8AABGh [info] POST /api/broadcast
+20:49:37.492 project=realtime-dev [info] Billing metrics: [:realtime, :connections]
+20:49:37.506 request_id=GONpxmbMFAZfye8AABGh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 34ms
+20:49:37.510 request_id=GONpxmkORBzJJv4AABGx [info] POST /api/broadcast
+20:49:37.540 request_id=GONpxmkORBzJJv4AABGx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:37.543 request_id=GONpxmsAlEe_Y7cAABHB [info] POST /api/broadcast
+20:49:37.570 request_id=GONpxmsAlEe_Y7cAABHB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 27ms
+20:49:37.574 request_id=GONpxmzi5NP7wMQAABHR [info] POST /api/broadcast
+20:49:37.599 request_id=GONpxmzi5NP7wMQAABHR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 24ms
+20:49:37.602 request_id=GONpxm6IaALhUFEAABHh [info] POST /api/broadcast
+20:49:37.630 request_id=GONpxm6IaALhUFEAABHh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 27ms
+20:49:37.635 request_id=GONpxnB9AZ6FdQgAABHx [info] POST /api/broadcast
+20:49:37.657 request_id=GONpxnB9AZ6FdQgAABHx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 22ms
+20:49:37.660 request_id=GONpxnH7-4qj7lMAABIB [info] POST /api/broadcast
+20:49:37.680 request_id=GONpxnH7-4qj7lMAABIB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 20ms
+20:49:37.683 request_id=GONpxnNaDmo-xhoAABIR [info] POST /api/broadcast
+20:49:37.701 request_id=GONpxnNaDmo-xhoAABIR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 18ms
+20:49:37.705 request_id=GONpxnSoEHv_wWwAABIh [info] POST /api/broadcast
+20:49:37.725 request_id=GONpxnSoEHv_wWwAABIh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 19ms
+20:49:37.728 request_id=GONpxnYH_JxhAcAAABIx [info] POST /api/broadcast
+20:49:37.752 request_id=GONpxnYH_JxhAcAAABIx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 24ms
+20:49:37.755 request_id=GONpxnejjJjzt_MAABJB [info] POST /api/broadcast
+20:49:37.779 request_id=GONpxnejjJjzt_MAABJB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 24ms
+20:49:37.782 request_id=GONpxnlC9V6cSyMAABJR [info] POST /api/broadcast
+20:49:37.809 request_id=GONpxnlC9V6cSyMAABJR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 26ms
+20:49:37.812 request_id=GONpxnsSE3Myqy0AABJh [info] POST /api/broadcast
+20:49:37.844 request_id=GONpxnsSE3Myqy0AABJh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:37.849 request_id=GONpxn07xjLJAsQAABJx [info] POST /api/broadcast
+20:49:37.881 request_id=GONpxn07xjLJAsQAABJx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:37.885 request_id=GONpxn9tgCSInrMAABKB [info] POST /api/broadcast
+20:49:37.914 request_id=GONpxn9tgCSInrMAABKB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 28ms
+20:49:37.917 request_id=GONpxoFKr4BiFrAAABKR [info] POST /api/broadcast
+20:49:37.941 request_id=GONpxoFKr4BiFrAAABKR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 24ms
+20:49:37.944 request_id=GONpxoLsuhyPugEAABKh [info] POST /api/broadcast
+20:49:37.968 request_id=GONpxoLsuhyPugEAABKh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:37.971 request_id=GONpxoR_kEU19OkAABKx [info] POST /api/broadcast
+20:49:37.992 request_id=GONpxoR_kEU19OkAABKx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 21ms
+20:49:37.996 request_id=GONpxoYFKe0Q0f4AABLB [info] POST /api/broadcast
+20:49:38.021 request_id=GONpxoYFKe0Q0f4AABLB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 25ms
+20:49:38.025 request_id=GONpxoe_WxJfEPsAABLR [info] POST /api/broadcast
+20:49:38.051 request_id=GONpxoe_WxJfEPsAABLR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 25ms
+20:49:38.054 request_id=GONpxol4t5lrKKwAABLh [info] POST /api/broadcast
+20:49:38.089 request_id=GONpxol4t5lrKKwAABLh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 35ms
+20:49:38.093 request_id=GONpxovNhpuuzI8AABLx [info] POST /api/broadcast
+20:49:38.129 request_id=GONpxovNhpuuzI8AABLx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 35ms
+20:49:38.132 request_id=GONpxo4j_WmSvB8AABMB [info] POST /api/broadcast
+20:49:38.163 request_id=GONpxo4j_WmSvB8AABMB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 30ms
+20:49:38.166 request_id=GONpxpAjrxzjW18AABMR [info] POST /api/broadcast
+20:49:38.193 request_id=GONpxpAjrxzjW18AABMR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 27ms
+20:49:38.205 request_id=GONpxpJ80XKpr1EAABMh [info] POST /api/broadcast
+20:49:38.226 request_id=GONpxpJ80XKpr1EAABMh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 20ms
+20:49:38.229 request_id=GONpxpPg9dQtchEAABMx [info] POST /api/broadcast
+20:49:38.257 request_id=GONpxpPg9dQtchEAABMx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 28ms
+20:49:38.260 request_id=GONpxpXBeszMpasAABNB [info] POST /api/broadcast
+20:49:38.293 request_id=GONpxpXBeszMpasAABNB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:38.296 request_id=GONpxpfihncKNoEAABNR [info] POST /api/broadcast
+20:49:38.328 request_id=GONpxpfihncKNoEAABNR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:38.332 request_id=GONpxpoKwtXLCWgAABNh [info] POST /api/broadcast
+20:49:38.370 request_id=GONpxpoKwtXLCWgAABNh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 38ms
+20:49:38.373 request_id=GONpxpyCuJDKvYEAABNx [info] POST /api/broadcast
+20:49:38.399 request_id=GONpxpyCuJDKvYEAABNx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 26ms
+20:49:38.404 request_id=GONpxp5dRZ20TxIAABOB [info] POST /api/broadcast
+20:49:38.435 request_id=GONpxp5dRZ20TxIAABOB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 30ms
+20:49:38.438 request_id=GONpxqBg2Xlgt3MAABOR [info] POST /api/broadcast
+20:49:38.465 request_id=GONpxqBg2Xlgt3MAABOR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 27ms
+20:49:38.468 request_id=GONpxqItuhGSOSsAABOh [info] POST /api/broadcast
+20:49:38.493 request_id=GONpxqItuhGSOSsAABOh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 24ms
+20:49:38.496 request_id=GONpxqPPE_8oQF0AABOx [info] POST /api/broadcast
+20:49:38.518 request_id=GONpxqPPE_8oQF0AABOx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 22ms
+20:49:38.521 request_id=GONpxqVVwLw6i5gAABPB [info] POST /api/broadcast
+20:49:38.543 request_id=GONpxqVVwLw6i5gAABPB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 21ms
+20:49:38.546 request_id=GONpxqbFncKSm4UAABPR [info] POST /api/broadcast
+20:49:38.567 request_id=GONpxqbFncKSm4UAABPR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 21ms
+20:49:38.570 request_id=GONpxqhAp5P37dEAABPh [info] POST /api/broadcast
+20:49:38.593 request_id=GONpxqhAp5P37dEAABPh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 22ms
+20:49:38.596 request_id=GONpxqnGxXbCp58AABPx [info] POST /api/broadcast
+20:49:38.622 request_id=GONpxqnGxXbCp58AABPx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 25ms
+20:49:38.625 request_id=GONpxquFgGNu_6YAABQB [info] POST /api/broadcast
+20:49:38.657 request_id=GONpxquFgGNu_6YAABQB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:38.661 request_id=GONpxq2vHh8iubAAABQR [info] POST /api/broadcast
+20:49:38.691 request_id=GONpxq2vHh8iubAAABQR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:38.695 request_id=GONpxq-yJ5RTdy0AABQh [info] POST /api/broadcast
+20:49:38.733 request_id=GONpxq-yJ5RTdy0AABQh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 37ms
+20:49:38.737 request_id=GONpxrIqL3lRHf0AABQx [info] POST /api/broadcast
+20:49:38.766 request_id=GONpxrIqL3lRHf0AABQx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:38.770 request_id=GONpxrQgwOz80UMAABRB [info] POST /api/broadcast
+20:49:38.795 request_id=GONpxrQgwOz80UMAABRB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 25ms
+20:49:38.799 request_id=GONpxrXdkDwa2SYAABRR [info] POST /api/broadcast
+20:49:38.822 request_id=GONpxrXdkDwa2SYAABRR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 23ms
+20:49:38.825 request_id=GONpxrdtE1PVzY4AABRh [info] POST /api/broadcast
+20:49:38.848 request_id=GONpxrdtE1PVzY4AABRh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 22ms
+20:49:38.851 request_id=GONpxrj44SJlfgsAABRx [info] POST /api/broadcast
+20:49:38.877 request_id=GONpxrj44SJlfgsAABRx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 25ms
+20:49:38.881 request_id=GONpxrq_Znhc564AABSB [info] POST /api/broadcast
+20:49:38.916 request_id=GONpxrq_Znhc564AABSB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 35ms
+20:49:38.920 request_id=GONpxr0aSczzwqwAABSR [info] POST /api/broadcast
+20:49:38.958 request_id=GONpxr0aSczzwqwAABSR project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 38ms
+20:49:38.963 request_id=GONpxr-hXiWrHVUAABSh [info] POST /api/broadcast
+20:49:38.995 request_id=GONpxr-hXiWrHVUAABSh project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:38.999 request_id=GONpxsHPsAG3fdgAABSx [info] POST /api/broadcast
+20:49:39.029 request_id=GONpxsHPsAG3fdgAABSx project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 29ms
+20:49:39.032 request_id=GONpxsPILr0rMaEAABTB [info] POST /api/broadcast
+20:49:39.036 project=realtime-dev [info] Billing metrics: [:realtime, :rate_counter, :channel, :events]
+20:49:39.036 project=realtime-dev external_id=realtime-dev [error] MessagePerSecondRateLimitReached: Too many messages per second
+20:49:39.065 request_id=GONpxsPILr0rMaEAABTB project=realtime-dev external_id=realtime-dev [info] POST /api/broadcast - Sent 202 in 32ms
+20:49:39.069 request_id=GONpxsX02-PQnkQAABTR [info] POST /api/broadcast
+20:49:39.069 request_id=GONpxsX02-PQnkQAABTR project=realtime-dev external_id=realtime-dev [warning] POST /api/broadcast - Sent 429 in 0ms
+20:49:39.150 request_id=GONpxsrJ7QBFk48AABXx [info] POST /api/broadcast
+20:49:39.151 request_id=GONpxsrJ7QBFk48AABXx project=realtime-dev external_id=realtime-dev [warning] POST /api/broadcast - Sent 429 in 0ms

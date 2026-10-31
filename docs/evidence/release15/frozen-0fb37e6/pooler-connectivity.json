@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-10-30T16:51:21",
+  "scope": "Saved session-pooler metadata plus actual read-only TLS connectivity; no export or restore performed",
+  "documentation": "https://supabase.com/docs/guides/database/psql",
+  "observations": [
+    {
+      "environment": "staging",
+      "projectReference": "jshjkaigwbxsbnnogfxs",
+      "savedSource": "hosting-staging-admin.json",
+      "host": "aws-0-us-east-1.pooler.supabase.com",
+      "port": 5432,
+      "sslMode": "verify-full",
+      "caSha256": "700723581420DD1AC98FD7E9AC529F0EF210EADCAF87FC868A3AD7D114C2F3B7",
+      "startedAt": "2026-10-30T16:51:20",
+      "finishedAt": "2026-10-30T16:51:20",
+      "exitCode": 0,
+      "output": "BEGIN\n{\"database\" : \"postgres\", \"user\" : \"postgres\", \"version\" : \"17.11\", \"gameSchemas\" : 2, \"dataApiSchemasSetting\" : null}\nROLLBACK\n",
+      "error": "",
+      "credentialPrinted": false,
+      "credentialInArguments": false,
+      "mutation": false
+    },
+    {
+      "environment": "production",
+      "projectReference": "krdcuuhcynmdfcjlpbsf",
+      "savedSource": "hosting-production-admin.json",
+      "host": "aws-0-us-east-1.pooler.supabase.com",
+      "port": 5432,
+      "sslMode": "verify-full",
+      "caSha256": "700723581420DD1AC98FD7E9AC529F0EF210EADCAF87FC868A3AD7D114C2F3B7",
+      "startedAt": "2026-10-30T16:51:20",
+      "finishedAt": "2026-10-30T16:51:21",
+      "exitCode": 0,
+      "output": "BEGIN\n{\"database\" : \"postgres\", \"user\" : \"postgres\", \"version\" : \"17.11\", \"gameSchemas\" : 2, \"dataApiSchemasSetting\" : null}\nROLLBACK\n",
+      "error": "",
+      "credentialPrinted": false,
+      "credentialInArguments": false,
+      "mutation": false
+    }
+  ]
+}

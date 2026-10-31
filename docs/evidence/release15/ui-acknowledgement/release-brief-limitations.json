@@ -1,0 +1,349 @@
+{
+  "recordedAt": "2026-10-30T19:03:49.3290867-05:00",
+  "classification": "Read-only same-family release brief assessment, not hostile validation",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T000037Z-ui-acknowledgement-limits",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "reviewerSelection": "Cline Beam High until Monday2November2026; exact cutoff unspecified",
+  "plan": {
+    "sha256": "FA980B621E52A7F1A66139E6EB8C65D625158E8B4F75C1680C1323E6F93162AD",
+    "readInFull": true,
+    "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/plan.md"
+  },
+  "repairReceipt": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/receipt.json",
+    "sourceStoppedAt": "2026-10-30T18:58:56",
+    "sha256": "49CACE584A0F62BA33678CA78C15772E8DDBA127D700B187D7A5F8364FDBF86F",
+    "readInFull": true,
+    "dirtyTestSource": true,
+    "baselineRevision": "fdee7a2569bb4742e008977e2a9cd7d312def859"
+  },
+  "stoppedSourceReadback": [
+    {
+      "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+      "matchesStoppedSource": true
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+      "matchesStoppedSource": true
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+      "matchesStoppedSource": true
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+      "matchesStoppedSource": true
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+      "matchesStoppedSource": true
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+      "matchesStoppedSource": true
+    }
+  ],
+  "supportingSourcePins": [
+    {
+      "path": "tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779"
+    }
+  ],
+  "nativeGateReadback": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/receipt.json",
+      "sha256": "F8763400E667E672707A4FACB874FD479176C15073275B1A3E8E43F6B67DFA44",
+      "binding": "mock",
+      "startedAt": "2026-10-30T18:51:34",
+      "finishedAt": "2026-10-30T18:51:36",
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/unit.xml",
+      "junitSha256": "5D16BC6787B0BD2114C06903BDECA1E5F041070A963D0496E75F2F8649819C43",
+      "nativeCases": 118,
+      "nativeFailed": 0,
+      "nativeSkipped": 0,
+      "nativeRejectCases": 59,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "49AC81575B581A26550C6B710B50D16784AF345E5E41960A192C57214F8C3B29",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "3391553632420FD20D9643AAF93CD208755DBEC5873FC9783784024DEF7103A5",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+          "retainedCopyMatches": true
+        }
+      ]
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/receipt.json",
+      "sha256": "D2297A363A284B2168C8313075DFA75F0CDA6205347421DF94663E0F54518EF2",
+      "binding": "mock",
+      "startedAt": "2026-10-30T18:53:49",
+      "finishedAt": "2026-10-30T18:53:50",
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/unit.xml",
+      "junitSha256": "FDD270ECECAE4D6216A4BDE448D302D534ED1C023086BA016288B4900FA3C20B",
+      "nativeCases": 124,
+      "nativeFailed": 0,
+      "nativeSkipped": 0,
+      "nativeRejectCases": 62,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+          "retainedCopyMatches": true
+        }
+      ]
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/receipt.json",
+      "sha256": "27DC37D11DDCE2E180A1DB533052036AD90CDCF7C4C9D57A94437795355CD0AF",
+      "binding": "real",
+      "startedAt": "2026-10-30T18:54:24",
+      "finishedAt": "2026-10-30T18:54:26",
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/unit.xml",
+      "junitSha256": "8CDCE7966124D75D69F0F86F37B2CE1EFCE27796FD19522D9A82652B95E92EDA",
+      "nativeCases": 124,
+      "nativeFailed": 0,
+      "nativeSkipped": 0,
+      "nativeRejectCases": 62,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+          "retainedCopyMatches": true
+        }
+      ]
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/receipt.json",
+      "sha256": "5C087889B0B453544464A3A9BC8DB8D5487A3232A2F926C03A1D79589D5C3CDA",
+      "binding": "real",
+      "startedAt": "2026-10-30T18:56:14",
+      "finishedAt": "2026-10-30T18:56:16",
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/unit.xml",
+      "junitSha256": "16858266C314A6037F2DB55B0830B56A8EEAECB0EE0F653E59C16CF72849C5E4",
+      "nativeCases": 124,
+      "nativeFailed": 0,
+      "nativeSkipped": 0,
+      "nativeRejectCases": 62,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+          "retainedCopyMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+          "retainedCopyMatches": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "id": "ACK-LIMIT-01",
+      "claim": "Real binding means real pure classifier, own-solve predicate and commit coordinator with scripted ports.",
+      "source": "tests/browser/ui-command-acknowledgement.test.ts:78",
+      "limit": "It does not execute readCommandUi, awaitCommandUi or assertPageOwnRoundSolve against a DOM. Actual selectors, ARIA/version attributes, Playwright polling and row extraction first execute in upcoming real browser lanes."
+    },
+    {
+      "id": "ACK-LIMIT-02",
+      "claim": "DOM adapter inspects one scoped panel, busy/version and exact pending control; own-solve adapter verifies a round-captioned scorecard, same-context alias and solved row.",
+      "source": "tests/browser/ui-command-acknowledgement.ts:30-75",
+      "limit": "Pure-state tests do not certify selector stability, aria propagation, live scheduling or arbitrary aliases. Existing generated aliases and actual browser assertions must supply that evidence; no general DOM coverage is claimed."
+    },
+    {
+      "id": "ACK-LIMIT-03",
+      "claim": "Matrix logical call waits for fresh preparation, validates initial request, retires explicit409, and exact-payload checks uncertain retries within the existing12 attempts.",
+      "source": "tests/browser/ui-command-capture.ts:40-83",
+      "limit": "Acknowledgement hooks are optional for backward compatibility with58 prior cases; that older test pass does not prove all callers use hooks. Current two live adapters were inspected to supply the new hooks. No increased timeout or weakened game assertions was observed."
+    },
+    {
+      "id": "ACK-LIMIT-04",
+      "claim": "Sender retirement precedes command return; intended answer and profile are checked; current-round same-context solved state precedes solve increment.",
+      "source": "tests/browser/live-player-counts.integration.spec.ts:60-102,174-195",
+      "limit": "Completed JSON alone is no longer counted. Native actual2..15matrix at the successor frozen head is still required; focused124 cases and old fdee build cannot establish a completed revised matrix."
+    },
+    {
+      "id": "ACK-LIMIT-05",
+      "claim": "Strict generic command and answer helpers use preparation/acknowledgement; unresolved pending is rejected;4-conflict answer bound and push/read/suppression/privacy assertions remain.",
+      "source": "tests/browser/live-multiplayer.integration.spec.ts:77-115,128-140,297-472",
+      "limit": "This is source inspection of the adapter, not an executed strict journey. The source-check/adoption diff and focused unit tests are not private-push, renewal, reconnect or observer capacity evidence."
+    },
+    {
+      "id": "ACK-LIMIT-06",
+      "claim": "New successful-classification observations correlate player, logical action and UUID IDs with response/rendered versions and pending/busy state.",
+      "source": "tests/browser/live-player-counts.integration.spec.ts:79-83; tests/browser/live-multiplayer.integration.spec.ts:70-75",
+      "limit": "Rejected classifier probes fail before observation callback, so records are not a complete denied/malformed-state history. No browser start/header/completion/abort timestamps or server spans are added. They cannot retroactively identify the old fdee page7request or explain11.6s latency."
+    },
+    {
+      "id": "ACK-LIMIT-07",
+      "claim": "Original118 gate, V2mock124, coordinator real124 and post-adoption real124 chronology are preserved.",
+      "source": "docs/evidence/release15/ui-acknowledgement/receipt.json",
+      "limit": "Original118 lacked deferred retirement completion proof; V2added3 positive/3 negative cases before coordinator/adoption changes. Transient direct tsc exit2 and15Biomewarnings are retained. Lint exit0 is not zero-warning evidence. Focused native counts do not substitute for full suites/TRX at new head."
+    },
+    {
+      "id": "ACK-LIMIT-08",
+      "claim": "Recovery gating addresses the test acknowledgement boundary.",
+      "source": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-diagnosis.json",
+      "limit": "No application responsiveness or latency cause fix is established. Current operational latency, pool/lock/CPU attribution and user-visible recovery behavior remain qualified until next actual browser evidence and optional owned-runtime observations. No new HTTP SLA or timeout/cap/pool/worker increase is authorized."
+    }
+  ],
+  "noObservedNewBlockingSourceDefect": true,
+  "qualification": "Bounded read-only assessment. No new tests/builds/browser/runtime/provider actions, source/requirement/status mutations or reviewer invocation. This does not authorize a release done state. Existing full applicable suite and independent98/98HV obligations remain.",
+  "remainingFail": [
+    "Historical fdee10-player native matrix failure remains retained; fresh revised matrix not evaluated here."
+  ],
+  "unknown": [
+    "Actual DOM adapter execution on successor candidate.",
+    "Full successor build/unit/PG/browser/Realtime/matrix/strict outcomes.",
+    "Exact latency and pending-command causal identity.",
+    "Independent Cline verdict and full durable reviewer log."
+  ],
+  "accuracyPercent": 99,
+  "completenessPercent": 98,
+  "ratingBasis": "Full requested plan/receipt and adopted sources read; stopped source/native gate hashes and counts checked. Runtime and independent-review claims deliberately excluded.",
+  "writer": {
+    "source": "#Requires -Version 7.0\n[CmdletBinding(SupportsShouldProcess)]\nparam([ValidateSet(\u0027Write\u0027,\u0027Finish\u0027)][string]$Operation=\u0027Write\u0027)\nSet-StrictMode -Version Latest\n$ErrorActionPreference=\u0027Stop\u0027\n$workspace=\u0027\u003Crepo\u003E\u0027\n$directory=Join-Path $workspace \u0027docs/evidence/release15/ui-acknowledgement\u0027\n$target=Join-Path $directory \u0027release-brief-limitations.json\u0027\nif($Operation -eq \u0027Write\u0027){\n if(Test-Path $target){throw \u0027Preserve existing limitation receipt\u0027}\n if(-not $PSCmdlet.ShouldProcess($target,\u0027Retain source and native evidence limitations without tests or edits\u0027)){return}\n $receiptPath=Join-Path $directory \u0027receipt.json\u0027;$receipt=Get-Content -Raw $receiptPath|ConvertFrom-Json -Depth 100\n if((Get-FileHash $receipt.plan.path).Hash -cne $receipt.plan.sha256){throw \u0027Plan hash mismatch\u0027}\n $pins=@(foreach($pin in $receipt.sourceCheck.result.sourcePins){$hash=(Get-FileHash -LiteralPath (Join-Path $workspace $pin.path)).Hash;if($hash -cne $pin.sha256){throw \u0027Stopped source changed\u0027};[ordered]@{path=$pin.path;sha256=$hash;matchesStoppedSource=$true}})\n $gates=@(foreach($gate in $receipt.gates){\n  if((Get-FileHash $gate.path).Hash -cne $gate.sha256 -or (Get-FileHash $gate.result.junit).Hash -cne $gate.result.junitSha256){throw \u0027Gate receipt/native hash mismatch\u0027}\n  $xml=[xml][IO.File]::ReadAllText($gate.result.junit);$cases=@($xml.SelectNodes(\u0027//testcase\u0027))\n  $failed=@($cases|Where-Object {$_.SelectNodes(\u0027failure|error\u0027).Count -gt 0}).Count;$skipped=@($cases|Where-Object {$_.SelectNodes(\u0027skipped\u0027).Count -gt 0}).Count\n  if($cases.Count -ne $gate.result.cases -or $failed -ne $gate.result.failed -or $skipped -ne $gate.result.skipped){throw \u0027Native denominator mismatch\u0027}\n  [ordered]@{path=$gate.path;sha256=$gate.sha256;binding=$gate.result.binding;startedAt=$gate.result.startedAt;finishedAt=$gate.result.finishedAt;junit=$gate.result.junit;junitSha256=$gate.result.junitSha256;nativeCases=$cases.Count;nativeFailed=$failed;nativeSkipped=$skipped;nativeRejectCases=@($cases|Where-Object {$_.name -match \u0027rejects\u0027}).Count;sourcePins=@(foreach($pin in $gate.result.sourcePins){if((Get-FileHash -LiteralPath $pin.copy).Hash -cne $pin.sha256){throw \u0027Retained gate source mismatch\u0027};[ordered]@{path=$pin.path;sha256=$pin.sha256;retainedCopyMatches=$true}})}\n })\n $extras=@(\u0027tests/browser/ui-command-capture.contract.ts\u0027,\u0027tests/browser/ui-command-capture.test.ts\u0027)\n $extraPins=@(foreach($path in $extras){[ordered]@{path=$path;sha256=(Get-FileHash -LiteralPath (Join-Path $workspace $path)).Hash}})\n $limitations=@(\n  @{id=\u0027ACK-LIMIT-01\u0027;source=\u0027tests/browser/ui-command-acknowledgement.test.ts:78\u0027;claim=\u0027Real binding means real pure classifier, own-solve predicate and commit coordinator with scripted ports.\u0027;limit=\u0027It does not execute readCommandUi, awaitCommandUi or assertPageOwnRoundSolve against a DOM. Actual selectors, ARIA/version attributes, Playwright polling and row extraction first execute in upcoming real browser lanes.\u0027},\n  @{id=\u0027ACK-LIMIT-02\u0027;source=\u0027tests/browser/ui-command-acknowledgement.ts:30-75\u0027;claim=\u0027DOM adapter inspects one scoped panel, busy/version and exact pending control; own-solve adapter verifies a round-captioned scorecard, same-context alias and solved row.\u0027;limit=\u0027Pure-state tests do not certify selector stability, aria propagation, live scheduling or arbitrary aliases. Existing generated aliases and actual browser assertions must supply that evidence; no general DOM coverage is claimed.\u0027},\n  @{id=\u0027ACK-LIMIT-03\u0027;source=\u0027tests/browser/ui-command-capture.ts:40-83\u0027;claim=\u0027Matrix logical call waits for fresh preparation, validates initial request, retires explicit409, and exact-payload checks uncertain retries within the existing12 attempts.\u0027;limit=\u0027Acknowledgement hooks are optional for backward compatibility with58 prior cases; that older test pass does not prove all callers use hooks. Current two live adapters were inspected to supply the new hooks. No increased timeout or weakened game assertions was observed.\u0027},\n  @{id=\u0027ACK-LIMIT-04\u0027;source=\u0027tests/browser/live-player-counts.integration.spec.ts:60-102,174-195\u0027;claim=\u0027Sender retirement precedes command return; intended answer and profile are checked; current-round same-context solved state precedes solve increment.\u0027;limit=\u0027Completed JSON alone is no longer counted. Native actual2..15matrix at the successor frozen head is still required; focused124 cases and old fdee build cannot establish a completed revised matrix.\u0027},\n  @{id=\u0027ACK-LIMIT-05\u0027;source=\u0027tests/browser/live-multiplayer.integration.spec.ts:77-115,128-140,297-472\u0027;claim=\u0027Strict generic command and answer helpers use preparation/acknowledgement; unresolved pending is rejected;4-conflict answer bound and push/read/suppression/privacy assertions remain.\u0027;limit=\u0027This is source inspection of the adapter, not an executed strict journey. The source-check/adoption diff and focused unit tests are not private-push, renewal, reconnect or observer capacity evidence.\u0027},\n  @{id=\u0027ACK-LIMIT-06\u0027;source=\u0027tests/browser/live-player-counts.integration.spec.ts:79-83; tests/browser/live-multiplayer.integration.spec.ts:70-75\u0027;claim=\u0027New successful-classification observations correlate player, logical action and UUID IDs with response/rendered versions and pending/busy state.\u0027;limit=\u0027Rejected classifier probes fail before observation callback, so records are not a complete denied/malformed-state history. No browser start/header/completion/abort timestamps or server spans are added. They cannot retroactively identify the old fdee page7request or explain11.6s latency.\u0027},\n  @{id=\u0027ACK-LIMIT-07\u0027;source=\u0027docs/evidence/release15/ui-acknowledgement/receipt.json\u0027;claim=\u0027Original118 gate, V2mock124, coordinator real124 and post-adoption real124 chronology are preserved.\u0027;limit=\u0027Original118 lacked deferred retirement completion proof; V2added3 positive/3 negative cases before coordinator/adoption changes. Transient direct tsc exit2 and15Biomewarnings are retained. Lint exit0 is not zero-warning evidence. Focused native counts do not substitute for full suites/TRX at new head.\u0027},\n  @{id=\u0027ACK-LIMIT-08\u0027;source=\u0027docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-diagnosis.json\u0027;claim=\u0027Recovery gating addresses the test acknowledgement boundary.\u0027;limit=\u0027No application responsiveness or latency cause fix is established. Current operational latency, pool/lock/CPU attribution and user-visible recovery behavior remain qualified until next actual browser evidence and optional owned-runtime observations. No new HTTP SLA or timeout/cap/pool/worker increase is authorized.\u0027}\n )\n $data=[ordered]@{recordedAt=[DateTimeOffset]::Now.ToString(\u0027o\u0027);classification=\u0027Read-only same-family release brief assessment, not hostile validation\u0027;sessionId=\u0027Codex-20261030T194802Z-plugin-session\u0027;requestId=\u0027req-20261031T000037Z-ui-acknowledgement-limits\u0027;parentSessionId=\u0027Codex-20261027T100516Z-plugin-session\u0027;parentRequestId=\u0027req-20261030T203656Z-cline-beam-release\u0027;reviewerSelection=\u0027Cline Beam High until Monday2November2026; exact cutoff unspecified\u0027;plan=@{path=$receipt.plan.path;sha256=$receipt.plan.sha256;readInFull=$true};repairReceipt=@{path=$receiptPath;sha256=(Get-FileHash $receiptPath).Hash;readInFull=$true;sourceStoppedAt=$receipt.sourceStoppedAtLocal;baselineRevision=$receipt.revision;dirtyTestSource=$receipt.dirtyTestSource};stoppedSourceReadback=$pins;supportingSourcePins=$extraPins;nativeGateReadback=$gates;limitations=$limitations;noObservedNewBlockingSourceDefect=$true;qualification=\u0027Bounded read-only assessment. No new tests/builds/browser/runtime/provider actions, source/requirement/status mutations or reviewer invocation. This does not authorize a release done state. Existing full applicable suite and independent98/98HV obligations remain.\u0027;remainingFail=@(\u0027Historical fdee10-player native matrix failure remains retained; fresh revised matrix not evaluated here.\u0027);unknown=@(\u0027Actual DOM adapter execution on successor candidate.\u0027,\u0027Full successor build/unit/PG/browser/Realtime/matrix/strict outcomes.\u0027,\u0027Exact latency and pending-command causal identity.\u0027,\u0027Independent Cline verdict and full durable reviewer log.\u0027);accuracyPercent=99;completenessPercent=98;ratingBasis=\u0027Full requested plan/receipt and adopted sources read; stopped source/native gate hashes and counts checked. Runtime and independent-review claims deliberately excluded.\u0027;writer=@{sha256=(Get-FileHash $PSCommandPath).Hash;source=[IO.File]::ReadAllText($PSCommandPath)}}\n $data|ConvertTo-Json -Depth 100|Set-Content $target\n $response=(@((Get-Date -Format s)\u002B\u0027 - Read-only acknowledgement follow-up: \u0027\u002B$target\u002B\u0027 SHA256 \u0027\u002B(Get-FileHash $target).Hash\u002B\u0027. All6stopped source pins and4native gate reports hash/count readback match. Focused final124cases are66new(33positive/33negative)\u002B58prior; zero failed/skipped. Real binding exercises pure state/solve predicates and commit coordinator, not actual DOM readers/polling/selectors. Upcoming existing native browser lanes are the first execution of those adopted DOM functions. Source-only checks show current matrix hooks and strict preparation/acknowledgement with unchanged retry bounds; they do not establish actualUI/privatepush/latency/release/HV.\u0027, \u0027Retain limitations ACK-LIMIT-01 through08 in the next Cline brief. Original118gap, V2extension, transient tsc2and15Biomewarnings remain disclosed. No new blocking source defect observed in this bounded read, but historical matrix failure and all successor runtime outcomes remain unverified. Exact pending-command/latency attribution and independent Cline verdict are UNKNOWN. No tests, builds or application edits performed. Accuracy99percent, completeness98percent for this bounded evidence assessment, not a hostile approval. Session Codex-20261030T194802Z-plugin-session / req-20261031T000037Z-ui-acknowledgement-limits.\u0027) -join \u0022\u0060n\u0022)\n [IO.File]::WriteAllText(\u0027/tmp/wordpairs-acknowledgement-limitations-result.txt\u0027,$response)\n [pscustomobject]@{path=$target;sha256=(Get-FileHash $target).Hash;sourcePins=$pins.Count;nativeReports=$gates.Count;limitations=$limitations.Count}|ConvertTo-Json\n}else{\n $plugin=\u0027\u003Chome\u003E/.codex/plugins/cache/mcpserver-codex-plugin/mcpserver/1.121.0\u0027;$base=@{WorkspacePath=$workspace;CacheRoot=\u0027/tmp/wordpairs-release-audit-20261030\u0027;PluginRoot=$plugin}\n $response=[IO.File]::ReadAllText(\u0027/tmp/wordpairs-acknowledgement-limitations-result.txt\u0027)\n $decision=\u0027Treat124isolated native cases as classifier/coordinator evidence, not actual DOM/live journey or latency proof. Carry rejected-probe history, compatibility hooks, actual adapter execution and full successor evidence limits into Cline brief. Preserve historical failures, mockV1gap, V2chronology, transient tsc2and15Biomewarnings; no new gates or source changes.\u0027\n \u0026 (Join-Path $plugin \u0027Invoke-CodexMcpPlugin.ps1\u0027) @base -Command Invoke -Method \u0027workflow.sessionlog.appendDialog\u0027 -ParamsObject @{dialogItems=@(@{timestamp=[DateTimeOffset]::Now.ToString(\u0027o\u0027);role=\u0027model\u0027;category=\u0027decision\u0027;content=$decision},@{timestamp=[DateTimeOffset]::Now.ToString(\u0027o\u0027);role=\u0027model\u0027;category=\u0027observation\u0027;content=$response})}\n \u0026 (Join-Path $plugin \u0027Invoke-CodexMcpPlugin.ps1\u0027) @base -Command Invoke -Method \u0027workflow.sessionlog.appendActions\u0027 -ParamsObject @{actions=@(@{order=1;type=\u0027read\u0027;status=\u0027completed\u0027;filePath=\u0027docs/evidence/release15/ui-acknowledgement/plan.md\u0027;description=\u0027Read full final plan and522-line consolidated receipt, new classifier/DOM helper, contract/mock provider/coordinator and both full adopted browser specs. Independently check stopped source/native gate hashes and nativeJUnit counts without test execution.\u0027},@{order=2;type=\u0027design_decision\u0027;status=\u0027completed\u0027;filePath=\u0027\u0027;description=$decision},@{order=3;type=\u0027create\u0027;status=\u0027completed\u0027;filePath=$target;description=\u0027Retain eight evidence-bound brief limitations, native/source pins, full writer bytes, and all remaining failures/unknowns. No source or requirements changes.\u0027})}\n \u0026 (Join-Path $plugin \u0027Invoke-CodexMcpPlugin.ps1\u0027) @base -Command CompleteTurn -Response $response\n}\n",
+    "sha256": "4E9CF52D6273D60A8FA26EA36734CE53EF09BB46C4136E0AA68A3E9685F1EFE0"
+  }
+}

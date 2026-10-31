@@ -45,3 +45,52 @@ Feature: AC-25: Room invitations
 
 
 Criterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.
+
+## Invitation clipboard extension
+
+The operator requested the room action **Copy Invitation Link** on 28 October 2026.
+QBrain records the new, unsatisfied criteria as
+`FR-LOBBYDISCOVERY-019#INVITE-COPY-01` and
+`FR-LOBBYDISCOVERY-019#INVITE-COPY-02` and
+`FR-LOBBYDISCOVERY-019#INVITE-COPY-03`, with matching criteria on this TEST record.
+The original AC-25 and its historical evidence are preserved.
+
+The player selects **Copy Invitation Link**. The client requests a new
+inviter-bound link, displays it and attempts to copy it. Successful copying
+announces “Invitation link copied.” If clipboard access is unavailable or denied,
+the displayed, selectable link remains available and the page announces that the
+player can copy it manually. No clipboard success is reported when the write fails.
+If link creation fails or returns no link, no new link is shown or copied, no
+copy-success confirmation is announced, and an accessible error is shown.
+
+The automated cases are in
+[`invitation-copy.phase2.spec.ts`](../../../../tests/browser/invitation-copy.phase2.spec.ts).
+They use the real rendered room screen with synthetic network responses; success,
+text-only clipboard support and denial are isolated fixtures, while a separate
+Chromium case writes and reads the actual browser clipboard. The mock gate also
+rejects corrupted copied/displayed link outcomes. These tests do not establish
+clipboard permission behavior on every physical phone or browser.
+
+```gherkin
+Scenario: INVITE-COPY-01 copies a generated invitation
+  Given a player is in an active room and clipboard access is available
+  When the player selects Copy Invitation Link
+  Then the generated inviter-bound link is displayed
+  And that exact link is on the clipboard
+  And the page announces "Invitation link copied."
+
+Scenario: INVITE-COPY-02 retains a link after clipboard denial
+  Given a player is in an active room and clipboard access is denied
+  When the player selects Copy Invitation Link
+  Then the generated link remains selectable
+  And the page explains that it can be copied manually
+
+Scenario: INVITE-COPY-03 reports invitation creation failure
+  Given a player is in an active room
+  When invitation creation fails
+  Then no new invitation is displayed or copied
+  And the page shows an error instead of a copy-success confirmation
+```
+
+The current criteria remain unsatisfied until final suite and independent review
+evidence is recorded in QBrain.

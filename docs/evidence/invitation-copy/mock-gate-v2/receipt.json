@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-28T22:29:35",
+  "mode": "Mock",
+  "exitCode": 0,
+  "sourceRevision": "7b20e44b97639b3a0a36c7a11f055ab2d6d257b4",
+  "testSha256": "D5C622E18B6B1E8165164B110FE1265A784A4CBAF51B412F1E4E7C13E4F064CC",
+  "command": [
+    "npm",
+    "exec",
+    "playwright",
+    "--",
+    "test",
+    "--config=playwright.pwa.config.ts",
+    "tests/browser/invitation-copy.phase2.spec.ts",
+    "--reporter=line,junit",
+    "-g",
+    "INVITE-COPY mock gate"
+  ],
+  "qualification": "Mock mode exercises a conforming fake UI and requires a corrupted copied value to be rejected. Product mode exercises the real room UI and isolated network/clipboard fixtures, including real Chromium clipboard access."
+}

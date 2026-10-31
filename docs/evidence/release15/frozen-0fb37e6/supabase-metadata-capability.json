@@ -1,0 +1,113 @@
+{
+  "timestamp": "2026-10-30T16:33:59",
+  "scope": "Read-only supported connected-provider metadata capability inquiry",
+  "provider": "Supabase connected plugin",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T213259Z-supabase-hosting-capability",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "discoveredToolCount": 31,
+  "discoveredToolNames": [
+    "apply_migration",
+    "confirm_cost",
+    "create_branch",
+    "create_project",
+    "delete_branch",
+    "delete_feedback",
+    "deploy_edge_function",
+    "execute_sql",
+    "generate_typescript_types",
+    "get_advisors",
+    "get_cost",
+    "get_edge_function",
+    "get_organization",
+    "get_project",
+    "get_project_url",
+    "get_publishable_keys",
+    "list_branches",
+    "list_edge_functions",
+    "list_extensions",
+    "list_migrations",
+    "list_organizations",
+    "list_projects",
+    "list_tables",
+    "merge_branch",
+    "pause_project",
+    "query_logs",
+    "rebase_branch",
+    "reset_branch",
+    "restore_project",
+    "search_docs",
+    "submit_feedback"
+  ],
+  "configurationOrPoolerMethods": [],
+  "calls": [
+    {
+      "method": "mcp__codex_apps__supabase_get_project",
+      "arguments": {
+        "id": "jshjkaigwbxsbnnogfxs"
+      },
+      "succeeded": true
+    },
+    {
+      "method": "mcp__codex_apps__supabase_get_project",
+      "arguments": {
+        "id": "krdcuuhcynmdfcjlpbsf"
+      },
+      "succeeded": true
+    }
+  ],
+  "returnedTopLevelFields": [
+    "id",
+    "ref",
+    "organization_id",
+    "organization_slug",
+    "name",
+    "region",
+    "status",
+    "database",
+    "created_at"
+  ],
+  "returnedDatabaseFields": [
+    "host",
+    "version",
+    "postgres_engine",
+    "release_channel"
+  ],
+  "projects": [
+    {
+      "logicalEnvironment": "staging",
+      "projectId": "jshjkaigwbxsbnnogfxs",
+      "projectName": "wordpairs-staging",
+      "region": "us-east-1",
+      "directDatabaseHost": "db.jshjkaigwbxsbnnogfxs.supabase.co",
+      "sessionPoolerHost": null,
+      "sessionPoolerPort": null,
+      "dataApiExposedSchemas": null
+    },
+    {
+      "logicalEnvironment": "production",
+      "projectId": "krdcuuhcynmdfcjlpbsf",
+      "projectName": "wordpairs-production",
+      "region": "us-east-1",
+      "directDatabaseHost": "db.krdcuuhcynmdfcjlpbsf.supabase.co",
+      "sessionPoolerHost": null,
+      "sessionPoolerPort": null,
+      "dataApiExposedSchemas": null
+    }
+  ],
+  "exactSessionPoolerMetadata": "unavailable-from-current-connected-provider-tools",
+  "exactDataApiExposedSchemaAllowlist": "unavailable-from-current-connected-provider-tools",
+  "qualification": "Direct database hosts are provider-returned metadata and are not session pooler endpoints. Null schema metadata is unavailable, not an empty allowlist or default-public claim. No endpoint connectivity was tested.",
+  "prohibitedRoutesUsed": false,
+  "constraintsObserved": [
+    "No denied browser origin, alternate browser, CDP or indirect browser route",
+    "No raw HTTP or generic management REST workaround",
+    "No guessed pooler hostname or port",
+    "No SQL presented as dashboard configuration",
+    "No credentials read, requested, decrypted or generated",
+    "No database, schema, network or application mutation",
+    "No tests, builds or hostile review",
+    "No repeated request to the user for already pending facts"
+  ]
+}

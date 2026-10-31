@@ -1,0 +1,100 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/integration/capacity.integration.ts (3 tests | 3 failed) 16ms
+   × CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries 11ms
+   × CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave 1ms
+   × CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries
+AssertionError: expected { new15: true, new16: false, …(10) } to deeply equal { new15: true, new16: false, …(10) }
+
+- Expected
++ Received
+
+@@ -1,7 +1,8 @@
+  {
+    "discover": [
++     "cap15-upgrade-full",
+      "cap15-upgrade-partial",
+    ],
+    "finalSeatWinners": 1,
+    "new15": true,
+    "new16": false,
+@@ -9,14 +10,14 @@
+    "observer26Rejected": true,
+    "observers": 25,
+    "players": 15,
+    "publicRows": [
+      {
+-       "capacity": 15,
+-       "id": "cap15-upgrade-partial",
+-       "playerCount": 14,
++       "capacity": 25,
++       "id": "cap15-upgrade-full",
++       "playerCount": 15,
+      },
+    ],
+-   "quickJoined": "cap15-upgrade-partial",
++   "quickJoined": null,
+    "raise16Rejected": true,
+    "sql16Rejected": true,
+  }
+
+ ❯ tests/integration/capacity.integration.ts:88:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave
+AssertionError: expected { before: 25, after: 15, …(3) } to deeply equal { before: 25, after: 24, …(3) }
+
+- Expected
++ Received
+
+  {
+-   "after": 24,
++   "after": 15,
+    "before": 25,
+-   "blocked": true,
++   "blocked": false,
+    "canJoin": false,
+    "capacity": 25,
+  }
+
+ ❯ tests/integration/capacity.integration.ts:89:118
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards
+AssertionError: expected { roster: 15, rounds: 8, …(4) } to deeply equal { roster: 25, rounds: 8, …(4) }
+
+- Expected
++ Received
+
+  {
+    "awards": 25,
+    "roomStatus": "closed",
+-   "roster": 25,
++   "roster": 15,
+    "rounds": 8,
+-   "solves": 200,
++   "solves": 120,
+    "status": "finished",
+  }
+
+ ❯ tests/integration/capacity.integration.ts:90:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  15:05:54
+   Duration  258ms (import 54%, transform 26%, tests 15%, worker 4%)
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-discovery-mock/wrong-legacy-sql.xml

@@ -1,5 +1,13 @@
 # Acceptance Criteria to Test Inventory
 
+## Current release amendment
+
+QBrain is authoritative. Rules v2.8, dated 31 October 2026, and [the current completion plan](release15-completion-plan.md) amend new room/match capacities to every integer 2 through 10. Use valid boundaries 2/8/10 and reject 1/11/15/25, fractional and nonnumeric creation inputs. Preserve the separate 25-observer limit and test a 35-person new-release audience. The service/UI range is 9 eight-round games, 54 player participations and 432 accepted round solves.
+
+Current `AC-01/02/24` cases verify that all admission paths share the amended limit; `AC-04` uses random anchor endpoints 1 and N for allowed rosters. `FR-ROOMACCESS-001#CAP15-LEGACY` additionally requires preserved larger running matches and results, readable legacy waiting/countdown rooms, an explicit compatibility notice, Leave, and no oversized new start/admission or forced eviction. The linked [current UI cases](testing/ui/index.md) and new frozen evidence must cover those outcomes before any changed criterion is satisfied. Earlier pass counts below establish only their historical snapshots.
+
+## Historical Phase 6 inventory
+
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Status:** Phase 6 formally approved at 99/99: 45 active ACs / 67 primary cases / 27 supplemental cases map to actual product or local process evidence in `evidence/phase6/acceptance-mapping.json`. Its final regression had 494 passing tests and 26 Chromium journeys. Original oracle sensitivity controls remain unchanged. Human feedback is optional; see [Phase 6 execution](phase6_execution.md). Later administration and multiplayer checks supplement this historical source-bound inventory; their current commands and results are in [testing](testing.md).
 

@@ -1,0 +1,55 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/integration/capacity.integration.ts (3 tests | 1 failed) 19ms
+   × CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries 15ms
+   ✓ CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave 1ms
+   ✓ CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/capacity.integration.ts > CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries
+AssertionError: expected { new15: true, new16: true, …(10) } to deeply equal { new15: true, new16: false, …(10) }
+
+- Expected
++ Received
+
+@@ -2,12 +2,12 @@
+    "discover": [
+      "cap15-upgrade-partial",
+    ],
+    "finalSeatWinners": 1,
+    "new15": true,
+-   "new16": false,
+-   "newMatch16Rejected": true,
++   "new16": true,
++   "newMatch16Rejected": false,
+    "observer26Rejected": true,
+    "observers": 25,
+    "players": 15,
+    "publicRows": [
+      {
+@@ -15,8 +15,8 @@
+        "id": "cap15-upgrade-partial",
+        "playerCount": 14,
+      },
+    ],
+    "quickJoined": "cap15-upgrade-partial",
+-   "raise16Rejected": true,
+-   "sql16Rejected": true,
++   "raise16Rejected": false,
++   "sql16Rejected": false,
+  }
+
+ ❯ tests/integration/capacity.integration.ts:88:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  15:05:52
+   Duration  343ms (import 54%, transform 27%, tests 12%, worker 6%)
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-discovery-mock/wrong-player-limit-sql.xml

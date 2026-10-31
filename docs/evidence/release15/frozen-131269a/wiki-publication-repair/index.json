@@ -1,0 +1,167 @@
+{
+  "schema": "wordpairs-wiki-publication-repair-index/v1",
+  "timestamp": "2026-10-30T17:29:45",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T221507Z-wiki-link-audit",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "operation": "Authorized href-only wiki publication normalization, not a raw server export replacement",
+  "nativeExitCode": 0,
+  "sourceHead": "131269a590046a3c1c83314d11ff79f2b731799c",
+  "previousWikiHead": "f0c112bdf8b535f5ba618da9355260153d73815e",
+  "remoteWikiHead": "93cc02daa6ef8e777fd8287fce9b2bd264de775e",
+  "transformedOccurrences": 935,
+  "changedPages": 92,
+  "verifiedExportFiles": 108,
+  "originalWikiFilesPreserved": 274,
+  "relativeLinksBefore": 939,
+  "relativeLinksAfter": 4,
+  "newUnresolvedRelativeLinks": 0,
+  "anchorProof": {
+    "exactMarkdownHeadingIds": 2,
+    "exactSvgIds": 152
+  },
+  "semanticProof": {
+    "exactFrTrTestEdgeCount": 1427,
+    "functional": {
+      "beforeCount": 31,
+      "afterCount": 31,
+      "equal": true
+    },
+    "exactEdgesUnchanged": true,
+    "excludedMappingMetadata": "createdAt only; raw values retained",
+    "testing": {
+      "beforeCount": 94,
+      "afterCount": 94,
+      "equal": true
+    },
+    "technical": {
+      "beforeCount": 43,
+      "afterCount": 43,
+      "equal": true
+    },
+    "effectiveMappings": {
+      "beforeCount": 31,
+      "afterCount": 31,
+      "equal": true
+    }
+  },
+  "triage": {
+    "success": true,
+    "workspace": "McpServer",
+    "status": "collecting",
+    "reportId": "triage-report-526c21a81d6f41dbba6a55ae99e3b178",
+    "groupId": "triage-group-9a81952fb3feb8bd",
+    "method": "workflow.triage.report"
+  },
+  "unresolved": [
+    {
+      "page": "Phase-6-Phone-Feedback.md",
+      "line": 9,
+      "kind": "inline",
+      "label": "390×844 portrait game and result",
+      "target": "/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-e640d--390x844-keyboard-and-touch-solved.png",
+      "classification": "broken-wiki-target-absent",
+      "publishedTarget": null,
+      "sourceTarget": "docs/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-e640d--390x844-keyboard-and-touch-solved.png",
+      "sourceTracked": false,
+      "intendedWikiTarget": null,
+      "intendedAssetTarget": null,
+      "anchor": null,
+      "anchorStatus": "not-present"
+    },
+    {
+      "page": "Phase-6-Phone-Feedback.md",
+      "line": 10,
+      "kind": "inline",
+      "label": "844×390 landscape game and result",
+      "target": "/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-7c513--844x390-keyboard-and-touch-solved.png",
+      "classification": "broken-wiki-target-absent",
+      "publishedTarget": null,
+      "sourceTarget": "docs/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-7c513--844x390-keyboard-and-touch-solved.png",
+      "sourceTracked": false,
+      "intendedWikiTarget": null,
+      "intendedAssetTarget": null,
+      "anchor": null,
+      "anchorStatus": "not-present"
+    },
+    {
+      "page": "Phase-6-Phone-Feedback.md",
+      "line": 11,
+      "kind": "inline",
+      "label": "320×568 narrow portrait",
+      "target": "/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-9fa30--320x568-keyboard-and-touch-solved.png",
+      "classification": "broken-wiki-target-absent",
+      "publishedTarget": null,
+      "sourceTarget": "docs/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-9fa30--320x568-keyboard-and-touch-solved.png",
+      "sourceTracked": false,
+      "intendedWikiTarget": null,
+      "intendedAssetTarget": null,
+      "anchor": null,
+      "anchorStatus": "not-present"
+    },
+    {
+      "page": "Phase-6-Phone-Feedback.md",
+      "line": 12,
+      "kind": "inline",
+      "label": "568×320 short landscape",
+      "target": "/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-34804--568x320-keyboard-and-touch-solved.png",
+      "classification": "broken-wiki-target-absent",
+      "publishedTarget": null,
+      "sourceTarget": "docs/tmp/wordpairs-phase6-screenshots/accessibility.phase6-AC-15-34804--568x320-keyboard-and-touch-solved.png",
+      "sourceTracked": false,
+      "intendedWikiTarget": null,
+      "intendedAssetTarget": null,
+      "anchor": null,
+      "anchorStatus": "not-present"
+    }
+  ],
+  "unknowns": [
+    "Four historical absolute /tmp screenshot links lack original files and original-to-archived exact hash evidence. All remain unmodified and explicitly enumerated.",
+    "Source-only canonical URLs use pinned verified local sourceHEAD131269a. Publication of that application commit is parent-owned and not independently verified by this audit.",
+    "External HTTP responses and actual GitHub browser rendering were not exhaustively checked. Existing local/Git targets are separated from network claims."
+  ],
+  "chronology": [
+    "Initial read-only audit found939relative-link gaps on93pages.",
+    "Triage accepted before publication-copy repair.",
+    "First canonicalizer comparison failed because YAML generic lists were not recursively canonicalized. Corrected collection handling; original diagnostic semantic-readback.json retained.",
+    "Mapping raw response differs only in known regenerated createdAt metadata. Exact1427FR/TR/TEST endpoint triples and all168effective requirement records compare equal. No semantic fields were discarded.",
+    "All producers parsed/analyzed0warnings/errors and dry-run before mutating publication work. Analyzed producer bytes archived before prepare/publish, revisions preserved.",
+    "Reversible line-targeted href replacement proves original page content restored exactly by inverse substitutions. No requirement behavior/status/criteria/notes were edited.",
+    "Preserved all274originalwiki files and exact ZIP with copy/hash verification. Prepared935href changes, checked residual4historical references, then committed/pushed only92expected pages.",
+    "Remote commit equals local published commit and all108export files carry verified intended SHA256 and Git blobIDs. Unrelated files, canonical ZIP, and previous publication receipt remain unchanged."
+  ],
+  "files": [
+    {
+      "path": "receipt.json",
+      "sha256": "DBA0FEBFF14ED6303D943F467D6B62DB8EBCD9B8493A3902F6EE2154BD867CF4"
+    },
+    {
+      "path": "after-audit.json",
+      "sha256": "6BEF380B400554122282227F4FB41A2F1CCCDC0933E575EB6E3A78E6110F0CE4"
+    },
+    {
+      "path": "semantic-readback.json",
+      "sha256": "F672AE4F67815B5E38BD670763C9DB4219CDFAFD299F095248AF226B60D7DF3B"
+    },
+    {
+      "path": "semantic-readback-normalized.json",
+      "sha256": "5D90B093FE1EBBA688F769CA9250467CB1EBF8C5A5758708B170EA45C836F780"
+    },
+    {
+      "path": "producer-index.json",
+      "sha256": "F1A09D3BC2E6109B059A8AB8EBB1002E3DC2C1AD3641F36FA050B2F0BEFDA3A6"
+    },
+    {
+      "path": "producer-index-v2.json",
+      "sha256": "F77FBA5E30A13E7C1B9F338652D2425BB552229D81FCD0C831871ED7F1D250BD"
+    },
+    {
+      "path": "producer-index-audit-v2.json",
+      "sha256": "DF03780159EB424C9E1C56A79369A46C777A0AA088F389AADB5625C2A14D3397"
+    }
+  ],
+  "accuracyPercent": 99,
+  "completenessPercent": 98,
+  "ratingBasis": "Full parsed link inventory and deterministic target/Git/hash proof for the authorized normalization; explicit four historical gaps, external rendering/network and source-commit publication limits remain. Not hostile validation and not release acceptance."
+}

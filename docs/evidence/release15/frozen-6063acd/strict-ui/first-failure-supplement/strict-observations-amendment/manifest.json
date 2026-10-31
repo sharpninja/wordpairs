@@ -1,0 +1,53 @@
+{
+  "atLocal": "2026-10-30T20:40:41",
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261031T013439Z-strict-first-failure",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "source": "docs/evidence/room-sync/live-ui-observations.json",
+  "copy": "docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/strict-observations-amendment/live-ui-observations.json",
+  "sha256": "118CEC13D7915D97BF71BF28D2191AF2149ADE1F8FAF282189EE8F165E96B5BA",
+  "bytes": 1836,
+  "sourceLastWriteTime": "2026-10-30T20:31:27.4654769-05:00",
+  "sourceLastWriteTimeUtc": "2026-10-31T01:31:27.4654769Z",
+  "invocation": {
+    "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+    "reports": [
+      {
+        "name": "strict-ui",
+        "kind": "strict-ui",
+        "expectedCount": 1,
+        "runId": "d941371c-59de-40e1-875e-5c3b90778adb",
+        "hostName": "[PRIVATE HOST]",
+        "startedAt": "2026-10-30T20:30:45",
+        "finishedAt": "2026-10-30T20:31:47",
+        "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+        "producerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+        "executable": "pwsh",
+        "arguments": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "scripts/run-local-ui-integration.ps1",
+          "-StrictPush",
+          "-MaxMinutes",
+          "30"
+        ],
+        "exitCode": 1,
+        "junit": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/strict-ui.xml",
+        "junitSha256": "FD333E5EC0FBA741FDC50C41C47C7FF6D0DAC477DC920FEC2AE1D85B3EC45E48",
+        "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+        "sourceUnchanged": true,
+        "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/source-before.json",
+        "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/strict-ui/source-after.json",
+        "sourceAfterFailure": null
+      }
+    ]
+  },
+  "qualification": "Fixed-name file, source mtime must be compared with strict invocation; original run identifier may be absent. Metadata alone does not join every observation to actor/command or reconstruct transient DOM.",
+  "originalRetained": true,
+  "originalManifestSha256": "04F49847F0EFBC0FF6E1BA10092B5EBFB0D5C44CEAE7E3F09F2B6041C62144DA",
+  "producerSha256": "9DB5AB16B9CBF12273AFE9E37E1F554E2BFFC6D70F9CB7C5A6798303FB91D829",
+  "noRerun": true,
+  "noSourceEdits": true
+}

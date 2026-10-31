@@ -1,0 +1,856 @@
+{
+  "timestamp": "2026-10-29T09:21:36",
+  "gate": "admin-pwa-source-round4",
+  "reviewedRevision": "f35b696b090985f1119bca5b1f50187997a86113",
+  "baseRevision": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+  "requestReceipt": "\u003Crepo\u003E/docs/receipts/hv/20261029T090008-admin-pwa-source-round4.request.jsonl",
+  "responseReceipt": "\u003Crepo\u003E/docs/receipts/hv/20261029T090008-admin-pwa-source-round4.response.jsonl",
+  "selfReview": "\u003Crepo\u003E/docs/receipts/hv/20261029T090008-admin-pwa-source-round4.self-review.json",
+  "evidenceIndex": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round4-frozen-evidence-f35b696/evidence-index.json",
+  "priorVerdicts": [
+    "\u003Crepo\u003E/docs/receipts/hv/20261028T230220-admin-pwa-source-round3.verdict.json (incomplete, read in full)",
+    "\u003Crepo\u003E/docs/receipts/hv/20261028T233627-admin-pwa-source-round3.verdict.json (DISAGREE 95/93, read in full)"
+  ],
+  "reviewer": {
+    "agent": "ClaudeCode",
+    "model": "claude-opus-5-5",
+    "modelReceipt": "reviewer runtime system context (exact model ID claude-opus-5-5)",
+    "effort": "high (launch command only)",
+    "effortReceipt": "request.jsonl launchCommand --effort high; no in-session runtime attestation of effort",
+    "plugin": "mcpserver-claude-code-plugin at \u003Chome\u003E/github/mcpserver-claude-code-plugin (lib/mcp-status.ps1 status available)",
+    "tools": "docs/receipts/hv/claude-opus-round4-tools/A00..A09 (read-only PowerShell; each parser and PSScriptAnalyzer clean before running; git-ignored by .gitignore:22)"
+  },
+  "profileLoad": {
+    "skill": "\u003Chome\u003E/.claude/skills/add-profile/SKILL.md",
+    "profileFiles": 1,
+    "profileFile": "\u003Chome\u003E/.claude/profile/PROFILE-MERGED.md (376 lines, read in full)",
+    "workspaceInstructions": "AGENTS-README-FIRST.yaml (398 lines) and AGENTS.md (14 lines) read in full; required memories injected by the hook were read"
+  },
+  "session": {
+    "sessionId": "ClaudeCode-20261029T140011Z-plugin-session",
+    "requestId": "req-20261029T140016Z-prompt-ba89",
+    "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+    "parentRequestId": "req-20261029T135928Z-prompt-c0e1",
+    "earlierRetryRequestId": "req-20261029T042903Z-prompt-c233",
+    "readback": "see sessionReadback (appended after completion)"
+  },
+  "classification": {
+    "productImplementation": "Class 1: source, tests, test scripts, documentation and QBrain changes in 8e2f624..f35b696; BDPv4 and requirements apply.",
+    "providerOperations": "Class 2: hosted provider configuration recorded earlier; not re-observed; no hosted state claimed."
+  },
+  "OverallVerdict": "DISAGREE",
+  "accuracy": 96,
+  "accuracyJustification": "Every mechanical claim verified independently (hashes, counts, 1:1 parity, manifest blobs, gate test and source hashes, mutant rejection sites, QBrain criteria, export texts). Inaccurate or overstated: admin_pwa_release.md planner chronology and 276-path count; planner frozen receipt names a missing controls path. Receipts otherwise qualify catch-up work honestly.",
+  "completeness": 94,
+  "completenessJustification": "Round3 F-R3-1, F-R3-2 and F-R3-4 are remediated; F-R3-3 only partly. Open: an unexplained timing-dependent reaction failure, analyzer coverage for tests/integration scripts, missing run id/host/command in the request, stale documentation in two plan files, and three UNKNOWNs.",
+  "counts": {
+    "PASS": 35,
+    "FAIL": 5,
+    "UNKNOWN": 3,
+    "total": 43
+  },
+  "surfaces": {
+    "requestedClaims": "FAIL (S1-14, S1-16); UNKNOWN S1-19, S1-20",
+    "workspaceRules": "FAIL (S2-05, S2-11); UNKNOWN S2-08",
+    "requirements": "PASS",
+    "plan": "FAIL (S4-02)"
+  },
+  "priorFindingDisposition": {
+    "F-R3-1": "remediated by catch-up revert-gate-reapply in an isolated fixture plus full suite at f35b696; original chronology unchanged and not excepted (S1-09, S2-03)",
+    "F-R3-2": "remediated: wrong-empty mock and per-case rejection check (S1-10)",
+    "F-R3-3": "partly remediated: 15 review-scope scripts clean; tests/integration scripts uncovered (F-R4-2)",
+    "F-R3-4": "remediated: TR-23-C02 on TR and TEST; TR-23 notes updated (S1-11)",
+    "UNKNOWN S1-18 effort": "still UNKNOWN for this reviewer (S1-19)",
+    "UNKNOWN S1-19 failsafe": "still UNKNOWN (S1-20)",
+    "UNKNOWN S2-08 plan approval": "still UNKNOWN (S2-08)",
+    "I-R3-1": "persists (I-R4-5)",
+    "I-R3-2": "fixed (creation-failure case asserts no copied status)",
+    "I-R3-3": "persists (I-R4-12)",
+    "I-R3-5": "persists (I-R4-6)",
+    "I-R3-6": "persists: planner status/apply guards still untested",
+    "I-R3-8": "deployment_plan drift escalated to F-R4-5; duplicates persist (I-R4-9)",
+    "I-R3-10": "public copy redacted; prefix only in protected raw stream (S2-07)"
+  },
+  "items": [
+    {
+      "id": "S1-01",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "HEAD is f35b696b090985f1119bca5b1f50187997a86113 on main with 0 tracked changes (28 untracked evidence/receipt paths). Range 8e2f624..f35b696 is 6 commits, 308 files, +44893/-1699. f35b696 changes only tests, test scripts, docs, evidence and receipts; no src file changed after 1c22727.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A01-Git.ps1 -Mode Summary and -Mode Show outputs 2026-10-29T09:03"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-02",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "All five evidence-index JUnit and TRX SHA-256 values match; cases unit 587, PostgreSQL 68, browser 78, planner-real 6, planner-mock 6; every case Passed; 0 failed, 0 skipped, 0 notExecuted; JUnit and TRX names match 1:1 (0 one-sided). TRX Times (00:51:49 to 00:51:54) are conversion times; native JUnit suite timestamps (unit 05:39Z, PostgreSQL and browser 05:48Z) are execution times. Source manifest hash matches.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A02-Evidence.ps1 output",
+        "docs/evidence/hosting/guest-admin-recovery/round4-frozen-evidence-f35b696/evidence-index.json:1-60"
+      ],
+      "finding": "I-R4-9"
+    },
+    {
+      "id": "S1-03",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Chronology: commit f35b696 at 00:37:29; full run 00:37:40 to 00:51:35 at that revision in order typecheck, lint, unit, PostgreSQL, build, browser, all exit 0; planner frozen mock and real 6/6 at 00:37:54-55 at f35b696.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/validation.json:2-41",
+        "docs/evidence/hosting/guest-admin-recovery/planner-round4-frozen/receipt.json:2-9",
+        "docs/receipts/hv/claude-opus-round4-tools/A01-Git.ps1 -Mode Log"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-04",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Independent check: the 279-path candidate source manifest equals git ls-tree of f35b696 over the declared scope (0 untracked in scope, 0 missing, 0 extra) and all 279 hashes equal the committed blobs. The manifest was recorded at 00:51:48, after the run, and the generator check remains self-referential.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A07-Manifest.ps1 output",
+        "scripts/Get-CandidateSourceManifest.ps1:13-25"
+      ],
+      "finding": "I-R4-6"
+    },
+    {
+      "id": "S1-05",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "The 78-case browser lane at f35b696 ran all eight invitation cases (lines 43-50), the reaction case and the rest of the active suite; 78 passed.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/browser.log:5,43-50,62"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-06",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Copy Invitation Link source (room-screen.tsx bytes 14317DC6 identical at 1c22727 and f35b696): ClipboardItem write starts inside the click with deferred data; writeText fallback after the response; missing or non-string url throws and shows an error; 401/403/404 deny; 5xx shows not-confirmed; abortCopy rejects pending data in finally; stale epoch suppresses messages; denied or unavailable clipboard keeps the selectable link with the manual message.",
+      "anchors": [
+        "src/web/room-screen.tsx:255-395",
+        "docs/receipts/hv/claude-opus-round4-tools/A03-Hashes.ps1 output"
+      ],
+      "finding": "I-R4-8"
+    },
+    {
+      "id": "S1-07",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Eight invitation browser cases cover copy with inviter-bound request, writeText-only, denied, unavailable API, creation failure (now asserts no copied status, fixing I-R3-2), missing URL (new, INVITE-COPY-03), real Chromium clipboard, plus the observation oracle.",
+      "anchors": [
+        "tests/browser/invitation-copy.phase2.spec.ts:114-200",
+        "git diff 1c22727..f35b696 of the spec"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-08",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Catch-up replay mechanics verified: gated test hash 65419C13 equals the committed spec; baseline copy 72EDCB7C equals room-screen at 7b20e44; reapplied 14317DC6 equals f35b696; correct run 8/8; five targeted wrong outcomes each rejected at the intended assertion (bad-request :145, bad-clipboard :198, unavailable-success :107, false-success :176, missing-url-success :186). Earlier attempts retained (round4 single run, v2, isolated webServer failure, isolated retry at test BFCA8872). Receipts state honestly that the original product edit predates the replay.",
+      "anchors": [
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated-final/receipt.json:2-57",
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated-final/*.log",
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated/correct.log:1",
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated-retry/receipt.json",
+        "docs/evidence/invitation-copy/mock-gate-round4-v2/receipt.json"
+      ],
+      "finding": "I-R4-1; I-R4-2"
+    },
+    {
+      "id": "S1-09",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "F-R3-1 disposition: the remediation that round3 offered (revert, full mock gate, re-apply, full suite) was performed in substance, in an isolated fixture rather than the working tree; because the fake intercepts navigation the product bytes are not exercised by the gate, so the fixture form proves the same test discrimination. The original 22:34:27 implementation still predates any complete mock gate; that chronology is unchanged, is not excepted, and is recorded honestly (commit f35b696 body, receipt qualification). No exception is claimed for this slice.",
+      "anchors": [
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated-final/receipt.json:57",
+        "commit f35b696 body",
+        "round3 verdict F-R3-1 operatorDecision"
+      ],
+      "finding": "I-R4-2"
+    },
+    {
+      "id": "S1-10",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "F-R3-2 remediated as a catch-up: correct mock 6/0/0; wrong mock rejects 5; new wrong-empty mock rejects all 6, including the empty-history case; Run-HostingSchemaMockGate.ps1:28-31 now requires each case to be rejected by at least one wrong mock. The planner module is unchanged since 21:14:45 (F002924A). The original v1 chronology (module passed 5 cases at 21:12:40 before the sixth case existed) is unchanged and not excepted.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/planner-mock-gate-round4/mock-gate.json:2-107",
+        "tests/powershell/Run-HostingSchemaMockGate.ps1:13-31",
+        "tests/powershell/HostingSchemaPlanner.MockWrongEmpty.psm1:2-9",
+        "docs/evidence/hosting/guest-admin-recovery/planner-real-gate/real-gate.json:2-8",
+        "docs/evidence/hosting/guest-admin-recovery/planner-mock-gate/mock-gate.json:2-7"
+      ],
+      "finding": "I-R4-3"
+    },
+    {
+      "id": "S1-11",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "F-R3-4 remediated: TR-23-C02 exists on TR-SCHEMA-PROVISIONING-023 and TEST-SCHEMAPROVISIONING-123 (isSatisfied false); TR-23 notes now name scripts/hosting-schema.ps1 and HostingSchemaPlanner.psm1 and record the .mjs retirement; TEST-123 notes map C02 to the Pester and Vitest planner tests; scripts/hosting-schema.mjs is the unchanged throwing stub (4740BF7D since 2f95d21).",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/TR-SCHEMA-PROVISIONING-023.txt:15,25-27",
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/TEST-SCHEMAPROVISIONING-123.txt:16,30-32",
+        "docs/receipts/hv/claude-opus-round4-tools/A03-Hashes.ps1 output"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-12",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "503 retry: judged from retained evidence only. The 7b20e44 test change is unchanged at f35b696 and the case passed in round3-full-1c22727, round4-candidate and round4-full-f35b696. The original 503 cause remains unproven and is not claimed known.",
+      "anchors": [
+        "round3 verdict S1-09",
+        "docs/evidence/hosting/guest-admin-recovery/round4-candidate/browser.log:84",
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/browser.xml"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-13",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Round4-candidate invitation failure: unfiltered getByRole(alert) matched both the room error and Next.js __next-route-announcer__ (strict mode violation). Final spec filters by text; the text Room access is unavailable is the pre-existing generic command explanation (baseline room-screen.tsx.txt:270), so it pins original behavior rather than new implementation output.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/round4-candidate/browser.log:50-74",
+        "tests/browser/invitation-copy.phase2.spec.ts:174,186",
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated-final/baseline-room-screen.tsx.txt:270"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-14",
+      "surface": "requested-claims",
+      "status": "FAIL",
+      "claim": "Reaction cooldown: the round4-candidate run failed at reactions.phase5.spec.ts:9 (React with party button enabled after fastForward(1999), expected disabled); the unchanged test (55DCB88C) then passed 3/3 focused and once in the f35b696 full suite. Source shows the assertion is timing-dependent: page.clock.install() without pauseAt lets Date.now keep flowing (playwright-core types.d.ts:20841-20851), room-screen.tsx:156-158,191-196 computes displayNow as Date.now plus an offset recalibrated only on room fetch (15 s interval while playing, :180-183), and the test checks a 1 ms boundary (1999 vs 2000). Inference, not proven: real elapsed time can push displayNow past the cooldown. The cause of the observed failure remains unexplained; four later passes do not establish stability or exclude a product defect. Per profile 7.9 an environment-dependent test is inadequate evidence.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/round4-candidate/browser.log:93-119",
+        "docs/evidence/hosting/guest-admin-recovery/reaction-round4-repro/receipt.json:2-7",
+        "docs/evidence/hosting/guest-admin-recovery/reaction-round4-repro/reaction.log:11-22",
+        "tests/browser/reactions.phase5.spec.ts:4-11",
+        "src/web/room-screen.tsx:156-158,180-196",
+        "src/web/social-panel.tsx:161,190,247",
+        "node_modules/playwright-core/types/types.d.ts:20825-20856"
+      ],
+      "finding": "F-R4-1"
+    },
+    {
+      "id": "S1-15",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Analyzer honesty: analyzer-round4.json reports badFiles 3 of 18, so zero overall is not claimed. The three files are scripts/run-local-live-lease.ps1 (1 warning), scripts/run-local-ui-integration.ps1 (5) and scripts/start-local-realtime.ps1 (5): 11 Warning findings in 3 scripts, all pre-existing (not modified in the range) and excluded from the 15-file review scope with a stated reason. The review-scope receipt (00:12:31) and broad receipt (00:08:31) precede the 00:09:35 planner gate and match current hashes.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/analyzer-round4.json:2-173",
+        "docs/evidence/hosting/guest-admin-recovery/analyzer-round4-review-scope.json:2-102",
+        "docs/receipts/hv/claude-opus-round4-tools/A01-Git.ps1 -Mode NameStatus"
+      ],
+      "finding": "I-R4-13"
+    },
+    {
+      "id": "S1-16",
+      "surface": "requested-claims",
+      "status": "FAIL",
+      "claim": "docs/admin_pwa_release.md:244-247 still states that the planner six contract cases were written and run against correct and wrong mocks before the PowerShell implementation; retained receipts show a v1 module passed five cases at 21:12:40 (moduleSha 5338911E) before the sixth case existed (v2 tests 21:14:12). Line 250 says 276 files; the frozen manifest has 279. Lines 236-242 still say no round2 finding is represented as resolved, and the document records neither the round3 verdicts nor the round4 catch-up dispositions. f35b696 did not update this file.",
+      "anchors": [
+        "docs/admin_pwa_release.md:236-254",
+        "docs/evidence/hosting/guest-admin-recovery/planner-real-gate/real-gate.json:2-8",
+        "docs/evidence/hosting/guest-admin-recovery/planner-mock-gate-v2/mock-gate.json:2-5",
+        "docs/receipts/hv/claude-opus-round4-tools/A01-Git.ps1 -Mode Show"
+      ],
+      "finding": "F-R4-3"
+    },
+    {
+      "id": "S1-17",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "No overclaim of hosted state: hosted GitHub consent, standalone phone OAuth continuity, physical installation, migration 012 on staging and production, hosted invitation behavior and production deployment are stated as pending; disposable VolatileStorage PostgreSQL is qualified as not proving durability. Reviewer makes no such claim either.",
+      "anchors": [
+        "docs/admin_pwa_release.md:131-135,172-180,189-196",
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/validation.json:42",
+        "tests/integration/run-phase1.ps1 VolatileStorage comment",
+        "commit bodies"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-18",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Reviewer model claude-opus-5-5 is attested by this runtime (system context: model Opus 5.5, exact ID claude-opus-5-5).",
+      "anchors": [
+        "reviewer runtime system context"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-19",
+      "surface": "requested-claims",
+      "status": "UNKNOWN",
+      "claim": "Reviewer effort: the request launch command says --effort high; this reviewer has no runtime receipt of the effort value inside the session.",
+      "anchors": [
+        "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.request.jsonl:1 launchCommand"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-20",
+      "surface": "requested-claims",
+      "status": "UNKNOWN",
+      "claim": "Round3 UNKNOWN S1-19 carried: the prior Claude triage failsafe 20261029T042440Z-triage-report-5ca5.yaml remains unverifiable; plugin status now reports failsafeCount 0 and failsafeQuarantineCount 0. Not represented as persisted.",
+      "anchors": [
+        "lib/mcp-status.ps1 output 2026-10-29T09:00 approx",
+        "round3 verdict S1-19"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-01",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Script tooling is PowerShell; the Node planner remains a retired stub; no Python. Reviewer used only literal pwsh -File invocations of analyzed scripts.",
+      "anchors": [
+        "scripts/hosting-schema.mjs",
+        "docs/receipts/hv/claude-opus-round4-tools/A00-Analyze.ps1 outputs (all tools 0 parse, 0 findings)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-02",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "HV receipts: this round has request jsonl, self-review and response stream; all prior rounds, the incomplete 230220 verdict and failed or superseded runs are retained; public copies are redacted with privacy-export receipts; raw originals are git-ignored and protected.",
+      "anchors": [
+        "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.*",
+        "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.privacy-export.json:2-10",
+        ".gitignore:18-22"
+      ],
+      "finding": "I-R4-4"
+    },
+    {
+      "id": "S2-03",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "BDPv4 invitation slice: test discrimination is now proven for every case in the committed spec (oracle controls plus five targeted mutants), and the same cases bind to the real implementation in the f35b696 full suite. Residual: original pre-implementation order is historically non-compliant and is neither excepted nor erased (see S1-09).",
+      "anchors": [
+        "docs/evidence/invitation-copy/mock-gate-round4-isolated-final/receipt.json",
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/browser.log:43-50",
+        "PROFILE-MERGED.md 5.1 steps 3-7"
+      ],
+      "finding": "I-R4-1"
+    },
+    {
+      "id": "S2-04",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "BDPv4 planner slice: per-case negative controls now exist for all six cases; same cases pass against the real module at f35b696. Residual v1 chronology unchanged and not excepted.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/planner-mock-gate-round4/mock-gate.json",
+        "docs/evidence/hosting/guest-admin-recovery/planner-round4-frozen/real.xml"
+      ],
+      "finding": "I-R4-3"
+    },
+    {
+      "id": "S2-05",
+      "surface": "workspace-rules",
+      "status": "FAIL",
+      "claim": "Analyzer coverage remains incomplete (sibling of F-R3-3): the broad receipt covers scripts/* and tests/powershell/* only. tests/integration/run-phase1.ps1 was modified in this range and ran the PostgreSQL lane behind postgres.xml/postgres.trx, but no analyzer receipt covers it (reviewer static check: 0 parse errors, 0 findings). The three tests/integration/*.contract.ps1 scripts carry 8 unjustified Warning findings (local-live-lease 5, local-ui-startup 3). Together with the 11 warnings in 3 local-runtime scripts, 19 Warning findings in 5 scripts are neither fixed nor justified.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/analyzer-round4.json:2-3",
+        "docs/receipts/hv/claude-opus-round4-tools/A00-Analyze.ps1 -Path tests/integration output",
+        "git diff 8e2f624..f35b696 tests/integration/run-phase1.ps1",
+        "PROFILE-MERGED.md 6.1"
+      ],
+      "finding": "F-R4-2"
+    },
+    {
+      "id": "S2-06",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "All six range commits carry Signed model-effort@agent lines with confidences; f35b696 self-reports completeness 90%.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A01-Git.ps1 -Mode Bodies"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-07",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Credential scan (values never printed): 953 files scanned (tracked docs/tests/scripts/src/README, every receipts/hv file, reviewer tools); 0 full-key matches anywhere; the 8-character prefix appears only in the protected, untracked round3 raw stream (2 occurrences). This round stream and all public copies are clean. The GitHub client secret was not scanned because its value is not available to the reviewer.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A06-SecretScan.ps1 output"
+      ],
+      "finding": "I-R4-11"
+    },
+    {
+      "id": "S2-08",
+      "surface": "workspace-rules",
+      "status": "UNKNOWN",
+      "claim": "Round3 UNKNOWN S2-08 carried: profile 4.3 requires a requirement change to be planned and approved before implementation. The operator scope now names the Copy Invitation Link behavior, but no plan or approval artifact predating the 22:34:27 implementation is visible to the reviewer.",
+      "anchors": [
+        "PROFILE-MERGED.md 4.3",
+        "docs/testing/ui/cases/TEST-ROOMINVITATIONS-025.md:51-55"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-09",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "The one-time exception remains scoped to the missing original admin-PWA receipt (FR-GUESTADMIN-031, TR-GITHUB-ADMIN-043, TEST-GITHUBADMIN-149); it is not applied to the invitation or planner slices.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/process-exception.json:2-13",
+        "docs/admin_pwa_release.md:216-228"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-10",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "QBrain and session log accessed only through the Claude plugin wrapper (lib/repl-invoke.ps1); plugin status available; review turn writes confirmed durable.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A04-QBrain.ps1 outputs",
+        "docs/receipts/hv/claude-opus-round4-tools/session-params/*.out.txt"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-11",
+      "surface": "workspace-rules",
+      "status": "FAIL",
+      "claim": "Profile 7.9 requires the request JSONL to name each TRX file with its run id, host, head and command. The request and evidence index name path, revision, hashes and counts only; validation.json lists step names and logs without commands, host or run id.",
+      "anchors": [
+        "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.request.jsonl:1",
+        "docs/evidence/hosting/guest-admin-recovery/round4-frozen-evidence-f35b696/evidence-index.json:8-59",
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/validation.json:7-41",
+        "PROFILE-MERGED.md 7.9"
+      ],
+      "finding": "F-R4-4"
+    },
+    {
+      "id": "S2-12",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Reviewer made no product, requirement, TODO or Git mutation, ran no build or test and launched no browser; writes were limited to the git-ignored tools directory, the plugin-managed session turn and this verdict file.",
+      "anchors": [
+        ".gitignore:22",
+        "docs/receipts/hv/claude-opus-round4-tools/"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-01",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Live FR-LOBBYDISCOVERY-019 (in_progress) carries INVITE-COPY-01, -02 and -03, all isSatisfied false; texts match the implementation and tests; AC-25 history preserved.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/FR-LOBBYDISCOVERY-019.txt:8,53-61"
+      ],
+      "finding": "I-R4-5"
+    },
+    {
+      "id": "S3-02",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Live TEST-ROOMINVITATIONS-025 (in_progress) mirrors INVITE-COPY-01/02/03, all unsatisfied, with the INVITE-COPY-03 scenario.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/TEST-ROOMINVITATIONS-025.txt:8,102-106,156-160,178-186"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-03",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Live TR-SCHEMA-PROVISIONING-023 (in_progress) carries TR-23-C01, DEC-22 and TR-23-C02, all unsatisfied; notes record the PowerShell planner.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/TR-SCHEMA-PROVISIONING-023.txt:8,15-27"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-04",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Live TEST-SCHEMAPROVISIONING-123 (in_progress) mirrors TR-23-C01, DEC-22 and TR-23-C02 plus VERIFY-TR-23, all unsatisfied, and maps C02 to the planner tests.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/TEST-SCHEMAPROVISIONING-123.txt:8,16-32"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-05",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Native mappings include FR-LOBBYDISCOVERY-019 to TR-SCHEMA-PROVISIONING-023, TEST-ROOMINVITATIONS-025 and TEST-SCHEMAPROVISIONING-123.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/qbrain-readback/map-FR-LOBBYDISCOVERY-019.txt:51-52,180-181,189-190"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-06",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Canonical export docs/requirements/requirements-wiki-documents.zip (77E18F74, 214 entries) matches wiki-export.json and contains the INVITE-COPY-03 and TR-23-C02 criterion texts in the Functional, Technical and Testing requirement pages and the TEST-025 UI case. Criterion IDs and notes are not rendered by the generator.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round4-tools/A05-Export.ps1 outputs",
+        "docs/evidence/hosting/guest-admin-recovery/wiki-export.json:2-12",
+        "docs/evidence/invitation-copy/wiki-publication.json:2-8"
+      ],
+      "finding": "I-R4-10"
+    },
+    {
+      "id": "S4-01",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "The current release override is referenced at the top of implementation_plan.md, deployment_plan.md and moderation_plan.md; admin_pwa_release.md states the guest-only, sharpninja-only, admin-only-PWA scope.",
+      "anchors": [
+        "docs/implementation_plan.md:3-10",
+        "docs/deployment_plan.md:3-10",
+        "docs/moderation_plan.md:3-7",
+        "docs/admin_pwa_release.md:3-65"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-02",
+      "surface": "plan",
+      "status": "FAIL",
+      "claim": "Stale current-voice scope text persists for a second round: deployment_plan.md:26 instructs production to serve /manifest.webmanifest, /sw.js and /offline.html at root scope and to verify standalone /play installation on devices; deployment_plan.md:78 instructs setting WORDPAIRS_ADMIN_PROFILE_IDS bootstrap and managing grants at /admin/users. Both contradict the current scope (no public PWA; /sw.js is a retirement worker; bootstrap and delegation inactive). The header override covers conflicts generically, but the propagation audit (profile 7.5) requires each stale statement to be updated or replaced by a reference, and this is the operative plan for the imminent staging step.",
+      "anchors": [
+        "docs/deployment_plan.md:3-10,26,78",
+        "docs/admin_pwa_release.md:19-22,61-65",
+        "round3 verdict I-R3-8",
+        "PROFILE-MERGED.md 7.5"
+      ],
+      "finding": "F-R4-5"
+    },
+    {
+      "id": "S4-03",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "No plan step, TODO or requirement is claimed done; all changed criteria remain unsatisfied; the plan requires Claude Opus HV before staging deployment of the exact reviewed commit, which is this gate.",
+      "anchors": [
+        "docs/implementation_plan.md:6-10",
+        "QBrain readbacks"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-04",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Migration 012 order is staging first, verify, then production; schema, private Realtime and scheduler remain separate prerequisites; planner proposes only 012 after the 13-migration hosted prefix.",
+      "anchors": [
+        "docs/admin_pwa_release.md:166-170,210-214",
+        "tests/powershell/HostingSchemaPlanner.Tests.ps1:18-21"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-05",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Disposable PostgreSQL evidence is not presented as hosted deployment or power-loss durability evidence.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/round4-full-f35b696/validation.json:42",
+        "docs/admin_pwa_release.md:176-178"
+      ],
+      "finding": ""
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-R4-1",
+      "severity": "low",
+      "class": "test-adequacy (environment-dependent timing)",
+      "title": "Reaction cooldown browser case is timing-dependent; its single failure is unexplained",
+      "detail": "See S1-14. Observation: one failure at reactions.phase5.spec.ts:9, then 3/3 focused passes and one full-suite pass with unchanged bytes. Inference from source: an unpaused Playwright clock plus Date.now-based displayNow makes the 1999 ms disabled assertion depend on real elapsed time. Root cause not proven.",
+      "requirements": [
+        "tests/browser/reactions.phase5.spec.ts",
+        "PROFILE-MERGED.md 7.9"
+      ],
+      "proposedAC": "Reaction cooldown determinism (on the TEST record that owns reactions.phase5.spec.ts): Given a player sent an accepted reaction at server time T, when the client clock is at T+1999 ms the reaction buttons are disabled, and at T+2000 ms they are enabled, independent of real elapsed time.",
+      "proposedTests": [
+        "Install the page clock with a fixed time and call page.clock.pauseAt after load so Date.now does not advance during assertions; then fastForward exactly 1999 and 1 ms.",
+        "Add a component or unit test of the social-panel cooldown boundary with an injected now (1999 disabled, 2000 enabled).",
+        "Retain the round4-candidate error-context.md and a written cause analysis; add a repeat-each run (for example 25) as supplementary stability evidence, not as root-cause proof."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F-R4-2",
+      "severity": "low",
+      "class": "process-rule (analyzer receipts)",
+      "title": "No analyzer receipt for tests/integration scripts, including run-phase1.ps1 which ran the PostgreSQL lane; 19 unjustified warnings in 5 scripts",
+      "detail": "See S2-05 and S1-15.",
+      "requirements": [
+        "PROFILE-MERGED.md 6.1"
+      ],
+      "proposedAC": "",
+      "proposedTests": [
+        "Extend the analyzer receipt to every *.ps1 and *.psm1 in the repository (scripts, tests/powershell, tests/integration), hashed immediately before each run that uses them, and fail the gate on unjustified findings.",
+        "Fix or add SuppressMessage justifications for the 11 warnings in run-local-live-lease.ps1, run-local-ui-integration.ps1 and start-local-realtime.ps1 and the 8 in local-live-lease.contract.ps1 and local-ui-startup.contract.ps1."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F-R4-3",
+      "severity": "low",
+      "class": "accuracy (implementer documentation)",
+      "title": "admin_pwa_release.md overstates planner chronology and carries stale counts and review status",
+      "detail": "See S1-16.",
+      "requirements": [
+        "docs/admin_pwa_release.md",
+        "PROFILE-MERGED.md 2.3-2.4"
+      ],
+      "proposedAC": "",
+      "proposedTests": [
+        "Correct lines 244-250: state that a five-case v1 module existed before the sixth case, that the six-case gate preceded only the final module edit, and that round4 added catch-up per-case negatives; replace 276 with 279 or reference the frozen manifest; add round3 outcomes and round4 dispositions without implying chronology changed."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F-R4-4",
+      "severity": "low",
+      "class": "receipts (profile 7.9)",
+      "title": "Request and evidence index omit run id, host and command for each TRX",
+      "detail": "See S2-11.",
+      "requirements": [
+        "PROFILE-MERGED.md 7.9"
+      ],
+      "proposedAC": "",
+      "proposedTests": [
+        "Record for every report: run id, host name, head SHA, exact command line and start/finish times, in both validation.json and the evidence index carried by the request JSONL."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F-R4-5",
+      "severity": "low",
+      "class": "plan propagation drift",
+      "title": "deployment_plan.md still gives current-voice public PWA and bootstrap instructions",
+      "detail": "See S4-02. Note: configuredAdminProfileIds() in src/infrastructure/runtime.ts:34-43 is unused, so the instruction is inert in code (I-R4-7).",
+      "requirements": [
+        "docs/deployment_plan.md",
+        "PROFILE-MERGED.md 7.5"
+      ],
+      "proposedAC": "",
+      "proposedTests": [
+        "Mark deployment_plan.md lines 26 and 78 historical inline or replace them with references to admin_pwa_release.md; add a docs check that the current plan documents contain no unqualified root manifest, /sw.js install or WORDPAIRS_ADMIN_PROFILE_IDS instruction."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-1",
+      "severity": "info",
+      "class": "test-depth",
+      "title": "Two invitation cases rely only on the oracle helper controls",
+      "detail": "Cases :148 (writeText) and :154 (denied) have no targeted wrong-outcome mutant; their observeCopied/observeManual assertions are proven by the oracle, whose manual-mode controls corrupt only the displayed link, not the copied value.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [
+        "Optional mutants: no writeText fallback (expects manual message); success claimed on denial."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-2",
+      "severity": "info",
+      "class": "fake fidelity / receipt",
+      "title": "Fake DOM lacks the Next route announcer; reapply ordering is receipt-asserted only",
+      "detail": "The ambiguous unfiltered alert selector passed the earlier fake gates but failed against the product, showing the fake does not model all product DOM. The reapplied copy preserves the original 22:34:27 mtime and the /tmp fixture is not retained, so after-gate reapplication rests on the receipt.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-3",
+      "severity": "info",
+      "class": "evidence",
+      "title": "Planner gate checks at least one rejection per case, not exact expected outcomes; frozen receipt names a missing path; several reviewed evidence directories are untracked",
+      "detail": "planner-round4-frozen/receipt.json:8 names controls/mock-gate.json, which does not exist (controls are in planner-mock-gate-round4/). round4-full-f35b696, round4-frozen-evidence-f35b696, planner-round4-frozen and the v1 planner gates are untracked.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-4",
+      "severity": "info",
+      "class": "receipts index",
+      "title": "hv-index.json omits round2 receipts; round2 has no public response copy",
+      "detail": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl, .self-review.json and .verdict.json are committed but not indexed; the raw round2 stream is retained locally only.",
+      "requirements": [
+        "AGENTS.md:13"
+      ],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-5",
+      "severity": "info",
+      "class": "traceability",
+      "title": "FR and TEST notes still describe INVITE-COPY-01/02 only; no TR carries INVITE-COPY",
+      "detail": "Persisting pattern from I-R3-1.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-6",
+      "severity": "info",
+      "class": "evidence",
+      "title": "Source manifest recorded after the run; generator check self-referential",
+      "detail": "Recorded 00:51:48 after the 00:51:35 finish; reviewer independently matched all 279 blobs.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-7",
+      "severity": "info",
+      "class": "dead code",
+      "title": "configuredAdminProfileIds() is unused",
+      "detail": "src/infrastructure/runtime.ts:34-43 still reads WORDPAIRS_ADMIN_PROFILE_IDS but has no caller in src.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-8",
+      "severity": "info",
+      "class": "ux copy",
+      "title": "Missing invitation URL shows the generic Room access is unavailable message",
+      "detail": "Accessible and satisfies INVITE-COPY-03, but less specific than an invitation-specific error.",
+      "requirements": [
+        "FR-LOBBYDISCOVERY-019#INVITE-COPY-03"
+      ],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-9",
+      "severity": "info",
+      "class": "metadata",
+      "title": "Three duplicate unit case names; TRX times are conversion times",
+      "detail": "Carried from I-R3-8.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-10",
+      "severity": "info",
+      "class": "publication",
+      "title": "Wiki push not independently verified",
+      "detail": "wiki-publication.json records revision 27fdd779 and relativeSourceLinksNeedReview true; the reviewer made no remote read. The export also carries an azure/ folder, which is not gating (PRIVATE-MEMORY-REFERENCE-009).",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-11",
+      "severity": "info",
+      "class": "scan limit",
+      "title": "GitHub client secret not scanned",
+      "detail": "Only the workspace key and its 8-character prefix were scanned; the reviewer did not access the secret value.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-12",
+      "severity": "info",
+      "class": "accessibility (inference)",
+      "title": "Copy status live region inserted together with its text",
+      "detail": "Carried from I-R3-3.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-13",
+      "severity": "info",
+      "class": "analyzer",
+      "title": "Three local-runtime scripts carry 11 warnings",
+      "detail": "Pre-existing and outside the gate evidence; folded into F-R4-2 proposed fix.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I-R4-14",
+      "severity": "info",
+      "class": "reviewer conduct",
+      "title": "Reviewer tool errors retained",
+      "detail": "Three of my early tool runs failed (comma-joined -Path and -Needle arguments passed as one string, a short MISSING hash, a hidden file without -Force); each was fixed, re-analyzed and rerun. The required full marker read places the key in my context; capture-time redaction applies and my scan found 0 matches in this round stream.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    }
+  ],
+  "missingTestsAndDecisions": [
+    "F-R4-1: deterministic reaction cooldown test (paused clock), unit boundary test, retained cause analysis.",
+    "F-R4-2: analyzer receipt over every repository PowerShell file before use; fix or justify 19 warnings.",
+    "F-R4-3: correct admin_pwa_release.md planner chronology, count and review status.",
+    "F-R4-4: run id, host and command per TRX in the request and validation receipts.",
+    "F-R4-5: mark or replace deployment_plan.md:26 and :78.",
+    "Operator: confirm whether the Copy Invitation Link requirement change was approved as a plan or accepted as a direct implementation command (S2-08).",
+    "Optional: fake-psql tests for planner status/apply guards (I-R3-6); targeted mutants for the writeText and denied cases (I-R4-1)."
+  ],
+  "designDecisions": [
+    "Judged the invitation catch-up replay as remediation of F-R3-1 because it executes the round3-offered revert-gate-reapply sequence and the fake does not exercise product bytes; consequence: S1-09 and S2-03 PASS while the original chronology stays recorded as non-compliant and unexcepted.",
+    "Classified the reaction cooldown flake as a FAIL under profile 7.9 (environment-dependent test) rather than accepting later green runs; consequence: F-R4-1 requires a deterministic test, not more repetitions.",
+    "Escalated the deployment_plan.md stale text from round3 info to a FAIL because it persisted a second round in the plan that governs the next step; consequence: F-R4-5.",
+    "Treated the analyzer gap for run-phase1.ps1 as a FAIL because that script ran against data for the reviewed PostgreSQL evidence; the three excluded local-runtime scripts alone would have been informational.",
+    "Rated accuracy 96 and completeness 94; both below 98, so OverallVerdict is DISAGREE regardless of the low severity of each FAIL."
+  ],
+  "writes": [
+    "docs/receipts/hv/claude-opus-round4-tools/ (git-ignored)",
+    "\u003Crepo\u003E/docs/receipts/hv/20261029T090008-admin-pwa-source-round4.verdict.json",
+    "plugin-managed session turn req-20261029T140016Z-prompt-ba89"
+  ],
+  "verdictProse": "Hostile validation verdict, gate admin-pwa-source-round4, wordpairs source revision f35b696b090985f1119bca5b1f50187997a86113 (staging readiness only). Local timestamp 2026-10-29T09:21:36. Reviewer ClaudeCode, model claude-opus-5-5 (runtime attested); effort high per launch command only (not runtime attested). Session ClaudeCode-20261029T140011Z-plugin-session, request req-20261029T140016Z-prompt-ba89; parent Codex-20261027T100516Z-plugin-session / req-20261029T135928Z-prompt-c0e1; earlier retry turn req-20261029T042903Z-prompt-c233.\n\nOverallVerdict DISAGREE. Accuracy 96. Completeness 94. Both are below 98 and surfaces 1, 2 and 4 each have FAILs. PASS 35, FAIL 5, UNKNOWN 3 of 43.\n\nWhat holds: HEAD is clean; f35b696 changes no src file after 1c22727. All five JUnit/TRX hashes match the index; unit 587, PostgreSQL 68, browser 78 and planner 6/6 mock and real pass with 0 failed and 0 skipped, 1:1 by name, in a run that started after the commit. The 279-path source manifest equals the committed tree byte for byte. Copy Invitation Link copies inside the user gesture, falls back to writeText, keeps a selectable link with a manual-copy message, and on creation failure or a missing URL shows an error with no link and no success claim. Round3 findings: F-R3-1 is remediated by a catch-up revert, eight-case mock gate with five targeted rejected wrong outcomes, and reapply, followed by the full suite; the original implementation still predates any complete gate, that chronology is unchanged and not excepted, and the receipts say so. F-R3-2 is remediated by a second wrong mock and a per-case rejection check. F-R3-4 is remediated: TR-23-C02 is recorded on the TR and TEST and TR-23 notes name the PowerShell planner. INVITE-COPY-01/02/03 and TR-23-C02 are live, unsatisfied and in the canonical export. Nothing is claimed done or deployed. No credential appears in any tracked file or public copy.\n\nWhy DISAGREE:\nF-R4-1 (low, test adequacy): the reaction cooldown case failed once and is unexplained; its 1 ms boundary runs on an unpaused Playwright clock against a Date.now-based display clock, so it is timing-dependent by inference. Three focused passes and one full-suite pass do not establish stability or a cause.\nF-R4-2 (low): run-phase1.ps1, modified in range and used for the PostgreSQL lane, and three other tests/integration scripts have no analyzer receipt; 19 warnings in 5 scripts are unfixed and unjustified. The broad receipt honestly reports 3 bad files (11 warnings); zero overall is not claimed.\nF-R4-3 (low, accuracy): admin_pwa_release.md still says the planner cases preceded the PowerShell implementation, gives 276 instead of 279 paths, and omits round3 and round4 status.\nF-R4-4 (low): the request and evidence index lack run id, host and command per TRX (profile 7.9).\nF-R4-5 (low): deployment_plan.md:26 and :78 still give current-voice public-PWA and bootstrap instructions.\nUNKNOWN: runtime effort; prior failsafe 5ca5 fate; whether the Copy Invitation Link requirement change had a plan and approval before implementation.\nThe 503 retry cause remains unproven and the reaction cause unexplained; neither is claimed known. I-R4-1 to I-R4-14 are informational.\n\nNot claimed and still pending: migration 012 on staging then production, live GitHub consent, standalone phone OAuth continuity, physical installation, hosted invitation behavior, hosted rollout, production and power-loss durability.",
+  "sessionReadback": {
+    "method": "client.SessionLog.QueryAsync via lib/repl-invoke.ps1 (A12-TurnDetail.ps1)",
+    "readAt": "2026-10-29T09:24:09",
+    "sessionId": "ClaudeCode-20261029T140011Z-plugin-session",
+    "requestId": "req-20261029T140016Z-prompt-ba89",
+    "status": "completed",
+    "queryTitle": "HV round4: Claude Opus staging-readiness review of wordpairs f35b696",
+    "dialogItems": 73,
+    "actions": 7,
+    "designDecisionActions": 5,
+    "verdictProseParts": 1,
+    "verdictJsonParts": 9,
+    "itemLines": 43,
+    "findingObjects": 19,
+    "responseHasVerdict": true,
+    "historyQuery": "workflow.sessionlog.queryHistory at 2026-10-29T09:22:26: session present, turnCount 1, lastUpdated 2026-10-29T09:22:15 local, tags include parent and earlier-retry links; session model field reads codex (triaged)",
+    "note": "This readback and the triage entry were added after the turn completed, so they are in this file and the final answer but not inside the immutable turn."
+  },
+  "triage": [
+    "triage-report-8ae42634ea8843c6a356fc6ee38011ac (group triage-group-76bb43e1906ee527): hook-opened Claude session records model codex"
+  ]
+}

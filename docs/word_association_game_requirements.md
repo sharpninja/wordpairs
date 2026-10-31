@@ -3,7 +3,33 @@
 **Functional behavior, technical requirements, and acceptance criteria**  
 Version 2.6 · 26 October 2026 · Approved baseline
 
-The baseline below is retained historically. Current QBrain requirements for product **Word Pairs** (`PROD-WORDPAIRS`) also include the [operator-directed UI gap decisions](testing/ui/decisions.md), [documented UI cases](testing/ui/index.md), and their [verified requirement export](testing/ui/requirements.json). New change-request, candidate-hold, navigation/draft, request-feedback, accessibility-detail and responsive-matrix requirements remain pending implementation and verification; they do not retroactively change historical acceptance evidence.
+## Current rules v2.8 amendment, 31 October 2026
+
+The operator directed "Set max players to10". QBrain remains authoritative for Word Pairs (`PROD-WORDPAIRS`), workspace `wordpairs`, layer `layer-1`. The [atomic amendment and readback](evidence/release10/qbrain-update-receipt.json) updates 19 existing records, preserving their IDs, 1,427 native mapping edges and prior notes. The [full before snapshot](evidence/release10/qbrain-before.json) preserves earlier criterion evidence; all 28 changed criteria remain unsatisfied pending new exact-source evidence. This documentation does not establish execution or acceptance.
+
+New rooms and new match rosters support integral capacities 2 through 10; the creation default stays 4. Keep the separate 25-observer limit and maximum new-release audience of 35. Complete service and real-browser matrices each require 9 eight-round games, 54 player participations and 432 accepted round solves. Required boundaries include valid 2/8/10 and invalid 1/11/15/25, fractions and numeric strings at the appropriate transport/domain seam.
+
+Current traceability is `FR-ROOMACCESS-001#AC-01/02/24/CAP15-LEGACY`, `FR-LOBBYLIFECYCLE-003#AC-01/02/24`, `FR-ANCHORSELECTION-007#AC-04`, `FR-CATEGORIES-005#AC-04`, `TR-ANCHOR-RANDOMNESS-013#TR-13-C01`, `TR-ROOM-CODES-010#TR-10-C01/CAP15-LEGACY`, `TR-FREETIER-OPERATION-021#DEC-20`, `TR-MULTIPLAYER-INTEGRATION-034#TR-34-C01` and `TR-ROOM-SYNCRECOVERY-038#LIVE-07`, with their existing TEST IDs. `CAP15-LEGACY` is a stable historical criterion ID; its current text uses the 10-player boundary.
+
+Historical larger running matches remain readable, replayable and finishable, with Leave and stored results preserved. Waiting/countdown rooms above 10 cannot admit another player above 10 or start an oversized new match; show compatibility feedback and Leave without forced eviction to fit the cap. A historical room with at most 10 players can start an allowed match. Existing migration files 001 through 013 remain byte-identical; new safeguards use forward migration 014. File immutability is not proof those migrations have been applied to either hosted database. Keep guest-only public play, private historical member identities, fixed-owner GitHub administration and the admin-only PWA. The [canonical completion plan](release15-completion-plan.md) retains its filename for existing links. Wiki regeneration/publication remains pending source/test reconciliation.
+
+## Historical rules v2.7 amendment, 30 October 2026
+
+The following amendment preserves the earlier 15-player scope as dated history. Where it differs, current v2.8 and current QBrain records above govern; no historical pass transfers to changed source.
+
+QBrain is authoritative for product **Word Pairs** (`PROD-WORDPAIRS`). The operator approved new room capacities and match rosters of 2 through 15 players. The separate 25-observer limit remains, with a new-release audience of at most 40. The complete service and real-browser range is 14 eight-round games, 119 player participations and 952 accepted round solves; documentation alone does not establish their execution.
+
+`FR-ROOMACCESS-001#AC-01/02/24` and `FR-LOBBYLIFECYCLE-003#AC-01/02/24` now use 2 through 15, including valid boundaries 2/8/15 and rejection below 2 or above 15. `FR-ANCHORSELECTION-007#AC-04`, `FR-CATEGORIES-005#AC-04` and `TR-ANCHOR-RANDOMNESS-013` use new rosters of 2 through 15. `TR-FREETIER-OPERATION-021#DEC-20` uses the 40-person target. `TR-MULTIPLAYER-INTEGRATION-034` and `TR-ROOM-SYNCRECOVERY-038#LIVE-07` require the amended matrix.
+
+`FR-ROOMACCESS-001#CAP15-LEGACY` preserves larger historical running matches, stored results and Leave. Existing waiting/countdown rooms above 15 reject oversized new admission/start, explain the compatibility state and wait for voluntary departures rather than forcing members out. Existing migration bytes and historical acceptance evidence remain unchanged; use forward safeguards for new writes.
+
+Current public play is guest-only. Only verified GitHub owner `sharpninja` may use administration, with separate admin sessions and an admin-only PWA. Public OpenAI sign-in, role delegation, public nominations/suggestions and public PWA installation are inactive. New member profiles and historical member identities remain private in public projections. The selected deployment topology is two isolated Vercel production targets: `wordpairs` staging before the same reviewed commit on `wordpairs-j9jf` production. See [the current release design](admin_pwa_release.md) and [completion plan](release15-completion-plan.md).
+
+The linked [UI decisions](testing/ui/decisions.md), [case specifications](testing/ui/index.md) and QBrain-generated exports retain their source/evidence revision. Their historical persistence receipts do not prove that later edits or pending criteria have passed. The release workflow reconciles and reads back current QBrain records before regenerating the exports.
+
+## Historical v2.6 baseline
+
+All remaining sections, diagrams, numeric bounds, identity/deployment proposals and criterion text below retain the 26 October baseline as history. They are superseded where the current QBrain layer and the current v2.8/guest-admin amendments above differ. A historical 25-player result or original OIDC/public-PWA diagram is not the current release contract.
 
 ## Purpose and scope
 

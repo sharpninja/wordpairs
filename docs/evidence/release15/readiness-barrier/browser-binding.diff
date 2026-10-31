@@ -1,0 +1,77 @@
+diff --git i/tests/browser/live-player-counts.integration.spec.ts w/tests/browser/live-player-counts.integration.spec.ts
+index c5cd6d6..84d8e9c 100644
+--- i/tests/browser/live-player-counts.integration.spec.ts
++++ w/tests/browser/live-player-counts.integration.spec.ts
+@@ -5,6 +5,7 @@ import seed from "../../src/infrastructure/catalog-seed.json" with { type: "json
+ import { cleanupOwnedRoom } from "./owned-room-cleanup";
+ import { attach as attachRequestDiagnostics } from "./request-diagnostics";
+ import type { DiagnosticHandle, DiagnosticState } from "./request-diagnostics.contract";
++import { readyAfterBarrier } from "./readiness-barrier";
+ 
+ const counts = process.env.WORDPAIRS_LIVE_PLAYER_COUNTS
+   ? process.env.WORDPAIRS_LIVE_PLAYER_COUNTS.split(",").map(Number)
+@@ -30,6 +31,8 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+   const slowResponses: { path: string; method: string; status: number; durationMs: number; action: string | null }[] = [];
+   const diagnostics: DiagnosticState = { details: slowResponses, failures: [], failureTotal: 0 };
+   const diagnosticHandles: DiagnosticHandle[] = [];
++  const preparedActors: string[] = [];
++  const readinessObservations: { phase: "prepared" | "ready"; player: number; expectedProfileId: string; actorId: string; uiRosterCount: number; version: number }[] = [];
+   const failureListeners: { page: Page; listener: (request: import("@playwright/test").Request) => void }[] = [];
+   const disposeDiagnostics = () => {
+     for (const handle of diagnosticHandles) handle.dispose();
+@@ -110,11 +113,30 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+       }));
+       pages.push(...batch);
+     }
+-    for (const page of pages) {
+-      phase = "UI readiness";
++    // A slow final connection must not become the sole unready holdout while
++    // earlier pages are readied. Complete actual UI preparation for everyone.
++    phase = "UI readiness barrier";
++    await readyAfterBarrier(pages, async (page, player) => {
+       await expect(page.getByText("● Live updates connected", { exact: true })).toBeVisible();
+-      await commitUi(page, "ready", () => page.getByRole("button", { name: "Mark ready", exact: true }).click(), "room");
+-    }
++      await expect(page.locator(".roster > li")).toHaveCount(count);
++      const ready = page.getByRole("button", { name: "Mark ready", exact: true });
++      await expect(ready).toBeVisible();
++      await expect(ready).toBeEnabled();
++      // Attribute UI setup to its real same-context actor, without readiness
++      // injection or an additional diagnostic read between ready commands.
++      const response = await contexts[player].request.get(`/api/rooms/${roomId}`);
++      expect(response.status()).toBe(200);
++      const room = await response.json();
++      expect(room.actorId).toBe(ids[player]);
++      expect(room.role).toBe("player");
++      expect(room.players).toHaveLength(count);
++      preparedActors[player] = room.actorId;
++      readinessObservations.push({ phase: "prepared", player, expectedProfileId: ids[player], actorId: room.actorId, uiRosterCount: await page.locator(".roster > li").count(), version: room.version });
++    }, async (page, player) => {
++      phase = "UI readiness";
++      const ready = await commitUi(page, "ready", () => page.getByRole("button", { name: "Mark ready", exact: true }).click(), "room");
++      readinessObservations.push({ phase: "ready", player, expectedProfileId: ids[player], actorId: preparedActors[player], uiRosterCount: await page.locator(".roster > li").count(), version: ready.version });
++    });
+     for (let round = 1; round <= 8; round++) {
+       phase = `UI round ${round}`;
+       console.log(`LIVE_SCALE players=${count} round=${round}`);
+@@ -155,9 +177,9 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+     await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+   } catch (error) {
+     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
+-    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, requestFailureTotal, requestFailures, slowResponses }, null, 2));
++    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+-    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
++    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
+     throw error;
+   } finally {
+     let cleanup = { cleanupFailures: 0, roomClosed: false, unresolvedPlayerIndices: [] as number[] };
+@@ -177,7 +199,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+       })), randomUUID);
+       disposeDiagnostics();
+       const requestDiagnostics = { failureTotal: diagnostics.failureTotal, failures: diagnostics.failures, failuresTruncated: diagnostics.failureTotal > diagnostics.failures.length, pendingAtDispose: diagnosticHandles.reduce((total, handle) => total + handle.pendingAtDispose, 0), qualification: "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown." };
+-      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
++      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
+       await info.attach("live-scale-cleanup", { body: JSON.stringify({ players: count, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, ownRoomOnly: true }), contentType: "application/json" });
+     } finally {
+       disposeDiagnostics();

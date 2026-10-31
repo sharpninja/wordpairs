@@ -1,4 +1,9 @@
-import { type BrowserContext, expect, test } from "@playwright/test";
+import { type BrowserContext, type Page, expect, test } from "@playwright/test";
+import {
+  adminDecisionFixture,
+  type AdminDecisionFault,
+  type AdminDecisionScenario,
+} from "./admin-decision-fixture";
 import {
   type ContentAction,
   type ContentContext,
@@ -20,14 +25,15 @@ const value = <T>(r: Result<T>) => {
   return r.value;
 };
 async function session(context: BrowserContext, id = "owner") {
-  await context.route("**/api/session", (route) =>
+  await context.route("**/api/admin/session", (route) =>
     route.fulfill({
       json: {
+        permissions: ["moderate", "manage-content", "resolve-appeals"],
         profile: {
           id,
           version: 0,
-          kind: "guest",
-          alias: `Guest ${id}`,
+          kind: "member",
+          alias: `Admin ${id}`,
           icon: "owl",
           publicLeaderboard: false,
           wins: 0,
@@ -192,309 +198,158 @@ test("phone catalog form creates and edits all three hints, and retries an uncer
     await context.close();
   }
 });
-test("administrator searches users, grants/revokes moderation and clears private results after authorization loss", async ({
-  browser,
-}) => {
-  const context = await browser.newContext({
-    viewport: { width: 390, height: 844 },
-  });
-  try {
-    await session(context);
-    let version = 0;
-    let moderator = false;
-    let denied = false;
-    const writes: unknown[] = [];
-    await context.route("**/api/admin/users**", async (route) => {
-      if (denied)
-        return route.fulfill({
-          status: 403,
-          json: { error: { code: "NOT_AUTHORIZED" } },
-        });
-      if (route.request().method() === "POST") {
-        const body = route.request().postDataJSON();
-        writes.push(body);
-        moderator = body.grant;
-        return route.fulfill({ json: { version: ++version } });
-      }
-      const search =
-        new URL(route.request().url()).searchParams.get("search") ?? "";
-      const users = [
-        {
-          id: "owner",
-          alias: "Guest owner",
-          kind: "guest",
-          configuredAdmin: true,
-          roles: ["player", "admin"],
-        },
-        {
-          id: "alice",
-          alias: "Guest Alice",
-          kind: "guest",
-          configuredAdmin: false,
-          roles: moderator ? ["player", "moderator"] : ["player"],
-        },
-      ].filter((user) =>
-        `${user.id} ${user.alias}`.toLowerCase().includes(search.toLowerCase()),
-      );
-      return route.fulfill({
-        json: {
-          actorId: "owner",
-          version,
-          users,
-          total: users.length,
-          audit: [],
-        },
-      });
-    });
-    const page = await context.newPage();
-    await page.goto("/admin/users");
-    await expect(
-      page.getByText(
-        "Administrator access is controlled by server configuration.",
-      ),
-    ).toBeVisible();
-    await page.getByLabel("Search users by alias or profile ID").fill("Alice");
-    await page
-      .getByRole("button", { name: "Search users", exact: true })
-      .click();
-    await page
-      .getByRole("button", {
-        name: "Grant moderator for Guest Alice",
-        exact: true,
-      })
-      .click();
-    await page.getByLabel("Access change reason").fill("Trusted reviewer");
-    await page.getByRole("button", { name: "Confirm access change" }).click();
-    await expect(
-      page.getByRole("button", {
-        name: "Revoke moderator for Guest Alice",
-        exact: true,
-      }),
-    ).toBeVisible();
-    if (process.env.WORDPAIRS_ADMIN_CAPTURES)
-      await page
-        .locator(".admin-surface")
-        .screenshot({ path: "/tmp/wordpairs-admin-users-phone.png" });
-    await page
-      .getByRole("button", {
-        name: "Revoke moderator for Guest Alice",
-        exact: true,
-      })
-      .click();
-    await page
-      .getByLabel("Access change reason")
-      .fill("Review assignment ended");
-    await page.getByRole("button", { name: "Confirm access change" }).click();
-    await expect(
-      page.getByRole("button", {
-        name: "Grant moderator for Guest Alice",
-        exact: true,
-      }),
-    ).toBeVisible();
-    expect(writes).toMatchObject([
-      {
-        profileId: "alice",
-        role: "moderator",
-        grant: true,
-        expectedProfileId: "owner",
-      },
-      {
-        profileId: "alice",
-        role: "moderator",
-        grant: false,
-        expectedProfileId: "owner",
-      },
-    ]);
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    ).toBe(true);
-    denied = true;
-    await page.getByRole("button", { name: "Refresh user access" }).click();
-    await expect(
-      page.getByRole("alert").filter({ hasText: "Access required" }),
-    ).toContainText("Access required");
-    await expect(
-      page.getByRole("heading", { name: "Guest Alice", exact: true }),
-    ).toHaveCount(0);
-  } finally {
-    await context.close();
-  }
+
+test("fixed-owner administration has no user-delegation UI and its former endpoint stays disabled", async ({ page, context, request }) => {
+ await session(context);
+ await context.route("**/api/content", route => route.fulfill({json:{actorId:"owner",version:0,canModerate:true,cases:[],categories:[],catalogPairs:[]}}));
+ await page.goto("/admin/users");
+ await expect(page).toHaveURL(/\/admin$/);
+ await expect(page.getByRole("link", {name:"Users and access"})).toHaveCount(0);
+ expect((await request.get("/api/admin/users")).status()).toBe(404);
+ expect((await request.post("/api/admin/users",{data:{profileId:"other",role:"admin",grant:true}})).status()).toBe(404);
 });
-test("ordinary players cannot see the catalog or user directory on administration pages", async ({
-  browser,
-}) => {
-  const context = await browser.newContext();
-  try {
-    await session(context, "player");
-    await context.route("**/api/content", (route) =>
-      route.fulfill({
-        json: {
-          actorId: "player",
-          version: 0,
-          canModerate: false,
-          cases: [],
-          catalogPairs: [],
-          categories: [],
-        },
-      }),
-    );
-    await context.route("**/api/admin/users**", (route) =>
-      route.fulfill({
-        status: 403,
-        json: { error: { code: "NOT_AUTHORIZED" } },
-      }),
-    );
-    const page = await context.newPage();
-    await page.goto("/admin/words");
-    await expect(
-      page.getByRole("alert").filter({ hasText: "Access required" }),
-    ).toContainText("Access required");
-    await expect(
-      page.getByRole("button", { name: "Add word pair", exact: true }),
-    ).toHaveCount(0);
-    await page.goto("/admin/users");
-    await expect(
-      page.getByRole("alert").filter({ hasText: "Access required" }),
-    ).toContainText("Access required");
-    await expect(page.getByRole("article")).toHaveCount(0);
-    await page.goto("/admin");
-    await expect(
-      page.getByRole("heading", { name: "Moderation access required" }),
-    ).toBeVisible();
-  } finally {
-    await context.close();
+test("guest game sessions cannot reveal private administration pages", async ({ page, context }) => {
+ await context.route("**/api/session", route => route.fulfill({json:{profile:{id:"guest",kind:"guest"},permissions:["moderate","manage-content"]}}));
+ await context.route("**/api/admin/session", route => route.fulfill({status:401,json:{}}));
+ let privateReads=0;
+ await context.route("**/api/content", route => {privateReads++;return route.fulfill({status:403,json:{}});});
+ for(const path of ["/admin/words","/admin/users","/admin"]){
+  await page.goto(path);
+  await expect(page.getByText(/restricted to the GitHub account sharpninja/)).toBeVisible();
+  await expect(page.getByRole("button",{name:"Add word pair",exact:true})).toHaveCount(0);
+  await expect(page.getByRole("navigation",{name:"Administration",exact:true})).toHaveCount(0);
+ }
+ expect(privateReads).toBe(0);
+});
+test("late authorized moderation GET cannot restore private content after a denied mutation", async ({ browser }) => {
+ const context=await browser.newContext(); let release!:()=>void;
+ try{
+  await session(context);
+  let started!:()=>void,hold=false;
+  const waiting=new Promise<void>(resolve=>{started=resolve;});
+  const delayed=new Promise<void>(resolve=>{release=resolve;});
+  const data={actorId:"owner",version:0,canModerate:true,isSenior:true,cases:[{id:"private",version:0,kind:"nomination",word:"Protected candidate",status:"pending",nominationCount:10,futureEligible:false,playable:false,reason:null,createdAt:1,canReview:true,canAppeal:false,canResolve:false,canActivate:false}],categories:[],catalogPairs:[],audit:[],wins:0,canSuggest:false};
+  await context.route("**/api/content",async route=>{
+   if(route.request().method()==="POST")return route.fulfill({status:403,json:{error:{code:"NOT_AUTHORIZED"}}});
+   if(hold){hold=false;started();await delayed;}
+   return route.fulfill({json:data});
+  });
+  const page=await context.newPage();
+  await page.goto("/admin");
+  const privateHeading=page.getByRole("heading",{name:"Protected candidate",exact:true});
+  await expect(privateHeading).toBeVisible();
+  await page.getByLabel("Decision reason",{exact:true}).fill("Review change");
+  hold=true;
+  await page.getByRole("button",{name:"Refresh submissions",exact:true}).click();
+  await waiting;
+  await page.getByRole("button",{name:"Reject",exact:true}).click();
+  await expect(privateHeading).toHaveCount(0);
+  const late=page.waitForResponse(r=>new URL(r.url()).pathname==="/api/content"&&r.request().method()==="GET");
+  release(); await (await late).finished();
+  await expect(privateHeading).toHaveCount(0);
+ }finally{release?.();await context.close();}
+});
+
+// FR-23-C01 expected outcomes come from the approved existing-case contract and
+// policy, independently of the HTTP snapshot provider. This exercises real UI;
+// provider authentication and PostgreSQL policy assertions remain separate.
+const adminDecisionExpectations = {
+  approve: { action: "review", field: "decision", button: "Approve for curation", label: "Decision reason", status: "approved", audit: "approved" },
+  reject: { action: "review", field: "decision", button: "Reject", label: "Decision reason", status: "rejected", audit: "rejected" },
+  uphold: { action: "resolve", field: "outcome", button: "Uphold rejection", label: "Appeal decision reason", status: "rejected", audit: "upheld" },
+  overturn: { action: "resolve", field: "outcome", button: "Overturn rejection", label: "Appeal decision reason", status: "approved", audit: "overturned" },
+} as const;
+async function assertLegacyAdminDecision(page: Page, context: BrowserContext, scenario: AdminDecisionScenario, fault: AdminDecisionFault = "correct") {
+  const fixture = await adminDecisionFixture(context, scenario, fault);
+  const denied = scenario === "original-reviewer" || scenario === "proposer";
+  const appeal = scenario !== "approve" && scenario !== "reject";
+  const reason = "Reviewed the retained legacy evidence.";
+  const oldReason = "Original legacy rejection.";
+  await page.goto("/admin");
+  await expect(page.getByRole("heading", { name: "Moderation queue", exact: true })).toBeVisible();
+  await page.getByLabel("Search submissions", { exact: true }).fill("Legacy Orbit");
+  await page.getByRole("combobox", { name: "Submission status", exact: true }).selectOption(appeal ? "appealed" : "pending");
+  const article = page.locator(".content-case").filter({ has: page.getByRole("heading", { name: "Legacy Orbit", exact: true }) });
+  await expect(article).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Unrelated legacy case", exact: true })).toHaveCount(0);
+  await article.getByText("Decision history", { exact: true }).click();
+  const originalReviewer = scenario === "original-reviewer" ? "owner" : "legacy-reviewer";
+  const proposer = scenario === "proposer" ? "owner" : "legacy-proposer";
+  const beforeHistory = appeal ? [
+    `rejected · revision 1 · pending → rejected · by ${originalReviewer} · ${oldReason} · 10 nominations`,
+    `appeal · revision 2 · rejected → appealed · by ${proposer} · Legacy proposer requested an independent review. · 10 nominations`,
+  ] : [];
+  expect(await article.locator("details li").allTextContents()).toEqual(beforeHistory);
+  if (denied) {
+    expect({
+      uphold: await article.getByRole("button", { name: "Uphold rejection", exact: true }).count(),
+      overturn: await article.getByRole("button", { name: "Overturn rejection", exact: true }).count(),
+      status: await article.locator("p strong").textContent(),
+      history: await article.locator("details li").allTextContents(),
+      writes: fixture.writes,
+    }, "FR-23-C01 semantic outcome").toEqual({ uphold: 0, overturn: 0, status: "appealed", history: beforeHistory, writes: [] });
+    return;
+  }
+  const expected = adminDecisionExpectations[scenario];
+  await article.getByLabel(expected.label, { exact: true }).fill(reason);
+  const saved = page.waitForResponse(response => new URL(response.url()).pathname === "/api/content" && response.request().method() === "POST");
+  await article.getByRole("button", { name: expected.button, exact: true }).click();
+  expect((await saved).status()).toBe(200);
+  await page.getByRole("combobox", { name: "Submission status", exact: true }).selectOption("all");
+  await expect(article).toBeVisible();
+  await expect.poll(() => article.locator("p strong").textContent()).not.toBe(appeal ? "appealed" : "pending");
+  const details = article.locator("details").filter({ hasText: "Decision history" });
+  if ((await details.getAttribute("open")) === null) await details.getByText("Decision history", { exact: true }).click();
+  await expect(details).toHaveAttribute("open", "");
+  const paragraphs = await article.locator("p").allTextContents();
+  const body = fixture.writes[0];
+  expect(body.commandId).toEqual(expect.any(String));
+  expect(String(body.commandId).length).toBeGreaterThan(0);
+  expect({
+    status: await article.locator("p strong").textContent(),
+    reason: paragraphs.find(text => text.startsWith("Reason:")),
+    playable: paragraphs.includes("Playable in future rounds"),
+    eligible: paragraphs.includes("Approved for curation; not playable"),
+    history: await details.locator("li").allTextContents(),
+    historyVisible: await details.locator("ol").isVisible(),
+    reviewControls: await article.getByRole("button", { name: "Approve for curation", exact: true }).count(),
+    resolveControls: await article.getByRole("button", { name: "Overturn rejection", exact: true }).count(),
+    command: { action: body.action, caseId: body.caseId, reason: body.reason, expectedProfileId: body.expectedProfileId, expectedVersion: body.expectedVersion, selected: body[expected.field] },
+    writeCount: fixture.writes.length,
+  }, "FR-23-C01 semantic outcome").toEqual({
+    status: expected.status, reason: `Reason: ${reason}`, playable: false, eligible: expected.status === "approved",
+    history: [...beforeHistory, `${expected.audit} · revision ${appeal ? 3 : 1} · ${appeal ? "appealed" : "pending"} → ${expected.status} · by owner · ${reason} · 10 nominations`],
+    historyVisible: true,
+    reviewControls: 0, resolveControls: 0,
+    command: { action: expected.action, caseId: "legacy-decision-case", reason, expectedProfileId: "owner", expectedVersion: 7, selected: scenario }, writeCount: 1,
+  });
+  await page.getByRole("combobox", { name: "Submission status", exact: true }).selectOption(expected.status);
+  await expect(article).toBeVisible();
+  await page.getByRole("combobox", { name: "Submission status", exact: true }).selectOption(expected.status === "approved" ? "rejected" : "approved");
+  await expect(page.getByText("No submissions match these filters. Change the search or status.", { exact: true })).toBeVisible();
+}
+for (const scenario of ["approve", "reject", "uphold", "overturn"] as const) {
+  test(`FR-23-C01 owner ${scenario} of an existing legacy case preserves reason and decision history`, async ({ page, context }) => {
+    await assertLegacyAdminDecision(page, context, scenario);
+  });
+}
+for (const scenario of ["original-reviewer", "proposer"] as const) {
+  test(`FR-23-C01 ${scenario} owner has no appeal-resolution controls or writes`, async ({ page, context }) => {
+    await assertLegacyAdminDecision(page, context, scenario);
+  });
+}
+test("FR-23-C01 rendered assertion gate rejects wrong status, reason, history and self-resolution fixtures", async ({ browser }) => {
+  for (const [scenario, fault] of [
+    ["approve", "wrong-status"], ["reject", "wrong-reason"], ["overturn", "missing-history"],
+    ["original-reviewer", "self-resolution"], ["proposer", "self-resolution"],
+  ] as const) {
+    const context = await browser.newContext();
+    try {
+      let failure = "";
+      try { await assertLegacyAdminDecision(await context.newPage(), context, scenario, fault); }
+      catch (error) { failure = error instanceof Error ? error.message : String(error); }
+      expect(failure, `${scenario}/${fault} must fail its actual semantic oracle`).toContain("FR-23-C01 semantic outcome");
+    } finally { await context.close(); }
   }
 });
 
-for (const section of ["users", "moderation"] as const)
-  test(`late authorized ${section} GET cannot restore private data after a mutation is denied`, async ({
-    browser,
-  }) => {
-    const context = await browser.newContext();
-    let release = () => {};
-    try {
-      await session(context);
-      let holdNext = false;
-      let started = () => {};
-      const waiting = new Promise<void>((resolve) => {
-        started = resolve;
-      });
-      const delayed = new Promise<void>((resolve) => {
-        release = resolve;
-      });
-      const api = section === "users" ? "/api/admin/users" : "/api/content";
-      const data =
-        section === "users"
-          ? {
-              actorId: "owner",
-              version: 0,
-              total: 1,
-              audit: [],
-              users: [
-                {
-                  id: "private",
-                  alias: "Protected Alice",
-                  kind: "guest",
-                  configuredAdmin: false,
-                  roles: ["player"],
-                },
-              ],
-            }
-          : {
-              actorId: "owner",
-              version: 0,
-              canModerate: true,
-              isSenior: true,
-              cases: [
-                {
-                  id: "private",
-                  version: 0,
-                  kind: "nomination",
-                  word: "Protected candidate",
-                  status: "pending",
-                  nominationCount: 10,
-                  futureEligible: false,
-                  playable: false,
-                  reason: null,
-                  createdAt: 1,
-                  canReview: true,
-                  canAppeal: false,
-                  canResolve: false,
-                  canActivate: false,
-                },
-              ],
-              categories: [],
-              catalogPairs: [],
-              audit: [],
-              wins: 0,
-              canSuggest: false,
-            };
-      await context.route(`**${api}**`, async (route) => {
-        if (route.request().method() === "POST")
-          return route.fulfill({
-            status: 403,
-            json: { error: { code: "NOT_AUTHORIZED" } },
-          });
-        if (holdNext) {
-          holdNext = false;
-          started();
-          await delayed;
-        }
-        return route.fulfill({ json: data });
-      });
-      const page = await context.newPage();
-      await page.goto(section === "users" ? "/admin/users" : "/admin");
-      const privateHeading = page.getByRole("heading", {
-        name: section === "users" ? "Protected Alice" : "Protected candidate",
-        exact: true,
-      });
-      await expect(privateHeading).toBeVisible();
-      if (section === "users") {
-        await page
-          .getByRole("button", {
-            name: "Grant moderator for Protected Alice",
-            exact: true,
-          })
-          .click();
-        await page.getByLabel("Access change reason").fill("Review change");
-      } else
-        await page
-          .getByLabel("Decision reason", { exact: true })
-          .fill("Review change");
-      holdNext = true;
-      await page
-        .getByRole("button", {
-          name:
-            section === "users" ? "Refresh user access" : "Refresh submissions",
-          exact: true,
-        })
-        .click();
-      await waiting;
-      await page
-        .getByRole("button", {
-          name: section === "users" ? "Confirm access change" : "Reject",
-          exact: true,
-        })
-        .click();
-      await expect(privateHeading).toHaveCount(0);
-      const late = page.waitForResponse(
-        (response) =>
-          new URL(response.url()).pathname === api &&
-          response.request().method() === "GET",
-      );
-      release();
-      await (await late).finished();
-      await page.evaluate(
-        () =>
-          new Promise<void>((resolve) =>
-            requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
-          ),
-      );
-      await expect(privateHeading).toHaveCount(0);
-    } finally {
-      release();
-      await context.close();
-    }
-  });

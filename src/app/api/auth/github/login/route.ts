@@ -1,0 +1,2 @@
+export { githubLogin as GET } from "../../../../../web/github-auth-http";
+export const runtime = "nodejs";

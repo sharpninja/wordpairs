@@ -1,0 +1,1592 @@
+{
+  "readAtLocal": "2026-10-30T18:41:56",
+  "workspace": "\u003Crepo\u003E",
+  "currentLayer": {
+    "name": "Layer 1",
+    "createdAtUtc": {
+      "timeOfDay": "10:10:25.4404993",
+      "offset": "00:00:00",
+      "hour": 10,
+      "millisecond": 440,
+      "nanosecond": 300,
+      "dateTime": "2026-10-27T10:10:25.4404993",
+      "utcTicks": 639286926254404993,
+      "ticks": 639286926254404993,
+      "month": 10,
+      "second": 25,
+      "date": "2026-10-27T00:00:00.0000000",
+      "totalOffsetMinutes": 0,
+      "day": 27,
+      "minute": 10,
+      "localDateTime": "2026-10-27T05:10:25.4404993-05:00",
+      "year": 2026,
+      "utcDateTime": "2026-10-27T10:10:25.4404993Z",
+      "dayOfYear": 300,
+      "microsecond": 499,
+      "dayOfWeek": "Tuesday"
+    },
+    "order": 1,
+    "updatedAtUtc": {
+      "timeOfDay": "10:10:25.4404993",
+      "offset": "00:00:00",
+      "hour": 10,
+      "millisecond": 440,
+      "nanosecond": 300,
+      "dateTime": "2026-10-27T10:10:25.4404993",
+      "utcTicks": 639286926254404993,
+      "ticks": 639286926254404993,
+      "month": 10,
+      "second": 25,
+      "date": "2026-10-27T00:00:00.0000000",
+      "totalOffsetMinutes": 0,
+      "day": 27,
+      "minute": 10,
+      "localDateTime": "2026-10-27T05:10:25.4404993-05:00",
+      "year": 2026,
+      "utcDateTime": "2026-10-27T10:10:25.4404993Z",
+      "dayOfYear": 300,
+      "microsecond": 499,
+      "dayOfWeek": "Tuesday"
+    },
+    "key": "layer-1",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261030T234022Z-ui-ack-boundary-audit",
+  "records": [
+    {
+      "id": "FR-ACCESSCONTROL-024",
+      "status": "deferred",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "New verification/extension import key: FR-24; canonical MCP ID: FR-ACCESSCONTROL-024. Confirmed user requests 27October2026; server env bootstrap was explicitly selected. No default administrator or human release gate was requested. Former provisional MCP ID: FR-WP-024. Replaced at user request with a subject-identifying ID.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks. This historical capability is inactive in the current release; preserved source/domain evidence is not a claim that its former public/multi-account UI is available.",
+      "title": "Moderator and administrator access control",
+      "acceptanceCriteria": [
+        {
+          "text": "WORDPAIRS_ADMIN_PROFILE_IDS is a private server-only comma-separated allowlist of stable existing profile IDs. Empty configuration grants no bootstrap authority and aliases/browser input cannot grant access.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-24-C01"
+        },
+        {
+          "text": "Moderators moderate and curate; senior moderators additionally resolve independent appeals; administrators additionally manage users. Proposer/original-reviewer independence remains enforced.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-24-C02"
+        },
+        {
+          "text": "Roles are read from trusted current server/database evidence; configured administrator authority cannot be revoked in the UI and the final effective administrator cannot be removed, including concurrent cross-revocation.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-24-C03"
+        },
+        {
+          "text": "Role changes atomically persist revision, canonical retry result and reasoned audit. Revoked administrators cannot replay old grants to regain authority; directories omit credentials, emails and OIDC subjects.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-24-C04"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Allow authorized administrators to grant and revoke moderator, senior-moderator and administrator rights; bootstrap explicit existing profile IDs from server configuration."
+    },
+    {
+      "id": "FR-ADMINPAGES-023",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "New verification/extension import key: FR-23; canonical MCP ID: FR-ADMINPAGES-023. Confirmed user requests 27October2026; server env bootstrap was explicitly selected. No default administrator or human release gate was requested. Former provisional MCP ID: FR-WP-023. Replaced at user request with a subject-identifying ID.\n28October2026 operator observed unconditional administration links on staging; FR-23-C05 records the confirmed navigation correction. Role grants remain server-authoritative, with configured bootstrap IDs and audited ACL grants; no role comes from browser input.\n28 October 2026: Navigation correction verified locally: 560 unit/contract tests, 10 browser administration/navigation tests, 14 independent focused API/React tests, lint and production build passed. Source hostile review approved 99/99 after resolving a rejected focus/session race. New source hosted rollout remains pending; real OpenAI registration is unavailable.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks.\nPrior body/criteria retained as historical evidence: {\"body\":\"Provide dedicated pages for moderation, word-pair/hint management and user-role administration.\",\"acceptanceCriteria\":[{\"text\":\"Authorized staff can search/filter the moderation queue at /admin, approve/reject with reasons, review history and independently resolve permitted appeals.\",\"id\":\"FR-23-C01\",\"isSatisfied\":true,\"evidence\":\"docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts\"},{\"text\":\"/admin/words exposes search/category filters, authoring and immutable revision editing; /admin/users exposes bounded profile search, reasoned grants/revocations and role audit history.\",\"id\":\"FR-23-C02\",\"isSatisfied\":true,\"evidence\":\"docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts\"},{\"text\":\"Ordinary players cannot fetch privileged records or perform administrative writes; stale authorized GET responses cannot restore private data after an authorization denial.\",\"id\":\"FR-23-C03\",\"isSatisfied\":true,\"evidence\":\"docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts\"},{\"text\":\"Phone-sized forms and controls remain readable and operable; uncertain-write retries preserve command identity and clear successful drafts without duplicates.\",\"id\":\"FR-23-C04\",\"isSatisfied\":true,\"evidence\":\"docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts\"},{\"text\":\"Navigation to moderation and word-pair/hint management appears only for sessions with the matching server-derived permission; user-access links appear only for administrators. Anonymous and ordinary player sessions have no administration links, including direct admin-page entry. Refresh failure, logout and detected revocation remove links.\",\"id\":\"FR-23-C05\",\"isSatisfied\":true,\"evidence\":\"tests/browser/auth-navigation.phase6.spec.ts; tests/web/identity-navigation.test.ts; tests/web/identity-api.test.ts; docs/evidence/hosting/auth-navigation-review-round2.json. Fixture UI10/10, independent API/React14/14; hosted rollout separately pending.\"}]}",
+      "title": "Administration pages",
+      "acceptanceCriteria": [
+        {
+          "text": "Authorized staff can search/filter the moderation queue at /admin, approve/reject with reasons, review history and independently resolve permitted appeals.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-23-C01"
+        },
+        {
+          "text": "/admin/words supports audited immutable word/hint editing. User delegation is disabled: /admin/users redirects to /admin and its API returns404 without reading/writing access storage.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "FR-23-C02"
+        },
+        {
+          "text": "Ordinary players cannot fetch privileged records or perform administrative writes; stale authorized GET responses cannot restore private data after an authorization denial.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-23-C03"
+        },
+        {
+          "text": "Phone-sized forms and controls remain readable and operable; uncertain-write retries preserve command identity and clear successful drafts without duplicates.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-23-C04"
+        },
+        {
+          "text": "Only the verified GitHub owner admin session sees moderation and word/hint navigation. Public guest sessions see no admin links; no session sees user-delegation links. Refresh failure and logout remove privileged links.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "FR-23-C05"
+        },
+        {
+          "text": "Only GitHub numeric account16146732 with login sharpninja can establish an admin identity. Authorization Code uses exact registered callbacks, S256PKCE, cryptographic state and a one-time expiring browser-bound challenge; wrong users, duplicate parameters, replay and provider failures issue no admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-03"
+        },
+        {
+          "text": "Guest/admin cookies and stored challenge/session digests use separate namespaces. Copying a token into the other cookie cannot authenticate. GitHub login/logout preserves the guest session. Admin API responses are private/no-store and logout requires same origin and revokes the stored admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-04"
+        },
+        {
+          "text": "Navigation/private content require the verified admin session; ordinary guest grants cannot authorize admin pages. Callback failure gives safe visible feedback; logout/failure removes links, stale requests cannot restore private state, and active content edits retain audit/version/retry rules.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-08"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Provide owner-only GitHub administration at /admin and /admin/words; public guest play and inactive role grants cannot authorize access. Keep immutable, audited content commands and safe retries."
+    },
+    {
+      "id": "FR-ANCHORSELECTION-007",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-07; canonical MCP ID: FR-ANCHORSELECTION-007. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-007. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Category selection",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a new game with 2-15 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-04"
+        },
+        {
+          "text": "Given at least one player solves a round, when the round ends, then the earliest accepted correct solver can select the next category.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-11"
+        },
+        {
+          "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-02"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "At game start, the service snapshots the active roster in roster order and indexes players from 1 through N. It draws a random integer from 1 through N, inclusive; the player with the matching index becomes the anchor and chooses the first round’s category. The index remains stable for the match. After each round, the first correct solver chooses the next category. The game uses the earliest accepted correct submission to identify that player."
+    },
+    {
+      "id": "FR-ANSWERREVEAL-012",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-12; canonical MCP ID: FR-ANSWERREVEAL-012. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-012. Replaced at user request with a subject-identifying ID.",
+      "title": "Round reveal",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player remains unsolved after Hint 3, when the round ends, then the player earns 0 points and the game reveals the correct answer.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-08"
+        },
+        {
+          "text": "Given an unsolved player submits an answer for the current stage, when the server checks it against the target and approved accepted-answer list, then only a correct answer is accepted and scored once for that stage; an incorrect answer does not change score or expose guess text to other players; and the target answer remains unavailable to clients until round reveal.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-45"
+        },
+        {
+          "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-02"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "When a round ends, the game reveals the correct paired answer. Players who remain unsolved after Hint 3 receive zero points for that round."
+    },
+    {
+      "id": "FR-ANSWERSTAGES-008",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-08; canonical MCP ID: FR-ANSWERSTAGES-008. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-008. Replaced at user request with a subject-identifying ID.",
+      "title": "Answer stages",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player submits the correct answer during the no-hint stage, when the game accepts it, then the player earns 5 points and their round score locks.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-06"
+        },
+        {
+          "text": "Given a player solves after Hint 1, Hint 2, or Hint 3, when the game accepts the answer, then the player earns 3, 2, or 1 point respectively.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-07"
+        },
+        {
+          "text": "Given a player remains unsolved after Hint 3, when the round ends, then the player earns 0 points and the game reveals the correct answer.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-08"
+        },
+        {
+          "text": "Given multiple unsolved players, when all unsolved players submit for the current stage, then the game confirms stage results and shows the next hint only to players still unsolved.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-09"
+        },
+        {
+          "text": "Given an unsolved player submits an answer for the current stage, when the server checks it against the target and approved accepted-answer list, then only a correct answer is accepted and scored once for that stage; an incorrect answer does not change score or expose guess text to other players; and the target answer remains unavailable to clients until round reveal.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-45"
+        },
+        {
+          "text": "Match length and stage timer: Eight rounds. Each of the four answer stages has a 20-second deadline; a stage closes early when all unsolved players submit.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-01"
+        },
+        {
+          "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-02"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "The first answer stage has no hint. Each unsolved player gets one submission per stage. Once all unsolved players submit, the game confirms stage results and reveals the next predefined hint only to those who remain unsolved. This repeats for up to three hints."
+    },
+    {
+      "id": "FR-CANDIDATEHOLD-028",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Specified by operator instruction \"Fill gaps\", 27October2026. Design: docs/testing/ui/decisions.md. Original documentation-only snapshot retained in docs/testing/ui/archive/design-20261027/; implementation now has the separately scoped evidence below.\n\nBEGIN UI-IMPLEMENTATION FR-CANDIDATEHOLD-028\nImplemented UI-DEC behavior. Exact source inventory: docs/testing/ui/implementation-manifest.json. Evidence: docs/testing/ui/implementation-receipt.json; docs/evidence/ui-gaps/unit-safe-errors-final.log (542 tests), browser-safe-errors-final.log (61 journeys including malformed room GET/POST), browser-seats-tagged.log (5 refined recovery cases), postgres.log (68 real SQL tests), build-safe-errors-final.log, lint-safe-errors.log and typecheck-safe-errors.log. Browser HTTP/persistence/time ports are isolated fixtures around actual React/application/domain services; do not treat them as real Realtime/physical-phone/OIDC/public-origin evidence. Criterion-level procedures: matching UI TEST notes/cases. Historical148baseline criteria/evidence and TEST-ROOMSYNC-139 / LIVE-07 are preserved.\nEND UI-IMPLEMENTATION FR-CANDIDATEHOLD-028",
+      "title": "Hold and resume nomination review",
+      "acceptanceCriteria": [
+        {
+          "text": "An independent moderator with a nonempty reason can move a pending candidate to on_hold; unauthorized actors and the proposer cannot do so.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-HOLD-01"
+        },
+        {
+          "text": "on_hold retains nominations and history but prevents approval/publication/playability and never changes current scores or progression.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-HOLD-02"
+        },
+        {
+          "text": "An independent moderator resumes with a reason to pending_review after rechecking unique-count threshold; hold/resume actor and reasons are audited.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-HOLD-03"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Allow independent moderators to pause pending nomination review without losing counts or implying approval."
+    },
+    {
+      "id": "FR-CATEGORIES-005",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-05; canonical MCP ID: FR-CATEGORIES-005. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-005. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Relationship categories",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a new game with 2-15 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-04"
+        },
+        {
+          "text": "Given two word pairs in the same category, when each is played, then both rounds use that category’s predefined background. A pair in another category uses that category’s background.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-05"
+        },
+        {
+          "text": "Given a category is enabled, when the content catalog is checked, then every playable pair has a prompt, target answer, three ordered hints, accepted-answer policy, and category background.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-16"
+        },
+        {
+          "text": "Colors category: Each Colors pair contains complementary colors.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-06"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "The initial category set supports Heroes and Villains, Colors, Year and Event, Director and Movie, Singer and Song, and Opposites. Each pair belongs to one category."
+    },
+    {
+      "id": "FR-CATEGORYART-006",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-06; canonical MCP ID: FR-CATEGORYART-006. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-006. Replaced at user request with a subject-identifying ID. Operator confirmed cel-shaded comic aesthetics and a translucent content panel on 27 October 2026. Asset prompts/provenance: docs/category-artwork-prompts.json. Design: docs/category_artwork.md. Subsequent operator corrections explicitly prohibit an artwork panel and request both 9:16 and 16:9 assets. The earlier banner design is superseded.",
+      "title": "Category backgrounds",
+      "acceptanceCriteria": [
+        {
+          "text": "Given two word pairs in the same category, when each is played, then both rounds use that category’s predefined background. A pair in another category uses that category’s background.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-05"
+        },
+        {
+          "text": "Given a player uses a phone-sized viewport in portrait or landscape, when they operate primary game actions with touch or keyboard and view text over category backgrounds, then the actions remain operable, text and controls retain clear contrast, focus is visible, and selected icon, solved status, and score changes are indicated by labels or shapes as well as color.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-44"
+        },
+        {
+          "text": "All six initial categories use distinct category-themed cel-shaded comic illustrations with bold ink outlines, flat colors, hard-edged shadows and halftone accents, rather than abstract placeholders.",
+          "evidence": "docs/evidence/category-artwork/receipt.json; docs/category-artwork-prompts.json; tests/browser/accessibility.phase6.spec.ts. Production Chromium22/22; all12 exact-aspect assets independently inspected. Emulated viewports, not physical-device or liveRealtime certification.",
+          "isSatisfied": true,
+          "id": "ART-COMIC-01"
+        },
+        {
+          "text": "Category artwork is a full-page background, not an image panel. Gameplay content uses a frosted translucent panel that lets the background show softly without distraction; text and controls remain readable on phone and desktop and when artwork fails.",
+          "evidence": "docs/evidence/category-artwork/receipt.json; docs/category-artwork-prompts.json; tests/browser/accessibility.phase6.spec.ts. Production Chromium22/22; all12 exact-aspect assets independently inspected. Emulated viewports, not physical-device or liveRealtime certification.",
+          "isSatisfied": true,
+          "id": "ART-PANEL-01"
+        },
+        {
+          "text": "Each of the six category backgrounds has an independently recomposed 9:16 portrait version and 16:9 landscape version; the game selects the matching orientation and updates it when the viewport orientation changes.",
+          "evidence": "docs/evidence/category-artwork/receipt.json; docs/category-artwork-prompts.json; tests/browser/accessibility.phase6.spec.ts. Production Chromium22/22; all12 exact-aspect assets independently inspected. Emulated viewports, not physical-device or liveRealtime certification.",
+          "isSatisfied": true,
+          "id": "ART-ASPECT-01"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Each category maps to one predefined background asset. All word pairs in the same category use that background. The background must remain legible behind the prompt, hints, answer field, and scorecard. The initial six category illustrations use cel-shaded comic panels; gameplay content rests on a readable frosted translucent panel. Artwork fills the page background, not a separate artwork panel. Each category provides 9:16 and 16:9 compositions selected by viewport orientation."
+    },
+    {
+      "id": "FR-CATEGORYSUGGESTIONS-017",
+      "status": "deferred",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-17; canonical MCP ID: FR-CATEGORYSUGGESTIONS-017. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-017. Replaced at user request with a subject-identifying ID.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks. This historical capability is inactive in the current release; preserved source/domain evidence is not a claim that its former public/multi-account UI is available.",
+      "title": "Category and pair suggestions",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player has fewer than 10 game wins, when they open the content suggestion flow, then category-and-pair submission is unavailable. Given they have won 10 games, then they can submit one proposed relationship category with three word pairs for review. The submission is not playable until approved and complete.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-19"
+        },
+        {
+          "text": "Given an actor is not authorized to perform moderation or catalog activation, when they attempt to change moderation status or publish content, then the service rejects the action; every change to nomination count, moderation status, and eligibility is auditable; and content cannot be selected for play until it has passed moderation and is complete in the curated catalog.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-47"
+        },
+        {
+          "text": "Moderation workflow: Roles are Content Moderator and Senior Moderator. At threshold, content enters Pending Review. A moderator other than the proposer approves or rejects with a reason. The proposer may appeal once to a Senior Moderator. Approval alone does not make content playable; the complete curated record must pass validation.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-08"
+        },
+        {
+          "text": "Suggestion eligibility: Wins are lifetime wins on one stable profile. A profile may have one open category suggestion at a time; each contains one category and exactly three pairs.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-09"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "After a player profile has won 10 games over its lifetime, the player can have one open suggestion at a time: one new relationship category with exactly three word pairs. Suggestions enter review and moderation; approval does not bypass the existing curated-content requirements. Approved pairs become eligible for future games only after their complete content records and category background are ready."
+    },
+    {
+      "id": "FR-CURATEDPAIRS-004",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-04; canonical MCP ID: FR-CURATEDPAIRS-004. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work.\n\nInitial content/identity/nomination/suggestion record contract preserved verbatim:\nEach content record keeps the prompt, answer, hints, accepted alternatives, and category reference together so each round is deterministic.\n\n| Field | Requirement |\n|---|---|\n| `pair_id` | Unique stable identifier for the word pair. |\n| `category_id` | Relationship category identifier. |\n| `prompt_word` | Word displayed to players at round start. |\n| `target_answer` | Canonical paired answer, held by the server until reveal. |\n| `accepted_answers` | Explicit alternative spellings or forms accepted as correct. |\n| `hints` | Exactly three ordered, predefined hint strings. |\n| `background_id` | Reference to the category’s predefined background asset. |\n\nA player identity record stores the selected entry mode (OpenAI OIDC or guest), the profile reference, generated public alias, leaderboard opt-out, and selected icon. Authenticated profiles are associated with the validated OIDC subject; guest identity persists in the same browser/device until site data is cleared.\n\nNomination records include the normalized candidate word, nominating player, submission timestamp, moderation status, nomination count, and future-pool eligibility state. A nominated word does not replace the required fields in a playable word-pair record.\n\nCategory suggestion records include the submitting player, proposed relationship category, exactly three proposed word pairs, submission timestamp, win-unlock evidence, and review status. Each proposed pair must be completed with the fields above before it can be played. Former provisional MCP ID: FR-WP-004. Replaced at user request with a subject-identifying ID.",
+      "title": "Predefined content",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a category is enabled, when the content catalog is checked, then every playable pair has a prompt, target answer, three ordered hints, accepted-answer policy, and category background.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-16"
+        },
+        {
+          "text": "Content volume and reuse: Seed 10 complete pairs per category. Do not repeat a pair within a match until every playable pair in the selected category has been used; then reshuffle that category’s eligible pool.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-05"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Every playable word pair has a predefined category, prompt word, target answer, and three ordered hints. The game uses this content at runtime and does not generate prompts or hints dynamically."
+    },
+    {
+      "id": "FR-FINALSTANDINGS-014",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-14; canonical MCP ID: FR-FINALSTANDINGS-014. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-014. Replaced at user request with a subject-identifying ID.",
+      "title": "Game end and tiebreak",
+      "acceptanceCriteria": [
+        {
+          "text": "Given the configured final round ends, when players have different total scores, then final standings rank them by total score.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-13"
+        },
+        {
+          "text": "Given two or more players tie for the highest score, when final standings are calculated, then total answer time is the sum of each round’s accepted solve duration, with 80 seconds charged for an unsolved round; the lower total ranks first, and an exact tie shares the same rank.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-14"
+        },
+        {
+          "text": "Match length and stage timer: Eight rounds. Each of the four answer stages has a 20-second deadline; a stage closes early when all unsolved players submit.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-01"
+        },
+        {
+          "text": "Total answer time and final tie: Sum server-measured solve durations; an unsolved round adds the 80-second maximum round duration. Sort tied scores by this total; exact remaining ties share rank.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-04"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "A match contains eight rounds. When the eighth round ends, the game displays final standings. If the highest score is tied, sum each player’s accepted solve durations and add 80 seconds for each unsolved round; the lowest total ranks first. Players still tied share the same rank."
+    },
+    {
+      "id": "FR-GUESTADMIN-031",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "critical",
+      "notes": "28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks.\n\nHV round1 correction: FR-GUESTADMIN-031#GA-05 is verified through TEST-PWAINSTALL-137 / TR-PWA-INSTALLATION-036 and canonical FR-PHONEINSTALL-026#PWA-01/03/05. GA-06 maps to TEST-PWAPRIVACY-138 / TR-PWA-CACHEPRIVACY-037 and canonical PWA-09. GA-07 maps to those privacy records and canonical PWA-06/07/08. GA-09 maps to TEST-ADMINUI-136 / TR-UI-RESPONSIVEMATRIX-040: tests/browser/pwa.spec.ts welcome/profile geometry at390x844 and1440x900, tests/web/pwa-support.test.ts. GA-10 maps to TEST-GITHUBADMIN-149 / TR-GITHUB-ADMIN-043: private member draft oracle, real PostgreSQL owner callback and legacy-member projection/paging, rendered community board. Earlier evidence and criteria remain historical; new obligations unsatisfied.\n\nOperator-approved one-time process exception, 28 October 2026: \"Record the one-time exception\", replying to call_30e2a1f3011842979ab422d87f21432e. This accepts the missing original admin-PWA pre-implementation mock-gate receipt as a historical process exception only. No original receipt is reconstructed, no execution evidence is invented, and no fresh test, hostile review, security, migration or hosted validation is waived. GA-10 recovery has its own chronological mock evidence. Current requirements remain in progress and changed acceptance criteria unsatisfied pending their actual verification.",
+      "title": "Guest game and owner-only admin PWA release",
+      "acceptanceCriteria": [
+        {
+          "text": "Public gameplay offers guest entry only. Public OpenAI routes return404, member-shaped public sessions fail closed, and public session permissions are empty regardless of stored grants or bootstrap configuration.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-01"
+        },
+        {
+          "text": "Public community submissions, nominations, secured content links and user-delegation controls are disabled; reactions and guest multiplayer remain available. /content redirects to /play and /api/admin/users returns404 without storage.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-02"
+        },
+        {
+          "text": "Only GitHub numeric account16146732 with login sharpninja can establish an admin identity. Authorization Code uses exact registered callbacks, S256PKCE, cryptographic state and a one-time expiring browser-bound challenge; wrong users, duplicate parameters, replay and provider failures issue no admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-03"
+        },
+        {
+          "text": "Guest/admin cookies and stored challenge/session digests use separate namespaces. Copying a token into the other cookie cannot authenticate. GitHub login/logout preserves the guest session. Admin API responses are private/no-store and logout requires same origin and revokes the stored admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-04"
+        },
+        {
+          "text": "Only admin pages link the admin manifest with identity/start/scope /admin and standalone presentation. Only authenticated admin UI offers installation. Public / and /play expose no manifest or install controls. No GitHub secret or provider token is returned to a browser response or client bundle.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-05"
+        },
+        {
+          "text": "The former root worker retires itself and only wordpairs-pwa-* caches. Admin/unrelated registrations and caches survive. Existing OS-installed icons cannot be removed by website code and are not claimed removed.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-06"
+        },
+        {
+          "text": "Admin worker handles only same-origin GET admin document navigations, preserves HTTP errors and provides a generic offline screen only for network failure. It caches only public offline HTML/icons; no private HTML, sessions, APIs, credentials, RSC, mutations or background actions.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-07"
+        },
+        {
+          "text": "Navigation/private content require the verified admin session; ordinary guest grants cannot authorize admin pages. Callback failure gives safe visible feedback; logout/failure removes links, stale requests cannot restore private state, and active content edits retain audit/version/retry rules.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-08"
+        },
+        {
+          "text": "The welcome/profile card has responsive internal whitespace of at least20CSSpixels on phone and32CSSpixels on desktop, with readable controls and no horizontal overflow.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-09"
+        },
+        {
+          "text": "All account/member profiles, including the GitHub administrator and retired OpenAI profiles, are excluded server-side from public leaderboard/landing projections even when their saved public flag is true. New member profiles default private. Guest opt-in, ordering, bounded paging and revision conflict behavior remain unchanged.",
+          "evidence": "User confirmed 28 October 2026: Hide all old member profiles. Recovery slice tests and migration pending; no completion claimed.",
+          "isSatisfied": false,
+          "id": "GA-10"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Provide public guest-only multiplayer and a separate owner-only GitHub administration PWA with isolated authentication and private offline behavior."
+    },
+    {
+      "id": "FR-IDENTITY-018",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-18; canonical MCP ID: FR-IDENTITY-018. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-018. Replaced at user request with a subject-identifying ID.\n28 October 2026: The operator confirmed no OpenAI client registration exists and requested website OIDC registration for the OpenAI-sponsored Handshake competition, including its mission URL and both callbacks. Official interest form prepared with operator contact and identity-only scope; submission reports that the form is still loading. Submission and client issuance remain unconfirmed. Firefox control is unavailable. No OpenAI key or client ID was invented. Existing controlled-provider acceptance evidence does not prove real provider entitlement.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks.\nPrior body/criteria retained as historical evidence: {\"body\":\"Before creating or joining a room, a player can authenticate with OpenAI OIDC to establish or load a game profile, or continue as a guest. Both modes provide the player identity needed for room membership and allow icon selection. A guest profile persists in the same browser/device until site data is cleared; it does not sync across devices or link to an OIDC profile.\",\"acceptanceCriteria\":[{\"text\":\"Given a player chooses account sign-in, when OpenAI OIDC authentication succeeds, then the game establishes or loads the game profile associated with that authenticated identity and allows the player to select an icon.\",\"id\":\"AC-20\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"},{\"text\":\"Given a player chooses guest mode, when they continue without OIDC authentication, then the game creates a guest player identity, allows icon selection, and lets them create or join a room by code.\",\"id\":\"AC-21\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"},{\"text\":\"Given an OIDC identity provider is configured, when a sign-in callback presents a token with an invalid signature, issuer, audience, state, nonce, or expiry, then the service rejects the sign-in and does not create or associate an authenticated profile from the unverified identity.\",\"id\":\"AC-46\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"},{\"text\":\"OIDC provider: Keep OpenAI OIDC as specified in FR-02/FR-18/AC-20/46, using Authorization Code with PKCE and verified OIDC claims. Provider registration/entitlement is an external integration prerequisite, not an AC test oracle or deployed-artifact AC.\",\"id\":\"DEC-10\",\"isSatisfied\":false,\"evidence\":\"Requirement imported; operational portions remain unverified until the documented Phase7 check.\"},{\"text\":\"Guest profile and labels: A guest profile persists in the same browser/device until site data is cleared; it does not sync or link to an OIDC profile. Every profile gets a generated public alias; users can change it or opt out of leaderboard display. Real identity claims are never public.\",\"id\":\"DEC-11\",\"isSatisfied\":false,\"evidence\":\"Requirement imported; operational portions remain unverified until the documented Phase7 check.\"}]}\n\nHV round1 correction: FR-GUESTADMIN-031#GA-05 is verified through TEST-PWAINSTALL-137 / TR-PWA-INSTALLATION-036 and canonical FR-PHONEINSTALL-026#PWA-01/03/05. GA-06 maps to TEST-PWAPRIVACY-138 / TR-PWA-CACHEPRIVACY-037 and canonical PWA-09. GA-07 maps to those privacy records and canonical PWA-06/07/08. GA-09 maps to TEST-ADMINUI-136 / TR-UI-RESPONSIVEMATRIX-040: tests/browser/pwa.spec.ts welcome/profile geometry at390x844 and1440x900, tests/web/pwa-support.test.ts. GA-10 maps to TEST-GITHUBADMIN-149 / TR-GITHUB-ADMIN-043: private member draft oracle, real PostgreSQL owner callback and legacy-member projection/paging, rendered community board. Earlier evidence and criteria remain historical; new obligations unsatisfied.",
+      "title": "Identity modes",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player chooses guest mode, when they continue without OIDC authentication, then the game creates a guest player identity, allows icon selection, and lets them create or join a room by code.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-21"
+        },
+        {
+          "text": "Guests use generated aliases and can opt into or out of public leaderboard display. All account/member profiles remain excluded under FR-GUESTADMIN-031#GA-10 regardless of their historical public flag.",
+          "evidence": "Changed guest-only release; retained historical criterion evidence in prior notes. Current GA-10 recovery validation pending.",
+          "isSatisfied": false,
+          "id": "DEC-11"
+        },
+        {
+          "text": "Public gameplay offers guest entry only. Public OpenAI routes return404, member-shaped public sessions fail closed, and public session permissions are empty regardless of stored grants or bootstrap configuration.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-01"
+        },
+        {
+          "text": "Only GitHub numeric account16146732 with login sharpninja can establish an admin identity. Authorization Code uses exact registered callbacks, S256PKCE, cryptographic state and a one-time expiring browser-bound challenge; wrong users, duplicate parameters, replay and provider failures issue no admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-03"
+        },
+        {
+          "text": "Guest/admin cookies and stored challenge/session digests use separate namespaces. Copying a token into the other cookie cannot authenticate. GitHub login/logout preserves the guest session. Admin API responses are private/no-store and logout requires same origin and revokes the stored admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-04"
+        },
+        {
+          "text": "All account/member profiles, including the GitHub administrator and retired OpenAI profiles, are excluded server-side from public leaderboard/landing projections even when their saved public flag is true. New member profiles default private. Guest opt-in, ordering, bounded paging and revision conflict behavior remain unchanged.",
+          "evidence": "User confirmed 28 October 2026: Hide all old member profiles. Recovery slice tests and migration pending; no completion claimed.",
+          "isSatisfied": false,
+          "id": "GA-10"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Players enter public multiplayer as browser-persistent guests with generated aliases, icon preferences and leaderboard opt-out. Public account/OpenAI sign-in is disabled. Separate GitHub administration is restricted to sharpninja and cannot confer privileges on a guest session."
+    },
+    {
+      "id": "FR-LIVESCORECARD-011",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-11; canonical MCP ID: FR-LIVESCORECARD-011. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-011. Replaced at user request with a subject-identifying ID.",
+      "title": "Live round scorecard",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player solves, when the game accepts the answer, then the active scorecard shows that player’s icon, points earned, and elapsed time from round start.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-10"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "The active round page shows every player and updates a player’s row when they solve. A solved row shows the player icon, points earned in the current round, and elapsed answer time. Incorrect guess text is not exposed to other players."
+    },
+    {
+      "id": "FR-LOBBYDISCOVERY-019",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-19; canonical MCP ID: FR-LOBBYDISCOVERY-019. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-019. Replaced at user request with a subject-identifying ID.\n\nClipboard extension 28 October 2026: INVITE-COPY-01/02 follow the operator request; browser UI evidence and hostile review are pending.",
+      "title": "Lobby discovery and matching",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a discoverable lobby is waiting and has fewer players than its configured capacity, when a player browses lobbies, then the lobby appears as joinable; hidden, full, or started lobbies do not appear as joinable.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-22"
+        },
+        {
+          "text": "Given at least one discoverable lobby has an available player slot, when a player uses quick match, then the service assigns them to the oldest eligible lobby, breaking equal creation times by stable room ID, without exceeding configured capacity. Given none is available, then the player is offered browsing or room creation.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-23"
+        },
+        {
+          "text": "Given a player is in a room, when they share its room code or deep link, then another player can use either invitation to reach the intended room, subject to an open slot.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-25"
+        },
+        {
+          "text": "Given a valid room deep link, when a player opens it, then the game bypasses lobby browsing and checks the room directly. If a slot is open, the player joins; if the room has no open player slot, the invitee is offered observer mode.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-26"
+        },
+        {
+          "text": "Given a room is full and the start countdown has not begun, when a player leaves and at least one observer is waiting, then the observer who entered observer mode earliest becomes the final player in the roster, existing players move up to close the vacancy while preserving their relative order, and any remaining observers stay observers.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-30"
+        },
+        {
+          "text": "Given every player in the room has marked ready, when the final ready state is received, then the game start countdown begins immediately and the player roster locks. If a player leaves after the countdown begins, then no observer or other player is promoted or substituted into that player’s place.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-31"
+        },
+        {
+          "text": "Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready in a room with more than two players, they are removed and the start countdown begins with the remaining roster locked. If the room has exactly two players, the holdout is not removed and the lobby continues waiting; the countdown does not begin until both are ready.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-32"
+        },
+        {
+          "text": "Given the game start countdown has not begun, when no player/observer membership or ready-state change occurs for 30 seconds, then the game prompts all players once for that room version to mark themselves ready; any membership or ready-state change resets the interval.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-33"
+        },
+        {
+          "text": "Lobby discovery and quick match: Rooms are undiscoverable by default; creator may opt in. Quick match selects the oldest discoverable waiting room with a free seat, then stable room ID. The same atomic capacity-checked join command handles the selection.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-12"
+        },
+        {
+          "text": "Given a player in an active room, when they choose Copy Invitation Link and link creation and clipboard access succeed, the generated inviter-bound link is copied and displayed, with an accessible confirmation.",
+          "isSatisfied": false,
+          "id": "INVITE-COPY-01"
+        },
+        {
+          "text": "Given a generated invitation link, when clipboard access is unavailable or denied, the link remains visible for manual copying and an accessible message explains that automatic copying failed.",
+          "isSatisfied": false,
+          "id": "INVITE-COPY-02"
+        },
+        {
+          "text": "Given a player requests an invitation, if creation fails or returns no link, no new link is shown or copied, no copy-success confirmation is announced, and an accessible error is shown.",
+          "isSatisfied": false,
+          "id": "INVITE-COPY-03"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Players can browse discoverable open lobbies or use quick match to join an available lobby for this game. Any player in a room can share its room code or deep link to invite others; a deep link bypasses lobby browsing. Joining as a player requires an available slot under the configured capacity. An invited player who reaches a full room can choose observer mode. Before the game start countdown begins, if a player leaves a full room, the oldest observer is promoted into the final player position and the remaining players move up to close the vacancy. If player/observer membership or readiness has not changed for 30 seconds before countdown, all players are prompted once for that room version to mark ready; any such change resets the interval. When all but one player have marked ready, the holdout receives a five-second warning. If they mark ready before it expires, the countdown begins immediately. If the warning expires while the holdout remains unready in a room with more than two players, they are removed and the countdown begins. In an exactly two-player lobby, the holdout remains and the lobby waits without starting the countdown until both players are ready. The roster locks when the countdown begins, and a player who leaves afterward is not replaced. Rooms are private by default; the creator may enable discoverability. Quick match selects the oldest eligible room, breaking equal creation times by stable room ID. These joins use the same atomic capacity check."
+    },
+    {
+      "id": "FR-LOBBYLIFECYCLE-003",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-03; canonical MCP ID: FR-LOBBYLIFECYCLE-003. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-003. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Lobby",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a valid room code and 2-15 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-01"
+        },
+        {
+          "text": "Given a room has reached its configured player capacity from 2 through 15, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 15.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-02"
+        },
+        {
+          "text": "Given a player creates a room, when they set a maximum capacity from 2 through 15, then the room stores and displays that limit. Values below 2 or above 15 are rejected.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-24"
+        },
+        {
+          "text": "Given a player is in a room, when they share its room code or deep link, then another player can use either invitation to reach the intended room, subject to an open slot.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-25"
+        },
+        {
+          "text": "Given a valid room deep link, when a player opens it, then the game bypasses lobby browsing and checks the room directly. If a slot is open, the player joins; if the room has no open player slot, the invitee is offered observer mode.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-26"
+        },
+        {
+          "text": "Given an invited player follows an invitation to a full room, when they choose to observe, then they enter without consuming a player slot and are bound to the player who invited them.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-27"
+        },
+        {
+          "text": "Given a room is full and the start countdown has not begun, when a player leaves and at least one observer is waiting, then the observer who entered observer mode earliest becomes the final player in the roster, existing players move up to close the vacancy while preserving their relative order, and any remaining observers stay observers.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-30"
+        },
+        {
+          "text": "Given every player in the room has marked ready, when the final ready state is received, then the game start countdown begins immediately and the player roster locks. If a player leaves after the countdown begins, then no observer or other player is promoted or substituted into that player’s place.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-31"
+        },
+        {
+          "text": "Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready in a room with more than two players, they are removed and the start countdown begins with the remaining roster locked. If the room has exactly two players, the holdout is not removed and the lobby continues waiting; the countdown does not begin until both are ready.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-32"
+        },
+        {
+          "text": "Given the game start countdown has not begun, when no player/observer membership or ready-state change occurs for 30 seconds, then the game prompts all players once for that room version to mark themselves ready; any membership or ready-state change resets the interval.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-33"
+        },
+        {
+          "text": "Host authority and countdown: Creator has no special start/readiness privilege. All players have equivalent controls. All-ready starts a 10-second countdown and locks the roster.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-14"
+        },
+        {
+          "text": "Countdown departure below minimum: Never replace a player who leaves after lock. If fewer than two original players remain at countdown expiry, abort start and close the room.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-15"
+        },
+        {
+          "text": "Idle prompt and readiness races: The 30-second interval resets on player/observer membership or ready-state changes. Prompt once per unchanged aggregate version. Deadlines carry the expected version; stale jobs are no-ops.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-16"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "The room view displays the room code, configured maximum capacity, available player slots, current players, and observers separately. A game cannot start with fewer than 2 players. Any player in the room can invite others by sharing its code or deep link. The room identifies the anchor player. Before the game start countdown begins, when a player leaves a full room, the oldest observer is promoted into the final player position and the remaining players move up to close the vacancy. If the lobby aggregate has no membership or readiness change for 30 seconds before the start countdown, all players are prompted once for that unchanged state version to mark themselves ready; any membership or readiness change resets the idle interval. When all but one player have marked ready, the holdout receives a five-second warning to mark ready. If they mark ready before it expires, the countdown begins immediately. If the warning expires in a lobby of more than two players and the holdout remains unready, they are removed and the countdown begins with the remaining roster locked. In an exactly two-player lobby, the holdout remains and the lobby waits without starting the countdown until both players are ready. The roster locks when the countdown begins; a player who leaves afterward is not replaced. The room creator has no special readiness or start authority; every player has the same lobby controls. Rooms are private by default; the creator may enable discovery. Quick match selects the oldest eligible room with a free seat and uses stable room ID to break ties. A 10-second countdown begins when all active players are ready. If a player leaves after countdown begins, nobody replaces them. If fewer than two original players remain when the countdown expires, the game is aborted and the room closes."
+    },
+    {
+      "id": "FR-NAVIGATIONDRAFTS-029",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Specified by operator instruction \"Fill gaps\", 27October2026. Design: docs/testing/ui/decisions.md. Original documentation-only snapshot retained in docs/testing/ui/archive/design-20261027/; implementation now has the separately scoped evidence below.\n\nBEGIN UI-IMPLEMENTATION FR-NAVIGATIONDRAFTS-029\nImplemented UI-DEC behavior. Exact source inventory: docs/testing/ui/implementation-manifest.json. Evidence: docs/testing/ui/implementation-receipt.json; docs/evidence/ui-gaps/unit-safe-errors-final.log (542 tests), browser-safe-errors-final.log (61 journeys including malformed room GET/POST), browser-seats-tagged.log (5 refined recovery cases), postgres.log (68 real SQL tests), build-safe-errors-final.log, lint-safe-errors.log and typecheck-safe-errors.log. Browser HTTP/persistence/time ports are isolated fixtures around actual React/application/domain services; do not treat them as real Realtime/physical-phone/OIDC/public-origin evidence. Criterion-level procedures: matching UI TEST notes/cases. Historical148baseline criteria/evidence and TEST-ROOMSYNC-139 / LIVE-07 are preserved.\nEND UI-IMPLEMENTATION FR-NAVIGATIONDRAFTS-029",
+      "title": "Predictable navigation and private drafts",
+      "acceptanceCriteria": [
+        {
+          "text": "Back returns to the previous authorized screen and dialog dismissal restores focus to its opener without submitting, changing readiness or leaving room membership.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-NAV-01"
+        },
+        {
+          "text": "Unsaved content/editor drafts survive ordinary same-profile in-tab navigation in memory only; reload, tab close, session/profile change and permission loss clear them.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-NAV-02"
+        },
+        {
+          "text": "Explicit Cancel/Discard abandons the draft and returns to the originating screen without changing the saved record; a canceled profile edit restores saved alias/icon.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-NAV-03"
+        },
+        {
+          "text": "Leaving a room requires an explicit Leave action and applies the existing authoritative membership/departure rules.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-NAV-04"
+        },
+        {
+          "text": "Returning to a privileged screen revalidates authorization; back navigation cannot restore cleared private data or another profile's draft.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-NAV-05"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Make Back, Cancel, draft retention and explicit room departure predictable without implicit mutations."
+    },
+    {
+      "id": "FR-NOMINATIONS-016",
+      "status": "deferred",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-16; canonical MCP ID: FR-NOMINATIONS-016. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-016. Replaced at user request with a subject-identifying ID.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks. This historical capability is inactive in the current release; preserved source/domain evidence is not a claim that its former public/multi-account UI is available.",
+      "title": "Future answer nominations",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player solves during the no-hint stage, when the round results are shown, then that player can submit a candidate answer nomination; players who solve after any hint cannot nominate from that round.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-17"
+        },
+        {
+          "text": "Given a candidate has fewer than 10 nominations or has not passed moderation, when the answer pool is checked, then it is not eligible for future games. Given it has at least 10 nominations and passes moderation, then it enters the future-eligible answer pool but is not playable until its full curated pair record exists.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-18"
+        },
+        {
+          "text": "Given an actor is not authorized to perform moderation or catalog activation, when they attempt to change moderation status or publish content, then the service rejects the action; every change to nomination count, moderation status, and eligibility is auditable; and content cannot be selected for play until it has passed moderation and is complete in the curated catalog.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-47"
+        },
+        {
+          "text": "Nomination counting: Count unique player profiles per normalized candidate. A profile may nominate a candidate once and submit at most one candidate per eligible no-hint solve. Moderation begins at 10 unique nominations.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-07"
+        },
+        {
+          "text": "Moderation workflow: Roles are Content Moderator and Senior Moderator. At threshold, content enters Pending Review. A moderator other than the proposer approves or rejects with a reason. The proposer may appeal once to a Senior Moderator. Approval alone does not make content playable; the complete curated record must pass validation.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-08"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "A player who correctly solves during the no-hint stage may nominate a word as a candidate answer for future games. The game records nominations by candidate word. A candidate becomes eligible for the future answer pool only after it has at least 10 nominations and passes moderation. Before it is playable, content editors must create a complete curated pair record with the required prompt, category, hints, accepted answers, and category background. Nominations do not affect current-round scoring or progression."
+    },
+    {
+      "id": "FR-OBSERVERS-020",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-20; canonical MCP ID: FR-OBSERVERS-020. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-020. Replaced at user request with a subject-identifying ID.",
+      "title": "Full-room observer mode",
+      "acceptanceCriteria": [
+        {
+          "text": "Given an invited player follows an invitation to a full room, when they choose to observe, then they enter without consuming a player slot and are bound to the player who invited them.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-27"
+        },
+        {
+          "text": "Given an observer is following an inviter, when the inviter’s player-authorized view changes, then the observer sees the corresponding update in real time. Observer attempts to submit guesses, choose categories, or change game state are rejected; the observer earns no score.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-28"
+        },
+        {
+          "text": "Given a room is full and the start countdown has not begun, when a player leaves and at least one observer is waiting, then the observer who entered observer mode earliest becomes the final player in the roster, existing players move up to close the vacancy while preserving their relative order, and any remaining observers stay observers.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-30"
+        },
+        {
+          "text": "Observer behavior: Maximum 25 observers per room. Signed links bind the inviter. Manual room-code observers select an active player as inviter. Observer arrival order is assigned transactionally; ties use stable profile ID.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-13"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "If an invited player attempts to join a room with no open player slot, the invitee may choose to observe the game in real time from the perspective of the player who invited them. Observer mode does not take a player slot, submit answers, make category choices, or earn points. The observer sees only the game information available to the followed player. Before the game start countdown begins, if a player leaves a full room, the observer who entered earliest is promoted to the final player position; the other players move up to close the vacancy. Remaining observers keep their observer status. When all but one player have marked ready, the holdout receives a five-second warning to mark ready. If all players mark ready before expiry, the countdown begins immediately. If the warning expires in a room with more than two players while the holdout remains unready, they are removed and the countdown begins. In an exactly two-player lobby, the holdout remains and the lobby waits without starting the countdown until both players are ready. The roster locks when the countdown begins. If a player leaves after countdown begins, no observer or other player replaces them; if fewer than two original players remain at expiry, the game start is aborted and the room closes."
+    },
+    {
+      "id": "FR-PHONEINSTALL-026",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Source: user request2026-10-27: The game needs to be installable as a PWA on phones. Design and criteria: docs/pwa_design.md. Browser/worker evidence does not establish installation on physical Android/iPhone hardware. HostedHTTPS deployment remains future operational work.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks.\nPrior body/criteria retained as historical evidence: {\"body\":\"Wordpairs must be installable from supported phone browsers, launch standalone into /play with project branding, offer native install action when available and manual platform guidance otherwise, and show a safe reconnect screen offline without retaining private game data.\",\"acceptanceCriteria\":[{\"text\":\"Manifest has stable identity, standalone launch at /play, root scope, names, colors, same-origin192/512 icons and a separate maskable icon.\",\"id\":\"PWA-01\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"Referenced PNGs have declared dimensions, opaque brand background and safe-zone maskable artwork; Apple metadata and touch icon exist.\",\"id\":\"PWA-02\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"Secure-context registration succeeds at root scope, handles failure gracefully and uses fresh worker script headers.\",\"id\":\"PWA-03\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"A captured install event prompts once after a click; dismissal/rejection preserves guidance; installed/standalone state hides install UI and listeners clean up.\",\"id\":\"PWA-04\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"Phone install guidance covers iPhone Share and Android menus, explains HTTPS on insecure origins, and fits narrow screens accessibly; physical home-screen installation is not claimed by emulation.\",\"id\":\"PWA-05\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"Offline controlled navigation returns a static reconnect screen; returning online restores the live website.\",\"id\":\"PWA-06\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"API/auth/realtime/private navigation and mutations are never stored in worker caches; offline API/mutation requests fail without receiving offline HTML.\",\"id\":\"PWA-07\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"},{\"text\":\"Only old versioned Wordpairs static caches are cleaned up; service-worker updates do not force activation or reload during a match.\",\"id\":\"PWA-08\",\"isSatisfied\":true,\"evidence\":\"docs/pwa_review_receipt.json; docs/evidence/pwa/; tests/web/pwa-support.test.ts; tests/web/pwa-worker.test.ts; tests/browser/pwa.spec.ts; tests/web/pwa-manifest.test.ts\"}]}",
+      "title": "Admin phone home-screen installation",
+      "acceptanceCriteria": [
+        {
+          "text": "Only admin HTML links a manifest with stable id /admin, start_url /admin, scope /admin, Wordpairs Admin names, standalone display, same-origin192/512 PNGs and separate maskable icon. Public HTML has no manifest.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-01"
+        },
+        {
+          "text": "Referenced PNGs have declared dimensions, opaque brand background and safe-zone maskable artwork; Apple metadata and touch icon exist.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-02"
+        },
+        {
+          "text": "Authenticated admin UI registers /admin-sw.js with scope /admin and updateViaCache none in secure contexts, handles failures and uses fresh worker script headers. Public game has no installation UI or active worker registration.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-03"
+        },
+        {
+          "text": "A captured install event prompts once after a click; dismissal/rejection preserves guidance; installed/standalone state hides install UI and listeners clean up.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-04"
+        },
+        {
+          "text": "Admin-only phone guidance covers iPhone Share/Android menus and HTTPS, with accessible narrow-screen layout. No physical installation or standalone GitHub cookie-context continuity is claimed by emulation.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-05"
+        },
+        {
+          "text": "Network-failed admin document navigation returns a generic static reconnect/sign-in screen without private content; online recovery requires a current admin session. Public/API/auth navigations receive no admin offline fallback.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-06"
+        },
+        {
+          "text": "API/auth/realtime/private navigation and mutations are never stored in worker caches; offline API/mutation requests fail without receiving offline HTML.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-07"
+        },
+        {
+          "text": "Admin updates remove only older wordpairs-admin-pwa-* caches and wait for active clients. Legacy public retirement removes only wordpairs-pwa-* and root /sw.js registration, preserving admin and other apps.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-08"
+        },
+        {
+          "text": "The former root worker retires itself and only wordpairs-pwa-* caches. Admin/unrelated registrations and caches survive. Existing OS-installed icons cannot be removed by website code and are not claimed removed.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "PWA-09"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Make the owner-only admin pages installable on supported phones with standalone launch at /admin; disable public-game installation and safely retire its legacy worker/cache."
+    },
+    {
+      "id": "FR-PLAYERPROFILE-002",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-02; canonical MCP ID: FR-PLAYERPROFILE-002. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-002. Replaced at user request with a subject-identifying ID.\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks.\nPrior body/criteria retained as historical evidence: {\"body\":\"Each player can select an icon in their game profile before or while joining a room. The selected icon appears consistently in the room, live scorecard, round summary, and final standings. Players receive a generated public alias; a player may change the alias or opt out of public leaderboard display. Real identity-provider names are never public. Players may establish a profile by authenticating with OpenAI OIDC or enter as a guest.\",\"acceptanceCriteria\":[{\"text\":\"Given a player selects an icon, when that player enters the lobby and plays a round, then the same icon appears in the lobby, live scorecard, and standings.\",\"id\":\"AC-03\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"},{\"text\":\"Given a player chooses account sign-in, when OpenAI OIDC authentication succeeds, then the game establishes or loads the game profile associated with that authenticated identity and allows the player to select an icon.\",\"id\":\"AC-20\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"},{\"text\":\"Given a player chooses guest mode, when they continue without OIDC authentication, then the game creates a guest player identity, allows icon selection, and lets them create or join a room by code.\",\"id\":\"AC-21\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"},{\"text\":\"Guest profile and labels: A guest profile persists in the same browser/device until site data is cleared; it does not sync or link to an OIDC profile. Every profile gets a generated public alias; users can change it or opt out of leaderboard display. Real identity claims are never public.\",\"id\":\"DEC-11\",\"isSatisfied\":true,\"evidence\":\"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"}]}\n\nHV round1 correction: FR-GUESTADMIN-031#GA-05 is verified through TEST-PWAINSTALL-137 / TR-PWA-INSTALLATION-036 and canonical FR-PHONEINSTALL-026#PWA-01/03/05. GA-06 maps to TEST-PWAPRIVACY-138 / TR-PWA-CACHEPRIVACY-037 and canonical PWA-09. GA-07 maps to those privacy records and canonical PWA-06/07/08. GA-09 maps to TEST-ADMINUI-136 / TR-UI-RESPONSIVEMATRIX-040: tests/browser/pwa.spec.ts welcome/profile geometry at390x844 and1440x900, tests/web/pwa-support.test.ts. GA-10 maps to TEST-GITHUBADMIN-149 / TR-GITHUB-ADMIN-043: private member draft oracle, real PostgreSQL owner callback and legacy-member projection/paging, rendered community board. Earlier evidence and criteria remain historical; new obligations unsatisfied.",
+      "title": "Player profile",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player selects an icon, when that player enters the lobby and plays a round, then the same icon appears in the lobby, live scorecard, and standings.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-03"
+        },
+        {
+          "text": "Given a player chooses guest mode, when they continue without OIDC authentication, then the game creates a guest player identity, allows icon selection, and lets them create or join a room by code.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-21"
+        },
+        {
+          "text": "Guests use generated aliases and can opt into or out of public leaderboard display. All account/member profiles remain excluded under FR-GUESTADMIN-031#GA-10 regardless of their historical public flag.",
+          "evidence": "Changed guest-only release; retained historical criterion evidence in prior notes. Current GA-10 recovery validation pending.",
+          "isSatisfied": false,
+          "id": "DEC-11"
+        },
+        {
+          "text": "Public gameplay offers guest entry only. Public OpenAI routes return404, member-shaped public sessions fail closed, and public session permissions are empty regardless of stored grants or bootstrap configuration.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-01"
+        },
+        {
+          "text": "Only GitHub numeric account16146732 with login sharpninja can establish an admin identity. Authorization Code uses exact registered callbacks, S256PKCE, cryptographic state and a one-time expiring browser-bound challenge; wrong users, duplicate parameters, replay and provider failures issue no admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-03"
+        },
+        {
+          "text": "Guest/admin cookies and stored challenge/session digests use separate namespaces. Copying a token into the other cookie cannot authenticate. GitHub login/logout preserves the guest session. Admin API responses are private/no-store and logout requires same origin and revokes the stored admin session.",
+          "evidence": "Unverified changed-release obligation; prior evidence retained in notes. Specification: docs/admin_pwa_release.md.",
+          "isSatisfied": false,
+          "id": "GA-04"
+        },
+        {
+          "text": "All account/member profiles, including the GitHub administrator and retired OpenAI profiles, are excluded server-side from public leaderboard/landing projections even when their saved public flag is true. New member profiles default private. Guest opt-in, ordering, bounded paging and revision conflict behavior remain unchanged.",
+          "evidence": "User confirmed 28 October 2026: Hide all old member profiles. Recovery slice tests and migration pending; no completion claimed.",
+          "isSatisfied": false,
+          "id": "GA-10"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Players enter public multiplayer as browser-persistent guests with generated aliases, icon preferences and leaderboard opt-out. Public account/OpenAI sign-in is disabled. Separate GitHub administration is restricted to sharpninja and cannot confer privileges on a guest session."
+    },
+    {
+      "id": "FR-PUBLICLANDING-022",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-22; canonical MCP ID: FR-PUBLICLANDING-022. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-022. Replaced at user request with a subject-identifying ID.",
+      "title": "Public landing page",
+      "acceptanceCriteria": [
+        {
+          "text": "Given an unauthenticated visitor opens the game landing page, when the page loads, then it presents an all-time leaderboard ranked by lifetime wins, total points, earliest win, and stable profile ID; discoverable lobby cards with exact player count/capacity, waiting state, and room age; and a concise versioned rules summary. It uses generated public aliases, honors opt-outs, excludes room codes and private room/game data, and provides usable empty/unavailable states.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-43"
+        },
+        {
+          "text": "Given an unauthenticated visitor requests landing-page data, when the service responds, then it returns only lifetime-win ranking fields, opted-in generated aliases, exact counts/capacity, waiting state, room age, and rules version for public content; it does not expose room codes, real identity, guesses, target answers, observer-only views, moderation records, or secrets.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-50"
+        },
+        {
+          "text": "Public landing contract: Leaderboard is lifetime wins, then total points, earliest win, and stable profile ID. Show public alias only, include opt-in guests, honor profile opt-out. Lobby card shows exact player count/capacity, waiting state and room age, never room code/player names. Refresh lobby data every 15 seconds and leaderboard every five minutes. Rules are a concise versioned summary with an updated date.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-19"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "An unauthenticated visitor can open the game landing page and view an approved leaderboard, public lobby information, and the gameplay rules. Lobby information is limited to approved public metadata for discoverable, joinable rooms and cannot expose private room codes, hidden answers, guesses, observer-only views, or credentials. The leaderboard uses lifetime wins, total points, earliest win, then stable profile ID; it displays generated aliases and honors opt-out. Public lobby cards expose exact player count/capacity, waiting state, and room age, with a 15-second refresh. The rules summary is concise and versioned."
+    },
+    {
+      "id": "FR-REACTIONS-021",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-21; canonical MCP ID: FR-REACTIONS-021. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-021. Replaced at user request with a subject-identifying ID.",
+      "title": "Emoji reactions",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a round is active, when a player selects an emoji from the menu, then the reaction appears in real time to room players and observers and does not change scores, answer stage, or round state.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-29"
+        },
+        {
+          "text": "Reactions: Menu: 👍, ❤️, 😂, 🎉, 👀. A reaction is visible for five seconds; one reaction per player per two seconds. It cannot change game state or score.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-18"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "During any active round, a player can open an emoji menu and display a selected emoji reaction to the room in real time. Reactions do not submit an answer, change round state, or affect scoring. Observers see reactions displayed by the player they are following and reactions broadcast to the room."
+    },
+    {
+      "id": "FR-REQUESTFEEDBACK-030",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Specified by operator instruction \"Fill gaps\", 27October2026. Design: docs/testing/ui/decisions.md. Original documentation-only snapshot retained in docs/testing/ui/archive/design-20261027/; implementation now has the separately scoped evidence below.\n\nBEGIN UI-IMPLEMENTATION FR-REQUESTFEEDBACK-030\nImplemented UI-DEC behavior. Exact source inventory: docs/testing/ui/implementation-manifest.json. Evidence: docs/testing/ui/implementation-receipt.json; docs/evidence/ui-gaps/unit-safe-errors-final.log (542 tests), browser-safe-errors-final.log (61 journeys including malformed room GET/POST), browser-seats-tagged.log (5 refined recovery cases), postgres.log (68 real SQL tests), build-safe-errors-final.log, lint-safe-errors.log and typecheck-safe-errors.log. Browser HTTP/persistence/time ports are isolated fixtures around actual React/application/domain services; do not treat them as real Realtime/physical-phone/OIDC/public-origin evidence. Criterion-level procedures: matching UI TEST notes/cases. Historical148baseline criteria/evidence and TEST-ROOMSYNC-139 / LIVE-07 are preserved.\nEND UI-IMPLEMENTATION FR-REQUESTFEEDBACK-030",
+      "title": "Accessible request feedback and safe retry",
+      "acceptanceCriteria": [
+        {
+          "text": "Pending reads expose accessible loading feedback; empty results are distinct from unavailable results and offer an allowed next action.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-FEEDBACK-01"
+        },
+        {
+          "text": "Pending mutations show busy feedback and prevent duplicate submission while preserving entered data.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-FEEDBACK-02"
+        },
+        {
+          "text": "Failures show a user-safe explanation and valid Retry action while retaining safe drafts; raw errors, credentials and private data are not exposed.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-FEEDBACK-03"
+        },
+        {
+          "text": "An uncertain-write retry uses identical command identity/payload; conflicts refresh authoritative state without silently replaying a changed command or claiming success.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-FEEDBACK-04"
+        },
+        {
+          "text": "Authorization denial clears privileged data/drafts and rejects stale response restoration; connection recovery retains accepted state without duplicate writes.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-FEEDBACK-05"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Specify loading, empty, failed, uncertain-write, conflict and denied UI outcomes without losing safe user input or duplicating commands."
+    },
+    {
+      "id": "FR-RESPONSIVEUI-015",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-15; canonical MCP ID: FR-RESPONSIVEUI-015. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-015. Replaced at user request with a subject-identifying ID.",
+      "title": "Responsive screens",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a phone-sized viewport in portrait or landscape, when a player enters an answer or views a hint and scorecard, then text and controls remain visible without horizontal overflow.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-15"
+        },
+        {
+          "text": "Given a player uses a phone-sized viewport in portrait or landscape, when they operate primary game actions with touch or keyboard and view text over category backgrounds, then the actions remain operable, text and controls retain clear contrast, focus is visible, and selected icon, solved status, and score changes are indicated by labels or shapes as well as color.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-44"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Profile, lobby, active round, hint stage, scorecard, round summary, category picker, and final standings remain usable on phone-sized screens in portrait and landscape orientation."
+    },
+    {
+      "id": "FR-REVIEWCHANGES-027",
+      "status": "deferred",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Specified by operator instruction \"Fill gaps\", 27October2026. Design: docs/testing/ui/decisions.md. Original documentation-only snapshot retained in docs/testing/ui/archive/design-20261027/; implementation now has the separately scoped evidence below.\n\nBEGIN UI-IMPLEMENTATION FR-REVIEWCHANGES-027\nImplemented UI-DEC behavior. Exact source inventory: docs/testing/ui/implementation-manifest.json. Evidence: docs/testing/ui/implementation-receipt.json; docs/evidence/ui-gaps/unit-safe-errors-final.log (542 tests), browser-safe-errors-final.log (61 journeys including malformed room GET/POST), browser-seats-tagged.log (5 refined recovery cases), postgres.log (68 real SQL tests), build-safe-errors-final.log, lint-safe-errors.log and typecheck-safe-errors.log. Browser HTTP/persistence/time ports are isolated fixtures around actual React/application/domain services; do not treat them as real Realtime/physical-phone/OIDC/public-origin evidence. Criterion-level procedures: matching UI TEST notes/cases. Historical148baseline criteria/evidence and TEST-ROOMSYNC-139 / LIVE-07 are preserved.\nEND UI-IMPLEMENTATION FR-REVIEWCHANGES-027\n\n28 October 2026 operator release correction: public gameplay is guest-only, public account sign-in/community secured UI/public PWA installation disabled; separate admin uses verified GitHub account sharpninja only and remains installable as a PWA. Latest scope and criterion-level cases: docs/admin_pwa_release.md. Historical evidence below does not prove this changed release. All changed/new criteria remain unsatisfied pending final validation/HV and hosted checks. This historical capability is inactive in the current release; preserved source/domain evidence is not a claim that its former public/multi-account UI is available.",
+      "title": "Request and resubmit category changes",
+      "acceptanceCriteria": [
+        {
+          "text": "An independent moderator requests changes with a nonempty reason; the suggestion enters changes_requested and remains unplayable.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-CHANGES-01"
+        },
+        {
+          "text": "changes_requested consumes the proposer's one-open-suggestion slot; another open suggestion is rejected.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-CHANGES-02"
+        },
+        {
+          "text": "Only the proposer can edit and resubmit exactly three pair suggestions; valid resubmission enters pending_review and still requires independent review and complete curation.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-CHANGES-03"
+        },
+        {
+          "text": "Revision, reason, actor and status transitions are auditable; a change request does not consume the rejection appeal allowance.",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified.",
+          "isSatisfied": true,
+          "id": "UI-CHANGES-04"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Provide a reasoned independent change-request workflow for category suggestions without bypassing curation."
+    },
+    {
+      "id": "FR-ROOMACCESS-001",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-01; canonical MCP ID: FR-ROOMACCESS-001. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-001. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Room access",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a valid room code and 2-15 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-01"
+        },
+        {
+          "text": "Given a room has reached its configured player capacity from 2 through 15, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 15.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-02"
+        },
+        {
+          "text": "Given a player creates a room, when they set a maximum capacity from 2 through 15, then the room stores and displays that limit. Values below 2 or above 15 are rejected.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "AC-24"
+        },
+        {
+          "text": "Given a player is in a room, when they share its room code or deep link, then another player can use either invitation to reach the intended room, subject to an open slot.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-25"
+        },
+        {
+          "text": "Given a valid room deep link, when a player opens it, then the game bypasses lobby browsing and checks the room directly. If a slot is open, the player joins; if the room has no open player slot, the invitee is offered observer mode.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-26"
+        },
+        {
+          "text": "New rooms and new matches allow at most15 players. Existing running matches, including historical larger rosters, remain readable, replayable and finishable; existing members can leave. Oversized legacy waiting rooms admit no new player beyond15 and cannot start a new oversized match. They show a clear15-player compatibility notice and retain Leave. No existing room, player, match or historical result is deleted or forcibly evicted.",
+          "evidence": "Operator approved15-player cap30October2026. Compatibility implementation and tests pending.",
+          "isSatisfied": false,
+          "id": "CAP15-LEGACY"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Players can create a room and set its maximum player capacity from 2 through 15, inclusive. Players can join from their own device by room code, discoverable-lobby browsing, quick match, or a deep link containing the room code. Joining as a player requires an available slot under the room’s configured capacity. If the room is full, an invited player can choose observer mode."
+    },
+    {
+      "id": "FR-ROUNDSUMMARY-013",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-13; canonical MCP ID: FR-ROUNDSUMMARY-013. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-013. Replaced at user request with a subject-identifying ID.",
+      "title": "Round summary",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a round ends, when the summary appears, then it ranks all players by current cumulative score and shows the completed round’s points and solve times.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-12"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "After every round, the game displays a ranking of all players by cumulative score. It also shows the points and elapsed time earned in the completed round."
+    },
+    {
+      "id": "FR-SCORELOCK-010",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-10; canonical MCP ID: FR-SCORELOCK-010. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-010. Replaced at user request with a subject-identifying ID.",
+      "title": "Score lock and elapsed time",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player submits the correct answer during the no-hint stage, when the game accepts it, then the player earns 5 points and their round score locks.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-06"
+        },
+        {
+          "text": "Given a player solves after Hint 1, Hint 2, or Hint 3, when the game accepts the answer, then the player earns 3, 2, or 1 point respectively.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-07"
+        },
+        {
+          "text": "Given a player solves, when the game accepts the answer, then the active scorecard shows that player’s icon, points earned, and elapsed time from round start.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-10"
+        },
+        {
+          "text": "Given two or more players tie for the highest score, when final standings are calculated, then total answer time is the sum of each round’s accepted solve duration, with 80 seconds charged for an unsolved round; the lower total ranks first, and an exact tie shares the same rank.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-14"
+        },
+        {
+          "text": "Given an unsolved player submits an answer for the current stage, when the server checks it against the target and approved accepted-answer list, then only a correct answer is accepted and scored once for that stage; an incorrect answer does not change score or expose guess text to other players; and the target answer remains unavailable to clients until round reveal.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-45"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "When a player submits a correct answer, the game locks that player’s score for the round and records elapsed time from round start to the accepted correct submission."
+    },
+    {
+      "id": "FR-SCORING-009",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: FR-09; canonical MCP ID: FR-SCORING-009. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-009. Replaced at user request with a subject-identifying ID.",
+      "title": "Scoring",
+      "acceptanceCriteria": [
+        {
+          "text": "Given a player submits the correct answer during the no-hint stage, when the game accepts it, then the player earns 5 points and their round score locks.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-06"
+        },
+        {
+          "text": "Given a player solves after Hint 1, Hint 2, or Hint 3, when the game accepts the answer, then the player earns 3, 2, or 1 point respectively.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-07"
+        },
+        {
+          "text": "Given a player remains unsolved after Hint 3, when the round ends, then the player earns 0 points and the game reveals the correct answer.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-08"
+        },
+        {
+          "text": "Given two or more players tie for the highest score, when final standings are calculated, then total answer time is the sum of each round’s accepted solve duration, with 80 seconds charged for an unsolved round; the lower total ranks first, and an exact tie shares the same rank.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "AC-14"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "The game awards 5 points for a correct answer before hints, 3 after Hint 1, 2 after Hint 2, and 1 after Hint 3. A player who remains unsolved after Hint 3 earns 0 points."
+    },
+    {
+      "id": "FR-WORDHINTEDITOR-025",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "New verification/extension import key: FR-25; canonical MCP ID: FR-WORDHINTEDITOR-025. Confirmed user requests 27October2026; server env bootstrap was explicitly selected. No default administrator or human release gate was requested. Former provisional MCP ID: FR-WP-025. Replaced at user request with a subject-identifying ID.",
+      "title": "Manage word pairs and ordered hints",
+      "acceptanceCriteria": [
+        {
+          "text": "Each pair has a prompt, canonical target, accepted alternatives, approved category/background and exactly three ordered bounded hints; invalid input is rejected without mutation.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-25-C01"
+        },
+        {
+          "text": "Creation uses an unused ID at version0; edits append exactly the next version without moving an existing ID to another category. Community activation cannot reuse IDs or skip versions.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-25-C02"
+        },
+        {
+          "text": "Current and historical rounds retain their recorded versions. Future selection chooses the highest version per ID and then selectability, with no fallback to older excluded versions.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-25-C03"
+        },
+        {
+          "text": "Reasoned exclusion preserves history and cannot empty an initial category. Both editorial and community publication reject a projected total above4096 historical approved versions atomically.",
+          "evidence": "docs/admin_acl_design.md; docs/admin_acl_review_receipt.json; tests/browser/admin.phase6.spec.ts; tests/integration/admin.integration.ts",
+          "isSatisfied": true,
+          "id": "FR-25-C04"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Authorized content staff can create and edit complete word pairs and hints while preserving playable catalog integrity and active/historical rounds."
+    },
+    {
+      "id": "TEST-CONNECTIONRECOVERY-109",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "New verification/extension import key: TEST-WP-109; canonical MCP ID: TEST-CONNECTIONRECOVERY-109. Technical/integration or operational evidence only. Source TR-09. Existing commands and evidence limits: docs/testing.md; docs/phase6_execution.md; docs/deployment_plan.md. Former provisional MCP ID: TEST-WP-109. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-CONNECTIONRECOVERY-109\n# TEST-CONNECTIONRECOVERY-109 - Verify TR-09: Connection handling\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Verify TR-09: Connection handling. |\n| QBrain reference/scope | \u0060TEST-CONNECTIONRECOVERY-109\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06, SCREEN-SERVICE, STATE-SERVICE-01, STATE-SERVICE-02; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-CONNECTION-RECOVERY-009#DEC-17\u0060; \u0060TR-CONNECTION-RECOVERY-009#TR-09-C01\u0060; \u0060TR-ROOM-CODES-010#DEC-17\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Alice has an accepted score and a room membership; a separate client Bob remains connected. |\n| Test data | Accepted score 5; disconnected durations below and above 120-second grace; uncertain submission fixture. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Disconnect Alice, reconnect within grace and reopen the room. | Membership and accepted score persist; no duplicate submission is recorded. |\n| 2 | Repeat beyond grace and observe the normal departure rule for the current room phase. | Expired membership departs without corrupting scores; retry of an uncertain command retains its original command ID. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Verify TR-09: Connection handling\n  Scenario: TEST-CONNECTIONRECOVERY-109 design verification\n    Given Alice has an accepted score and a room membership; a separate client Bob remains connected.\n    And the fixture data is Accepted score 5; disconnected durations below and above 120-second grace; uncertain submission fixture.\n    When Disconnect Alice, reconnect within grace and reopen the room.\n    Then Membership and accepted score persist; no duplicate submission is recorded.\n    When Repeat beyond grace and observe the normal departure rule for the current room phase.\n    Then Expired membership departs without corrupting scores; retry of an uncertain command retains its original command ID.\n\u0060\u0060\u0060\n\n## Boundaries\n\nNetwork readiness and authoritative grace expiry are conditions; do not substitute a fixed sleep. Generic recovery copy is not specified.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-CONNECTIONRECOVERY-109",
+      "title": "Verify TR-09: Connection handling",
+      "acceptanceCriteria": [
+        {
+          "text": "Simulate lost response, reconnect, expiry and stale commands; assert same-command canonical retry, unchanged committed state and authoritative recovery.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "VERIFY-TR-09"
+        },
+        {
+          "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "TR-09-C01"
+        },
+        {
+          "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-17"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "condition": "Simulate lost response, reconnect, expiry and stale commands; assert same-command canonical retry, unchanged committed state and authoritative recovery."
+    },
+    {
+      "id": "TEST-MULTIPLAYERINTEGRATION-134",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "New verification/extension import key: TEST-WP-134; canonical MCP ID: TEST-MULTIPLAYERINTEGRATION-134. Actual test sources: tests/application/access.test.ts, tests/application/catalog-admin.test.ts, tests/web/admin-api.test.ts, tests/integration/admin.integration.ts, tests/integration/multiplayer.integration.ts, tests/browser/admin.phase6.spec.ts. Match the applicable suite to this requirement; do not claim all suites prove every boundary. Former provisional MCP ID: TEST-WP-134. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Verify Integration games for every supported player count",
+      "acceptanceCriteria": [
+        {
+          "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "TR-34-C01"
+        },
+        {
+          "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "TR-34-C02"
+        },
+        {
+          "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "TR-34-C03"
+        },
+        {
+          "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-02"
+        },
+        {
+          "text": "Match length and stage timer: Eight rounds. Each of the four answer stages has a 20-second deadline; a stage closes early when all unsolved players submit.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-01"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "condition": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..15, using disposable infrastructure."
+    },
+    {
+      "id": "TEST-ROOMSYNC-139",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "critical",
+      "notes": "Confirmed user requirements: actual live gameplay, repeatable UI integration at2..15, design updates and independent hostile validation. Source: phone stale-roster report and corrections,27October2026. SDK token callback, coalescing, lifecycle, independent worker and owned cleanup are implemented. New presence-body defect independently reproduced in Chromium;2red React tests now pass, real heartbeat browser regression passes with unread negative control and production-only body drain.532unit/acceptance tests, lint and production build pass. Updated strict game is rerunning; full2..15 remains pending. Prior25-player round1 failure and measured shared-cluster WAL stalls are retained. Volatile TLS harness preserves fsync/synchronous_commit but proves neither power-loss durability nor public capacity. Faster waiting-room fallback and hosted Phase7 remain outside this extension.\n\nBEGIN UI-CASE TEST-ROOMSYNC-139\n# TEST-ROOMSYNC-139 - Real browser multiplayer, private push and recovery integration\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Real browser multiplayer, private push and recovery integration. |\n| QBrain reference/scope | \u0060TEST-ROOMSYNC-139\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | MSG-M03, MSG-M04, MSG-M05, MSG-M27, MSG-M28, MSG-M29, MSG-FLOW, SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-02\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-03\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-07\u0060 |\n| Priority | critical |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities. |\n| Test data | Player counts every integer 2..15; one inviter-bound observer; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; all no-hint correct solves yield 5 per round and 40 per player. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Partial: full actual-runtime UI fixture, seed control and independent observer are required; current execution state remains the existing QBrain in_progress record. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Join by UI room code and ready each player without manual refresh, with periodic application refresh suppressed. | All clients see the same roster, countdown and category chooser through actual private updates. |\n| 2 | Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients. | All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points. |\n| 3 | Repeat each player count and perform offline/reconnect, token-renewal and socket-recovery variants. | Autonomous progression and authorized recovery work; no polling-only pass or service-only result is accepted. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Real browser multiplayer, private push and recovery integration\n  Scenario: TEST-ROOMSYNC-139 design verification\n    Given Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities.\n    And the fixture data is Player counts every integer 2..15; one inviter-bound observer; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; all no-hint correct solves yield 5 per round and 40 per player.\n    When Join by UI room code and ready each player without manual refresh, with periodic application refresh suppressed.\n    Then All clients see the same roster, countdown and category chooser through actual private updates.\n    When Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients.\n    Then All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points.\n    When Repeat each player count and perform offline/reconnect, token-renewal and socket-recovery variants.\n    Then Autonomous progression and authorized recovery work; no polling-only pass or service-only result is accepted.\n\u0060\u0060\u0060\n\n## Boundaries\n\nThis documents the outstanding matrix obligation; it does not claim that all counts passed. Private-frame privacy and worker ownership/fault contracts remain separate LIVE criteria.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-ROOMSYNC-139\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator\u0027s latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply \u0027Set the cap to15 (recommended)\u0027 and docs/release15-completion-plan.md.\n\n\u003C!-- CURRENT-RELEASE15-UI-CASE --\u003E\nCurrent linked case export: docs/testing/ui/cases/TEST-ROOMSYNC-139.md\nSource SHA256: 91CB79D29BFDDA280585D9553B336D490079350CD030216FA1A3A2892643C141\nScope:30October2026 cap15 amendment. This case documentation is not execution evidence and does not satisfy an AC. QBrain remains authoritative; prior notes and execution evidence are preserved above.\n\n# TEST-ROOMSYNC-139 - Real browser multiplayer, private push and recovery integration\n\nCurrent rules v2.7 amendment (30 October 2026): new games use every count 2 through 15. The full matrix is 14 games, 119 player participations and 952 accepted round solves. The separate observer limit remains 25 and the new-release audience is at most 40. Original design/receipt provenance remains historical; [the completion plan](../../../release15-completion-plan.md) governs fresh evidence.\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Real browser multiplayer, private push and recovery integration. |\n| QBrain reference/scope | \u0060TEST-ROOMSYNC-139\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | MSG-M03, MSG-M04, MSG-M05, MSG-M27, MSG-M28, MSG-M29, MSG-FLOW, SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-02\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-03\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-07\u0060 |\n| Priority | critical |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities. |\n| Test data | Every player count 2 through 15 for the matrix; two players plus one inviter-bound observer for the separate strict-push journey; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; no-hint correct solves yield 5 per round and 40 per player. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Partial: full actual-runtime UI fixture, seed control and independent observer are required; current execution state remains the existing QBrain in_progress record. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Arrange independent matrix identities/membership using real APIs, then ready every player through browser controls without manual refresh. In the separate strict-push journey, join by UI room code and suppress periodic UI reads. | All expected players see the same roster, countdown and category chooser; the strict journey correlates actual private notifications with authorized reads. |\n| 2 | Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients. | All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points. |\n| 3 | Complete all 14 matrix games with at most two simultaneous answer UIs, and separately run strict observer/offline/reconnect/token-renewal/socket-recovery variants. | Matrix reports record eight rounds per game, 119 participations and 952 accepted UI solves with matching final rankings and truthful cleanup; strict observations prove autonomous progression and private recovery without periodic-read substitution. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Real browser multiplayer, private push and recovery integration\n  Scenario: TEST-ROOMSYNC-139 design verification\n    Given Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities.\n    And the matrix contains every player count 2 through 15\n    And the separate strict-push game has two players and an inviter-bound observer\n    When I arrange matrix membership through real APIs and ready every player through the UI\n    Then all expected players see the same roster, countdown and category chooser\n    When Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients.\n    Then All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points.\n    When I complete all 14 matrix games with at most two simultaneous answer UIs\n    Then 119 player participations produce 952 accepted UI solves and matching rankings\n    When I run the strict observer game with periodic UI reads suppressed\n    Then actual private notifications cause authorized state updates\n    And autonomous deadlines, reconnect and token renewal remain observable\n\u0060\u0060\u0060\n\n## Boundaries\n\nThis documents the current matrix obligation, not a claim that all counts passed. Preserve the older 2 through 25 attempts with their original source and outcomes. The 29 October 15-player dirty-build pass is historical until the changed committed candidate is rerun. Private-frame privacy, maximum observer audience, legacy-match compatibility and worker ownership/fault contracts retain their separately mapped criteria.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n",
+      "title": "Real browser multiplayer, private push and recovery integration",
+      "acceptanceCriteria": [
+        {
+          "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-01"
+        },
+        {
+          "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-02"
+        },
+        {
+          "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-03"
+        },
+        {
+          "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-04"
+        },
+        {
+          "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-05"
+        },
+        {
+          "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-06"
+        },
+        {
+          "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "LIVE-07"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "condition": "Run repeatable UI integration against an explicitly selected actual database-backed runtime with real private WebSockets and no HTTP fixtures, plus focused concurrency, lifecycle, scheduler and negative authorization regressions. Exercise2 through15 players and an observer, retain evidence and distinguish local runtime proof from hosted deployment."
+    },
+    {
+      "id": "TR-CONNECTION-RECOVERY-009",
+      "status": "completed",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "Original v2.6 document ID: TR-09; canonical MCP ID: TR-CONNECTION-RECOVERY-009. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: TR-WP-GAME-009. Replaced at user request with a subject-identifying ID.",
+      "title": "Connection handling",
+      "acceptanceCriteria": [
+        {
+          "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "TR-09-C01"
+        },
+        {
+          "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "DEC-17"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID."
+    },
+    {
+      "id": "TR-MULTIPLAYER-INTEGRATION-034",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "high",
+      "notes": "New verification/extension import key: TR-34; canonical MCP ID: TR-MULTIPLAYER-INTEGRATION-034. Confirmed extension requirement; source docs/admin_acl_design.md, docs/admin_acl_review_receipt.json, tests/integration/multiplayer.integration.ts and user conversation. Former provisional MCP ID: TR-WP-GAME-034. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Integration games for every supported player count",
+      "acceptanceCriteria": [
+        {
+          "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "TR-34-C01"
+        },
+        {
+          "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "TR-34-C02"
+        },
+        {
+          "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database.",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+          "isSatisfied": true,
+          "id": "TR-34-C03"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..15, using disposable infrastructure."
+    },
+    {
+      "id": "TR-ROOM-SYNCRECOVERY-038",
+      "status": "in_progress",
+      "scopeStartLayerKey": "layer-1",
+      "priority": "critical",
+      "notes": "Confirmed user requirements: actual live gameplay, repeatable UI integration at2..15, design updates and independent hostile validation. Source: phone stale-roster report and corrections,27October2026. SDK token callback, coalescing, lifecycle, independent worker and owned cleanup are implemented. New presence-body defect independently reproduced in Chromium;2red React tests now pass, real heartbeat browser regression passes with unread negative control and production-only body drain.532unit/acceptance tests, lint and production build pass. Updated strict game is rerunning; full2..15 remains pending. Prior25-player round1 failure and measured shared-cluster WAL stalls are retained. Volatile TLS harness preserves fsync/synchronous_commit but proves neither power-loss durability nor public capacity. Faster waiting-room fallback and hosted Phase7 remain outside this extension.\n\nLocal 29 October 2026 diagnostic: a 25-player attempt failed during UI readiness before simultaneous-answer testing. Captured UI showed 24 players playing and the final participant unable to access the room; a five-second holdout removal is consistent with the observed roster but not proven by a retained deadline event. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-simultaneous/. A separate earlier 25-player run failed during gameplay: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-failure/. Current routing source and these exploratory tests are uncommitted; neither establishes 25-player capacity, public hosting capacity, or completion of LIVE-07.\n\nLocal 29 October 2026 strict-push browser integration passed for two players and one observer through eight rounds, token renewal and reconnect with periodic UI reads suppressed. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-strict-push/. It used an uncommitted candidate build and isolated TLS database/private Realtime; it does not establish deployed behavior or LIVE-07 capacity.\n\nLocal 29 October 2026 follow-up diagnostic readied the last two players together and reached round one with 25 players but failed after nine recorded solves, with 15 uncertain retries and 453 request failures (only the first 100 failure details retained). The captured scorecard shows the round deadline elapsed; the cause of the delay is unproven. This exploratory run permitted 25 concurrent answers, outside the LIVE-07 limit of two. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-ready-together/. The candidate remains uncommitted and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 diagnostic with the last two players readying together and at most two simultaneous answers failed at 25 players in round one after two recorded solves, one uncertain retry and 396 request failures (only the first 100 failure details retained). The answer control was absent when the test attempted to submit. Cleanup reported no errors; the cause remains unproven. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-bounded/. This local uncommitted candidate has not satisfied LIVE-07 or established hosted capacity.\n\nLocal 29 October 2026 diagnostic with per-phase request measurement failed during readiness before gameplay. During the test readiness phase, 1,563 room reads started, 24 readiness responses succeeded, and completed room reads reached approximately 9.1 seconds. The captured roster had 24 players. These local observations do not establish the source of the delay or public-host capacity. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-metrics/. The candidate is uncommitted and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 diagnostic suppressed browser safety-read timers while preserving real push and presence. All 25 readiness actions succeeded, but the category chooser did not appear before timeout; 22 captured clients were still loading the game. Request totals recorded after cleanup include cleanup traffic and cannot establish the cause. This altered-timer run is not an acceptance test. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-no-safety-polls/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 normal-polling 25-player diagnostic failed during readiness; its pre-cleanup snapshot recorded 881 room reads started. An independent monitor sampled the isolated database 36 times: three idle connections appeared in 35 samples, and no database lock wait was sampled. Sampling can miss brief waits and does not establish the cause. The first monitor started before PostgreSQL was ready and captured no samples; the corrected monitor attached after startup. Receipt and samples: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-db-monitored/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 candidate addresses a separate LIVE-03 gap: foreground calls no longer join an in-flight deadline batch, while the protected worker waits for its actual result; idle foreground catch-up and worker error/retry behavior remain. Before implementation, four assertions passed with the correct fixture and rejected the wrong fixture; the worker route fixture likewise passed and rejected its wrong control. Focused production-bound suite: 29 passed. Receipts: docs/evidence/hosting/guest-admin-recovery/deadline-worker-mock-v2/ and deadline-route-mock/. Source remains uncommitted; this does not establish 25-player or hosted behavior, and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 post-deadline-fix 25-player UI test completed round one but failed in round two after 45 recorded solves. Its pre-cleanup round-two metrics recorded 33 answer conflicts, 20 successful answer responses, and 1,896 reaction, 1,467 room and 1,171 match reads started. The monitor sampled 103 database snapshots and observed lock waits in three; sampling cannot establish contribution to the failure. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-post-deadline-fix/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 candidate separates game and reaction refresh keys: match notifications no longer automatically reread reactions, room and reaction notifications still refresh both, and active-round to summary transitions refresh the observer social view. Before implementation, independent correct and wrong controls passed their mock gates; 22 focused tests passed against the implementation. Receipts: docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock-v2/, game-social-mock/ and social-transition-mock/. The paired source edits had a late per-edit verification hook; both subsequently verified successfully. Candidate remains uncommitted and requires actual push and 25-player verification; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 updated candidate passed the real strict-push browser test for two players and an observer through eight rounds, reactions, token renewal and reconnect, with polling suppressed and no cleanup errors. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-strict-social-push/. The build is uncommitted and the result does not establish the 25-player matrix or hosted performance; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 25-player UI run after separating game and reaction refresh keys failed in round two after 29 recorded solves. It recorded 304 reaction reads in round one versus 826 in the preceding diagnostic; timing and conditions differed, so the comparison does not establish a capacity improvement. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-post-social-fix/. The build is uncommitted; LIVE-07 remains unsatisfied.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "title": "Private live multiplayer delivery and autonomous progression",
+      "acceptanceCriteria": [
+        {
+          "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-01"
+        },
+        {
+          "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-02"
+        },
+        {
+          "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-03"
+        },
+        {
+          "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-04"
+        },
+        {
+          "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-05"
+        },
+        {
+          "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition.",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)",
+          "isSatisfied": true,
+          "id": "LIVE-06"
+        },
+        {
+          "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+          "isSatisfied": false,
+          "id": "LIVE-07"
+        }
+      ],
+      "workspaceId": "\u003Crepo\u003E",
+      "body": "Configure authenticated Realtime and an independent durable deadline/outbox worker. Game state must propagate end to end to players and bound observers without relying on periodic browser reads. Preserve authority, privacy, idempotency and owned temporary-runtime cleanup."
+    }
+  ],
+  "qualification": "Fresh supported effective requirement read only; historical satisfaction retained, no requirement or status mutation."
+}

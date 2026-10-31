@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="3" failures="1" errors="0" time="0.012577877">
+    <testsuite name="tests/web/deadline-worker-isolation.test.ts" timestamp="2026-10-29T17:28:30.668Z" hostname="[PRIVATE HOST]" tests="3" failures="1" errors="0" skipped="0" time="0.012577877">
+        <testcase classname="tests/web/deadline-worker-isolation.test.ts" name="LIVE-03 foreground does not join a pending deadline worker batch" time="0.009572113">
+            <failure message="expected false to be true // Object.is equality" type="AssertionError">
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/web/deadline-worker-isolation.test.ts:54:23
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/deadline-worker-isolation.test.ts" name="LIVE-03 concurrent worker calls wait for and share the same batch" time="0.001162681">
+        </testcase>
+        <testcase classname="tests/web/deadline-worker-isolation.test.ts" name="LIVE-03 a foreground request still starts catch-up when no batch is running" time="0.000546371">
+        </testcase>
+    </testsuite>
+</testsuites>

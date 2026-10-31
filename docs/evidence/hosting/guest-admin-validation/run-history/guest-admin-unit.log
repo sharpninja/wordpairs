@@ -1,0 +1,119 @@
+
+> wordpairs@0.1.0 test
+> vitest run --reporter=default --reporter=junit --outputFile.junit=../wordpairs-local/guest-admin-unit.xml
+
+
+ RUN  v5.0.5 <repo>
+
+ ✓ tests/traceability/ac-inventory.test.ts (5 tests) 110ms
+ ✓ tests/web/pwa-worker.test.ts (5 tests) 216ms
+ ✓ tests/ac-contracts/oracle-validation.test.ts (222 tests) 343ms
+ ✓ tests/web/identity-api.test.ts (11 tests) 151ms
+ ✓ tests/integration/hosting-schema.test.ts (5 tests) 911ms
+ ✓ tests/architecture/phase1a-bootstrap.test.ts (6 tests) 710ms
+   ✓ Phase 1A application skeleton and module boundaries (6)
+     ✓ keeps domain modules free of UI, framework, and infrastructure imports 686ms
+ ✓ tests/web/reactions-api.test.ts (2 tests) 87ms
+ ✓ tests/integration/hosted-sbom.test.ts (4 tests) 2460ms
+   ✓ hosted build inventory, isolated fixture only (4)
+     ✓ includes scoped, nested, development and optional packages with dependency edges 930ms
+     ✓ fails closed for unsafe metadata --sha 1110ms
+ ❯ tests/web/content-api.test.ts (4 tests | 1 failed) 110ms
+   ✓ derives actor from session and rejects forged roles, wins, unknown fields and CSRF before service 87ms
+   ✓ sends strict suggestion to the application boundary and returns only its private result 6ms
+   ✓ propagates unauthorized review and cannot turn client authority into server roles 2ms
+   × denies guest-shaped sessions before accessing private content 11ms
+ ✓ tests/acceptance/eight-round-counterpart.test.ts (1 test) 120ms
+ ✓ tests/acceptance/boundary-counterparts.test.ts (4 tests) 272ms
+ ✓ tests/acceptance/lobby-content-counterparts.test.ts (8 tests) 185ms
+ ✓ tests/web/admin-api.test.ts (1 test) 43ms
+ ✓ tests/web/private-state.test.ts (4 tests) 293ms
+ ✓ tests/web/github-admin-api.test.ts (7 tests) 57ms
+ ✓ tests/application/match.test.ts (11 tests) 61ms
+ ✓ tests/web/landing-api.test.ts (1 test) 51ms
+ ✓ tests/web/lobby-api.test.ts (4 tests) 95ms
+ ✓ tests/integration/oidc.test.ts (11 tests) 124ms
+ ✓ tests/web/pwa-manifest.test.ts (2 tests) 3883ms
+   ✓ PWA-02 supplies real PNG dimensions and opaque backgrounds 3699ms
+ ✓ tests/web/rooms-api.test.ts (3 tests) 121ms
+ ✓ tests/application/catalog-seed.test.ts (2 tests) 86ms
+ ✓ tests/acceptance/coverage-map.test.ts (1 test) 1874ms
+   ✓ binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions 1871ms
+ ✓ tests/web/deadlines-api.test.ts (5 tests) 173ms
+ ✓ tests/web/matches-api.test.ts (5 tests) 222ms
+ ✓ tests/application/content.test.ts (7 tests) 53ms
+ ✓ tests/application/lobby.test.ts (21 tests) 105ms
+ ✓ tests/integration/postgres-pool.test.ts (9 tests) 47ms
+ ✓ tests/acceptance/real-gameplay.test.ts (13 tests) 315ms
+ ✓ tests/integration/realtime.test.ts (3 tests) 187ms
+ ✓ tests/application/public-projections.test.ts (4 tests) 20ms
+ ✓ tests/application/matches.test.ts (3 tests) 40ms
+ ✓ tests/application/command.test.ts (14 tests) 61ms
+ ✓ tests/application/identity.test.ts (3 tests) 64ms
+ ✓ tests/application/ui-content-workflows.test.ts (2 tests) 47ms
+ ✓ tests/tr-contracts/reaction-contracts.test.ts (4 tests) 52ms
+ ✓ tests/integration/github-admin.test.ts (13 tests) 57ms
+ ✓ tests/application/ui-autocontinue.test.ts (3 tests) 63ms
+ ✓ tests/web/social-panel.test.ts (1 test) 186ms
+ ✓ tests/application/rooms.test.ts (4 tests) 43ms
+ ✓ tests/integration/postgres-store.test.ts (7 tests) 56ms
+ ✓ tests/application/content-service.test.ts (1 test) 68ms
+ ✓ tests/web/room-live-resume.test.ts (2 tests) 184ms
+ ✓ tests/integration/admin-session-isolation.test.ts (1 test) 807ms
+   ✓ actual composition separates guest/admin token namespaces, strips guest roles and revokes admin independently 803ms
+ ✓ tests/web/heartbeat-body.test.ts (2 tests) 202ms
+ ✓ tests/web/social-live-cadence.test.ts (2 tests) 173ms
+ ✓ tests/application/catalog-admin.test.ts (3 tests) 21ms
+ ✓ tests/application/public-service.test.ts (5 tests) 41ms
+ ✓ tests/integration/public-read.test.ts (3 tests) 39ms
+ ✓ tests/integration/invitations.test.ts (1 test) 12ms
+ ✓ tests/application/reactions.test.ts (2 tests) 18ms
+ ✓ tests/application/access.test.ts (2 tests) 29ms
+ ✓ tests/web/identity-navigation.test.ts (3 tests) 1038ms
+   ✓ focus during delayed POST cannot overtake the session mutation 751ms
+ ✓ tests/application/reaction-service.test.ts (1 test) 31ms
+ ✓ tests/web/landing.test.ts (7 tests) 1493ms
+   ✓ AC-43 anonymous landing states (7)
+     ✓ retains cache bypass when conflict recovery fails, and does not relabel old rows while navigating 727ms
+     ✓ renders duplicate aliases without retaining removed rows on a refresh 399ms
+ ✓ tests/integration/hosting-environment.test.ts (2 tests) 11ms
+ ✓ tests/web/live-races.test.ts (5 tests) 269ms
+ ✓ tests/web/pwa-support.test.ts (9 tests) 1687ms
+   ✓ PWA-03 registers securely in admin scope with fresh updates; errors preserve manual guidance 1064ms
+ ✓ tests/acceptance/source-archive.test.ts (1 test) 25687ms
+   ✓ AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering 25679ms
+ ✓ tests/ac-contracts/oracle-supplemental-validation.test.ts (85 tests) 27899ms
+   ✓ AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator 15175ms
+   ✓ AC-42 validates complete GPL and the actual Recursive-bearing SVG notice 12482ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/content-api.test.ts > denies guest-shaped sessions before accessing private content
+AssertionError: expected 403 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 403
+
+ ❯ tests/web/content-api.test.ts:16:118
+     14| it('denies guest-shaped sessions before accessing private content',asy…
+     15|  mocks.session.mockResolvedValue(success({profile:{id:'guest',kind:'gu…
+     16|  expect((await GET(new Request('https://wordpairs.test/api/content',{h…
+       |                                                                                                                      ^
+     17|  expect(mocks.view).not.toHaveBeenCalled();
+     18|  expect(mocks.act).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 59 passed (60)
+      Tests  1 failed | 581 passed (582)
+   Start at  19:05:20
+   Duration  33.21s (tests 53%, environment 25%, import 12%, transform 10%, worker 1%)
+
+    Isolate  60 workers spawned · ~930ms startup each (spawn + environment, per file)
+             at least ~2.79s faster with isolate: false — reuses workers across files instead of one per file
+
+JUNIT report written to <home>/github/WordGame/.mcpServer/wordpairs-local/guest-admin-unit.xml

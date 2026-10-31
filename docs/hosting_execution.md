@@ -20,8 +20,9 @@ proposal in [deployment plan](deployment_plan.md). Staging binds only to Supabas
    privileges, rather than a postgres administrator connection at runtime.
    Generate separate invitation and scheduler secrets per database using pgcrypto;
    store scheduler credentials in Vault. No secret values enter repository evidence.
-   The repeatable `scripts/hosting-schema.mjs --environment staging|production
-   --mode plan` reports exact mappings, migration names and source hashes. Use
+   The repeatable `pwsh -NoProfile -NonInteractive -File scripts/hosting-schema.ps1
+   -Environment staging -Mode plan` reports exact mappings, migration names and
+   source hashes. Select `-Environment production` for that project. Use
    supported MCP `apply_migration` for connected writes. The guarded TLS fallback
    supports status/apply with a private config and exact project confirmation;
    unknown migration history fails closed. All writes are transactional.
@@ -52,18 +53,22 @@ proposal in [deployment plan](deployment_plan.md). Staging binds only to Supabas
    values. Disable feature previews in production until a safe staging binding is
    configured. Do not copy production secrets into a preview. Do not grant an
    administrator by guessing a profile ID.
-6. Before pushing the candidate, set production's ignored-build command to `exit 0`
-   to cancel automatic Git builds during initial staged validation. Manual exact-SHA
-   deployment overrides it with `exit 1`. Restore normal Git builds only after the
-   verified initial release; staging's independent database remains unchanged.
+6. Preserve both projects' global Ignored Build Step commands as `exit 0` before,
+   throughout and after the staged rollout; do not restore automatic Git builds.
+   For each reviewed exact-SHA deployment, use that deployment's Dashboard Redeploy
+   dialog and uncheck **Use project's Ignore Build Step** for that invocation only.
+   Do not send `projectSettings.commandForIgnoringBuildStep`, change either global
+   command or add an `ignoreCommand` override. Follow the [guarded rollout
+   procedure](evidence/release15/hosting-readiness/guarded-rollout-procedure.md)
+   and verify the unchanged global guards before and after each redeploy.
    Validate the build locally, retain hostile review rounds, commit required source
    and documentation changes and deploy the same exact Git commit to staging first.
    Verify guest cookies, two independent browser players, private realtime delivery
    and autonomous game progression. Run expanded browser integration only on
    synthetic staging data, with cleanup limited to owned fixtures.
-7. After staging passes, apply the same migrations to the empty, explicitly named
-   production project and deploy the same commit. Verify SWBOM/manifest/offline
-   resources and non-destructive anonymous/public responses. Record URLs, commit,
+7. After staging passes, apply the pending migrations to the explicitly named
+   production project and deploy the same commit. Verify the SWBOM, admin-only
+   manifest and offline resources, and non-destructive anonymous/public responses. Record URLs, commit,
    migration versions, tests and remaining limitations; reconcile QBrain and docs.
 
 ## Evidence and authority
@@ -89,7 +94,7 @@ The [official forum question about hackathon prizes](https://community.vercel.co
 had no published answer when checked. Keep the interpretation uncertainty in the
 deployment receipt and do not mark the free-tier eligibility criterion satisfied.
 
-## Current execution state
+## Historical preflight checkpoint (before the first deployment)
 
 Staging's11 game migrations and hosted scheduler/private Realtime policy are
 installed. Read-back found6 categories,60 pairs,31 game tables with RLS and a
@@ -122,3 +127,64 @@ All five hostile-review rounds, including rejected rounds, are retained under
 `docs/evidence/hosting/`. Round5 approves source readiness at99/99, separately from
 operational deployment readiness. No application deployment has been created yet;
 production database migrations await successful staging validation.
+
+## Operational update — 28October2026
+
+Staging is READY at `https://wordpairs.vercel.app` from exact source commit
+`8e2f62417e0fe46cefd884e8a61024b12860a2cf`, deployment
+`dpl_4unZq3queczsyf23J95UTVyF4mcJ`. Its public manifest and served CycloneDX1.6
+report returned200; the inventory contains283 components and the exact source
+and lockfile identity. The first build failed because Vercel's production
+environment selected production React test utilities. The corrected command
+sets `NODE_ENV=test` for the test step only; the unit gate remains mandatory.
+The failed deployment is preserved in `docs/evidence/hosting/staging-first-build-failure.json`.
+
+The worker rejected unauthenticated requests with403 and accepted its configured
+credential with200. Staging's scheduler and cron are now enabled. The actual
+hosted two-player/observer UI integration passed1/1 in2.6minutes: private push,
+eight rounds, token renewal, reconnect, private-channel denial checks, and
+autonomous countdown/hint progression with all browsers offline. Observations
+are retained separately in `staging-live-ui-observations.json`, preserving the
+earlier local evidence. This is staging evidence for the exact commit above.
+
+Following that successful test, production's13 migrations were applied in order
+with outer transaction wrappers removed. Readback found6 categories,60 pairs,
+31 game tables with RLS and the private realtime policy. Its app login uses the
+reviewed catalog RPC; direct table reads remain denied as designed. Both the
+administrator and dedicated application login verified TLS with the second CA
+attachment, explicitly identified by the operator as production. Scheduler
+dispatch remains disabled until the production deployment and worker are verified.
+
+The operator's subsequent navigation defect produced a separately reviewed fix:
+server-derived permission links and a visible unavailable account-sign-in state.
+Local validation passed560 unit/contract tests,10 browser administration/navigation
+tests, lint and production build. Hostile review initially rejected a focus/session
+race; the correction and deferred POST/DELETE tests received99/99 source approval.
+Both review rounds are retained. The changed source still requires an exact-commit
+staging deployment and validation before production rollout.
+
+Historical OpenAI registration attempt, superseded by the guest/admin release:
+neither environment had an OpenAI client registration. The authorized request
+includes the competition purpose/URL and both callbacks. The official interest
+form reported a loading failure; refilling it did not establish submission or
+client issuance. OpenAI sign-in is inactive in the current release. No API key,
+coding-agent credential or unrelated client ID substitutes for that registration.
+
+Supabase security advice includes seven private trigger/invoker functions with
+mutable search paths; this is recorded rather than represented as a clean
+advisory report. Existing fixed-path privileged RPCs and revoked public execution
+remain in place. Provider prize-contest eligibility, physical-phone PWA checks and
+formal release packaging retain their separate qualifications above.
+
+## Current guest/admin PWA rollout in progress
+
+The operator replaced public OpenAI sign-in and public installation with guest-only
+play plus a fixed-owner GitHub admin PWA. The registered private GitHub App has
+both exact hosting callbacks and no repository/organization/email/webhook access.
+Server-only client configuration is present in both Vercel projects; credential
+values are private. Source and QBrain changes are described in
+[the current release record](admin_pwa_release.md). Existing staging evidence above
+belongs to8e2f624, not the later guest/admin PWA candidate. Production remains prepared but
+not deployed. No live owner sign-in, standalone phone continuity or changed-source
+hosted rollout is claimed yet. All rejected build/test/HV rounds are retained.
+

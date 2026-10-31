@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-29T11:22:25",
+  "testSha256": "03374DCFCD91A434218D7FD737D905B26F6842CFF45F6BA4EB8A8E3E2408E6A8",
+  "runs": [
+    {
+      "fixture": "Correct",
+      "moduleSha256": "DC7115A290C3C358559C4FF9A89091C2BEC336A5D8877DF858F4CACAA83500C6",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "result": "Passed",
+          "name": "accepts a complete matching chain"
+        },
+        {
+          "result": "Passed",
+          "name": "accepts an aggregate-run report without a producer receipt"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a different parent run"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a different revision"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a nonzero exit"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a different JUnit report"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects an unlinked producer receipt"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects different producer bytes"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a modified producer receipt"
+        }
+      ]
+    },
+    {
+      "fixture": "Wrong",
+      "moduleSha256": "B4A8D1A37CB045ECEBCD2AFEBD92502002CF2B94A4FF80B0280B2AA705692E79",
+      "passed": 2,
+      "failed": 7,
+      "skipped": 0,
+      "cases": [
+        {
+          "result": "Passed",
+          "name": "accepts a complete matching chain"
+        },
+        {
+          "result": "Passed",
+          "name": "accepts an aggregate-run report without a producer receipt"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a different parent run"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a different revision"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a nonzero exit"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a different JUnit report"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects an unlinked producer receipt"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects different producer bytes"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a modified producer receipt"
+        }
+      ]
+    }
+  ]
+}

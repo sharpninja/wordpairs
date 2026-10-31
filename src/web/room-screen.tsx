@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { OwnProfile } from "../application/identity";
 import type { RoomView } from "../application/rooms";
+import { MAX_ROOM_PLAYERS } from "../domain/rooms";
 import { GamePanel } from "./game-panel";
 import { IdentityPanel, ProfileIcon } from "./identity-panel";
 import {
@@ -52,7 +53,9 @@ function RoomSession({
   const [busy, setBusy] = useState(false);
   const [selected, setSelected] = useState("");
   const [link, setLink] = useState("");
+  const [copyMessage, setCopyMessage] = useState("");
   const [gameRefresh, setGameRefresh] = useState(0);
+  const [socialRefresh, setSocialRefresh] = useState(0);
   const [displayNow, setDisplayNow] = useState(0);
   const serverOffset = useRef(0);
   const sequence = useRef(0);
@@ -76,6 +79,7 @@ function RoomSession({
     invalidatePrivateState();
     setRoom(null);
     setLink("");
+    setCopyMessage("");
     setSelected("");
     setBusy(false);
     setError(
@@ -85,7 +89,6 @@ function RoomSession({
   const endpoint = `/api/rooms/${encodeURIComponent(activeRef)}${activeRef === reference && invitation ? `?invite=${encodeURIComponent(invitation)}` : ""}`;
   const refresh = useCallback(
     async (resolvedJoin = false): Promise<void> => {
-      if (!profile) return;
       if (fetching.current) {
         refreshAgain.current = true;
         return;
@@ -158,6 +161,7 @@ function RoomSession({
         }
         setError("");
         setGameRefresh((value) => value + 1);
+        setSocialRefresh((value) => value + 1);
         if (result.role) setActiveRef(result.roomId);
       } catch {
         if (generation === sequence.current) setError(explanation);
@@ -171,7 +175,7 @@ function RoomSession({
         }
       }
     },
-    [endpoint, profile, fromDiscovery, router],
+    [endpoint, profile.id, fromDiscovery, router],
   );
   useEffect(() => {
     fetching.current = false;
@@ -196,6 +200,13 @@ function RoomSession({
   }, []);
   const current = useRef({ room, busy });
   current.current = { room, busy };
+  const refreshMatch = useCallback(async () => {
+    if (!current.current.room?.matchAvailable) {
+      await refresh();
+      return;
+    }
+    setGameRefresh((value) => value + 1);
+  }, [refresh]);
   useEffect(() => {
     if (room?.role !== "player" || room.status === "closed") return;
     let stopped = false;
@@ -257,6 +268,42 @@ function RoomSession({
     const epoch = commandEpoch.current;
     setBusy(true);
     setError("");
+    if (action === "invite") setCopyMessage("");
+    let provideCopy: ((url: string) => void) | undefined;
+    let abortCopy: (() => void) | undefined;
+    let copyResult: Promise<boolean> | undefined;
+    if (
+      action === "invite" &&
+      navigator.clipboard?.write &&
+      typeof ClipboardItem !== "undefined"
+    ) {
+      const content = new Promise<Blob>((resolve, reject) => {
+        provideCopy = (url) => {
+          resolve(new Blob([url], { type: "text/plain" }));
+          provideCopy = undefined;
+          abortCopy = undefined;
+        };
+        abortCopy = () => {
+          reject(new Error("Invitation was not created"));
+          provideCopy = undefined;
+          abortCopy = undefined;
+        };
+      });
+      // A denied clipboard request may stop observing the pending data promise.
+      void content.catch(() => {});
+      try {
+        // Begin the clipboard operation during the click; its data arrives after
+        // the server creates the inviter-bound link.
+        copyResult = navigator.clipboard
+          .write([new ClipboardItem({ "text/plain": content })])
+          .then(
+            () => true,
+            () => false,
+          );
+      } catch {
+        abortCopy?.();
+      }
+    }
     const input = pending.current ?? {
       action,
       expectedProfileId: profile.id,
@@ -321,12 +368,37 @@ function RoomSession({
         window.location.assign("/play");
         return;
       }
-      if (input.action === "invite") setLink(result.url);
-      else setActiveRef(result.roomId);
+      if (input.action === "invite") {
+        if (typeof result.url !== "string" || !result.url) {
+          throw new Error("Invalid invitation");
+        }
+        setLink(result.url);
+        provideCopy?.(result.url);
+        let copied = false;
+        if (copyResult) {
+          copied = await copyResult;
+        } else {
+          try {
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(result.url);
+              copied = true;
+            }
+          } catch {
+            // The visible link remains available for manual copying.
+          }
+        }
+        if (epoch !== commandEpoch.current) return;
+        setCopyMessage(
+          copied
+            ? "Invitation link copied."
+            : "Could not copy automatically. Select the link to copy it.",
+        );
+      } else setActiveRef(result.roomId);
       await refresh();
     } catch {
       if (epoch === commandEpoch.current) setError(explanation);
     } finally {
+      abortCopy?.();
       inFlight.current = false;
       if (epoch === commandEpoch.current) setBusy(false);
     }
@@ -335,6 +407,7 @@ function RoomSession({
     profile?.id ?? null,
     room?.role ? room.roomId : null,
     refresh,
+    refreshMatch,
   );
   return (
     <>
@@ -368,6 +441,12 @@ function RoomSession({
           {!room && !error && <p role="status">Finding your room…</p>}
           {room && (
             <>
+              {room.capacityBlocked && (
+                <p role="alert">
+                  This room predates the {MAX_ROOM_PLAYERS}-player limit. Leave
+                  and create or join a new room.
+                </p>
+              )}
               <p>
                 {room.players.length} / {room.capacity} players ·{" "}
                 {room.availableSlots} open player slots · {room.status}
@@ -378,13 +457,16 @@ function RoomSession({
                 </p>
               )}
               <h2>Players</h2>
-              {room.status === "waiting" && room.idlePrompt && (
-                <p role="status">
-                  Ready to play? All players, mark yourself ready when you are
-                  set.
-                </p>
-              )}
-              {room.status === "waiting" &&
+              {!room.capacityBlocked &&
+                room.status === "waiting" &&
+                room.idlePrompt && (
+                  <p role="status">
+                    Ready to play? All players, mark yourself ready when you are
+                    set.
+                  </p>
+                )}
+              {!room.capacityBlocked &&
+                room.status === "waiting" &&
                 room.holdoutId === profile.id &&
                 room.holdoutDueAt && (
                   <p role="alert">
@@ -399,16 +481,18 @@ function RoomSession({
                       : " The room will wait for both players."}
                   </p>
                 )}
-              {room.status === "countdown" && room.countdownDueAt && (
-                <p role="status">
-                  Roster locked. Starting in{" "}
-                  {Math.max(
-                    0,
-                    Math.ceil((room.countdownDueAt - displayNow) / 1000),
-                  )}{" "}
-                  seconds. Departing players will not be replaced.
-                </p>
-              )}
+              {!room.capacityBlocked &&
+                room.status === "countdown" &&
+                room.countdownDueAt && (
+                  <p role="status">
+                    Roster locked. Starting in{" "}
+                    {Math.max(
+                      0,
+                      Math.ceil((room.countdownDueAt - displayNow) / 1000),
+                    )}{" "}
+                    seconds. Departing players will not be replaced.
+                  </p>
+                )}
               {room.status === "closed" && (
                 <p role="status">
                   {room.matchAvailable
@@ -446,7 +530,7 @@ function RoomSession({
               )}
               {room.role === "player" && (
                 <>
-                  {room.status === "waiting" && (
+                  {!room.capacityBlocked && room.status === "waiting" && (
                     <button
                       className="button"
                       type="button"
@@ -468,7 +552,7 @@ function RoomSession({
                     }
                     onClick={() => void command("invite")}
                   >
-                    Create invitation link
+                    Copy Invitation Link
                   </button>
                   {link && (
                     <label className="invite-link">
@@ -480,6 +564,7 @@ function RoomSession({
                       />
                     </label>
                   )}
+                  {copyMessage && <p role="status">{copyMessage}</p>}
                 </>
               )}
               {room.role === "observer" && (
@@ -584,6 +669,7 @@ function RoomSession({
           roomId={room.roomId}
           profileId={profile.id}
           refreshKey={gameRefresh}
+          socialRefreshKey={socialRefresh}
           onFinished={refresh}
         />
       )}

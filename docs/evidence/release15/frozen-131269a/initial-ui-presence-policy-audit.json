@@ -1,0 +1,308 @@
+{
+  "timestamp": "2026-10-30T17:25:15",
+  "kind": "read-only-source-sibling-policy-audit",
+  "parentFreeze": "131269a",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T222112Z-turn-3bff",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "sourcePins": [
+    {
+      "path": "src/domain/lobby.ts",
+      "sha256": "D714FBEAED05C62C103DFCDDAA9931C31CDDD4D9A602BD92B73794ADCB9CC3D8",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/domain/rooms.ts",
+      "sha256": "658B9692E2504556413BD59A6FBDAC30EBE503AA887834E37C67D374AC6F72D7",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/application/lobby.ts",
+      "sha256": "AE3FDD03FD5CA2BEBB9F3CCAF835ED414F6A9BDCA273A538ADF2DE4C1D06ADB8",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/application/rooms.ts",
+      "sha256": "7AA01A3F04EFE01AE225C7DE0D77D2378DB7B278A66CA4070C31CA068273A6D2",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/infrastructure/room-repository.ts",
+      "sha256": "D78739DEECA432ABA46E3DFF241707587D1ED49378B84210EB5E30E9FDC08961",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/infrastructure/runtime.ts",
+      "sha256": "ADC454269563DC6C5D3507F303A67061110023E3E3B8914AFE4FB64AA7EA415D",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/app/api/rooms/[reference]/route.ts",
+      "sha256": "668E6C5EFD4854D66D81883BCEEAEBFEDADE97D9983CBDEDC3B9D70050AA7192",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/app/api/rooms/[reference]/lobby/route.ts",
+      "sha256": "42A952A7D2D548E07B751B0DB4CE1109A126E6FA7F58894390A750759E1603DB",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "src/web/room-screen.tsx",
+      "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "F522AA7DC8619D51D12A12C11F03FFA059AC1C5563198070059516618AD27895",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "tests/application/lobby.test.ts",
+      "sha256": "11341FC834CDA61D1C20481B073E5964D2796B1E00476F7914A330C2CB47D7BC",
+      "matchesParentFreeze": true
+    },
+    {
+      "path": "tests/integration/lobby.integration.ts",
+      "sha256": "D581DAEA63D269BD0FF0E73D659B69C34AF9DE7A762AC43591648E693456843A",
+      "matchesParentFreeze": true
+    }
+  ],
+  "requirementsReadSha256": "FCAE5FB5E3648479F9D9DA36777DECF7C81C419BE1B379BA54B9EEA5ED0AEBB2",
+  "relevantCriteria": [
+    {
+      "requirementId": "FR-LOBBYDISCOVERY-019",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "AC-32",
+        "text": "Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready in a room with more than two players, they are removed and the start countdown begins with the remaining roster locked. If the room has exactly two players, the holdout is not removed and the lobby continues waiting; the countdown does not begin until both are ready.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "FR-LOBBYDISCOVERY-019",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "AC-33",
+        "text": "Given the game start countdown has not begun, when no player/observer membership or ready-state change occurs for 30 seconds, then the game prompts all players once for that room version to mark themselves ready; any membership or ready-state change resets the interval.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "FR-LOBBYLIFECYCLE-003",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "AC-32",
+        "text": "Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready in a room with more than two players, they are removed and the start countdown begins with the remaining roster locked. If the room has exactly two players, the holdout is not removed and the lobby continues waiting; the countdown does not begin until both are ready.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "FR-LOBBYLIFECYCLE-003",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "AC-33",
+        "text": "Given the game start countdown has not begun, when no player/observer membership or ready-state change occurs for 30 seconds, then the game prompts all players once for that room version to mark themselves ready; any membership or ready-state change resets the interval.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "FR-LOBBYLIFECYCLE-003",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "DEC-16",
+        "text": "Idle prompt and readiness races: The 30-second interval resets on player/observer membership or ready-state changes. Prompt once per unchanged aggregate version. Deadlines carry the expected version; stale jobs are no-ops.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "TR-CONNECTION-RECOVERY-009",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "TR-09-C01",
+        "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "completed"
+    },
+    {
+      "requirementId": "TR-CONNECTION-RECOVERY-009",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "DEC-17",
+        "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "completed"
+    },
+    {
+      "requirementId": "TR-ROOM-CODES-010",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "DEC-17",
+        "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "TR-ROOM-SYNCRECOVERY-038",
+      "criterion": {
+        "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+        "id": "LIVE-07",
+        "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+        "isSatisfied": false
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "TEST-CONNECTIONRECOVERY-109",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "TR-09-C01",
+        "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "completed"
+    },
+    {
+      "requirementId": "TEST-CONNECTIONRECOVERY-109",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "DEC-17",
+        "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "completed"
+    },
+    {
+      "requirementId": "TEST-HOLDOUTWARNINGANDREMOVAL-032",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "AC-32",
+        "text": "Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready in a room with more than two players, they are removed and the start countdown begins with the remaining roster locked. If the room has exactly two players, the holdout is not removed and the lobby continues waiting; the countdown does not begin until both are ready.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "completed"
+    },
+    {
+      "requirementId": "TEST-IDLELOBBYREADINESSPROMPT-033",
+      "criterion": {
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+        "id": "AC-33",
+        "text": "Given the game start countdown has not begun, when no player/observer membership or ready-state change occurs for 30 seconds, then the game prompts all players once for that room version to mark themselves ready; any membership or ready-state change resets the interval.",
+        "isSatisfied": true
+      },
+      "requirementStatus": "completed"
+    },
+    {
+      "requirementId": "TEST-MULTIPLAYERINTEGRATION-134",
+      "criterion": {
+        "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+        "id": "TR-34-C01",
+        "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+        "isSatisfied": false
+      },
+      "requirementStatus": "in_progress"
+    },
+    {
+      "requirementId": "TEST-ROOMSYNC-139",
+      "criterion": {
+        "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json.",
+        "id": "LIVE-07",
+        "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+        "isSatisfied": false
+      },
+      "requirementStatus": "in_progress"
+    }
+  ],
+  "findings": [
+    {
+      "id": "PRESENCE-01",
+      "classification": "source_verified",
+      "finding": "Silent waiting-member expiry is45seconds detection plus120seconds grace,165seconds since original lastSeen/join. Explicit disconnect starts120seconds grace directly. Idle30seconds only prompts; it never removes membership.",
+      "pins": [
+        "src/domain/lobby.ts:10",
+        "src/domain/lobby.ts:16",
+        "src/domain/lobby.ts:259",
+        "src/domain/lobby.ts:335",
+        "tests/application/lobby.test.ts:152"
+      ]
+    },
+    {
+      "id": "PRESENCE-02",
+      "classification": "source_verified",
+      "finding": "Once all but one player is ready, the final unready actor has5seconds. In rooms above2 the deadline removes only that actor and locks/starts the remaining countdown; exact2 retains both. Reads and actions can settle deadlines, so worker delay does not extend the policy.",
+      "pins": [
+        "src/domain/lobby.ts:42",
+        "src/domain/lobby.ts:269",
+        "src/application/lobby.ts:90",
+        "src/app/api/rooms/[reference]/route.ts:28",
+        "tests/application/lobby.test.ts:111"
+      ]
+    },
+    {
+      "id": "PRESENCE-03",
+      "classification": "source_verified",
+      "finding": "Matrix API-joins every actor, navigates in waves of4, then sequentially waits for one live connection and readies that actor before checking the next. There is no all-pages-connected/full-roster barrier before the first ready. Thus the last readiness check may consume the5second holdout window that earlier ready actions created.",
+      "pins": [
+        "tests/browser/live-player-counts.integration.spec.ts:91",
+        "tests/browser/live-player-counts.integration.spec.ts:101",
+        "tests/browser/live-player-counts.integration.spec.ts:113"
+      ]
+    },
+    {
+      "id": "PRESENCE-04",
+      "classification": "source_verified",
+      "finding": "UI heartbeat requires loaded player role and open room; first interval attempt is20seconds after effect installation, not immediate. Presence acquires the current aggregate version under lock, preventing unrelated stale expectedVersion heartbeats from starving a valid actor. It cannot revive expired membership.",
+      "pins": [
+        "src/web/room-screen.tsx:209",
+        "src/web/room-screen.tsx:253",
+        "src/infrastructure/room-repository.ts:21",
+        "src/domain/lobby.ts:144",
+        "tests/integration/lobby.integration.ts:62"
+      ]
+    },
+    {
+      "id": "PRESENCE-05",
+      "classification": "source_verified",
+      "finding": "A valid guest session does not imply current room membership. Private UUID access rejects a nonmember with genericNOT_FOUND; the UI renders404 as room not found/invitation expired. Therefore a holdout removal can produce this screen without invalidating the guest session.",
+      "pins": [
+        "src/application/rooms.ts:193",
+        "src/web/room-screen.tsx:105",
+        "src/app/api/rooms/[reference]/route.ts:25"
+      ]
+    },
+    {
+      "id": "PRESENCE-06",
+      "classification": "corrected_parent_runtime_attribution",
+      "finding": "Parent full UI inspection corrected earlier all11loss interpretation: pages0..9 remain10/11playing/all10ready, chooserpage7, onlypage10 shows roomnotfound, total case56seconds. This topology and timing fit the last-unready5second holdout path and exclude165second silent expiry. No independently queried database snapshot or per-command timestamp history was available in this audit.",
+      "pins": [
+        "Parent message reporting full original11failureUI; release_selfcheck retains canonical runtime artifacts"
+      ]
+    }
+  ],
+  "minimalConditionalHarnessPlan": [
+    "Before changing tests, independently validate a readiness barrier contract with correct fixtures and wrong eager-ready/missing/disconnected/short-roster/rejected-page controls. No application policy change.",
+    "After all navigation waves, await every page showing exact live-connected status, original full roster count, waiting state and visible/enabled Mark ready before ANY ready click. Keep condition-based assertions and reject failures rather than swallow them.",
+    "Once every page passes, start all actual UI ready intents together through existing commitUi canonical conflict/uncertain retries; no APIready or lease/clock extension. Preserve original player identities and verify full roster/countdown and every original eight-round/game/cleanup assertion.",
+    "Retain the failing11player receipts, freeze the changed harness, rerun required validation plus all2..15cases and strictpush separately. A delayed actual readiness failure remains a failure; do not reduce15cap or relax serverAC32."
+  ],
+  "changesImplemented": false,
+  "applicationDefectEstablished": false,
+  "requirementsChanged": false,
+  "testsOrBuildsRun": false,
+  "providerOrRuntimeMutation": false,
+  "processDeviation": "Initial read-only source inventory preceded opening this new own turn; logging was then opened before the substantive audit and all conclusions/actions retained. No mutations occurred during the initial read.",
+  "limits": [
+    "Runtime details are attributed to parent full-artifact inspection; this audit independently verified source and current governing requirements.",
+    "No code, test, source producer, configuration, provider or requirement was changed.",
+    "The separate slow-load165second lifetime risk is a supported sibling boundary, not the observed56second failure cause.",
+    "This is not independent HV or release approval."
+  ]
+}

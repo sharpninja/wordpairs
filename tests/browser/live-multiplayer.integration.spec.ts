@@ -1,11 +1,20 @@
 import { randomUUID } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { expect, test, type BrowserContext, type Page } from "@playwright/test";
+import { expect, test, type BrowserContext, type Locator, type Page } from "@playwright/test";
 import { createSupabasePool } from "../../src/infrastructure/postgres-pool";
 import seed from "../../src/infrastructure/catalog-seed.json" with {
   type: "json",
 };
+import { cleanupOwnedRoom } from "./owned-room-cleanup";
+import { bodies as trackResponseBodies } from "./request-diagnostics";
+import type { BodyHandle } from "./request-diagnostics.contract";
+import { captureUiCommand } from "./ui-command-capture";
+import type { CapturedCommand } from "./ui-command-capture.contract";
+import { assertPageOwnRoundSolve, awaitCommandRetirement, awaitCommandUi } from "./ui-command-acknowledgement";
+import type { AckOutcome, UiCommandState } from "./ui-command-acknowledgement.contract";
+import { awaitCommandEntry, retainUiFailure } from "./ui-command-entry";
+import type { RejectedProbe } from "./ui-command-entry.contract";
 
 type Notice = {
   eventId: string;
@@ -34,7 +43,15 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
   const expiries: number[][] = [[], [], []];
   const reads: { type: string; version: number; receivedAt: number }[][] = [[], [], []];
   const transport: { player: number; at: number; event: string; status?: string; message?: string }[] = [];
+  const responseObservers: BodyHandle[] = [];
+  let qualifiedReadFailureTotal = 0;
+  const qualifiedReadFailures: { player: number; path: string; qualification: string }[] = [];
   const profileIds: string[] = [];
+  const commandAcknowledgements: { player: number; scope: "room" | "game"; action: string; commandId: string | null; expectedProfileId: string | null; roundId: string | null; expectedVersion: number | null; status: number; responseVersion: number | null; renderedVersion: number | null; busy: string | null; pending: string; outcome: string }[] = [];
+  const rejectedProbes: { player: number; stage: string; scope: "room" | "game"; mode: string; minimum: number; state: UiCommandState }[] = [];
+  const rejected = (page: Page, stage: string, scope: "room" | "game", minimum: number, mode: string): RejectedProbe => (state) => {
+    rejectedProbes.push({ player: pages.indexOf(page), stage, scope, mode, minimum, state: { ...state } });
+  };
   let presence: ReturnType<typeof setInterval> | undefined;
   let paused = false;
   let presenceBusy = false;
@@ -53,24 +70,56 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
       )
       .toBe(true);
   };
-  async function command(page: Page, click: () => Promise<unknown>) {
-    const response = page.waitForResponse((r) => r.request().method() === "POST" && r.url().includes(`/api/rooms/`));
-    await click();
-    const result = await response;
-    expect(result.status()).toBe(200);
-    return (await result.json()).version as number;
+  async function acknowledge(page: Page, scope: "room" | "game", result: CapturedCommand, version: number, action: string) {
+    const payload = result.request().postDataJSON() as Record<string, unknown>;
+    const uuid = (item: unknown) => typeof item === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(item) ? item : null;
+    let last = "";
+    const observe = (state: UiCommandState, outcome: AckOutcome) => {
+      const key = `${state.version}:${state.busy}:${state.pending}:${outcome}`;
+      if (key === last) return;
+      last = key;
+      commandAcknowledgements.push({ player: pages.indexOf(page), scope, action, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), roundId: uuid(payload.roundId), expectedVersion: typeof payload.expectedVersion === "number" && Number.isSafeInteger(payload.expectedVersion) && payload.expectedVersion >= 0 ? payload.expectedVersion : null, status: result.status(), responseVersion: Number.isSafeInteger(version) ? version : null, renderedVersion: state.version !== null && /^\d+$/.test(state.version) ? Number(state.version) : null, busy: state.busy, pending: state.pending, outcome });
+    };
+    if (result.status() === 409) await awaitCommandRetirement(page, scope, result, version, ({ state, outcome }) => observe(state, outcome), rejected(page, action, scope, Math.max(version, Number(payload.expectedVersion) + 1), "retire"));
+    else await awaitCommandUi(page, scope, version, "strict", observe, rejected(page, action, scope, version, "strict"));
   }
-  async function answer(page: Page, value: string) {
+  async function command(page: Page, action: string, scope: "room" | "game", path: string, control: Locator) {
+    await awaitCommandEntry(page, scope, control, rejected(page, `entry:${action}`, scope, 0, "fresh"));
+    const result = await captureUiCommand(
+      () => page.waitForRequest((r) => r.method() === "POST" && new URL(r.url()).pathname === path && r.postDataJSON()?.action === action),
+      () => control.click(),
+    );
+    expect(result.status()).toBe(200);
+    const payload = result.request().postDataJSON() as Record<string, unknown>;
+    expect(payload.action).toBe(action);
+    expect(payload.expectedProfileId).toBe(profileIds[pages.indexOf(page)]);
+    const body = await result.json() as { version: number };
+    await acknowledge(page, scope, result, body.version, action);
+    return body.version;
+  }
+  async function answer(page: Page, value: string, round: number) {
     for (let attempt = 0; attempt < 4; attempt++) {
-      await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+      const input = page.getByLabel("Your answer", { exact: true });
+      await awaitCommandEntry(page, "game", input, rejected(page, "entry:answer", "game", 0, "fresh"));
       const before = Number(await page.locator(".game-panel").getAttribute("data-match-version"));
-      await page.getByLabel("Your answer", { exact: true }).fill(value);
-      const response = page.waitForResponse((r) => r.request().method() === "POST" && r.url().endsWith("/match") && r.request().postDataJSON()?.action === "answer");
-      await page.getByRole("button", { name: "Submit answer", exact: true }).click();
-      const result = await response;
-      if (result.ok()) { const solved = await result.json(); expect(solved.correct).toBe(true); return solved.version as number; }
+      await input.fill(value);
+      const result = await captureUiCommand(
+        () => page.waitForRequest((r) => r.method() === "POST" && new URL(r.url()).pathname === `/api/rooms/${roomId}/match` && r.postDataJSON()?.action === "answer"),
+        () => page.getByRole("button", { name: "Submit answer", exact: true }).click(),
+      );
+      const payload = result.request().postDataJSON() as Record<string, unknown>;
+      expect(payload.expectedProfileId).toBe(profileIds[pages.indexOf(page)]);
+      expect(payload.answer).toBe(value);
+      if (result.ok()) {
+        const solved = await result.json() as { correct: boolean; version: number };
+        expect(solved.correct).toBe(true);
+        await acknowledge(page, "game", result, solved.version, "answer");
+        await assertPageOwnRoundSolve(page, aliases[pages.indexOf(page)], round);
+        return solved.version;
+      }
       expect(result.status()).toBe(409);
       await expect.poll(async () => Number(await page.locator(".game-panel").getAttribute("data-match-version"))).toBeGreaterThan(before);
+      await acknowledge(page, "game", result, before, "answer");
     }
     throw new Error("Explicit UI answer submissions did not converge after stage/version conflict");
   }
@@ -134,22 +183,27 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
           }
         });
       });
-      page.on("response", async (response) => {
+      responseObservers.push(trackResponseBodies(page, async (response) => {
         const path = new URL(response.url()).pathname;
         if (response.request().method() === "GET" && response.ok() && roomId && path.startsWith(`/api/rooms/${roomId}`)) {
           try {
-            const data = await response.json();
+            const data = await response.json() as { version: number };
             reads[i].push({ type: path.endsWith("/match") ? "match" : path.endsWith("/reactions") ? "moderation" : "room", version: data.version, receivedAt: Date.now() });
-          } catch { /* Navigation can cancel a response body. */ }
+          } catch {
+            // Preserve the original navigation-cancellation tolerance, with an
+            // explicit bounded record rather than an invisible body-read loss.
+            qualifiedReadFailureTotal++;
+            if (qualifiedReadFailures.length < 100) qualifiedReadFailures.push({ player: i, path, qualification: "Room read body unavailable; navigation can cancel a response body. Existing push/read assertions still require observed versions." });
+          }
         }
         if (
           new URL(response.url()).pathname === "/api/realtime" &&
           response.ok()
         ) {
-          const access = await response.json();
+          const access = await response.json() as { expiresAt: number };
           expiries[i].push(access.expiresAt);
         }
-      });
+      }));
       await page.goto("/play");
       await page
         .getByRole("button", { name: "Continue as guest", exact: true })
@@ -163,7 +217,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
       profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
     }
     const [a, b, observer] = pages;
-    await a.getByLabel("Maximum players (2–25)").fill("2");
+    await a.getByLabel("Maximum players (2–10)").fill("2");
     await a.getByRole("button", { name: "Create room", exact: true }).click();
     await a.waitForURL(/\/rooms\//);
     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
@@ -174,9 +228,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
     const hostBeforeJoin = notices[0].length;
     await b.getByLabel("Have a room code?").fill(code);
     await b.getByRole("button", { name: "Open room", exact: true }).click();
-    const joinedVersion = await command(b, () => b
-      .getByRole("button", { name: "Join as player", exact: true })
-      .click());
+    const joinedVersion = await command(b, "join", "room", `/api/rooms/${code}`, b.getByRole("button", { name: "Join as player", exact: true }));
     await changed(0, hostBeforeJoin, "room", joinedVersion);
     await expect(a.locator(".roster")).toContainText(aliases[1]);
     await expect(
@@ -211,7 +263,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
       observer.getByRole("button", { name: "Mark ready", exact: true }),
     ).toHaveCount(0);
     const beforeReady = notices[1].length;
-    const readyVersion = await command(a, () => a.getByRole("button", { name: "Mark ready", exact: true }).click());
+    const readyVersion = await command(a, "ready", "room", `/api/rooms/${roomId}/lobby`, a.getByRole("button", { name: "Mark ready", exact: true }));
     await changed(1, beforeReady, "room", readyVersion);
     await expect(
       b.locator(".roster li").filter({ hasText: aliases[0] }),
@@ -256,9 +308,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
         ? a
         : b;
       const beforeCategory = notices.map((n) => n.length);
-      const categoryVersion = await command(chooser, () => chooser
-        .getByRole("button", { name: "Opposites", exact: true })
-        .click());
+      const categoryVersion = await command(chooser, "choose", "game", `/api/rooms/${roomId}/match`, chooser.getByRole("button", { name: "Opposites", exact: true }));
       for (let i = 0; i < 3; i++) {
         await changed(i, beforeCategory[i], "match", categoryVersion);
         await expect(pages[i].locator(".game-prompt")).toBeVisible();
@@ -306,7 +356,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
       }
 
       const beforeAnswer = notices[1].length;
-      const answerVersion = await answer(a, pair.target);
+      const answerVersion = await answer(a, pair.target, round);
       await changed(1, beforeAnswer, "match", answerVersion);
       await expect(
         b
@@ -333,7 +383,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
         milestones.hintsRemainPerspectivePrivate = true;
         milestones.reactionDeliveredByPush = true;
       }
-      await answer(b, pair.target);
+      await answer(b, pair.target, round);
       for (const page of pages)
         await expect(page.locator(".answer-reveal")).toContainText(pair.target);
       if (round === 2) {
@@ -349,7 +399,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
         const closed = await a.evaluate(() => {
           const sockets = (window as unknown as { __liveTestSockets: WebSocket[] }).__liveTestSockets;
           const active = sockets.filter((socket) => socket.readyState === WebSocket.OPEN);
-          active.forEach((socket) => socket.close());
+          active.forEach((socket) => { socket.close(); });
           return active.length;
         });
         expect(closed).toBeGreaterThan(0);
@@ -430,55 +480,57 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
       path: info.outputPath("live-final-standings.png"),
       fullPage: true,
     });
+  } catch (error) {
+    await retainUiFailure(pages, error, async (failure) => {
+      for (const [player, page] of pages.entries()) {
+        if (page.isClosed()) continue;
+        try { await page.screenshot({ path: info.outputPath(`strict-failure-player-${player}.png`), fullPage: true }); }
+        catch { failure.diagnosticFailures.push({ player, operation: "screenshot" }); }
+      }
+      const evidence = JSON.stringify({ ...failure, rejectedProbes }, null, 2);
+      await writeFile("docs/evidence/room-sync/live-ui-failure-ui.json", evidence);
+      await info.attach("strict-post-failure-ui", { body: Buffer.from(evidence), contentType: "application/json" });
+    });
   } finally {
     paused = true;
     clearInterval(presence);
-    await expect.poll(() => presenceBusy).toBe(false);
-    await writeFile("docs/evidence/room-sync/live-ui-observations.json", JSON.stringify({ milestones, notices, transport, tokenExpiries: expiries, authorizedReads: reads, elapsedMs: Date.now() - started }, null, 2));
-    await info.attach("live-integration-evidence", {
-      body: Buffer.from(
-        JSON.stringify(
-          {
-            milestones,
-            notices,
-            tokenExpiries: expiries,
-            authorizedReads: reads,
-            elapsedMs: Date.now() - started,
-          },
-          null,
-          2,
-        ),
-      ),
-      contentType: "application/json",
-    });
-    if (roomId)
-      for (const context of contexts.slice(0, 2).reverse())
-        try {
+    let presenceSettled = true;
+    let cleanup = { cleanupFailures: 0, roomClosed: false, unresolvedPlayerIndices: [] as number[] };
+    try {
+      try { await expect.poll(() => presenceBusy).toBe(false); }
+      catch { presenceSettled = false; }
+      if (roomId) cleanup = await cleanupOwnedRoom(contexts.map((context, index) => ({
+        profileId: profileIds[index],
+        read: async () => {
           await context.setOffline(false);
-          for (let n = 0; n < 3; n++) {
-            const r = await context.request.get(`/api/rooms/${roomId}`);
-            if (!r.ok()) break;
-            const room = await r.json();
-            if (room.role !== "player") break;
-            const left = await context.request.post(
-              `/api/rooms/${roomId}/lobby`,
-              {
-                headers: { Origin: origin },
-                data: {
-                  action: "leave",
-                  expectedProfileId: room.actorId,
-                  expectedVersion: room.version,
-                  commandId: randomUUID(),
-                },
-              },
-            );
-            if (left.ok()) break;
-          }
-        } catch {
-          /* Test cleanup never modifies another room. */
-        }
-    await Promise.all(services.map((c) => c.removeAllChannels()));
-    await Promise.all(contexts.map((c) => c.close()));
-    await pool.end();
+          const response = await context.request.get(`/api/rooms/${roomId}`);
+          const body = await response.text();
+          return { status: response.status(), body: response.ok() ? JSON.parse(body) : undefined };
+        },
+        leave: async command => {
+          const response = await context.request.post(`/api/rooms/${roomId}/lobby`, {
+            headers: { Origin: origin },
+            data: { action: "leave", expectedProfileId: profileIds[index], ...command },
+          });
+          await response.body();
+          return { status: response.status() };
+        },
+      })), randomUUID);
+      await Promise.all(responseObservers.map((observer) => observer.dispose()));
+      const responseInstrumentation = { failureTotal: responseObservers.reduce((total, observer) => total + observer.failureTotal, 0), failures: responseObservers.flatMap((observer, player) => observer.failures.map((failure) => ({ player, ...failure }))).slice(0, 100), qualifiedReadFailureTotal, qualifiedReadFailures, qualification: "Every response-body task is observed and drained while contexts remain open. Navigation-cancelled room reads retain their original tolerance; token/body observer failures remain explicit and fail a completed journey." };
+      const evidence = { milestones, notices, transport, tokenExpiries: expiries, authorizedReads: reads, commandAcknowledgements, rejectedProbes, responseInstrumentation, cleanup, presenceSettled, elapsedMs: Date.now() - started };
+      await writeFile("docs/evidence/room-sync/live-ui-observations.json", JSON.stringify(evidence, null, 2));
+      await info.attach("live-integration-evidence", { body: Buffer.from(JSON.stringify(evidence, null, 2)), contentType: "application/json" });
+    } finally {
+      await Promise.all(responseObservers.map((observer) => observer.dispose()));
+      await Promise.allSettled(services.map((client) => client.removeAllChannels()));
+      await Promise.allSettled(contexts.map((context) => context.close()));
+      await pool.end();
+    }
+    if (milestones.privateTransportDenialsVerified) {
+      expect(presenceSettled, "Owned presence work must settle before cleanup").toBe(true);
+      expect(cleanup.cleanupFailures, "Owned room cleanup must be verified").toBe(0);
+      expect(responseObservers.reduce((total, observer) => total + observer.failureTotal, 0), "Active response-body instrumentation must not fail silently").toBe(0);
+    }
   }
 });

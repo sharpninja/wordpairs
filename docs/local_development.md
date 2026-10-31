@@ -1,5 +1,10 @@
 # Local development
 
+Current release scope: [guest-only game and owner-only GitHub admin PWA](admin_pwa_release.md). Configure server-only WORDPAIRS_GITHUB_CLIENT_ID/WORDPAIRS_GITHUB_CLIENT_SECRET and the exact canonical origin for administration. Public OpenAI/member sign-in, user delegation, nominations and community-submission UI are inactive. Public pages have no install metadata/controls; admin manifest/worker launch at /admin. Earlier feature counts and provider/delegation instructions below describe their historical snapshots. Current active browser tests use playwright.pwa.config.ts; superseded community cases are retained under docs/testing/historical/.
+
+The [current release amendment](release15-completion-plan.md) supports new rooms and matches with 2 through 10 players and up to 25 observers. Preserve larger historical running matches and results. Legacy waiting/countdown rooms above 10 show an explanation and keep Leave available; they do not start an oversized match or remove members merely to meet the new limit. Use the new forward migration `014_capacity10.sql` after the existing migration files001 through013; verify the actual hosted migration history before applying pending files, and never rewrite existing migration files.
+
+
 The repository root contains the runnable Next.js application. Its pinned framework requires Node.js 20.9.0 or later. Use npm with the committed lockfile, PowerShell 7 for the integration runner, and Docker for disposable database/Realtime verification. Exact installed package versions are in `package.json`; reviewed package purposes are in [attributions](ATTRIBUTIONS.md).
 
 ## Install and start
@@ -19,30 +24,57 @@ For a local production build, stop the development server, run `npm run build`, 
 | `WORDPAIRS_DATABASE_URL` | Private PostgreSQL application connection. The runtime always verifies TLS certificates and rejects URL options that override its TLS configuration. |
 | `WORDPAIRS_DATABASE_CA` | Optional PEM CA contents for a database with a private/local certificate authority. Supply the CA rather than disabling certificate verification. |
 | `WORDPAIRS_INVITE_SECRET` | Server invitation-signing secret of at least 32 characters. Generate it from cryptographic random bytes and retain it across restarts. |
-| `WORDPAIRS_ADMIN_PROFILE_IDS` | Optional comma-separated existing profile IDs that receive administrator authority. See bootstrap below. |
+| `WORDPAIRS_GITHUB_CLIENT_ID`, `WORDPAIRS_GITHUB_CLIENT_SECRET` | Server-only GitHub App credentials for the fixed-owner administrator sign-in. |
 | `WORDPAIRS_SUPABASE_URL`, `WORDPAIRS_SUPABASE_ANON_KEY`, `WORDPAIRS_SUPABASE_SERVICE_KEY`, `WORDPAIRS_SUPABASE_JWT_SECRET` | Realtime connection, private-channel authorization and outbox delivery configuration. All four are required to construct the Realtime adapter. |
-| `WORDPAIRS_OIDC_ISSUER`, `WORDPAIRS_OIDC_CLIENT_ID`, `WORDPAIRS_OIDC_CLIENT_SECRET` | Optional approved OIDC provider settings. Issuer, client ID and canonical origin enable the provider; a client secret is used when configured. The callback is `/api/auth/callback` on the canonical origin. Guest play does not require OIDC. |
 | `WORDPAIRS_SCHEDULER_SECRET` | Authorizes `/api/internal/deadlines` for scheduler delivery. Hosted scheduler configuration remains Phase 7 work. |
 
-Keep these settings on the server. The database URL, service key, JWT secret, signing secret and administrator allowlist must never become public build variables or Git content. `.env*`, `.vercel/`, `.mcpServer/` and the generated credential-bearing MCP trust marker are ignored by Git.
+Keep these settings on the server. The database URL, service key, JWT secret, signing secret and GitHub client secret must never become public build variables or Git content. `.env*`, `.vercel/`, `.mcpServer/` and the generated credential-bearing MCP trust marker are ignored by Git.
 
 ## First administrator
 
-Continue as a guest or sign in, open **Profile details** and copy the displayed profile ID. Set `WORDPAIRS_ADMIN_PROFILE_IDS` to that ID in the server environment and restart the server. The allowlist uses profile IDs, not displayed aliases. Empty configuration grants no bootstrap authority. Prefer a durable signed-in profile for ongoing operations.
-
-Open `/admin` for moderation, `/admin/words` for word pairs and three ordered hints, and `/admin/users` to grant or revoke moderator, senior-moderator and administrator roles with reasons. Configured administrator authority is managed through the server allowlist. See the [permission matrix and transaction design](admin_acl_design.md).
+Open `/admin` and sign in with the configured GitHub App. The current release authorizes the fixed owner `sharpninja`; guest identities and the former profile-ID bootstrap do not grant administrator access. Open `/admin/words` to manage word pairs and three ordered hints. Role delegation and `/admin/users` are inactive. See the [current release configuration](admin_pwa_release.md).
 
 ## Guest-entry troubleshooting
+
+### Historical OpenAI account registration
+
+The following registration attempt predates the guest-only release and is retained as history. OpenAI sign-in and these callbacks are inactive; they are not setup instructions for the current release.
+
+Historically, website sign-in required an issued OpenAI OIDC client registration. The former
+[official registration instructions](https://developers.openai.com/siwc/request-client-id)
+direct applicants to an interest form; preparing that form does not issue a client
+ID. The [website integration guide](https://developers.openai.com/siwc/website)
+specifies Authorization Code with PKCE and verified ID tokens. An OpenAI API key
+or this coding agent's credentials cannot substitute for the application's client.
+
+The historical registration proposal used these callbacks; do not configure them for the current release:
+
+- Staging: `https://wordpairs.vercel.app/api/auth/callback`
+- Production: `https://wordpairs-j9jf.vercel.app/api/auth/callback`
+
+The former proposal was to set `WORDPAIRS_OIDC_ISSUER` and
+`WORDPAIRS_OIDC_CLIENT_ID` on the matching server target, plus
+`WORDPAIRS_OIDC_CLIENT_SECRET` only when issued for that client's authentication
+method, then redeploy and verify a real sign-in. That proposal is superseded; the current game offers guest play only.
+
+On28October2026 the operator authorized an identity-only registration request
+for the OpenAI-sponsored Handshake competition, including the
+[mission URL](https://app.joinhandshake.com/learn/create-a-multiplayer-game-8d7d59b5/mission_step_cmssgy0di000y1ztkbjrpbt5r)
+and both callbacks. The filled official form reported a loading failure and its
+Submit button remained disabled after reload. Submission and client issuance
+remain unconfirmed. Contact details and the filled browser capture stay outside
+the repository; no registration secret is committed.
+
 
 If guest entry fails, verify the browser address exactly matches `WORDPAIRS_ORIGIN`, including `localhost` versus `127.0.0.1`. These hosts also have separate cookies. Check database availability, all applied migrations and certificate trust. A page shell can render while its database-backed session request fails. An HTTPS origin produces Secure cookies; an HTTP origin produces local HTTP cookies. Refresh after a server configuration change and restart so cached server services use the new settings.
 
 ## Phone installation
 
-Use an HTTPS origin for a phone installation. On Android, use the page's **Install Wordpairs** button when available, or the browser's **Install app / Add to Home screen** menu. On iPhone, use Safari → **Share → Add to Home Screen**; keep **Open as Web App** enabled if offered. Installed launches use `/play`; installation on a different origin can have separate cookies/profile state. Use a durable sign-in for cross-device identity.
+The administrator app alone is installable: open `/admin` on an HTTPS origin and use its install guidance. The public game has no PWA install prompt or manifest. Installation on a different origin can have separate cookies and session state. Physical-device installation remains to be verified.
 
 `http://localhost` and loopback are development exceptions, but a phone opening `http://<LAN-IP>:3000` is not a secure origin. HTTPS hosting or a deliberately configured trusted development HTTPS origin is needed; this feature does not create a public tunnel or deployment. The existing `WORDPAIRS_ORIGIN` exact-origin rule still applies.
 
-The worker registers at `/sw.js` and stores only `/offline.html` plus public icons. It never stores game/session/admin responses or replays actions offline. Close all existing app windows to allow a waiting update to activate. Bump the worker cache version when offline assets change. Do not simply delete the worker URL to roll back an installed worker; see [PWA lifecycle and rollback](pwa_design.md).
+The current admin worker is scoped to `/admin` and must not cache private pages or API responses. The former root worker is retained to retire previous public installations. See the [admin PWA release record](admin_pwa_release.md) for its current behavior.
 
 ## Source layout
 
@@ -86,7 +118,9 @@ Replace the example expiry and spell PowerShell parameters with a space before t
 
 The lease watcher captures its generation, exact container IDs/labels and Linux process start tokens. An obsolete watcher leaves a replacement lease alone. Restart the watcher after deliberately replacing its app/worker so it captures the new processes, preserving the same authorized expiry. It deletes only the matching endpoint and its captured resources. Cleanup failures remain explicit. The original runtime and game data survive. A stopped live runtime configuration must not be reused until its services are started again; rollback uses the original private runtime and a compatible build. To stop owned Realtime manually use `start-local-realtime.ps1` with the same runtime/origin and `-Stop`.
 
-Verify `/play`, `/manifest.webmanifest`, `/sw.js`, private `/api/realtime`, actual channel subscription, the worker result and durable pending count. A successful HTTP shell alone cannot verify game delivery. See [live game design and evidence](room_sync_fix.md).
+Verify `/play`, private `/api/realtime`, actual channel subscription, the worker result and durable pending count. Verify the admin manifest separately at `/admin/manifest.webmanifest`. A successful HTTP shell alone cannot verify game delivery. See [live game design and evidence](room_sync_fix.md).
 
 For repeatable real UI testing without ngrok, use `scripts/run-local-ui-integration.ps1` after building. It creates owned disposable TLS PostgreSQL containers on bounded volatile test storage, applies migrations, verifies the exact application URL over TLS, and serves private loopback HTTPS. Never pair separate brokers with the same game database: competing publishers share its global outbox and can acknowledge notifications delivered to the wrong broker. The runner owns and removes its generated database and services; the original game database survives. See [testing](testing.md#disposable-loopback-https-ui-harness) for prerequisites, bounds and evidence qualifications.
+
+Select the approved full matrix explicitly with `-PlayerCounts '2,3,4,5,6,7,8,9,10'`: 9 games, 54 player participations and 432 accepted round solves. Use `-StrictPush` separately for the two-player/observer no-periodic-read journey. Every run needs its own retained reports; a subset or old dirty-build result is not evidence for the full changed release. Hosted targets remain the two isolated production-target projects in [hosting execution](hosting_execution.md), not a single project's Preview environment.
 

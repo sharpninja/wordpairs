@@ -1,0 +1,56 @@
+<TestRun id="636d7db0-1dd9-4a02-9a4e-9cf626d39d33" name="JUnit adapter: mock.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-28T23:02:09.5502474-05:00" start="2026-10-28T23:02:09.5502474-05:00" finish="2026-10-28T23:02:09.5502474-05:00" queuing="2026-10-28T23:02:09.5502474-05:00" />
+  <Results>
+    <UnitTestResult testName="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1 :: hosting migration prefix contract.proposes only 012 after the recorded thirteen-migration hosted prefix" executionId="cb856911-f1a5-4d9d-9434-0647ea7bf772" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="d5bf7053-d7e7-e7b3-4201-05fdd262cf6e" computerName="[PRIVATE HOST]" relativeResultsDirectory="cb856911-f1a5-4d9d-9434-0647ea7bf772" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" duration="00:00:00.6100000" outcome="Passed" />
+    <UnitTestResult testName="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1 :: hosting migration prefix contract.proposes the whole catalog for an empty history" executionId="aa69cb69-ea01-4578-aab1-6e09a26fb88d" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="58c1ad34-aad9-9684-38c7-bf91bfd2d6c5" computerName="[PRIVATE HOST]" relativeResultsDirectory="aa69cb69-ea01-4578-aab1-6e09a26fb88d" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" duration="00:00:00.0300000" outcome="Passed" />
+    <UnitTestResult testName="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1 :: hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 after core 001 through 011" executionId="ca451d98-11da-4ccf-a2f0-3f98416ce6bc" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="e2299e28-d18e-b73b-9561-a227fc88cc38" computerName="[PRIVATE HOST]" relativeResultsDirectory="ca451d98-11da-4ccf-a2f0-3f98416ce6bc" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" duration="00:00:00.0260000" outcome="Passed" />
+    <UnitTestResult testName="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1 :: hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" executionId="57e8f694-82bb-44e7-a02c-cff3fc81d65e" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="25487a30-48e7-7e12-49db-dd4bc7cd3d59" computerName="[PRIVATE HOST]" relativeResultsDirectory="57e8f694-82bb-44e7-a02c-cff3fc81d65e" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" duration="00:00:00.1370000" outcome="Passed" />
+    <UnitTestResult testName="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1 :: hosting migration prefix contract.rejects source drift at an otherwise matching migration" executionId="a67ff85f-22e4-4830-994a-0f76fab73db9" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="333a9c6a-c639-9fb7-aad4-9bd039cbbf93" computerName="[PRIVATE HOST]" relativeResultsDirectory="a67ff85f-22e4-4830-994a-0f76fab73db9" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" duration="00:00:00.0440000" outcome="Passed" />
+    <UnitTestResult testName="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1 :: hosting migration prefix contract.rejects history longer than the declared migration set" executionId="1859355a-858f-4c3e-918c-2e71b5b03b4e" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="c26b4cf4-3d82-18f7-6e48-e196d0844df8" computerName="[PRIVATE HOST]" relativeResultsDirectory="1859355a-858f-4c3e-918c-2e71b5b03b4e" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" duration="00:00:00.0940000" outcome="Passed" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest id="d5bf7053-d7e7-e7b3-4201-05fdd262cf6e" name="hosting migration prefix contract.proposes only 012 after the recorded thirteen-migration hosted prefix" storage="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+      <Execution id="cb856911-f1a5-4d9d-9434-0647ea7bf772" />
+      <TestMethod name="hosting migration prefix contract.proposes only 012 after the recorded thirteen-migration hosted prefix" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" className="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="58c1ad34-aad9-9684-38c7-bf91bfd2d6c5" name="hosting migration prefix contract.proposes the whole catalog for an empty history" storage="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+      <Execution id="aa69cb69-ea01-4578-aab1-6e09a26fb88d" />
+      <TestMethod name="hosting migration prefix contract.proposes the whole catalog for an empty history" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" className="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="e2299e28-d18e-b73b-9561-a227fc88cc38" name="hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 after core 001 through 011" storage="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+      <Execution id="ca451d98-11da-4ccf-a2f0-3f98416ce6bc" />
+      <TestMethod name="hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 after core 001 through 011" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" className="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="25487a30-48e7-7e12-49db-dd4bc7cd3d59" name="hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" storage="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+      <Execution id="57e8f694-82bb-44e7-a02c-cff3fc81d65e" />
+      <TestMethod name="hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" className="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="333a9c6a-c639-9fb7-aad4-9bd039cbbf93" name="hosting migration prefix contract.rejects source drift at an otherwise matching migration" storage="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+      <Execution id="a67ff85f-22e4-4830-994a-0f76fab73db9" />
+      <TestMethod name="hosting migration prefix contract.rejects source drift at an otherwise matching migration" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" className="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="c26b4cf4-3d82-18f7-6e48-e196d0844df8" name="hosting migration prefix contract.rejects history longer than the declared migration set" storage="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+      <Execution id="1859355a-858f-4c3e-918c-2e71b5b03b4e" />
+      <TestMethod name="hosting migration prefix contract.rejects history longer than the declared migration set" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" className="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="cb856911-f1a5-4d9d-9434-0647ea7bf772" testId="d5bf7053-d7e7-e7b3-4201-05fdd262cf6e" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="aa69cb69-ea01-4578-aab1-6e09a26fb88d" testId="58c1ad34-aad9-9684-38c7-bf91bfd2d6c5" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="ca451d98-11da-4ccf-a2f0-3f98416ce6bc" testId="e2299e28-d18e-b73b-9561-a227fc88cc38" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="57e8f694-82bb-44e7-a02c-cff3fc81d65e" testId="25487a30-48e7-7e12-49db-dd4bc7cd3d59" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="a67ff85f-22e4-4830-994a-0f76fab73db9" testId="333a9c6a-c639-9fb7-aad4-9bd039cbbf93" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="1859355a-858f-4c3e-918c-2e71b5b03b4e" testId="c26b4cf4-3d82-18f7-6e48-e196d0844df8" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="JUnit cases" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters aborted="0" inconclusive="0" total="6" completed="6" pending="0" failed="0" passedButRunAborted="0" timeout="0" error="0" passed="6" inProgress="0" disconnected="0" executed="6" notExecuted="0" notRunnable="0" />
+    <RunInfos>
+      <RunInfo timestamp="2026-10-28T23:02:09.5502474-05:00" outcome="Completed" computerName="[PRIVATE HOST]">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/hosting/guest-admin-recovery/planner-frozen-1c22727/mock.xml; SHA256=597466C56B6D132D50F4EA54872F1050B61AF44FB9CED459A5FD95F369473CD0; reviewed revision=1c2272714fb02091e390f751510341e6824e3d22</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

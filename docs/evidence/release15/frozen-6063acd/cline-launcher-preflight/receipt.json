@@ -1,0 +1,313 @@
+{
+  "atLocal": "2026-10-30T20:29:19",
+  "classification": "Read-only operational launch preflight, not HV/source approval or launch",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261031T012456Z-cline-launch-preflight",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "headAtRead": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "tools": [
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "sha256": "1141ED71BA2ECA8874E1ED68CDCBAF3237686A932FA06C96ED1F77AC5C4FA70C",
+      "bytes": 16742
+    },
+    {
+      "path": "/tmp/StartWordpairsClineHvJob.ps1",
+      "sha256": "0F4EA57B8C9BE1257B236C72769E1FBCC678D39652AB1E107B7A11764D04A38A",
+      "bytes": 1824
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "sha256": "B9A91955C099D4A5FC53D5C4318AB5435C62E3988B17AC25F6F53310BDCC91A8",
+      "bytes": 52480
+    },
+    {
+      "path": "/tmp/wordpairs-cline-review-brief-template.md",
+      "sha256": "104B154A5F2755464DCEE1C91EEE9441D4693FE7F047CE079D2FABDFF57B50F1",
+      "bytes": 41219
+    }
+  ],
+  "scriptStaticAnalysis": [
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "parseErrors": 0,
+      "analyzerIssues": 0,
+      "issueDetails": []
+    },
+    {
+      "path": "/tmp/StartWordpairsClineHvJob.ps1",
+      "parseErrors": 0,
+      "analyzerIssues": 0,
+      "issueDetails": []
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "parseErrors": 0,
+      "analyzerIssues": 0,
+      "issueDetails": []
+    }
+  ],
+  "actualNative": {
+    "path": "\u003Chome\u003E/.local/share/mise/installs/npm-cline/latest/node_modules/.mise/@cline\u002Bcli-linux-x64@3.0.71/node_modules/@cline/cli-linux-x64/bin/cline",
+    "sha256": "8562EDA595D5766D253154053A0B386E0CFA1EF3ABCE928AE6FF63F594A61047",
+    "bytes": 132335072
+  },
+  "retainedRuntimeInspection": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/cline-runtime-preflight/readiness.json",
+    "sha256": "A3163EE660258E8C971E2C81F149CD6B2FDDD00FE3DBE5E28FB321B65C1EA505",
+    "bytes": 9527
+  },
+  "reviewedWrapper": {
+    "path": "\u003Chome\u003E/github/mcpserver-cline-plugin/lib/Invoke-McpPlugin.ps1",
+    "sha256": "AF6D1E5B686E88DE53C280EB1D7A9B10711201362614AF08C58B49C9118A0830",
+    "bytes": 13682
+  },
+  "relativeReferencedFileCount": 127,
+  "missingRelativeReferencedFiles": [],
+  "checks": [
+    {
+      "id": "MODEL-EFFORT",
+      "source": "InvokeWordpairsClineHv.ps1 native pin and arguments; template First actions; readiness nativeCodeAnchors",
+      "result": "Configured native3.0.71 executable hash matches actual installed bytes; --provider cline --model reflection/beam-free --thinking high --json --verbose --cwd. Retained vendor catalog calls this ID Beam; explicit High resolution overrides persistedMedium. No model invocation here. Actual run_start provider/model/thinking and complete run_result remain acceptance observations; backend effort acknowledgement is not exposed or claimed."
+    },
+    {
+      "id": "UNBOUNDED-OWNERSHIP",
+      "source": "InvokeWordpairsClineHv.ps1 process ownership/finally loop; StartWordpairsClineHvJob.ps1 systemd-run",
+      "result": "No --timeout, max-output, step/iteration/size or RuntimeMaxSec cap introduced. CopyToAsync preserves byte stream; polling500ms does not bound review. Only Kill path is >30minutes without response-length update. Post-start stdin/capture errors do not terminate active reviewer. Persistent user unit has no requested runtime/output bound. Stream-read errors retain ownership instead of being treated as silence."
+    },
+    {
+      "id": "PLUGIN-IDENTITY",
+      "source": "template First actions; launcher unique CacheRoot appendix/env; current matching wrapper parameter forwarding",
+      "result": "Dedicated timestamped .mcpServer/cline-hv-*/plugin-cache is named in prompt. Every Cline invocation must explicitly pass it, workspace and PluginRoot to OWN Cline wrapper. Launcher sets PLUGIN_AGENT_NAME=Cline/CLINE_PLUGIN_ROOT/MCP_MODEL. Wrapper supports explicit CacheRoot/PluginRoot. Reviewer must actually verify trust/nonce/sourceType/session and return own readback; source obligation is not an observed future bootstrap."
+    },
+    {
+      "id": "TWELVE-REPORTS",
+      "source": "launcher chain/core/supplemental/preparer/native-TRX loops; preparer replacement calls for every named report",
+      "result": "Require exact current chain revision/run, five phases and four preparations all0; eight core reports plus three supplemental plus22casepreparer-real =12. Every TRX/native hash/outcome checked, nonzero case counts and each UnitTestResult Passed with exact report case count. Unit/PG/browser match collectedinventory; current preparer resolves each named attachment uniquely. Expected filenames/content missing or chain incomplete fail before process start. This preflight does not execute these gates or assert running chain complete."
+    },
+    {
+      "id": "SOURCE-PACKET-BINDING",
+      "source": "launcher current Git pathset/manifest/hash/doc/self/retention binding, DRAFT/placeholder rejection and final bindingDrift",
+      "result": "Clean declared source and exact committed operational producer blobs required; complete source pathset/count/unique/hashes and13whole-doc pins, inspected self files, preparation actualpath/hash/run, two retained input copies, all12TRX/native and native supporting lane files bound. Post-run HEAD/pathset/allboundfile drift recorded. Preparer retains ownsource/template, consumes retained template and rechecks both originals/copies. DRAFT template is correctly not itself launchable; only completed generated brief afterpassingchain is eligible."
+    },
+    {
+      "id": "FULL-VERDICT-AUDIT",
+      "source": "template Four mandatory review surfaces and Deliver complete independent verdict; launcher process-result qualification",
+      "result": "Require full byte-complete request/responseJSONL, meaningful numeric completionPercent/etaMinutes progress, allfour surfaces, everyfinding/PASS/FAIL/UNKNOWN/count/score and exact source/gate. Entire prose+structured verdict must persist in reviewer OWN complete ClineMCPturn with parentIDs and exact fullbody readback. Both scores>=98 and AGREE needed; reviewer never builds/tests/servers/browserruns. Launcher process exit is explicitly not approval. Root must actually verify all those post-run observations separately; lack of a future verdict is expected, not a launcher defect."
+    }
+  ],
+  "sourceAnchors": [
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 27,
+      "text": "if($preparation.revision -cne $revision -or $preparation.runId -cne $inventory.runId -or $preparation.selfReview -cne $SelfReviewPath -or $preparation.brief -cne $BriefPath -or $preparation.selfReviewSha256 -cne (Get-FileHash -LiteralPath $SelfReviewPath).Hash -or $preparation.briefSha256 -cne (Get-FileHash -LiteralPath $BriefPath).Hash -or @($preparation.retainedInputs).Count -ne 2 -or $preparation.originalsRetained -ne $true){throw 'Preparation provenance does not bind the actual review inputs'}"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 28,
+      "text": "foreach($inputPin in $preparation.retainedInputs){"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 39,
+      "text": "if($core.revision -cne $revision -or $supplemental.revision -cne $revision -or $supplemental.runId -cne $inventory.runId -or @($core.reports).Count -ne 8 -or @($supplemental.reports).Count -ne 3){throw 'All required review reports are not indexed'}"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 40,
+      "text": "$reports=@($core.reports)+@($supplemental.reports)"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 45,
+      "text": "$verifiedReports=@(foreach($report in $reports){"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 53,
+      "text": " $report=@($verifiedReports|Where-Object name -CEQ $pair[0])"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 63,
+      "text": "$pinnedSourcePaths=@($source.sourceHashes.path|Sort-Object -Unique)"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 64,
+      "text": "if($source.revision -cne $revision -or $source.pathSetEqual -ne $true -or $source.expectedCount -ne $currentSourcePaths.Count -or $source.manifestCount -ne @($source.sourceHashes).Count -or @($source.sourceHashes).Count -ne $pinnedSourcePaths.Count -or @($source.missing).Count -or @($source.extra).Count -or @(Compare-Object $currentSourcePaths $pinnedSourcePaths).Count){throw 'Validated source manifest is incomplete or identifies another revision'}"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 65,
+      "text": "$boundFiles=@(foreach($pin in $source.sourceHashes){"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 80,
+      "text": "foreach($path in @($BriefPath,$SelfReviewPath,$preparationPath,(Join-Path $Directory 'expected-inventory.json'),(Join-Path $Directory 'source-inventory.json'),(Join-Path $Directory 'chain-completion.json'),(Join-Path $Directory 'core-index/evidence-index.json'),(Join-Path $Directory 'supplemental-index/supplemental-evidence-index.json'))+@($verifiedReports.trx)+@($verifiedReports.junit)){"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 96,
+      "text": "foreach($required in @('never build','never run tests','98','progress','ETA','Cline','Beam','High','30 minutes')){if(-not $brief.Contains($required,[StringComparison]::OrdinalIgnoreCase)){throw \"Review brief lacks required instruction: $required\"}}"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 100,
+      "text": "$prompt=$brief+\"`n`nFROZEN CANDIDATE: $revision`nEvidence directory: $Directory`nUnique Cline plugin CacheRoot: $cache`nSelf-review: $SelfReviewPath`nRequest: $prefix.request.jsonl`nFull response: $prefix.response.jsonl`n\""
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 101,
+      "text": "$prompt+=\"`nSUPPLIED TRX AND NATIVE REPORTS (read these files; do not execute them):`n\"+($verifiedReports|ConvertTo-Json -Depth 15)"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 102,
+      "text": "$arguments=@('--provider','cline','--model','reflection/beam-free','--thinking','high','--json','--verbose','--cwd',$root)"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 106,
+      "text": "$request=[pscustomobject]@{timestamp=(Get-Date -Format s);workspace=$root;revision=$revision;gate='15-player source candidate ready for staging; hosted rollout and game completion not claimed';reviewer=@{agent='Cline';provider='cline';model='reflection/beam-free';displayModel='Beam';effort='High'};launch=@{executable=$native;sha256=$nativeHash;arguments=$arguments;timeout='none';sizeLimit='none';stallTermination='Only after more than30minutes without any response-stream update'};parentSessionId='Codex-20261027T100516Z-plugin-session';parentRequestId='req-20261030T203656Z-cline-beam-release';selfReview=$SelfReviewPath;selfReviewSha256=(Get-FileHash -LiteralPath $SelfReviewPath).Hash;boundFiles=$boundFiles;suppliedReports=$verifiedReports;body=$prompt}"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 140,
+      "text": " $stdoutTask=$process.StandardOutput.BaseStream.CopyToAsync($stdout)"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 141,
+      "text": " $stderrTask=$process.StandardError.BaseStream.CopyToAsync($stderr)"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 163,
+      "text": "    if(([DateTime]::Now-$lastUpdate).TotalMinutes -gt 30){$process.Kill($true);$stoppedForSilence=$true;break}"
+    },
+    {
+      "path": "/tmp/InvokeWordpairsClineHv.ps1",
+      "line": 175,
+      "text": "  [pscustomobject]@{startedAt=$started;finishedAt=(Get-Date -Format s);revision=$revision;processStarted=$processStarted;processId=if($processStarted){$process.Id}else{$null};exitCode=if($processStarted){$process.ExitCode}else{$null};launcherFailure=$launcherFailure;captureFailures=$captureFailures;bindingDrift=$drift;stoppedForSilence=$stoppedForSilence;response=($prefix+'.response.jsonl');qualification='Process completion is not reviewer approval. Verify actual model stream, full verdict, both scores and reviewer-owned MCP readback. A launcher/capture failure or binding drift makes this invocation incomplete.'}|ConvertTo-Json -Depth 5|Set-Content -LiteralPath ($prefix+'.process-result.json')"
+    },
+    {
+      "path": "/tmp/StartWordpairsClineHvJob.ps1",
+      "line": 15,
+      "text": "[pscustomobject]@{timestamp=(Get-Date -Format s);revision=$inventory.revision;runId=$inventory.runId;unit=$unit;executable='systemd-run';arguments=$arguments;runnerSha256=(Get-FileHash -LiteralPath $runner).Hash;exitCode=$code;output=@($output|ForEach-Object ToString);qualification='Launch acknowledgement only; full model stream, verdict, bound-file stability and reviewer-owned MCP readback govern acceptance.'}|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $receipt"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 8,
+      "text": "if($chain.failure -or @($chain.phases).Count -ne 5 -or @($chain.phases|Where-Object exitCode -NE 0).Count -or @($chain.preparation).Count -ne 4 -or @($chain.preparation|Where-Object exitCode -NE 0).Count){throw 'Review preparation requires the full completed passing chain'}"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 47,
+      "text": "$retainedInputs=@("
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 51,
+      "text": "foreach($inputPin in $retainedInputs){"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 64,
+      "text": " standingRulesDelegated=@{passed=$true;evidence=@($briefPath);reason='Brief requires literal profile/live memories, matching Cline plugin, honest source/model/effort identity, PowerShell checks, no test/build execution, full JSONL, progress and full reviewer-owned MCP verdict readback.'}"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 119,
+      "text": "$self=[pscustomobject]@{timestamp=(Get-Date -Format s);revision=$inventory.revision;runId=$inventory.runId;parentSessionId='Codex-20261027T100516Z-plugin-session';parentRequestId='req-20261030T203656Z-cline-beam-release';gate='Source candidate readiness for staging only; not hosted release completion';classification='Same-family holistic self-review, not independent hostile approval';inspectedFiles=$pins;checklist=$checklist;observed='Full current chain native receipts and all12TRX are supplied; prior failures/chronology unknowns are preserved.';remaining=@('Actual Cline model stream and reviewer-owned complete verdict/readback','Forward012/013 staging then production, exact reviewed deployment and hosted functional observations','Live GitHub consent, standalone phone cookie continuity and physical OS install observations','Authenticated mission/Code of Conduct and subsequent Work coding remain unverified; shared planning source is now accessible, not full workflow proof; no contest-entry/terms acceptance claim');accuracy=99;completeness=95;ratingReason='Source readiness evidence is complete only for the scoped local gate; independent review, hosted rollout and physical/submission evidence remain pending.'}"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 123,
+      "text": "$reports=@($core.reports)+@($supplemental.reports)"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 164,
+      "text": "foreach($inputPin in $retainedInputs){"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 172,
+      "text": "$brief=$brief.Replace('Root supplies the full actual files, not summaries.','Root supplies the full actual files, not summaries. Never run tests and never build code; inspect the supplied native reports and TRX read-only.')"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 182,
+      "text": "foreach($inputPin in $retainedInputs){"
+    },
+    {
+      "path": "/tmp/PrepareWordpairsClineReview.ps1",
+      "line": 187,
+      "text": " [pscustomobject]@{timestamp=(Get-Date -Format s);revision=$inventory.revision;runId=$inventory.runId;producer=$PSCommandPath;producerSha256=(Get-FileHash -LiteralPath $PSCommandPath).Hash;retainedInputs=$retainedInputs;runtimeObserver=$observer;originalsRetained=$true;selfReview=$selfPath;selfReviewSha256=(Get-FileHash -LiteralPath $selfPath).Hash;brief=$briefPath;briefSha256=(Get-FileHash -LiteralPath $briefPath).Hash;qualification='Preparation only; launcher independently validates hard gates before any model invocation.'}|ConvertTo-Json -Depth 6|Set-Content -LiteralPath (Join-Path $Directory 'review-preparation.json')"
+    },
+    {
+      "path": "/tmp/wordpairs-cline-review-brief-template.md",
+      "line": 35,
+      "text": "Before any tool call emit a progress entry into your captured response stream with numeric `completionPercent`, numeric `etaMinutes` and `activity`. Emit additional progress entries during meaningful work, never backfilled. ETA is your estimate, not a deadline. Review time and evidence/output size are unbounded. The launcher must not impose a timeout or truncate the stream. Termination is permitted only after more than 30 minutes with no stream update, recording the stopped run and relaunching; ordinary read-only polling is not a review time limit."
+    },
+    {
+      "path": "/tmp/wordpairs-cline-review-brief-template.md",
+      "line": 41,
+      "text": "Use your OWN matching Cline plugin only: \u0060\u003Chome\u003E/github/mcpserver-cline-plugin/lib/Invoke-McpPlugin.ps1\u0060, explicitly selecting this Workspace, \u0060-PluginRoot \u003Chome\u003E/github/mcpserver-cline-plugin\u0060, and the exact unique \u0060CacheRoot\u0060 named in the final launcher appendix on EVERY invocation. Use its documented \u0060Status\u0060, \u0060Invoke -Method ... -ParamsObject\u0060 with native PowerShell objects and session/memory/requirements client surfaces. Verify actual plugin identity/version, marker trust, nonce and real sourceType Cline. Do not inherit Codex\u0027s cache/session or impersonate Claude. No raw REST or direct requirement/TODO/session storage edits. A normal plugin write audit is permitted; product/requirement/provider mutation is not."
+    },
+    {
+      "path": "/tmp/wordpairs-cline-review-brief-template.md",
+      "line": 45,
+      "text": "Installed runtime preparation is `docs/evidence/release15/cline-runtime-preflight/readiness.json` and its settings follow-up. Root's launch receipt must name native Cline 3.0.71, actual installed binary hash and exact arguments `--provider cline --model reflection/beam-free --thinking high --json --verbose --cwd <workspace>`. The catalog calls `reflection/beam-free` Beam. Native code shows explicit High overrides persisted Medium for this run; the flag does not prove backend acknowledgement or globally read-only CLI startup. An empty `--data-dir` does not automatically inherit existing provider authentication. Do not copy credentials or invent auth readiness. Independently report runtime `run_start` model/provider/thinking fields, actual resolved effort if available, and any effort-attestation gap. Requested flags, catalog identity, observed runtime model and backend effort acknowledgement are distinct facts. Do not relabel Beam's underlying model family without authoritative evidence."
+    },
+    {
+      "path": "/tmp/wordpairs-cline-review-brief-template.md",
+      "line": 63,
+      "text": "1. Requested claims and evidence. Check every claimed result against exact frozen source, complete case inventories, native JUnit/TRX parity, run IDs, parent/producer linkage, commands, host, times, actual exit codes, source/report hashes and retained failures. Verify committed producers for validation/index/aggregation and analyzer/tool versions. Trace case assertions rather than accepting test names or counts. If tests are inadequate, FAIL and propose concrete criterion/test additions. You must NEVER build, restore, execute tests/targets, start application/test servers, launch browsers or create substitute executions. Read-only source/report/git/QBrain inspection is permitted."
+    },
+    {
+      "path": "/tmp/wordpairs-cline-review-brief-template.md",
+      "line": 143,
+      "text": "Before ending, persist the ENTIRE verdict prose, every finding and complete structured verdict in your own Cline MCP turn, splitting into ordered parts if necessary, with genuine design decisions/actions and all request/response/verdict paths. Complete the turn and query it through the same Cline plugin/client to prove exact full-body readback and terminal status. Report your reviewer sessionId/requestId, parent IDs and durable readback receipt. A hook-success message or a short verdict digest is not persistence proof. Final response remains self-contained and reports all FAILs and UNKNOWNs. No done-state or satisfaction mutations are part of this review."
+    }
+  ],
+  "blockingToolDefects": [],
+  "launchEligibility": "Pending actual complete current chain, completed preparation, genuine WhatIf/hardgate evaluation and exact-source full reports; this task did not run preparer/launcher/model or bypass pending gates.",
+  "remainingActualAcceptance": [
+    "Authenticated provider run after any normalrefresh, actual runtime provider/model/thinking and effort qualification.",
+    "Reviewer literal profile/live memories and verified ownmatching plugin/cache/session, complete ownMCPverdict/readback.",
+    "Allfour surfaces, full JSONL/progress, fullverdict everyfinding,AGREE+bothscores>=98, no capture failure/stall or boundfile drift."
+  ],
+  "notClaimed": [
+    "Backend internal effort acknowledgement unavailable from installedCLI.",
+    "Current full chain completion, review acceptance, hosted rollout or game completion."
+  ],
+  "mutations": "Only safe preflight receipt/source copies and own required Codex audit. No reviewed tool edits, model/preparer invocation, test/build, source/requirement/provider writes.",
+  "accuracy": 99,
+  "completeness": 98,
+  "retainedCopies": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/cline-launcher-preflight/InvokeWordpairsClineHv.ps1",
+      "sha256": "1141ED71BA2ECA8874E1ED68CDCBAF3237686A932FA06C96ED1F77AC5C4FA70C",
+      "bytes": 16742
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/cline-launcher-preflight/StartWordpairsClineHvJob.ps1",
+      "sha256": "0F4EA57B8C9BE1257B236C72769E1FBCC678D39652AB1E107B7A11764D04A38A",
+      "bytes": 1824
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/cline-launcher-preflight/PrepareWordpairsClineReview.ps1",
+      "sha256": "B9A91955C099D4A5FC53D5C4318AB5435C62E3988B17AC25F6F53310BDCC91A8",
+      "bytes": 52480
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/cline-launcher-preflight/wordpairs-cline-review-brief-template.md",
+      "sha256": "104B154A5F2755464DCEE1C91EEE9441D4693FE7F047CE079D2FABDFF57B50F1",
+      "bytes": 41219
+    }
+  ]
+}

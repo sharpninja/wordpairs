@@ -1,0 +1,38 @@
+<TestRun id="b69d0a56-657f-4dc0-afcc-90f5c341fe98" name="JUnit adapter: mock-gate.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times start="2026-10-28T20:46:34.0086878-05:00" creation="2026-10-28T20:46:34.0086878-05:00" queuing="2026-10-28T20:46:34.0086878-05:00" finish="2026-10-28T20:46:34.0086878-05:00" />
+  <Results>
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0030967" executionId="f79e83c2-f736-4db8-8f96-91657ccab0a7" testId="94c1a1bf-5d3f-5c7b-9aaa-82b5d56abb0d" computerName="[PRIVATE HOST]" testName="tests/ac-contracts/admin-profile-privacy.test.ts :: GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows" outcome="Passed" relativeResultsDirectory="f79e83c2-f736-4db8-8f96-91657ccab0a7" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0078865" executionId="05e0588d-2f58-4dd9-a112-0c33162fc634" testId="9267273c-9c6d-45ee-352a-41768a95cd71" computerName="[PRIVATE HOST]" testName="tests/ac-contracts/admin-profile-privacy.test.ts :: GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft" outcome="Passed" relativeResultsDirectory="05e0588d-2f58-4dd9-a112-0c33162fc634" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0018383" executionId="94385769-be19-4b2c-a289-df003f58a618" testId="8427b46d-8f1c-fadc-aba6-85f89756da0c" computerName="[PRIVATE HOST]" testName="tests/ac-contracts/admin-profile-privacy.test.ts :: GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection" outcome="Passed" relativeResultsDirectory="94385769-be19-4b2c-a289-df003f58a618" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest storage="tests/ac-contracts/admin-profile-privacy.test.ts" id="94c1a1bf-5d3f-5c7b-9aaa-82b5d56abb0d" name="GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows">
+      <Execution id="f79e83c2-f736-4db8-8f96-91657ccab0a7" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows" codeBase="tests/ac-contracts/admin-profile-privacy.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/ac-contracts/admin-profile-privacy.test.ts" id="9267273c-9c6d-45ee-352a-41768a95cd71" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft">
+      <Execution id="05e0588d-2f58-4dd9-a112-0c33162fc634" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft" codeBase="tests/ac-contracts/admin-profile-privacy.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/ac-contracts/admin-profile-privacy.test.ts" id="8427b46d-8f1c-fadc-aba6-85f89756da0c" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection">
+      <Execution id="94385769-be19-4b2c-a289-df003f58a618" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection" codeBase="tests/ac-contracts/admin-profile-privacy.test.ts" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="f79e83c2-f736-4db8-8f96-91657ccab0a7" testId="94c1a1bf-5d3f-5c7b-9aaa-82b5d56abb0d" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="05e0588d-2f58-4dd9-a112-0c33162fc634" testId="9267273c-9c6d-45ee-352a-41768a95cd71" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="94385769-be19-4b2c-a289-df003f58a618" testId="8427b46d-8f1c-fadc-aba6-85f89756da0c" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="JUnit cases" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters notRunnable="0" passedButRunAborted="0" total="3" notExecuted="0" disconnected="0" aborted="0" inProgress="0" passed="3" inconclusive="0" error="0" completed="3" executed="3" pending="0" timeout="0" failed="0" />
+    <RunInfos>
+      <RunInfo outcome="Completed" computerName="[PRIVATE HOST]" timestamp="2026-10-28T20:46:34.0086878-05:00">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/hosting/guest-admin-recovery/mock-gate.xml; SHA256=162B43ADFC6B5DE9CE8F3EF4980635CEE147649849BA76100F6AE0F37325173D; reviewed revision=f70e8b4caba9f5c722348f9da6e7fae0adce7922</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

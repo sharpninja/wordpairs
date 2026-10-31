@@ -1,0 +1,5 @@
+{
+  "line": 58,
+  "before": "  foreach($file in Get-ChildItem (Join-Path $root 'docs/evidence/room-sync') -File|Where-Object {$_.LastWriteTime -ge $startedInstant -and ($_.Name -like 'live-local-*' -or ($Lane -eq 'live-ui' -and $_.Name -match '^live-scale-(?:[2-9]|1[0-5])(?:-failure-ui)?\\.json$'))}){",
+  "after": "  foreach($file in Get-ChildItem (Join-Path $root 'docs/evidence/room-sync') -File|Where-Object {$_.LastWriteTime -ge $startedInstant -and ($_.Name -like 'live-local-*' -or ($Lane -eq 'live-ui' -and $_.Name -match '^live-scale-(?:[2-9]|1[0-5])(?:-failure-ui)?\\.json$') -or ($Lane -eq 'strict-ui' -and $_.Name -cin @('live-ui-observations.json','live-ui-failure-ui.json')))}){"
+}

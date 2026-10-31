@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-28T21:39:41",
+  "finishedAt": "2026-10-28T21:39:44",
+  "revision": "f70e8b4caba9f5c722348f9da6e7fae0adce7922",
+  "status": "failed",
+  "failure": "unit failed",
+  "steps": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "log": "typecheck.log"
+    },
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "name": "unit",
+      "exitCode": 1,
+      "log": "unit.log",
+      "junit": "unit.xml"
+    }
+  ],
+  "qualification": "Local source validation. PostgreSQL uses disposable volatile storage; browser uses built local server."
+}

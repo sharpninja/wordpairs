@@ -1,0 +1,36 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="6.371322">
+<testsuite name="invitation-copy.phase2.spec.ts" timestamp="2026-10-29T05:35:16.860Z" hostname="" tests="1" failures="1" skipped="0" time="1.629" errors="0">
+<testcase name="INVITE-COPY-01 copies the generated invitation and confirms it" classname="invitation-copy.phase2.spec.ts" time="1.629">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../../../../../../tmp/wordpairs-invite-round4-isolated-final/test-results/invitation-copy.phase2-INV-56273--invitation-and-confirms-it/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toMatchObject(expected)" type="expect.toMatchObject">
+<![CDATA[  invitation-copy.phase2.spec.ts:140:1 › INVITE-COPY-01 copies the generated invitation and confirms it 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 0
+
+      Object {
+        "action": "invite",
+    -   "expectedProfileId": "p1",
+      }
+
+      143 |   expect(await observeCopied(page)).toEqual({ displayed: invitation, copied: invitation });
+      144 |   expect(invitations).toHaveLength(1);
+    > 145 |   expect(invitations[0]).toMatchObject({ action: "invite", expectedProfileId: "p1" });
+          |                          ^
+      146 | });
+      147 |
+      148 | test("INVITE-COPY-01 uses writeText when ClipboardItem is unavailable", async ({ page }) => {
+        at /tmp/wordpairs-invite-round4-isolated-final/tests/browser/invitation-copy.phase2.spec.ts:145:26
+
+    Error Context: ../../test-results/invitation-copy.phase2-INV-56273--invitation-and-confirms-it/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

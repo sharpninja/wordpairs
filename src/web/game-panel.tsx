@@ -32,12 +32,14 @@ export function GamePanel({
   roomId,
   profileId,
   refreshKey,
+  socialRefreshKey,
   onFinished,
   live = false,
 }: {
   roomId: string;
   profileId: string;
   refreshKey: number;
+  socialRefreshKey?: number;
   onFinished: () => Promise<void>;
   live?: boolean;
 }) {
@@ -564,12 +566,14 @@ export function GamePanel({
                 roomId={roomId}
                 profileId={profileId}
                 canReact={view.status === "playing" && view.role === "player"}
-                roundId={view.round?.roundId ?? null}
-                canNominate={
-                  view.role === "player" && !!view.round?.nominationEligible
+                roundId={
+                  view.status === "playing"
+                    ? (view.round?.roundId ?? null)
+                    : null
                 }
+                canNominate={false}
                 now={now}
-                refreshKey={refreshKey}
+                refreshKey={socialRefreshKey ?? refreshKey}
                 labels={view.labels}
               />
               {pending.current && (

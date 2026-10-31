@@ -1,0 +1,1098 @@
+
+> wordpairs@0.1.0 typecheck
+> tsc --noEmit
+
+
+> wordpairs@0.1.0 lint
+> biome check src tests/architecture
+
+[31;1mChecked 94 files in 99ms. No fixes applied.[0m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/web/pwa-manifest.test.ts [2m([22m[2m2 tests[22m[2m)[22m[33m 1617[2mms[22m[39m
+   [33m[2m✓[22m[39m PWA-02 supplies real PNG dimensions and opaque backgrounds[33m 1605[2mms[22m[39m
+ [32m✓[39m tests/acceptance/coverage-map.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 1635[2mms[22m[39m
+   [33m[2m✓[22m[39m binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions[33m 1630[2mms[22m[39m
+ [32m✓[39m tests/integration/hosted-sbom.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 882[2mms[22m[39m
+   [32m✓[39m hosted build inventory, isolated fixture only [2m(4)[22m
+     [33m[2m✓[22m[39m includes scoped, nested, development and optional packages with dependency edges[33m 511[2mms[22m[39m
+ [32m✓[39m tests/integration/hosting-schema.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 5500[2mms[22m[39m
+   [32m✓[39m hosting schema planner reruns, isolated history fixtures [2m(6)[22m
+     [33m[2m✓[22m[39m handles matching history without a live connection[33m 739[2mms[22m[39m
+     [33m[2m✓[22m[39m handles changed-source history without a live connection[33m 856[2mms[22m[39m
+     [33m[2m✓[22m[39m handles missing-earlier history without a live connection[33m 1026[2mms[22m[39m
+     [33m[2m✓[22m[39m handles unknown history without a live connection[33m 1463[2mms[22m[39m
+     [33m[2m✓[22m[39m preserves the deployed thirteen-migration prefix before guest privacy and player capacity[33m 790[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an unknown target before any connection[33m 621[2mms[22m[39m
+ [32m✓[39m tests/web/landing.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 575[2mms[22m[39m
+ [32m✓[39m tests/web/pwa-support.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 500[2mms[22m[39m
+ [32m✓[39m tests/web/identity-navigation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 366[2mms[22m[39m
+ [32m✓[39m tests/web/capacity-ui.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 302[2mms[22m[39m
+ [32m✓[39m tests/integration/admin-session-isolation.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 177[2mms[22m[39m
+ [32m✓[39m tests/web/social-panel.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 296[2mms[22m[39m
+ [32m✓[39m tests/web/live-update-routing.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 246[2mms[22m[39m
+ [32m✓[39m tests/architecture/phase1a-bootstrap.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 179[2mms[22m[39m
+ [32m✓[39m tests/web/game-social-routing.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 106[2mms[22m[39m
+ [32m✓[39m tests/web/room-match-routing.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 131[2mms[22m[39m
+ [32m✓[39m tests/web/heartbeat-body.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 80[2mms[22m[39m
+ [32m✓[39m tests/ac-contracts/oracle-validation.test.ts [2m([22m[2m222 tests[22m[2m)[22m[32m 144[2mms[22m[39m
+ [32m✓[39m tests/web/live-races.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 120[2mms[22m[39m
+ [32m✓[39m tests/integration/oidc.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 74[2mms[22m[39m
+ [32m✓[39m tests/acceptance/lobby-content-counterparts.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 79[2mms[22m[39m
+ [32m✓[39m tests/web/room-live-resume.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 129[2mms[22m[39m
+ [32m✓[39m tests/web/social-round-transition.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 114[2mms[22m[39m
+ [32m✓[39m tests/web/pwa-worker.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 104[2mms[22m[39m
+ [32m✓[39m tests/web/identity-api.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 169[2mms[22m[39m
+ [32m✓[39m tests/web/private-state.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 90[2mms[22m[39m
+ [32m✓[39m tests/web/reactions-api.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 81[2mms[22m[39m
+ [32m✓[39m tests/web/content-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 71[2mms[22m[39m
+ [32m✓[39m tests/web/rooms-api.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 67[2mms[22m[39m
+ [32m✓[39m tests/web/matches-api.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 64[2mms[22m[39m
+ [32m✓[39m tests/web/landing-api.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m tests/web/lobby-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m tests/acceptance/boundary-counterparts.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+ [32m✓[39m tests/web/social-live-cadence.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 86[2mms[22m[39m
+ [32m✓[39m tests/web/deadline-worker-route.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 54[2mms[22m[39m
+ [32m✓[39m tests/web/deadlines-api.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 120[2mms[22m[39m
+ [32m✓[39m tests/web/github-admin-api.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 162[2mms[22m[39m
+ [32m✓[39m tests/acceptance/eight-round-counterpart.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 70[2mms[22m[39m
+ [32m✓[39m tests/integration/realtime.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 176[2mms[22m[39m
+ [32m✓[39m tests/application/catalog-seed.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+ [32m✓[39m tests/web/admin-api.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 65[2mms[22m[39m
+ [32m✓[39m tests/application/match.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m tests/acceptance/real-gameplay.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+ [32m✓[39m tests/traceability/ac-inventory.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m tests/application/content.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m tests/integration/github-admin.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m tests/application/lobby.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m tests/application/legacy-match-capacity.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m tests/application/ui-autocontinue.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m tests/application/capacity-policy.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m tests/application/command.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m tests/application/live-scale-cleanup.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/application/identity.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m tests/application/public-service.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/application/ui-content-workflows.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/tr-contracts/reaction-contracts.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m tests/application/matches.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m tests/application/content-service.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/application/catalog-admin.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m tests/application/rooms.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/web/deadline-worker-isolation.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/integration/postgres-pool.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/integration/postgres-store.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/ac-contracts/admin-profile-privacy.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/application/public-projections.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/application/reaction-service.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/integration/capacity-cleanup.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/application/capacity-public.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/integration/invitations.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/application/reactions.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/integration/public-read.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/application/access.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/integration/hosting-environment.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/acceptance/source-archive.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 33573[2mms[22m[39m
+   [33m[2m✓[22m[39m AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering[33m 33572[2mms[22m[39m
+ [32m✓[39m tests/ac-contracts/oracle-supplemental-validation.test.ts [2m([22m[2m85 tests[22m[2m)[22m[33m 36516[2mms[22m[39m
+   [33m[2m✓[22m[39m AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator[33m 24407[2mms[22m[39m
+   [33m[2m✓[22m[39m AC-42 validates complete GPL and the actual Recursive-bearing SVG notice[33m 12064[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m73 passed[39m[22m[90m (73)[39m
+[2m      Tests [22m [1m[32m640 passed[39m[22m[90m (640)[39m
+[2m   Start at [22m 16:29:57
+[2m   Duration [22m 37.11s[2m (tests 82%, environment 11%, import 6%, transform 1%)[22m
+
+[2m    Isolate [22m [33m73 workers spawned[39m[2m · ~323ms startup each (spawn + environment, per file)[22m
+[2m            [22m [2mat least ~5.56s faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-0fb37e6/full/unit.xml
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+BEGIN
+CREATE FUNCTION
+UPDATE 1
+COMMIT
+INSERT 0 26
+DO
+BEGIN
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/integration/multiplayer.integration.ts [2m([22m[2m14 tests[22m[2m)[22m[33m 73663[2mms[22m[39m
+   [32m✓[39m complete multiplayer games on real PostgreSQL [2m(14)[22m
+     [33m[2m✓[22m[39m 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1019[2mms[22m[39m
+     [33m[2m✓[22m[39m 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1689[2mms[22m[39m
+     [33m[2m✓[22m[39m 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2681[2mms[22m[39m
+     [33m[2m✓[22m[39m 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2046[2mms[22m[39m
+     [33m[2m✓[22m[39m 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2967[2mms[22m[39m
+     [33m[2m✓[22m[39m 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3935[2mms[22m[39m
+     [33m[2m✓[22m[39m 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5306[2mms[22m[39m
+     [33m[2m✓[22m[39m 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 4557[2mms[22m[39m
+     [33m[2m✓[22m[39m 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5114[2mms[22m[39m
+     [33m[2m✓[22m[39m 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 6374[2mms[22m[39m
+     [33m[2m✓[22m[39m 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 8130[2mms[22m[39m
+     [33m[2m✓[22m[39m 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 9225[2mms[22m[39m
+     [33m[2m✓[22m[39m 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 9575[2mms[22m[39m
+     [33m[2m✓[22m[39m 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 10813[2mms[22m[39m
+ [32m✓[39m tests/integration/capacity.integration.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 7337[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries[33m 482[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards[33m 6544[2mms[22m[39m
+ [32m✓[39m tests/integration/admin.integration.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 2870[2mms[22m[39m
+   [33m[2m✓[22m[39m 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available[33m 1855[2mms[22m[39m
+   [33m[2m✓[22m[39m real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL[33m 317[2mms[22m[39m
+ [32m✓[39m tests/integration/content.integration.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 1407[2mms[22m[39m
+   [33m[2m✓[22m[39m TR unique normalization, eligible-round/profile invariants and concurrent threshold crossing commit with one audit per vote[33m 319[2mms[22m[39m
+ [32m✓[39m tests/integration/matches.integration.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1084[2mms[22m[39m
+   [33m[2m✓[22m[39m rolls back final standings/profile awards/room closure together on failure, then awards once on canonical retry[33m 312[2mms[22m[39m
+ [32m✓[39m tests/integration/lobby.integration.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 562[2mms[22m[39m
+ [32m✓[39m tests/integration/reactions.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 437[2mms[22m[39m
+ [32m✓[39m tests/integration/rooms.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 218[2mms[22m[39m
+ [32m✓[39m tests/integration/identity.integration.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 156[2mms[22m[39m
+ [32m✓[39m tests/integration/public-read.integration.ts [2m([22m[2m1 test[22m[2m)[22m[32m 104[2mms[22m[39m
+ [32m✓[39m tests/integration/live-postgres.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 97[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+[2m      Tests [22m [1m[32m63 passed[39m[22m[90m (63)[39m
+[2m   Start at [22m 16:30:41
+[2m   Duration [22m 90.80s[2m (tests 99%, import 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-0fb37e6/full/postgres.xml
+PASS: TR-31 migration, direct-role denial, canonical retry/conflict, durable outbox, rollback fault, and concurrent final-seat checks
+
+> wordpairs@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+✓ Running next.config.ts took 46ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 865ms
+  Running TypeScript ...
+  Finished TypeScript in 3.8s ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/18) ...
+  Generating static pages using 15 workers (4/18) 
+  Generating static pages using 15 workers (8/18) 
+  Generating static pages using 15 workers (13/18) 
+✓ Generating static pages using 15 workers (18/18) in 337ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /admin
+├ ƒ /admin/manifest.webmanifest
+├ ○ /admin/users
+├ ƒ /admin/words
+├ ƒ /api/admin/session
+├ ƒ /api/admin/users
+├ ƒ /api/auth/callback
+├ ƒ /api/auth/github/callback
+├ ƒ /api/auth/github/login
+├ ƒ /api/auth/login
+├ ƒ /api/content
+├ ƒ /api/internal/deadlines
+├ ƒ /api/landing
+├ ƒ /api/profile
+├ ƒ /api/realtime
+├ ƒ /api/rooms
+├ ƒ /api/rooms/[reference]
+├ ƒ /api/rooms/[reference]/lobby
+├ ƒ /api/rooms/[reference]/match
+├ ƒ /api/rooms/[reference]/reactions
+├ ƒ /api/session
+├ ○ /content
+├ ƒ /play
+└ ƒ /rooms/[reference]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+Running 86 tests using 1 worker
+
+[1/86] tests/browser/accessibility.phase6.spec.ts:5:1 › AC-05-T01 counterpart artwork retry renders the successfully probed URL
+[2/86] tests/browser/accessibility.phase6.spec.ts:64:1 › AC-05-T01 counterpart artwork failure shows an accessible fallback with usable answer controls
+[3/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 390
+[4/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 0 at 1440
+[5/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 1 at 390
+[6/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real heroes asset for pair 1 at 1440
+[7/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real colors asset for pair 0 at 390
+[8/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real colors asset for pair 0 at 1440
+[9/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real years asset for pair 0 at 390
+[10/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real years asset for pair 0 at 1440
+[11/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real directors asset for pair 0 at 390
+[12/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real directors asset for pair 0 at 1440
+[13/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real singers asset for pair 0 at 390
+[14/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real singers asset for pair 0 at 1440
+[15/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real opposites asset for pair 0 at 390
+[16/86] tests/browser/accessibility.phase6.spec.ts:124:5 › AC-05-T01 counterpart real opposites asset for pair 0 at 1440
+[17/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 320x568 keyboard and touch
+[18/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 568x320 keyboard and touch
+[19/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 390x844 keyboard and touch
+[20/86] tests/browser/accessibility.phase6.spec.ts:308:3 › AC-15/44 counterparts 844x390 keyboard and touch
+[21/86] tests/browser/accessibility.phase6.spec.ts:440:1 › AC-03/44 chosen icon persists through reload, room, live scorecard, summary and final standings
+[22/86] tests/browser/accessibility.phase6.spec.ts:533:37 › maximum supported 15-player scorecard remains usable on a phone
+[23/86] tests/browser/accessibility.phase6.spec.ts:533:37 › historical legacy 25-player scorecard remains usable on a phone
+[24/86] tests/browser/admin.phase6.spec.ts:128:1 › phone catalog form creates and edits all three hints, and retries an uncertain save without duplicating content
+[25/86] tests/browser/admin.phase6.spec.ts:202:1 › fixed-owner administration has no user-delegation UI and its former endpoint stays disabled
+[26/86] tests/browser/admin.phase6.spec.ts:211:1 › guest game sessions cannot reveal private administration pages
+[27/86] tests/browser/admin.phase6.spec.ts:224:1 › late authorized moderation GET cannot restore private content after a denied mutation
+[28/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner approve of an existing legacy case preserves reason and decision history
+[29/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner reject of an existing legacy case preserves reason and decision history
+[30/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner uphold of an existing legacy case preserves reason and decision history
+[31/86] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner overturn of an existing legacy case preserves reason and decision history
+[32/86] tests/browser/admin.phase6.spec.ts:337:3 › FR-23-C01 original-reviewer owner has no appeal-resolution controls or writes
+[33/86] tests/browser/admin.phase6.spec.ts:337:3 › FR-23-C01 proposer owner has no appeal-resolution controls or writes
+[34/86] tests/browser/admin.phase6.spec.ts:341:1 › FR-23-C01 rendered assertion gate rejects wrong status, reason, history and self-resolution fixtures
+[35/86] tests/browser/auth-navigation.phase6.spec.ts:3:1 › GA-10 admin context does not appear in the public guest leaderboard
+[36/86] tests/browser/auth-navigation.phase6.spec.ts:16:1 › public player navigation ignores admin grants and exposes guest play only
+[37/86] tests/browser/auth-navigation.phase6.spec.ts:25:1 › admin entry has no guest continuation and explains failed GitHub callbacks
+[38/86] tests/browser/auth-navigation.phase6.spec.ts:34:1 › admin authorization loss, failed session refresh and logout remove privileged links
+[39/86] tests/browser/content.phase5.spec.ts:3:1 › guest release disables community content entry instead of exposing secured submission forms
+[40/86] tests/browser/identity.phase2.spec.ts:2:1 › AC-21/46 concurrent fresh tabs create one browser credential before requests, surviving lost responses
+[41/86] tests/browser/invitation-copy.phase2.spec.ts:114:1 › INVITE-COPY mock gate accepts correct copy and fallback and rejects corrupted outcomes
+[42/86] tests/browser/invitation-copy.phase2.spec.ts:140:1 › INVITE-COPY-01 copies the generated invitation and confirms it
+[43/86] tests/browser/invitation-copy.phase2.spec.ts:148:1 › INVITE-COPY-01 uses writeText when ClipboardItem is unavailable
+[44/86] tests/browser/invitation-copy.phase2.spec.ts:154:1 › INVITE-COPY-02 preserves the link when clipboard access is denied
+[45/86] tests/browser/invitation-copy.phase2.spec.ts:160:1 › INVITE-COPY-02 preserves the link when the clipboard API is unavailable
+[46/86] tests/browser/invitation-copy.phase2.spec.ts:169:1 › INVITE-COPY creation failure does not claim or perform a copy
+[47/86] tests/browser/invitation-copy.phase2.spec.ts:181:1 › INVITE-COPY missing invitation URL does not claim or perform a copy
+[48/86] tests/browser/invitation-copy.phase2.spec.ts:193:1 › INVITE-COPY-01 writes to the actual Chromium clipboard
+[49/86] tests/browser/lobby.phase3.spec.ts:35:1 › two actual clients ready, lock their roster and close below two without promoting the observer
+[50/86] tests/browser/lobby.phase3.spec.ts:51:1 › uncertain readiness retains its canonical request and blocks conflicting controls until retry
+[51/86] tests/browser/matches.phase4.spec.ts:199:1 › actual players and bound observer preserve solved hints, scoring and the same uncertain answer retry
+[52/86] tests/browser/matches.phase4.spec.ts:280:1 › eight authoritative no-solver rounds show uniform category continuation, reveal and shared final ranking on a phone
+[53/86] tests/browser/matches.phase4.spec.ts:334:1 › TEST-NOSOLVERFALLBACK-146 two idle clients reveal zero scores and enter server-selected round2 without commands
+[54/86] tests/browser/privacy.phase2.spec.ts:2:1 › AC-46 switching from a member to a guest clears private room projections, links and roster
+[55/86] tests/browser/privacy.phase2.spec.ts:28:1 › AC-37 stalled room creation releases busy state and retries the identical command
+[56/86] tests/browser/pwa.spec.ts:11:1 › admin-only manifest, real worker scope, icons and Chromium installation prerequisites
+[57/86] tests/browser/pwa.spec.ts:54:1 › real admin worker provides generic offline launch and never caches private pages or APIs
+[58/86] tests/browser/pwa.spec.ts:99:1 › phone guidance, prompt lifecycle and standalone presentation are admin-only
+[59/86] tests/browser/pwa.spec.ts:118:1 › welcome card retains phone and desktop whitespace without horizontal overflow
+[60/86] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+[61/86] tests/browser/recovery.phase6.spec.ts:164:1 › AC-20/21/46 guest clear/reset, repeated member entry, uncertain preference retry and changed shared session recover privately
+[62/86] tests/browser/recovery.phase6.spec.ts:218:1 › AC-37/45 unavailable game reads recover authoritative stage and expired perspective is removed
+[63/86] tests/browser/recovery.phase6.spec.ts:320:1 › AC-23/37 empty and lost-seat quick match offer browse/create; service limit creation retries once to confirmed success
+[64/86] tests/browser/rooms.phase2.spec.ts:5:1 › AC-26/27 signed full-room link bypasses browsing and keeps the inviter binding through observer entry
+[65/86] tests/browser/rooms.phase2.spec.ts:24:1 › AC-25/27 manual code entry offers current players as inviter choices without consuming a player slot
+[66/86] tests/browser/rooms.phase2.spec.ts:37:1 › AC-24 creation uses private defaults and retains an uncertain command for a safe explicit retry
+[67/86] tests/browser/seat-recovery.phase6.spec.ts:153:1 › TEST-LOBBYMATCHING-117 discovery last-seat loser returns to a fresh first-page board with honest retry
+[68/86] tests/browser/seat-recovery.phase6.spec.ts:193:1 › TEST-LOBBYMATCHING-117 accepted last-seat winner retains uncertain join and is never bounced by full preview
+[69/86] tests/browser/seat-recovery.phase6.spec.ts:226:1 › TEST-ROOMCODES-110 invalid and rate-limited code can be corrected without leaking another room code
+[70/86] tests/browser/seat-recovery.phase6.spec.ts:278:1 › TEST-LOBBYMATCHING-117 direct full-room link retains read-only observation
+[71/86] tests/browser/seat-recovery.phase6.spec.ts:306:1 › TEST-LOBBYMATCHING-117 a pre-join full preview cannot bounce the successful new member
+[72/86] tests/browser/ui-gaps.phase6.spec.ts:6:1 › TEST-CANDIDATEHOLD-141 holds preserve nominations and forbid review until reasoned resume
+[73/86] tests/browser/ui-gaps.phase6.spec.ts:41:1 › TEST-NAVIGATIONDRAFTS-142 profile Cancel sends no write, preserves saved alias/icon and returns focus
+[74/86] tests/browser/ui-gaps.phase6.spec.ts:90:1 › TEST-NAVIGATIONDRAFTS-142 privileged editor Back, Cancel and revocation clear private values
+[75/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 320x568 game/editor reflow and controls
+[76/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 390x844 game/editor reflow and controls
+[77/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 844x390 game/editor reflow and controls
+[78/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 1280-at400%-equivalent game/editor reflow and controls
+[79/86] tests/browser/ui-gaps.phase6.spec.ts:143:3 › TEST-RESPONSIVEMATRIX-145 / TEST-ACCESSIBILITYDETAILS-144 200%-text game/editor reflow and controls
+[80/86] tests/browser/ui-gaps.phase6.spec.ts:280:1 › TEST-REQUESTFEEDBACK-143 completed private room creation survives navigation without another mutation
+[81/86] tests/browser/ui-gaps.phase6.spec.ts:323:1 › TEST-ACCESSIBILITYDETAILS-144 stage, score and errors announce without moving the answer focus
+[82/86] tests/browser/ui-gaps.phase6.spec.ts:367:3 › TEST-REQUESTFEEDBACK-143 game denial prevents an older private GET from returning
+[83/86] tests/browser/ui-gaps.phase6.spec.ts:367:3 › TEST-REQUESTFEEDBACK-143 social denial prevents an older private GET from returning
+[84/86] tests/browser/ui-gaps.phase6.spec.ts:367:3 › TEST-REQUESTFEEDBACK-143 room denial prevents an older private GET from returning
+[85/86] tests/browser/ui-gaps.phase6.spec.ts:482:3 › TEST-REQUESTFEEDBACK-143 malformed room GET never renders parser body or raw exception
+[86/86] tests/browser/ui-gaps.phase6.spec.ts:482:3 › TEST-REQUESTFEEDBACK-143 malformed room POST never renders parser body or raw exception
+  86 passed (1.4m)
+Recorded full run 0478e270-d8a6-41fb-ab5e-23c9446574e6 at 0fb37e621d16fcc56a27abff3fe73b2e66cdcca2 with unchanged source.
+[95mPester v5.9.1[0m
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 6 tests in 174ms.[0m
+[95mRunning tests.[0m
+[95m
+[95mRunning tests from '<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1'[0m
+[92mDescribing hosting migration prefix contract[0m
+[32m  [+] proposes only 012 after the recorded thirteen-migration hosted prefix[0m[90m 120ms (81ms|39ms)[0m
+[32m  [+] proposes the whole catalog for an empty history[0m[90m 9ms (8ms|1ms)[0m
+[32m  [+] proposes hosted scheduler, private realtime, then 012 after core 001 through 011[0m[90m 8ms (6ms|2ms)[0m
+[32m  [+] rejects 012 inserted before hosted 101 without opening a connection[0m[90m 49ms (47ms|2ms)[0m
+[32m  [+] rejects source drift at an otherwise matching migration[0m[90m 7ms (6ms|1ms)[0m
+[32m  [+] rejects history longer than the declared migration set[0m[90m 6ms (5ms|1ms)[0m
+[97mTests completed in 651ms[0m
+[32mTests Passed: 6, [0m[90mFailed: 0, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+[95mPester v5.9.1[0m
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 6 tests in 10ms.[0m
+[95mRunning tests.[0m
+[95m
+[95mRunning tests from '<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1'[0m
+[92mDescribing hosting migration prefix contract[0m
+[91m  [-] proposes only 012 after the recorded thirteen-migration hosted prefix[0m[90m 47ms (43ms|4ms)[0m
+[91m   Expected 'wordpairs_012_guest_public_profiles', but got @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...4 more).
+[91m   at $pending.name | Should -Be @('wordpairs_012_guest_public_profiles'), <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:20
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:20[0m
+[32m  [+] proposes the whole catalog for an empty history[0m[90m 8ms (7ms|2ms)[0m
+[91m  [-] proposes hosted scheduler, private realtime, then 012 after core 001 through 011[0m[90m 21ms (20ms|2ms)[0m
+[91m   Expected @('wordpairs_hosted_scheduler', 'wordpairs_private_realtime', 'wordpairs_012_guest_public_profiles'), but got @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...4 more).
+[91m   at $pending.name | Should -Be @('wordpairs_hosted_scheduler','wordpairs_private_realtime','wordpairs_012_guest_public_profiles'), <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:30
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:30[0m
+[91m  [-] rejects 012 inserted before hosted 101 without opening a connection[0m[90m 13ms (11ms|2ms)[0m
+[91m   Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.
+[91m   at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:36
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:36[0m
+[91m  [-] rejects source drift at an otherwise matching migration[0m[90m 7ms (6ms|2ms)[0m
+[91m   Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.
+[91m   at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:42
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:42[0m
+[91m  [-] rejects history longer than the declared migration set[0m[90m 7ms (6ms|1ms)[0m
+[91m   Expected an exception with message like '*Unknown migration history*' to be thrown, but no exception was thrown.
+[91m   at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*Unknown migration history*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:48
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:48[0m
+[97mTests completed in 260ms[0m
+[97mTests Passed: 1, [0m[91mFailed: 5, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+[95mPester v5.9.1[0m
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 6 tests in 10ms.[0m
+[95mRunning tests.[0m
+[95m
+[95mRunning tests from '<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1'[0m
+[92mDescribing hosting migration prefix contract[0m
+[91m  [-] proposes only 012 after the recorded thirteen-migration hosted prefix[0m[90m 11ms (9ms|2ms)[0m
+[91m   Expected 'wordpairs_012_guest_public_profiles', but got $null.
+[91m   at $pending.name | Should -Be @('wordpairs_012_guest_public_profiles'), <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:20
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:20[0m
+[91m  [-] proposes the whole catalog for an empty history[0m[90m 15ms (13ms|1ms)[0m
+[91m   Expected @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...4 more), but got $null.
+[91m   at $pending.name | Should -Be $migrations.name, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:25
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:25[0m
+[91m  [-] proposes hosted scheduler, private realtime, then 012 after core 001 through 011[0m[90m 8ms (7ms|1ms)[0m
+[91m   Expected @('wordpairs_hosted_scheduler', 'wordpairs_private_realtime', 'wordpairs_012_guest_public_profiles'), but got $null.
+[91m   at $pending.name | Should -Be @('wordpairs_hosted_scheduler','wordpairs_private_realtime','wordpairs_012_guest_public_profiles'), <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:30
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:30[0m
+[91m  [-] rejects 012 inserted before hosted 101 without opening a connection[0m[90m 30ms (28ms|1ms)[0m
+[91m   Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.
+[91m   at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:36
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:36[0m
+[91m  [-] rejects source drift at an otherwise matching migration[0m[90m 13ms (11ms|2ms)[0m
+[91m   Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.
+[91m   at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:42
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:42[0m
+[91m  [-] rejects history longer than the declared migration set[0m[90m 18ms (11ms|7ms)[0m
+[91m   Expected an exception with message like '*Unknown migration history*' to be thrown, but no exception was thrown.
+[91m   at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*Unknown migration history*', <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:48
+[91m   at <ScriptBlock>, <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1:48[0m
+[97mTests completed in 181ms[0m
+[97mTests Passed: 0, [0m[91mFailed: 6, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+{
+  "timestamp": "2026-10-30T16:33:53",
+  "root": "<repo>",
+  "test": "<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1",
+  "testSha256": "5EDE3C1F559BC322E7CFF1C7C09B945E44029483F3DB8BE2172A84A9F9C4A303",
+  "correctMockSha256": "D8C946707CBC5B5DAF2725EFAC05575D63DA374278DD86161A2841FE3D8E332D",
+  "wrongMockSha256": "048E96562E0F55A5FF6FB0EEB424E0E4E68C675773FEFA9E466C2F94D2E324BD",
+  "wrongEmptyMockSha256": "BEA9C1694E197D299FF62579A38B992460218B5B677898640EEC6029528AD552",
+  "runs": [
+    {
+      "name": "correct",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "proposes only 012 after the recorded thirteen-migration hosted prefix",
+          "result": "Passed"
+        },
+        {
+          "name": "proposes the whole catalog for an empty history",
+          "result": "Passed"
+        },
+        {
+          "name": "proposes hosted scheduler, private realtime, then 012 after core 001 through 011",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects 012 inserted before hosted 101 without opening a connection",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects source drift at an otherwise matching migration",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects history longer than the declared migration set",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "name": "wrong",
+      "passed": 1,
+      "failed": 5,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "proposes only 012 after the recorded thirteen-migration hosted prefix",
+          "result": "Failed"
+        },
+        {
+          "name": "proposes the whole catalog for an empty history",
+          "result": "Passed"
+        },
+        {
+          "name": "proposes hosted scheduler, private realtime, then 012 after core 001 through 011",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects 012 inserted before hosted 101 without opening a connection",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects source drift at an otherwise matching migration",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects history longer than the declared migration set",
+          "result": "Failed"
+        }
+      ]
+    },
+    {
+      "name": "wrong-empty",
+      "passed": 0,
+      "failed": 6,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "proposes only 012 after the recorded thirteen-migration hosted prefix",
+          "result": "Failed"
+        },
+        {
+          "name": "proposes the whole catalog for an empty history",
+          "result": "Failed"
+        },
+        {
+          "name": "proposes hosted scheduler, private realtime, then 012 after core 001 through 011",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects 012 inserted before hosted 101 without opening a connection",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects source drift at an otherwise matching migration",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects history longer than the declared migration set",
+          "result": "Failed"
+        }
+      ]
+    }
+  ],
+  "qualification": "Catch-up mock sensitivity check. This receipt does not backdate or replace the original pre-implementation gate."
+}
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 6 tests in 12ms.[0m
+[95mRunning tests.[0m
+[32m[+] <repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1[0m[90m 109ms (46ms|52ms)[0m
+[97mTests completed in 113ms[0m
+[32mTests Passed: 6, [0m[90mFailed: 0, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+[95mPester v5.9.1[0m
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 6 tests in 13ms.[0m
+[95mRunning tests.[0m
+[95m
+[95mRunning tests from '<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1'[0m
+[92mDescribing hosting migration prefix contract[0m
+[32m  [+] proposes only 012 after the recorded thirteen-migration hosted prefix[0m[90m 22ms (20ms|2ms)[0m
+[32m  [+] proposes the whole catalog for an empty history[0m[90m 8ms (7ms|2ms)[0m
+[32m  [+] proposes hosted scheduler, private realtime, then 012 after core 001 through 011[0m[90m 18ms (16ms|2ms)[0m
+[32m  [+] rejects 012 inserted before hosted 101 without opening a connection[0m[90m 11ms (10ms|2ms)[0m
+[32m  [+] rejects source drift at an otherwise matching migration[0m[90m 8ms (7ms|2ms)[0m
+[32m  [+] rejects history longer than the declared migration set[0m[90m 9ms (6ms|4ms)[0m
+[97mTests completed in 142ms[0m
+[32mTests Passed: 6, [0m[90mFailed: 0, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+{
+  "timestamp": "2026-10-30T16:33:53",
+  "moduleSha256": "F002924A2F673F39A4B3260965D32486988EA71EE32F8402C27BA74725773DA0",
+  "testSha256": "5EDE3C1F559BC322E7CFF1C7C09B945E44029483F3DB8BE2172A84A9F9C4A303",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "testResult": "real.xml"
+}
+PASS: replacement lease and runtime preserved; no network/container/process cleanup attempted
+PASS: process disappearance during identity check does not interrupt remaining container cleanup
+PASS: owned Realtime cleanup inspect-failure
+PASS: owned Realtime cleanup rm-failure
+PASS: owned Realtime cleanup daemon-failure
+PASS: owned Realtime cleanup owner-mismatch
+PASS: owned Realtime cleanup success
+PASS: owned Realtime cleanup already-absent
+[33;1mWARNING: Owned resources require cleanup; private ownership directory retained[0m
+PASS: partial Realtime startup plus cleanup failure retains all ownership files and isolated database
+[33;1mWARNING: Owned resources require cleanup; private ownership directory retained[0m
+PASS: owned game database game-rm-failure
+[33;1mWARNING: Owned resources require cleanup; private ownership directory retained[0m
+PASS: owned game database game-inspect-failure
+[33;1mWARNING: Owned resources require cleanup; private ownership directory retained[0m
+PASS: owned game database game-owner-mismatch
+PASS: owned game database game-already-absent
+PASS: owned game database game-success
+PASS: pre-existing local directory survives startup collision
+PASS: pre-existing scratch directory survives startup collision
+[95m
+[95mStarting discovery in 2 files.[0m
+[95mDiscovery found 22 tests in 195ms.[0m
+[95mRunning tests.[0m
+[32m[+] <repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1[0m[90m 735ms (187ms|393ms)[0m
+[32m[+] <repo>/tests/powershell/CurrentReleaseDocs.Integration.Tests.ps1[0m[90m 83ms (54ms|23ms)[0m
+[97mTests completed in 832ms[0m
+[32mTests Passed: 22, [0m[90mFailed: 0, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 9 tests in 195ms.[0m
+[95mRunning tests.[0m
+[32m[+] <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1[0m[90m 559ms (113ms|284ms)[0m
+[97mTests completed in 573ms[0m
+[32mTests Passed: 9, [0m[90mFailed: 0, [0m[90mSkipped: 0, [0m[90mInconclusive: 0, [0m[37m[0m[90mNotRun: 0[0m
+Recorded powershell run 0478e270-d8a6-41fb-ab5e-23c9446574e6 at 0fb37e621d16fcc56a27abff3fe73b2e66cdcca2 with unchanged source.
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+BEGIN
+CREATE FUNCTION
+UPDATE 1
+COMMIT
+INSERT 0 26
+DO
+BEGIN
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/integration/multiplayer.integration.ts [2m([22m[2m14 tests[22m[2m)[22m[33m 63734[2mms[22m[39m
+   [32m✓[39m complete multiplayer games on real PostgreSQL [2m(14)[22m
+     [33m[2m✓[22m[39m 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 845[2mms[22m[39m
+     [33m[2m✓[22m[39m 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1261[2mms[22m[39m
+     [33m[2m✓[22m[39m 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1648[2mms[22m[39m
+     [33m[2m✓[22m[39m 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2289[2mms[22m[39m
+     [33m[2m✓[22m[39m 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2701[2mms[22m[39m
+     [33m[2m✓[22m[39m 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3348[2mms[22m[39m
+     [33m[2m✓[22m[39m 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3803[2mms[22m[39m
+     [33m[2m✓[22m[39m 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 4441[2mms[22m[39m
+     [33m[2m✓[22m[39m 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5253[2mms[22m[39m
+     [33m[2m✓[22m[39m 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5989[2mms[22m[39m
+     [33m[2m✓[22m[39m 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 6512[2mms[22m[39m
+     [33m[2m✓[22m[39m 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 7416[2mms[22m[39m
+     [33m[2m✓[22m[39m 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 8501[2mms[22m[39m
+     [33m[2m✓[22m[39m 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 9508[2mms[22m[39m
+ [32m✓[39m tests/integration/capacity.integration.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 5429[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries[33m 511[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards[33m 4672[2mms[22m[39m
+ [32m✓[39m tests/integration/admin.integration.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 2088[2mms[22m[39m
+   [33m[2m✓[22m[39m 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available[33m 1431[2mms[22m[39m
+ [32m✓[39m tests/integration/content.integration.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 1014[2mms[22m[39m
+ [32m✓[39m tests/integration/matches.integration.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 754[2mms[22m[39m
+ [32m✓[39m tests/integration/lobby.integration.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 428[2mms[22m[39m
+ [32m✓[39m tests/integration/reactions.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 265[2mms[22m[39m
+ [32m✓[39m tests/integration/rooms.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 198[2mms[22m[39m
+ [32m✓[39m tests/integration/identity.integration.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 131[2mms[22m[39m
+ [32m✓[39m tests/integration/public-read.integration.ts [2m([22m[2m1 test[22m[2m)[22m[32m 96[2mms[22m[39m
+ [32m✓[39m tests/integration/live-postgres.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 68[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+[2m      Tests [22m [1m[32m63 passed[39m[22m[90m (63)[39m
+[2m   Start at [22m 16:34:12
+[2m   Duration [22m 76.13s[2m (tests 99%, import 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-0fb37e6/realtime/postgres.xml
+CREATE ROLE
+CREATE ROLE
+GRANT ROLE
+CREATE SCHEMA
+CREATE SCHEMA
+ALTER ROLE
+CREATE FUNCTION
+CREATE FUNCTION
+[31;1mNOTICE:  policy "wordpairs_own_notifications" for relation "realtime.messages" does not exist, skipping[0m
+BEGIN
+ALTER TABLE
+DROP POLICY
+CREATE POLICY
+COMMIT
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/integration/transport.realtime.integration.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 5896[2mms[22m[39m
+   [33m[2m✓[22m[39m TR Realtime rejects a private subscription to another profile’s channel[33m 5101[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 16:35:36
+[2m   Duration [22m 6.15s[2m (tests 98%, import 1%, transform 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-0fb37e6/realtime/realtime.xml
+PASS: TR-31 migration, direct-role denial, canonical retry/conflict, durable outbox, rollback fault, and concurrent final-seat checks
+Recorded realtime run 0478e270-d8a6-41fb-ab5e-23c9446574e6 at 0fb37e621d16fcc56a27abff3fe73b2e66cdcca2 with unchanged source.
+PASS: exact application URL connects to the isolated game database with verified TLS
+[31;1mNOTICE:  policy "wordpairs_own_notifications" for relation "realtime.messages" does not exist, skipping[0m
+Owned local Realtime ready; gateway127.0.0.1:3004; app port3005. No private settings printed.
+Private real UI integration started; counts=2,3,4,5,6,7,8,9,10,11,12,13,14,15; bounded until 2026-10-30T23:05:46.7540352+00:00

@@ -1,0 +1,283 @@
+{
+  "schema": "wordpairs-cline-progress-helper-v1",
+  "recordedAt": "2026-10-30T20:39:14.0312327-05:00",
+  "classification": "Operator-directed bounded operational helper repair;not product implementation or hostile review",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T013044Z-turn-a6a9",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "profile": {
+    "files": 1,
+    "globalMemories": 9,
+    "workspaceMemories": 0,
+    "excluded": "PRIVATE-MEMORY-REFERENCE-007"
+  },
+  "originalHelper": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/cline-progress-helper/GetWordpairsClineProgress.original.ps1",
+    "sha256": "3DD083E247001E242DF59E01016DD26889FC3822FF64EB49F38C9D644DC8E2B8",
+    "bytes": 2820
+  },
+  "updatedHelper": {
+    "path": "/tmp/GetWordpairsClineProgress.ps1",
+    "sha256": "1C9812B9E07629131BFC13381B8409C588B1C1B121E6CAEAF27879E0ACA4BA9D",
+    "bytes": 5797
+  },
+  "installedSource": {
+    "recordedAt": "2026-10-30T20:34:00.4158129-05:00",
+    "cliVersion": "3.0.71",
+    "pins": [
+      {
+        "path": "/tmp/GetWordpairsClineProgress.ps1",
+        "sha256": "3DD083E247001E242DF59E01016DD26889FC3822FF64EB49F38C9D644DC8E2B8",
+        "bytes": 2820
+      },
+      {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/cline-progress-helper/GetWordpairsClineProgress.original.ps1",
+        "sha256": "3DD083E247001E242DF59E01016DD26889FC3822FF64EB49F38C9D644DC8E2B8",
+        "bytes": 2820
+      },
+      {
+        "path": "\u003Chome\u003E/.local/share/mise/installs/npm-cline/latest/node_modules/.mise/@cline\u002Bcli-linux-x64@3.0.71/node_modules/@cline/cli-linux-x64/bin/cline",
+        "sha256": "8562EDA595D5766D253154053A0B386E0CFA1EF3ABCE928AE6FF63F594A61047",
+        "bytes": 132335072
+      },
+      {
+        "path": "\u003Chome\u003E/.local/share/mise/installs/npm-cline/latest/node_modules/.mise/@cline\u002Bshared@0.0.93/node_modules/@cline/shared/dist/agents/types.d.ts",
+        "sha256": "9A58347A3343FFA993D1FFF9C1B7239DFD483DA20953948663337148FEE23B03",
+        "bytes": 42309
+      }
+    ],
+    "nativeAnchors": [
+      "97271411:;if(o.length<=t)return o;return[...o.slice(0,t),`... ${o.length-t} more lines`]}function tS(e,t){if(eg()===\"json\"){En(\"stdout\",{type:\"agent_event\",event:e});return}switch(e.type){case\"iteration_start\":d();break;case\"iteration_end\":d();break;case\"content_start\":switch(e.contentType){case\"text\":if(c!==\"text\"){if(d(),k)ge(`"
+    ],
+    "typeAnchors": "agents/types.d.ts:30-80 defines content_start/content_end,text or accumulated versus reasoning/tool; CLI binarybyte97271439 emits{type:agent_event,event:e}",
+    "scope": "Installed source only;no model or live stream invocation"
+  },
+  "isolatedFixtures": {
+    "recordedAt": "2026-10-30T20:37:11.6362175-05:00",
+    "scope": "Isolated native-object fixture checks of the actual extracted trusted helper function;no full helper/live stream/model execution",
+    "helperSha256": "1C9812B9E07629131BFC13381B8409C588B1C1B121E6CAEAF27879E0ACA4BA9D",
+    "fixtureSha256": "4528F36929D082F1BF062C47D927F824782371BA0A57D5D3DAB45813D3AFE5CF",
+    "parserErrors": 0,
+    "pssaWarningsErrors": 0,
+    "caseCount": 24,
+    "passed": 24,
+    "failed": 0,
+    "excludedInputControls": 15,
+    "cases": [
+      {
+        "name": "direct numeric pair preserved",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "direct numeric strings preserved",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "native assistant content end",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "native assistant content start",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "native accumulated complete JSON",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "fenced multiline structured progress",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "newline complete structured entry",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "identical text and accumulated do not duplicate",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "zero progress and ETA accepted",
+        "expectedObservationCount": 1,
+        "observedCount": 1,
+        "passed": true
+      },
+      {
+        "name": "tool end text excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "tool update text excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "reasoning text excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "notice text excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "tool result nested JSON excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "tool marked text excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "non-native payload wrapper excluded",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "nested object is not root progress",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "nested numeric strings rejected",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "nested boolean rejected",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "percent above100 rejected",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "negative percent rejected",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "negative ETA rejected",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "missing ETA rejected",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      },
+      {
+        "name": "partial fragment remains inconclusive",
+        "expectedObservationCount": 0,
+        "observedCount": 0,
+        "passed": true
+      }
+    ],
+    "preservedSourceLiterals": [
+      "bytes=$item.Length",
+      "lastWriteTime=$item.LastWriteTime.ToString('s')",
+      "lines=$lines",
+      "unparsedLines=$unparsed",
+      "eventTypes=$types",
+      "runtimeStarts=$starts",
+      "runtimeResults=$results",
+      "directProgress=$progress",
+      "[IO.FileShare]::ReadWrite",
+      "systemctl --user show"
+    ],
+    "arbitraryTextEscaped": false,
+    "qualification": "Only complete structured JSON entries in proven native assistant text/accumulated are recognized. Partial/prose/other-wrapper progress can remain unrecognized;empty extraction is inconclusive. Cumulative stream events can repeat numeric observations. Existing direct parser remains unchanged."
+  },
+  "scriptChecks": [
+    {
+      "source": "/tmp/GetWordpairsClineProgress.ps1",
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "sha256": "1C9812B9E07629131BFC13381B8409C588B1C1B121E6CAEAF27879E0ACA4BA9D"
+    },
+    {
+      "source": "/tmp/Check-WordpairsClineProgressFixture.ps1",
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "sha256": "4528F36929D082F1BF062C47D927F824782371BA0A57D5D3DAB45813D3AFE5CF"
+    },
+    {
+      "source": "/tmp/Complete-WordpairsClineProgressHelper.ps1",
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "sha256": "B386B44006428024B932F8AA393A14065AFC1E5138E52FFE61D88ABDE57EEA58"
+    }
+  ],
+  "initialAnalyzerWarnings": {
+    "helper": 1,
+    "fixture": 2,
+    "resolution": "Renamed plural Metadata helper noun to Observation;renamed automatic Event parameter through an alias. Pure in-memory New-AssistantEvent constructor has a written targeted ShouldProcess-rule suppression because it changes no external state. All final Warning/Error diagnostics zero."
+  },
+  "supportedProgress": {
+    "legacy": "Existing direct numeric pair parsing,including numeric strings,retained unchanged",
+    "native": "Only agent_event.event with contentType=text,typecontent_start/content_end,text or accumulated fields;structured JSON objects,newlineentries or fenced JSON",
+    "excluded": "Tool inputs/outputs/updates,tool-marked events,reasoning,notices,other wrappers,nested non-root progress,invalid nested numeric values",
+    "output": "Numeric completionPercent/etaMinutes,line and fixed source metadata only;activity/arbitrary assistant text is not emitted",
+    "semantics": "Observed self-reported progress,not verified work completion or an HV verdict. Cumulative events can repeat observations;empty extraction does not prove absence of progress."
+  },
+  "preserved": "File bytes,lastWriteTime,line/unparsed counts,event/start/result metadata,legacy directProgress,read-only shared stream access and existing systemctl status call retained",
+  "unknowns": [
+    "Actual future reviewer progress formatting remains unobserved;no live helper/stream/model invocation occurred. Unstructured prose/partial chunks without complete accumulated structuredJSON may not be recognized. Existing process-result metadata output remains unchanged."
+  ],
+  "noModelBuildProductTestsOrProviderInvocation": true,
+  "noLauncherPreparerApplicationOrRequirementChangesByThisAgent": true,
+  "originalStreamMutated": false,
+  "fixturesOnly": true,
+  "counts": {
+    "pass": 24,
+    "fail": 0,
+    "excludedControls": 15,
+    "unknown": 1
+  },
+  "overallVerdict": "NOT_HV",
+  "accuracy": 99,
+  "completeness": 100,
+  "ratingQualification": "Bounded operational helper validated against pinned native shapes and15 exclusion controls;actual live stream use and independent review were intentionally not performed.",
+  "incident": {
+    "triageReportId": "triage-report-02d21087d3794b5eabed0f9d2bce6bf9",
+    "triageGroupId": "triage-group-58a3e03c120bad83",
+    "failure": "InitialbeginTurn rejected SubmitAsync with literal transient SQL guidance;normal failsafe copied and triage accepted,replay recovered the samea6a9 request. No outage/rootcause inference or duplicate turn."
+  }
+}

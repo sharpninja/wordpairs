@@ -1,0 +1,79 @@
+{
+  "recordedAt": "2026-10-30T20:14:27.2417964-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T011300Z-compiled-client-6063acd",
+  "receipt": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/client-boundary.json",
+    "sha256": "2E933E0C3082FACB85768259F5DAE3B3B6BC7A8EF85C72B49CDB7BABB4B6E3B8"
+  },
+  "producerRetention": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/client-boundary-producers/producer-retention.json",
+    "sha256": "46552036026107968F51B7A11F08F3D0E858297E908366F95713FD4AB32190FE"
+  },
+  "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "assetCount": 20,
+  "totalBytes": 971773.0,
+  "stableDuringScan": true,
+  "knownValueLiteralMatches": 0,
+  "privateSymbolMatches": 0,
+  "checkedSourceFiles": 355,
+  "allPinsMatch": true,
+  "build": {
+    "name": "build",
+    "runId": "183284fa-7e0b-452d-b08b-8aa17ff5808d",
+    "hostName": "[PRIVATE HOST]",
+    "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+    "startedAt": "2026-10-30T20:08:44",
+    "finishedAt": "2026-10-30T20:08:52",
+    "executable": "npm",
+    "arguments": [
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "log": "build.log",
+    "junit": "",
+    "junitSha256": null
+  },
+  "groupRunId": "d941371c-59de-40e1-875e-5c3b90778adb",
+  "clientEntrypoints": 12,
+  "reachable": 33,
+  "privateReachable": 0,
+  "unresolvedRelativeImports": 0,
+  "dynamicImports": 0,
+  "nativeCounts": [
+    {
+      "name": "unit",
+      "cases": 894,
+      "failed": 0,
+      "skipped": 0,
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full/unit.xml",
+      "sha256": "EDB2AB3D8AB4D7081F9AA82212BAC17FCF9AA33C959FDD662235A675D5A2E51E"
+    },
+    {
+      "name": "postgres",
+      "cases": 63,
+      "failed": 0,
+      "skipped": 0,
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full/postgres.xml",
+      "sha256": "CAF26CAB79D13D2FC55E7E57E0B5DE16B585714B3A4674DFF98C222B4A06208B"
+    },
+    {
+      "name": "browser",
+      "cases": 86,
+      "failed": 0,
+      "skipped": 0,
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full/browser.xml",
+      "sha256": "0A691BB5626253E91829D4B5EAADC697624B9F7EDD7125CF8C63311AE73CA160"
+    }
+  ],
+  "limitations": [
+    "Known-value scan covers exact UTF8 literals only; no escaped, encoded, split, encrypted or transformed variants are claimed.",
+    "Only current workspace marker key and explicitly authorized Supabase password were loaded. Unknown local or Vercel-sensitive environment values were not read or scanned.",
+    "Only .next/static emitted client assets were scanned, including binary assets. Server bundles, rendered HTML/RSC payloads, API/network responses, public service workers and hosted deployments were not scanned.",
+    "Build association uses the existing successful frozen build receipt, BUILD_ID directory, asset timestamps and stable inventory at inspection. The build receipt did not itself pin these asset hashes at build time; this receipt is their first independent inventory.",
+    "Static source reachability follows relative import/reexport declarations, conservatively including type-only edges. It is not the compiler module graph; package dependencies, aliases, computed/dynamic imports and loaders are outside that graph claim.",
+    "No explicit server-only package guard was inferred from comments. Current source import boundaries and emitted-value/symbol absence do not certify every future refactor or unknown secret."
+  ],
+  "qualification": "Narrow emitted-client and known-literal inspection, not hostile approval, complete secret audit, hosted verification or release completion."
+}

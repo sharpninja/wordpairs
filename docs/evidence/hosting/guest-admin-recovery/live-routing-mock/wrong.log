@@ -1,0 +1,42 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/live-update-routing.test.ts (4 tests | 2 failed) 41ms
+   × routes match changes to the match refresh without rereading the room 26ms
+   ✓ routes room and moderation changes to the room refresh 5ms
+   × ignores duplicate and unrelated notifications 4ms
+   ✓ falls back to the room refresh when no match callback is supplied 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/live-update-routing.test.ts > routes match changes to the match refresh without rereading the room
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ tests/web/live-update-routing.test.ts:30:23
+     28| it("routes match changes to the match refresh without rereading the ro…
+     29|   const state = await setup(); await state.emit("m1", "match");
+     30|   expect(state.match).toHaveBeenCalledTimes(1); expect(state.room).not…
+       |                       ^
+     31| });
+     32| it("routes room and moderation changes to the room refresh", async () …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/web/live-update-routing.test.ts > ignores duplicate and unrelated notifications
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ tests/web/live-update-routing.test.ts:38:23
+
+     36| it("ignores duplicate and unrelated notifications", async () => {
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  11:33:23
+     37|   const state = await setup(); await state.emit("m1", "match"); await …
+     38|   expect(state.match).toHaveBeenCalledTimes(1); expect(state.room).not…
+       |                       ^
+     39| });
+     40| it("falls back to the room refresh when no match callback is supplied"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+   Duration  928ms (environment 79%, import 12%, tests 5%, transform 3%, worker 1%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/live-routing-mock/wrong.xml

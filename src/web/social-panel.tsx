@@ -231,9 +231,11 @@ export function SocialPanel({
       {nominated === roundId && (
         <p role="status">Nomination recorded for this round.</p>
       )}
-      <p>
-        <Link href="/content">Your submissions and community content</Link>
-      </p>
+      {canNominate && (
+        <p>
+          <Link href="/content">Your submissions and community content</Link>
+        </p>
+      )}
       {intent.pending && (
         <button
           type="button"

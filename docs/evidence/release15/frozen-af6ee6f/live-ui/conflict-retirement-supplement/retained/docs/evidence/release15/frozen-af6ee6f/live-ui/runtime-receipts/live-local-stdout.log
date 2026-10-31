@@ -1,0 +1,87 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1 --reporter=line,junit
+
+
+Running 14 tests using 1 worker
+
+[1/14] tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+LIVE_SCALE players=2 round=1
+
+LIVE_SCALE players=2 round=2
+
+LIVE_SCALE players=2 round=3
+
+LIVE_SCALE players=2 round=4
+
+LIVE_SCALE players=2 round=5
+
+LIVE_SCALE players=2 round=6
+
+LIVE_SCALE players=2 round=7
+
+LIVE_SCALE players=2 round=8
+
+[2/14] tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+LIVE_SCALE players=3 round=1
+
+LIVE_SCALE players=3 round=2
+
+LIVE_SCALE players=3 round=3
+
+LIVE_SCALE players=3 round=4
+
+LIVE_SCALE players=3 round=5
+
+LIVE_SCALE players=3 round=6
+
+LIVE_SCALE players=3 round=7
+
+LIVE_SCALE players=3 round=8
+
+[3/14] tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+LIVE_SCALE players=4 round=1
+
+LIVE_SCALE players=4 round=2
+
+LIVE_SCALE players=4 round=3
+
+  1) tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+
+    AssertionError: Unknown pending command blocks a new intent
+    actual expected
+
+    'disablsednt'
+
+
+       at ui-command-acknowledgement.ts:13
+
+      11 |   assert(value.version !== null && /^\d+$/.test(value.version) && Number.isSafeInteger(Number(value.version)), "Malformed rendered command version");
+      12 |   assert(["absent", "disabled", "enabled"].includes(value.pending), "Malformed pending state");
+    > 13 |   if (mode === "fresh") assert.equal(value.pending, "absent", "Unknown pending command blocks a new intent");
+         |                                ^
+      14 |   if (value.busy === "true") return "waiting";
+      15 |   if (value.pending !== "absent") {
+      16 |     if (value.pending === "disabled") return "waiting";
+        at commandUiState (<repo>/tests/browser/ui-command-acknowledgement.ts:13:32)
+        at expect.poll.message (<repo>/tests/browser/ui-command-acknowledgement.ts:55:15)
+        at awaitCommandUi (<repo>/tests/browser/ui-command-acknowledgement.ts:53:3)
+        at Object.retired (<repo>/tests/browser/live-player-counts.integration.spec.ts:86:30)
+        at commitUiCommand (<repo>/tests/browser/ui-command-capture.ts:78:7)
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:176:24
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:175:27
+
+    Error Context: test-results/live-local/live-player-counts.integra-bacd2-rs-complete-eight-UI-rounds/error-context.md
+
+
+Testing stopped early after 1 maximum allowed failures.
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:18:29 › LIVE-SCALE 4 real browser players complete eight UI rounds 
+  11 did not run
+  2 passed (59.7s)
+  1 error was not a part of any test, see above for details
+

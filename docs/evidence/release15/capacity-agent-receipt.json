@@ -1,0 +1,184 @@
+{
+  "timestamp": "2026-10-30T15:17:34",
+  "sessionId": "Codex-20261030T194703Z-plugin-session",
+  "requestId": "req-20261030T194706Z-turn-052d",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T194626Z-finish-wordpairs",
+  "turnStatus": "completed",
+  "actionCount": 46,
+  "scope": "Capacity15 implementation, not independent HV or release completion",
+  "summary": "Capacity15 implementation and focused verification supplied to parent; no tracked release completion, HV acceptance, commit, push or deployment claimed. Mock contract gate16 correct cases accepted, deliberate wrong fixture rejection6/1/6; SQL/public incremental mock gates retained. Same real domain/component assertions16 passed, final focused suite23 passed0skipped. Real PostgreSQL upgrade3 tests passed on pre013 legacy data, including15-player last-seat concurrency/25 observers/public effective discovery and25-player existing match replay/200 solves/final25 awards. Last test-only isolation adjustment will be verified by root frozen full suite. Fullunit earlier632 cases had5 propagation failures; owned3 corrected, root owns hosting schema2 correction. Browser collector79 cases/15files, actual execution pending root. Direct typecheck and lint passed after fixing4 test typing errors. Hook output alone does not prove compilation; incident queued. Parent linkage Codex-20261027T100516Z-plugin-session/req-20261030T194626Z-finish-wordpairs.",
+  "files": [
+    {
+      "path": "src/domain/rooms.ts",
+      "sha256": "658B9692E2504556413BD59A6FBDAC30EBE503AA887834E37C67D374AC6F72D7"
+    },
+    {
+      "path": "src/domain/lobby.ts",
+      "sha256": "D714FBEAED05C62C103DFCDDAA9931C31CDDD4D9A602BD92B73794ADCB9CC3D8"
+    },
+    {
+      "path": "src/domain/match.ts",
+      "sha256": "4F92070120E3767042F9E99225D48E30FA24B138EAC0FCD20656D7C9D32B70C3"
+    },
+    {
+      "path": "src/application/rooms.ts",
+      "sha256": "7AA01A3F04EFE01AE225C7DE0D77D2378DB7B278A66CA4070C31CA068273A6D2"
+    },
+    {
+      "path": "src/application/public-projections.ts",
+      "sha256": "52D7985102DB2D86E4DFDF59742FB38B5B52981E2DF5ACF5F20B9DF33B63DDED"
+    },
+    {
+      "path": "src/web/play-hub.tsx",
+      "sha256": "85667018A046E6392F69C95BE6BF92F165E4E92DDA91438EFF6CAB7F1C3BC80D"
+    },
+    {
+      "path": "src/web/room-screen.tsx",
+      "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951"
+    },
+    {
+      "path": "src/app/page.tsx",
+      "sha256": "FAF99C6E22D033E624849213F9B02D95C7F17BA7D01087340CEBAF7A7B7B3104"
+    },
+    {
+      "path": "src/infrastructure/migrations/013_player_capacity.sql",
+      "sha256": "CBE351B1F8343A42AA9A3E5611D515710BE2E1E004C9E8848AD89B0CA124C5F2"
+    },
+    {
+      "path": "tests/application/capacity-contract-fixture.ts",
+      "sha256": "BF9B25A224B44C38ADCFB36449604C834BD14F93E1B9D99A14FEB47C248CB518"
+    },
+    {
+      "path": "tests/application/capacity-policy.test.ts",
+      "sha256": "67701C7BC81FCA8AE3E9C547D242B477C24A7344BCF90D1ACE74ED4C94FBF7D0"
+    },
+    {
+      "path": "tests/application/capacity-public.test.ts",
+      "sha256": "7D2011E4525FFA97254B8B211757146534EBE408D3CB3E0829DFFE259B0DED13"
+    },
+    {
+      "path": "tests/application/legacy-match-capacity.test.ts",
+      "sha256": "EC4CDEF3F0AE259065078AF0E7DE4C5C7E36C422DA38841C05DB7FEF3EAC6B4E"
+    },
+    {
+      "path": "tests/web/capacity-ui-fixture.ts",
+      "sha256": "AAFABD4F1CDC7A480DCF1DA8C06981883B9585B2FE10749FDB33189F83B6D886"
+    },
+    {
+      "path": "tests/web/capacity-ui.test.ts",
+      "sha256": "8B1DED62D6CD3D406265F37D5745EA0384A00A92E5E237AF99A5CFE75FC3863F"
+    },
+    {
+      "path": "tests/powershell/Run-Capacity15MockGate.ps1",
+      "sha256": "F3435E1E756B4C85B1586A66A4951182E78AC399382BA18D04DC0C72E62F0D19"
+    },
+    {
+      "path": "tests/powershell/Run-Capacity15SqlPublicMockGate.ps1",
+      "sha256": "A89EA36745AFD3148552C72291C69638B579D75BDA7C9D78ACCABFF880B17053"
+    },
+    {
+      "path": "tests/powershell/Run-IntegrationReportContract.ps1",
+      "sha256": "9FFC116ADEACCC6D4150CB8F91E2B5C5A013287137F3162A9DDBBFA8753FE2A1"
+    },
+    {
+      "path": "tests/integration/capacity.integration.ts",
+      "sha256": "3530A74BC4AC2EF81CD0A0E9078A5155B0780DA002482A89CA8FFA50EC2674CA"
+    },
+    {
+      "path": "tests/integration/capacity-upgrade-seed.sql",
+      "sha256": "FD401F3F9E152B587ED5D1B5748EF59FFFD95653E75412B570ABC7294675D68A"
+    },
+    {
+      "path": "tests/integration/run-phase1.ps1",
+      "sha256": "E51C50DD2EDD33CF9BD8FAC9EB677B19B8F3AC01F6ABFD6F3E4B69235D5813ED"
+    },
+    {
+      "path": "tests/integration/multiplayer.integration.ts",
+      "sha256": "E6ED192F67017BD9655D05EE6A02296415D760C1C66E405A993E65D455218A3D"
+    },
+    {
+      "path": "tests/integration/rooms.integration.ts",
+      "sha256": "A20CD257DCFBFB1413C21099DFCB3F6A6AA2688DCD3E4C7D9A2A981098F0E12F"
+    },
+    {
+      "path": "tests/application/rooms.test.ts",
+      "sha256": "5D1D0AEBE60786548669AB848C244D551F5E4DE8F4AE9FEF0037A14ADAEC882A"
+    },
+    {
+      "path": "tests/application/public-projections.test.ts",
+      "sha256": "0D01C6AAE9BBE8050DFA8E2A09A48FE3618ABD98BD9D8851D67EDCED2207B6B3"
+    },
+    {
+      "path": "tests/acceptance/boundary-counterparts.test.ts",
+      "sha256": "0F6D56C552E3EA15DE877D71A442D64F649E17948B7F7DB442670377F0272ED1"
+    },
+    {
+      "path": "tests/acceptance/assertion-bindings.ts",
+      "sha256": "19724751683BB84F8E9A68116108B468197A164601960D2574E60C0CDEC15221"
+    },
+    {
+      "path": "tests/browser/rooms.phase2.spec.ts",
+      "sha256": "D9553A8579428F9EE5A5F740EA9F246ADCECBABD3914C775C45D22CC944BF2C2"
+    },
+    {
+      "path": "tests/browser/phase6-fixture.ts",
+      "sha256": "12A34B48564DACB0764EA87537EEEEC31057EEAF18C72E13F804095A8F606A82"
+    },
+    {
+      "path": "tests/browser/accessibility.phase6.spec.ts",
+      "sha256": "0572603F216C6FD33D4EAB3BEAB45130DB81481B2E033CC1636847C18E45D3B4"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "3266B2B5D51D6F1FCC4CD74F8E7FF9A0CA1318F4A5B82D8AC3590508F7F0D2AA"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "D982F29F5134A563D7D0BEB489D4E45AFB8701106A8912FBAAB14A55956ED709"
+    },
+    {
+      "path": "tests/browser/recovery.phase6.spec.ts",
+      "sha256": "9C86B226F0C7D6980FB6C3C1053074C8F19F2549E65B15C51AEAEFB64DF965B1"
+    },
+    {
+      "path": "tests/browser/auth-navigation.phase6.spec.ts",
+      "sha256": "28B64FA1951DD9A6CD4410DC6D87297B0AAD473DED2BA0A930E800BF82554BC0"
+    },
+    {
+      "path": "tests/browser/seat-recovery.phase6.spec.ts",
+      "sha256": "36524EBFAF6252E6C72D4599161388EB0F3D6E11544E309961481BDA23239C44"
+    },
+    {
+      "path": "tests/web/landing-api.test.ts",
+      "sha256": "BA701CCCE6E56473499122DC2852E2B510AF8D7EDC4A62F6F873F7BBD00AC167"
+    },
+    {
+      "path": "tests/web/landing.test.ts",
+      "sha256": "0A8DF5DD97F0DC87A490FD28246A235D8EBEE42439CB5F222E5D67BDE337CC5D"
+    },
+    {
+      "path": "tests/ac-contracts/oracle-contract-expectations.ts",
+      "sha256": "935ECF4B2773B0B7BF3176CC2A6CF28147908653152AEF5AB61390BD0BCED113"
+    },
+    {
+      "path": "tests/ac-contracts/oracle-scenarios.ts",
+      "sha256": "AAA3D6E4C58DB1CCD88CB92E883F7975E414C649DAF4741A342E5CC28B626C79"
+    },
+    {
+      "path": "tests/ac-contracts/oracle-supplemental-scenarios.ts",
+      "sha256": "AC4845219872132A3CB59E6FF7814D7B6ABC40A5B47D86F67407862BD2E8021A"
+    },
+    {
+      "path": "tests/ac-contracts/oracle-supplemental-contracts.ts",
+      "sha256": "19AD9CE4308272F1D89B25C6349578CA217845C8D51662E1590697CCFDF47E5B"
+    },
+    {
+      "path": "scripts/run-local-ui-integration.ps1",
+      "sha256": "E6292FFB137D6CBCEE8E0BEE4993C00A8262C135BEAFA0853FA76A68875E43CB"
+    }
+  ],
+  "releaseComplete": false,
+  "currentFullSuitePassed": false,
+  "independentHvAccepted": false
+}

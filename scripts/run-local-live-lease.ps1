@@ -11,19 +11,19 @@ $processes=@('local-live-worker-process.json','local-live-app-process.json') | F
     $file=Join-Path $local $_
     if(Test-Path $file){Get-Content $file -Raw | ConvertFrom-Json}
 }
-function Is-CurrentLease {
+function Test-CurrentLease {
     if(-not(Test-Path $path)){return $false}
     $current=Get-Content $path -Raw | ConvertFrom-Json
     return $current.startedAtUtc -eq $generation -and $current.origin -eq $lease.origin
 }
 try {
     while([DateTimeOffset]::UtcNow -lt $until){
-        if(-not(Is-CurrentLease)){return}
+        if(-not(Test-CurrentLease)){return}
         Start-Sleep -Seconds 1
     }
 } finally {
     # A renewed lease owns its own runtime. An obsolete watcher must never stop it.
-    if(Is-CurrentLease){
+    if(Test-CurrentLease){
     $failures=[Collections.Generic.List[string]]::new()
     try {
         $api='http://127.0.0.1:4040/api/endpoints/'+[Uri]::EscapeDataString($lease.endpointName)

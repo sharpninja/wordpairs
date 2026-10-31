@@ -1,0 +1,242 @@
+{
+  "review": "Independent hostile final validation: phone-installable PWA extension",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "high",
+    "agent": "/root/phase1_hv"
+  },
+  "reviewedAtUtc": "2026-10-27T11:17:49.733073+00:00",
+  "verdict": "APPROVE",
+  "scores": {
+    "accuracy": 99,
+    "completeness": 99,
+    "scale": 100,
+    "requiredAccuracy": 98,
+    "requiredCompleteness": 98
+  },
+  "rubric": {
+    "accuracy": "Implementation and evidence accurately satisfy PWA-01 through PWA-08 without overstating real-device installation, private-cache behavior or offline gameplay. No unresolved material correctness/security finding.",
+    "completeness": "Manifest/icons, metadata, install/manual guidance, secure registration, offline reconnect behavior, private traffic exclusions, update lifecycle, phone layout, regression evidence and operational documentation are covered. Remaining deployment/device checks are explicitly outside this local implementation approval."
+  },
+  "scope": "Final PWA extension only, including its root-layout integration and linked documentation. Historical administration, maintenance and Phases 0-6 approvals are not relabeled as reviews of these bytes.",
+  "snapshot": {
+    "kind": "local working-tree files, not an immutable commit or deployed release",
+    "baseCommit": "3273c121de6517aec34503d8c769b0159e9e52df",
+    "sha256": "2c760dea52729053820e1521f70af637ce93093eb1407a48dfb559d1179e8c55",
+    "algorithm": "SHA256 of UTF-8 concatenation in listed order: sha256 + two spaces + path + newline",
+    "files": [
+      {
+        "path": "src/app/manifest.ts",
+        "sha256": "0b8222f9e198de248ed2497bbc41e0c9711b57c4a70088b3ad8e89bcbce0f022"
+      },
+      {
+        "path": "src/web/pwa-support.tsx",
+        "sha256": "9c4aa2f3700486059f8f2fd39004c4ed67330f6a3d343ffcc3a2671ea87e1a49"
+      },
+      {
+        "path": "src/app/layout.tsx",
+        "sha256": "4707d904173cb9b782378681bd59fefaf4302f9c5b8ee0c1fa4e207dd37cb2b8"
+      },
+      {
+        "path": "next.config.ts",
+        "sha256": "fdfb7ad484f2d6f33373dfcc82aa16a33e61009446913eabe1b892f1b5208941"
+      },
+      {
+        "path": "public/sw.js",
+        "sha256": "338e44fdec41172dcd5f1f70442a43a39ef07826bfe2eddcbb79861ae3bcac5b"
+      },
+      {
+        "path": "public/offline.html",
+        "sha256": "f4f7629f65716218dffa5bcd303fcafc6be0b9607a02f46d4d8034aa915b27b1"
+      },
+      {
+        "path": "src/app/globals.css",
+        "sha256": "81121aa9bd858cea9d8b37abeb11cfe2ab4de4bc1e4ec1d184d7b91a0da3a6df"
+      },
+      {
+        "path": "tests/web/pwa-manifest.test.ts",
+        "sha256": "2e05e6a4c5ab082c7674520c8bb4a20247c9d1c11d0c21bb3166f9381c562597"
+      },
+      {
+        "path": "tests/web/pwa-worker.test.ts",
+        "sha256": "ee7467cb3708a9209d2d16f9702bd53a98842831603ca63dcd11a9e8e6b1cbd8"
+      },
+      {
+        "path": "tests/web/pwa-support.test.ts",
+        "sha256": "5a7782b47be0b39512c59510675eab7871d21799d79b02e4d8aea8d640b79de5"
+      },
+      {
+        "path": "tests/browser/pwa.spec.ts",
+        "sha256": "0c886b6423e97af4501802ce3dd53dfa6e3bc79ea28f74fd58fa582eb89bdb99"
+      },
+      {
+        "path": "playwright.pwa.config.ts",
+        "sha256": "87f145c0be9fa4a0378570d98b712f5ddb4332b1d476f5d9889752acf7952a80"
+      },
+      {
+        "path": "README.md",
+        "sha256": "debdef8a4ed3b7792ff22ed4f94e705b4cf5aa7ac741bf42cba279b64aa2cb7e"
+      },
+      {
+        "path": "docs/pwa_design.md",
+        "sha256": "08606f2281e783149651e910f063548154b51a772f2581223e0e19404b73737f"
+      },
+      {
+        "path": "docs/local_development.md",
+        "sha256": "25796bc9d7b038d6b00a4fd750f3ddaf96776378f77db61535be20c00d7f8cef"
+      },
+      {
+        "path": "docs/testing.md",
+        "sha256": "e781701af2a1444c1c5244c181d7b2e95fe7c60bf7c046215010db98124b295b"
+      },
+      {
+        "path": "docs/architecture_design.md",
+        "sha256": "24d1e198d8f77cfb73465206ddb2908b0a27e2dc5aa835596adc5aa7d0e35870"
+      },
+      {
+        "path": "docs/deployment_plan.md",
+        "sha256": "5c9c27b9fed3333f94944da06623a4bf0be8993050ab2c48b1c34630d493c6bb"
+      },
+      {
+        "path": "docs/implementation_plan.md",
+        "sha256": "b43936ffe102c4f4e340b02d1a312aef0ad9dabd8fdb6584ef980499449fc905"
+      },
+      {
+        "path": "docs/wiki.yaml",
+        "sha256": "b57d19270b559d137c3dadcd76b2b6c05be8d6d1b41f0336651ad4658b8d014a"
+      },
+      {
+        "path": "public/icons/apple-touch-icon.png",
+        "sha256": "c3aa5878eceeb5ac55de69fa0ce1eb040291c9d8428c70e0185d92f9529cf89a"
+      },
+      {
+        "path": "public/icons/icon-192.png",
+        "sha256": "862400360acff1b1cf02d7142bf69bcb04bf5782e59f113d79353495c57c3e3b"
+      },
+      {
+        "path": "public/icons/icon-512.png",
+        "sha256": "7a28e8eb32a3dc11b5caa1421be3bb019069c7b98f2430f0c31e3046b04b7780"
+      },
+      {
+        "path": "public/icons/maskable-512.png",
+        "sha256": "7a28e8eb32a3dc11b5caa1421be3bb019069c7b98f2430f0c31e3046b04b7780"
+      },
+      {
+        "path": "public/icons/wordpairs.svg",
+        "sha256": "2a29d69abb58c9b1380e4e24c33afebf95cc616d18150de41d4a1b3ec7d7b74f"
+      }
+    ],
+    "excludes": "This receipt itself, requirements synchronization/export after review, and unrelated pre-existing dirty files."
+  },
+  "unresolvedFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "PWA-HV-001",
+      "priority": "P2",
+      "problem": "viewport-fit=cover had only left/right body protection; bottom protection lived on the installation panel that disappears in standalone. A later .site-shell padding shorthand also reset .pwa-install top/bottom padding to zero.",
+      "independentReproduction": "Evaluating the original complete stylesheet in jsdom produced installation-panel paddingTop=0px and paddingBottom=0px. Standalone rendering removed the only proposed bottom-inset element.",
+      "repair": "Body now retains top/bottom/left/right env(safe-area-inset-*,0px) independently of installation UI. The more specific .site-shell.pwa-install rule preserves 24px vertical padding. Static offline HTML protects all four insets.",
+      "verification": "Independently reran the added complete-stylesheet regression: emulated nonzero 28/20/7/9px insets survive with the installation UI hidden, and visible panel padding remains 24px. Final full unit and production browser runs pass after this repair."
+    }
+  ],
+  "independentVerification": [
+    {
+      "check": "Focused actual PWA tests",
+      "command": "npm test -- tests/web/pwa-manifest.test.ts tests/web/pwa-worker.test.ts tests/web/pwa-support.test.ts",
+      "result": "PASS: 14 tests, 3 files, exit 0, 1.43 seconds after the safe-area repair."
+    },
+    {
+      "check": "Source/security/lifecycle inspection",
+      "result": "Manifest has stable root identity/scope and /play standalone launch. Worker caches only five explicit public static resources; API/auth top-level navigation, non-GET, cross-origin and non-navigation/RSC requests bypass interception. Actual HTTP errors are retained, offline navigation uses a static reconnect document, and no private response or mutation is stored/replayed. No skipWaiting, forced reload or new dependency. Versioned cleanup is scoped to owned caches; failed precache rejects installation."
+    },
+    {
+      "check": "Client and metadata inspection",
+      "result": "Secure-context registration uses root scope and updateViaCache none. Prompt is consumed once following a click; dismiss/reject and registration failure retain manual guidance. Standalone/appinstalled hides installation UI and listeners clean up. Installed Next metadata code confirms mobile-web-app-capable output; checking that actual metadata plus Apple title/touch icon and standalone manifest is justified."
+    },
+    {
+      "check": "Visual inspection",
+      "result": "Inspected actual brand icons including maskable artwork and phone guidance captures. Brand mark is centered, opaque and legible; phone instructions are readable without horizontal overflow. Reinspected the refreshed iPhone guidance capture after the repair. PNG dimension/opacity/maskable safe-zone assertions passed in independent focused tests."
+    },
+    {
+      "check": "Evidence inspection",
+      "result": "Read final saved unit/browser/build/lint results and regular-profile Chromium installability JSON. Manifest errors and installability errors are empty without filtering. No competing build/browser or local-server restart was performed by this reviewer."
+    }
+  ],
+  "implementerRunEvidenceReviewed": [
+    {
+      "check": "Full unit/contract regression",
+      "result": "PASS 516/516 in 45 files, 39.00 seconds, after repair."
+    },
+    {
+      "check": "Production browser regression",
+      "result": "PASS 35/35, 46.7 seconds, including the existing 31 journeys and four PWA journeys after repair."
+    },
+    {
+      "check": "Lint and production build",
+      "result": "Lint checked 85 files with no fixes/warnings; production build succeeded, including manifest route and TypeScript build verification."
+    },
+    {
+      "check": "Real browser worker and install prerequisites",
+      "result": "Production journeys exercise worker control, offline static navigation, failing offline API GET/POST and top-level API navigation, explicit CacheStorage allowlist and reconnection. Disposable regular Chromium profile reports no manifest/installability errors."
+    },
+    {
+      "check": "Historical failures retained",
+      "result": "Initial 13/13 red contracts preceded implementation. Legacy-meta and incognito diagnostic failures remain saved. Correcting metadata expectation and using a regular profile are justified environment/assertion corrections; no private-cache or installability errors were suppressed."
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "docs/evidence/pwa/focused-contracts.log",
+      "sha256": "1293f9216d7ac11673d2e512e0a7d2373d3c9fa98225c97657e321c6599dbd62"
+    },
+    {
+      "path": "docs/evidence/pwa/unit-regression.log",
+      "sha256": "0ae33f5b5c211e7446b12922ecc6f3c4254cae40abfce117bf421c289d398afd"
+    },
+    {
+      "path": "docs/evidence/pwa/production-regression.log",
+      "sha256": "98515e875a3ede6d3e06938a41075f34653508c5f3ef8d6f8abf1b1325873295"
+    },
+    {
+      "path": "docs/evidence/pwa/build.log",
+      "sha256": "411e8acb2abf71e33aa8cac74eb777a3895579fe0674c0aabe271f8d8d84d454"
+    },
+    {
+      "path": "docs/evidence/pwa/lint.log",
+      "sha256": "4c574eecf57025547e851dbb1dd08193b56cfcd1d08f6c6d0dec652bc288375d"
+    },
+    {
+      "path": "docs/evidence/pwa/chromium-installability.json",
+      "sha256": "146bca1b66af0f5c1aaf0f2afd1da202d2fc957fd859e5e5ee40843a33318bd4"
+    },
+    {
+      "path": "docs/evidence/pwa/red-contracts.log",
+      "sha256": "5745b005369d1b492b92cec3f5cc7791b8348cc8a92acd9b14e22abd85e1b8f9"
+    },
+    {
+      "path": "docs/evidence/pwa/production-browser-initial.log",
+      "sha256": "4670f182d007f9216c5e2159d4ad1e5e27c62206e67c2d8dad7ece857cc47c6e"
+    },
+    {
+      "path": "docs/evidence/pwa/production-browser-incognito.log",
+      "sha256": "eed70372df7828a1d7cd9371ac7f44c2e61709bcc7d2ff638b933c57d900075c"
+    },
+    {
+      "path": "docs/evidence/pwa/iphone-install-guidance.png",
+      "sha256": "08ac8c3aa9878bd322cd318e6556a3e0d5b216c2425c8aba445fea6f583beb88"
+    },
+    {
+      "path": "docs/evidence/pwa/android-install-guidance.png",
+      "sha256": "e02aabe3979c46feea3fa4770dfe30edef8f3789d685240826f35a8c1851da43"
+    }
+  ],
+  "qualifications": [
+    "Phone user-agent screenshots and synthetic beforeinstallprompt/appinstalled events run in Chromium. They do not prove Safari engine behavior, native browser prompt display, or physical Android/iPhone OS installation/relaunch.",
+    "Safe-area regression substitutes nonzero CSS environment values and evaluates the complete stylesheet; it is not a physical-device inset measurement.",
+    "Chromium diagnostics establish browser prerequisites at loopback. Hosted HTTPS configuration, actual phone installation and operational deployment remain unverified and are documented future checks.",
+    "Multiplayer remains online. The offline page is reconnect guidance, not offline gameplay or a cached authenticated application shell.",
+    "MCP final status/read-back/export after this review remains the implementing agent’s maintenance task; this receipt does not attest to future exported bytes.",
+    "No personal sign-off requirement, deployment authorization, commit acknowledgement, branch movement or publication is implied by this approval."
+  ],
+  "disposition": "Approve the reviewed local PWA implementation and documentation at 99/99 with no unresolved material findings. Preserve the scoped snapshot and evidence qualifications; complete requirements synchronization separately."
+}

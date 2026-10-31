@@ -1,0 +1,47 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/social-round-transition.test.ts (1 test | 1 failed) 1057ms
+   × a round ending refreshes and clears the observer reaction view 1056ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/social-round-transition.test.ts > a round ending refreshes and clears the observer reaction view
+AssertionError: expected '👍' not to contain '👍'
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div>
+        👍
+      </div>
+    </div>
+  </body>
+</html>
+ ❯ tests/web/social-round-transition.test.ts:27:66
+     25|   await waitFor(() => expect(rendered.container.textContent).toContain…
+     26|   rendered.rerender(React.createElement(SocialPanel, { ...props, round…
+     27|   await waitFor(() => expect(rendered.container.textContent).not.toCon…
+       |                                                                  ^
+     28|   expect(fetcher).toHaveBeenCalledTimes(2);
+     29| });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:97:7
+ ❯ waitFor node_modules/@testing-library/dom/dist/wait-for.js:36:10
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:164:54
+ ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:164:35
+ ❯ tests/web/social-round-transition.test.ts:27:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  12:40:31
+   Duration  2.08s (tests 55%, environment 35%, import 7%, transform 3%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/social-transition-mock/wrong.xml

@@ -1,0 +1,404 @@
+{
+  "timestamp": "2026-10-30T17:14:13",
+  "kind": "operator-held-encrypted-APP-game-backup-and-isolated-logical-restore",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T215550Z-turn-ec48",
+  "verifiedEnvironments": [
+    "staging",
+    "production"
+  ],
+  "observations": [
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T170149-5aa98cd0",
+      "status": "failed",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170149-5aa98cd0-staging.json",
+      "receiptSha256": "EBF547726449E132C472F574F2C051B86341718138D5813C094A644F18D78336",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170149-5aa98cd0-staging/staging.pgdump.age",
+      "ciphertextSha256": "F1FCFEE43A070EF9351AF60DED10A9E74958F613C7D8395ED8B01C6E605C5BD1",
+      "ciphertextBytes": 224447,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": false,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "producer": null,
+      "schemaComparisonScope": null,
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 473.0,
+      "totalRestoredRows": 473.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "ffeb2f1972a4839dda47f85201cec6a0b12f7a4873b02ceca74dc551a93ae318",
+          "absenceVerified": true
+        },
+        {
+          "id": "7c32bb2184573ce33a68537ceb3ab43304dcce57daf73e4d1350dffa84f4c3a9",
+          "absenceVerified": true
+        }
+      ],
+      "failures": [
+        "Restore comparison mismatch; private encrypted metadata retained"
+      ]
+    },
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T170326-6974b566",
+      "status": "verified_app_restore",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170326-6974b566-staging.json",
+      "receiptSha256": "A8D9B055750C2CD24CDCF2B2006194C6E14F7422658236630228251483EB0960",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170326-6974b566-staging/staging.pgdump.age",
+      "ciphertextSha256": "FA9A2FA7BA6632DF127F53B37EC2F2B996081204E13461B9F2478E968D738724",
+      "ciphertextBytes": 224447,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": true,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "producer": null,
+      "schemaComparisonScope": null,
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 473.0,
+      "totalRestoredRows": 473.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "d744cfba135dffd31e09d41eb5ad1987f7a72b93136d16873bae22ca7532ef06",
+          "absenceVerified": true
+        },
+        {
+          "id": "1995412ab0dff0e78b670df70fe2b593e4adb11afbb154f1e39e8815ed302683",
+          "absenceVerified": true
+        }
+      ],
+      "failures": []
+    },
+    {
+      "environment": "production",
+      "runId": "backup-20261030T170446-f4385d7b",
+      "status": "verified_app_restore",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170446-f4385d7b-production.json",
+      "receiptSha256": "6D8F04821D0C99129699835CBD4918BC53A702DD084C5E4F3CEBF485EB0E1BFE",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170446-f4385d7b-production/production.pgdump.age",
+      "ciphertextSha256": "F37CA477513B3AF9A7724F118D395308EA6EF87DC4F4EDF287331BFCFE4007E9",
+      "ciphertextBytes": 195350,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": true,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "producer": null,
+      "schemaComparisonScope": null,
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 123.0,
+      "totalRestoredRows": 123.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "f6415149724e1c443cdb1a32e377e06c02560731bca03f8cc816c3a96bc7d03a",
+          "absenceVerified": true
+        },
+        {
+          "id": "58f5f25a5c2e1e60dd811f688658fce2aada83375304b2286f11d495953b0689",
+          "absenceVerified": true
+        }
+      ],
+      "failures": []
+    },
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T170818-4b541e8c",
+      "status": "failed",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170818-4b541e8c-staging.json",
+      "receiptSha256": "A4FBAEA3FC954D5A0CF838B2BC155DB3BFB9FFDE55365E4A9E64BA14BE6125D2",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170818-4b541e8c-staging/staging.pgdump.age",
+      "ciphertextSha256": "3D4E4293FCCFE1D19D2E4AB2ACF0B56C043AD745FE501ED6F1EDB7DF02512630",
+      "ciphertextBytes": 224446,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0
+      },
+      "schemaEqual": null,
+      "dataEqual": null,
+      "sequencesEqual": null,
+      "producer": {
+        "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+        "sha256": "F35D3C6E0155C68197F14DCAC1EB3D841B81EC3CA74BA0B0F5E918557BAB893E",
+        "archivedPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170818-4b541e8c-staging/Invoke-WordpairsEncryptedBackup.ps1",
+        "archivedSha256": "F35D3C6E0155C68197F14DCAC1EB3D841B81EC3CA74BA0B0F5E918557BAB893E",
+        "pinnedBeforeHostedRead": true,
+        "originalRetained": true
+      },
+      "schemaComparisonScope": "Eight projected sections: columns/defaults/types, constraints, indexes, function definition SHA256/security-definer/config, table RLS flags, triggers, policies, and effective relation/function ACL. Namespace ACL/default privileges, standalone view/type/sequence definitions are included by selected-schema pg_dump but are not independently compared by this projection. Object ownership is normalized; global role credentials/membership/settings require separate provisioning.",
+      "sourceTableCount": 1,
+      "restoredTableCount": 1,
+      "totalSourceRows": null,
+      "totalRestoredRows": null,
+      "sourceTablesBySchema": [],
+      "cleanupSupplement": [
+        {
+          "id": "39b920e933637ebccb5f9ffcee95f09efa77e21baa9320c33f37400006940033",
+          "absenceVerified": true
+        },
+        {
+          "id": "308e23bfff3bb793498fdcf0ec8869086e822daa8a2e162b577fdfd1e7968f48",
+          "absenceVerified": true
+        }
+      ],
+      "failures": [
+        "Owned restore SQL failed; private encrypted diagnostic retained"
+      ]
+    },
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T171009-fba382bf",
+      "status": "verified_app_restore",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T171009-fba382bf-staging.json",
+      "receiptSha256": "816FDFEB0406095E73143DA0E12FF005482B2629ADEEFC49F8577601131BD8CA",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171009-fba382bf-staging/staging.pgdump.age",
+      "ciphertextSha256": "CA0A95974FE4D792EB9A2D491A2CAE6C9ECBC689DF6F8330764813C4759B6E26",
+      "ciphertextBytes": 224446,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": true,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "producer": {
+        "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+        "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+        "archivedPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171009-fba382bf-staging/Invoke-WordpairsEncryptedBackup.ps1",
+        "archivedSha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+        "pinnedBeforeHostedRead": true,
+        "originalRetained": true
+      },
+      "schemaComparisonScope": "Eight projected sections: columns/defaults/types, constraints, indexes, function definition SHA256/security-definer/config, table RLS flags, triggers, policies, and effective relation/function ACL. Namespace ACL/default privileges, standalone view/type/sequence definitions are included by selected-schema pg_dump but are not independently compared by this projection. Object ownership is normalized; global role credentials/membership/settings require separate provisioning.",
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 473.0,
+      "totalRestoredRows": 473.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "3df1acaa060b469b9543de21f1ee9372635b0ab99492e54772227f9144685e6a",
+          "absenceVerified": true
+        },
+        {
+          "id": "3c66fc5585ab42611c28e2cabcabe0fdd623df15d97e3c52d9fa65721be8cb94",
+          "absenceVerified": true
+        }
+      ],
+      "failures": []
+    },
+    {
+      "environment": "production",
+      "runId": "backup-20261030T171025-c2196e52",
+      "status": "verified_app_restore",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T171025-c2196e52-production.json",
+      "receiptSha256": "E16ACB89502E13399F9D53629223933C0D308E5A2FB3FDC8368BB21BEAECD47F",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/production.pgdump.age",
+      "ciphertextSha256": "E954DAB355ED1EB999282C6C9490A420E8935A69ABF8214185881D4A8F1C7CB8",
+      "ciphertextBytes": 195350,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": true,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "producer": {
+        "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+        "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+        "archivedPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/Invoke-WordpairsEncryptedBackup.ps1",
+        "archivedSha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+        "pinnedBeforeHostedRead": true,
+        "originalRetained": true
+      },
+      "schemaComparisonScope": "Eight projected sections: columns/defaults/types, constraints, indexes, function definition SHA256/security-definer/config, table RLS flags, triggers, policies, and effective relation/function ACL. Namespace ACL/default privileges, standalone view/type/sequence definitions are included by selected-schema pg_dump but are not independently compared by this projection. Object ownership is normalized; global role credentials/membership/settings require separate provisioning.",
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 123.0,
+      "totalRestoredRows": 123.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "269ba5c33af7dde42a846bd217ec78c398c9f454b79e7decea9042af6f51ffa9",
+          "absenceVerified": true
+        },
+        {
+          "id": "65f9181171c77755fdd92fe14fb65458b5ed7f6ada403efbc9e5f188bf5b9ab3",
+          "absenceVerified": true
+        }
+      ],
+      "failures": []
+    }
+  ],
+  "schemaComparison": "Exact canonical columns/defaults/types, constraints, indexes, function-bodySHA256/security-definer/config, tableRLS, policies, triggers and effective relation/function ACL tuples via explicitACL-or-acldefault; local ownership normalized to postgres. Namespace/global/default-privilege/role configuration is not a full managed-platform recovery claim.",
+  "dataComparison": "Per-table sorted multisetSHA256 of canonical to_jsonb rows plus counts, using the exported read-only REPEATABLE READ snapshot shared with pg_dump. Sequences separately matched and source remained stable before/after dump; sequence values are not MVCC.",
+  "firstFailedComparison": "Original staging rawACL comparison rejected184explicit postgres-owner grants represented by NULL/default ACL after restore. Original ciphertext and failed receipt retained. Fresh source/dump/restore run used canonical effective privileges on both sides and matched every privilege tuple.",
+  "sourceReadOnly": true,
+  "hostedMutations": false,
+  "plaintextDumpFiles": false,
+  "newKeysOrSecretStoreWrites": false,
+  "privateConfigsRetained": true,
+  "privateBackupOutsideApplicationGit": true,
+  "outerCheckoutIgnoreMatched": false,
+  "recoveryToolCopies": [
+    {
+      "source": "/tmp/wordpairs-age-1.3.2/age-v1.3.2-linux-amd64.tar.gz",
+      "copy": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/age-v1.3.2-linux-amd64.tar-CBE24006683F.gz",
+      "sha256": "CBE24006683F8EB669266162894B9A522A1AF52F2665FBC63A4BB032ED26AC10",
+      "originalRetained": true
+    },
+    {
+      "source": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+      "copy": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/Invoke-WordpairsEncryptedBackup-48EACDF6C0C5.ps1",
+      "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+      "originalRetained": true
+    }
+  ],
+  "managedExclusions": [
+    "Supabase auth/storage objects and configuration",
+    "Vault ciphertext/root keys and scheduler purpose secret",
+    "cron schedules/net queues/Realtime settings/publications/policies",
+    "Vercel/OAuth/domain/environment settings and role credentials/membership/global defaults",
+    "No off-site-copy or full-project-recovery/physical-durability claim"
+  ],
+  "documentation": [
+    "https://www.postgresql.org/docs/17/app-pgdump.html",
+    "https://supabase.com/docs/guides/self-hosting/restore-from-platform",
+    "https://supabase.com/docs/guides/platform/backups",
+    "https://github.com/FiloSottile/age/releases/tag/v1.3.2",
+    "https://github.com/FiloSottile/age#ssh-keys"
+  ],
+  "selectedVerifiedRunIds": [
+    "backup-20261030T171009-fba382bf",
+    "backup-20261030T171025-c2196e52"
+  ],
+  "priorIndex": {
+    "path": "docs/evidence/release15/frozen-0fb37e6/encrypted-game-backup-index.json",
+    "sha256": "76B9C912B13B600D599F6F4ACDD3FB882E78F6190FDA4339701D30DC7B4C5DCF",
+    "retained": true
+  },
+  "privateBackupGitQualification": "Private backups are outside the verified application Git root. The outer WordGame directory is not a Git repository; outerCheckoutIgnoreMatched=false is not an ignore-rule failure and does not assert an outer repository ignore policy.",
+  "independentSchemaComparisonLimits": [
+    "The comparison covers only the named eight-section schema projection.",
+    "Namespace ACLs, default privileges, view definitions, standalone type definitions and sequence definitions are included in the selected-schema dump where applicable but are not independently compared.",
+    "Source owner identity and cluster roles/passwords/memberships/global settings are not reproduced; local ownership is normalized to postgres.",
+    "The selected-schema dump can carry references to unmanaged dependencies; Supabase scheduler/platform functions were restored as definitions but never executed."
+  ],
+  "attemptQualification": "All six attempts and ciphertext originals are retained. The first attempt failed raw ACL representation comparison; a later producer-pinned staging attempt failed local restore bootstrap because pg_isready accepted the temporary init server. Successful selected runs use effective ACL comparison and actual database TCP readiness. Earlier successful attempts remain historical evidence because their producer was not pinned before hosted reads.",
+  "cleanupQualification": "Every retained owned container ID was confirmed absent using successful Docker inventory. The current producer also has CID-file and exact-name-plus-run-label recovery for a lost docker-run response; that failure-window fallback is source-present but has not been exercised by failure injection. No unrelated resource cleanup was performed."
+}

@@ -1,5 +1,8 @@
 # Phone installation and PWA design
 
+> Current release policy (28 October 2026): [Guest game and GitHub admin PWA](admin_pwa_release.md) supersedes the public-install/OpenAI/multi-account delegation scope below. Public play is guest-only; only verified sharpninja administers through GitHub, and only admin remains installable. The following original design and approval evidence is historical and does not approve the changed release.
+
+
 Status: implemented and independently approved 99/99. Requested 27 October 2026.
 
 ## Goal and scope

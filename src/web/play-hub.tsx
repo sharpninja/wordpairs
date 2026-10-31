@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { OwnProfile } from "../application/identity";
+import { MAX_ROOM_PLAYERS } from "../domain/rooms";
 import { IdentityPanel } from "./identity-panel";
 import { usePrivateDraftState } from "./private-draft";
 import { privateIdentityRevision } from "./private-state";
@@ -120,12 +121,12 @@ function RoomMenu({ profile }: { profile: OwnProfile }) {
         }}
       >
         <h3>Start a new room</h3>
-        <label htmlFor="capacity">Maximum players (2–25)</label>
+        <label htmlFor="capacity">Maximum players (2–{MAX_ROOM_PLAYERS})</label>
         <input
           id="capacity"
           type="number"
           min={2}
-          max={25}
+          max={MAX_ROOM_PLAYERS}
           value={capacity}
           onChange={(event) => setCapacity(Number(event.target.value))}
           disabled={intent.locked}

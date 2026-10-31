@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<testsuites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="junit_schema_4.xsd" name="Pester" tests="22" errors="0" failures="0" disabled="0" time="0.849">
+  <testsuite name="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" tests="21" errors="0" failures="0" hostname="[PRIVATE HOST]" id="0" skipped="0" disabled="0" package="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" time="0.754">
+    <properties>
+      <property name="cwd" value="<repo>" />
+      <property name="clr-version" value="10.0.13" />
+      <property name="user-domain" value="" />
+      <property name="machine-name" value="[PRIVATE HOST]" />
+      <property name="os-version" value="7.2.5-3-omarchy" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="sharpninja" />
+      <property name="framework-version" value="5.9.1" />
+      <property name="platform" value="Linux" />
+    </properties>
+    <testcase name="Current release documentation drift.accepts a current release reference" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.119" />
+    <testcase name="Current release documentation drift.rejects a missing current release reference" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.017" />
+    <testcase name="Current release documentation drift.rejects a superseded administrator bootstrap instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.010" />
+    <testcase name="Current release documentation drift.rejects a superseded public installation instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Current release documentation drift.rejects a superseded OpenAI setup instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Current release documentation drift.rejects a reworded profile bootstrap without markdown quoting" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Current release documentation drift.rejects a reworded grant instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.010" />
+    <testcase name="Current release documentation drift.rejects a root manifest instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.006" />
+    <testcase name="Current release documentation drift.rejects a reworded public installation instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Current release documentation drift.accepts a locally qualified historical instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Current release documentation drift.rejects a bootstrap instruction after an unrelated negative sentence" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.011" />
+    <testcase name="Current release documentation drift.rejects an instruction after an unrelated historical sentence" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Current release documentation drift.rejects a reworded OpenAI login instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Current release documentation drift.rejects a reworded phone installation instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Current release documentation drift.rejects an unsafe instruction under an actual document name" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.011" />
+    <testcase name="Current release documentation drift.rejects an empty document inventory" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.030" />
+    <testcase name="Current release documentation drift.accepts admin-only installation" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.006" />
+    <testcase name="Current release documentation drift.accepts a sentence explicitly marked historically" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Current release documentation drift.rejects unrelated negation within the same sentence" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Current release documentation drift.rejects unrelated historical wording within the same sentence" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.014" />
+    <testcase name="Current release documentation drift.accepts an explicit instruction not to use the legacy setting" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.008" />
+  </testsuite>
+  <testsuite name="<repo>/tests/powershell/CurrentReleaseDocs.Integration.Tests.ps1" tests="1" errors="0" failures="0" hostname="[PRIVATE HOST]" id="1" skipped="0" disabled="0" package="<repo>/tests/powershell/CurrentReleaseDocs.Integration.Tests.ps1" time="0.095">
+    <properties>
+      <property name="cwd" value="<repo>" />
+      <property name="clr-version" value="10.0.13" />
+      <property name="user-domain" value="" />
+      <property name="machine-name" value="[PRIVATE HOST]" />
+      <property name="os-version" value="7.2.5-3-omarchy" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="sharpninja" />
+      <property name="framework-version" value="5.9.1" />
+      <property name="platform" value="Linux" />
+    </properties>
+    <testcase name="Current release document inventory.checks the current operations and plan documents" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Integration.Tests.ps1" assertions="0" time="0.054" />
+  </testsuite>
+</testsuites>

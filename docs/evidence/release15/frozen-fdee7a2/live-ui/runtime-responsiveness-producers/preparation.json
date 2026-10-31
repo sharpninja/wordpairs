@@ -1,0 +1,76 @@
+{
+  "recordedAt": "2026-10-30T18:53:38.0125247-05:00",
+  "classification": "Optional operational observer preparation only; no runtime/test/model/provider execution",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T233950Z-runtime-responsiveness-diagnosis",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "diagnosis": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-diagnosis.json",
+    "unchanged": true,
+    "sha256": "0C95A019E803F121660614BE1ED8C882EB6B7AB1704C31B15663E0D3E35D3CD3"
+  },
+  "effective": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-effective.json",
+    "sha256": "7607098FCBCA5D041204C0586FC93B32D3720C50CF040A43F9D7FF176104BEAA",
+    "retainedAt": "2026-10-30T18:45:12.0442289-05:00"
+  },
+  "producerPins": [
+    {
+      "source": "/tmp/WatchWordpairsOwnedRuntime.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/WatchWordpairsOwnedRuntime.ps1",
+      "sha256": "946F92B05E1629855654E00ADB6F160C10B6096F2BE3E35107D09BEA3531B88D",
+      "parserErrors": 0,
+      "analyzerIssues": 0,
+      "originalRetained": true
+    },
+    {
+      "source": "/tmp/InspectWordpairsResponsiveness.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/InspectWordpairsResponsiveness.ps1",
+      "sha256": "0F66178E23C536CBA816BA53DB3A638F6CAB633C2DC651384C0AEF1B99AFE9D0",
+      "parserErrors": 0,
+      "analyzerIssues": 0,
+      "originalRetained": true
+    },
+    {
+      "source": "/tmp/RetainWordpairsResponsivenessObserver.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-producers/RetainWordpairsResponsivenessObserver.ps1",
+      "sha256": "56C351B970416C3174B97989B26CB405982AA6E9F553BFF9558A2726C590DC8A",
+      "parserErrors": 0,
+      "analyzerIssues": 0,
+      "originalRetained": true
+    }
+  ],
+  "whatIf": {
+    "executedAt": "2026-10-30T18:53:38.0217245-05:00",
+    "measurementsExecuted": false,
+    "outputCreated": false,
+    "placeholderIdentitiesOnly": true,
+    "message": []
+  },
+  "parameters": [
+    "UnitName: exact owned .service unit",
+    "SystemdScope: User default or System",
+    "ControlGroup: exact systemctl ControlGroup",
+    "InvocationId: exact systemctl InvocationID",
+    "RuntimeDirectory: exact existing .mcpServer/ui-<32hex> with validated database-owner.json",
+    "RunId: existing validation chain runId",
+    "SourceHead: exact successor40hex revision",
+    "SourceManifest: matching frozen source-inventory.json",
+    "OutputDirectory: fresh path under workspace docs/evidence",
+    "IntervalSeconds: default2, allowed2..30"
+  ],
+  "outputs": [
+    "samples.jsonl: cgroup CPU/RSS/process membership, safe owned DB state/wait/locks/blockers, scheduling/overhead/errors",
+    "observer.json: exact unit/runtime/source/run ownership, native exits/times, missing intervals/errors/retirement, samples/producer hashes and limits"
+  ],
+  "qualifications": [
+    "Latest root directive supersedes diagnosis minimalNextMeasurements item1 focused-run suggestion: root will attach observer to the existing full five-lane chain live-ui phase, which already includes2..15and10/15. No separate focused game run, new result producer or acceptance SLA is requested.",
+    "Existing diagnosis currentRequirements.readAt is synthesis time, not measured exact network-read instant. The retainedAt timestamp here is the saved effective-response file timestamp following successful own-plugin read.",
+    "No ownership or runtime measurement has been validated against live resources by this agent. Parser/PSSA and placeholder-only WhatIf do not establish operating correctness.",
+    "DB sampling retires when the original owner receipt disappears and never discovers a successor. Cgroup-only samples can continue into later lanes until exact unit exits. DB metadata gaps or docker teardown races stay explicit.",
+    "No pool/timeout/cap/worker increases, app instrumentation, source/config/requirements mutations or HV occurred.",
+    "PowerShell observer self-inspection caught and corrected a DB-retirement branch that initially also suppressed cgroup sampling. No actual measurements were made with that intermediate draft."
+  ],
+  "scopeResult": "PREPARED_NOT_EXECUTED"
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="1" failures="1" errors="0" time="1.05724738">
+    <testsuite name="tests/web/social-round-transition.test.ts" timestamp="2026-10-29T17:40:33.631Z" hostname="[PRIVATE HOST]" tests="1" failures="1" errors="0" skipped="0" time="1.05724738">
+        <testcase classname="tests/web/social-round-transition.test.ts" name="a round ending refreshes and clears the observer reaction view" time="1.055716261">
+            <failure message="expected &apos;👍&apos; not to contain &apos;👍&apos;
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        👍
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;" type="AssertionError">
+AssertionError: expected &apos;👍&apos; not to contain &apos;👍&apos;
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        👍
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+ ❯ tests/web/social-round-transition.test.ts:27:66
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:97:7
+ ❯ waitFor node_modules/@testing-library/dom/dist/wait-for.js:36:10
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:164:54
+ ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:164:35
+ ❯ tests/web/social-round-transition.test.ts:27:9
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,15 @@
+
+[WebServer] (node:4179726) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:4179803) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/4] tests/browser/pwa.spec.ts:11:1 › admin-only manifest, real worker scope, icons and Chromium installation prerequisites
+[2/4] tests/browser/pwa.spec.ts:54:1 › real admin worker provides generic offline launch and never caches private pages or APIs
+[3/4] tests/browser/pwa.spec.ts:86:1 › phone guidance, prompt lifecycle and standalone presentation are admin-only
+[4/4] tests/browser/pwa.spec.ts:105:1 › welcome card retains phone and desktop whitespace without horizontal overflow
+  4 passed (6.1s)

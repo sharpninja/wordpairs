@@ -3,8 +3,8 @@ import {newRoom,joinRoom,normalizeRoomCode,playerAuthority,roomCapacity} from '.
 import {roomProjection} from '../../src/application/rooms';
 const initial=()=>{const value=newRoom('r1','p1',2,'01234567',1000);if(!value.ok)throw new Error('Fixture failed');return value.value;};
 describe('AC-01/02/24–28/50/51 room policy and private projections',()=>{
-  it('enforces the 2–25 capacity range, private default and fixed Crockford code format',()=>{
-    expect([1,2,25,26,2.5,'2',NaN].map(roomCapacity)).toEqual([false,true,true,false,false,false,false]);
+  it('enforces the 2–10 capacity range, private default and fixed Crockford code format',()=>{
+    expect([1,2,10,11,15,25,2.5,'2',NaN].map(roomCapacity)).toEqual([false,true,true,false,false,false,false,false,false]);
     expect(initial().discoverable).toBe(false);
     expect(normalizeRoomCode(' abcdefgh ')).toBe('ABCDEFGH');
     for(const code of ['ABCD','IIIIIIII','OOOOOOOO','UUUUUUUU','123456789'])expect(normalizeRoomCode(code)).toBeNull();

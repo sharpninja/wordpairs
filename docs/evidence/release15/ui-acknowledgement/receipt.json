@@ -1,0 +1,522 @@
+{
+  "sourceStoppedAtLocal": "2026-10-30T18:58:56",
+  "kind": "test-only-rendered-command-acknowledgement-repair",
+  "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "dirtyTestSource": true,
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261030T234727Z-ui-ack-repair",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "plan": {
+    "sha256": "FA980B621E52A7F1A66139E6EB8C65D625158E8B4F75C1680C1323E6F93162AD",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/plan.md"
+  },
+  "gates": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/receipt.json",
+      "sha256": "F8763400E667E672707A4FACB874FD479176C15073275B1A3E8E43F6B67DFA44",
+      "result": {
+        "startedAt": "2026-10-30T18:51:34",
+        "finishedAt": "2026-10-30T18:51:36",
+        "binding": "mock",
+        "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+        "dirtyTestSource": true,
+        "hostName": "[PRIVATE HOST]",
+        "executable": "npm",
+        "arguments": [
+          "exec",
+          "vitest",
+          "--",
+          "run",
+          "tests/browser/ui-command-acknowledgement.test.ts",
+          "tests/browser/ui-command-capture.test.ts",
+          "--maxWorkers=4",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/unit.xml"
+        ],
+        "exitCode": 0,
+        "cases": 118,
+        "failed": 0,
+        "skipped": 0,
+        "expectedNewPositive": 30,
+        "expectedNewNegative": 30,
+        "priorCaptureCases": 58,
+        "negativeControls": 59,
+        "sourcePins": [
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+            "sha256": "49AC81575B581A26550C6B710B50D16784AF345E5E41960A192C57214F8C3B29",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-acknowledgement.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+            "sha256": "3391553632420FD20D9643AAF93CD208755DBEC5873FC9783784024DEF7103A5",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-acknowledgement.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+            "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-capture.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+            "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-capture.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+            "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/ui-command-capture.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+            "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/live-player-counts.integration.spec.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+            "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/live-multiplayer.integration.spec.ts"
+          }
+        ],
+        "producerSha256": "3F3C8CC0EECADD8F839230C90735D7F5B2237496A0D20B578D0538A1F1A3634C",
+        "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-20261030T185134/unit.xml",
+        "junitSha256": "5D16BC6787B0BD2114C06903BDECA1E5F041070A963D0496E75F2F8649819C43",
+        "qualification": "Isolated provider/real test-helper evidence, including unchanged58 prior capture cases. No actual UI/full game, latency or transport acceptance is established."
+      }
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/receipt.json",
+      "sha256": "D2297A363A284B2168C8313075DFA75F0CDA6205347421DF94663E0F54518EF2",
+      "result": {
+        "startedAt": "2026-10-30T18:53:49",
+        "finishedAt": "2026-10-30T18:53:50",
+        "binding": "mock",
+        "increment": "v2",
+        "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+        "dirtyTestSource": true,
+        "hostName": "[PRIVATE HOST]",
+        "executable": "npm",
+        "arguments": [
+          "exec",
+          "vitest",
+          "--",
+          "run",
+          "tests/browser/ui-command-acknowledgement.test.ts",
+          "tests/browser/ui-command-capture.test.ts",
+          "--maxWorkers=4",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/unit.xml"
+        ],
+        "exitCode": 0,
+        "cases": 124,
+        "failed": 0,
+        "skipped": 0,
+        "expectedNewPositive": 33,
+        "expectedNewNegative": 33,
+        "priorCaptureCases": 58,
+        "negativeControls": 62,
+        "sourcePins": [
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+            "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-acknowledgement.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+            "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-acknowledgement.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+            "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-acknowledgement.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+            "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-capture.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+            "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-capture.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+            "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-capture.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+            "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/live-player-counts.integration.spec.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+            "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/live-multiplayer.integration.spec.ts"
+          }
+        ],
+        "producerSha256": "658230508515D491EE0ACFFB376D59CA910FB4BF4C8C4C918392E6BB01382D0B",
+        "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/unit.xml",
+        "junitSha256": "FDD270ECECAE4D6216A4BDE448D302D534ED1C023086BA016288B4900FA3C20B",
+        "qualification": "Isolated provider/real test-helper evidence, including unchanged58 prior capture cases. V2 adds deferred retirement/rejection and exact Request aggregate-path controls before coordinator/adapters implementation; V1 classifier retained unchanged. No actual UI/full game, latency or transport acceptance is established."
+      }
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/receipt.json",
+      "sha256": "27DC37D11DDCE2E180A1DB533052036AD90CDCF7C4C9D57A94437795355CD0AF",
+      "result": {
+        "startedAt": "2026-10-30T18:54:24",
+        "finishedAt": "2026-10-30T18:54:26",
+        "binding": "real",
+        "increment": "v2",
+        "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+        "dirtyTestSource": true,
+        "hostName": "[PRIVATE HOST]",
+        "executable": "npm",
+        "arguments": [
+          "exec",
+          "vitest",
+          "--",
+          "run",
+          "tests/browser/ui-command-acknowledgement.test.ts",
+          "tests/browser/ui-command-capture.test.ts",
+          "--maxWorkers=4",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/unit.xml"
+        ],
+        "exitCode": 0,
+        "cases": 124,
+        "failed": 0,
+        "skipped": 0,
+        "expectedNewPositive": 33,
+        "expectedNewNegative": 33,
+        "priorCaptureCases": 58,
+        "negativeControls": 62,
+        "sourcePins": [
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+            "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/ui-command-acknowledgement.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+            "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/ui-command-acknowledgement.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+            "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/ui-command-acknowledgement.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+            "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/ui-command-capture.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+            "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/ui-command-capture.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+            "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/ui-command-capture.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+            "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/live-player-counts.integration.spec.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+            "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/live-multiplayer.integration.spec.ts"
+          }
+        ],
+        "producerSha256": "658230508515D491EE0ACFFB376D59CA910FB4BF4C8C4C918392E6BB01382D0B",
+        "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185424/unit.xml",
+        "junitSha256": "8CDCE7966124D75D69F0F86F37B2CE1EFCE27796FD19522D9A82652B95E92EDA",
+        "qualification": "Isolated provider/real test-helper evidence, including unchanged58 prior capture cases. V2 adds deferred retirement/rejection and exact Request aggregate-path controls before coordinator/adapters implementation; V1 classifier retained unchanged. No actual UI/full game, latency or transport acceptance is established."
+      }
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/receipt.json",
+      "sha256": "5C087889B0B453544464A3A9BC8DB8D5487A3232A2F926C03A1D79589D5C3CDA",
+      "result": {
+        "startedAt": "2026-10-30T18:56:14",
+        "finishedAt": "2026-10-30T18:56:16",
+        "binding": "real",
+        "increment": "v2",
+        "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+        "dirtyTestSource": true,
+        "hostName": "[PRIVATE HOST]",
+        "executable": "npm",
+        "arguments": [
+          "exec",
+          "vitest",
+          "--",
+          "run",
+          "tests/browser/ui-command-acknowledgement.test.ts",
+          "tests/browser/ui-command-capture.test.ts",
+          "--maxWorkers=4",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/unit.xml"
+        ],
+        "exitCode": 0,
+        "cases": 124,
+        "failed": 0,
+        "skipped": 0,
+        "expectedNewPositive": 33,
+        "expectedNewNegative": 33,
+        "priorCaptureCases": 58,
+        "negativeControls": 62,
+        "sourcePins": [
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+            "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-acknowledgement.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+            "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-acknowledgement.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+            "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-acknowledgement.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+            "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-capture.contract.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+            "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-capture.test.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+            "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-capture.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+            "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/live-player-counts.integration.spec.ts"
+          },
+          {
+            "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+            "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+            "copy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/live-multiplayer.integration.spec.ts"
+          }
+        ],
+        "producerSha256": "658230508515D491EE0ACFFB376D59CA910FB4BF4C8C4C918392E6BB01382D0B",
+        "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/unit.xml",
+        "junitSha256": "16858266C314A6037F2DB55B0830B56A8EEAECB0EE0F653E59C16CF72849C5E4",
+        "qualification": "Isolated provider/real test-helper evidence, including unchanged58 prior capture cases. V2 adds deferred retirement/rejection and exact Request aggregate-path controls before coordinator/adapters implementation; V1 classifier retained unchanged. No actual UI/full game, latency or transport acceptance is established."
+      }
+    }
+  ],
+  "edits": [
+    {
+      "timestamp": "2026-10-30T18:49:44",
+      "file": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "F375F06A4D6BD733C47E5ECF3F417E7C3B33204C53175DF85AD1DDFBC921ADFC",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T184940-ui-command-acknowledgement.contract.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:50:34",
+      "file": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "074AC8B94AA39E10CA4B847614042A22A546FABFB9F2C24980034FB45920285B",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185029-ui-command-acknowledgement.test.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:51:01",
+      "file": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "49AC81575B581A26550C6B710B50D16784AF345E5E41960A192C57214F8C3B29",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185056-ui-command-acknowledgement.contract.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:51:09",
+      "file": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "3391553632420FD20D9643AAF93CD208755DBEC5873FC9783784024DEF7103A5",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185104-ui-command-acknowledgement.test.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:52:40",
+      "file": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185236-ui-command-acknowledgement.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:53:29",
+      "file": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+      "hookExitCode": 0,
+      "typecheckExitCode": 2,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185325-ui-command-acknowledgement.contract.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:53:51",
+      "file": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185347-ui-command-acknowledgement.test.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:54:28",
+      "file": "tests/browser/ui-command-capture.ts",
+      "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185423-ui-command-capture.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:55:30",
+      "file": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185525-live-player-counts.integration.spec.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:56:05",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/edit-verification/20261030T185600-live-multiplayer.integration.spec.ts.log",
+      "qualification": "Known project-file detection hook issue already triaged; direct tsc is authoritative."
+    }
+  ],
+  "sourceCheck": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/source-check.json",
+    "result": {
+      "timestamp": "2026-10-30T18:57:00",
+      "lintExitCode": 0,
+      "sourceDiffCheckExitCode": 0,
+      "adoptionDiffExitCode": 0,
+      "callsiteSweepExitCode": 0,
+      "sourcePins": [
+        {
+          "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553"
+        },
+        {
+          "path": "tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F"
+        },
+        {
+          "path": "tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5"
+        },
+        {
+          "path": "tests/browser/ui-command-capture.ts",
+          "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32"
+        },
+        {
+          "path": "tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025"
+        },
+        {
+          "path": "tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8"
+        }
+      ],
+      "newUnitCases": 66,
+      "priorCaptureCases": 58,
+      "actualUiRun": false,
+      "buildRun": false,
+      "qualification": "Source-only and isolated focused contract evidence; parent owns frozen full tests/build/actual UI/HV. Native failed fdee8/1/5 and all original receipts retained."
+    },
+    "sha256": "323312FD83BB17D01FE6857C1A12F824ED6A191A7EBA038738256499B7EB321A"
+  },
+  "producerPins": [
+    {
+      "original": "/tmp/SaveWordpairsAckReceipt.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/producers/SaveWordpairsAckReceipt.ps1",
+      "sha256": "016C77DA2A2FAA9484417CBD880F45788169426E1557B37C6D5EC2C409241D46"
+    },
+    {
+      "original": "/tmp/RunWordpairsAckGate.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/producers/RunWordpairsAckGate.ps1",
+      "sha256": "658230508515D491EE0ACFFB376D59CA910FB4BF4C8C4C918392E6BB01382D0B"
+    },
+    {
+      "original": "/tmp/CheckWordpairsAckSource.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/producers/CheckWordpairsAckSource.ps1",
+      "sha256": "A3D04C74A036F0010F740469049AE65CACDFFDB597D42223CE7C658894FA611A"
+    },
+    {
+      "original": "/tmp/VerifyWordpairsAckEdit.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/producers/VerifyWordpairsAckEdit.ps1",
+      "sha256": "C34CE8CE5B5772D49AEEEBCF21B7727AE93EC98C8F6EDEF9599AD0A6FE7E1680"
+    },
+    {
+      "original": "/tmp/WordpairsUiAckRepairSession.ps1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/producers/WordpairsUiAckRepairSession.ps1",
+      "sha256": "BEED37447D7343E939E2AD6D9D5779EB2AF2231054EF1C906D2092A19C77C2AC"
+    }
+  ],
+  "actualNewUnitCases": 66,
+  "unchangedPriorCaptureCases": 58,
+  "focusedFinal": {
+    "negativeNew": 33,
+    "failed": 0,
+    "passed": 124,
+    "skipped": 0,
+    "positiveNew": 33
+  },
+  "priorFailureRetained": "frozen-fdee7a2/live-ui/disabled-input-supplement/manifest.json",
+  "priorMatrix": {
+    "playerCountFailed": 10,
+    "cause": "Exact request-to-pending/latency causal identity unproved",
+    "skipped": 5,
+    "passed": 8,
+    "failed": 1,
+    "uiSolves": 17
+  },
+  "knownQualification": [
+    "Original118 gate did not prove deferred retirement completion; V2 added completion/rejection/path discrimination before shared coordinator/adapters changes.",
+    "One transient coupled-signature direct tsc2 at18:53:29 is retained; provider then updated and all subsequent direct typechecks passed.",
+    "Scoped Biome exit0 reports15warnings: baseline non-null assertions plus deliberate rendered innerText reads; this is not zero-warning evidence.",
+    "Acknowledgement observer records classifier-returned states; rejected/denied classifier probes surface through native failure rather than claiming a complete rejected-state history.",
+    "The helper/oracle checks are isolated test-harness evidence; no actual browser/full game, performance SLA, latency-cause fix, provider deployment or HV acceptance is established.",
+    "No application, schema, dependencies, game policy/cap/deadline, requirement status or live provider mutation occurred. Parent owns new frozen full UI/runtime/HV verification."
+  ],
+  "actualUiRun": false,
+  "buildRun": false,
+  "hvRun": false,
+  "originalsRetained": true,
+  "mockRealSameOracle": true
+}

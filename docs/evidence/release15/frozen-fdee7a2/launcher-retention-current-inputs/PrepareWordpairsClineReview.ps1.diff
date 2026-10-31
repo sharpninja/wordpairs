@@ -1,0 +1,45 @@
+diff --git 1<repo>/docs/evidence/release15/frozen-fdee7a2/launcher-selfcheck-inputs/PrepareWordpairsClineReview.ps1 2<repo>/docs/evidence/release15/frozen-fdee7a2/launcher-retention-current-inputs/PrepareWordpairsClineReview.ps1
+index 82e8539..a2400f4 100644
+--- 1<repo>/docs/evidence/release15/frozen-fdee7a2/launcher-selfcheck-inputs/PrepareWordpairsClineReview.ps1
++++ 2<repo>/docs/evidence/release15/frozen-fdee7a2/launcher-retention-current-inputs/PrepareWordpairsClineReview.ps1
+@@ -21,6 +21,14 @@ $pins=@(foreach($path in $files){[pscustomobject]@{path=$path;sha256=(Get-FileHa
+ $selfPath=Join-Path $Directory 'source-self-review.json'
+ $briefPath=Join-Path $Directory 'cline-review-brief.md'
+ if((Test-Path -LiteralPath $selfPath) -or (Test-Path -LiteralPath $briefPath)){throw 'Retain prior review preparation; do not overwrite'}
++$retainedInputs=@(
++ [pscustomobject]@{kind='review-preparer';original=$PSCommandPath;path=(Join-Path $Directory 'review-preparer.ps1');sha256=(Get-FileHash -LiteralPath $PSCommandPath).Hash}
++ [pscustomobject]@{kind='review-template';original='/tmp/wordpairs-cline-review-brief-template.md';path=(Join-Path $Directory 'review-brief-template.md');sha256=(Get-FileHash -LiteralPath '/tmp/wordpairs-cline-review-brief-template.md').Hash}
++)
++foreach($inputPin in $retainedInputs){
++ if(Test-Path -LiteralPath $inputPin.path){throw 'Retain earlier preparation inputs; do not overwrite'}
++ $pins+=[pscustomobject]@{path=$inputPin.path;sha256=$inputPin.sha256}
++}
+ $checklist=[ordered]@{
+  holisticReview=@{passed=$true;evidence=@((Join-Path $root 'docs/release15-completion-plan.md'),(Join-Path $Directory 'source-selfreview.md'),(Join-Path $root 'docs/evidence/release15/selfcheck/selfcheck.md'));reason='Root read the current whole plans/designs, source changes, native failure and retained Claude round6 verdict. Current gate is source readiness for staging, with hosted/physical/submission proof explicit rather than claimed.'}
+  whatIf=@{passed=$true;evidence=@((Join-Path $root 'docs/evidence/release15/frozen-0fb37e6/pre-hv-what-if.json'),(Join-Path $root 'docs/evidence/release15/frozen-131269a/diagnostics-what-if-supplement.json'),(Join-Path $Directory 'source-what-if-supplement.json'));reason='Prior45-record207-criterion360-axis source audit and diagnostics supplement retain historical source scope; the current supplement binds readiness and command-capture deltas, including combined body/action failure retention, to this candidate and checks unchanged source paths. Exact execution, causal and chronology limitations remain explicit; no prior approval transfers.'}
+@@ -72,14 +80,22 @@ $replacements=[ordered]@{
+  '<DURABLE_RESPONSE_JSONL>'='the exact durable full response JSONL path appended by the launcher below'
+  '<workspace>'=$root
+ }
+-$brief=Get-Content -LiteralPath /tmp/wordpairs-cline-review-brief-template.md -Raw
++if(-not $PSCmdlet.ShouldProcess($Directory,'Retain exact preparation inputs and write source-pinned holistic self-review and completed Cline Beam High brief')){return}
++foreach($inputPin in $retainedInputs){
++ if((Get-FileHash -LiteralPath $inputPin.original).Hash -cne $inputPin.sha256){throw 'Preparation input changed before copy'}
++ Copy-Item -LiteralPath $inputPin.original -Destination $inputPin.path
++ if((Get-FileHash -LiteralPath $inputPin.path).Hash -cne $inputPin.sha256 -or (Get-FileHash -LiteralPath $inputPin.original).Hash -cne $inputPin.sha256){throw 'Preparation input copy or source drift'}
++}
++$brief=Get-Content -LiteralPath (Join-Path $Directory 'review-brief-template.md') -Raw
+ $brief=$brief.Replace('DRAFT ONLY. Root must replace every `<PLACEHOLDER>`, attach the actual frozen reports and verify source/evidence identity before launch. This draft is neither an executed review nor an approval.','This completed request supplies exact frozen reports and source/evidence identity. It is a request for independent review, not an executed review or approval.')
+ foreach($key in $replacements.Keys){$brief=$brief.Replace($key,[string]$replacements[$key])}
+ $brief=$brief.Replace('Root supplies the full actual files, not summaries.','Root supplies the full actual files, not summaries. Never run tests and never build code; inspect the supplied native reports and TRX read-only.')
+ $brief+="`n`nCURRENT FOLLOW-UP: Frozen cca320b is retained FAILED evidence: full684unit/63Postgres/86browser, PS46 and actualRealtime63+4 passed; matrix14cases was7pass/1fail(9players)/6skip, strict notrun. The9playergame reached round2 with16solves; all9snapshots stayed open/live/9of9 and player6 displayed Retry pending game request. The test driver's body read failed, but no exact old request/actor join or actual navigation was established. Read command-capture/plan.md and receipt.json: eager successful-body observation and existing same-command UI recovery must be judged separately. New body-error recovery is allowed only after a SAME-page visible/enabled pending control and exact original payload replay; absence remains an error. Inspect the actual oracle and source, never infer a passing current game from this repair history. The complete NEW matrix/strict reports attached above govern the current gate.`n`nCURRENT OPERATIONAL CLARIFICATIONS: Read docs/evidence/release15/hosting-readiness/guarded-rollout-procedure.md and its receipt. The older hosting_execution step6 manual exit1 means only the documented one-time Dashboard Redeploy checkbox. Retain BOTH global exit0 guards throughout and afterward. Do not send projectSettings.commandForIgnoringBuildStep: official REST docs explicitly say projectSettings persists to following deployments. No provider setting/deployment write was performed by this preparation. Read frozen-cca320b/submission-source-followup.json: the shared ChatGPT planning/design chat now renders in the browser; its final inspected response predates implementation. This qualifies earlier unavailable-source observations but proves neither later Work coding nor an uninspected mission clause. The mission reached actual Handshake sign-in after passive security verification. Account/terms/entry actions remain unperformed by the agent.`n"
+ if($brief -match 'DRAFT ONLY|<PLACEHOLDER>|<[A-Z][A-Z0-9_]+>|<workspace>'){throw 'Unfilled review placeholder'}
+-if(-not $PSCmdlet.ShouldProcess($Directory,'Write source-pinned holistic self-review and completed Cline Beam High brief')){return}
++foreach($inputPin in $retainedInputs){
++ if((Get-FileHash -LiteralPath $inputPin.path).Hash -cne $inputPin.sha256 -or (Get-FileHash -LiteralPath $inputPin.original).Hash -cne $inputPin.sha256){throw 'Preparation input changed during generation'}
++}
+ $self|ConvertTo-Json -Depth 12|Set-Content -LiteralPath $selfPath
+ $brief|Set-Content -LiteralPath $briefPath
+-[pscustomobject]@{timestamp=(Get-Date -Format s);revision=$inventory.revision;runId=$inventory.runId;producer=$PSCommandPath;producerSha256=(Get-FileHash -LiteralPath $PSCommandPath).Hash;selfReview=$selfPath;selfReviewSha256=(Get-FileHash -LiteralPath $selfPath).Hash;brief=$briefPath;briefSha256=(Get-FileHash -LiteralPath $briefPath).Hash;qualification='Preparation only; launcher independently validates hard gates before any model invocation.'}|ConvertTo-Json -Depth 6|Set-Content -LiteralPath (Join-Path $Directory 'review-preparation.json')
++[pscustomobject]@{timestamp=(Get-Date -Format s);revision=$inventory.revision;runId=$inventory.runId;producer=$PSCommandPath;producerSha256=(Get-FileHash -LiteralPath $PSCommandPath).Hash;retainedInputs=$retainedInputs;originalsRetained=$true;selfReview=$selfPath;selfReviewSha256=(Get-FileHash -LiteralPath $selfPath).Hash;brief=$briefPath;briefSha256=(Get-FileHash -LiteralPath $briefPath).Hash;qualification='Preparation only; launcher independently validates hard gates before any model invocation.'}|ConvertTo-Json -Depth 6|Set-Content -LiteralPath (Join-Path $Directory 'review-preparation.json')
+ 'Prepared review request and self-review; no reviewer launched.'

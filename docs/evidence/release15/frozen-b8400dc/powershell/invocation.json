@@ -1,0 +1,30 @@
+{
+  "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "reports": [
+    {
+      "name": "powershell",
+      "kind": "powershell",
+      "expectedCount": 0,
+      "runId": "eef46ae8-fcb5-412e-8acb-43b96ba961cd",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T15:26:23",
+      "finishedAt": "2026-10-30T15:26:55",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "scripts/Run-ReviewPowerShellEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/powershell"
+      ],
+      "exitCode": 0,
+      "junit": null,
+      "junitSha256": null,
+      "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/powershell/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-b8400dc/powershell/source-after.json"
+    }
+  ]
+}

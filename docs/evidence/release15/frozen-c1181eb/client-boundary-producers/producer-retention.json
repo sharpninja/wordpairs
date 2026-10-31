@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-10-30T19:34:30.7137678-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T003052Z-c118-operational-evidence",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "sourceRevision": "c1181eb4eb01825c8b12f3521f92286080addfba",
+  "sourceCount": 353,
+  "nativeRunId": "c37a6139-186d-4a40-9136-d0a49e2f52a3",
+  "producerGroupRunId": "169e6d93-632f-423c-8572-be3cccb96a00",
+  "build": {
+    "name": "build",
+    "runId": "c37a6139-186d-4a40-9136-d0a49e2f52a3",
+    "hostName": "[PRIVATE HOST]",
+    "revision": "c1181eb4eb01825c8b12f3521f92286080addfba",
+    "startedAt": "2026-10-30T19:32:10",
+    "finishedAt": "2026-10-30T19:32:18",
+    "executable": "npm",
+    "arguments": [
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "log": "build.log",
+    "junit": "",
+    "junitSha256": null
+  },
+  "fullValidationSha256": "F5DC5F62126F3BCF7E953751050A90B765380062A7DCCC3751862B52EF69BD0B",
+  "fullInvocationSha256": "E298244DA79A50574B1639A73D148C223D0E6802E24CBD40DE39F7BC3CD315B2",
+  "producerPins": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/client-boundary-producers/InspectWordpairsCompiledClientBoundary-original.ps1",
+      "sha256": "B0CC92F1AA3BAFFC8668FA1C4E100C695CF150557421C7003E7399A5C340CAC5",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/client-boundary-producers/InspectWordpairsCompiledClientBoundary-fdee7a2-original.ps1",
+      "sha256": "BB64CE230A697940007CFDE023C5B3327911D307192D32A91AF6A70BE0C413EC",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/client-boundary-producers/InspectWordpairsCompiledClientBoundary-c1181eb.ps1",
+      "sha256": "011A8F4FBB5A4D8CC96C7ACA46B202DF4825991FD1416215CAD5DDCC79959D98",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-c1181eb/client-boundary-producers/PrepareWordpairsC118ClientInspection.ps1",
+      "sha256": "3F5A382521BE796CC34817AE24F18BAF3C9FD2AD23F4D9948612C2E9686D0EBE",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    }
+  ],
+  "originalsRetained": true,
+  "adaptation": "Only exact candidate directory/revision/353 denominator, native/group run IDs and retained original pointer changed. Existing literal/symbol/relative-graph scan and build timestamp/hash fail-closed assertions retained.",
+  "qualification": "Producer retention before scan, not a new build/test or broad secret/hosted/HV acceptance."
+}

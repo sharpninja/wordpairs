@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-29T12:37:57",
+  "testSha256": "5BF8302A8EF13A6578806F8E81DAE3455A1FE75BAB8DDB7D5D2763F29C027E29",
+  "runs": [
+    {
+      "fixture": "correct",
+      "exitCode": 0,
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock/correct.xml",
+      "reportSha256": "09A04E7F2AABE3B71BE64982E779499784A162BACAD464F11CFE3AF467AFC962"
+    },
+    {
+      "fixture": "wrong",
+      "exitCode": 1,
+      "cases": 3,
+      "failed": 1,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock/wrong.xml",
+      "reportSha256": "104930F31327758EB9D9B3EB2B5A45608210520160BA9053A513D982CCC452F3"
+    }
+  ],
+  "qualification": "The social-refresh extension precedes its implementation; the earlier match-routing rework and its original chronology are retained separately."
+}

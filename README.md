@@ -15,7 +15,13 @@ Wordpairs is a real-time word-association game. Its [requirements](docs/word_ass
 
 ## Project status
 
-Phases 0–6 completed implementation and independent phase-exit review, including multiplayer gameplay, moderation and final acceptance. Historical evidence remains in the [Phase 6 execution record](docs/phase6_execution.md). The [administration and ACL extension](docs/admin_acl_design.md) adds dedicated moderation, word/hint editing and role-management pages, with its own validation. Hosted deployment remains Phase 7; a locally running app is not a hosted release.
+Current release in progress: [2 through 10 players and owner-only GitHub admin PWA](docs/release15-completion-plan.md). Public play uses guests; rooms retain a separate limit of 25 observers, for an audience of at most 35. The creation default stays 4; the current rules metadata target is v2.8, dated 31 October 2026. Existing larger running matches remain finishable. The [31 October authoritative amendment](docs/evidence/release10/qbrain-update-receipt.json) updates 19 existing requirements and leaves all 28 changed criteria unsatisfied pending new evidence. The changed source requires fresh verification and staged deployment; historical evidence does not establish its hosted state. The canonical plan filename retains release15 for stable links.
+
+31 October prior-candidate validation history: source `0e8d31a638e4db63e96302ca60fa7512c6accc96` passed its [local source/build lane](docs/evidence/release15/frozen-0e8d31a-observed-20261031T103209/full/validation.json), but the [full multiplayer repeat](docs/evidence/release15/frozen-0e8d31a-observed-20261031T103209/live-ui/live-ui.xml) reports 13 passing games and one failure at 15 players. Strict push validation and subsequent evidence preparation did not run. Independent acceptance and staged deployment remain pending; this is not a completed release.
+
+The operator selected Cline with model Beam and High effort for hostile validation until Monday, 2 November 2026. Acceptance still requires at least 98% accuracy and 98% completeness. Earlier reviewer selections and receipts retain their historical scope.
+
+Phases 0–6 completed implementation and independent phase-exit review, including multiplayer gameplay, moderation and final acceptance. Historical evidence remains in the [Phase 6 execution record](docs/phase6_execution.md). The earlier [administration and ACL extension](docs/admin_acl_design.md) included role-management pages; delegation is inactive in the current release. Hosted deployment remains Phase 7; a locally running app is not a hosted release.
 
 ## Local setup and validation
 
@@ -25,25 +31,37 @@ The [testing guide](docs/testing.md) lists unit, PostgreSQL, multiplayer, admini
 
 The [wiki manifest](docs/wiki.yaml) indexes current guides and historical execution records. MCP trust and logging were restored by registering this repository and correcting the service configuration file's ACL mask. The [maintenance receipt](docs/maintenance_receipt.json) records the recovery, triage reports and requirements-export outcome.
 
-## Install on your phone
+## Administration and installation
 
-Wordpairs supports home-screen installation and opens in a standalone window at `/play`. Open the **HTTPS** game address on your phone. On Android, use **Install Wordpairs** when your browser offers it, or its **Install app / Add to Home screen** menu. On iPhone, open Safari → **Share → Add to Home Screen** and keep **Open as Web App** enabled if offered. The page also includes **Get Wordpairs on your phone** instructions.
+The public game uses guests only and has no account sign-in or PWA install
+controls. Administration at `/admin` and `/admin/words` uses the registered
+GitHub App and permits only the verified `sharpninja` account. User delegation
+and public community submissions/nominations are disabled in this release.
 
-Multiplayer needs a connection. An installed app opened offline shows a reconnect screen; the service worker stores only that static screen and public icons. Sessions, rooms, answers and admin data are never placed in its cache. A plain HTTP LAN address cannot provide the same secure installation support; localhost is a development exception. See the [PWA design and verification](docs/pwa_design.md).
+Set server-only `WORDPAIRS_GITHUB_CLIENT_ID` and
+`WORDPAIRS_GITHUB_CLIENT_SECRET` together with the canonical
+`WORDPAIRS_ORIGIN`. Both hosting callbacks are registered; GitHub credentials
+belong in the hosting secret configuration, never source control. Former
+`WORDPAIRS_ADMIN_PROFILE_IDS` guest/bootstrap grants do not authorize this
+release's admin routes.
 
-## Administration
+Only administration remains installable. Sign into `/admin` over HTTPS, then
+use **Get Wordpairs Admin on your phone** or the browser's install menu. The
+manifest launches at `/admin`; its worker caches only generic offline HTML
+and public icons. Admin/guest sessions are separate and private data is not
+cached. The former public worker retires itself; an already-installed OS icon
+requires manual removal if no longer wanted.
 
-The administration pages are `/admin` (moderation queue and curation), `/admin/words` (word pairs, answers, alternatives and three hints), and `/admin/users` (role assignment and audit history). Moderators manage content; senior moderators also resolve independent appeals; administrators additionally manage user access.
-
-Set the server-only `WORDPAIRS_ADMIN_PROFILE_IDS` variable to comma-separated existing profile IDs, then restart the server. Find your ID under **Profile details** in the signed-in/guest profile panel. Configured administrators cannot have that authority revoked in the UI. There is no default admin account, password or public bootstrap endpoint. Use a durable signed-in profile for operational access. Apply `src/infrastructure/migrations/010_access_control.sql` to an existing database before using user administration; new test databases apply it automatically.
-
-Edits create immutable pair versions for future rounds; current games retain their original words and hints. See the [admin/ACL design](docs/admin_acl_design.md). Run the focused PostgreSQL checks with `npm run test:admin`.
+See the [current release design, cases and QBrain references](docs/admin_pwa_release.md).
+Earlier [PWA](docs/pwa_design.md) and [ACL](docs/admin_acl_design.md) reviews
+remain historical evidence. Physical OS installation and live standalone GitHub
+cookie continuity are separate from automated Chromium installability checks.
 
 ## Multiplayer integration tests
 
 Run `npm run test:multiplayer` with Docker, PowerShell 7, and installed npm dependencies. The runner creates a disposable, loopback-only PostgreSQL container, applies every migration, and removes the container in `finally`. It does not use the running game's database.
 
-The suite plays eight-round games at every size from 2 through 25 players (24 games, 324 player participations). It exercises real identity, room, lobby, match, and PostgreSQL services, including simultaneous answer conflicts and retries, all hint/scoring stages, shared final standings, and exactly-once profile awards. Time and random draws are controlled; browser UI and Realtime transport remain covered by their separate suites. The full `tests/integration/run-phase1.ps1` run also includes this suite.
+The current release matrix requires eight-round games at every size from 2 through 10 players: 9 games, 54 player participations and 432 accepted round solves. It exercises real identity, room, lobby, match and PostgreSQL services, including simultaneous answer conflicts and retries, all hint/scoring stages, shared final standings and idempotent profile awards. Time and random draws are controlled; actual browser UI and private Realtime have separate integration suites. The full `tests/integration/run-phase1.ps1` run also includes the service matrix. Earlier 2 through 25 results remain historical and do not prove the changed release.
 
 ## License
 
@@ -51,16 +69,23 @@ The game is intended to use GNU GPL version 2 only (`GPL-2.0-only`). See [`LICEN
 
 ## Deployment target
 
-The application target is Vercel from `sharpninja/wordpairs`. Coding Phases 1–6 precede all Phase 7 deployment and release work.
+The application deploys from `sharpninja/wordpairs` to two existing Vercel projects: `wordpairs` is logical staging and `wordpairs-j9jf` is production. Both use Vercel's production target with separate Supabase databases and secrets. Verify the same reviewed commit in staging before production; prevent automatic Git builds from bypassing that sequence. See [hosting execution](docs/hosting_execution.md) and [the current completion plan](docs/release15-completion-plan.md).
 
 ## Live multiplayer runtime
 
 Live gameplay needs authenticated Realtime configuration and an independent deadline/outbox worker. A rendered page alone does not establish a working game. See [local live setup](docs/local_development.md) and [real browser integration](docs/room_sync_fix.md). `npm run test:live-ui` targets an explicitly configured real runtime and complements the service integration suite.
 
-For a repeatable local browser matrix, run `pwsh -NoProfile -File scripts/run-local-ui-integration.ps1` after a production build. It uses installed Chromium, owned disposable TLS databases on volatile test storage, private Realtime and loopback HTTPS, then cleans up only its owned resources. It does not establish disk durability or public capacity. See [the UI harness guide](docs/testing.md#disposable-loopback-https-ui-harness).
+For a repeatable local browser matrix, run `pwsh -NoProfile -NonInteractive -File scripts/run-local-ui-integration.ps1 -PlayerCounts '2,3,4,5,6,7,8,9,10'` after a production build. It uses installed Chromium, owned disposable TLS databases on volatile test storage, private Realtime and loopback HTTPS, then cleans up only its owned resources. Readiness, categories and every answer use the UI, with at most two simultaneous answer submissions. It does not establish disk durability or hosted capacity. See [the UI harness guide](docs/testing.md#disposable-loopback-https-ui-harness).
 
 ## UI workflow and recovery extension
 
-Moderation now supports reasoned change requests with proposer-only resubmission, and nomination holds with reasoned resume. Profile editing has explicit Save/Cancel; content/editor drafts survive authorized in-tab navigation, and uncertain writes retain their original commands. No-solver rounds advance automatically after a3-second server delay. Discovery seat losses return to a fresh board while direct links retain observation. Existing databases need migration011 as well as earlier migrations. See the [implementation, repeatable UI tests and QBrain traceability](docs/testing/ui/implementation.md).
+Existing moderation history and immutable word/hint editing remain available to
+the owner. Multi-account community submission/resubmission and browser role
+delegation are inactive under the current guest-only release. Their original UI
+cases remain in `docs/testing/historical/`, while policy/transaction tests stay
+available. Profile Save/Cancel, safe retries and active game/accessibility
+journeys remain in the current browser suite. No-solver rounds still advance
+after the server delay. See the [current release design](docs/admin_pwa_release.md)
+and [historical UI implementation](docs/testing/ui/implementation.md).
 
-Contest readiness and all historical hostile-validation evidence are tracked in [the submission checklist](docs/submission/README.md). The official cutoff is earlier than the public marketing date; final public/live evidence and entrant prerequisites remain explicit.
+Contest readiness and all historical hostile-validation evidence are tracked in [the submission checklist](docs/submission/README.md). The operator directed us to use **31 October 2026 as the working deadline**. The original PDF/public-date conflict remains recorded; no sponsor extension or exact cutoff hour is asserted. Final public/live evidence and entrant prerequisites remain explicit.

@@ -1,0 +1,4 @@
+{"status":"succeeded"}
+tests/browser/ui-command-retirement.contract.ts(80,7): error TS2322: Type '(command: CapturedCommand) => Promise<void>' is not assignable to type '(() => Promise<void>) & ((command: CapturedCommand) => Promise<void>)'.
+  Type '(command: CapturedCommand) => Promise<void>' is not assignable to type '() => Promise<void>'.
+    Target signature provides too few arguments. Expected 1 or more, but got 0.

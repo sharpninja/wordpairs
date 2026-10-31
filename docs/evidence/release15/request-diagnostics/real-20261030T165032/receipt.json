@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-10-30T16:50:32",
+  "finishedAt": "2026-10-30T16:50:34",
+  "binding": "real",
+  "revision": "0fb37e621d16fcc56a27abff3fe73b2e66cdcca2",
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/request-diagnostics.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/real-20261030T165032/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 22,
+  "failed": 0,
+  "skipped": 0,
+  "positiveCases": 11,
+  "expectedNegativeControls": 11,
+  "helperAbsent": false,
+  "contractSha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+  "testSha256": "45627E32328574C0B8F8075DDEE1CA8A61C24B02DA4CB869E37B08B5B01550B4",
+  "helperSha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/real-20261030T165032/unit.xml",
+  "junitSha256": "1D3BD853221581CDFB6C406EDB12312F836B7AD5068B6C070975E20A1AAD2E9A",
+  "qualification": "Expected negative controls are passing rejection checks inside the successful suite. Mock evidence is not actual browser evidence."
+}

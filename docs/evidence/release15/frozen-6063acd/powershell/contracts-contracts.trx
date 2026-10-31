@@ -1,0 +1,38 @@
+<TestRun id="7a0d43da-802c-41f9-bdd9-9c5af129c072" name="JUnit adapter: contracts.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T20:10:37.7656730-05:00" start="2026-10-30T20:10:37.7656730-05:00" finish="2026-10-30T20:10:37.7656730-05:00" queuing="2026-10-30T20:10:37.7656730-05:00" />
+  <Results>
+    <UnitTestResult executionId="0341634b-596c-4dc4-a570-6c1d6d2b2c9c" duration="00:00:00" computerName="[PRIVATE HOST]" testId="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" testName="local-script-contract :: local-live-lease.contract.ps1" relativeResultsDirectory="0341634b-596c-4dc4-a570-6c1d6d2b2c9c" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" />
+    <UnitTestResult executionId="bb605706-d5a7-4507-9366-4caf937d389a" duration="00:00:00" computerName="[PRIVATE HOST]" testId="d776a9a9-34e7-5342-3982-3e7130d3e67d" testName="local-script-contract :: local-realtime-cleanup.contract.ps1" relativeResultsDirectory="bb605706-d5a7-4507-9366-4caf937d389a" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" />
+    <UnitTestResult executionId="6980a739-a287-44b3-9d76-627604dcb1b4" duration="00:00:00" computerName="[PRIVATE HOST]" testId="f7534c18-ab04-6db9-e534-33c96ec833be" testName="local-script-contract :: local-ui-startup.contract.ps1" relativeResultsDirectory="6980a739-a287-44b3-9d76-627604dcb1b4" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="local-live-lease.contract.ps1" id="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" storage="local-script-contract">
+      <Execution id="0341634b-596c-4dc4-a570-6c1d6d2b2c9c" />
+      <TestMethod name="local-live-lease.contract.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="local-script-contract" className="local-script-contract" />
+    </UnitTest>
+    <UnitTest name="local-realtime-cleanup.contract.ps1" id="d776a9a9-34e7-5342-3982-3e7130d3e67d" storage="local-script-contract">
+      <Execution id="bb605706-d5a7-4507-9366-4caf937d389a" />
+      <TestMethod name="local-realtime-cleanup.contract.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="local-script-contract" className="local-script-contract" />
+    </UnitTest>
+    <UnitTest name="local-ui-startup.contract.ps1" id="f7534c18-ab04-6db9-e534-33c96ec833be" storage="local-script-contract">
+      <Execution id="6980a739-a287-44b3-9d76-627604dcb1b4" />
+      <TestMethod name="local-ui-startup.contract.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" codeBase="local-script-contract" className="local-script-contract" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="0341634b-596c-4dc4-a570-6c1d6d2b2c9c" testId="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="bb605706-d5a7-4507-9366-4caf937d389a" testId="d776a9a9-34e7-5342-3982-3e7130d3e67d" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="6980a739-a287-44b3-9d76-627604dcb1b4" testId="f7534c18-ab04-6db9-e534-33c96ec833be" />
+  </TestEntries>
+  <TestLists>
+    <TestList id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" name="JUnit cases" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters aborted="0" error="0" notRunnable="0" total="3" passedButRunAborted="0" passed="3" pending="0" failed="0" disconnected="0" notExecuted="0" completed="3" inProgress="0" timeout="0" executed="3" inconclusive="0" />
+    <RunInfos>
+      <RunInfo computerName="[PRIVATE HOST]" timestamp="2026-10-30T20:10:37.7656730-05:00" outcome="Completed">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/release15/frozen-6063acd/powershell/contracts/contracts.xml; SHA256=4361D0A9ED9B3374CB426AD55C9D657A73A1097CCFA81E2D25E83FC5EACB682D; reviewed revision=6063acd9d6869fd71a33f75ee5c940c736c99124</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

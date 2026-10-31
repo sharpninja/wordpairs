@@ -1,0 +1,272 @@
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+BEGIN
+CREATE FUNCTION
+UPDATE 1
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+ RUN  v5.0.5 <repo>
+
+ ✓ tests/integration/multiplayer.integration.ts (24 tests) 310472ms
+   ✓ complete multiplayer games on real PostgreSQL (24)
+     ✓ 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 984ms
+     ✓ 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 1560ms
+     ✓ 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 1962ms
+     ✓ 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 2330ms
+     ✓ 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 2888ms
+     ✓ 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 4127ms
+     ✓ 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 7702ms
+     ✓ 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 4733ms
+     ✓ 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 6977ms
+     ✓ 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 7043ms
+     ✓ 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 9657ms
+     ✓ 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 10431ms
+     ✓ 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 9598ms
+     ✓ 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 11450ms
+     ✓ 16 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 13491ms
+     ✓ 17 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 13985ms
+     ✓ 18 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 15148ms
+     ✓ 19 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 19749ms
+     ✓ 20 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 24629ms
+     ✓ 21 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 24026ms
+     ✓ 22 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 31857ms
+     ✓ 23 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 31750ms
+     ✓ 24 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 28298ms
+     ✓ 25 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards 25375ms
+ ✓ tests/integration/admin.integration.ts (9 tests) 2435ms
+   ✓ 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available 1581ms
+ ✓ tests/integration/content.integration.ts (6 tests) 1097ms
+ ✓ tests/integration/matches.integration.ts (8 tests) 859ms
+ ✓ tests/integration/lobby.integration.ts (7 tests) 452ms
+ ✓ tests/integration/reactions.integration.ts (3 tests) 277ms
+ ✓ tests/integration/rooms.integration.ts (3 tests) 199ms
+ ✓ tests/integration/identity.integration.ts (4 tests) 140ms
+ ✓ tests/integration/public-read.integration.ts (1 test) 88ms
+ ✓ tests/integration/live-postgres.integration.ts (3 tests) 83ms
+
+ Test Files  10 passed (10)
+      Tests  68 passed (68)
+   Start at  20:27:06
+   Duration  318.39s (tests 100%)
+
+JUNIT report written to <home>/github/WordGame/.mcpServer/wordpairs-local/admin-recovery-postgres/postgres.xml
+PASS: TR-31 migration, direct-role denial, canonical retry/conflict, durable outbox, rollback fault, and concurrent final-seat checks

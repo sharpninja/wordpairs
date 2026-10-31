@@ -1,0 +1,357 @@
+{
+  "timestampLocal": "2026-10-30T17:57:31",
+  "kind": "read-only-operational-preparation-not-HV-not-deployment",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T224459Z-hosting-readiness",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "inspectedHead": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "acceptedDeploymentSha": null,
+  "sourcePins": [
+    {
+      "path": "docs/hosting_execution.md",
+      "bytes": 12851,
+      "sha256": "B9589FB5FEF6B91B1C58585A484BE96DEF9EF21D932610CA5D8095E0C46CCAAA"
+    },
+    {
+      "path": "docs/deployment_plan.md",
+      "bytes": 31538,
+      "sha256": "A6C6B567F17492E3CE79758398C8B04E399D381D2D9C2CFEA1E6D28D4B6C4176"
+    },
+    {
+      "path": "scripts/hosting-schema.ps1",
+      "bytes": 6690,
+      "sha256": "D47914412511DAD25DF438A74FC8D8C0296A327F2E06467E751BC2DFC90EF689"
+    },
+    {
+      "path": "scripts/HostingSchemaPlanner.psm1",
+      "bytes": 3040,
+      "sha256": "F002924A2F673F39A4B3260965D32486988EA71EE32F8402C27BA74725773DA0"
+    },
+    {
+      "path": "src/infrastructure/migrations/012_guest_public_profiles.sql",
+      "bytes": 1778,
+      "sha256": "B85BEC54713448ED2052AB802AE147839D52D37E7AC653FA5BE2595EDA339C7F"
+    },
+    {
+      "path": "src/infrastructure/migrations/013_player_capacity.sql",
+      "bytes": 6176,
+      "sha256": "CBE351B1F8343A42AA9A3E5611D515710BE2E1E004C9E8848AD89B0CA124C5F2"
+    },
+    {
+      "path": "src/infrastructure/hosting/001_scheduler.sql",
+      "bytes": 4904,
+      "sha256": "BB6B22FEC2469E3D662EAC01E39826367B6432FB845FF1562014812CA1F08585"
+    },
+    {
+      "path": "src/infrastructure/hosting/002_realtime_policy.sql",
+      "bytes": 719,
+      "sha256": "0D64CEFC30FE90E133A337FD2BB0AC20E6BF332C05C1E3CBE1601513CFB71CAB"
+    },
+    {
+      "path": "src/app/api/internal/deadlines/route.ts",
+      "bytes": 1584,
+      "sha256": "28C5D19E19A07CE648E776557DA1C78155B6AE39A8BCC92CE23977544C29056E"
+    },
+    {
+      "path": "src/web/server-http.ts",
+      "bytes": 3335,
+      "sha256": "8BDDAEEF30679913A986CA1F77AD517C78AEC33F719454359B0AD9972DD217D6"
+    },
+    {
+      "path": "docs/evidence/release15/frozen-0fb37e6/encrypted-game-backup-index-v2.json",
+      "bytes": 18673,
+      "sha256": "943A8697900DE655E19802234B0D0FB7387945ACAE5D017733A5E5C6BDDB572E"
+    },
+    {
+      "path": "docs/evidence/release15/hosting-readiness/guarded-rollout-procedure.md",
+      "bytes": 13951,
+      "sha256": "0E780BB4D129313BA9F4EC69ABE3CBE0611A53B86E8AEDDB9EC4BC6CF3A2CBD2"
+    }
+  ],
+  "canonicalCatalog": [
+    {
+      "name": "wordpairs_001_foundation",
+      "rawSha256": "FAC5387942CBC0DD4DE5F053270F252E6435194B6968764A2043D46973E34A5F",
+      "normalizedBodySha256": "9CDE6B58289565DA61034FBC467ABB46E1D69964218E43E9390A40FE29BFE8E2"
+    },
+    {
+      "name": "wordpairs_002_public_reads",
+      "rawSha256": "503AA197D99F213A8F99DE8636BD6E74EEF5CFD68B5632B19FB45D931F992730",
+      "normalizedBodySha256": "71DA46FBFBCD934D1078D0C6D2AEC5D5CE6D996D0F0A8BA6AE403A3B91D211DD"
+    },
+    {
+      "name": "wordpairs_003_identity",
+      "rawSha256": "6F6B267A5B4EABF82F19C6EE40DC8A306D0773216A1F5489A97D2451A14C7672",
+      "normalizedBodySha256": "64419A3206B5A19AF261BDA9308F37CF1A816DDC1FF2E03F74327A9EACD954C6"
+    },
+    {
+      "name": "wordpairs_004_rooms",
+      "rawSha256": "2B28CEB90B698EABF61370427A7EE3A67EA56E3F68490E692C35D272A8AF4467",
+      "normalizedBodySha256": "0626FD41B91947547E516CB85466350EE882DA69CFADBF6FAD7B918C8F7409EB"
+    },
+    {
+      "name": "wordpairs_005_outbox",
+      "rawSha256": "38150D374975254F57FDF30D897F9454428E1C7AA5E36F2CEA03EAF9BA3408E8",
+      "normalizedBodySha256": "5E66016BD34C78CF298359D62AF21C8C849130180042EBBFB63F0D3A661CD0DB"
+    },
+    {
+      "name": "wordpairs_006_lobby_deadlines",
+      "rawSha256": "0C1D14EEC35AA8656356171601867891AE3642B62E1C17C2DF62AC349D25B8BA",
+      "normalizedBodySha256": "1C7DA59A12502146EBB879221B747E94E4F14DB9B8E1B7D18E6EB0F5A03B4AFA"
+    },
+    {
+      "name": "wordpairs_007_matches",
+      "rawSha256": "8416D2B2028EF3F498CE185EDC1473403CF6FBC1849CF2FBB94AF8131F737108",
+      "normalizedBodySha256": "06E4B8A329E9C9B512FE8C28A7C0372FB6FC68C7C56DEB2EE42BE18F1FA58976"
+    },
+    {
+      "name": "wordpairs_008_content",
+      "rawSha256": "819F89C79440B0466EE919E61E1680D4C0E850FF992ECEEDB6E1FCEFE22AD4F6",
+      "normalizedBodySha256": "F7FBF57F3CDF5F9CADD6E844D716C09BA7786389E7A309E302AE6C9CEA276E2F"
+    },
+    {
+      "name": "wordpairs_009_reactions",
+      "rawSha256": "46E88FE195EC632191EE6A356682EEA376A52DF86D4067E7C9D63546C55E568D",
+      "normalizedBodySha256": "1C239D0C18C5E33D3DA0FDEBD8E6646E7EDB24C160537C39278B89C873B60C29"
+    },
+    {
+      "name": "wordpairs_010_access_control",
+      "rawSha256": "98A101C9E99EE80FC4F2548C42C0A0F61A1788587A3BB6EC5C368624CB69E5AF",
+      "normalizedBodySha256": "AFBA25486990403DACAC13E25C761C79A71EE20E19FD39DDB1F2999F489608C9"
+    },
+    {
+      "name": "wordpairs_011_content_review_states",
+      "rawSha256": "2F4188A6835986C48268346DDD4F2D25E493D8E8DD236DD49CAAFF9E6BEB56DD",
+      "normalizedBodySha256": "0B1024FD76E182BFEFC3B5E4D29CC0919A4BA01C2353A29FA0B66A346CF05D05"
+    },
+    {
+      "name": "wordpairs_hosted_scheduler",
+      "rawSha256": "BB6B22FEC2469E3D662EAC01E39826367B6432FB845FF1562014812CA1F08585",
+      "normalizedBodySha256": "531647AE3E7CC553896985EA92DC7B8ADE5B79945B535A5CBC669265AD450E7A"
+    },
+    {
+      "name": "wordpairs_private_realtime",
+      "rawSha256": "0D64CEFC30FE90E133A337FD2BB0AC20E6BF332C05C1E3CBE1601513CFB71CAB",
+      "normalizedBodySha256": "3A3C99D55F8A5F3525D83FA1ABCECD9513AC24BD1349010C6B7B34EC61D37031"
+    },
+    {
+      "name": "wordpairs_012_guest_public_profiles",
+      "rawSha256": "B85BEC54713448ED2052AB802AE147839D52D37E7AC653FA5BE2595EDA339C7F",
+      "normalizedBodySha256": "5ED51A5028100E7909D5F105D9BF1E6FD03919E998998C501FF1FDCF7DD7576A"
+    },
+    {
+      "name": "wordpairs_013_player_capacity",
+      "rawSha256": "CBE351B1F8343A42AA9A3E5611D515710BE2E1E004C9E8848AD89B0CA124C5F2",
+      "normalizedBodySha256": "5AE763CE2C1E555404CD80BD14B45BED485043A7266F6009871AF791823BBBE2"
+    }
+  ],
+  "operativeAmendment": "hosting_execution step6 manual exit1 means only documented one-time Dashboard Redeploy checkbox override. Retain both global exit0 guards throughout rollout and afterward. Never send projectSettings.commandForIgnoringBuildStep; do not temporarily change global settings or restore automatic builds.",
+  "officialSources": [
+    {
+      "url": "https://vercel.com/docs/project-configuration/project-settings",
+      "section": "Ignore Build Step on redeploy",
+      "observedSourceLines": "298-305",
+      "exactExtract": "Use project's Ignore Build Step",
+      "extractSha256": "446697F803D86B576F9DAED5CFE0AE9376E0B8BF2BC4C6C41914C6C9BBA42B54",
+      "supports": "Select exact deployment and uncheck invocation checkbox; read global guards before/after; documented UI route availability still requires actual inspection."
+    },
+    {
+      "url": "https://vercel.com/docs/rest-api/deployments/create-a-new-deployment",
+      "section": "projectSettings and withLatestCommit",
+      "observedSourceLines": "657-667",
+      "exactExtract": "will be saved for any following deployments",
+      "extractSha256": "C9C9F0A7C147171F1E6D898634EFA9C2748E8C19CAECBBF64A40D5E2DF2B7FD5",
+      "supports": "Project settings persist; withLatestCommit changes prior gitSource SHA. Exclude both for exact guarded redeploy."
+    }
+  ],
+  "providerReadWindowLocal": {
+    "started": "2026-10-30T17:44:01",
+    "completed": "2026-10-30T17:56:37",
+    "qualification": "Window includes measured timestamps around connected get_project and list_migrations reads; individual provider completion times were not captured."
+  },
+  "providerReadObservations": [
+    {
+      "environment": "staging",
+      "vercelProject": "wordpairs",
+      "vercelProjectId": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+      "supabaseProject": "jshjkaigwbxsbnnogfxs",
+      "vercelTarget": "production",
+      "canonicalOrigin": "https://wordpairs.vercel.app",
+      "getProjectSucceeded": true,
+      "framework": "nextjs",
+      "guardValueReturned": false,
+      "migrationCount": 13,
+      "migrationNames": [
+        "wordpairs_001_foundation",
+        "wordpairs_002_public_reads",
+        "wordpairs_003_identity",
+        "wordpairs_004_rooms",
+        "wordpairs_005_outbox",
+        "wordpairs_006_lobby_deadlines",
+        "wordpairs_007_matches",
+        "wordpairs_008_content",
+        "wordpairs_009_reactions",
+        "wordpairs_010_access_control",
+        "wordpairs_011_content_review_states",
+        "wordpairs_hosted_scheduler",
+        "wordpairs_private_realtime"
+      ],
+      "migrationNameReadSucceeded": true,
+      "remoteBodyHashComparisonThisTurn": false
+    },
+    {
+      "environment": "production",
+      "vercelProject": "wordpairs-j9jf",
+      "vercelProjectId": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+      "supabaseProject": "krdcuuhcynmdfcjlpbsf",
+      "vercelTarget": "production",
+      "canonicalOrigin": "https://wordpairs-j9jf.vercel.app",
+      "getProjectSucceeded": true,
+      "framework": "nextjs",
+      "guardValueReturned": false,
+      "migrationCount": 13,
+      "migrationNames": [
+        "wordpairs_001_foundation",
+        "wordpairs_002_public_reads",
+        "wordpairs_003_identity",
+        "wordpairs_004_rooms",
+        "wordpairs_005_outbox",
+        "wordpairs_006_lobby_deadlines",
+        "wordpairs_007_matches",
+        "wordpairs_008_content",
+        "wordpairs_009_reactions",
+        "wordpairs_010_access_control",
+        "wordpairs_011_content_review_states",
+        "wordpairs_hosted_scheduler",
+        "wordpairs_private_realtime"
+      ],
+      "migrationNameReadSucceeded": true,
+      "remoteBodyHashComparisonThisTurn": false
+    }
+  ],
+  "providerProjectionQualification": "Connected get_project results omit ignore command, production branch and build command in the returned projection. Absence does not imply missing settings. No decrypted environment values were requested or printed. Migration names/order alone do not prove remote bodies.",
+  "expectedForwardMigrations": [
+    "wordpairs_012_guest_public_profiles",
+    "wordpairs_013_player_capacity"
+  ],
+  "backupReadback": [
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T171009-fba382bf",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T171009-fba382bf-staging.json",
+      "receiptSha256": "816FDFEB0406095E73143DA0E12FF005482B2629ADEEFC49F8577601131BD8CA",
+      "receiptHashMatches": true,
+      "ciphertextExists": true,
+      "ciphertextSha256": "CA0A95974FE4D792EB9A2D491A2CAE6C9ECBC689DF6F8330764813C4759B6E26",
+      "ciphertextHashMatches": true,
+      "producerArchiveExists": true,
+      "producerArchiveSha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+      "producerArchiveHashMatches": true,
+      "historicalRestoreStatus": "verified_app_restore",
+      "historicalSchemaEqual": true,
+      "historicalDataEqual": true,
+      "historicalSequencesEqual": true,
+      "freshRestoreRun": false
+    },
+    {
+      "environment": "production",
+      "runId": "backup-20261030T171025-c2196e52",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T171025-c2196e52-production.json",
+      "receiptSha256": "E16ACB89502E13399F9D53629223933C0D308E5A2FB3FDC8368BB21BEAECD47F",
+      "receiptHashMatches": true,
+      "ciphertextExists": true,
+      "ciphertextSha256": "E954DAB355ED1EB999282C6C9490A420E8935A69ABF8214185881D4A8F1C7CB8",
+      "ciphertextHashMatches": true,
+      "producerArchiveExists": true,
+      "producerArchiveSha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+      "producerArchiveHashMatches": true,
+      "historicalRestoreStatus": "verified_app_restore",
+      "historicalSchemaEqual": true,
+      "historicalDataEqual": true,
+      "historicalSequencesEqual": true,
+      "freshRestoreRun": false
+    }
+  ],
+  "backupQualification": "Current file/hash checks only; selected receipts retain prior isolated APP logical-restore proof. No fresh dump/restore and no full managed-platform/offsite recovery claim. Snapshot RPO must be assessed before DDL.",
+  "futureSafeHelper": "scripts/hosting-schema.ps1 -Environment staging|production -Mode status|apply -Config existing-private-path -ConfirmProject exact-project-reference; parser/PSSA and WhatIf before apply. Supported Supabase apply_migration is the preferred provider route; canonical normalization and history readback mandatory.",
+  "schemaToolMetadata": {
+    "applyMigration": [
+      "project_id",
+      "name",
+      "query"
+    ],
+    "listMigrations": [
+      "project_id"
+    ],
+    "getDeployment": [
+      "idOrUrl",
+      "withGitRepoInfo"
+    ],
+    "createDeploymentUsed": false,
+    "deploymentOverrideExcluded": "projectSettings.commandForIgnoringBuildStep"
+  },
+  "pendingExecutionChecks": [
+    "Accepted frozen source SHA and independent review gate",
+    "Fresh Dashboard global exit0 values and exact-source one-time Redeploy dialog",
+    "Runtime/environment variable scopes and supported Node configuration",
+    "Remote canonical migration bodies, schema/grants/RLS/triggers and advisor readback",
+    "Data API exposed-schema allowlist",
+    "Current scheduler controls, Vault presence and due-work proof",
+    "Backup snapshot RPO acceptance or separately executed refresh",
+    "Staging hosted acceptance then same-SHA production rollout and smoke",
+    "Actual owner OAuth and physical admin PWA evidence where pending",
+    "Existing provider contest-use interpretation and authenticated mission/conduct qualifications"
+  ],
+  "noProviderWrites": true,
+  "noSchemaOrConfigurationWrites": true,
+  "noSourceTestOrGuideEdits": true,
+  "noBuildOrTestRuns": true,
+  "noModelOrHvInvocation": true,
+  "noCredentialOrBackupCreation": true,
+  "localLinkChecks": [
+    {
+      "target": "guarded-rollout-receipt.json",
+      "exists": true
+    },
+    {
+      "target": "../../../hosting_execution.md",
+      "exists": true
+    },
+    {
+      "target": "../../../deployment_plan.md",
+      "exists": true
+    },
+    {
+      "target": "../frozen-0fb37e6/encrypted-game-backup-index-v2.json",
+      "exists": true
+    },
+    {
+      "target": "../../../../scripts/hosting-schema.ps1",
+      "exists": true
+    },
+    {
+      "target": "../../../../scripts/HostingSchemaPlanner.psm1",
+      "exists": true
+    },
+    {
+      "target": "../../../../src/infrastructure/migrations/012_guest_public_profiles.sql",
+      "exists": true
+    },
+    {
+      "target": "../../../../src/infrastructure/migrations/013_player_capacity.sql",
+      "exists": true
+    },
+    {
+      "target": "../../../../src/app/api/internal/deadlines/route.ts",
+      "exists": true
+    },
+    {
+      "target": "../../../../src/infrastructure/hosting/001_scheduler.sql",
+      "exists": true
+    }
+  ],
+  "accuracyPercent": 99,
+  "completenessPercent": 98,
+  "scoreQualification": "Preparation scope only. Named source/primary-doc routes and current safe metadata checked; actual rollout, remote body comparisons, hosted/physical evidence and source approval remain pending."
+}

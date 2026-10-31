@@ -1,0 +1,60 @@
+import { beforeEach, expect, it, vi } from "vitest";
+import { failure, success } from "../../src/domain/result";
+const service = vi.hoisted(() => ({ beginLogin: vi.fn(), completeLogin: vi.fn(), session: vi.fn(), logout: vi.fn() }));
+vi.mock("../../src/infrastructure/runtime", () => ({ getAdminIdentityService: () => service }));
+import { githubCallback, githubLogin } from "../../src/web/github-auth-http";
+import { GET, DELETE } from "../../src/app/api/admin/session/route";
+const origin = "https://wordpairs.test";
+const token = "a".repeat(43);
+const request = (path: string, method = "GET", cookie = `wp_admin=${token}`, source = origin) => new Request(origin + path, { method, headers: { Cookie: cookie, Origin: source } });
+beforeEach(() => { vi.stubEnv("WORDPAIRS_ORIGIN", origin); Object.values(service).forEach(mock => mock.mockReset()); });
+it("login binds its challenge to a separate secure admin cookie", async () => {
+ service.beginLogin.mockResolvedValue(success({ url: "https://github.com/login/oauth/authorize?state=server", browserToken: token }));
+ const response = await githubLogin(request("/api/auth/github/login"));
+ expect(response.status).toBe(302);
+ expect(response.headers.get("Location")).toContain("https://github.com/login/oauth/authorize");
+ expect(response.headers.get("Set-Cookie")).toContain(`wp_admin_login=${token}`);
+ expect(response.headers.get("Set-Cookie")).toMatch(/HttpOnly; SameSite=Lax; Max-Age=600; Secure/);
+ expect(response.headers.get("Cache-Control")).toBe("no-store");
+});
+it("successful callback sets only the admin session and clears the one-time challenge cookie", async () => {
+ service.completeLogin.mockResolvedValue(success({ sessionToken: token }));
+ const response = await githubCallback(request("/api/auth/github/callback?code=c&state=s", "GET", `wp_admin_login=${token}; wp_session=guest`));
+ expect(service.completeLogin).toHaveBeenCalledWith(token, "c", "s");
+ expect(response.headers.get("Location")).toBe(origin + "/admin");
+ const cookies = response.headers.get("Set-Cookie")!;
+ expect(cookies).toContain("wp_admin_login=;");
+ expect(cookies).toContain(`wp_admin=${token}`);
+ expect(cookies).not.toContain("wp_session");
+});
+it.each(["?code=a&code=b&state=s", "?code=c&state=a&state=b", "?error=denied&code=c&state=s"])("malformed or denied callback fails closed: %s", async query => {
+ service.completeLogin.mockResolvedValue(failure("NOT_AUTHENTICATED"));
+ const response = await githubCallback(request("/api/auth/github/callback" + query, "GET", "wp_session=guest"));
+ const [,code,state] = service.completeLogin.mock.calls[0];
+ expect(service.completeLogin.mock.calls[0][0]).toBeNull();
+ expect(code === null || state === null).toBe(true);
+ expect(response.headers.get("Location")).toBe(origin + "/admin?auth=failed");
+ expect(response.headers.get("Set-Cookie")).not.toContain("wp_admin=" + token);
+});
+it("admin session ignores the guest cookie and exposes neither roles nor user delegation", async () => {
+ const profile = { id: "owner", kind: "member", alias: "Owner" };
+ service.session.mockResolvedValue(success({ profile }));
+ const response = await GET(request("/api/admin/session", "GET", `wp_session=guest; wp_admin=${token}`));
+ expect(service.session).toHaveBeenCalledWith(token);
+ expect(response.headers.get("Cache-Control")).toBe("no-store");
+ const body = await response.json();
+ expect(body.permissions).toEqual(["moderate", "manage-content", "resolve-appeals"]);
+ expect(body.profile).toEqual(profile);
+ expect(body.roles).toBeUndefined();
+ expect(body.sessionToken).toBeUndefined();
+});
+it("logout is same-origin, revokes the admin namespace and preserves the guest cookie", async () => {
+ service.logout.mockResolvedValue(success(undefined));
+ expect((await DELETE(request("/api/admin/session", "DELETE", `wp_admin=${token}`, "https://evil.test"))).status).toBe(403);
+ expect(service.logout).not.toHaveBeenCalled();
+ const response = await DELETE(request("/api/admin/session", "DELETE", `wp_admin=${token}; wp_session=guest`));
+ expect(service.logout).toHaveBeenCalledWith(token);
+ expect(response.status).toBe(204);
+ expect(response.headers.get("Set-Cookie")).toContain("wp_admin=;");
+ expect(response.headers.get("Set-Cookie")).not.toContain("wp_session");
+});

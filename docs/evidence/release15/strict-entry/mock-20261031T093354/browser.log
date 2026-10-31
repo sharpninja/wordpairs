@@ -1,0 +1,43 @@
+
+Running 28 tests using 1 worker
+
+
+
+(node:3002039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct delayed-room-action
+[2/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong delayed-room-action
+[3/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct visible-loading-panel
+[4/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong visible-loading-panel
+[5/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct disabled-action
+[6/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong disabled-action
+[7/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct hidden-action
+[8/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong hidden-action
+  1) tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong hidden-action ─────
+
+    Error: expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: undefined
+
+      68 |   });
+      69 |   test(`UI entry rejects wrong ${name}`, async ({ page }) => {
+    > 70 |     await expect(assertEntryCase(name, independent(name), page)).rejects.toThrow();
+         |                                                                          ^
+      71 |   });
+      72 | }
+      73 |
+        at <repo>/tests/browser/ui-command-entry.phase6.spec.ts:70:74
+
+    Error Context: test-results/ui-command-entry.phase6-UI-entry-rejects-wrong-hidden-action/error-context.md
+
+
+(node:3002524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[9/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct same-page-control
+  1 failed
+    tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong hidden-action ──────
+  20 did not run
+  7 passed (2.2m)

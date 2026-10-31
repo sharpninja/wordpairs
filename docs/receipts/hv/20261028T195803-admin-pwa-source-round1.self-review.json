@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-10-28T19:58:03",
+  "tests": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-validation/unit.trx",
+      "sha256": "3205BF88A8D821EDDA01DF81021DEB8F0B6B42AB5E465BEFFF048389D729E7D1",
+      "cases": 582,
+      "revision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+      "host": "[PRIVATE HOST]"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-validation/browser.trx",
+      "sha256": "2D7EAAA5A7579171D4F13480E529476D28ED80124A644A4AC81690F7484B5093",
+      "cases": 69,
+      "revision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+      "host": "[PRIVATE HOST]"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-validation/postgres.trx",
+      "sha256": "78AB6D53F9DB07B3A576B45AEAEE8EE59D503FD2DE7919C8E625797A475E9C58",
+      "cases": 68,
+      "revision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+      "host": "[PRIVATE HOST]"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-validation/admin-identity-postgres.trx",
+      "sha256": "2EC48ECA6EA915A1BBDCC0160A92C2597B3FEF6CF1B0C67878CC9762508D8E4C",
+      "cases": 13,
+      "revision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+      "host": "[PRIVATE HOST]"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-validation/card-insets.trx",
+      "sha256": "8953F4E587902BF033B677BF238F8BDBF60C2FE51FA5D85CED1E33A1BBD7549A",
+      "cases": 1,
+      "revision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+      "host": "[PRIVATE HOST]"
+    }
+  ],
+  "checks": {
+    "mappingLint": "QBrain readback confirms descriptive FR/TR/TEST IDs, no duplicate criterion IDs in changed FRs, native mappings preserve existing links; GA/PWA references in canonical release.",
+    "phaseBoundaries": "Candidate only; no completion or hosted rollout claim. Full unit/browser/PostgreSQL evidence supplied; physical installation and hosted consent remain separate.",
+    "holisticReview": "Read current canonical release and plan overrides; earlier multi-account/public-install designs explicitly historical.",
+    "whatIf": "Examined owner mismatch, replay, expiry, malformed callbacks, copied cookies, CSRF, stale reads, logout, no configuration, offline HTTP/network distinction, legacy upgrade and presence timer concurrency.",
+    "scope": "User: continue the admin pwa work. Guest-only public game, only sharpninja GitHub administration, admin PWA only, welcome card whitespace. Claude Opus explicitly selected.",
+    "processLimit": "Prior failed runs retained. Current summaries do not reconstruct or invent a pre-implementation mock-gate receipt; reviewer must assess existing chronological logs and report any unsupported process claim.",
+    "propagationAudit": "Current overrides added to README, implementation/deployment/moderation/admin/PWA/architecture/testing/local docs and TEST-ADMINUI-136; QBrain readback preserves historical evidence and native links.",
+    "searchBeforeAdding": "Reused existing identity challenge, token, ACL, immutable catalog and private draft mechanisms. New GitHub provider and admin realm use existing boundaries."
+  },
+  "revision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd"
+}

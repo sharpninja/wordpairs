@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-28T22:46:16.8825929Z",
+  "generatedAt": "2026-10-29T11:18:22",
   "baseCommit": "3273c121de6517aec34503d8c769b0159e9e52df",
-  "scope": "Hash index of existing repository hostile-review originals and supporting manifests; includes all rejected/superseded JSONL records without rewriting or copying originals.",
+  "scope": "Hash index of retained repository hostile-review records and supporting manifests, including sanitized public copies of the latest review streams. Protected originals are retained separately.",
   "indexSemantics": "Hashes bind original bytes at generation time; this is not a final application snapshot, eligibility certification, deployment approval or contest submission. New append-only UI records change that file hash; refresh this index after final review and freeze it with the exact submission snapshot.",
   "privacy": "Only explicitly listed repository review/manifests/reconciliation artifacts indexed; no private runtime files, session logs, credentials, or core dumps. Historical artifact content is preserved as-is.",
   "entries": [
@@ -1098,6 +1098,216 @@
       "bytes": 8628,
       "sourcePath": "docs/evidence/hosting/plan-review-round5.json",
       "sha256": "8cf7413e41131a397889942020d9e0e60f49ca5e8de81deb85e49b96075117a6"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.privacy-export.json",
+      "sha256": "c8a8693796b781d4f8a21cd100606fc6c30cc42f94e7e3d74f395171d4ec6d71",
+      "bytes": 893,
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.public.response.jsonl",
+      "sha256": "22c37f4f60b9edd5e9deef89024c79d5b06243fa72704f676eb92e4c0400ce3c",
+      "bytes": 2116527,
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.request.jsonl",
+      "sha256": "c1afa85913d57013e8668fd842d2ecc6db766c45d2c1693a8789f7f5b0fe9369",
+      "bytes": 8757,
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.self-review.json",
+      "sha256": "0e1136da3ba112e5c5b1980898b4ab5dbecdc49671adc9b1e60d7579c8af43af",
+      "bytes": 3403,
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json",
+      "sha256": "dcd8aa22b33ee794404fea7044404b26025e14051ff24d2d3f251da7e8bbecdc",
+      "bytes": 29189,
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.request.jsonl",
+      "bytes": 13478,
+      "sha256": "e037ef4522eef17e9883a3588cd2e2bbe3bb4601e0f4cac248bb401d7628145a",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.public.response.jsonl",
+      "bytes": 812878,
+      "sha256": "949dca0478dbb233ad59f355e7c473d3823fda4202e2462b599452e3f9492f05",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.self-review.json",
+      "bytes": 3763,
+      "sha256": "c6ee0343a653d6929086ad484d29ea9ed91953253a0d62b60755915674f357dd",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.verdict.json",
+      "bytes": 8885,
+      "sha256": "753783030fc8bb321d6052ac2da564d46c622d5f8c2338b96ed824cf4aac3dfb",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.privacy-export.json",
+      "bytes": 915,
+      "sha256": "ce6ddfee8f22ad309da2f6f49114aae6710f3952f4e8e950b1a9e0c01e80414e",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.request.jsonl",
+      "bytes": 14043,
+      "sha256": "20e171f63defaa23481c780e652ffbeef805ea88bb589c70e10dd8a66f9c8fa4",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.public.response.jsonl",
+      "bytes": 2804021,
+      "sha256": "081707f30bd1704685fbb532aced2b3c4df0caefde4a34eecc4c206edc25ea8f",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.self-review.json",
+      "bytes": 3763,
+      "sha256": "a4078df3b325c108f851bd8564ed4fb353a69e47d5a4fd01906d206de96f4bdb",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.verdict.json",
+      "bytes": 43310,
+      "sha256": "8d90beb49c6f1af30d173a82fb1daeff87632605a48b2c8dd26c67cb1ade7b4f",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "sourcePath": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.privacy-export.json",
+      "bytes": 916,
+      "sha256": "85859637058895be5602987cdb7ba54aa5eab6d352467bce884f361568d21d60",
+      "kind": "admin-pwa-review-retained"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "sourcePath": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.request.jsonl",
+      "bytes": 8351,
+      "sha256": "74ff76ae535947bd475f8cf82bbc02210b49683de28c4ba9d7281ef63bffb4a1"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "sourcePath": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.public.response.jsonl",
+      "bytes": 1969164,
+      "sha256": "e64e40bdcab2d805933d9dd56bf4b34a1afd2366fdfcac606974d5d4b80d44ef"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "sourcePath": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.self-review.json",
+      "bytes": 4289,
+      "sha256": "3964aa07b06a978871aaebf114f3d3b7b68332a2cb7025dbd311e20642176b45"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "sourcePath": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.verdict.json",
+      "bytes": 50622,
+      "sha256": "f94cf1bf0961bfbea310c31597bf18327b1d13103d30f49bc05d6d27c8ff9feb"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "sourcePath": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.privacy-export.json",
+      "bytes": 916,
+      "sha256": "0c8fc50889313032704bf68395f225287d872defdfc983e901d7535dccb69713"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 10852,
+      "sourcePath": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.request.jsonl",
+      "sha256": "fae5341693576c289f58be4fd3e128f22f0727012ecd0e2e589116b00f3c6abf"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 2206738,
+      "sourcePath": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.public.response.jsonl",
+      "sha256": "8cb7fde834584ae268f5e630e03af799362a934f2433eb2f62724a9bfecdeb59"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 7925,
+      "sourcePath": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.self-review.json",
+      "sha256": "1aa578ba21da068d2a6878e8d540946d4dcb4aaca7bf9c0ac58d3c7e5085342e"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 52743,
+      "sourcePath": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.verdict.json",
+      "sha256": "3db0a8433db1e0c763f28ba4c876ab41bca6efc532984036e0f1c5cb2e50ba7c"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 916,
+      "sourcePath": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.privacy-export.json",
+      "sha256": "8afc5eb60ce8d5e2851bf822d3eb205446a92a4eaae5962e725dba3405b21f33"
+    },
+    {
+      "sha256": "a86267aff2c6cdd3b79707089031f762286219c1ba738a6ce1a4377c408b2d7c",
+      "sourcePath": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl",
+      "kind": "admin-pwa-review-retained",
+      "bytes": 10093
+    },
+    {
+      "sha256": "5285fc7dd601f9f059e1922b2f583a2ffbeaab708f1febd9e2dd2f5e2fbde8fe",
+      "sourcePath": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.public.response.jsonl",
+      "kind": "admin-pwa-review-retained",
+      "bytes": 1526359
+    },
+    {
+      "sha256": "13548931828b899f0e7e61a5a5922919168407b3ef578d18cb9ad4c7fcb405bf",
+      "sourcePath": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.self-review.json",
+      "kind": "admin-pwa-review-retained",
+      "bytes": 3465
+    },
+    {
+      "sha256": "36fd4817e66f96137f8668ea64086764799090d83f01795757ea16dcdc57c4b3",
+      "sourcePath": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.verdict.json",
+      "kind": "admin-pwa-review-retained",
+      "bytes": 36436
+    },
+    {
+      "sha256": "ba37707666f1e7574dbe3ed53d9f864c192cb2124f7cfd4a655bee8a2f250cb9",
+      "sourcePath": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.privacy-export.json",
+      "kind": "admin-pwa-review-retained",
+      "bytes": 916
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 15320,
+      "sha256": "9f5fed4cf095ed80ff32cc32e3619fd932ca183878c32c7b93a87c51d7e8a758",
+      "sourcePath": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.request.jsonl"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 1728209,
+      "sha256": "ac77b19dfe21c3be2436a17268814ddaad0db15f0de5a452aec6120fe3fe98d7",
+      "sourcePath": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.public.response.jsonl"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 13197,
+      "sha256": "b82d6fd3ef99c582b60d0c2d2ae56f62e40e515f957524b841516b1edfcebe9e",
+      "sourcePath": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.self-review.json"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 51099,
+      "sha256": "c35328448c4bb34d981a1ca25d589e670393b0f516a5f86e5fc84c55a8e9a2d2",
+      "sourcePath": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.verdict.json"
+    },
+    {
+      "kind": "admin-pwa-review-retained",
+      "bytes": 916,
+      "sha256": "c7f973b2b7187d063e86f69c66eca9048b48dac7f145b3f4667124b9e0a3cc45",
+      "sourcePath": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.privacy-export.json"
     }
   ],
   "coverage": [
@@ -1160,6 +1370,26 @@
       "at": "2026-10-27T22:10:13.927864-05:00",
       "priorIndexSha256": "37405ce7f32fe1d7b787db23b49ee0ee0d1fd5e765ba8fa6f4148a18030e1e1a",
       "reason": "Append all3 scoped artwork review rounds, including superseded/rejected findings, twelve-asset source evidence and final bounded verification logs."
+    },
+    {
+      "priorIndexSha256": "1c72a2c8b65d906dd1fddffa467b21f38eca31c0ca639adbf1d1d3b687f1b70e",
+      "reason": "Retain source review round four, including the rejected verdict and sanitized response.",
+      "at": "2026-10-29T09:36:32"
+    },
+    {
+      "at": "2026-10-29T10:15:20",
+      "priorIndexSha256": "cd99efb5992cc3825b57c3adb7bdad0d90c188d7920f007690de416a02df6e8f",
+      "reason": "Retain source review round five, including the rejected verdict and sanitized response."
+    },
+    {
+      "reason": "Index retained round-two review request, response, verdict and privacy receipt.",
+      "at": "2026-10-29T10:24:41",
+      "priorIndexSha256": "7b070a8a1a76cee529f48e7b658793b34fcd0a8a719b724484e7396bd6074e64"
+    },
+    {
+      "reason": "Index retained round-six review request, response, verdict and privacy receipt.",
+      "priorIndexSha256": "96c43177b70fe8d6bdef8113fcc0f7fb4a799e18ec8689813b129eaad96a48a4",
+      "at": "2026-10-29T11:18:22"
     }
   ],
   "currentUiDisposition": "UI implementation approved99/99 at manifest2728c24a17214fa06d1e4de9af4742f1a466ba736e922e88bb6a6c932784b0f8; wiki publication and contest/liveUI obligations separately pending.",

@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-10-30T15:50:01",
+  "scope": "Read-only backup connectivity prerequisite. No database export, restore or new credential created.",
+  "observations": [
+    {
+      "environment": "staging",
+      "projectReference": "jshjkaigwbxsbnnogfxs",
+      "hostName": "db.jshjkaigwbxsbnnogfxs.supabase.co",
+      "port": 5432,
+      "sslMode": "verify-full",
+      "caSha256": "700723581420DD1AC98FD7E9AC529F0EF210EADCAF87FC868A3AD7D114C2F3B7",
+      "startedAt": "2026-10-30T15:50:01",
+      "finishedAt": "2026-10-30T15:50:01",
+      "exitCode": 2,
+      "output": "",
+      "error": "psql: error: connection to server at \"db.jshjkaigwbxsbnnogfxs.supabase.co\" (2600:1f18:38df:9501::5fa6), port 5432 failed: Network is unreachable\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+      "passwordPrinted": false,
+      "passwordInArguments": false,
+      "mutation": false
+    },
+    {
+      "environment": "production",
+      "projectReference": "krdcuuhcynmdfcjlpbsf",
+      "hostName": "db.krdcuuhcynmdfcjlpbsf.supabase.co",
+      "port": 5432,
+      "sslMode": "verify-full",
+      "caSha256": "700723581420DD1AC98FD7E9AC529F0EF210EADCAF87FC868A3AD7D114C2F3B7",
+      "startedAt": "2026-10-30T15:50:01",
+      "finishedAt": "2026-10-30T15:50:01",
+      "exitCode": 2,
+      "output": "",
+      "error": "psql: error: connection to server at \"db.krdcuuhcynmdfcjlpbsf.supabase.co\" (2600:1f18:3036:4e00:4f29:e90e:6fa9:2303), port 5432 failed: Network is unreachable\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+      "passwordPrinted": false,
+      "passwordInArguments": false,
+      "mutation": false
+    }
+  ]
+}

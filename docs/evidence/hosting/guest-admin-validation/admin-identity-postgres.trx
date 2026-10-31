@@ -1,0 +1,98 @@
+<TestRun id="6797305b-72a3-4106-a613-b44d0dc3c17f" name="JUnit adapter: admin-identity-postgres.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times start="2026-10-28T19:56:29.1088867-05:00" finish="2026-10-28T19:56:29.1088867-05:00" creation="2026-10-28T19:56:29.1088867-05:00" queuing="2026-10-28T19:56:29.1088867-05:00" />
+  <Results>
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: configured root grants and revokes roles with canonical retries, fresh directory authorization, bounded private projections and protected configuration" executionId="f09201b1-e615-418c-b3a1-2f6cbc10bd16" testId="71f85764-a0bd-cccb-474a-6893adf4d29c" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="f09201b1-e615-418c-b3a1-2f6cbc10bd16" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0517822" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: concurrent administrators cannot cross-revoke every administrator or replay grants after losing authority" executionId="f0cf623d-785c-427b-9c88-cd7a6e70f91b" testId="72d77baf-552a-7b43-602d-dac2b316cb20" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="f0cf623d-785c-427b-9c88-cd7a6e70f91b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0418608" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: role and canonical records roll back together when the audit insert fails" executionId="b25065dc-eb66-4229-b86f-5909c08bbcaf" testId="0e9f5a01-7c98-7662-7575-70023612904a" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="b25065dc-eb66-4229-b86f-5909c08bbcaf" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0148962" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: browser database roles cannot read ACL tables or invoke privileged functions" executionId="4cfa4ae4-25c6-4e2b-b607-f9ccaf0a0296" testId="3291dc17-dc1f-5582-5ac9-c77253a6fa52" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="4cfa4ae4-25c6-4e2b-b607-f9ccaf0a0296" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0058895" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: editorial revisions preserve exact historical records, never resurrect excluded older versions, and reject unauthorized/stale saves" executionId="85e0331b-268f-434d-9e53-f217e46a3a99" testId="4481a44b-8a73-1995-ef78-c168705d361e" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="85e0331b-268f-434d-9e53-f217e46a3a99" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.1218025" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: a content writer waiting behind revocation reloads roles after the shared ACL lock" executionId="37eb53af-7c84-4429-bb8d-ecde45822150" testId="bda027c3-1a07-bf80-f066-8727ec7b2ffb" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="37eb53af-7c84-4429-bb8d-ecde45822150" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0363540" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available" executionId="975e30d7-e23b-415e-8a59-dfda8aa37f9f" testId="0282b240-c486-2255-e933-57800156d228" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="975e30d7-e23b-415e-8a59-dfda8aa37f9f" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:01.6281779" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL" executionId="3c5a6815-157f-4c60-be60-253306ddb084" testId="b5483cd8-652a-3ff7-a231-41461c612199" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="3c5a6815-157f-4c60-be60-253306ddb084" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.1811360" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/admin.integration.ts :: UI review status migration, one-open SQL uniqueness, atomic revision audits and canonical retries" executionId="46bc2a44-5492-40a7-838d-aa709b6dfe3a" testId="07082f8b-444a-1d49-ee2f-570be7abad4b" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="46bc2a44-5492-40a7-838d-aa709b6dfe3a" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.1768699" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/identity.integration.ts :: TR identity/session persistence through actual service-role RPCs &gt; restores a browser guest after session expiry, isolates a cleared browser, and serializes concurrent first entry" executionId="76879825-610c-421c-b362-71ecb836c3d7" testId="e0392454-162d-2fae-da2c-e92a5af1b228" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="76879825-610c-421c-b362-71ecb836c3d7" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0660160" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/identity.integration.ts :: TR identity/session persistence through actual service-role RPCs &gt; persists icon/opt-in/generated alias using the canonical command transaction, then replays and rejects conflicts" executionId="5479df74-a197-4284-9d56-b3786549c6a3" testId="1585d58e-5cf8-9dd0-9ba0-72039e8d473b" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="5479df74-a197-4284-9d56-b3786549c6a3" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0195601" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/identity.integration.ts :: TR identity/session persistence through actual service-role RPCs &gt; consumes browser-bound OIDC state once, associates only verified issuer/subject and never links the guest" executionId="75424f2e-9857-424d-b56e-6b61402555b3" testId="b208432e-4643-4f14-2c4b-0d1b7dee42b0" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="75424f2e-9857-424d-b56e-6b61402555b3" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0168477" />
+    <UnitTestResult computerName="[PRIVATE HOST]" testName="tests/integration/identity.integration.ts :: TR identity/session persistence through actual service-role RPCs &gt; does not establish a member when the provider rejects the token" executionId="bb59c86d-d9a3-403c-b986-bfaf7f01bf17" testId="6c84c622-c3d8-1d2e-a833-c973f19c3e77" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" relativeResultsDirectory="bb59c86d-d9a3-403c-b986-bfaf7f01bf17" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0026221" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest id="71f85764-a0bd-cccb-474a-6893adf4d29c" name="configured root grants and revokes roles with canonical retries, fresh directory authorization, bounded private projections and protected configuration" storage="tests/integration/admin.integration.ts">
+      <Execution id="f09201b1-e615-418c-b3a1-2f6cbc10bd16" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="configured root grants and revokes roles with canonical retries, fresh directory authorization, bounded private projections and protected configuration" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="72d77baf-552a-7b43-602d-dac2b316cb20" name="concurrent administrators cannot cross-revoke every administrator or replay grants after losing authority" storage="tests/integration/admin.integration.ts">
+      <Execution id="f0cf623d-785c-427b-9c88-cd7a6e70f91b" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="concurrent administrators cannot cross-revoke every administrator or replay grants after losing authority" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="0e9f5a01-7c98-7662-7575-70023612904a" name="role and canonical records roll back together when the audit insert fails" storage="tests/integration/admin.integration.ts">
+      <Execution id="b25065dc-eb66-4229-b86f-5909c08bbcaf" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="role and canonical records roll back together when the audit insert fails" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="3291dc17-dc1f-5582-5ac9-c77253a6fa52" name="browser database roles cannot read ACL tables or invoke privileged functions" storage="tests/integration/admin.integration.ts">
+      <Execution id="4cfa4ae4-25c6-4e2b-b607-f9ccaf0a0296" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="browser database roles cannot read ACL tables or invoke privileged functions" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="4481a44b-8a73-1995-ef78-c168705d361e" name="editorial revisions preserve exact historical records, never resurrect excluded older versions, and reject unauthorized/stale saves" storage="tests/integration/admin.integration.ts">
+      <Execution id="85e0331b-268f-434d-9e53-f217e46a3a99" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="editorial revisions preserve exact historical records, never resurrect excluded older versions, and reject unauthorized/stale saves" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="bda027c3-1a07-bf80-f066-8727ec7b2ffb" name="a content writer waiting behind revocation reloads roles after the shared ACL lock" storage="tests/integration/admin.integration.ts">
+      <Execution id="37eb53af-7c84-4429-bb8d-ecde45822150" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="a content writer waiting behind revocation reloads roles after the shared ACL lock" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="0282b240-c486-2255-e933-57800156d228" name="4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available" storage="tests/integration/admin.integration.ts">
+      <Execution id="975e30d7-e23b-415e-8a59-dfda8aa37f9f" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="b5483cd8-652a-3ff7-a231-41461c612199" name="real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL" storage="tests/integration/admin.integration.ts">
+      <Execution id="3c5a6815-157f-4c60-be60-253306ddb084" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="real HTTP composition isolates guest privileges and authenticates only the fixed GitHub owner against PostgreSQL" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="07082f8b-444a-1d49-ee2f-570be7abad4b" name="UI review status migration, one-open SQL uniqueness, atomic revision audits and canonical retries" storage="tests/integration/admin.integration.ts">
+      <Execution id="46bc2a44-5492-40a7-838d-aa709b6dfe3a" />
+      <TestMethod codeBase="tests/integration/admin.integration.ts" name="UI review status migration, one-open SQL uniqueness, atomic revision audits and canonical retries" className="tests/integration/admin.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="e0392454-162d-2fae-da2c-e92a5af1b228" name="TR identity/session persistence through actual service-role RPCs &gt; restores a browser guest after session expiry, isolates a cleared browser, and serializes concurrent first entry" storage="tests/integration/identity.integration.ts">
+      <Execution id="76879825-610c-421c-b362-71ecb836c3d7" />
+      <TestMethod codeBase="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; restores a browser guest after session expiry, isolates a cleared browser, and serializes concurrent first entry" className="tests/integration/identity.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="1585d58e-5cf8-9dd0-9ba0-72039e8d473b" name="TR identity/session persistence through actual service-role RPCs &gt; persists icon/opt-in/generated alias using the canonical command transaction, then replays and rejects conflicts" storage="tests/integration/identity.integration.ts">
+      <Execution id="5479df74-a197-4284-9d56-b3786549c6a3" />
+      <TestMethod codeBase="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; persists icon/opt-in/generated alias using the canonical command transaction, then replays and rejects conflicts" className="tests/integration/identity.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="b208432e-4643-4f14-2c4b-0d1b7dee42b0" name="TR identity/session persistence through actual service-role RPCs &gt; consumes browser-bound OIDC state once, associates only verified issuer/subject and never links the guest" storage="tests/integration/identity.integration.ts">
+      <Execution id="75424f2e-9857-424d-b56e-6b61402555b3" />
+      <TestMethod codeBase="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; consumes browser-bound OIDC state once, associates only verified issuer/subject and never links the guest" className="tests/integration/identity.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+    <UnitTest id="6c84c622-c3d8-1d2e-a833-c973f19c3e77" name="TR identity/session persistence through actual service-role RPCs &gt; does not establish a member when the provider rejects the token" storage="tests/integration/identity.integration.ts">
+      <Execution id="bb59c86d-d9a3-403c-b986-bfaf7f01bf17" />
+      <TestMethod codeBase="tests/integration/identity.integration.ts" name="TR identity/session persistence through actual service-role RPCs &gt; does not establish a member when the provider rejects the token" className="tests/integration/identity.integration.ts" adapterTypeName="JUnit-to-TRX explicit result adapter" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="f09201b1-e615-418c-b3a1-2f6cbc10bd16" testId="71f85764-a0bd-cccb-474a-6893adf4d29c" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="f0cf623d-785c-427b-9c88-cd7a6e70f91b" testId="72d77baf-552a-7b43-602d-dac2b316cb20" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="b25065dc-eb66-4229-b86f-5909c08bbcaf" testId="0e9f5a01-7c98-7662-7575-70023612904a" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="4cfa4ae4-25c6-4e2b-b607-f9ccaf0a0296" testId="3291dc17-dc1f-5582-5ac9-c77253a6fa52" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="85e0331b-268f-434d-9e53-f217e46a3a99" testId="4481a44b-8a73-1995-ef78-c168705d361e" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="37eb53af-7c84-4429-bb8d-ecde45822150" testId="bda027c3-1a07-bf80-f066-8727ec7b2ffb" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="975e30d7-e23b-415e-8a59-dfda8aa37f9f" testId="0282b240-c486-2255-e933-57800156d228" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="3c5a6815-157f-4c60-be60-253306ddb084" testId="b5483cd8-652a-3ff7-a231-41461c612199" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="46bc2a44-5492-40a7-838d-aa709b6dfe3a" testId="07082f8b-444a-1d49-ee2f-570be7abad4b" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="76879825-610c-421c-b362-71ecb836c3d7" testId="e0392454-162d-2fae-da2c-e92a5af1b228" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="5479df74-a197-4284-9d56-b3786549c6a3" testId="1585d58e-5cf8-9dd0-9ba0-72039e8d473b" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="75424f2e-9857-424d-b56e-6b61402555b3" testId="b208432e-4643-4f14-2c4b-0d1b7dee42b0" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="bb59c86d-d9a3-403c-b986-bfaf7f01bf17" testId="6c84c622-c3d8-1d2e-a833-c973f19c3e77" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="JUnit cases" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters completed="13" inconclusive="0" passedButRunAborted="0" executed="13" error="0" disconnected="0" inProgress="0" notRunnable="0" passed="13" aborted="0" failed="0" pending="0" notExecuted="0" total="13" timeout="0" />
+    <RunInfos>
+      <RunInfo computerName="[PRIVATE HOST]" timestamp="2026-10-28T19:56:29.1088867-05:00" outcome="Completed">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/hosting/guest-admin-validation/admin-identity-postgres.xml; SHA256=89A774740D2FE3BF06C3A74F4A0A1FB4D505526311EBCA6457F5A154211C8649; reviewed revision=437c501c58c7dfa96ee576f445d225f2dd62a0bd</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

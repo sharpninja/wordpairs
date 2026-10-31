@@ -1,0 +1,304 @@
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+BEGIN
+CREATE SCHEMA
+REVOKE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+DO
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+COMMIT
+BEGIN
+CREATE INDEX
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+INSERT 0 2
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+DO
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+COMMIT
+BEGIN
+INSERT 0 1
+ALTER TABLE
+CREATE INDEX
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+CREATE FUNCTION
+REVOKE
+GRANT
+BEGIN
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+COMMIT
+BEGIN
+ALTER TABLE
+ALTER TABLE
+DROP INDEX
+CREATE INDEX
+COMMIT
+BEGIN
+CREATE FUNCTION
+UPDATE 1
+COMMIT
+INSERT 0 26
+DO
+BEGIN
+CREATE FUNCTION
+CREATE TRIGGER
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+REVOKE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+COMMIT
+DO
+INSERT 0 1
+DO
+DO
+INSERT 0 1
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 2
+INSERT 0 2
+
+DO
+Phase 1 transaction/RLS/idempotency/rollback/retention checks passed
+SET
+replayed
+RESET
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/integration/multiplayer.integration.ts [2m([22m[2m14 tests[22m[2m)[22m[33m 68825[2mms[22m[39m
+   [32m✓[39m complete multiplayer games on real PostgreSQL [2m(14)[22m
+     [33m[2m✓[22m[39m 2 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 981[2mms[22m[39m
+     [33m[2m✓[22m[39m 3 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1195[2mms[22m[39m
+     [33m[2m✓[22m[39m 4 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 1576[2mms[22m[39m
+     [33m[2m✓[22m[39m 5 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2073[2mms[22m[39m
+     [33m[2m✓[22m[39m 6 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 2654[2mms[22m[39m
+     [33m[2m✓[22m[39m 7 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3382[2mms[22m[39m
+     [33m[2m✓[22m[39m 8 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 3937[2mms[22m[39m
+     [33m[2m✓[22m[39m 9 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5076[2mms[22m[39m
+     [33m[2m✓[22m[39m 10 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 5977[2mms[22m[39m
+     [33m[2m✓[22m[39m 11 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 6672[2mms[22m[39m
+     [33m[2m✓[22m[39m 12 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 7641[2mms[22m[39m
+     [33m[2m✓[22m[39m 13 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 8436[2mms[22m[39m
+     [33m[2m✓[22m[39m 14 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 9187[2mms[22m[39m
+     [33m[2m✓[22m[39m 15 players finish eight rounds with isolated sessions, concurrent submissions and exactly-once awards[33m 9810[2mms[22m[39m
+ [32m✓[39m tests/integration/capacity.integration.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 5321[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries[33m 410[2mms[22m[39m
+   [33m[2m✓[22m[39m CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards[33m 4655[2mms[22m[39m
+ [32m✓[39m tests/integration/admin.integration.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 2152[2mms[22m[39m
+   [33m[2m✓[22m[39m 4096 to 4097 historical versions rejects atomically and keeps existing catalog lookups available[33m 1464[2mms[22m[39m
+ [32m✓[39m tests/integration/content.integration.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 994[2mms[22m[39m
+ [32m✓[39m tests/integration/matches.integration.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 737[2mms[22m[39m
+ [32m✓[39m tests/integration/lobby.integration.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 394[2mms[22m[39m
+ [32m✓[39m tests/integration/reactions.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 256[2mms[22m[39m
+ [32m✓[39m tests/integration/rooms.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 190[2mms[22m[39m
+ [32m✓[39m tests/integration/identity.integration.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 129[2mms[22m[39m
+ [32m✓[39m tests/integration/public-read.integration.ts [2m([22m[2m1 test[22m[2m)[22m[32m 82[2mms[22m[39m
+ [32m✓[39m tests/integration/live-postgres.integration.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 82[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+[2m      Tests [22m [1m[32m63 passed[39m[22m[90m (63)[39m
+[2m   Start at [22m 17:48:06
+[2m   Duration [22m 81.18s[2m (tests 99%, import 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-cca320b/realtime/postgres.xml
+CREATE ROLE
+CREATE ROLE
+GRANT ROLE
+CREATE SCHEMA
+CREATE SCHEMA
+ALTER ROLE
+CREATE FUNCTION
+CREATE FUNCTION
+NOTICE:  policy "wordpairs_own_notifications" for relation "realtime.messages" does not exist, skipping
+BEGIN
+ALTER TABLE
+DROP POLICY
+CREATE POLICY
+COMMIT
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/integration/transport.realtime.integration.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 5885[2mms[22m[39m
+   [33m[2m✓[22m[39m TR Realtime rejects a private subscription to another profile’s channel[33m 5097[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 17:49:34
+[2m   Duration [22m 6.12s[2m (tests 98%, import 1%)[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-cca320b/realtime/realtime.xml
+PASS: TR-31 migration, direct-role denial, canonical retry/conflict, durable outbox, rollback fault, and concurrent final-seat checks

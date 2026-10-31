@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-30T15:52:53",
+  "startedAt": "2026-10-30T15:52:52.4077194-05:00",
+  "finishedAt": "2026-10-30T15:52:53.2421988-05:00",
+  "exitCode": 0,
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/integration/capacity-cleanup.test.ts",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/mock-20261030T155252/mock.xml"
+  ],
+  "cases": 8,
+  "failedOrSkipped": 0,
+  "testSha256": "623E9203EDC7DB6632F517573954519DB3F8B3337457396B3A28F6E51F8736A8",
+  "oracleSha256": "25F6CE99016A3A99E214460D8E406684E0A6F3F23F4EBB28E862BB6E8AD0F989",
+  "helperNotPresent": true,
+  "nativeSha256": "11D8BF35F4E8A3D3A0E9569ED28B1904112C1E5769D8E0887A211326C357287B",
+  "qualification": "Eight passing controls include independently specified correct success/failure and expected rejections for absent cleanup, outsider deletion/content mutation, leaked pool, hidden error and vacuous ownership."
+}

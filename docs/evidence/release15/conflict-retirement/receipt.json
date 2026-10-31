@@ -1,0 +1,146 @@
+{
+  "recordedAt": "2026-10-30T19:25:21",
+  "classification": "Authorized test-harness repair, same-family isolated proof, not hostile approval",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261031T001418Z-conflict-retirement-repair",
+  "baseRevision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+  "dirtySourceQualified": true,
+  "mock": {
+    "skipped": 0,
+    "finished": "2026-10-30T19:20:56",
+    "failed": 0,
+    "cases": 162,
+    "negativeControls": 81,
+    "started": "2026-10-30T19:20:55"
+  },
+  "real": {
+    "skipped": 0,
+    "finished": "2026-10-30T19:23:32",
+    "failed": 0,
+    "cases": 162,
+    "negativeControls": 81,
+    "started": "2026-10-30T19:23:30"
+  },
+  "newCases": 38,
+  "retainedPriorCases": 124,
+  "sourcePins": [
+    {
+      "path": "tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1"
+    },
+    {
+      "path": "tests/browser/ui-command-retirement.test.ts",
+      "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460"
+    }
+  ],
+  "sameOracle": [
+    {
+      "path": "ui-command-retirement.contract.ts",
+      "mockSha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "realSha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "identical": true,
+      "currentMatches": true
+    },
+    {
+      "path": "ui-command-retirement.test.ts",
+      "mockSha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "realSha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "identical": true,
+      "currentMatches": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/plan.md",
+      "sha256": "0FBAAFE62A7B4C718E9CE854A7532536B234DC83F7EE69CF7E3343C3CAD848A3"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/effective-requirements.json",
+      "sha256": "E79DEFEA5BF99BE97FB2BA1B0BCFBC926023F1F00EEF3AF4B12469E85EBD0BC7"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/source-check.json",
+      "sha256": "7003E8594956EB4DE401DC8F4232423EFD2EFBCAF874A79A693B66B90A17610A"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/source-check-producer.ps1",
+      "sha256": "6ED8681EDAB551709360380B4C3DB2350D2CD542D4829BCF1524B6A84C498533"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/receipt.json",
+      "sha256": "7F3DBD3328028E9680D3518021F834406B069528486A439FFF71809A918C5C55"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/unit.xml",
+      "sha256": "24D0884A236F5FFDC27F8B91B604FE5746F37FDEA64BA9F304723551D27548C4"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/unit.log",
+      "sha256": "590435C8203D71470DB8103F08637306A1BB3F22182BC0366FB96DF7D9F36D6A"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/producer.ps1",
+      "sha256": "0CEF8C00E2E7B9C567E361FE18954DB814843896CEEC7E0905CC200738A7BCC8"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/receipt.json",
+      "sha256": "83FA4D5B553E1A427B886D87AF914DAB27FE40CA543116A76D18345820F8BED4"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/unit.xml",
+      "sha256": "BDF42C1FBD2770412DFFCDE1F03F3ACC1283B26775ACE9FAE094DC506AF8900A"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/unit.log",
+      "sha256": "0A4EEEEF997CE3E0E37D26E0649F6AA80768B332B35A0AE7F30A1B3F8D275418"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/real-20261030T192330/producer.ps1",
+      "sha256": "0CEF8C00E2E7B9C567E361FE18954DB814843896CEEC7E0905CC200738A7BCC8"
+    }
+  ],
+  "priorAssertionPreservation": "Original124 assertions/inputs retained. Existing AckMode and retired callback parameter types extended; old independent provider forwards response at its two existing retired call sites. These two files are not claimed byte-identical.",
+  "chronology": "Plan initially named18 pairs; parent/capacity requested busy fresh guard and started-probe ownership plus combined-error preservation. Actual tests added19 pairs before first green mock, while protected five implementation/type/adaptor pins remained frozen. Plan count reconciled afterward before real helper edit. All native histories preserved.",
+  "intermediateTypecheckFailures": 4,
+  "finalTypecheckExit": 0,
+  "scopedBiomeExit": 0,
+  "scopedBiomeWarnings": 15,
+  "scopedDiffExit": 0,
+  "failedMatrixPreserved": "frozen-af6ee6f actual2passed,1failed at4players round3/11driver-result solves,11skipped. This isolated repair does not supersede or hide that failure.",
+  "knownCausality": "Native stack proves fresh-mode retirement mismatch; final snapshots do not show the transient throwing state. No application/network/load/latency cause or fix established.",
+  "runtimeLimits": "Scripted probe/until/classifier/commit composition is tested; real readCommandUi DOM extraction, Playwright polling deadline behavior and browser adapter wiring need the next frozen actual UI runs. No game/schema/dependency/policy/cap/timeouts changed. Strict remains fail-only success acknowledgement/four conflicts; matrix retains12attempts. Unknown fresh pending remains rejected even while busy. Retire checks actual409 then waits idle/pending-free/version without replay.",
+  "observationLimits": "New409 observations preserve exact CapturedCommand/Request in the isolated oracle. Actual artifacts reuse safe player-index and UUID/action/status/version state fields, with null conflict responseVersion. A classifier failure may occur before a callback records its state. No answer/raw payload/token persistence or historical actor inference.",
+  "rootRequiredNext": "Freeze current test source and run complete required five-lane chain; inspect actual UI/latency and all native evidence; only then eligible independent ClineBeamHigh review. No status/satisfaction changes.",
+  "requirementsMutated": false,
+  "applicationSourceEdited": false,
+  "actualUiBuildModelsProvidersRunByThisAgent": false,
+  "accuracy": 99,
+  "completeness": 98,
+  "ratingQualification": "Scoped isolated repair evidence and source readback only, not release acceptance."
+}

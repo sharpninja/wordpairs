@@ -1,0 +1,51 @@
+#Requires -Version 7.0
+[CmdletBinding(SupportsShouldProcess)]
+param()
+$ErrorActionPreference='Stop'
+$repo='<repo>'
+$folder=Join-Path $repo 'docs/evidence/release15/cline-progress-helper'
+$root='<home>/.codex/plugins/cache/mcpserver-codex-plugin/mcpserver/1.121.0'
+$cache='/tmp/wordpairs-capacity15-codex-cache'
+$own=Get-Content -LiteralPath '/tmp/wordpairs-cline-progress-turn.json' -Raw | ConvertFrom-Json -AsHashtable
+$fixture=Get-Content -LiteralPath (Join-Path $folder 'fixture-result.json') -Raw | ConvertFrom-Json -AsHashtable
+$before=Get-Content -LiteralPath (Join-Path $folder 'source-pins-before.json') -Raw | ConvertFrom-Json -AsHashtable
+function Get-Pin {param([string]$Path) [ordered]@{path=$Path;sha256=(Get-FileHash -LiteralPath $Path).Hash;bytes=(Get-Item -LiteralPath $Path).Length}}
+function Invoke-OwnPlugin {
+ param([string]$Method,[hashtable]$Parameters)
+ $r=& (Join-Path $root 'Invoke-CodexMcpPlugin.ps1') -Command Invoke -WorkspacePath $repo -CacheRoot $cache -Method $Method -ParamsObject $Parameters | ConvertFrom-Yaml
+ if($r.type -ne 'result'){throw "Required Codex plugin failure: $Method"}
+ $r.payload.result
+}
+$helper='/tmp/GetWordpairsClineProgress.ps1'
+$fixtureSource='/tmp/Check-WordpairsClineProgressFixture.ps1'
+if((Get-FileHash -LiteralPath $helper).Hash -cne $fixture.helperSha256 -or (Get-FileHash -LiteralPath $fixtureSource).Hash -cne $fixture.fixtureSha256 -or $fixture.passed -ne 24 -or $fixture.failed -ne 0){throw 'Fixture/source binding mismatch'}
+if((Get-FileHash -LiteralPath (Join-Path $folder 'GetWordpairsClineProgress.original.ps1')).Hash -cne '3DD083E247001E242DF59E01016DD26889FC3822FF64EB49F38C9D644DC8E2B8'){throw 'Retained original changed'}
+$checks=@()
+foreach($source in @($helper,$fixtureSource,$PSCommandPath)){
+ $tokens=$null;$errors=$null;[void][Management.Automation.Language.Parser]::ParseFile($source,[ref]$tokens,[ref]$errors)
+ $warnings=@(Invoke-ScriptAnalyzer -Path $source -Severity Warning,Error)
+ if(@($errors).Count -or $warnings.Count){throw ('Operational producer analysis failed: '+$source)}
+ $checks+=[ordered]@{source=$source;parserErrors=0;pssaWarningsErrors=0;sha256=(Get-FileHash -LiteralPath $source).Hash}
+}
+$now=(Get-Date).ToString('o')
+$receipt=[ordered]@{schema='wordpairs-cline-progress-helper-v1';recordedAt=$now;classification='Operator-directed bounded operational helper repair;not product implementation or hostile review';ownSessionId=$own.sessionId;ownRequestId=$own.requestId;parentSessionId=$own.parentSessionId;parentRequestId=$own.parentRequestId;profile=[ordered]@{files=1;globalMemories=9;workspaceMemories=0;excluded='PRIVATE-MEMORY-REFERENCE-007'};originalHelper=Get-Pin (Join-Path $folder 'GetWordpairsClineProgress.original.ps1');updatedHelper=Get-Pin $helper;installedSource=$before;isolatedFixtures=$fixture;scriptChecks=$checks;initialAnalyzerWarnings=[ordered]@{helper=1;fixture=2;resolution='Renamed plural Metadata helper noun to Observation;renamed automatic Event parameter through an alias. Pure in-memory New-AssistantEvent constructor has a written targeted ShouldProcess-rule suppression because it changes no external state. All final Warning/Error diagnostics zero.'};supportedProgress=[ordered]@{legacy='Existing direct numeric pair parsing,including numeric strings,retained unchanged';native='Only agent_event.event with contentType=text,typecontent_start/content_end,text or accumulated fields;structured JSON objects,newlineentries or fenced JSON';excluded='Tool inputs/outputs/updates,tool-marked events,reasoning,notices,other wrappers,nested non-root progress,invalid nested numeric values';output='Numeric completionPercent/etaMinutes,line and fixed source metadata only;activity/arbitrary assistant text is not emitted';semantics='Observed self-reported progress,not verified work completion or an HV verdict. Cumulative events can repeat observations;empty extraction does not prove absence of progress.'};preserved='File bytes,lastWriteTime,line/unparsed counts,event/start/result metadata,legacy directProgress,read-only shared stream access and existing systemctl status call retained';unknowns=@('Actual future reviewer progress formatting remains unobserved;no live helper/stream/model invocation occurred. Unstructured prose/partial chunks without complete accumulated structuredJSON may not be recognized. Existing process-result metadata output remains unchanged.');noModelBuildProductTestsOrProviderInvocation=$true;noLauncherPreparerApplicationOrRequirementChangesByThisAgent=$true;originalStreamMutated=$false;fixturesOnly=$true;counts=[ordered]@{pass=24;fail=0;excludedControls=15;unknown=1};overallVerdict='NOT_HV';accuracy=99;completeness=100;ratingQualification='Bounded operational helper validated against pinned native shapes and15 exclusion controls;actual live stream use and independent review were intentionally not performed.';incident=[ordered]@{triageReportId=$own.triageReportId;triageGroupId=$own.triageGroupId;failure='InitialbeginTurn rejected SubmitAsync with literal transient SQL guidance;normal failsafe copied and triage accepted,replay recovered the samea6a9 request. No outage/rootcause inference or duplicate turn.'}}
+if(-not $PSCmdlet.ShouldProcess($folder,'Retain original/updated helper and fixtures,complete own linked operational turn and prove full readback')){return}
+$copies=@(@{from=$helper;to=(Join-Path $folder 'GetWordpairsClineProgress.updated.ps1')},@{from=$fixtureSource;to=(Join-Path $folder 'Check-WordpairsClineProgressFixture.ps1')},@{from=$PSCommandPath;to=(Join-Path $folder 'receipt-producer.ps1')})
+foreach($copy in $copies){if(Test-Path -LiteralPath $copy.to){throw 'Historical helper/fixture copy overwrite refused'};Copy-Item -LiteralPath $copy.from -Destination $copy.to;if((Get-FileHash -LiteralPath $copy.from).Hash -cne (Get-FileHash -LiteralPath $copy.to).Hash){throw 'Operational evidence copy mismatch'}}
+$path=Join-Path $folder 'receipt.json';if(Test-Path -LiteralPath $path){throw 'Historical receipt overwrite refused'}
+$receipt | ConvertTo-Json -Depth 25 | Set-Content -LiteralPath $path -Encoding utf8NoBOM
+$pins=@(Get-Pin $path;Get-Pin (Join-Path $folder 'fixture-result.json');foreach($copy in $copies){Get-Pin $copy.to})
+$response=$now+' - Operational progress helper updated and isolated fixtures verified;STOPPED before any HV launch.'+"`n"+($receipt | ConvertTo-Json -Depth 25)+"`nPins:`n"+($pins | ConvertTo-Json -Depth 5)
+[void](Invoke-OwnPlugin -Method 'workflow.sessionlog.appendDialog' -Parameters @{dialogItems=@(@{timestamp=$now;role='model';category='observation';content='Literal profile376lines and fresh9Global/0Workspace loaded excludingPROCESS007. Installed Cline3.0.71 native SHA8562EDA5 and sharedtypes9A58347A pin exact agent_event.event wrapper and assistant text/accumulated versus tool/reasoning. Original3DD083E2 helper copied/hashverified and retained. No model or live stream invoked.'},@{timestamp=$now;role='model';category='decision';content='Use exact native assistant path and structured numericJSON only;never traverse tool input/output/update or reasoning. Preserve directProgress parser and existing byte/mtime/statusfacts. Do not equate empty extraction with missing progress,or self-reported percentage with validated work completion. Recognizer can miss prose/partial formats;retainfullstream unchanged.'},@{timestamp=$now;role='model';category='observation';content='Operational fixture gate24pass0fail,including15 excluded-input controls and arbitrary-text sentinel non-leak checks. Actual trusted function extracted byPowerShellAST;fullhelper/main/systemctl/live stream did not execute. Final parser/PSSA0 across helper,fixtures andproducer. Initial analyzer warnings corrected/targetedly justified;no applicationtest/build/HV proof implied.'},@{timestamp=$now;role='model';category='decision';content='Stop afterowncanonicalreadback andstopgate asparent requested. Root must separately decide when the existing source/fullchain gate permitsHV. No launch/preparer/product/requirements/provider change or independent verdict occurs in this operational task.'})})
+$actions=@();$order=1
+foreach($pin in $pins){$actions+=@{order=$order;type='create';status='completed';filePath=[IO.Path]::GetRelativePath($repo,$pin.path);description='Retained operational helper/fixture evidence SHA256 '+$pin.sha256};$order++}
+$actions+=@{order=$order;type='edit';status='completed';filePath=$helper;description='Recognize only numeric structured progress in native assistant event content;retain direct parser and existing metadata;SHA256 '+$fixture.helperSha256};$order++
+$actions+=@{order=$order;type='design_decision';status='completed';filePath=$helper;description='Assistant-only explicit structured recognition;empty extraction remains inconclusive and original stream remains unchanged. This is operational instrumentation,not product/HV acceptance.'}
+[void](Invoke-OwnPlugin -Method 'workflow.sessionlog.appendActions' -Parameters @{actions=$actions})
+[void](Invoke-OwnPlugin -Method 'workflow.sessionlog.completeTurn' -Parameters @{response=$response})
+$history=Invoke-OwnPlugin -Method 'client.SessionLog.QueryAsync' -Parameters @{agent='Codex';limit=40}
+$session=@($history.items | Where-Object sessionId -CEQ $own.sessionId)[0];$turn=@($session.turns | Where-Object requestId -CEQ $own.requestId)[0]
+if($turn.status -cne 'completed' -or $turn.response -cne $response){throw 'Own full canonical operational readback mismatch'}
+$readback=[ordered]@{recordedAt=(Get-Date).ToString('o');sessionId=$own.sessionId;requestId=$own.requestId;parentSessionId=$own.parentSessionId;parentRequestId=$own.parentRequestId;status=$turn.status;fullResponseMatched=$true;response=$turn.response;actions=@($turn.actions).Count;dialogs=@($turn.processingDialog).Count;receiptPins=$pins}
+$readbackPath=Join-Path $folder 'turn-readback.json';$readback | ConvertTo-Json -Depth 30 | Set-Content -LiteralPath $readbackPath -Encoding utf8NoBOM
+[ordered]@{recordedAt=$readback.recordedAt;sessionId=$own.sessionId;requestId=$own.requestId;status=$turn.status;fullResponseMatched=$true;actions=$readback.actions;dialogs=$readback.dialogs;receiptPins=$pins;readback=Get-Pin $readbackPath;counts=$receipt.counts;overallVerdict='NOT_HV';stopped=$true} | ConvertTo-Json -Depth 8

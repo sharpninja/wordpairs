@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-10-31T09:47:19",
+  "sourceRevision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "sessionId": "Codex-20261027T100516Z-plugin-session",
+  "requestId": "req-20261031T142639Z-release-resume",
+  "focusedReceiptSha256": "2C8A912D2D68F8822026B4EEC0D4D602823BD1534CB8ACCBAC7A20E209D469E9",
+  "sourcePinsVerified": 7,
+  "nativePinsVerified": 3,
+  "sourceOwnerCompleted": true,
+  "peerCompleted": true,
+  "copies": [
+    {
+      "relative": "docs/evidence/release15/strict-entry/peer/result.md",
+      "source": "/tmp/wordpairs-entry-oracle-peer-final.md",
+      "sha256": "7995AB51EA4BA7748E54C4375E9A7BFE5766C2D6FE8F20138BA66D5D427217C0"
+    },
+    {
+      "relative": "docs/evidence/release15/strict-entry/peer/canonical-readback.json",
+      "source": "/tmp/wordpairs-entry-oracle-peer-readback.json",
+      "sha256": "CDC4D4452CB5564B9ED6B04E6A22C2694453A7D9CB5430B39E86B9FFD207EB01"
+    },
+    {
+      "relative": "docs/evidence/release15/strict-entry/root-preparation/StartWordpairsStrictDiagnostic.ps1",
+      "source": "/tmp/StartWordpairsStrictDiagnostic.ps1",
+      "sha256": "386F5FACFD1F5C3DDDEE3C7D8F901495A93484BB5C1B1A1FA015996EB04DC2F6"
+    },
+    {
+      "relative": "docs/evidence/release15/strict-entry/root-preparation/UpdateWordpairsReviewForEntry.ps1",
+      "source": "/tmp/UpdateWordpairsReviewForEntry.ps1",
+      "sha256": "FD628482CA34FA640ADD0A5C437484C2F44F117304D6A54D179DA21F70D1CF6A"
+    }
+  ],
+  "originalsRetained": true,
+  "progressAutomation": {
+    "id": "wordpairs-release-progress",
+    "configurationReadBack": true,
+    "status": "ACTIVE",
+    "targetThread": "01a17901-193c-7163-bb57-05a12ae57269",
+    "intervalMinutes": 30
+  },
+  "qualification": "Operational input retention and focused receipt/source identity verification only. Full exact-source diagnostics/validation, independent review, rollout and submission readiness remain pending."
+}

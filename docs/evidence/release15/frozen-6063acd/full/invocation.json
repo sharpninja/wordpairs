@@ -1,0 +1,33 @@
+{
+  "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "reports": [
+    {
+      "name": "full",
+      "kind": "full",
+      "expectedCount": 0,
+      "runId": "d941371c-59de-40e1-875e-5c3b90778adb",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T20:06:01",
+      "finishedAt": "2026-10-30T20:10:26",
+      "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "producerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "scripts/Run-ReviewFullValidation.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full"
+      ],
+      "exitCode": 0,
+      "junit": null,
+      "junitSha256": null,
+      "revision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/full/source-after.json",
+      "sourceAfterFailure": null
+    }
+  ]
+}

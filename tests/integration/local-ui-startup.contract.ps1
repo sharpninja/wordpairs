@@ -1,4 +1,7 @@
 # Fault injection only: fake sibling launcher and Docker; no real services touched.
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidOverwritingBuiltInCmdlets','',Justification='The scoped node and New-Item fakes deliberately inject startup failures without executing the real tools for those calls.')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions','',Justification='The scoped New-Item fake operates only inside the disposable fixture and intentionally injects collisions.')]
+param()
 $ErrorActionPreference='Stop'
 $repo=Split-Path (Split-Path $PSScriptRoot)
 $scratch=Join-Path ([IO.Path]::GetTempPath()) ('wp-ui-startup-'+[Guid]::NewGuid().ToString('N'))

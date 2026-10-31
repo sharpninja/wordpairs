@@ -1,5 +1,10 @@
 # Wordpairs Architecture Design
 
+Current release scope: [guest-only game and owner-only GitHub admin PWA](admin_pwa_release.md). Configure server-only WORDPAIRS_GITHUB_CLIENT_ID/WORDPAIRS_GITHUB_CLIENT_SECRET and the exact canonical origin for administration. Public OpenAI/member sign-in, user delegation, nominations and community-submission UI are inactive. Public pages have no install metadata/controls; admin manifest/worker launch at /admin. Earlier feature counts and provider/delegation instructions below describe their historical snapshots. Current active browser tests use playwright.pwa.config.ts; superseded community cases are retained under docs/testing/historical/.
+
+The [31 October release amendment](release15-completion-plan.md) limits new room capacities and match rosters to 2 through 10 players. The separate limit of 25 observers remains, for at most 35 recipients in a newly admitted room. Preserve historical larger running matches and stored results; above-limit legacy waiting/countdown rooms retain readable membership and Leave, block further oversized admission/start, and explain the compatibility state. Enforce new-write safeguards through a forward migration rather than changing existing migration file bytes or deleting historical data.
+
+
 **Requirements traceability, DDD component split, and design-pattern class views**  
 Version 1.1 · 27 October 2026 · Derived from Requirements v2.6 and the administration/ACL extension
 
@@ -7,9 +12,9 @@ This document maps every baseline functional requirement (FR-01–FR-22) and tec
 
 ## Architecture rules
 
-The [phone PWA extension](pwa_design.md) adds a native Next manifest, original install icons, secure root worker registration and browser-controlled installation guidance. Its worker caches only a self-contained offline document and an explicit public icon allowlist. API/authentication/realtime traffic, mutations and private server-rendered/RSC data stay on the network; navigation failures display reconnect guidance. Updates wait for existing app windows to close. No domain, persistence or authorization rules move into the worker.
+The earlier [phone PWA extension](pwa_design.md) described public installation and a root worker. It is historical for this release; the current [admin-only PWA](admin_pwa_release.md) keeps private API and administration data out of its cache.
 
-The [administration and ACL extension](admin_acl_design.md), requested 27 October 2026, adds `/admin`, `/admin/words`, and `/admin/users`, an explicit permission matrix, server-configured bootstrap administrators, serialized role assignment and immutable pair revisions. It extends the implemented baseline without changing historical phase approval receipts. Identity roles are reloaded server-side; UI visibility is never the permission boundary.
+The historical [administration and ACL extension](admin_acl_design.md), requested 27 October 2026, described `/admin/users`, bootstrap administrators and delegated role assignment. Current administration uses fixed-owner GitHub authorization; role delegation is inactive. UI visibility is never the permission boundary.
 
 - Domain policies contain each business rule once and import no Next.js, React, Supabase, or transport code.
 - Application use cases orchestrate domain decisions and ports; route handlers validate/translate transport input and call use cases.
@@ -89,7 +94,7 @@ The command path validates the command key, locks/reloads the aggregate in one t
 | TR-17 Lobby discovery and matching | Room & Lobby / serialized assignment | `BrowseLobbies`, `QuickMatch`, `JoinRoom`, `RoomRepository`, transaction and capacity constraints |
 | TR-18 Observer perspective and permissions | Room & Lobby / authorization projection | `Observer`, `FollowedPlayerId`, `ObserverProjectionPolicy`, read-only command authorization |
 | TR-19 Emoji reaction delivery | Gameplay / allowlisted event | `EmojiReaction`, `ReactionAllowlist`, `RoomEventPort`, event audience mapper |
-| TR-20 Vercel deployment target | Deployment adapter / platform configuration | Vercel Git integration, Preview/Production environment mapping, build artifact manifest |
+| TR-20 Vercel deployment target | Deployment adapter / platform configuration | Two isolated Vercel projects with production targets, reviewed-SHA staging before production, build artifact manifest |
 | TR-21 Free-tier operation | Infrastructure boundary | `DeploymentConfig`, resource-budget checks, approved service allowlist; no paid add-ons |
 | TR-22 Persistence and real-time room state | Persistence and Realtime adapters | `SupabaseRoomRepository`, `SupabaseMatchRepository`, Postgres, `RoomEventPort` |
 | TR-23 Provisioning and schema changes | Operations adapter | `ProvisioningCommand`, migration runner, environment configurator, safe rerun/idempotency checks |
@@ -120,6 +125,8 @@ The command path validates the command key, locks/reloads the aggregate in one t
 ## Deployment and runtime topology
 
 Vercel hosts the web application selected by the architecture decision record; the selected v2.6 stack is Next.js/TypeScript, recorded in the Phase 0-approved ADR. Supabase Postgres is the durable source of truth; Supabase Realtime transports committed allowlisted outbox events. Domain code stays inside the application modules. A deadline scheduler is accessed through a port and must use a supported free-tier mechanism with durable, idempotent callbacks; a serverless process or browser timer is never treated as the authority. Build and release pipelines validate tests and the commit-matched SWBOM per the technical requirements.
+
+`wordpairs` is logical staging and `wordpairs-j9jf` is production. Each uses its own Vercel production target, stable domain and Supabase database. The same reviewed source must pass staging before production; Git integration must not skip this order. Earlier single-project Preview proposals are historical. The detailed mapping and migration/scheduler checks are in [hosting execution](hosting_execution.md).
 
 ## Open decisions preserved
 

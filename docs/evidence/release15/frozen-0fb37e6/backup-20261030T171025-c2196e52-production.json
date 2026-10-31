@@ -1,0 +1,537 @@
+{
+  "timestamp": "2026-10-30T17:10:25",
+  "runId": "backup-20261030T171025-c2196e52",
+  "environment": "production",
+  "projectReference": "krdcuuhcynmdfcjlpbsf",
+  "scope": "APP/game logical schema+data backup, not full Supabase project backup",
+  "sourceReadOnly": true,
+  "sslMode": "verify-full",
+  "hostedMutation": false,
+  "plaintextDumpFile": false,
+  "schemas": [
+    "wordpairs",
+    "wordpairs_hosting",
+    "public",
+    "supabase_migrations"
+  ],
+  "image": "postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b",
+  "dumpJobs": 1,
+  "restoreJobs": 1,
+  "sourceSessionClient": "psql18.6compatiblewithserver17",
+  "dumpClientMajor": 17,
+  "restoreClientMajor": 17,
+  "cpuLimit": 1,
+  "memoryLimit": "512m",
+  "restoreNetwork": "none",
+  "restoreHostPorts": [],
+  "storage": "tmpfs; this proves logical restore, not disk durability/crash recovery",
+  "recipientPublicSha256": "B97FFDDACA958E2FFFE3A98C10EBC03D5E6B82D535D17AE21E589389E62980A2",
+  "recipientPublicFingerprint": "SHA256:p3N5H4DpEmfWQecPs49ULE8WzGPAJAX1IpkZDv1Z7kg",
+  "identityPath": "\u003Chome\u003E/.ssh/[PRIVATE SSH KEY NAME]_[PRIVATE HOST]",
+  "ageVersion": "1.3.2",
+  "ageBinarySha256": "EB7DD1B518F0A307C99CD97782623C5321DA049154B04ACD2D98D21AA7BC9B2C",
+  "privateBackupPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/production.pgdump.age",
+  "sourceConfigRetained": true,
+  "ownerNormalization": "Restore uses --no-owner into local postgres; role credentials/membership/global attributes are not restored.",
+  "limits": [
+    "Excludes managed auth,storage,Vault contents/keys,cron schedules,net queues,Realtime policies/settings/publications,EdgeFunctions and external OAuth/Vercel settings.",
+    "wordpairs_hosting scheduler definition/state is retained but never invoked on restore; pg_cron/pg_net/Vault require separate managed reprovisioning and purpose-secret configuration.",
+    "Existing private runtime/provider configuration files are preserved at their original locations; no new secret store/key is created and these files are not copied into public evidence.",
+    "Source row fingerprints use one exported read-only REPEATABLE READ snapshot shared with pg_dump. PostgreSQL sequence state is not MVCC; source values must remain stable before/after dump for exact comparison.",
+    "This operator-held local ciphertext is not an independently stored off-site backup and existing SSH private identity must be retained to decrypt it."
+  ],
+  "status": "verified_app_restore",
+  "nativeExitCodes": {
+    "dump": 0,
+    "encrypt": 0,
+    "sourceRead": 0,
+    "decrypt": 0,
+    "restore": 0
+  },
+  "schemaComparisonScope": "Eight projected sections: columns/defaults/types, constraints, indexes, function definition SHA256/security-definer/config, table RLS flags, triggers, policies, and effective relation/function ACL. Namespace ACL/default privileges, standalone view/type/sequence definitions are included by selected-schema pg_dump but are not independently compared by this projection. Object ownership is normalized; global role credentials/membership/settings require separate provisioning.",
+  "producer": {
+    "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+    "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+    "archivedPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/Invoke-WordpairsEncryptedBackup.ps1",
+    "archivedSha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+    "pinnedBeforeHostedRead": true,
+    "originalRetained": true
+  },
+  "caSha256": "700723581420DD1AC98FD7E9AC529F0EF210EADCAF87FC868A3AD7D114C2F3B7",
+  "snapshotId": "00000005-0000048A-1",
+  "sourceServerVersion": "17.11",
+  "sourceTransactionReadOnly": true,
+  "sourceTables": [
+    {
+      "rows": 13,
+      "table": "schema_migrations",
+      "schema": "supabase_migrations",
+      "sha256": "9e96de5e8ac5f1e386af26b23bc6a08a3e970dff839dbe78d27d19f12d302772"
+    },
+    {
+      "rows": 38,
+      "table": "accepted_answers",
+      "schema": "wordpairs",
+      "sha256": "b5fa808bc84496c4b9d66a455ba9b3502bb06b7651a9d97b47ee3e4bb48f9c2c"
+    },
+    {
+      "rows": 0,
+      "table": "access_audit",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "access_commands",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 1,
+      "table": "access_state",
+      "schema": "wordpairs",
+      "sha256": "bf138c3f2bdad12a26691f3d05d10a7b60bf89a572c2c99d8d1f77fecdb94773"
+    },
+    {
+      "rows": 1,
+      "table": "aggregates",
+      "schema": "wordpairs",
+      "sha256": "149604f0979e05d2fcffb4cfa62a683acbbc51da3fea1cad6c2cd0299dfe4a8b"
+    },
+    {
+      "rows": 0,
+      "table": "audit_events",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "catalog_exclusions",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 1,
+      "table": "catalog_revision",
+      "schema": "wordpairs",
+      "sha256": "7d6d57e71ae447c5e943a34a9c869992729b064abc85072fa2285405cd55237d"
+    },
+    {
+      "rows": 6,
+      "table": "categories",
+      "schema": "wordpairs",
+      "sha256": "029397f52be0d7bfd3f2a9db9fecd32fea6f2d3954191b2757efdeab392d4afb"
+    },
+    {
+      "rows": 0,
+      "table": "code_attempts",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "deadline_jobs",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "guest_credentials",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "idempotency_records",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "login_challenges",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "match_players",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "matches",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "moderation_cases",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "nominations",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "outbox_events",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "profile_match_awards",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "profile_roles",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "profiles",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 2,
+      "table": "public_revisions",
+      "schema": "wordpairs",
+      "sha256": "d17e6c0722a120e9693d50e7dc50e283b480cf23908fd281d069d49e57d73cf6"
+    },
+    {
+      "rows": 0,
+      "table": "quick_assignments",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "room_invitations",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "room_members",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "rooms",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "rounds",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "sessions",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "submissions",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 60,
+      "table": "word_pairs",
+      "schema": "wordpairs",
+      "sha256": "bd2928a7b591053ac90588850b4ec82a131ad2e2a85e2113baf7d7ac16ad5ffe"
+    },
+    {
+      "rows": 1,
+      "table": "scheduler",
+      "schema": "wordpairs_hosting",
+      "sha256": "fff4399dd9b04c6928b00085c5b27c43a4facdb3d2b04c2e0fd43536907f00e4"
+    }
+  ],
+  "sourceSequences": [
+    {
+      "schema": "wordpairs",
+      "isCalled": false,
+      "sequence": "access_audit_id_seq",
+      "lastValue": 1
+    },
+    {
+      "schema": "wordpairs",
+      "isCalled": false,
+      "sequence": "code_attempts_id_seq",
+      "lastValue": 1
+    }
+  ],
+  "sourceSchemaSha256": "70AF6FFF55288D49A0D072AAE7A3AF85FBD0F4FC48CB54E792E23E5D01DCCF3E",
+  "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+  "ciphertextSha256": "E954DAB355ED1EB999282C6C9490A420E8935A69ABF8214185881D4A8F1C7CB8",
+  "ciphertextBytes": 195350,
+  "sourceSequenceStable": true,
+  "restoreContainerId": "269ba5c33af7dde42a846bd217ec78c398c9f454b79e7decea9042af6f51ffa9",
+  "restoredSchemaSha256": "70AF6FFF55288D49A0D072AAE7A3AF85FBD0F4FC48CB54E792E23E5D01DCCF3E",
+  "schemaEqual": true,
+  "dataEqual": true,
+  "sequencesEqual": true,
+  "restoredTables": [
+    {
+      "rows": 13,
+      "table": "schema_migrations",
+      "schema": "supabase_migrations",
+      "sha256": "9e96de5e8ac5f1e386af26b23bc6a08a3e970dff839dbe78d27d19f12d302772"
+    },
+    {
+      "rows": 38,
+      "table": "accepted_answers",
+      "schema": "wordpairs",
+      "sha256": "b5fa808bc84496c4b9d66a455ba9b3502bb06b7651a9d97b47ee3e4bb48f9c2c"
+    },
+    {
+      "rows": 0,
+      "table": "access_audit",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "access_commands",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 1,
+      "table": "access_state",
+      "schema": "wordpairs",
+      "sha256": "bf138c3f2bdad12a26691f3d05d10a7b60bf89a572c2c99d8d1f77fecdb94773"
+    },
+    {
+      "rows": 1,
+      "table": "aggregates",
+      "schema": "wordpairs",
+      "sha256": "149604f0979e05d2fcffb4cfa62a683acbbc51da3fea1cad6c2cd0299dfe4a8b"
+    },
+    {
+      "rows": 0,
+      "table": "audit_events",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "catalog_exclusions",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 1,
+      "table": "catalog_revision",
+      "schema": "wordpairs",
+      "sha256": "7d6d57e71ae447c5e943a34a9c869992729b064abc85072fa2285405cd55237d"
+    },
+    {
+      "rows": 6,
+      "table": "categories",
+      "schema": "wordpairs",
+      "sha256": "029397f52be0d7bfd3f2a9db9fecd32fea6f2d3954191b2757efdeab392d4afb"
+    },
+    {
+      "rows": 0,
+      "table": "code_attempts",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "deadline_jobs",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "guest_credentials",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "idempotency_records",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "login_challenges",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "match_players",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "matches",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "moderation_cases",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "nominations",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "outbox_events",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "profile_match_awards",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "profile_roles",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "profiles",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 2,
+      "table": "public_revisions",
+      "schema": "wordpairs",
+      "sha256": "d17e6c0722a120e9693d50e7dc50e283b480cf23908fd281d069d49e57d73cf6"
+    },
+    {
+      "rows": 0,
+      "table": "quick_assignments",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "room_invitations",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "room_members",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "rooms",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "rounds",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "sessions",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 0,
+      "table": "submissions",
+      "schema": "wordpairs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "rows": 60,
+      "table": "word_pairs",
+      "schema": "wordpairs",
+      "sha256": "bd2928a7b591053ac90588850b4ec82a131ad2e2a85e2113baf7d7ac16ad5ffe"
+    },
+    {
+      "rows": 1,
+      "table": "scheduler",
+      "schema": "wordpairs_hosting",
+      "sha256": "fff4399dd9b04c6928b00085c5b27c43a4facdb3d2b04c2e0fd43536907f00e4"
+    }
+  ],
+  "restoredSequences": [
+    {
+      "schema": "wordpairs",
+      "isCalled": false,
+      "sequence": "access_audit_id_seq",
+      "lastValue": 1
+    },
+    {
+      "schema": "wordpairs",
+      "isCalled": false,
+      "sequence": "code_attempts_id_seq",
+      "lastValue": 1
+    }
+  ],
+  "sourceSchemaSectionHashes": {
+    "acl": "D0B8A16A77CC29F0873B5B68892D6C9A0ED374936F4B7A9CD4289471CEB5D8AF",
+    "rls": "01CBE2F84CD77CE77BE664834F7DE741C6031437701573B9D9F1E62047B9A48C",
+    "columns": "502F4D990BF77B64F1424A50CAFD0EF608B2A9D276B809E1622483E47CAE5B50",
+    "indexes": "54D18E5BDE4547620277BD443B4FEEAE1EF33A6D8B8DBF6A7EB359F69A9E45E9",
+    "policies": "8692F36E356918C10498B2EBEA62D7CF997E5E8E27883C887CF0D94BA5A50B70",
+    "triggers": "C0F72871091674728D30B57945E2843F4B1B8D700A5C950959870B7053F45606",
+    "functions": "EDF04280B475C5C525D09C1879541BB271D5B6E5FD44B946CBA7B43BE6E36AC9",
+    "constraints": "914F88BAAED6BAF52B0C56C8DFF0F43CBD8EDBFF758CE8E882009A110B94D071"
+  },
+  "restoredSchemaSectionHashes": {
+    "acl": "D0B8A16A77CC29F0873B5B68892D6C9A0ED374936F4B7A9CD4289471CEB5D8AF",
+    "rls": "01CBE2F84CD77CE77BE664834F7DE741C6031437701573B9D9F1E62047B9A48C",
+    "columns": "502F4D990BF77B64F1424A50CAFD0EF608B2A9D276B809E1622483E47CAE5B50",
+    "indexes": "54D18E5BDE4547620277BD443B4FEEAE1EF33A6D8B8DBF6A7EB359F69A9E45E9",
+    "policies": "8692F36E356918C10498B2EBEA62D7CF997E5E8E27883C887CF0D94BA5A50B70",
+    "triggers": "C0F72871091674728D30B57945E2843F4B1B8D700A5C950959870B7053F45606",
+    "functions": "EDF04280B475C5C525D09C1879541BB271D5B6E5FD44B946CBA7B43BE6E36AC9",
+    "constraints": "914F88BAAED6BAF52B0C56C8DFF0F43CBD8EDBFF758CE8E882009A110B94D071"
+  },
+  "dumpContainerId": "65f9181171c77755fdd92fe14fb65458b5ed7f6ada403efbc9e5f188bf5b9ab3",
+  "cleanup": [
+    {
+      "id": "269ba5c33af7dde42a846bd217ec78c398c9f454b79e7decea9042af6f51ffa9",
+      "removedExitCode": 0,
+      "absenceVerified": true
+    },
+    {
+      "id": "65f9181171c77755fdd92fe14fb65458b5ed7f6ada403efbc9e5f188bf5b9ab3",
+      "alreadyAbsent": true,
+      "absenceVerified": true
+    }
+  ],
+  "failures": [],
+  "finishedAt": "2026-10-30T17:10:38"
+}

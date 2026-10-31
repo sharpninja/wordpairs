@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="8" failures="0" errors="0" time="0.00901806">
+    <testsuite name="tests/integration/capacity-cleanup.test.ts" timestamp="2026-10-30T20:52:53.197Z" hostname="[PRIVATE HOST]" tests="8" failures="0" errors="0" skipped="0" time="0.00901806">
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle accepts independently specified owned-only cleanup" time="0.002746446">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle rejects absent cleanup" time="0.00180899">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle rejects deletion of an unrelated row" time="0.000554009">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle rejects changing unrelated event contents" time="0.000494938">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle rejects leaving either pool open" time="0.000530809">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle requires explicit cleanup error reporting" time="0.00058857">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle accepts an observed failure only with both pools closed and its error retained" time="0.000306625">
+        </testcase>
+        <testcase classname="tests/integration/capacity-cleanup.test.ts" name="capacity cleanup oracle rejects vacuous empty owned fixtures" time="0.000333326">
+        </testcase>
+    </testsuite>
+</testsuites>

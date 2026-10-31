@@ -71,6 +71,7 @@ export class IdentityService {
     private clock: Clock,
     private oidc: OidcProvider | null,
     private adminProfileIds: readonly string[] = [],
+    private guestOnly = false,
   ) {}
   private alias(kind: Profile["kind"]): string {
     const words = [
@@ -96,7 +97,8 @@ export class IdentityService {
       providerSubject: subject,
       alias: this.alias(kind),
       icon: "owl",
-      publicLeaderboard: kind === "member",
+      // Account identities are administrative only in the guest-only release.
+      publicLeaderboard: false,
       wins: 0,
       points: 0,
       earliestWinAt: null,
@@ -140,13 +142,24 @@ export class IdentityService {
       this.secrets.hash(token),
       this.clock.now(),
     );
+    if (
+      resolved.ok &&
+      this.guestOnly &&
+      resolved.value.profile.kind !== "guest"
+    )
+      return failure("NOT_AUTHENTICATED");
     return resolved.ok
       ? success({
           profile: ownProfile(resolved.value.profile),
-          actor: configuredAdministrator(
-            resolved.value.actor,
-            this.adminProfileIds,
-          ),
+          actor: this.guestOnly
+            ? {
+                profileId: resolved.value.profile.id,
+                roles: ["player" as const],
+              }
+            : configuredAdministrator(
+                resolved.value.actor,
+                this.adminProfileIds,
+              ),
         })
       : resolved;
   }

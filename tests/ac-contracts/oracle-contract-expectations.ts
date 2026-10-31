@@ -799,8 +799,8 @@ export const contractExpectations = {
       "rules"
     ],
     "rules": {
-      "version": "2.6",
-      "updated": "2026-10-26"
+      "version": "2.8",
+      "updated": "2026-10-31"
     },
     "emptyState": "No games yet",
     "unavailableState": "Try again later",
@@ -969,8 +969,8 @@ export const contractExpectations = {
       }
     ],
     "rules": {
-      "version": "2.6",
-      "updated": "2026-10-26"
+      "version": "2.8",
+      "updated": "2026-10-31"
     }
   },
   "AC-51-T01": {

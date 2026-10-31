@@ -1,0 +1,123 @@
+{
+  "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+  "hostName": "[PRIVATE HOST]",
+  "startedAt": "2026-10-29T10:15:52",
+  "finishedAt": "2026-10-29T10:23:54",
+  "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+  "status": "passed",
+  "failure": null,
+  "steps": [
+    {
+      "name": "typecheck",
+      "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:15:52",
+      "finishedAt": "2026-10-29T10:15:57",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "log": "typecheck.log",
+      "junit": ""
+    },
+    {
+      "name": "lint",
+      "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:15:57",
+      "finishedAt": "2026-10-29T10:15:58",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "log": "lint.log",
+      "junit": ""
+    },
+    {
+      "name": "unit",
+      "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:15:58",
+      "finishedAt": "2026-10-29T10:16:40",
+      "executable": "npm",
+      "arguments": [
+        "exec",
+        "vitest",
+        "--",
+        "run",
+        "--maxWorkers=4",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile.junit=\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-full-3fb4a49/unit.xml"
+      ],
+      "exitCode": 0,
+      "log": "unit.log",
+      "junit": "unit.xml"
+    },
+    {
+      "name": "postgres",
+      "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:16:40",
+      "finishedAt": "2026-10-29T10:22:01",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "tests/integration/run-phase1.ps1",
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-full-3fb4a49",
+        "-VolatileStorage"
+      ],
+      "exitCode": 0,
+      "log": "postgres.log",
+      "junit": "postgres.xml"
+    },
+    {
+      "name": "build",
+      "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:22:01",
+      "finishedAt": "2026-10-29T10:22:07",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "log": "build.log",
+      "junit": ""
+    },
+    {
+      "name": "browser",
+      "runId": "cb73504d-4cae-4bd3-bf98-24a3b711164c",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+      "startedAt": "2026-10-29T10:22:07",
+      "finishedAt": "2026-10-29T10:23:54",
+      "executable": "npm",
+      "arguments": [
+        "exec",
+        "playwright",
+        "--",
+        "test",
+        "--config=playwright.pwa.config.ts",
+        "--reporter=line,junit"
+      ],
+      "exitCode": 0,
+      "log": "browser.log",
+      "junit": "browser.xml"
+    }
+  ],
+  "qualification": "Local source validation with disposable PostgreSQL and a local browser server."
+}

@@ -1,0 +1,84 @@
+<testsuites id="" name="" tests="7" failures="0" skipped="5" errors="2" time="65.834474">
+<testsuite name="admin.phase6.spec.ts" timestamp="2026-10-30T21:15:21.786Z" hostname="" tests="7" failures="0" skipped="5" time="62.591" errors="2">
+<testcase name="FR-23-C01 owner approve of an existing legacy case preserves reason and decision history" classname="admin.phase6.spec.ts" time="30.048">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../test-results/admin.phase6-FR-23-C01-own-792f9-reason-and-decision-history/error-context.md]]
+]]>
+</system-out>
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  admin.phase6.spec.ts:330:3 › FR-23-C01 owner approve of an existing legacy case preserves reason and decision history 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.getAttribute: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).locator('details').filter({ has: locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).getByText('Decision history', { exact: true }) })
+
+
+      300 |   await expect.poll(() => article.locator("p strong").innerText()).not.toBe(appeal ? "appealed" : "pending");
+      301 |   const details = article.locator("details").filter({ has: article.getByText("Decision history", { exact: true }) });
+    > 302 |   if ((await details.getAttribute("open")) === null) await details.getByText("Decision history", { exact: true }).click();
+          |                      ^
+      303 |   await expect(details.locator("ol")).toBeVisible();
+      304 |   const paragraphs = await article.locator("p").allTextContents();
+      305 |   const body = fixture.writes[0];
+        at assertLegacyAdminDecision (<repo>/tests/browser/admin.phase6.spec.ts:302:22)
+        at <repo>/tests/browser/admin.phase6.spec.ts:331:5
+
+    Error Context: ../../test-results/admin.phase6-FR-23-C01-own-792f9-reason-and-decision-history/error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="FR-23-C01 owner reject of an existing legacy case preserves reason and decision history" classname="admin.phase6.spec.ts" time="30.059">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../test-results/admin.phase6-FR-23-C01-own-bbfa1-reason-and-decision-history/error-context.md]]
+]]>
+</system-out>
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  admin.phase6.spec.ts:330:3 › FR-23-C01 owner reject of an existing legacy case preserves reason and decision history 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.getAttribute: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).locator('details').filter({ has: locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).getByText('Decision history', { exact: true }) })
+
+
+      300 |   await expect.poll(() => article.locator("p strong").innerText()).not.toBe(appeal ? "appealed" : "pending");
+      301 |   const details = article.locator("details").filter({ has: article.getByText("Decision history", { exact: true }) });
+    > 302 |   if ((await details.getAttribute("open")) === null) await details.getByText("Decision history", { exact: true }).click();
+          |                      ^
+      303 |   await expect(details.locator("ol")).toBeVisible();
+      304 |   const paragraphs = await article.locator("p").allTextContents();
+      305 |   const body = fixture.writes[0];
+        at assertLegacyAdminDecision (<repo>/tests/browser/admin.phase6.spec.ts:302:22)
+        at <repo>/tests/browser/admin.phase6.spec.ts:331:5
+
+    Error Context: ../../test-results/admin.phase6-FR-23-C01-own-bbfa1-reason-and-decision-history/error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="FR-23-C01 owner uphold of an existing legacy case preserves reason and decision history" classname="admin.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="FR-23-C01 owner overturn of an existing legacy case preserves reason and decision history" classname="admin.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="FR-23-C01 original-reviewer owner has no appeal-resolution controls or writes" classname="admin.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="FR-23-C01 proposer owner has no appeal-resolution controls or writes" classname="admin.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="FR-23-C01 rendered assertion gate rejects wrong status, reason, history and self-resolution fixtures" classname="admin.phase6.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>

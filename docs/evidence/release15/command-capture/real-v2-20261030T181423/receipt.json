@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-10-30T18:14:23",
+  "finishedAt": "2026-10-30T18:14:24",
+  "binding": "real",
+  "increment": "v2",
+  "revision": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "dirtyTestSource": true,
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/ui-command-capture.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 58,
+  "failed": 0,
+  "skipped": 0,
+  "positiveCases": 29,
+  "negativeControls": 29,
+  "helperAbsent": false,
+  "unchangedPreDeltaHelperSha256": null,
+  "sourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/ui-command-capture.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/ui-command-capture.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+      "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/ui-command-capture.ts"
+    }
+  ],
+  "producerSha256": "69F820383B37A7576124972390D8AC4DFC61C7D3BE4EB7D22AA3F2B63679D1DB",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/unit.xml",
+  "junitSha256": "A150B153F59B3C29E13748B7797476637C6799286A129C7756390215C06EB459",
+  "qualification": "Expected negatives are passing rejection checks within the same oracle; test-only isolated callback/response lifetime and canonical UI retry evidence, not an actual UI/full-game/transport acceptance run. V2 mock retains unchanged V1 helper while proving distinct cached-body/action dual failure before helper correction."
+}

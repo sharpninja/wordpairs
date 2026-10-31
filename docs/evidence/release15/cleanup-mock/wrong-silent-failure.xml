@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="10" failures="6" errors="0" time="0.026904188">
+    <testsuite name="tests/application/live-scale-cleanup.test.ts" timestamp="2026-10-30T20:08:07.360Z" hostname="[PRIVATE HOST]" tests="10" failures="6" errors="0" skipped="0" time="0.026904188">
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; confirms absence after a successful leave instead of trusting the write response" time="0.003992162">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; reports a membership still present after every successful leave response" time="0.009719466">
+            <failure message="expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }" type="AssertionError">
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;cleanupFailures&quot;: 1,
++   &quot;cleanupFailures&quot;: 0,
+    &quot;roomClosed&quot;: false,
+-   &quot;unresolvedPlayerIndices&quot;: [
+-     0,
+-   ],
++   &quot;unresolvedPlayerIndices&quot;: [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:36:53
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; reports repeated server failures and preserves the exact uncertain command" time="0.001768552">
+            <failure message="expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }" type="AssertionError">
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;cleanupFailures&quot;: 1,
++   &quot;cleanupFailures&quot;: 0,
+    &quot;roomClosed&quot;: false,
+-   &quot;unresolvedPlayerIndices&quot;: [
+-     0,
+-   ],
++   &quot;unresolvedPlayerIndices&quot;: [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:42:53
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; retries transport uncertainty with the same command before verified absence" time="0.000826215">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; bounds conflicts and does not silently accept exhausted retries" time="0.001923025">
+            <failure message="expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }" type="AssertionError">
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;cleanupFailures&quot;: 1,
++   &quot;cleanupFailures&quot;: 0,
+    &quot;roomClosed&quot;: false,
+-   &quot;unresolvedPlayerIndices&quot;: [
+-     0,
+-   ],
++   &quot;unresolvedPlayerIndices&quot;: [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:53:53
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; does not treat lost authentication or malformed reads as removed membership" time="0.001549848">
+            <failure message="expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }" type="AssertionError">
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;cleanupFailures&quot;: 1,
++   &quot;cleanupFailures&quot;: 0,
+    &quot;roomClosed&quot;: false,
+-   &quot;unresolvedPlayerIndices&quot;: [
+-     0,
+-   ],
++   &quot;unresolvedPlayerIndices&quot;: [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:60:55
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; accepts an authenticated empty membership or missing owned room without a write" time="0.000641921">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; preserves a completed closed room and requires the expected actor identity" time="0.001451526">
+            <failure message="expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }" type="AssertionError">
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;cleanupFailures&quot;: 1,
++   &quot;cleanupFailures&quot;: 0,
+    &quot;roomClosed&quot;: false,
+-   &quot;unresolvedPlayerIndices&quot;: [
+-     0,
+-   ],
++   &quot;unresolvedPlayerIndices&quot;: [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:76:61
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; cleans only supplied actors in reverse order and reports exact unresolved indices" time="0.001348624">
+            <failure message="expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }" type="AssertionError">
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   &quot;cleanupFailures&quot;: 1,
++   &quot;cleanupFailures&quot;: 0,
+    &quot;roomClosed&quot;: false,
+-   &quot;unresolvedPlayerIndices&quot;: [
+-     0,
+-   ],
++   &quot;unresolvedPlayerIndices&quot;: [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:83:71
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; also verifies observer departure if an owned actor&apos;s membership changed" time="0.001317254">
+        </testcase>
+    </testsuite>
+</testsuites>

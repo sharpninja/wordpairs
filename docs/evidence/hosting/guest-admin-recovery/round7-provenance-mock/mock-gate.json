@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-10-29T11:21:58",
+  "testSha256": "6F50E657E0538C84322B2B6D883123665B009603CF69EDC8641DBDD9BAD540A3",
+  "runs": [
+    {
+      "fixture": "Correct",
+      "moduleSha256": "7CD252A76A312560858428914BAEC7FD58AA33C8CAF3B4247ED3072DF1622645",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "result": "Passed",
+          "name": "accepts a complete matching chain"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a different parent run"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a different revision"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a nonzero exit"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a different JUnit report"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects an unlinked producer receipt"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects different producer bytes"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a modified producer receipt"
+        }
+      ]
+    },
+    {
+      "fixture": "Wrong",
+      "moduleSha256": "B4A8D1A37CB045ECEBCD2AFEBD92502002CF2B94A4FF80B0280B2AA705692E79",
+      "passed": 1,
+      "failed": 7,
+      "skipped": 0,
+      "cases": [
+        {
+          "result": "Passed",
+          "name": "accepts a complete matching chain"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a different parent run"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a different revision"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a nonzero exit"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a different JUnit report"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects an unlinked producer receipt"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects different producer bytes"
+        },
+        {
+          "result": "Failed",
+          "name": "rejects a modified producer receipt"
+        }
+      ]
+    }
+  ]
+}

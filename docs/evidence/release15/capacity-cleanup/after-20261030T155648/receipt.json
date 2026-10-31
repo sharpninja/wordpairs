@@ -1,0 +1,241 @@
+{
+  "timestamp": "2026-10-30T15:58:27",
+  "phase": "After",
+  "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "hostName": "[PRIVATE HOST]",
+  "containerName": "wordpairs-capacity-cleanup-after-925fe8fc",
+  "startedAt": "2026-10-30T15:56:48.8556165-05:00",
+  "finishedAt": "2026-10-30T15:58:26.3919188-05:00",
+  "executable": "pwsh",
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/tests/integration/run-phase1.ps1",
+    "-ContainerName",
+    "wordpairs-capacity-cleanup-after-925fe8fc",
+    "-Realtime",
+    "-VolatileStorage",
+    "-ReportDirectory",
+    "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/after-20261030T155648"
+  ],
+  "exitCode": 0,
+  "observationPath": "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/after-20261030T155648/outbox-observations.jsonl",
+  "samples": 324,
+  "largestCapacityPending": {
+    "observedAt": "2026-10-30T15:58:06.058016-05:00",
+    "pending": [
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "events": 40,
+        "recipients": 820
+      },
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "cap15-upgrade-partial",
+        "events": 1,
+        "recipients": 15
+      },
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "cap15-upgrade-playing",
+        "events": 1,
+        "recipients": 25
+      },
+      {
+        "aggregate_kind": "match",
+        "aggregate_id": "cap15-upgrade-playing",
+        "events": 208,
+        "recipients": 5200
+      },
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "cap15-upgrade-waiting",
+        "events": 1,
+        "recipients": 25
+      },
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "old-closed",
+        "events": 1,
+        "recipients": 0
+      },
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "r1",
+        "events": 1,
+        "recipients": 1
+      }
+    ],
+    "first25": [
+      {
+        "id": "e1",
+        "kind": "room",
+        "aggregateId": "r1",
+        "audienceSize": 1
+      },
+      {
+        "id": "old-unpublished",
+        "kind": "room",
+        "aggregateId": "old-closed",
+        "audienceSize": 0
+      },
+      {
+        "id": "cap15-ffa1e564-760d-4da0-8b61-c10dc1e97a6c",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 1
+      },
+      {
+        "id": "cap15-9308a099-aa4a-4a65-8319-c3ec37bc4492",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 2
+      },
+      {
+        "id": "cap15-15ddf3f5-7730-4ac8-87ee-ed23c12622ce",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 3
+      },
+      {
+        "id": "cap15-6a183db0-2fa8-479c-88a9-1d75b3cb7ef4",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 4
+      },
+      {
+        "id": "cap15-c9c32c9d-9c7e-48bf-a0c9-d40e78cf8514",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 5
+      },
+      {
+        "id": "cap15-c808a188-789e-4d9f-bb5a-6393e8aced19",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 6
+      },
+      {
+        "id": "cap15-b555bdb4-005f-479c-8707-68a31f4d939d",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 7
+      },
+      {
+        "id": "cap15-eb10d5ea-ed94-4058-994f-2f9515392191",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 8
+      },
+      {
+        "id": "cap15-6027ad31-0164-4d9c-9619-7c5a21a8ff31",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 9
+      },
+      {
+        "id": "cap15-b822684c-a01a-43db-89cc-e6cd36438372",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 10
+      },
+      {
+        "id": "cap15-09691a07-edc6-486a-8667-057e88233048",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 11
+      },
+      {
+        "id": "cap15-1479ea76-4b80-4a45-9abf-9ec063d85589",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 12
+      },
+      {
+        "id": "cap15-f156db49-941b-46a4-8d66-2489e19d8013",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 13
+      },
+      {
+        "id": "cap15-4267f76d-5f55-40c2-949d-21ed9f984d0c",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 14
+      },
+      {
+        "id": "cap15-690b53bf-f9b2-42e0-a865-43d95befcb6d",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 15
+      },
+      {
+        "id": "cap15-ce0422d8-b31f-46e7-b7d4-0bd583170ec3",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 16
+      },
+      {
+        "id": "cap15-80f2fe31-12c5-400b-9e04-dbd45ecb70d3",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 17
+      },
+      {
+        "id": "cap15-c7695d60-d185-4f7f-857a-dd225aaa5a9b",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 18
+      },
+      {
+        "id": "cap15-a03c0ac3-75d8-4342-9583-0d5874011307",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 19
+      },
+      {
+        "id": "cap15-87949c2a-d3c1-434f-913d-46bd82ea34b3",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 20
+      },
+      {
+        "id": "cap15-16e39377-1c72-42ea-a65f-47e3afa5da00",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 21
+      },
+      {
+        "id": "cap15-5f3d2e5e-2725-4305-9876-6cafab8d4180",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 22
+      },
+      {
+        "id": "cap15-f9826ff3-1ad8-4590-8932-f28bf030262e",
+        "kind": "room",
+        "aggregateId": "cap15-boundary-6f4a8bb5-44fc-4dc3-bcce-7baf063ee6cd",
+        "audienceSize": 23
+      }
+    ]
+  },
+  "reports": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/after-20261030T155648/postgres.xml",
+      "sha256": "BCD7B12C789364E9019FBC15B6449B204C7D1F634723E13DF001AB852A63D346",
+      "cases": 63,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/capacity-cleanup/after-20261030T155648/realtime.xml",
+      "sha256": "D40D4CF7BA1CD5CAC7F959A8BB5DCF693B53EFB64CC3893B6A5630ED446612B5",
+      "cases": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "qualification": "Owned disposable fixture inspection; first25 records are actual pending ordering. Observations alone do not establish broker causation without matching transport results/logs."
+}

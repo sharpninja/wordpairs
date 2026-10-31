@@ -1,0 +1,237 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1 --reporter=line,junit
+
+
+Running 14 tests using 1 worker
+
+[1/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+LIVE_SCALE players=2 round=1
+
+LIVE_SCALE players=2 round=2
+
+LIVE_SCALE players=2 round=3
+
+LIVE_SCALE players=2 round=4
+
+LIVE_SCALE players=2 round=5
+
+LIVE_SCALE players=2 round=6
+
+LIVE_SCALE players=2 round=7
+
+LIVE_SCALE players=2 round=8
+
+[2/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+LIVE_SCALE players=3 round=1
+
+LIVE_SCALE players=3 round=2
+
+LIVE_SCALE players=3 round=3
+
+LIVE_SCALE players=3 round=4
+
+LIVE_SCALE players=3 round=5
+
+LIVE_SCALE players=3 round=6
+
+LIVE_SCALE players=3 round=7
+
+LIVE_SCALE players=3 round=8
+
+[3/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+LIVE_SCALE players=4 round=1
+
+LIVE_SCALE players=4 round=2
+
+LIVE_SCALE players=4 round=3
+
+LIVE_SCALE players=4 round=4
+
+LIVE_SCALE players=4 round=5
+
+LIVE_SCALE players=4 round=6
+
+LIVE_SCALE players=4 round=7
+
+LIVE_SCALE players=4 round=8
+
+[4/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 5 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 5 real browser players complete eight UI rounds
+LIVE_SCALE players=5 round=1
+
+LIVE_SCALE players=5 round=2
+
+LIVE_SCALE players=5 round=3
+
+LIVE_SCALE players=5 round=4
+
+LIVE_SCALE players=5 round=5
+
+LIVE_SCALE players=5 round=6
+
+LIVE_SCALE players=5 round=7
+
+LIVE_SCALE players=5 round=8
+
+[5/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 6 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 6 real browser players complete eight UI rounds
+LIVE_SCALE players=6 round=1
+
+LIVE_SCALE players=6 round=2
+
+LIVE_SCALE players=6 round=3
+
+LIVE_SCALE players=6 round=4
+
+LIVE_SCALE players=6 round=5
+
+LIVE_SCALE players=6 round=6
+
+LIVE_SCALE players=6 round=7
+
+LIVE_SCALE players=6 round=8
+
+[6/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 7 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 7 real browser players complete eight UI rounds
+LIVE_SCALE players=7 round=1
+
+LIVE_SCALE players=7 round=2
+
+LIVE_SCALE players=7 round=3
+
+LIVE_SCALE players=7 round=4
+
+LIVE_SCALE players=7 round=5
+
+LIVE_SCALE players=7 round=6
+
+LIVE_SCALE players=7 round=7
+
+LIVE_SCALE players=7 round=8
+
+[7/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 8 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 8 real browser players complete eight UI rounds
+LIVE_SCALE players=8 round=1
+
+LIVE_SCALE players=8 round=2
+
+LIVE_SCALE players=8 round=3
+
+LIVE_SCALE players=8 round=4
+
+LIVE_SCALE players=8 round=5
+
+LIVE_SCALE players=8 round=6
+
+LIVE_SCALE players=8 round=7
+
+LIVE_SCALE players=8 round=8
+
+[8/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 9 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 9 real browser players complete eight UI rounds
+LIVE_SCALE players=9 round=1
+
+LIVE_SCALE players=9 round=2
+
+LIVE_SCALE players=9 round=3
+
+LIVE_SCALE players=9 round=4
+
+LIVE_SCALE players=9 round=5
+
+LIVE_SCALE players=9 round=6
+
+LIVE_SCALE players=9 round=7
+
+LIVE_SCALE players=9 round=8
+
+[9/14] tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 10 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 10 real browser players complete eight UI rounds
+LIVE_SCALE players=10 round=1
+
+LIVE_SCALE players=10 round=2
+
+  1) tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 10 real browser players complete eight UI rounds 
+
+    AggregateError: 
+
+       at ui-command-capture.ts:29
+
+      27 |   const acted = (async () => action())();
+      28 |   const [captured, finished] = await Promise.allSettled([capture, acted]);
+    > 29 |   if (captured.status === "rejected" && finished.status === "rejected") throw new AggregateError([captured.reason, finished.reason]);
+         |                                                                               ^
+      30 |   if (captured.status === "rejected") throw captured.reason;
+      31 |   if (finished.status === "rejected") {
+      32 |     if (bodyFailure) throw new AggregateError([bodyFailure.error, finished.reason]);
+        at captureUiCommand (<repo>/tests/browser/ui-command-capture.ts:29:79)
+        at commitUiCommand (<repo>/tests/browser/ui-command-capture.ts:43:20)
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:148:24
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:147:27
+
+    TimeoutError: page.waitForRequest: Timeout 30000ms exceeded while waiting for event "request"
+
+      51 |   async function click(page: Page, action: string, run: () => Promise<unknown>) {
+      52 |     return captureUiCommand(
+    > 53 |       () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
+         |                  ^
+      54 |       run,
+      55 |     );
+      56 |   }
+        at wait (<repo>/tests/browser/live-player-counts.integration.spec.ts:53:18)
+        at captureUiCommand (<repo>/tests/browser/ui-command-capture.ts:10:20)
+        at click (<repo>/tests/browser/live-player-counts.integration.spec.ts:52:12)
+        at Object.invoke (<repo>/tests/browser/live-player-counts.integration.spec.ts:60:33)
+        at commitUiCommand (<repo>/tests/browser/ui-command-capture.ts:43:34)
+        at commitUi (<repo>/tests/browser/live-player-counts.integration.spec.ts:59:12)
+        at map (<repo>/tests/browser/live-player-counts.integration.spec.ts:148:30)
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:147:82
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  getByLabel('Your answer', { exact: true })
+    Expected: enabled
+    Received: disabled
+    Timeout:  30000ms
+
+    Call log:
+      - Expect "toBeEnabled" getByLabel('Your answer', { exact: true }) with timeout 30000ms
+      - waiting for getByLabel('Your answer', { exact: true })
+        63 × locator resolved to <input disabled type="text" value="Late" name="answer" maxlength="200" autocomplete="off" id="answer-384e5b4e-71cf-4474-8433-5b52b78a4897"/>
+           - unexpected value "disabled"
+
+
+      147 |       const submissions = await Promise.allSettled(pages.slice(batch, batch + 2).map(async (page) => {
+      148 |         const solved = await commitUi(page, "answer", async () => {
+    > 149 |           await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+          |                                                                         ^
+      150 |           await page.getByLabel("Your answer", { exact: true }).fill(pair.target);
+      151 |           await page.getByRole("button", { name: "Submit answer", exact: true }).click();
+      152 |         });
+        at action (<repo>/tests/browser/live-player-counts.integration.spec.ts:149:73)
+        at <repo>/tests/browser/ui-command-capture.ts:27:30
+        at captureUiCommand (<repo>/tests/browser/ui-command-capture.ts:27:38)
+        at click (<repo>/tests/browser/live-player-counts.integration.spec.ts:52:12)
+        at Object.invoke (<repo>/tests/browser/live-player-counts.integration.spec.ts:60:33)
+        at commitUiCommand (<repo>/tests/browser/ui-command-capture.ts:43:34)
+        at commitUi (<repo>/tests/browser/live-player-counts.integration.spec.ts:59:12)
+        at map (<repo>/tests/browser/live-player-counts.integration.spec.ts:148:30)
+        at <repo>/tests/browser/live-player-counts.integration.spec.ts:147:82
+
+    Error Context: test-results/live-local/live-player-counts.integra-ea605-rs-complete-eight-UI-rounds/error-context.md
+
+
+Testing stopped early after 1 maximum allowed failures.
+
+  Slow test file: tests/browser/live-player-counts.integration.spec.ts (5.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:17:29 › LIVE-SCALE 10 real browser players complete eight UI rounds 
+  5 did not run
+  8 passed (5.5m)
+  1 error was not a part of any test, see above for details
+

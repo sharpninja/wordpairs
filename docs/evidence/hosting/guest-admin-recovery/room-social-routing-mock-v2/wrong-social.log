@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/web/room-match-routing.test.ts (3 tests | 1 failed) 73ms
+   ✓ discovers a newly created match through an authorized room read 48ms
+   × refreshes an already mounted match without rereading the room 15ms
+   ✓ room changes refresh both game and social views 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/web/room-match-routing.test.ts > refreshes an already mounted match without rereading the room
+AssertionError: expected 3 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 3
+
+ ❯ tests/web/room-match-routing.test.ts:42:74
+     40|   await waitFor(() => expect(Number(fixture.view.getByTestId("game-ref…
+     41|   expect(fixture.reads()).toBe(initialReads);
+     42|   expect(Number(fixture.view.getByTestId("social-refresh").textContent…
+       |                                                                          ^
+     43| });
+     44| it("room changes refresh both game and social views", async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  12:38:41
+   Duration  1.01s (environment 71%, import 14%, tests 9%, transform 5%, worker 1%)
+
+JUNIT report written to <repo>/docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock-v2/wrong-social.xml

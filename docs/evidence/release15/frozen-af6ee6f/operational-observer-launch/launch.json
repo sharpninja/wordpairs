@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-30T19:09:24.0300292-05:00",
+  "hostName": "[PRIVATE HOST]",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T000538Z-attach-owned-runtime-observer",
+  "phaseSourceBefore": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/live-ui/source-before.json",
+    "sha256": "15B29F86E8B1C872FB4EA0B922BA438FDE55B8005C70EA462F5D0AB2FB60302B"
+  },
+  "sourceManifest": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/source-inventory.json",
+    "sha256": "B31B2D799C03A0E594DDBE2EF3EB4B5368F53BD3EA5F4B798113B086A172C79D"
+  },
+  "serviceStart": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/service-start.json",
+    "sha256": "C391F101C3BC49108260FA32C04673C65FBFFAEC8E403D0CF0DE77F11190C7DB"
+  },
+  "ownedUnit": {
+    "ActiveState": "active",
+    "InvocationID": "581e9a893a5846afa6baf63c3794659f",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/wordpairs-release15-af6ee6f-chain.service",
+    "MainPID": "1196213"
+  },
+  "runtimeAssociation": {
+    "runtime": "\u003Crepo\u003E/.mcpServer/ui-5177767d18ca43da8386ae75ee6ef06c",
+    "owner": "5177767d18ca43da8386ae75ee6ef06c",
+    "databaseOwnerPath": "\u003Crepo\u003E/.mcpServer/ui-5177767d18ca43da8386ae75ee6ef06c/database-owner.json",
+    "databaseOwnerSha256": "56CE8A41A83E520D0E96DC1EB54FB4543941B394CA8C047BC855C53F161E91F2",
+    "appProcessPath": "\u003Crepo\u003E/.mcpServer/ui-5177767d18ca43da8386ae75ee6ef06c/local-live-app-process.json",
+    "appProcessSha256": "11B3C755CAF542CB98F31BC78D2E38C2ADD76BDC513EF8CBA1B1402E0D913C1D",
+    "appPid": 1235623,
+    "appStartToken": "2014236"
+  },
+  "parameters": {
+    "SourceManifest": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/source-inventory.json",
+    "UnitName": "wordpairs-release15-af6ee6f-chain.service",
+    "RuntimeDirectory": "\u003Crepo\u003E/.mcpServer/ui-5177767d18ca43da8386ae75ee6ef06c",
+    "SourceHead": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+    "OutputDirectory": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer",
+    "RunId": "9d00fa3e-555b-4491-8b8b-4f72d3b6177d",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/wordpairs-release15-af6ee6f-chain.service",
+    "IntervalSeconds": 2,
+    "InvocationId": "581e9a893a5846afa6baf63c3794659f",
+    "SystemdScope": "User"
+  },
+  "producerSha256": "946F92B05E1629855654E00ADB6F160C10B6096F2BE3E35107D09BEA3531B88D",
+  "launcherSha256": "47C0323CBACC4A929260B3F45BB1CD84A985C22FDE5DEBC965FAAE7F8CC350BC",
+  "executable": "systemd-run",
+  "arguments": [
+    "--user",
+    "--collect",
+    "--unit=wordpairs-release15-af6ee6f-observer",
+    "--property",
+    "WorkingDirectory=\u003Crepo\u003E",
+    "--property",
+    "StandardOutput=append:\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer-launch/stdout.log",
+    "--property",
+    "StandardError=append:\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer-launch/stderr.log",
+    "--",
+    "/usr/bin/pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer-launch/WatchWordpairsOwnedRuntime.ps1",
+    "-UnitName wordpairs-release15-af6ee6f-chain.service",
+    "-SystemdScope User",
+    "-ControlGroup /user.slice/user-1000.slice/user@1000.service/app.slice/wordpairs-release15-af6ee6f-chain.service",
+    "-InvocationId 581e9a893a5846afa6baf63c3794659f",
+    "-RuntimeDirectory \u003Crepo\u003E/.mcpServer/ui-5177767d18ca43da8386ae75ee6ef06c",
+    "-RunId 9d00fa3e-555b-4491-8b8b-4f72d3b6177d",
+    "-SourceHead af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+    "-SourceManifest \u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/source-inventory.json",
+    "-OutputDirectory \u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer",
+    "-IntervalSeconds 2"
+  ],
+  "exitCode": 0,
+  "launchAcknowledgement": [
+    "Running as unit: wordpairs-release15-af6ee6f-observer.service; invocation ID: b70073b622794165b890de1310063bbd"
+  ],
+  "qualification": "Launch acknowledgement only. Observer evidence/terminal receipt establish measured scope. No new test or acceptance assertions; original validation chain is unchanged. The app PID/start-token is a member of the exact chain cgroup, binding this runtime without capturing argv/environment."
+}

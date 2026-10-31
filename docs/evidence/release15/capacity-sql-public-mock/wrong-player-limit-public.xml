@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="1" failures="1" errors="0" time="0.006830392">
+    <testsuite name="tests/application/capacity-public.test.ts" timestamp="2026-10-30T19:59:21.891Z" hostname="[PRIVATE HOST]" tests="1" failures="1" errors="0" skipped="0" time="0.006830392">
+        <testcase classname="tests/application/capacity-public.test.ts" name="CAP15 publishes the same fifteen-player rules with release2.7 metadata" time="0.005574793">
+            <failure message="expected [ Array(1) ] to include &apos;Play eight rounds with 2–15 players. …&apos;" type="AssertionError">
+AssertionError: expected [ Array(1) ] to include &apos;Play eight rounds with 2–15 players. …&apos;
+ ❯ tests/application/capacity-public.test.ts:7:17
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

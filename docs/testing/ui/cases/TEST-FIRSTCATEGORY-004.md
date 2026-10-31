@@ -1,5 +1,9 @@
 # TEST-FIRSTCATEGORY-004 - AC-04: First category
 
+Current amendment persistence: [19-record QBrain readback](../../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
+
+Current rules v2.8 (31 October 2026) allow new match rosters of 2 through 10. Repeat anchor endpoint assertions at 2/8/10; original design hashes and historical execution evidence remain unchanged. See [the completion plan](../../../release15-completion-plan.md).
+
 Linked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.
 
 | Field | Specification |
@@ -42,6 +46,6 @@ Feature: AC-04: First category
 
 ## Boundaries
 
-Repeat each selected index, including other-player branch; UI verifies consequences, not statistical uniformity. Stable-index distribution proof remains separate technical coverage.
+Repeat each selected index and the endpoints 1/N for allowed roster sizes 2/8/10, including the other-player branch. UI verifies the selected player's authority and shared presentation, not statistical uniformity. New 11-player match rejection and historical larger running-match compatibility are separate capacity cases. Stable-index distribution proof remains technical coverage.
 
 Criterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.

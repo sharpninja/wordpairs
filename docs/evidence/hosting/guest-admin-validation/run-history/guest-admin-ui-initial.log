@@ -1,0 +1,54 @@
+
+[WebServer] (node:4170948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:4171260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/11] tests/browser/admin.phase6.spec.ts:123:1 › phone catalog form creates and edits all three hints, and retries an uncertain save without duplicating content
+[2/11] tests/browser/admin.phase6.spec.ts:197:1 › fixed-owner administration has no user-delegation UI and its former endpoint stays disabled
+[3/11] tests/browser/admin.phase6.spec.ts:206:1 › guest game sessions cannot reveal private administration pages
+[4/11] tests/browser/admin.phase6.spec.ts:219:1 › late authorized moderation GET cannot restore private content after a denied mutation
+[5/11] tests/browser/auth-navigation.phase6.spec.ts:3:1 › public player navigation ignores admin grants and exposes guest play only
+[6/11] tests/browser/auth-navigation.phase6.spec.ts:12:1 › admin entry has no guest continuation and explains failed GitHub callbacks
+[7/11] tests/browser/auth-navigation.phase6.spec.ts:21:1 › admin authorization loss, failed session refresh and logout remove privileged links
+[8/11] tests/browser/pwa.spec.ts:11:1 › admin-only manifest, real worker scope, icons and Chromium installation prerequisites
+[9/11] tests/browser/pwa.spec.ts:54:1 › real admin worker provides generic offline launch and never caches private pages or APIs
+  1) tests/browser/pwa.spec.ts:54:1 › real admin worker provides generic offline launch and never caches private pages or APIs 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'You’re offline' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'You’re offline' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'You’re offline' })
+
+
+      70 |  await context.setOffline(true);
+      71 |  await page.goto("/admin");
+    > 72 |  await expect(page.getByRole("heading", { name: "You’re offline" })).toBeVisible();
+         |                                                                      ^
+      73 |  await expect(page.getByText(owner.alias, { exact: true })).toHaveCount(0);
+      74 |  for (const method of ["GET", "POST"]) expect(await page.evaluate(async method => {
+      75 |   try { await fetch("/api/admin/session", { method }); return "unexpected response"; } catch { return "network failure"; }
+        at <repo>/tests/browser/pwa.spec.ts:72:70
+
+    Error Context: ../wordpairs-local/guest-admin-ui-initial/pwa-real-admin-worker-prov-17586-aches-private-pages-or-APIs/error-context.md
+
+
+
+(node:4173206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[10/11] tests/browser/pwa.spec.ts:85:1 › phone guidance, prompt lifecycle and standalone presentation are admin-only
+[11/11] tests/browser/pwa.spec.ts:104:1 › welcome card retains phone and desktop whitespace without horizontal overflow
+  1 failed
+    tests/browser/pwa.spec.ts:54:1 › real admin worker provides generic offline launch and never caches private pages or APIs 
+  10 passed (18.5s)

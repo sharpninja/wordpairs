@@ -1,0 +1,65 @@
+
+[WebServer] (node:610910) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:610964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/7] tests/browser/admin.phase6.spec.ts:330:3 › FR-23-C01 owner approve of an existing legacy case preserves reason and decision history
+  1) tests/browser/admin.phase6.spec.ts:330:3 › FR-23-C01 owner approve of an existing legacy case preserves reason and decision history 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.getAttribute: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).locator('details').filter({ has: locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).getByText('Decision history', { exact: true }) })
+
+
+      300 |   await expect.poll(() => article.locator("p strong").innerText()).not.toBe(appeal ? "appealed" : "pending");
+      301 |   const details = article.locator("details").filter({ has: article.getByText("Decision history", { exact: true }) });
+    > 302 |   if ((await details.getAttribute("open")) === null) await details.getByText("Decision history", { exact: true }).click();
+          |                      ^
+      303 |   await expect(details.locator("ol")).toBeVisible();
+      304 |   const paragraphs = await article.locator("p").allTextContents();
+      305 |   const body = fixture.writes[0];
+        at assertLegacyAdminDecision (<repo>/tests/browser/admin.phase6.spec.ts:302:22)
+        at <repo>/tests/browser/admin.phase6.spec.ts:331:5
+
+    Error Context: test-results/admin.phase6-FR-23-C01-own-792f9-reason-and-decision-history/error-context.md
+
+
+(node:612390) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[2/7] tests/browser/admin.phase6.spec.ts:330:3 › FR-23-C01 owner reject of an existing legacy case preserves reason and decision history
+  2) tests/browser/admin.phase6.spec.ts:330:3 › FR-23-C01 owner reject of an existing legacy case preserves reason and decision history 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.getAttribute: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).locator('details').filter({ has: locator('.content-case').filter({ has: getByRole('heading', { name: 'Legacy Orbit', exact: true }) }).getByText('Decision history', { exact: true }) })
+
+
+      300 |   await expect.poll(() => article.locator("p strong").innerText()).not.toBe(appeal ? "appealed" : "pending");
+      301 |   const details = article.locator("details").filter({ has: article.getByText("Decision history", { exact: true }) });
+    > 302 |   if ((await details.getAttribute("open")) === null) await details.getByText("Decision history", { exact: true }).click();
+          |                      ^
+      303 |   await expect(details.locator("ol")).toBeVisible();
+      304 |   const paragraphs = await article.locator("p").allTextContents();
+      305 |   const body = fixture.writes[0];
+        at assertLegacyAdminDecision (<repo>/tests/browser/admin.phase6.spec.ts:302:22)
+        at <repo>/tests/browser/admin.phase6.spec.ts:331:5
+
+    Error Context: test-results/admin.phase6-FR-23-C01-own-bbfa1-reason-and-decision-history/error-context.md
+
+
+
+(node:613378) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[3/7] tests/browser/admin.phase6.spec.ts:330:3 › FR-23-C01 owner uphold of an existing legacy case preserves reason and decision history

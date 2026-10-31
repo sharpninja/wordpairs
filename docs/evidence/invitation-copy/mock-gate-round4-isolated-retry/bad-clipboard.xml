@@ -1,0 +1,34 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="9.447768">
+<testsuite name="invitation-copy.phase2.spec.ts" timestamp="2026-10-29T05:16:39.340Z" hostname="" tests="1" failures="1" skipped="0" time="5.788" errors="0">
+<testcase name="INVITE-COPY-01 writes to the actual Chromium clipboard" classname="invitation-copy.phase2.spec.ts" time="5.788">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../../../../../../tmp/wordpairs-invite-round4-isolated-retry/test-results/invitation-copy.phase2-INV-f5421-e-actual-Chromium-clipboard/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  invitation-copy.phase2.spec.ts:193:1 › INVITE-COPY-01 writes to the actual Chromium clipboard ────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "https://wordpairs.example.test/rooms/ABCDEFGH?invite=synthetic"
+    Received: "https://wrong.example.test/"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      196 |   await page.getByRole("button", { name: "Copy Invitation Link", exact: true }).click();
+      197 |   await expect(page.getByRole("status").filter({ hasText: copiedMessage })).toBeVisible();
+    > 198 |   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe(invitation);
+          |                                                                                ^
+      199 |   await expect(page.getByLabel("Shareable invitation link")).toHaveValue(invitation);
+      200 | });
+      201 |
+        at /tmp/wordpairs-invite-round4-isolated-retry/tests/browser/invitation-copy.phase2.spec.ts:198:80
+
+    Error Context: ../../test-results/invitation-copy.phase2-INV-f5421-e-actual-Chromium-clipboard/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

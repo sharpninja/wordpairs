@@ -1,0 +1,210 @@
+{
+  "timestamp": "2026-10-30T17:06:15",
+  "kind": "operator-held-encrypted-APP-game-backup-and-isolated-logical-restore",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T215550Z-turn-ec48",
+  "verifiedEnvironments": [
+    "staging",
+    "production"
+  ],
+  "observations": [
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T170149-5aa98cd0",
+      "status": "failed",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170149-5aa98cd0-staging.json",
+      "receiptSha256": "EBF547726449E132C472F574F2C051B86341718138D5813C094A644F18D78336",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170149-5aa98cd0-staging/staging.pgdump.age",
+      "ciphertextSha256": "F1FCFEE43A070EF9351AF60DED10A9E74958F613C7D8395ED8B01C6E605C5BD1",
+      "ciphertextBytes": 224447,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": false,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 473.0,
+      "totalRestoredRows": 473.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "ffeb2f1972a4839dda47f85201cec6a0b12f7a4873b02ceca74dc551a93ae318",
+          "absenceVerified": true
+        },
+        {
+          "id": "7c32bb2184573ce33a68537ceb3ab43304dcce57daf73e4d1350dffa84f4c3a9",
+          "absenceVerified": true
+        }
+      ],
+      "failures": [
+        "Restore comparison mismatch; private encrypted metadata retained"
+      ]
+    },
+    {
+      "environment": "staging",
+      "runId": "backup-20261030T170326-6974b566",
+      "status": "verified_app_restore",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170326-6974b566-staging.json",
+      "receiptSha256": "A8D9B055750C2CD24CDCF2B2006194C6E14F7422658236630228251483EB0960",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170326-6974b566-staging/staging.pgdump.age",
+      "ciphertextSha256": "FA9A2FA7BA6632DF127F53B37EC2F2B996081204E13461B9F2478E968D738724",
+      "ciphertextBytes": 224447,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": true,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 473.0,
+      "totalRestoredRows": 473.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "d744cfba135dffd31e09d41eb5ad1987f7a72b93136d16873bae22ca7532ef06",
+          "absenceVerified": true
+        },
+        {
+          "id": "1995412ab0dff0e78b670df70fe2b593e4adb11afbb154f1e39e8815ed302683",
+          "absenceVerified": true
+        }
+      ],
+      "failures": []
+    },
+    {
+      "environment": "production",
+      "runId": "backup-20261030T170446-f4385d7b",
+      "status": "verified_app_restore",
+      "receiptPath": "docs/evidence/release15/frozen-0fb37e6/backup-20261030T170446-f4385d7b-production.json",
+      "receiptSha256": "6D8F04821D0C99129699835CBD4918BC53A702DD084C5E4F3CEBF485EB0E1BFE",
+      "privateCiphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170446-f4385d7b-production/production.pgdump.age",
+      "ciphertextSha256": "F37CA477513B3AF9A7724F118D395308EA6EF87DC4F4EDF287331BFCFE4007E9",
+      "ciphertextBytes": 195350,
+      "ciphertextMode": "UserWrite, UserRead",
+      "sourceVersion": "17.11",
+      "dumpVersion": "pg_dump (PostgreSQL) 17.11",
+      "nativeExitCodes": {
+        "dump": 0,
+        "encrypt": 0,
+        "sourceRead": 0,
+        "decrypt": 0,
+        "restore": 0
+      },
+      "schemaEqual": true,
+      "dataEqual": true,
+      "sequencesEqual": true,
+      "sourceTableCount": 33,
+      "restoredTableCount": 33,
+      "totalSourceRows": 123.0,
+      "totalRestoredRows": 123.0,
+      "sourceTablesBySchema": [
+        {
+          "schema": "supabase_migrations",
+          "tables": 1
+        },
+        {
+          "schema": "wordpairs",
+          "tables": 31
+        },
+        {
+          "schema": "wordpairs_hosting",
+          "tables": 1
+        }
+      ],
+      "cleanupSupplement": [
+        {
+          "id": "f6415149724e1c443cdb1a32e377e06c02560731bca03f8cc816c3a96bc7d03a",
+          "absenceVerified": true
+        },
+        {
+          "id": "58f5f25a5c2e1e60dd811f688658fce2aada83375304b2286f11d495953b0689",
+          "absenceVerified": true
+        }
+      ],
+      "failures": []
+    }
+  ],
+  "schemaComparison": "Exact canonical columns/defaults/types, constraints, indexes, function-bodySHA256/security-definer/config, tableRLS, policies, triggers and effective relation/function ACL tuples via explicitACL-or-acldefault; local ownership normalized to postgres. Namespace/global/default-privilege/role configuration is not a full managed-platform recovery claim.",
+  "dataComparison": "Per-table sorted multisetSHA256 of canonical to_jsonb rows plus counts, using the exported read-only REPEATABLE READ snapshot shared with pg_dump. Sequences separately matched and source remained stable before/after dump; sequence values are not MVCC.",
+  "firstFailedComparison": "Original staging rawACL comparison rejected184explicit postgres-owner grants represented by NULL/default ACL after restore. Original ciphertext and failed receipt retained. Fresh source/dump/restore run used canonical effective privileges on both sides and matched every privilege tuple.",
+  "sourceReadOnly": true,
+  "hostedMutations": false,
+  "plaintextDumpFiles": false,
+  "newKeysOrSecretStoreWrites": false,
+  "privateConfigsRetained": true,
+  "privateBackupOutsideApplicationGit": true,
+  "outerCheckoutIgnoreMatched": false,
+  "recoveryToolCopies": [
+    {
+      "source": "/tmp/wordpairs-age-1.3.2/age-v1.3.2-linux-amd64.tar.gz",
+      "copy": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/age-v1.3.2-linux-amd64.tar.gz",
+      "sha256": "CBE24006683F8EB669266162894B9A522A1AF52F2665FBC63A4BB032ED26AC10",
+      "originalRetained": true
+    },
+    {
+      "source": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+      "copy": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/Invoke-WordpairsEncryptedBackup.ps1",
+      "sha256": "CCF2CB06EEA56EFBE071EB6CE3373FDD5590E08705BCA168AE0A2D80D4948F71",
+      "originalRetained": true
+    }
+  ],
+  "managedExclusions": [
+    "Supabase auth/storage objects and configuration",
+    "Vault ciphertext/root keys and scheduler purpose secret",
+    "cron schedules/net queues/Realtime settings/publications/policies",
+    "Vercel/OAuth/domain/environment settings and role credentials/membership/global defaults",
+    "No off-site-copy or full-project-recovery/physical-durability claim"
+  ],
+  "documentation": [
+    "https://www.postgresql.org/docs/17/app-pgdump.html",
+    "https://supabase.com/docs/guides/self-hosting/restore-from-platform",
+    "https://supabase.com/docs/guides/platform/backups",
+    "https://github.com/FiloSottile/age/releases/tag/v1.3.2",
+    "https://github.com/FiloSottile/age#ssh-keys"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "atLocal": "2026-10-30T20:11:27",
+  "sourceHead": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "wikiRetainedByteChecks": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-131269a/wiki-publication-repair/index.json",
+      "sha256": "97DAA844A7FF025B2636985048D45DD37CF57567EFA6230FB1B84E1913600F58",
+      "matchesHistoricalPin": true,
+      "qualification": "Only retained local bytes, not new remote publication or gameplay acceptance"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/requirements/requirements-wiki-documents.zip",
+      "sha256": "32434C6717A9EEC9C0E02AB1181529DAC18CD744DE7B9EADDF3255ACE93272C0",
+      "matchesHistoricalPin": true,
+      "qualification": "Only retained local bytes, not new remote publication or gameplay acceptance"
+    }
+  ],
+  "producerCopies": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/PostcheckWordpairs606Review.ps1",
+      "sha256": "305696BA01C0A6127A1854E32B54F976AAA0A1D98F80CBA85C7715572B93BF3F"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/Wordpairs606SourceReviewSession.ps1",
+      "sha256": "73B57579AB361ED67C9DB8E9010592CC8A869CA0BA2199EE3170740F3EF45D1B"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/InspectWordpairs606Review.ps1",
+      "sha256": "A279A8AC3B251FC40F2A2BA215DDB9B25EAC5B9251D6EB5B458001120438C7B7"
+    }
+  ],
+  "producerAnalysis": "All three producers parser/PSSA Warning/Error0 before WhatIf then actual",
+  "reviewPins": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/source-selfreview.md",
+      "sha256": "103E841896ABD378C88F5B208C3567C231FF9F253D66645ADEF9F002D8BF3FC7"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/source-what-if-supplement.json",
+      "sha256": "5B75E484DAC3AAB363A51E222DFC157F77552CB09C2C927011D0091D023804ED"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/source-selfreview-provenance.json",
+      "sha256": "B81D83C277B7285E5C82A6E41E092A21B0A29703E2E17B95F277303BFC768405"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/source-selfreview-producer.ps1",
+      "sha256": "2614C4BED72C884EA6A222074CD35713E9FBFBCB7C327CE0899B04A24248B0A6"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/source-selfreview-effective-requirements.json",
+      "sha256": "E49F1CCE05E4510D3BFBB3ACAA006911D26B631D09F630227349FFB3652340F7"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/unit-inventory.json",
+      "sha256": "ADA7F0645CF39A994F79C040733FF64096B9FE9B81D9E141FDED47C4B29568F7"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/expected-inventory.json",
+      "sha256": "F30B2C3372FD875DEB84E2DBDC6F9699FAA71FF39DDDDB0DBCAFC732D497F995"
+    }
+  ],
+  "unitInventoryFields": [
+    "Length",
+    "LongLength",
+    "Rank",
+    "SyncRoot",
+    "IsReadOnly",
+    "IsFixedSize",
+    "IsSynchronized",
+    "Count"
+  ],
+  "qualification": "Collection inventory pinned; expected894 is not a full execution claim. Original review outputs and source/native bytes are retained unchanged."
+}

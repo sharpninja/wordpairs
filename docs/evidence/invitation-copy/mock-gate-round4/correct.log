@@ -1,0 +1,174 @@
+
+[WebServer] (node:1073088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:1073205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/7] tests/browser/invitation-copy.phase2.spec.ts:112:1 › INVITE-COPY mock gate accepts correct copy and fallback and rejects corrupted outcomes
+[2/7] tests/browser/invitation-copy.phase2.spec.ts:138:1 › INVITE-COPY-01 copies the generated invitation and confirms it
+  1) tests/browser/invitation-copy.phase2.spec.ts:138:1 › INVITE-COPY-01 copies the generated invitation and confirms it 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('status').filter({ hasText: 'Invitation link copied.' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('status').filter({ hasText: 'Invitation link copied.' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Invitation link copied.' })
+
+
+      94 | async function observeCopied(page: Page) {
+      95 |   await page.getByRole("button", { name: "Copy Invitation Link", exact: true }).click();
+    > 96 |   await expect(page.getByRole("status").filter({ hasText: copiedMessage })).toBeVisible();
+         |                                                                             ^
+      97 |   return {
+      98 |     displayed: await page.getByLabel("Shareable invitation link").inputValue(),
+      99 |     copied: await page.evaluate(() => (window as unknown as { copiedInvitation: string | null }).copiedInvitation),
+        at observeCopied (<repo>/tests/browser/invitation-copy.phase2.spec.ts:96:77)
+        at <repo>/tests/browser/invitation-copy.phase2.spec.ts:141:10
+
+    Error Context: test-results/invitation-copy.phase2-INV-56273--invitation-and-confirms-it/error-context.md
+
+
+
+(node:1073760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[3/7] tests/browser/invitation-copy.phase2.spec.ts:146:1 › INVITE-COPY-01 uses writeText when ClipboardItem is unavailable
+  2) tests/browser/invitation-copy.phase2.spec.ts:146:1 › INVITE-COPY-01 uses writeText when ClipboardItem is unavailable 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('status').filter({ hasText: 'Invitation link copied.' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('status').filter({ hasText: 'Invitation link copied.' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Invitation link copied.' })
+
+
+      94 | }
+      95 |
+    > 96 | async function observeCopied(page: Page) {
+         |                                           ^
+      97 |   await page.getByRole("button", { name: "Copy Invitation Link", exact: true }).click();
+      98 |   await expect(page.getByRole("status").filter({ hasText: copiedMessage })).toBeVisible();
+      99 |   return {
+        at observeCopied (<repo>/tests/browser/invitation-copy.phase2.spec.ts:96:77)
+        at <repo>/tests/browser/invitation-copy.phase2.spec.ts:149:10
+
+    Error Context: test-results/invitation-copy.phase2-INV-6b901-lipboardItem-is-unavailable/error-context.md
+
+
+(node:1074170) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[4/7] tests/browser/invitation-copy.phase2.spec.ts:152:1 › INVITE-COPY-02 preserves the link when clipboard access is denied
+  3) tests/browser/invitation-copy.phase2.spec.ts:152:1 › INVITE-COPY-02 preserves the link when clipboard access is denied 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('status').filter({ hasText: 'Could not copy automatically. Select the link to copy it.' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('status').filter({ hasText: 'Could not copy automatically. Select the link to copy it.' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Could not copy automatically. Select the link to copy it.' })
+
+
+      103 | }
+      104 |
+    > 105 | async function observeManual(page: Page) {
+          |                                           ^
+      106 |   await page.getByRole("button", { name: "Copy Invitation Link", exact: true }).click();
+      107 |   await expect(page.getByRole("status").filter({ hasText: manualMessage })).toBeVisible();
+      108 |   return {
+        at observeManual (<repo>/tests/browser/invitation-copy.phase2.spec.ts:105:77)
+        at <repo>/tests/browser/invitation-copy.phase2.spec.ts:155:10
+
+    Error Context: test-results/invitation-copy.phase2-INV-d08b6--clipboard-access-is-denied/error-context.md
+
+
+
+(node:1074570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[5/7] tests/browser/invitation-copy.phase2.spec.ts:158:1 › INVITE-COPY-02 preserves the link when the clipboard API is unavailable
+  4) tests/browser/invitation-copy.phase2.spec.ts:158:1 › INVITE-COPY-02 preserves the link when the clipboard API is unavailable 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('status').filter({ hasText: 'Could not copy automatically. Select the link to copy it.' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('status').filter({ hasText: 'Could not copy automatically. Select the link to copy it.' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Could not copy automatically. Select the link to copy it.' })
+
+
+      103 | }
+      104 |
+    > 105 | async function observeManual(page: Page) {
+          |                                           ^
+      106 |   await page.getByRole("button", { name: "Copy Invitation Link", exact: true }).click();
+      107 |   await expect(page.getByRole("status").filter({ hasText: manualMessage })).toBeVisible();
+      108 |   return {
+        at observeManual (<repo>/tests/browser/invitation-copy.phase2.spec.ts:105:77)
+        at <repo>/tests/browser/invitation-copy.phase2.spec.ts:164:10
+
+    Error Context: test-results/invitation-copy.phase2-INV-9113d-lipboard-API-is-unavailable/error-context.md
+
+
+(node:1075372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[6/7] tests/browser/invitation-copy.phase2.spec.ts:167:1 › INVITE-COPY creation failure does not claim or perform a copy
+[7/7] tests/browser/invitation-copy.phase2.spec.ts:179:1 › INVITE-COPY-01 writes to the actual Chromium clipboard
+  5) tests/browser/invitation-copy.phase2.spec.ts:179:1 › INVITE-COPY-01 writes to the actual Chromium clipboard 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('status').filter({ hasText: 'Invitation link copied.' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('status').filter({ hasText: 'Invitation link copied.' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Invitation link copied.' })
+
+
+      181 | test("INVITE-COPY missing invitation URL does not claim or perform a copy", async ({ page }) => {
+      182 |   await installClipboard(page, false);
+    > 183 |   await installRoom(page, false, true);
+          |                                        ^
+      184 |   const button = page.getByRole("button", { name: "Copy Invitation Link", exact: true });
+      185 |   await button.click();
+      186 |   await expect(page.getByRole("alert")).toBeVisible();
+        at <repo>/tests/browser/invitation-copy.phase2.spec.ts:183:77
+
+    Error Context: test-results/invitation-copy.phase2-INV-f5421-e-actual-Chromium-clipboard/error-context.md
+
+
+  5 failed
+    tests/browser/invitation-copy.phase2.spec.ts:138:1 › INVITE-COPY-01 copies the generated invitation and confirms it 
+    tests/browser/invitation-copy.phase2.spec.ts:146:1 › INVITE-COPY-01 uses writeText when ClipboardItem is unavailable 
+    tests/browser/invitation-copy.phase2.spec.ts:152:1 › INVITE-COPY-02 preserves the link when clipboard access is denied 
+    tests/browser/invitation-copy.phase2.spec.ts:158:1 › INVITE-COPY-02 preserves the link when the clipboard API is unavailable 
+    tests/browser/invitation-copy.phase2.spec.ts:179:1 › INVITE-COPY-01 writes to the actual Chromium clipboard 
+  2 passed (44.8s)

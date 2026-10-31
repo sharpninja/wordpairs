@@ -1,0 +1,39 @@
+
+[WebServer] (node:2493339) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+
+(node:2493414) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/3] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+(node:2493835) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[2/3] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+  1) tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+
+    Error: clock.pauseAt: Error: Cannot fast-forward to the past
+        at ClockController._innerFastForwardTo (eval at evaluate (:370:30), <anonymous>:201:13)
+        at ClockController.pauseAt (eval at evaluate (:370:30), <anonymous>:132:16)
+        at async <anonymous>:396:30
+        at ClockController._innerFastForwardTo (eval at evaluate (:370:30), <anonymous>:201:13)
+        at ClockController.pauseAt (eval at evaluate (:370:30), <anonymous>:132:16)
+        at async <anonymous>:396:30
+        at <repo>/tests/browser/reactions.phase5.spec.ts:8:381
+        at <repo>/tests/browser/reactions.phase5.spec.ts:8:289
+
+    Error Context: test-results/reactions.phase5-menu-reac-bbd15--leave-game-state-unchanged-repeat1/error-context.md
+
+
+
+(node:2494169) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[3/3] tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged
+  1 failed
+    tests/browser/reactions.phase5.spec.ts:4:1 › menu reactions reach player and observer, survive identical retry, expire at five seconds and leave game state unchanged 
+  2 passed (9.1s)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="10" failures="0" errors="0" time="0.019650266">
+    <testsuite name="tests/application/live-scale-cleanup.test.ts" timestamp="2026-10-30T20:08:06.363Z" hostname="[PRIVATE HOST]" tests="10" failures="0" errors="0" skipped="0" time="0.019650266">
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; confirms absence after a successful leave instead of trusting the write response" time="0.006256544">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; reports a membership still present after every successful leave response" time="0.002278702">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; reports repeated server failures and preserves the exact uncertain command" time="0.001216703">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; retries transport uncertainty with the same command before verified absence" time="0.000843665">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; bounds conflicts and does not silently accept exhausted retries" time="0.000921997">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; does not treat lost authentication or malformed reads as removed membership" time="0.001172001">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; accepts an authenticated empty membership or missing owned room without a write" time="0.000731213">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; preserves a completed closed room and requires the expected actor identity" time="0.000775184">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; cleans only supplied actors in reverse order and reports exact unresolved indices" time="0.000906097">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; also verifies observer departure if an owned actor&apos;s membership changed" time="0.000800264">
+        </testcase>
+    </testsuite>
+</testsuites>

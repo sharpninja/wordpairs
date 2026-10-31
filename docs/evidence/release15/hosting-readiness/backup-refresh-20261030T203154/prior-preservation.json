@@ -1,0 +1,71 @@
+{
+  "atLocal": "2026-10-30T20:40:22.7755331-05:00",
+  "source": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/encrypted-game-backup-index-v2.json",
+  "sourceSha256": "943A8697900DE655E19802234B0D0FB7387945ACAE5D017733A5E5C6BDDB572E",
+  "preservedCount": 6,
+  "pins": [
+    {
+      "runId": "backup-20261030T170149-5aa98cd0",
+      "environment": "staging",
+      "historicalStatus": "failed",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T170149-5aa98cd0-staging.json",
+      "receiptSha256": "EBF547726449E132C472F574F2C051B86341718138D5813C094A644F18D78336",
+      "ciphertext": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170149-5aa98cd0-staging/staging.pgdump.age",
+      "ciphertextSha256": "F1FCFEE43A070EF9351AF60DED10A9E74958F613C7D8395ED8B01C6E605C5BD1",
+      "hashesMatch": true
+    },
+    {
+      "runId": "backup-20261030T170326-6974b566",
+      "environment": "staging",
+      "historicalStatus": "verified_app_restore",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T170326-6974b566-staging.json",
+      "receiptSha256": "A8D9B055750C2CD24CDCF2B2006194C6E14F7422658236630228251483EB0960",
+      "ciphertext": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170326-6974b566-staging/staging.pgdump.age",
+      "ciphertextSha256": "FA9A2FA7BA6632DF127F53B37EC2F2B996081204E13461B9F2478E968D738724",
+      "hashesMatch": true
+    },
+    {
+      "runId": "backup-20261030T170446-f4385d7b",
+      "environment": "production",
+      "historicalStatus": "verified_app_restore",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T170446-f4385d7b-production.json",
+      "receiptSha256": "6D8F04821D0C99129699835CBD4918BC53A702DD084C5E4F3CEBF485EB0E1BFE",
+      "ciphertext": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170446-f4385d7b-production/production.pgdump.age",
+      "ciphertextSha256": "F37CA477513B3AF9A7724F118D395308EA6EF87DC4F4EDF287331BFCFE4007E9",
+      "hashesMatch": true
+    },
+    {
+      "runId": "backup-20261030T170818-4b541e8c",
+      "environment": "staging",
+      "historicalStatus": "failed",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T170818-4b541e8c-staging.json",
+      "receiptSha256": "A4FBAEA3FC954D5A0CF838B2BC155DB3BFB9FFDE55365E4A9E64BA14BE6125D2",
+      "ciphertext": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T170818-4b541e8c-staging/staging.pgdump.age",
+      "ciphertextSha256": "3D4E4293FCCFE1D19D2E4AB2ACF0B56C043AD745FE501ED6F1EDB7DF02512630",
+      "hashesMatch": true
+    },
+    {
+      "runId": "backup-20261030T171009-fba382bf",
+      "environment": "staging",
+      "historicalStatus": "verified_app_restore",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T171009-fba382bf-staging.json",
+      "receiptSha256": "816FDFEB0406095E73143DA0E12FF005482B2629ADEEFC49F8577601131BD8CA",
+      "ciphertext": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171009-fba382bf-staging/staging.pgdump.age",
+      "ciphertextSha256": "CA0A95974FE4D792EB9A2D491A2CAE6C9ECBC689DF6F8330764813C4759B6E26",
+      "hashesMatch": true
+    },
+    {
+      "runId": "backup-20261030T171025-c2196e52",
+      "environment": "production",
+      "historicalStatus": "verified_app_restore",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T171025-c2196e52-production.json",
+      "receiptSha256": "E16ACB89502E13399F9D53629223933C0D308E5A2FB3FDC8368BB21BEAECD47F",
+      "ciphertext": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/production.pgdump.age",
+      "ciphertextSha256": "E954DAB355ED1EB999282C6C9490A420E8935A69ABF8214185881D4A8F1C7CB8",
+      "hashesMatch": true
+    }
+  ],
+  "producer": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/VerifyWordpairsPriorBackupPreservation.ps1",
+  "producerSha256": "A19379FD0E99696D78B58F5C7B1C58378D652DED147A93C69B5F094539A80B6D",
+  "qualification": "Read-only local hash verification after two new backups; no provider query, decryption, replay or historical verdict change."
+}

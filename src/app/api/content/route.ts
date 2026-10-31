@@ -4,12 +4,11 @@ import {
   advanceLobbyDeadlines,
   deliverOutbox,
   getContentService,
-  getIdentityService,
 } from "../../../infrastructure/runtime";
 import { secrets } from "../../../infrastructure/secrets";
+import { adminSession } from "../../../web/admin-session";
 import { contentAction } from "../../../web/content-input";
 import {
-  cookie,
   errorResponse,
   jsonInput,
   PRIVATE_HEADERS,
@@ -17,10 +16,10 @@ import {
 } from "../../../web/server-http";
 export const runtime = "nodejs";
 async function context(request: Request) {
-  const identity = getIdentityService();
-  const service = getContentService();
-  if (!identity || !service) return failure("TEMPORARY_UNAVAILABLE");
-  const session = await identity.session(cookie(request, "wp_session"));
+  const session = await adminSession(request);
+  if (!session.ok) return session;
+  const service = getContentService(session.value.actor.profileId);
+  if (!service) return failure("TEMPORARY_UNAVAILABLE");
   return session.ok
     ? {
         ok: true as const,

@@ -1,0 +1,49 @@
+{
+  "startedAt": "2026-10-30T17:30:27",
+  "finishedAt": "2026-10-30T17:30:28",
+  "binding": "real",
+  "revision": "131269a590046a3c1c83314d11ff79f2b731799c",
+  "dirtyTestSource": true,
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/readiness-barrier.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 18,
+  "failed": 0,
+  "skipped": 0,
+  "positiveCases": 9,
+  "expectedNegativeControls": 9,
+  "actualNegativeControls": 9,
+  "helperAbsent": false,
+  "sourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.contract.ts",
+      "sha256": "11B280E48D07277BF145B5D0F42B2B6B71C34A7AAC4DB5FD599289966696DF8D",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/readiness-barrier.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.test.ts",
+      "sha256": "DE014C3DADEA403125ABD36887D5CC68111A914BBE01EE696DE812B725E17530",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/readiness-barrier.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/readiness-barrier.ts",
+      "sha256": "EC0B7188E8FFFAD23CD7FBDB6C5809C5BF76ABC32A46D1DA10AB2C9F3BA915E4",
+      "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/readiness-barrier.ts"
+    }
+  ],
+  "producerSha256": "BA1BF05077AAE9DFCA5B39A120F4C042982D1705F242984646F5AE9DE5B543F9",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/readiness-barrier/real-20261030T173027/unit.xml",
+  "junitSha256": "3F7E5753A848F64D3726D6C89A378FF9C629CBD91D2294F7387C6E02048BD739",
+  "qualification": "Expected negative controls are passing rejection checks inside the suite. Test-only callback coordination evidence, not actual browser/transport/full-game acceptance."
+}

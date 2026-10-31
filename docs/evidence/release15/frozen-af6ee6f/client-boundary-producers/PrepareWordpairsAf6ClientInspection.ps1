@@ -1,0 +1,37 @@
+#Requires -Version 7.0
+[CmdletBinding(SupportsShouldProcess)]
+param([ValidateSet('Prepare','Scan','Finish')][string]$Operation='Prepare')
+Set-StrictMode -Version Latest
+$ErrorActionPreference='Stop'
+$root='<repo>'
+$directory=Join-Path $root 'docs/evidence/release15/frozen-af6ee6f/client-boundary-producers'
+$adapted=Join-Path $directory 'InspectWordpairsCompiledClientBoundary-af6ee6f.ps1'
+if($Operation -eq 'Prepare'){
+ if(Test-Path $directory){throw 'Preserve previous producer retention'}
+ if(-not $PSCmdlet.ShouldProcess($directory,'Retain original/adapted inspection producers before narrow source/build-pinned scan')){return}
+ $original='/tmp/InspectWordpairsCompiledClientBoundary.ps1';$template='/tmp/InspectWordpairsCompiledClientBoundary-fdee7a2.ps1'
+ if((Get-FileHash $original).Hash -cne 'B0CC92F1AA3BAFFC8668FA1C4E100C695CF150557421C7003E7399A5C340CAC5' -or (Get-FileHash $template).Hash -cne 'BB64CE230A697940007CFDE023C5B3327911D307192D32A91AF6A70BE0C413EC'){throw 'Prior producer pin changed'}
+ [void][IO.Directory]::CreateDirectory($directory)
+ $originalCopy=Join-Path $directory 'InspectWordpairsCompiledClientBoundary-original.ps1';$templateCopy=Join-Path $directory 'InspectWordpairsCompiledClientBoundary-fdee7a2-original.ps1'
+ Copy-Item $original $originalCopy;Copy-Item $template $templateCopy
+ if((Get-FileHash $originalCopy).Hash -cne (Get-FileHash $original).Hash -or (Get-FileHash $templateCopy).Hash -cne (Get-FileHash $template).Hash){throw 'Original copy mismatch'}
+ $text=[IO.File]::ReadAllText($template)
+ foreach($pair in @(@('frozen-fdee7a2','frozen-af6ee6f'),@('fdee7a2569bb4742e008977e2a9cd7d312def859','af6ee6fe0c4a288ac23f570a4fa6a94d697d8127'),@('b8d49829-2942-4b9d-aa8f-1d3667e4016d','f8313a99-00ac-4f29-abe1-6c1443ea98fe'),@('0f337bfa-39c7-4650-b35d-6ee8d698be0f','9d00fa3e-555b-4491-8b8b-4f72d3b6177d'),@('ne 348','ne 351'),@('/tmp/InspectWordpairsCompiledClientBoundary-fdee7a2-original.ps1',$originalCopy))){if(-not $text.Contains($pair[0],[StringComparison]::Ordinal)){throw 'Expected adaptation anchor absent'};$text=$text.Replace($pair[0],$pair[1])}
+ [IO.File]::WriteAllText($adapted,$text)
+ $producerCopy=Join-Path $directory (Split-Path $PSCommandPath -Leaf);Copy-Item $PSCommandPath $producerCopy
+ $pins=@(foreach($path in @($originalCopy,$templateCopy,$adapted,$producerCopy)){$tokens=$null;$errorsFound=$null;[void][Management.Automation.Language.Parser]::ParseFile($path,[ref]$tokens,[ref]$errorsFound);$issues=@(Invoke-ScriptAnalyzer -Path $path -Severity Warning,Error);if(@($errorsFound).Count -or $issues.Count){throw 'Parser/analyzer failed'};[ordered]@{path=$path;sha256=(Get-FileHash $path).Hash;parserErrors=0;analyzerIssues=0}})
+ $data=[ordered]@{recordedAt=[DateTimeOffset]::Now.ToString('o');sourceRevision='af6ee6fe0c4a288ac23f570a4fa6a94d697d8127';sourceCount=351;nativeRunId='f8313a99-00ac-4f29-abe1-6c1443ea98fe';producerGroupRunId='9d00fa3e-555b-4491-8b8b-4f72d3b6177d';producerPins=$pins;originalsRetained=$true;adaptation='Only frozen directory/revision/351denominator, exact native/group run IDs and retained-original pointer changed. Original scan algorithm, known-value boundaries and timestamp/hash fail-closed assertions preserved.';sessionId='Codex-20261030T194802Z-plugin-session';requestId='req-20261031T001322Z-client-boundary-af6ee6f';qualification='Producer retention only, before scan. Existing historical receipts unchanged.'}
+ $target=Join-Path $directory 'producer-retention.json';$data|ConvertTo-Json -Depth 30|Set-Content $target
+ [pscustomobject]@{path=$target;sha256=(Get-FileHash $target).Hash;producers=$pins}|ConvertTo-Json -Depth 20
+}elseif($Operation -eq 'Scan'){
+ & $adapted -RequestId req-20261031T001322Z-client-boundary-af6ee6f -WhatIf:$WhatIfPreference
+}else{
+ $path=Join-Path $root 'docs/evidence/release15/frozen-af6ee6f/client-boundary.json';$r=Get-Content -Raw $path|ConvertFrom-Json -Depth 100
+ $response=(Get-Date -Format s)+' - Narrow emitted-client inspection saved at '+$path+', SHA256 '+(Get-FileHash $path).Hash+'. Actual '+$r.assetCount+' assets/'+$r.totalBytes+' bytes stable during scan; '+$r.knownValueLiteralMatchCount+' exact known-value matches, '+$r.privateSymbolMatchCount+' private-symbol matches. All351source pins match af6ee6f; native full run f8313a99-00ac-4f29-abe1-6c1443ea98fe, group9d00fa3e-555b-4491-8b8b-4f72d3b6177d, build19:04:43..19:04:50. Relative graph '+@($r.clientSourceGraph.entrypoints).Count+' client entrypoints/'+$r.clientSourceGraph.reachableCount+' reachable files, '+@($r.clientSourceGraph.privateModulesReachable).Count+' private modules reachable, '+@($r.clientSourceGraph.unresolvedRelativeImports).Count+' unresolved relative imports and '+@($r.clientSourceGraph.dynamicImportFiles).Count+' dynamic import files. Original/adapted producers retained before scan with hash manifest. Prior client receipts unchanged. Limits: exact UTF8for2authorized values only, no transformed/unknown/Vercelsecret scan; .next/static only, not server/RSC/network/publicSW/hosted; conservative relative graph, not compiler/packages/aliases; native build did not hash assets at build time, so association is successful build/BUILD_ID/timestamps/current stable hash. Historical full-build proof only; later native4player matrix failure remains, no product responsiveness or release/HV acceptance. No builds/tests/provider/source edits. Accuracy99percent, completeness98percent for narrow requested scope; broad secret/hosting/causal claims UNKNOWN. Own session Codex-20261030T194802Z-plugin-session / req-20261031T001322Z-client-boundary-af6ee6f; parent root req-20261030T203656Z-cline-beam-release.'
+ [IO.File]::WriteAllText('/tmp/wordpairs-client-boundary-af6ee6f-result.txt',$response)
+ $plugin='<home>/.codex/plugins/cache/mcpserver-codex-plugin/mcpserver/1.121.0';$base=@{WorkspacePath=$root;CacheRoot='/tmp/wordpairs-release-audit-20261030';PluginRoot=$plugin}
+ $decision='Associate only actual stable .next/static assets to the exact historical successful af6ee6f build using full/native/group/source/BUILD_ID/time checks; retain every limitation. Do not upgrade this to exhaustive secret, hosted, responsiveness or release acceptance after failed native matrix. Original/adapted producers retained by hash before scanning; only two explicitly authorized values read, never printed.'
+ & (Join-Path $plugin 'Invoke-CodexMcpPlugin.ps1') @base -Command Invoke -Method 'workflow.sessionlog.appendDialog' -ParamsObject @{dialogItems=@(@{timestamp=[DateTimeOffset]::Now.ToString('o');role='model';category='decision';content=$decision},@{timestamp=[DateTimeOffset]::Now.ToString('o');role='model';category='observation';content=$response})}
+ & (Join-Path $plugin 'Invoke-CodexMcpPlugin.ps1') @base -Command Invoke -Method 'workflow.sessionlog.appendActions' -ParamsObject @{actions=@(@{order=1;type='read';status='completed';filePath='docs/evidence/release15/frozen-af6ee6f/full/validation.json';description='Read actual successful full/native build receipts and emitted client assets without tests/builds; inspect source boundary and only explicitly authorized known literals.'},@{order=2;type='design_decision';status='completed';filePath='';description=$decision},@{order=3;type='create';status='completed';filePath=$path;description='Retain original/adapted producers and fresh narrow emitted-client hash inventory/known-value/symbol/graph receipt, preserving all prior artifacts and later matrix failure.'})}
+ & (Join-Path $plugin 'Invoke-CodexMcpPlugin.ps1') @base -Command CompleteTurn -Response $response
+}

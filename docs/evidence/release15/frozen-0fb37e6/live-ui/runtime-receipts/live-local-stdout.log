@@ -1,0 +1,157 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1 --reporter=line,junit
+
+
+Running 14 tests using 1 worker
+
+[1/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 2 real browser players complete eight UI rounds
+LIVE_SCALE players=2 round=1
+
+LIVE_SCALE players=2 round=2
+
+LIVE_SCALE players=2 round=3
+
+LIVE_SCALE players=2 round=4
+
+LIVE_SCALE players=2 round=5
+
+LIVE_SCALE players=2 round=6
+
+LIVE_SCALE players=2 round=7
+
+LIVE_SCALE players=2 round=8
+
+[2/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 3 real browser players complete eight UI rounds
+LIVE_SCALE players=3 round=1
+
+LIVE_SCALE players=3 round=2
+
+LIVE_SCALE players=3 round=3
+
+LIVE_SCALE players=3 round=4
+
+LIVE_SCALE players=3 round=5
+
+LIVE_SCALE players=3 round=6
+
+LIVE_SCALE players=3 round=7
+
+LIVE_SCALE players=3 round=8
+
+[3/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 4 real browser players complete eight UI rounds
+LIVE_SCALE players=4 round=1
+
+LIVE_SCALE players=4 round=2
+
+LIVE_SCALE players=4 round=3
+
+LIVE_SCALE players=4 round=4
+
+LIVE_SCALE players=4 round=5
+
+LIVE_SCALE players=4 round=6
+
+LIVE_SCALE players=4 round=7
+
+LIVE_SCALE players=4 round=8
+
+[4/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 5 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 5 real browser players complete eight UI rounds
+LIVE_SCALE players=5 round=1
+
+LIVE_SCALE players=5 round=2
+
+LIVE_SCALE players=5 round=3
+
+LIVE_SCALE players=5 round=4
+
+LIVE_SCALE players=5 round=5
+
+LIVE_SCALE players=5 round=6
+
+LIVE_SCALE players=5 round=7
+
+LIVE_SCALE players=5 round=8
+
+[5/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 6 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 6 real browser players complete eight UI rounds
+LIVE_SCALE players=6 round=1
+
+LIVE_SCALE players=6 round=2
+
+LIVE_SCALE players=6 round=3
+
+LIVE_SCALE players=6 round=4
+
+LIVE_SCALE players=6 round=5
+
+LIVE_SCALE players=6 round=6
+
+LIVE_SCALE players=6 round=7
+
+LIVE_SCALE players=6 round=8
+
+[6/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 7 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 7 real browser players complete eight UI rounds
+LIVE_SCALE players=7 round=1
+
+LIVE_SCALE players=7 round=2
+
+LIVE_SCALE players=7 round=3
+
+LIVE_SCALE players=7 round=4
+
+LIVE_SCALE players=7 round=5
+
+LIVE_SCALE players=7 round=6
+
+LIVE_SCALE players=7 round=7
+
+LIVE_SCALE players=7 round=8
+
+[7/14] tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 8 real browser players complete eight UI rounds
+tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 8 real browser players complete eight UI rounds
+LIVE_SCALE players=8 round=1
+
+LIVE_SCALE players=8 round=2
+
+LIVE_SCALE players=8 round=3
+
+LIVE_SCALE players=8 round=4
+
+LIVE_SCALE players=8 round=5
+
+LIVE_SCALE players=8 round=6
+
+LIVE_SCALE players=8 round=7
+
+LIVE_SCALE players=8 round=8
+
+  1) tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 8 real browser players complete eight UI rounds 
+
+    Error: request.response: Target page, context or browser has been closed
+
+       98 |           if (slowResponses.length >= 100 || !new URL(r.url()).pathname.startsWith("/api/")) return;
+       99 |           const durationMs = r.timing().responseEnd;
+    > 100 |           const response = await r.response();
+          |                                    ^
+      101 |           if (response && (response.status() >= 400 || durationMs > 1000)) slowResponses.push({ path: new URL(r.url()).pathname, method: r.method(), status: response.status(), durationMs, action: actionOf(r) });
+      102 |         });
+      103 |         await page.goto(`/rooms/${roomId}`); return page;
+        at _Page.<anonymous> (<repo>/tests/browser/live-player-counts.integration.spec.ts:100:36)
+
+    Error Context: test-results/live-local/live-player-counts.integra-04258-rs-complete-eight-UI-rounds/error-context.md
+
+
+Testing stopped early after 1 maximum allowed failures.
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:13:29 › LIVE-SCALE 8 real browser players complete eight UI rounds 
+  7 did not run
+  6 passed (3.7m)
+  1 error was not a part of any test, see above for details
+

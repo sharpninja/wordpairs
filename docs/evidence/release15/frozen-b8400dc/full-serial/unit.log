@@ -1,0 +1,102 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m<home>/github/WordGame/.mcpServer/wordpairs[39m
+
+ [32m✓[39m tests/web/pwa-manifest.test.ts [2m([22m[2m2 tests[22m[2m)[22m[33m 1420[2mms[22m[39m
+   [33m[2m✓[22m[39m PWA-02 supplies real PNG dimensions and opaque backgrounds[33m 1400[2mms[22m[39m
+ [32m✓[39m tests/integration/hosted-sbom.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 855[2mms[22m[39m
+   [32m✓[39m hosted build inventory, isolated fixture only [2m(4)[22m
+     [33m[2m✓[22m[39m includes scoped, nested, development and optional packages with dependency edges[33m 510[2mms[22m[39m
+ [32m✓[39m tests/acceptance/coverage-map.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 933[2mms[22m[39m
+   [33m[2m✓[22m[39m binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions[33m 931[2mms[22m[39m
+ [32m✓[39m tests/integration/hosting-schema.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 4129[2mms[22m[39m
+   [32m✓[39m hosting schema planner reruns, isolated history fixtures [2m(6)[22m
+     [33m[2m✓[22m[39m handles matching history without a live connection[33m 662[2mms[22m[39m
+     [33m[2m✓[22m[39m handles changed-source history without a live connection[33m 738[2mms[22m[39m
+     [33m[2m✓[22m[39m handles missing-earlier history without a live connection[33m 707[2mms[22m[39m
+     [33m[2m✓[22m[39m handles unknown history without a live connection[33m 708[2mms[22m[39m
+     [33m[2m✓[22m[39m preserves the deployed thirteen-migration prefix before guest privacy and player capacity[33m 722[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an unknown target before any connection[33m 589[2mms[22m[39m
+ [32m✓[39m tests/web/pwa-support.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 613[2mms[22m[39m
+   [33m[2m✓[22m[39m PWA-03 registers securely in admin scope with fresh updates; errors preserve manual guidance[33m 356[2mms[22m[39m
+ [32m✓[39m tests/web/landing.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 678[2mms[22m[39m
+   [32m✓[39m AC-43 anonymous landing states [2m(7)[22m
+     [33m[2m✓[22m[39m retains cache bypass when conflict recovery fails, and does not relabel old rows while navigating[33m 387[2mms[22m[39m
+ [32m✓[39m tests/web/identity-navigation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 349[2mms[22m[39m
+ [32m✓[39m tests/web/social-panel.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 269[2mms[22m[39m
+ [32m✓[39m tests/web/content-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m tests/web/capacity-ui.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 317[2mms[22m[39m
+ [32m✓[39m tests/web/live-update-routing.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 251[2mms[22m[39m
+ [32m✓[39m tests/architecture/phase1a-bootstrap.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 197[2mms[22m[39m
+ [32m✓[39m tests/integration/admin-session-isolation.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 269[2mms[22m[39m
+ [32m✓[39m tests/web/game-social-routing.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 153[2mms[22m[39m
+ [32m✓[39m tests/integration/oidc.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+ [32m✓[39m tests/web/lobby-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m tests/ac-contracts/oracle-validation.test.ts [2m([22m[2m222 tests[22m[2m)[22m[32m 90[2mms[22m[39m
+ [32m✓[39m tests/web/room-match-routing.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 109[2mms[22m[39m
+ [32m✓[39m tests/web/identity-api.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+ [32m✓[39m tests/web/live-races.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 90[2mms[22m[39m
+ [32m✓[39m tests/web/room-live-resume.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 71[2mms[22m[39m
+ [32m✓[39m tests/acceptance/boundary-counterparts.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m tests/acceptance/lobby-content-counterparts.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+ [32m✓[39m tests/web/matches-api.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+ [32m✓[39m tests/web/deadlines-api.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m tests/web/reactions-api.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m tests/web/heartbeat-body.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 106[2mms[22m[39m
+ [32m✓[39m tests/web/pwa-worker.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 64[2mms[22m[39m
+ [32m✓[39m tests/web/social-round-transition.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 70[2mms[22m[39m
+ [32m✓[39m tests/web/rooms-api.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 56[2mms[22m[39m
+ [32m✓[39m tests/integration/realtime.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m tests/web/social-live-cadence.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m tests/web/landing-api.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m tests/web/private-state.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m tests/web/github-admin-api.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m tests/application/catalog-seed.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m tests/web/admin-api.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m tests/acceptance/eight-round-counterpart.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m tests/web/deadline-worker-route.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 47[2mms[22m[39m
+ [32m✓[39m tests/acceptance/real-gameplay.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m tests/application/legacy-match-capacity.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m tests/application/match.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m tests/application/command.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m tests/application/content.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m tests/application/lobby.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m tests/application/capacity-policy.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m tests/application/identity.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m tests/traceability/ac-inventory.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m tests/integration/github-admin.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m tests/application/ui-autocontinue.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m tests/application/live-scale-cleanup.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m tests/application/catalog-admin.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/tr-contracts/reaction-contracts.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/application/reactions.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/application/reaction-service.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/application/rooms.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/ac-contracts/admin-profile-privacy.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/application/content-service.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/integration/postgres-store.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/integration/postgres-pool.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/application/public-service.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/application/matches.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/application/ui-content-workflows.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m tests/application/public-projections.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/web/deadline-worker-isolation.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/integration/invitations.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/application/capacity-public.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/integration/public-read.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m tests/integration/hosting-environment.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/application/access.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/acceptance/source-archive.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 27599[2mms[22m[39m
+   [33m[2m✓[22m[39m AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering[33m 27597[2mms[22m[39m
+ [32m✓[39m tests/ac-contracts/oracle-supplemental-validation.test.ts [2m([22m[2m85 tests[22m[2m)[22m[33m 29402[2mms[22m[39m
+   [33m[2m✓[22m[39m AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator[33m 18214[2mms[22m[39m
+   [33m[2m✓[22m[39m AC-42 validates complete GPL and the actual Recursive-bearing SVG notice[33m 11147[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m72 passed[39m[22m[90m (72)[39m
+[2m      Tests [22m [1m[32m632 passed[39m[22m[90m (632)[39m
+[2m   Start at [22m 15:34:44
+[2m   Duration [22m 30.26s[2m (tests 79%, environment 12%, import 6%, transform 2%)[22m
+
+[2m    Isolate [22m [33m72 workers spawned[39m[2m · ~281ms startup each (spawn + environment, per file)[22m
+[2m            [22m [2mat least ~4.77s faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+
+JUNIT report written to <repo>/docs/evidence/release15/frozen-b8400dc/full-serial/unit.xml

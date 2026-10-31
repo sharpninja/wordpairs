@@ -1,5 +1,11 @@
 # Wordpairs Content Moderation Plan
 
+Current release override, 28 October 2026: [guest game and GitHub admin PWA](admin_pwa_release.md)
+disables public nominations, category submissions and role delegation. Existing
+case/history and catalog moderation remain available only to the verified GitHub
+owner sharpninja. The earlier multi-role community workflow below is retained as
+historical design, not an active public entry point in this release.
+
 **Status:** Implemented in Phase 5 and extended by the reviewed administration/ACL pages on 27 October 2026
 **Requirements baseline:** `word_association_game_requirements.md` v2.6  
 **Implementation sequence:** `implementation_plan.md`  
@@ -52,16 +58,16 @@ Candidate matching uses the requirements' Unicode NFKC, trim, internal-whitespac
 
 ## 4. Roles and permissions
 
-The 27 October 2026 [admin/ACL extension](admin_acl_design.md) makes the roles operational. Its permission matrix supersedes the earlier proposed separation between moderator and content-editor accounts below: moderators and senior moderators can curate approved cases and author/edit catalog pairs; administrators additionally manage role grants and revocations. Direct editorial saves require a reason and create immutable versions. Community case review and independent appeals remain mandatory for the community workflow. The admin role does not waive proposer/original-reviewer independence.
+Historical design: the 27 October 2026 [admin/ACL extension](admin_acl_design.md) described delegated moderation and administration. The current release instead uses the fixed-owner GitHub administrator described in [the release record](admin_pwa_release.md); community submissions and role delegation are inactive. The table below records the earlier policy, not current access.
 
-Bootstrap administrators are defined by the server-only `WORDPAIRS_ADMIN_PROFILE_IDS` allowlist. Other privileges are persisted in PostgreSQL, audited and checked on the server. Configured administrator authority cannot be removed through the UI, and concurrent changes cannot remove every effective administrator. There is no public privilege-escalation or role-bootstrap endpoint.
+Historically, bootstrap administrators used a server-only profile-ID allowlist and persisted audited grants. This is not an authorization path for the current release.
 
 | Role | Allowed actions | Not allowed |
 |---|---|---|
 | Player / submitter | Submit an eligible nomination; submit an unlocked category/pair proposal; view own submission status and public decision reason; submit one appeal to a Senior Moderator. | See another player's private nomination identity, internal reviewer notes, or unresolved drafts; approve own content; edit the live catalog. |
 | Moderator | Review eligible cases; approve or reject with a reason; curate complete approved proposals; author/edit word pairs and hints as immutable versions; exclude content from future rounds; inspect content history. | Change vote history or scores, approve own submission, resolve appeals, assign roles, or erase audit history. |
 | Senior moderator | All moderator permissions plus independent reasoned appeal resolution. | Resolve an appeal of own submission or original decision, assign roles, or erase audit history. |
-| Administrator | All senior-moderator permissions plus audited role grants/revocations and user-directory access. | Bypass proposer/original-reviewer independence, remove configured administrator authority through the UI, remove the final effective administrator, or erase audit history. |
+| Administrator (historical policy) | All senior-moderator permissions plus audited role grants/revocations and user-directory access. | Bypass proposer/original-reviewer independence, remove configured administrator authority through the UI, remove the final effective administrator, or erase audit history. |
 | System | Validate structure, normalize duplicate keys, count eligible votes/wins, create queue cases, enforce status transitions, and record immutable events. | Make final content suitability decisions unless a specific deterministic rule has been approved. |
 
 The landing page uses generated public aliases and honors profile opt-out as specified in v2.6. Do not expose moderator-only fields or nomination histories as leaderboard data. If player-selected labels are used publicly, the display-name policy must define reserved/prohibited strings, report/removal handling, and how a disabled label is represented. These choices belong to the landing-page decision register, not the nomination review queue unless the product owner explicitly connects the workflows.

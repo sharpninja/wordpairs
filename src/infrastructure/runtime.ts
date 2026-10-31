@@ -13,10 +13,10 @@ import { PostgresAccessRepository } from "./access-repository";
 import { PostgresCatalogRepository } from "./catalog-repository";
 import { PostgresContentRepository } from "./content-repository";
 import { PostgresLobbyQueue } from "./deadlines";
+import { GithubAdminProvider } from "./github-admin";
 import { PostgresIdentityRepository } from "./identity-repository";
 import { InvitationSigner } from "./invitations";
 import { PostgresMatchRepository } from "./match-repository";
-import { OpenAiOidcProvider } from "./oidc";
 import { PostgresOutbox } from "./outbox";
 import { createSupabasePool } from "./postgres-pool";
 import { PostgresPublicReadRepository } from "./public-read";
@@ -29,6 +29,7 @@ import { SupabasePostgresStore } from "./supabase-postgres";
 let publicService: PublicLandingService | undefined;
 let database: ReturnType<typeof createSupabasePool> | undefined;
 let identity: IdentityService | undefined;
+let adminIdentity: IdentityService | undefined;
 /** Private server configuration; never copied into a client projection. */
 export function configuredAdminProfileIds(): string[] {
   return [
@@ -40,22 +41,25 @@ export function configuredAdminProfileIds(): string[] {
     ),
   ];
 }
-export function getAccessService() {
+export function getAccessService(adminProfileId?: string) {
   const pool = getDatabasePool();
   return pool
     ? new AccessService(
-        new PostgresAccessRepository(pool, configuredAdminProfileIds()),
+        new PostgresAccessRepository(
+          pool,
+          adminProfileId ? [adminProfileId] : [],
+        ),
       )
     : null;
 }
-export function getContentService() {
+export function getContentService(adminProfileId?: string) {
   const pool = getDatabasePool();
   return pool
     ? new ContentService(
         new PostgresContentRepository(
           pool,
           () => Date.now(),
-          configuredAdminProfileIds(),
+          adminProfileId ? [adminProfileId] : [],
         ),
         { now: () => Date.now() },
         ids,
@@ -83,8 +87,10 @@ export function getInvitationSigner() {
 let relay: OutboxRelay | undefined;
 let delivery: ReturnType<OutboxRelay["drain"]> | null = null;
 let dispatching: ReturnType<LobbyDispatcher["drain"]> | null = null;
-export async function advanceLobbyDeadlines() {
-  if (dispatching) return dispatching;
+export async function advanceLobbyDeadlines(waitForActive = false) {
+  // Foreground reads and actions must not join a worker's potentially long
+  // catch-up batch. The protected worker waits for the actual result instead.
+  if (dispatching) return waitForActive ? dispatching : success(0);
   const pool = getDatabasePool();
   if (!pool) return null;
   const dispatcher = new LobbyDispatcher(
@@ -198,40 +204,61 @@ export function getDatabasePool() {
   }
 }
 export function oidcAvailable() {
-  return Boolean(
-    process.env.WORDPAIRS_OIDC_ISSUER &&
-      process.env.WORDPAIRS_OIDC_CLIENT_ID &&
-      process.env.WORDPAIRS_ORIGIN,
-  );
+  return false;
 }
 export function getIdentityService() {
   if (identity) return identity;
   const pool = getDatabasePool();
   if (!pool) return null;
-  let oidc: OpenAiOidcProvider | null = null;
-  if (oidcAvailable()) {
-    try {
-      oidc = new OpenAiOidcProvider({
-        issuer: process.env.WORDPAIRS_OIDC_ISSUER as string,
-        clientId: process.env.WORDPAIRS_OIDC_CLIENT_ID as string,
-        redirectUri: new URL("/api/auth/callback", process.env.WORDPAIRS_ORIGIN)
-          .href,
-        clientSecret: process.env.WORDPAIRS_OIDC_CLIENT_SECRET,
-      });
-    } catch {
-      return null;
-    }
-  }
   identity = new IdentityService(
     new PostgresIdentityRepository(pool),
     secrets,
     ids,
     random,
     { now: () => Date.now() },
-    oidc,
-    configuredAdminProfileIds(),
+    null,
+    [],
+    true,
   );
   return identity;
+}
+export function githubAdminAvailable() {
+  return Boolean(
+    process.env.WORDPAIRS_GITHUB_CLIENT_ID &&
+      process.env.WORDPAIRS_GITHUB_CLIENT_SECRET &&
+      process.env.WORDPAIRS_ORIGIN,
+  );
+}
+export function getAdminIdentityService() {
+  if (adminIdentity) return adminIdentity;
+  const pool = getDatabasePool();
+  if (!pool || !githubAdminAvailable()) return null;
+  try {
+    const provider = new GithubAdminProvider({
+      clientId: process.env.WORDPAIRS_GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.WORDPAIRS_GITHUB_CLIENT_SECRET as string,
+      redirectUri: new URL(
+        "/api/auth/github/callback",
+        process.env.WORDPAIRS_ORIGIN,
+      ).href,
+    });
+    // A guest/OpenAI token cannot resolve as an administrator, even if copied
+    // into the admin cookie. Only the verified GitHub flow issues this namespace.
+    adminIdentity = new IdentityService(
+      new PostgresIdentityRepository(pool),
+      {
+        token: secrets.token,
+        hash: (value) => secrets.hash(`github-admin\u0000${value}`),
+      },
+      ids,
+      random,
+      { now: () => Date.now() },
+      provider,
+    );
+    return adminIdentity;
+  } catch {
+    return null;
+  }
 }
 export function getProfileStore() {
   const pool = getDatabasePool();

@@ -2,6 +2,7 @@ import { Pool } from "pg";
 import { afterAll, beforeAll, expect, it } from "vitest";
 import { landingProjection } from "../../src/application/public-projections";
 import { PostgresPublicReadRepository } from "../../src/infrastructure/public-read";
+import { assertHiddenMemberProfiles } from "../ac-contracts/admin-profile-privacy";
 
 const connectionString = process.env.WORDPAIRS_TEST_DATABASE_URL;
 if (!connectionString || new URL(connectionString).hostname !== "127.0.0.1")
@@ -15,10 +16,11 @@ const pool = new Pool({
 const repository = new PostgresPublicReadRepository(pool);
 beforeAll(async () => {
   await admin.query(`insert into wordpairs.profiles(id,identity_kind,issuer,provider_subject,alias,icon,public_leaderboard,wins,points,earliest_win_at) values
-    ('public-a','member','test-issuer','PRIVATE-SUBJECT-a','Player A','owl',true,4,20,to_timestamp(1)),
-    ('public-b','member','test-issuer','PRIVATE-SUBJECT-b','Player B','owl',true,4,20,to_timestamp(1)),
-    ('public-wins','member','test-issuer','PRIVATE-SUBJECT-c','Player Wins','owl',true,5,1,to_timestamp(1)),
-    ('public-points','member','test-issuer','PRIVATE-SUBJECT-d','Player Points','owl',true,4,30,to_timestamp(1)),
+    ('public-a','guest',null,null,'Player A','owl',true,4,20,to_timestamp(1)),
+    ('public-b','guest',null,null,'Player B','owl',true,4,20,to_timestamp(1)),
+    ('public-wins','guest',null,null,'Player Wins','owl',true,5,1,to_timestamp(1)),
+    ('public-points','guest',null,null,'Player Points','owl',true,4,30,to_timestamp(1)),
+    ('public-legacy','member','retired-openai','PRIVATE-SUBJECT-legacy','PRIVATE-LEGACY-ADMIN','owl',true,999,999,to_timestamp(1)),
     ('public-optout','member','test-issuer','PRIVATE-SUBJECT-e','PRIVATE-ALIAS','owl',false,99,99,to_timestamp(1)),
     ('public-guest','guest',null,null,'Guest Cedar','owl',true,6,1,to_timestamp(1));
     insert into wordpairs.rooms(id,capacity,status,code_digest,creator_id,discoverable,created_at) values
@@ -39,6 +41,7 @@ it("TR-30 real public query is bounded, ordered, opt-out aware, and private fiel
   const profiles = await repository.leaderboard({ offset: 0, limit: 25, revision: null });
   const rooms = await repository.lobbies({ offset: 0, limit: 25, revision: null });
   if (!profiles.ok || !rooms.ok) throw new Error("Public queries failed");
+  assertHiddenMemberProfiles(profiles.value.rows, ['public-legacy','public-optout']);
   expect(profiles.value.rows.map((row) => row.id)).toEqual([
     "public-guest",
     "public-wins",

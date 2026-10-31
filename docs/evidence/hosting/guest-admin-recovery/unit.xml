@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="587" failures="0" errors="0" time="86.851303577">
+    <testsuite name="tests/ac-contracts/admin-profile-privacy.test.ts" timestamp="2026-10-29T01:29:58.349Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.029421311">
+        <testcase classname="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows" time="0.002927571">
+        </testcase>
+        <testcase classname="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft" time="0.01845698">
+        </testcase>
+        <testcase classname="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection" time="0.004211413">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/ac-contracts/oracle-supplemental-validation.test.ts" timestamp="2026-10-29T01:29:58.355Z" hostname="[PRIVATE HOST]" tests="85" failures="0" errors="0" skipped="0" time="33.785016906">
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-01-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.00923793">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-01-T01 supplemental requirement coverage &gt; rejects semantic control: joined player icon missing from shared …" time="0.000905515">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-01-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.002414072">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-02-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001460035">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-02-T01 supplemental requirement coverage &gt; rejects semantic control: rejected full join changes version" time="0.000540539">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-02-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.002206138">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-04-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001962785">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-04-T01 supplemental requirement coverage &gt; rejects semantic control: middle index maps to wrong player" time="0.000755983">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-04-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.00169824">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-06-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.002445053">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-06-T01 supplemental requirement coverage &gt; rejects semantic control: later submission scores again" time="0.000805034">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-06-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.002910101">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-09-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.002705707">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-09-T01 supplemental requirement coverage &gt; rejects semantic control: solved player receives next hint" time="0.000463918">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-09-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.001242651">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-16-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.002770038">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-16-T01 supplemental requirement coverage &gt; rejects semantic control: playable content lacks three ordered hi…" time="0.000404777">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-16-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000945836">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-18-T02 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.002351751">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-18-T02 supplemental requirement coverage &gt; rejects semantic control: stale resolution mutates case" time="0.00054279">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-18-T02 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.002440452">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-19-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000939936">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-19-T01 supplemental requirement coverage &gt; rejects semantic control: second open suggestion is accepted" time="0.000740833">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-19-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.001579977">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-20-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001582068">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-20-T01 supplemental requirement coverage &gt; rejects semantic control: repeat login creates duplicate profile …" time="0.000457088">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-20-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.00116707">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-23-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001946284">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-23-T01 supplemental requirement coverage &gt; rejects semantic control: empty quick match omits fallback" time="0.000509709">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-23-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000800874">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-24-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000455768">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-24-T01 supplemental requirement coverage &gt; rejects semantic control: displayed capacity differs from stored …" time="0.000345596">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-24-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000743283">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-25-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000659161">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-25-T01 supplemental requirement coverage &gt; rejects semantic control: deep link resolves different room" time="0.000376976">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-25-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000745513">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-26-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001575207">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-26-T01 supplemental requirement coverage &gt; rejects semantic control: open deep link only offers instead of j…" time="0.000523379">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-26-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000985727">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-28-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001341983">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-28-T01 supplemental requirement coverage &gt; rejects semantic control: observer view does not advance with inv…" time="0.000622111">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-28-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.003661953">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-29-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.004133481">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-29-T01 supplemental requirement coverage &gt; rejects semantic control: invalid emoji is broadcast" time="0.000488369">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-29-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000775723">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-32-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000612771">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-32-T01 supplemental requirement coverage &gt; rejects semantic control: warning shown to wrong player" time="0.000333206">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-32-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000809734">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-32-T02 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001172011">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-32-T02 supplemental requirement coverage &gt; rejects semantic control: warning expires before five seconds" time="0.000440638">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-32-T02 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.002126427">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-33-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001829531">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-33-T01 supplemental requirement coverage &gt; rejects semantic control: countdown allows stale idle prompt" time="0.000452288">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-33-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.001948804">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-38-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.00171554">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-38-T01 supplemental requirement coverage &gt; rejects semantic control: missing test fixture is accepted" time="0.000501478">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-38-T01 supplemental requirement coverage &gt; rejects semantic control: planned test is accepted as validated" time="0.004309845">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-38-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000879856">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-39-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000488888">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-39-T01 supplemental requirement coverage &gt; rejects semantic control: external asset notice missing" time="0.000261274">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-39-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000497049">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-43-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.00059292">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-43-T01 supplemental requirement coverage &gt; rejects semantic control: rules content is empty" time="0.000335605">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-43-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.00055011">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-43-T02 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000745593">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-43-T02 supplemental requirement coverage &gt; rejects semantic control: stable profile ID tie order reversed" time="0.000300956">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-43-T02 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000636551">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-44-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000920916">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-44-T01 supplemental requirement coverage &gt; rejects semantic control: solved state relies only on color" time="0.000299805">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-44-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.000537109">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-45-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.00170861">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-45-T01 supplemental requirement coverage &gt; rejects semantic control: approved alternative does not score" time="0.000727753">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-45-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.001690399">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T01 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001131909">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T01 supplemental requirement coverage &gt; rejects semantic control: unauthorized catalog activation mutates…" time="0.000380676">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T01 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.00057083">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T02 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.001657559">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T02 supplemental requirement coverage &gt; rejects semantic control: eligibility change audit omitted" time="0.000393087">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T02 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.001192051">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T03 supplemental requirement coverage &gt; executes the exact scripted request and accepts the independent contract" time="0.000838725">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T03 supplemental requirement coverage &gt; rejects semantic control: rollback discards previously committed …" time="0.000339026">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-47-T03 supplemental requirement coverage &gt; rejects an omitted action or altered setup" time="0.00060661">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 1.6 validator" time="22.832442327">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-42 validates complete GPL and the actual Recursive-bearing SVG notice" time="10.837731526">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-supplemental-validation.test.ts" name="AC-30 strict driver rejects the empty-roster and empty-actions hostile control" time="0.000873305">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/ac-contracts/oracle-validation.test.ts" timestamp="2026-10-29T01:29:58.374Z" hostname="[PRIVATE HOST]" tests="222" failures="0" errors="0" skipped="0" time="0.553761606">
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="has one reusable scripted scenario for every planned active-AC test ID" time="0.041982808">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="gives every scenario concrete setup, ordered actions, raw observations, and named semantic violations" time="0.158095012">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-01-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.010938709">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-01-T01 reusable acceptance oracle &gt; rejects semantic control: deep link bypasses slot authority" time="0.007152395">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-01-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.01033154">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-02-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.004831724">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-02-T01 reusable acceptance oracle &gt; rejects semantic control: full join mutates roster" time="0.000637411">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-02-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.005010566">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-02-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.005069999">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-02-T02 reusable acceptance oracle &gt; rejects semantic control: both commands claim final seat" time="0.003029782">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-02-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001075109">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-03-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.004363586">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-03-T01 reusable acceptance oracle &gt; rejects semantic control: standings uses stale icon" time="0.000662091">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-03-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001925514">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001219191">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T01 reusable acceptance oracle &gt; rejects semantic control: zero-based random range" time="0.000411527">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T01 reusable acceptance oracle &gt; rejects semantic control: last index maps to wrong roster member" time="0.000308856">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001364514">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000966727">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T02 reusable acceptance oracle &gt; rejects semantic control: unauthorized choice mutates match" time="0.000443677">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-04-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002112076">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-05-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000751733">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-05-T01 reusable acceptance oracle &gt; rejects semantic control: same category has different backgrounds" time="0.000718122">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-05-T01 reusable acceptance oracle &gt; rejects semantic control: different category reuses wrong backgro…" time="0.003549711">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-05-T01 reusable acceptance oracle &gt; rejects semantic control: category background assignments swapped" time="0.000784074">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-05-T01 reusable acceptance oracle &gt; rejects semantic control: pair coverage is incomplete" time="0.000314286">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-05-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001627938">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-06-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000863245">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-06-T01 reusable acceptance oracle &gt; rejects semantic control: duplicate answer scores twice" time="0.000359686">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-06-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00058449">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-07-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.005544126">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-07-T01 reusable acceptance oracle &gt; rejects semantic control: hint two awards wrong points" time="0.000438218">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-07-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.004387916">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-08-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001008297">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-08-T01 reusable acceptance oracle &gt; rejects semantic control: target remains hidden after final hint" time="0.008193162">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-08-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.012759912">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-09-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000479069">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-09-T01 reusable acceptance oracle &gt; rejects semantic control: stage advances before all submit" time="0.000289585">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-09-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002939731">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-10-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000522329">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-10-T01 reusable acceptance oracle &gt; rejects semantic control: client clock determines elapsed time" time="0.002719457">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-10-T01 reusable acceptance oracle &gt; rejects semantic control: scorecard substitutes cumulative for ro…" time="0.000347636">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-10-T01 reusable acceptance oracle &gt; rejects semantic control: scorecard omits selected icon" time="0.000625141">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-10-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000951496">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-11-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000451758">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-11-T01 reusable acceptance oracle &gt; rejects semantic control: later solver becomes chooser" time="0.000245384">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-11-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000836565">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-12-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000428777">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-12-T01 reusable acceptance oracle &gt; rejects semantic control: round points omitted from summary" time="0.000598711">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-12-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000935816">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-13-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000528879">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-13-T01 reusable acceptance oracle &gt; rejects semantic control: lower score ranks first" time="0.000369577">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-13-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00059815">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-14-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000533819">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-14-T01 reusable acceptance oracle &gt; rejects semantic control: slower player ranks first" time="0.000308155">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-14-T01 reusable acceptance oracle &gt; rejects semantic control: unsolved penalty omitted" time="0.000221254">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-14-T01 reusable acceptance oracle &gt; rejects semantic control: exact tie receives different ranks" time="0.000245305">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-14-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000655812">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-15-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00060157">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-15-T01 reusable acceptance oracle &gt; rejects semantic control: landscape overflows horizontally" time="0.000380126">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-15-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00061295">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-16-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00115631">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-16-T01 reusable acceptance oracle &gt; rejects semantic control: unapproved content becomes playable" time="0.001925773">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-16-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000752623">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-17-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00118661">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-17-T01 reusable acceptance oracle &gt; rejects semantic control: hint solver may nominate" time="0.000439548">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-17-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000692262">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001200321">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T01 reusable acceptance oracle &gt; rejects semantic control: approval bypasses curation" time="0.000517749">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000640491">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001105809">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T02 reusable acceptance oracle &gt; rejects semantic control: duplicate appeal creates second audit r…" time="0.000454578">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T02 reusable acceptance oracle &gt; rejects semantic control: resolution has no reason" time="0.000264205">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-18-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002353831">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-19-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001097009">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-19-T01 reusable acceptance oracle &gt; rejects semantic control: nine wins unlocks suggestions" time="0.00059497">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-19-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000785523">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-20-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00058467">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-20-T01 reusable acceptance oracle &gt; rejects semantic control: invalid token creates association" time="0.001647348">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-20-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001084309">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-21-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000507129">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-21-T01 reusable acceptance oracle &gt; rejects semantic control: guest cannot create room" time="0.000331486">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-21-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.0011484">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-22-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001499036">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-22-T01 reusable acceptance oracle &gt; rejects semantic control: full room is joinable" time="0.000444278">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-22-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000809794">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-23-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00057475">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-23-T01 reusable acceptance oracle &gt; rejects semantic control: stable room ID tie break ignored" time="0.000346536">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-23-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000663022">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-23-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000428967">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-23-T02 reusable acceptance oracle &gt; rejects semantic control: quick match overfills room" time="0.000289075">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-23-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000672472">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-24-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000490029">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-24-T01 reusable acceptance oracle &gt; rejects semantic control: capacity 26 accepted" time="0.000330796">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-24-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000687162">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-25-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000707772">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-25-T01 reusable acceptance oracle &gt; rejects semantic control: full invitation admits player" time="0.000392047">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-25-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000678102">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-26-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000714522">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-26-T01 reusable acceptance oracle &gt; rejects semantic control: deep link routes through browse" time="0.000476828">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-26-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.004173043">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-27-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000679042">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-27-T01 reusable acceptance oracle &gt; rejects semantic control: observer consumes player seat" time="0.000342276">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-27-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000759124">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-28-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000482668">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-28-T01 reusable acceptance oracle &gt; rejects semantic control: observer receives score row" time="0.000308675">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-28-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002072846">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-29-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000694813">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-29-T01 reusable acceptance oracle &gt; rejects semantic control: reaction changes score" time="0.000423267">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-29-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000710312">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000604441">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T01 reusable acceptance oracle &gt; rejects semantic control: new player inserted at vacancy" time="0.001794861">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T01 reusable acceptance oracle &gt; rejects semantic control: newest observer promoted" time="0.000377477">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T01 reusable acceptance oracle &gt; rejects semantic control: surviving players reordered" time="0.002041995">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00235231">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001047109">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T02 reusable acceptance oracle &gt; rejects semantic control: surviving players reordered" time="0.000422448">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000659141">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000463558">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T03 reusable acceptance oracle &gt; rejects semantic control: promotion is not recomputed" time="0.000346756">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002677646">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T04 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.004090741">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T04 reusable acceptance oracle &gt; rejects semantic control: stable profile tie break reversed" time="0.001142299">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-30-T04 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002795149">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000842524">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T01 reusable acceptance oracle &gt; rejects semantic control: countdown roster remains unlocked" time="0.000431198">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001360444">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000462508">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T02 reusable acceptance oracle &gt; rejects semantic control: observer promoted after lock" time="0.000281735">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000679152">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000665122">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T03 reusable acceptance oracle &gt; rejects semantic control: race substitutes after lock" time="0.000321095">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000591891">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T04 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.002032875">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T04 reusable acceptance oracle &gt; rejects semantic control: game starts below minimum" time="0.000564359">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-31-T04 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00059238">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001002988">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T01 reusable acceptance oracle &gt; rejects semantic control: ready before expiry fails to start coun…" time="0.000330636">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000680062">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001306892">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T02 reusable acceptance oracle &gt; rejects semantic control: expired holdout retained in larger room" time="0.000324575">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.001908183">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000602541">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T03 reusable acceptance oracle &gt; rejects semantic control: race starts countdown twice" time="0.000302725">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00056302">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T04 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000390507">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T04 reusable acceptance oracle &gt; rejects semantic control: two-player holdout is booted" time="0.000222384">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-32-T04 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000684872">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-33-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.001472506">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-33-T01 reusable acceptance oracle &gt; rejects semantic control: idle prompt omits player" time="0.000463728">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-33-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000716473">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-37-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000524619">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-37-T01 reusable acceptance oracle &gt; rejects semantic control: paid fallback used" time="0.005062258">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-37-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000597531">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-38-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000484168">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-38-T01 reusable acceptance oracle &gt; rejects semantic control: active AC lacks mapping" time="0.000315205">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-38-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002051436">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-39-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000756653">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-39-T01 reusable acceptance oracle &gt; rejects semantic control: missing purpose and upstream" time="0.000290765">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-39-T01 reusable acceptance oracle &gt; rejects semantic control: lock version mismatch" time="0.000201703">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-39-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000517489">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-41-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000465168">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-41-T01 reusable acceptance oracle &gt; rejects semantic control: archive uses wrong swbom directory" time="0.000234374">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-41-T01 reusable acceptance oracle &gt; rejects semantic control: archive without source or license accep…" time="0.000158313">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-41-T01 reusable acceptance oracle &gt; rejects semantic control: empty archive collection accepted vacuo…" time="0.000166643">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-41-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000941776">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-42-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000778653">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-42-T01 reusable acceptance oracle &gt; rejects semantic control: archive omits bundled notice-bearing as…" time="0.000331876">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-42-T01 reusable acceptance oracle &gt; rejects semantic control: archive contains truncated license reta…" time="0.000284795">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-42-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002451382">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.004131372">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T01 reusable acceptance oracle &gt; rejects semantic control: landing requires sign in" time="0.003522692">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.003626863">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000660012">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T02 reusable acceptance oracle &gt; rejects semantic control: guest without opt-in included" time="0.000330986">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002679507">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000497198">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T03 reusable acceptance oracle &gt; rejects semantic control: room code replaces public ID" time="0.0022705">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-43-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.003171944">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-44-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00057375">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-44-T01 reusable acceptance oracle &gt; rejects semantic control: focus is not visible" time="0.002038385">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-44-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000719852">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000385087">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T01 reusable acceptance oracle &gt; rejects semantic control: retry scores twice" time="0.003811706">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00056368">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000379697">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T02 reusable acceptance oracle &gt; rejects semantic control: incorrect guess is broadcast" time="0.00119687">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000806444">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000434208">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T03 reusable acceptance oracle &gt; rejects semantic control: observer sees target before reveal" time="0.000514469">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-45-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000583941">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-46-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.002053395">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-46-T01 reusable acceptance oracle &gt; rejects semantic control: invalid callback creates profile associ…" time="0.000478148">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-46-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.0005642">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.002394502">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T01 reusable acceptance oracle &gt; rejects semantic control: unauthorized review changes state" time="0.000358446">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.000566099">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.003122404">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T02 reusable acceptance oracle &gt; rejects semantic control: incomplete candidate becomes playable" time="0.000468708">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.004425387">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000503029">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T03 reusable acceptance oracle &gt; rejects semantic control: appeal publishes content" time="0.000336566">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-47-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.002551724">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-50-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.002245249">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-50-T01 reusable acceptance oracle &gt; rejects semantic control: public payload leaks room code and targ…" time="0.000480608">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-50-T01 reusable acceptance oracle &gt; rejects semantic control: public payload leaks identity and moder…" time="0.002094166">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-50-T01 reusable acceptance oracle &gt; rejects semantic control: public payload leaks secret" time="0.000296435">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-50-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.00229823">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T01 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.002524483">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T01 reusable acceptance oracle &gt; rejects semantic control: domain imports Next runtime" time="0.000414107">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T01 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.003163925">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T02 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000564319">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T02 reusable acceptance oracle &gt; rejects semantic control: conflict exposed as success" time="0.000339716">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T02 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.003354828">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T03 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.00054591">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T03 reusable acceptance oracle &gt; rejects semantic control: duplicate causes second side effect" time="0.000259684">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T03 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.003827756">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T04 reusable acceptance oracle &gt; runs the request through the driver and accepts the conforming raw observation" time="0.000405727">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T04 reusable acceptance oracle &gt; rejects semantic control: rollback retains outbox intent" time="0.000299315">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="AC-51-T04 reusable acceptance oracle &gt; rejects missing, reordered, or altered scripted actions" time="0.004222423">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="rejects the hostile-review semantic controls that summary flags previously missed" time="0.005796991">
+        </testcase>
+        <testcase classname="tests/ac-contracts/oracle-validation.test.ts" name="snapshots scripts and rejects every in-place request alias mutation" time="0.00748937">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/acceptance/boundary-counterparts.test.ts" timestamp="2026-10-29T01:29:58.420Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.566247562">
+        <testcase classname="tests/acceptance/boundary-counterparts.test.ts" name="AC-02/24/27/28/51 maximum 25 players plus 25 observers keep capacity, locked roster, scoring and perspectives under competing commands" time="0.437115492">
+        </testcase>
+        <testcase classname="tests/acceptance/boundary-counterparts.test.ts" name="AC-16 primary/supplemental counterpart rejects each incomplete catalog field and excludes unapproved or disabled future content" time="0.015242785">
+        </testcase>
+        <testcase classname="tests/acceptance/boundary-counterparts.test.ts" name="AC-02/04/24 fills capacities 2/8/25 without mutation on overflow and maps every inclusive anchor index" time="0.034375756">
+        </testcase>
+        <testcase classname="tests/acceptance/boundary-counterparts.test.ts" name="AC-45 supplemental independent unsolved answer cases normalize canonical and approved alternatives, reject fuzzy/punctuation changes and lock later scoring" time="0.06574064">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/acceptance/coverage-map.test.ts" timestamp="2026-10-29T01:29:58.421Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="3.138693357">
+        <testcase classname="tests/acceptance/coverage-map.test.ts" name="binds every primary/supplemental oracle leaf group to scoped production assertions and, when generating, matching passing executions" time="3.135109204">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/acceptance/eight-round-counterpart.test.ts" timestamp="2026-10-29T01:29:58.421Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.156439923">
+        <testcase classname="tests/acceptance/eight-round-counterpart.test.ts" name="AC-13-T01 counterpart: actual commands finish only after eight rounds and satisfy the unchanged final ordering oracle" time="0.150082144">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/acceptance/lobby-content-counterparts.test.ts" timestamp="2026-10-29T01:29:58.422Z" hostname="[PRIVATE HOST]" tests="8" failures="0" errors="0" skipped="0" time="0.371980753">
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-23 oldest-room port contract orders age and stable ID; competing quickMatch calls cannot duplicate the final seat" time="0.0438247">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-47-T02 normal independent moderator approval records actor reason threshold eligibility and no activation" time="0.052757735">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-32-T03 final ready wins before warning expiry and commits exactly one countdown despite replay and stale deadline" time="0.007361688">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-30-T03 stale departure loses to queue change and retries against the latest oldest observer" time="0.008947576">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-30-T03/31-T03 concurrent leave and observer arrival conflict, recompute promotion, and never substitute after roster lock" time="0.010159896">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-01/23/25/26 primary and supplemental counterparts resolve code, browse, quick match and invitation to the same capacity authority" time="0.022957308">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-33 supplemental all five membership/readiness changes silence old idle deadlines, prompt the current roster once and suppress prompts after lock" time="0.007430139">
+        </testcase>
+        <testcase classname="tests/acceptance/lobby-content-counterparts.test.ts" name="AC-18/47 primary and supplemental audit fields follow threshold, review, one appeal and independent resolution without forbidden mutations or publication" time="0.203731864">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/acceptance/real-gameplay.test.ts" timestamp="2026-10-29T01:29:58.423Z" hostname="[PRIVATE HOST]" tests="13" failures="0" errors="0" skipped="0" time="0.087354505">
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-04-T01 real domain/application conformance with unchanged oracle" time="0.00866067">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-04-T02 real domain/application conformance with unchanged oracle" time="0.005712709">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-06-T01 real domain/application conformance with unchanged oracle" time="0.008495218">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-07-T01 real domain/application conformance with unchanged oracle" time="0.015217574">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-08-T01 real domain/application conformance with unchanged oracle" time="0.008435606">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-09-T01 real domain/application conformance with unchanged oracle" time="0.016344084">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-10-T01 real domain/application conformance with unchanged oracle" time="0.004413547">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-11-T01 real domain/application conformance with unchanged oracle" time="0.004145602">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-12-T01 real domain/application conformance with unchanged oracle" time="0.002585334">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-14-T01 real domain/application conformance with unchanged oracle" time="0.001063898">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-45-T01 real domain/application conformance with unchanged oracle" time="0.001655759">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-45-T02 real domain/application conformance with unchanged oracle" time="0.00227008">
+        </testcase>
+        <testcase classname="tests/acceptance/real-gameplay.test.ts" name="AC-45-T03 real domain/application conformance with unchanged oracle" time="0.003491051">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/acceptance/source-archive.test.ts" timestamp="2026-10-29T01:29:58.425Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="26.954754506">
+        <testcase classname="tests/acceptance/source-archive.test.ts" name="AC-41/42 exact Git snapshot tar.gz, matching fixture BOM, complete notices and SHA256 sidecar reject tampering" time="26.947817695">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/access.test.ts" timestamp="2026-10-29T01:29:58.425Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.008338065">
+        <testcase classname="tests/application/access.test.ts" name="defaults to player authority and grants only explicit role permissions" time="0.004998197">
+        </testcase>
+        <testcase classname="tests/application/access.test.ts" name="matches configured administrators by exact authenticated ID without changing other actors" time="0.001279362">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/catalog-admin.test.ts" timestamp="2026-10-29T01:29:58.425Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.029629143">
+        <testcase classname="tests/application/catalog-admin.test.ts" name="editorial saves require authority, three clean hints, exact next version and a valid fixed category" time="0.010529772">
+        </testcase>
+        <testcase classname="tests/application/catalog-admin.test.ts" name="both editorial saves and community activation reject overflow before changing state" time="0.013199979">
+        </testcase>
+        <testcase classname="tests/application/catalog-admin.test.ts" name="administrator inheritance preserves proposer/original-reviewer independence for appeals" time="0.001620487">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/catalog-seed.test.ts" timestamp="2026-10-29T01:29:58.426Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.13426811">
+        <testcase classname="tests/application/catalog-seed.test.ts" name="ships six categories with ten distinct directed complete pairs, three static hints and one shared background each" time="0.033155516">
+        </testcase>
+        <testcase classname="tests/application/catalog-seed.test.ts" name="applies the official full default Unicode C+F mappings, including expansions, without Turkish locale folding" time="0.090132734">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/command.test.ts" timestamp="2026-10-29T01:29:58.426Z" hostname="[PRIVATE HOST]" tests="14" failures="0" errors="0" skipped="0" time="0.042286603">
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; AC-51 stages state and outbox intent together and returns canonical retries" time="0.021687376">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; AC-51 rejects conflicting command reuse and stale versions without decisions" time="0.003792676">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; AC-37 leaves committed state untouched on quota rejection and permits the same command on recovery" time="0.003072803">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; AC-51 rolls back rejected decisions without state, records, or events" time="0.002168567">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; rejects invalid metadata before touching a repository" time="0.000906636">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; runs the unchanged AC-37-T01 oracle against actual command/quota observations" time="0.001598028">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; runs unchanged AC-51-T03/T04 oracles against actual replay/rollback orchestration" time="0.000970657">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; propagates repository CONFLICT without invoking a decision" time="0.000654192">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; propagates repository ROOM_FULL without invoking a decision" time="0.000522389">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; discards a valid transition if the repository fails commit and never retries the decision" time="0.001272172">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; rejects invalid event intent before persistence: {&quot;events&quot;:[]}" time="0.000796524">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; rejects invalid event intent before persistence: {&quot;events&quot;:[{&quot;id&quot;:&quot;event-1&quot;,&quot;aggregateType&quot;:&quot;room&quot;,&quot;schemaVersion&quot;:1,&quot;aggregateId&quot;:&quot;room-1&quot;,&quot;version&quot;:5,&quot;type&quot;:&quot;changed&quot;,&quot;audience&quot;:[&quot;player-1&quot;],&quot;payload&quot;:{}},{&quot;id&quot;:&quot;event-1&quot;,&quot;aggregateType&quot;:&quot;room&quot;,&quot;schemaVersion&quot;:1,&quot;aggregateId&quot;:&quot;room-1&quot;,&quot;version&quot;:5,&quot;type&quot;:&quot;changed&quot;,&quot;audience&quot;:[&quot;player-1&quot;],&quot;payload&quot;:{}}]}" time="0.000416837">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; rejects invalid event intent before persistence: {&quot;events&quot;:[{&quot;id&quot;:&quot;event-1&quot;,&quot;aggregateType&quot;:&quot;room&quot;,&quot;schemaVersion&quot;:1,&quot;aggregateId&quot;:&quot;room-1&quot;,&quot;version&quot;:9,&quot;type&quot;:&quot;changed&quot;,&quot;audience&quot;:[&quot;player-1&quot;],&quot;payload&quot;:{}}]}" time="0.000316495">
+        </testcase>
+        <testcase classname="tests/application/command.test.ts" name="Phase 1B command transaction boundary &gt; rejects invalid event intent before persistence: {&quot;events&quot;:[{&quot;id&quot;:&quot;event-1&quot;,&quot;aggregateType&quot;:&quot;room&quot;,&quot;schemaVersion&quot;:2,&quot;aggregateId&quot;:&quot;room-1&quot;,&quot;version&quot;:5,&quot;type&quot;:&quot;changed&quot;,&quot;audience&quot;:[&quot;player-1&quot;],&quot;payload&quot;:{}}]}" time="0.000226884">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/content-service.test.ts" timestamp="2026-10-29T01:29:58.429Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.016283363">
+        <testcase classname="tests/application/content-service.test.ts" name="AC-19/47 commits audited suggestions once, retains canonical retry, rejects stale and rolls back failed storage" time="0.013596826">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/content.test.ts" timestamp="2026-10-29T01:29:58.430Z" hostname="[PRIVATE HOST]" tests="7" failures="0" errors="0" skipped="0" time="0.048228547">
+        <testcase classname="tests/application/content.test.ts" name="AC-17/18 normalizes candidates, permits only current revealed no-hint solves and prevents duplicate profile/candidate or eligible-round use" time="0.010227878">
+        </testcase>
+        <testcase classname="tests/application/content.test.ts" name="AC-18/47 counts unique profiles at 9/10, denies unauthorized/self review and approval alone never publishes" time="0.009619146">
+        </testcase>
+        <testcase classname="tests/application/content.test.ts" name="AC-18/47 allows one proposer appeal and a distinct senior reasoned uphold/overturn without activation" time="0.007423089">
+        </testcase>
+        <testcase classname="tests/application/content.test.ts" name="AC-19 requires ten lifetime wins, exactly three distinct pairs and only one open suggestion" time="0.001561787">
+        </testcase>
+        <testcase classname="tests/application/content.test.ts" name="AC-16/18/47 activation requires an approved case plus complete matching curated records and authorized editor; snapshots stay immutable" time="0.004771003">
+        </testcase>
+        <testcase classname="tests/application/content.test.ts" name="catalog exclusions preserve the six-category availability invariant while historical pairs remain resolvable" time="0.006007665">
+        </testcase>
+        <testcase classname="tests/application/content.test.ts" name="a rejected suggestion cannot reopen through appeal while the same proposer has another open suggestion" time="0.002177408">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/identity.test.ts" timestamp="2026-10-29T01:29:58.434Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.083921936">
+        <testcase classname="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; GA-10 verified account profiles default private using the mock-validated oracle" time="0.040028464">
+        </testcase>
+        <testcase classname="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; passes only verified identities to profile association and refuses invalid browser credentials" time="0.012067729">
+        </testcase>
+        <testcase classname="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; creates a generated opt-out guest and never returns provider claims in the profile" time="0.016238432">
+        </testcase>
+        <testcase classname="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; rejects forged profile authority and arbitrary icons before persistence" time="0.005213841">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/lobby.test.ts" timestamp="2026-10-29T01:29:58.435Z" hostname="[PRIVATE HOST]" tests="21" failures="0" errors="0" skipped="0" time="0.079550979">
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; compacts survivors and appends earliest observer, using stable ID for equal arrival times" time="0.009910241">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; does not promote if room was not full, and creator has no departure privilege" time="0.001501726">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; rejects observers and outsiders changing readiness or player presence" time="0.002086526">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; starts a five-second warning only at all-but-one, then locks immediately on final ready" time="0.003911888">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; removes a holdout in larger rooms and locks remaining roster without promoting" time="0.004407187">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; retains exactly-two holdout without repeatedly warning and waits for both ready" time="0.00115251">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; never substitutes after lock and closes if fewer than two original players remain at expiry" time="0.002822419">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; starts with at least two original members and blocks late player admission" time="0.003955799">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; prompts once after 30s, preserves the interval across presence, and resets on membership/readiness" time="0.004160092">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; disconnects retain membership for 120s, early reconnect cancels old job, and late reconnect fails" time="0.003657473">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; expires simultaneous player leases before deciding whether remaining players can start" time="0.003043303">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; closes an empty room at 30 minutes and a rejoin cancels its stale expiry" time="0.002923811">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; commits one canonical ready result/event and rejects a stale concurrent command without repeating it" time="0.011797234">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; enforces overdue holdout under the action lock even when its worker is leased elsewhere" time="0.001456616">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; settles equal countdown/reconnect deadlines identically regardless of which worker wins" time="0.000726633">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; a delayed worker preserves an earlier countdown before a later disconnect expiry" time="0.000786784">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; reconnect wins an equal holdout deadline and applies the exactly-two exception" time="0.000839814">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; rejects admissions after empty expiry or lease expiry without cancelling those deadlines" time="0.000402957">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; acknowledges stale jobs but leaves failed commits leased for retry" time="0.007938728">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; detects silent loss at 45s, then retains the same roster position for a full 120s grace" time="0.003029533">
+        </testcase>
+        <testcase classname="tests/application/lobby.test.ts" name="Phase 3 actual lobby policy: AC-30–33 and TR-09/10 &gt; a delayed detector catches up detection and grace expiry at their original deadlines" time="0.001787181">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/match.test.ts" timestamp="2026-10-29T01:29:58.438Z" hostname="[PRIVATE HOST]" tests="11" failures="0" errors="0" skipped="0" time="0.131090784">
+        <testcase classname="tests/application/match.test.ts" name="Phase4A real catalog/match setup &gt; requires complete approved records and matching category background" time="0.013386332">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4A real catalog/match setup &gt; draws anchors over inclusive roster indices and freezes their order" time="0.002426932">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4A real catalog/match setup &gt; rejects non-anchor choices, binds category art, and consumes only unused eligible pairs" time="0.006790167">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; normalizes NFKC, case and whitespace while preserving punctuation and exact alternatives" time="0.013978352">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; accepts once per stage, locks a solve, rejects observers and never stores incorrect input" time="0.004143902">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; scores 3/2/1 after hints and reveals after final timeout with zero for unsolved" time="0.022942838">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; does not accept a late answer into an expired stage, and stale rounds/stages cannot mutate" time="0.003129964">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; selects earliest accepted solver even for equal timestamps and advances early only when all unsolved submitted" time="0.004322525">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; keeps target and future hints private and gives an observer exactly the followed player perspective" time="0.012989696">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; draws no-solver next category uniformly from six categories and preserves exact final ties" time="0.004945595">
+        </testcase>
+        <testcase classname="tests/application/match.test.ts" name="Phase4B authoritative rounds, scoring and private views &gt; finishes after exactly eight rounds with cumulative points and stable roster indexes" time="0.033782136">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/matches.test.ts" timestamp="2026-10-29T01:29:58.439Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.030956957">
+        <testcase classname="tests/application/matches.test.ts" name="canonically replays correct scoring and returns no answer/guess text in transport results or event payloads" time="0.022108194">
+        </testcase>
+        <testcase classname="tests/application/matches.test.ts" name="commits authoritative stage catch-up while canonically rejecting an answer sent at its deadline" time="0.002822869">
+        </testcase>
+        <testcase classname="tests/application/matches.test.ts" name="returns repository conflicts without repeating a solve, and denies non-roster commands" time="0.001199511">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/public-projections.test.ts" timestamp="2026-10-29T01:29:58.440Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.031389645">
+        <testcase classname="tests/application/public-projections.test.ts" name="Phase 2A anonymous public projections &gt; orders lifetime wins, points, earliest win and stable ID while excluding opt-outs" time="0.019722212">
+        </testcase>
+        <testcase classname="tests/application/public-projections.test.ts" name="Phase 2A anonymous public projections &gt; runs unchanged AC-50-T01 against the entire actual projection including poisoned private records" time="0.001825022">
+        </testcase>
+        <testcase classname="tests/application/public-projections.test.ts" name="Phase 2A anonymous public projections &gt; AC-22/43 shows only discoverable waiting lobbies with free seats, and stable oldest-first order" time="0.003362878">
+        </testcase>
+        <testcase classname="tests/application/public-projections.test.ts" name="Phase 2A anonymous public projections &gt; bounds page sizes and offsets without accepting malformed or unbounded queries" time="0.001863142">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/public-service.test.ts" timestamp="2026-10-29T01:29:58.440Z" hostname="[PRIVATE HOST]" tests="5" failures="0" errors="0" skipped="0" time="0.045836595">
+        <testcase classname="tests/application/public-service.test.ts" name="TR-30 bounded public reads and cache ownership &gt; refreshes lobbies at 15 seconds and rankings at 5 minutes independent of identity" time="0.020448225">
+        </testcase>
+        <testcase classname="tests/application/public-service.test.ts" name="TR-30 bounded public reads and cache ownership &gt; rejects malformed and cross-kind cursors before querying and never caches failures" time="0.007997778">
+        </testcase>
+        <testcase classname="tests/application/public-service.test.ts" name="TR-30 bounded public reads and cache ownership &gt; checks every continuation against the database even within the cache TTL" time="0.0039982">
+        </testcase>
+        <testcase classname="tests/application/public-service.test.ts" name="TR-30 bounded public reads and cache ownership &gt; bypasses stale first-page caches on any server instance after a conflict and preserves minimum revisions" time="0.004080961">
+        </testcase>
+        <testcase classname="tests/application/public-service.test.ts" name="TR-30 bounded public reads and cache ownership &gt; never lets an old in-flight fetch overwrite a forced fresh snapshot" time="0.003739695">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/reaction-service.test.ts" timestamp="2026-10-29T01:29:58.441Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.012058819">
+        <testcase classname="tests/application/reaction-service.test.ts" name="AC-29 canonical retry emits once without state/score mutation; observer cannot send and expired events vanish" time="0.009885762">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/reactions.test.ts" timestamp="2026-10-29T01:29:58.441Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.032992282">
+        <testcase classname="tests/application/reactions.test.ts" name="AC-29/TR-19 permits exactly five emoji and all player/observer recipients without game mutation" time="0.025686975">
+        </testcase>
+        <testcase classname="tests/application/reactions.test.ts" name="TR-19 enforces durable exact 2s rate boundary and hides at exactly 5s including late delivery" time="0.001775571">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/rooms.test.ts" timestamp="2026-10-29T01:29:58.442Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.030416797">
+        <testcase classname="tests/application/rooms.test.ts" name="AC-01/02/24–28/50/51 room policy and private projections &gt; enforces the 2–25 capacity range, private default and fixed Crockford code format" time="0.013156459">
+        </testcase>
+        <testcase classname="tests/application/rooms.test.ts" name="AC-01/02/24–28/50/51 room policy and private projections &gt; rejects a full player join without mutating the state and binds a separately admitted observer to an active inviter" time="0.007903877">
+        </testcase>
+        <testcase classname="tests/application/rooms.test.ts" name="AC-01/02/24–28/50/51 room policy and private projections &gt; limits observers to 25, blocks player substitution after lock, and rejects duplicate membership" time="0.001280412">
+        </testcase>
+        <testcase classname="tests/application/rooms.test.ts" name="AC-01/02/24–28/50/51 room policy and private projections &gt; allowlists room labels, keeps codes player-only and exposes only the observer’s bound perspective" time="0.002621955">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/ui-autocontinue.test.ts" timestamp="2026-10-29T01:29:58.446Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.085015064">
+        <testcase classname="tests/application/ui-autocontinue.test.ts" name="UI-NOSOLVER: exact server deadline, early rejection, replay and late worker preserve a full first stage" time="0.024688228">
+        </testcase>
+        <testcase classname="tests/application/ui-autocontinue.test.ts" name="manual Continue and the system deadline may win in either order without two next rounds" time="0.027182021">
+        </testcase>
+        <testcase classname="tests/application/ui-autocontinue.test.ts" name="eight no-solver rounds never schedule or create a ninth" time="0.028985913">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/ui-content-workflows.test.ts" timestamp="2026-10-29T01:29:58.447Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.032354411">
+        <testcase classname="tests/application/ui-content-workflows.test.ts" name="UI-CHANGES: independent reasoned change requests retain one-open slot, proposer-only resubmission and unused appeal" time="0.021259159">
+        </testcase>
+        <testcase classname="tests/application/ui-content-workflows.test.ts" name="UI-HOLD: moderator-only nomination hold/resume preserves counts and prohibits approval/publication while held" time="0.004403806">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/architecture/phase1a-bootstrap.test.ts" timestamp="2026-10-29T01:29:58.447Z" hostname="[PRIVATE HOST]" tests="6" failures="0" errors="0" skipped="0" time="0.951079678">
+        <testcase classname="tests/architecture/phase1a-bootstrap.test.ts" name="Phase 1A application skeleton and module boundaries &gt; exposes explicit development, production, lint, type, and test commands" time="0.033706434">
+        </testcase>
+        <testcase classname="tests/architecture/phase1a-bootstrap.test.ts" name="Phase 1A application skeleton and module boundaries &gt; declares Next.js and React as runtime dependencies" time="0.004839164">
+        </testcase>
+        <testcase classname="tests/architecture/phase1a-bootstrap.test.ts" name="Phase 1A application skeleton and module boundaries &gt; provides a minimal App Router page and root layout" time="0.007245656">
+        </testcase>
+        <testcase classname="tests/architecture/phase1a-bootstrap.test.ts" name="Phase 1A application skeleton and module boundaries &gt; has explicit domain, application, and infrastructure module roots" time="0.013631387">
+        </testcase>
+        <testcase classname="tests/architecture/phase1a-bootstrap.test.ts" name="Phase 1A application skeleton and module boundaries &gt; keeps domain modules free of UI, framework, and infrastructure imports" time="0.845716771">
+        </testcase>
+        <testcase classname="tests/architecture/phase1a-bootstrap.test.ts" name="Phase 1A application skeleton and module boundaries &gt; rejects infrastructure/framework imports through relative paths, aliases, and dynamic syntax" time="0.021792698">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/admin-session-isolation.test.ts" timestamp="2026-10-29T01:29:58.448Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="1.067308685">
+        <testcase classname="tests/integration/admin-session-isolation.test.ts" name="actual composition separates guest/admin token namespaces, strips guest roles and revokes admin independently" time="1.060252752">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/github-admin.test.ts" timestamp="2026-10-29T01:29:58.449Z" hostname="[PRIVATE HOST]" tests="13" failures="0" errors="0" skipped="0" time="0.095486437">
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; requests identity with state/S256 and exact callback without repository/email scopes" time="0.015097351">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; accepts only server-verified owner ID/login and discards provider credentials" time="0.013901071">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects unapproved identity {&quot;id&quot;:1,&quot;login&quot;:&quot;sharpninja&quot;}" time="0.006582184">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects unapproved identity {&quot;id&quot;:16146732,&quot;login&quot;:&quot;another&quot;}" time="0.006435542">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects unapproved identity {&quot;id&quot;:&quot;16146732&quot;,&quot;login&quot;:&quot;sharpninja&quot;}" time="0.007947268">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects unapproved identity {}" time="0.006404752">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects malformed transaction before provider calls" time="0.005565257">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects malformed transaction before provider calls" time="0.00059687">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects malformed transaction before provider calls" time="0.009271611">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; fails closed on token endpoint errors" time="0.002657757">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; fails closed on token endpoint errors" time="0.005294852">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; fails closed on token endpoint errors" time="0.000793454">
+        </testcase>
+        <testcase classname="tests/integration/github-admin.test.ts" name="private GitHub administrator identity, isolated provider fixtures &gt; rejects network failures without returning provider details" time="0.003565592">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/hosted-sbom.test.ts" timestamp="2026-10-29T01:29:58.450Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="3.337250931">
+        <testcase classname="tests/integration/hosted-sbom.test.ts" name="hosted build inventory, isolated fixture only &gt; includes scoped, nested, development and optional packages with dependency edges" time="1.747357182">
+        </testcase>
+        <testcase classname="tests/integration/hosted-sbom.test.ts" name="hosted build inventory, isolated fixture only &gt; fails closed for unsafe metadata --sha" time="0.361401569">
+        </testcase>
+        <testcase classname="tests/integration/hosted-sbom.test.ts" name="hosted build inventory, isolated fixture only &gt; fails closed for unsafe metadata --url" time="0.783024583">
+        </testcase>
+        <testcase classname="tests/integration/hosted-sbom.test.ts" name="hosted build inventory, isolated fixture only &gt; fails closed for unsafe metadata --url" time="0.430564889">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/hosting-environment.test.ts" timestamp="2026-10-29T01:29:58.451Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.009006716">
+        <testcase classname="tests/integration/hosting-environment.test.ts" name="managed integration secrets remain server-only &gt; uses write-only Vercel Supabase secret names without copying their values" time="0.004932866">
+        </testcase>
+        <testcase classname="tests/integration/hosting-environment.test.ts" name="managed integration secrets remain server-only &gt; retains explicit configuration precedence and fails closed on absent secrets" time="0.001567937">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/hosting-schema.test.ts" timestamp="2026-10-29T01:29:58.451Z" hostname="[PRIVATE HOST]" tests="6" failures="0" errors="0" skipped="0" time="2.093043009">
+        <testcase classname="tests/integration/hosting-schema.test.ts" name="hosting schema planner reruns, isolated history fixtures &gt; handles matching history without a live connection" time="0.233664023">
+        </testcase>
+        <testcase classname="tests/integration/hosting-schema.test.ts" name="hosting schema planner reruns, isolated history fixtures &gt; handles changed-source history without a live connection" time="0.330564204">
+        </testcase>
+        <testcase classname="tests/integration/hosting-schema.test.ts" name="hosting schema planner reruns, isolated history fixtures &gt; handles missing-earlier history without a live connection" time="0.437661383">
+        </testcase>
+        <testcase classname="tests/integration/hosting-schema.test.ts" name="hosting schema planner reruns, isolated history fixtures &gt; handles unknown history without a live connection" time="0.533662477">
+        </testcase>
+        <testcase classname="tests/integration/hosting-schema.test.ts" name="hosting schema planner reruns, isolated history fixtures &gt; preserves the deployed thirteen-migration prefix before the guest-privacy extension" time="0.306326254">
+        </testcase>
+        <testcase classname="tests/integration/hosting-schema.test.ts" name="hosting schema planner reruns, isolated history fixtures &gt; rejects an unknown target before any connection" time="0.234704411">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/invitations.test.ts" timestamp="2026-10-29T01:29:58.452Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.011863995">
+        <testcase classname="tests/integration/invitations.test.ts" name="signs invitation nonces, rejects modifications and wrong keys, and never encodes the room/inviter or signing secret" time="0.009454644">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/oidc.test.ts" timestamp="2026-10-29T01:29:58.452Z" hostname="[PRIVATE HOST]" tests="11" failures="0" errors="0" skipped="0" time="0.520222134">
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; uses authorization code + S256 PKCE, state and nonce; verifies signed claims and returns only issuer/subject" time="0.373945617">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;wrongSignature&quot;:true}" time="0.037014842">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;claims&quot;:{&quot;iss&quot;:&quot;https://wrong.example.test&quot;}}" time="0.02934732">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;claims&quot;:{&quot;aud&quot;:&quot;wrong-audience&quot;}}" time="0.009937562">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;claims&quot;:{&quot;nonce&quot;:&quot;wrong-nonce&quot;}}" time="0.008849884">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;claims&quot;:{&quot;exp&quot;:1}}" time="0.007801805">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;claims&quot;:{&quot;sub&quot;:&quot;&quot;}}" time="0.01153218">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;claims&quot;:{&quot;nbf&quot;:1793240967}}" time="0.007619112">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a malformed or untrusted token without returning provider details: {&quot;tokenStatus&quot;:400}" time="0.015074671">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects a bad state before exchanging a code and rejects issuer mismatch during discovery" time="0.007645463">
+        </testcase>
+        <testcase classname="tests/integration/oidc.test.ts" name="AC-20/46 actual OIDC protocol validation against fake discovery, JWKS and token endpoints &gt; rejects insecure or credential-bearing configured issuers" time="0.003849057">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/postgres-pool.test.ts" timestamp="2026-10-29T01:29:58.455Z" hostname="[PRIVATE HOST]" tests="9" failures="0" errors="0" skipped="0" time="0.032143638">
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override ssl=0" time="0.011742103">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override ssl=false" time="0.000760193">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override sslmode=disable" time="0.002222478">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override sslmode=no-verify" time="0.00172288">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override sslcert=x" time="0.000692882">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override sslkey=x" time="0.000435438">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override sslrootcert=x" time="0.000414157">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; rejects URL override uselibpqcompat=true" time="0.000625081">
+        </testcase>
+        <testcase classname="tests/integration/postgres-pool.test.ts" name="server Postgres transport configuration (no network) &gt; retains certificate verification in the actual driver&apos;s effective configuration" time="0.005364563">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/postgres-store.test.ts" timestamp="2026-10-29T01:29:58.459Z" hostname="[PRIVATE HOST]" tests="7" failures="0" errors="0" skipped="0" time="0.022552231">
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; locks the aggregate before deciding and commits state/result/outbox together" time="0.008166612">
+        </testcase>
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; replays canonical results before deciding or checking stale versions" time="0.002050865">
+        </testcase>
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; rolls back a rejected decision without issuing persistence RPC" time="0.001395875">
+        </testcase>
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; rolls back SQL failures after decision, redacts errors, and never retries" time="0.001575507">
+        </testcase>
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; returns recoverable SERVICE_LIMIT for connection SQLSTATE 53300" time="0.001357064">
+        </testcase>
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; returns recoverable SERVICE_LIMIT for connection SQLSTATE 53400" time="0.001895073">
+        </testcase>
+        <testcase classname="tests/integration/postgres-store.test.ts" name="Supabase Postgres transaction adapter (scripted SQL port, not DB evidence) &gt; rolls back a commit-time resource limit with the same retry command ID" time="0.002057036">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/public-read.test.ts" timestamp="2026-10-29T01:29:58.460Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.015068581">
+        <testcase classname="tests/integration/public-read.test.ts" name="public read adapter SQL boundary &gt; uses a bounded public projection RPC with a snapshot revision and releases its connection" time="0.007631422">
+        </testcase>
+        <testcase classname="tests/integration/public-read.test.ts" name="public read adapter SQL boundary &gt; maps a changed snapshot to a recoverable conflict" time="0.000993277">
+        </testcase>
+        <testcase classname="tests/integration/public-read.test.ts" name="public read adapter SQL boundary &gt; redacts query failures and reports resource limits without leaking provider details" time="0.002051156">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/realtime.test.ts" timestamp="2026-10-29T01:29:58.460Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.0651384">
+        <testcase classname="tests/integration/realtime.test.ts" name="Realtime privacy and durable delivery contracts &gt; publishes one private notification per audience member and never forwards domain payloads" time="0.052715725">
+        </testcase>
+        <testcase classname="tests/integration/realtime.test.ts" name="Realtime privacy and durable delivery contracts &gt; mints a short-lived basic transport identity without exposing any server secret" time="0.004805154">
+        </testcase>
+        <testcase classname="tests/integration/realtime.test.ts" name="Realtime privacy and durable delivery contracts &gt; keeps failed publications pending and acknowledges only successful delivery; duplicate delivery keeps a stable event ID" time="0.004157602">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/tr-contracts/reaction-contracts.test.ts" timestamp="2026-10-29T01:29:58.461Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.058304271">
+        <testcase classname="tests/tr-contracts/reaction-contracts.test.ts" name="TR-19-T01 accepts exactly the approved reaction allowlist" time="0.03573421">
+        </testcase>
+        <testcase classname="tests/tr-contracts/reaction-contracts.test.ts" name="TR-19-T02 keeps each reaction visible for exactly five seconds" time="0.005265782">
+        </testcase>
+        <testcase classname="tests/tr-contracts/reaction-contracts.test.ts" name="TR-19-T03 limits each player to one reaction per two-second window" time="0.005312932">
+        </testcase>
+        <testcase classname="tests/tr-contracts/reaction-contracts.test.ts" name="TR-19-T04 delivers to players and observers without mutating game state" time="0.006745126">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/traceability/ac-inventory.test.ts" timestamp="2026-10-29T01:29:58.462Z" hostname="[PRIVATE HOST]" tests="5" failures="0" errors="0" skipped="0" time="0.09856485">
+        <testcase classname="tests/traceability/ac-inventory.test.ts" name="AC test inventory traceability (AC-38) &gt; maps every active acceptance criterion to at least one named case" time="0.025119086">
+        </testcase>
+        <testcase classname="tests/traceability/ac-inventory.test.ts" name="AC test inventory traceability (AC-38) &gt; validates each case schema, assertion, boundary, seam, status, and AC ownership" time="0.004458777">
+        </testcase>
+        <testcase classname="tests/traceability/ac-inventory.test.ts" name="AC test inventory traceability (AC-38) &gt; rejects missing fields, truncated rows, mismatched AC ownership, and duplicate IDs" time="0.006679896">
+        </testcase>
+        <testcase classname="tests/traceability/ac-inventory.test.ts" name="AC test inventory traceability (AC-38) &gt; validates concrete manifest mappings and mock-validation records" time="0.002807128">
+        </testcase>
+        <testcase classname="tests/traceability/ac-inventory.test.ts" name="direct dependency attribution (AC-39) &gt; records each installed direct dependency purpose, upstream, exact locked version, and license" time="0.05019615">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/admin-api.test.ts" timestamp="2026-10-29T01:29:58.462Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.145799209">
+        <testcase classname="tests/web/admin-api.test.ts" name="fixed-owner release disables account delegation without reading or writing storage" time="0.13948845">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/content-api.test.ts" timestamp="2026-10-29T01:29:58.463Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.182293503">
+        <testcase classname="tests/web/content-api.test.ts" name="derives actor from session and rejects forged roles, wins, unknown fields and CSRF before service" time="0.162146303">
+        </testcase>
+        <testcase classname="tests/web/content-api.test.ts" name="sends strict suggestion to the application boundary and returns only its private result" time="0.006868869">
+        </testcase>
+        <testcase classname="tests/web/content-api.test.ts" name="propagates unauthorized review and cannot turn client authority into server roles" time="0.002379101">
+        </testcase>
+        <testcase classname="tests/web/content-api.test.ts" name="denies guest-shaped sessions before accessing private content" time="0.002251599">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/deadlines-api.test.ts" timestamp="2026-10-29T01:29:58.463Z" hostname="[PRIVATE HOST]" tests="5" failures="0" errors="0" skipped="0" time="0.107362142">
+        <testcase classname="tests/web/deadlines-api.test.ts" name="LIVE-03 rejects unauthorized worker calls before work" time="0.071847956">
+        </testcase>
+        <testcase classname="tests/web/deadlines-api.test.ts" name="LIVE-03 independently reports deadline and bounded outbox outcomes" time="0.008358225">
+        </testcase>
+        <testcase classname="tests/web/deadlines-api.test.ts" name="LIVE-03 publishes despite deadline failure and reports the partial failure" time="0.007026652">
+        </testcase>
+        <testcase classname="tests/web/deadlines-api.test.ts" name="LIVE-03 publication failure does not masquerade as healthy scheduler success" time="0.007249266">
+        </testcase>
+        <testcase classname="tests/web/deadlines-api.test.ts" name="LIVE-03 missing Realtime configuration is a visible worker failure" time="0.005523426">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/github-admin-api.test.ts" timestamp="2026-10-29T01:29:58.464Z" hostname="[PRIVATE HOST]" tests="7" failures="0" errors="0" skipped="0" time="0.137432804">
+        <testcase classname="tests/web/github-admin-api.test.ts" name="login binds its challenge to a separate secure admin cookie" time="0.10951776">
+        </testcase>
+        <testcase classname="tests/web/github-admin-api.test.ts" name="successful callback sets only the admin session and clears the one-time challenge cookie" time="0.004925715">
+        </testcase>
+        <testcase classname="tests/web/github-admin-api.test.ts" name="malformed or denied callback fails closed: ?code=a&amp;code=b&amp;state=s" time="0.00173805">
+        </testcase>
+        <testcase classname="tests/web/github-admin-api.test.ts" name="malformed or denied callback fails closed: ?code=c&amp;state=a&amp;state=b" time="0.001206271">
+        </testcase>
+        <testcase classname="tests/web/github-admin-api.test.ts" name="malformed or denied callback fails closed: ?error=denied&amp;code=c&amp;state=s" time="0.001409734">
+        </testcase>
+        <testcase classname="tests/web/github-admin-api.test.ts" name="admin session ignores the guest cookie and exposes neither roles nor user delegation" time="0.007392158">
+        </testcase>
+        <testcase classname="tests/web/github-admin-api.test.ts" name="logout is same-origin, revokes the admin namespace and preserves the guest cookie" time="0.002349561">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/heartbeat-body.test.ts" timestamp="2026-10-29T01:29:58.465Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.345791329">
+        <testcase classname="tests/web/heartbeat-body.test.ts" name="LIVE production heartbeat drains its response before refreshing" time="0.27323771">
+        </testcase>
+        <testcase classname="tests/web/heartbeat-body.test.ts" name="LIVE failed heartbeat body consumption preserves the exact canonical retry" time="0.069989094">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/identity-api.test.ts" timestamp="2026-10-29T01:29:58.465Z" hostname="[PRIVATE HOST]" tests="11" failures="0" errors="0" skipped="0" time="0.160134868">
+        <testcase classname="tests/web/identity-api.test.ts" name="issues an HttpOnly secure session cookie without exposing the session token in JSON" time="0.095228562">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="denies cross-origin writes and client identity/role injection before changing anything" time="0.019710592">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="derives command identity from the verified session and omits server actor roles from session JSON" time="0.005264851">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="public player session never projects administration privileges" time="0.003060843">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="public moderator session never projects administration privileges" time="0.001704059">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="public senior-moderator session never projects administration privileges" time="0.001828592">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="public admin session never projects administration privileges" time="0.001922303">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="rejects a profile mutation from a tab whose displayed identity differs from the current shared session" time="0.013940232">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="bounds untrusted JSON and clears only a confirmed revoked session" time="0.00290658">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="disabled public OpenAI callback cannot exchange credentials or issue cookies" time="0.001280152">
+        </testcase>
+        <testcase classname="tests/web/identity-api.test.ts" name="verified same-profile sessions expose stable purpose-separated non-credential generations" time="0.006579304">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/identity-navigation.test.ts" timestamp="2026-10-29T01:29:58.467Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="1.105408806">
+        <testcase classname="tests/web/identity-navigation.test.ts" name="focus during delayed POST cannot overtake the session mutation" time="0.913487347">
+        </testcase>
+        <testcase classname="tests/web/identity-navigation.test.ts" name="focus during delayed DELETE cannot overtake the session mutation" time="0.144184631">
+        </testcase>
+        <testcase classname="tests/web/identity-navigation.test.ts" name="only the admin page offers the configured GitHub login route" time="0.045432428">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/landing-api.test.ts" timestamp="2026-10-29T01:29:58.473Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.081578675">
+        <testcase classname="tests/web/landing-api.test.ts" name="keeps freshness ownership in the bounded server cache without extending it through downstream caching" time="0.078746225">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/landing.test.ts" timestamp="2026-10-29T01:29:58.473Z" hostname="[PRIVATE HOST]" tests="7" failures="0" errors="0" skipped="0" time="1.690928753">
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; retains cache bypass when conflict recovery fails, and does not relabel old rows while navigating" time="0.98401823">
+        </testcase>
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; clears loading and exposes retry after a stalled network request, then recovers on the next poll" time="0.102302725">
+        </testcase>
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; renders duplicate aliases without retaining removed rows on a refresh" time="0.310247901">
+        </testcase>
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; recovers a changed continuation with a cache-bypassing first page and carries the new minimum across polls" time="0.125017689">
+        </testcase>
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; does not allow a late older interval response to replace newer public information" time="0.044285098">
+        </testcase>
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; renders rules, ranking and rooms without sign-in and distinguishes a successful empty query" time="0.068896735">
+        </testcase>
+        <testcase classname="tests/web/landing.test.ts" name="AC-43 anonymous landing states &gt; shows recoverable unavailable states rather than reporting empty rankings on failure" time="0.049271705">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/live-races.test.ts" timestamp="2026-10-29T01:29:58.474Z" hostname="[PRIVATE HOST]" tests="5" failures="0" errors="0" skipped="0" time="0.307342732">
+        <testcase classname="tests/web/live-races.test.ts" name="LIVE-HV-001 foreground requests do not wait for a deferred worker batch" time="0.010938049">
+        </testcase>
+        <testcase classname="tests/web/live-races.test.ts" name="LIVE-HV-002 a push during an older game GET schedules exactly one newer read" time="0.203971978">
+        </testcase>
+        <testcase classname="tests/web/live-races.test.ts" name="LIVE-HV-003 unmount during authentication cannot create an obsolete channel" time="0.019696951">
+        </testcase>
+        <testcase classname="tests/web/live-races.test.ts" name="LIVE connected game safety polling is15s and cadence changes do not invalidate an active read" time="0.043714129">
+        </testcase>
+        <testcase classname="tests/web/live-races.test.ts" name="LIVE auth callbacks retain the application identity through renewal and replace closed channels" time="0.021852009">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/lobby-api.test.ts" timestamp="2026-10-29T01:29:58.475Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.156158559">
+        <testcase classname="tests/web/lobby-api.test.ts" name="derives the actor from the verified session and validates displayed identity before dispatch" time="0.124610732">
+        </testcase>
+        <testcase classname="tests/web/lobby-api.test.ts" name="rejects CSRF, forged authority, malformed booleans and unsupported actions" time="0.013409002">
+        </testcase>
+        <testcase classname="tests/web/lobby-api.test.ts" name="returns canonical observer denial and delivers catch-up notifications even when late action is rejected" time="0.001919793">
+        </testcase>
+        <testcase classname="tests/web/lobby-api.test.ts" name="exposes a fail-closed server scheduler credential without leaking it" time="0.005894042">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/matches-api.test.ts" timestamp="2026-10-29T01:29:58.475Z" hostname="[PRIVATE HOST]" tests="5" failures="0" errors="0" skipped="0" time="0.101409849">
+        <testcase classname="tests/web/matches-api.test.ts" name="hashes the answer intent, derives server actor and keeps guess text out of response" time="0.083418737">
+        </testcase>
+        <testcase classname="tests/web/matches-api.test.ts" name="rejects wrong displayed identity, malformed stages, extra authority and CSRF before domain action" time="0.006295929">
+        </testcase>
+        <testcase classname="tests/web/matches-api.test.ts" name="denies observer/outsider writes and filters profile labels in the private view" time="0.003267307">
+        </testcase>
+        <testcase classname="tests/web/matches-api.test.ts" name="allows an authenticated former player to request only the transaction-controlled canonical replay, while denying private reads" time="0.002495694">
+        </testcase>
+        <testcase classname="tests/web/matches-api.test.ts" name="delivers committed catch-up even when an expired-stage answer is rejected" time="0.002119317">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/private-state.test.ts" timestamp="2026-10-29T01:29:58.476Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="0.292081727">
+        <testcase classname="tests/web/private-state.test.ts" name="retains exact uncertain command across remounts, shares lock and retires only on confirmed resolution" time="0.230388017">
+        </testcase>
+        <testcase classname="tests/web/private-state.test.ts" name="identity change or authorization invalidation clears drafts and makes late completion inert" time="0.015174893">
+        </testcase>
+        <testcase classname="tests/web/private-state.test.ts" name="settled results survive navigation, block new writes and retire only after matching consumer acknowledgment" time="0.024321302">
+        </testcase>
+        <testcase classname="tests/web/private-state.test.ts" name="same-profile session replacement clears private data and old-generation completions; malformed denial also clears" time="0.010505462">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/pwa-manifest.test.ts" timestamp="2026-10-29T01:29:58.477Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="4.23186774">
+        <testcase classname="tests/web/pwa-manifest.test.ts" name="PWA-01 validates actual manifest and rejects weakened identity, launch and icon controls" time="0.066363191">
+        </testcase>
+        <testcase classname="tests/web/pwa-manifest.test.ts" name="PWA-02 supplies real PNG dimensions and opaque backgrounds" time="4.160142546">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/pwa-support.test.ts" timestamp="2026-10-29T01:29:58.477Z" hostname="[PRIVATE HOST]" tests="9" failures="0" errors="0" skipped="0" time="1.905015176">
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-03 registers securely in admin scope with fresh updates; errors preserve manual guidance" time="0.742855236">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-04 prompts once on a click and hides after actual appinstalled" time="0.183759428">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: false" time="0.111027356">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: true" time="0.160047137">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-04 hides in display-mode standalone and responds to mode changes" time="0.011899707">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-04 recognizes iPhone standalone and removes listeners on unmount" time="0.007883427">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-05 insecure origins explain HTTPS and do not register a worker" time="0.010018203">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-05 retains safe areas when installed UI is hidden and panel padding survives the actual cascade" time="0.66292432">
+        </testcase>
+        <testcase classname="tests/web/pwa-support.test.ts" name="PWA-09 public cleanup preserves admin and unrelated registrations/caches" time="0.010146796">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/pwa-worker.test.ts" timestamp="2026-10-29T01:29:58.479Z" hostname="[PRIVATE HOST]" tests="5" failures="0" errors="0" skipped="0" time="0.336711461">
+        <testcase classname="tests/web/pwa-worker.test.ts" name="PWA-06 returns live HTTP errors unchanged and static offline navigation only on network failure" time="0.243612396">
+        </testcase>
+        <testcase classname="tests/web/pwa-worker.test.ts" name="PWA-07 excludes all API/auth/realtime/mutations and RSC from fallback and private caching" time="0.02594324">
+        </testcase>
+        <testcase classname="tests/web/pwa-worker.test.ts" name="PWA-08 removes only owned old caches after activation without forcing an update" time="0.018350749">
+        </testcase>
+        <testcase classname="tests/web/pwa-worker.test.ts" name="PWA-08 failed precache rejects installation and preserves the previously usable cache" time="0.021166467">
+        </testcase>
+        <testcase classname="tests/web/pwa-worker.test.ts" name="PWA-09 legacy public worker unregisters and removes only the former public caches" time="0.016196501">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/reactions-api.test.ts" timestamp="2026-10-29T01:29:58.483Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.193043609">
+        <testcase classname="tests/web/reactions-api.test.ts" name="accepts only strict menu payloads and derives actor from verified identity" time="0.184004801">
+        </testcase>
+        <testcase classname="tests/web/reactions-api.test.ts" name="uses private projection and propagates observer authorization/rate failures" time="0.004638071">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/room-live-resume.test.ts" timestamp="2026-10-29T01:29:58.484Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.103276832">
+        <testcase classname="tests/web/room-live-resume.test.ts" name="LIVE resume bursts coalesce an actual RoomSession GET and retain one follow-up" time="0.093648194">
+        </testcase>
+        <testcase classname="tests/web/room-live-resume.test.ts" name="live room/game resumes immediately on focus, online and becoming visible and cleans up listeners" time="0.006610394">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/rooms-api.test.ts" timestamp="2026-10-29T01:29:58.484Z" hostname="[PRIVATE HOST]" tests="3" failures="0" errors="0" skipped="0" time="0.100718407">
+        <testcase classname="tests/web/rooms-api.test.ts" name="creates an actually signed invitation, persisting only its digest and the server-derived inviter" time="0.079102032">
+        </testcase>
+        <testcase classname="tests/web/rooms-api.test.ts" name="rejects altered signatures before lookup and keeps signed inviter binding despite a forged client selection" time="0.009948443">
+        </testcase>
+        <testcase classname="tests/web/rooms-api.test.ts" name="rejects malformed room IDs and stale displayed-profile preconditions before creation" time="0.007738574">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/social-live-cadence.test.ts" timestamp="2026-10-29T01:29:58.485Z" hostname="[PRIVATE HOST]" tests="2" failures="0" errors="0" skipped="0" time="0.10206721">
+        <testcase classname="tests/web/social-live-cadence.test.ts" name="LIVE social cadence changes in both directions preserve a pending read and coalesce newer pushes" time="0.085138267">
+        </testcase>
+        <testcase classname="tests/web/social-live-cadence.test.ts" name="LIVE social unmount cancels the queued follow-up and cannot install a late actor response" time="0.013516544">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/social-panel.test.ts" timestamp="2026-10-29T01:29:58.485Z" hostname="[PRIVATE HOST]" tests="1" failures="0" errors="0" skipped="0" time="0.169558101">
+        <testcase classname="tests/web/social-panel.test.ts" name="accepts healthy responses slower than polling and still enables eligible nomination after serialized reads" time="0.165925359">
+        </testcase>
+    </testsuite>
+</testsuites>

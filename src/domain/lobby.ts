@@ -1,6 +1,11 @@
 import type { Deadline, DeadlineKind, Room } from "./model";
 import { failure, type Result, success } from "./result";
-import { playerAuthority, roomRole } from "./rooms";
+import {
+  effectiveRoomCapacity,
+  playerAuthority,
+  roomCapacityBlocked,
+  roomRole,
+} from "./rooms";
 
 export const LOBBY_IDLE_MS = 30000;
 export const HOLDOUT_MS = 5000;
@@ -22,6 +27,8 @@ export function reconcileLobby(room: Room, now: number): Room {
   if (next.players.length || next.observers.length) next.emptySince = null;
   else next.emptySince ??= now;
   if (next.status !== "waiting") return next;
+  if (roomCapacityBlocked(next))
+    return { ...next, holdoutId: null, holdoutDueAt: null };
   if (next.players.length >= 2 && next.players.every((p) => p.ready)) {
     return {
       ...next,
@@ -58,6 +65,7 @@ export function setReady(
   const allowed = playerAuthority(room, actorId);
   if (!allowed.ok) return allowed;
   if (room.status !== "waiting") return failure("ROOM_CLOSED");
+  if (roomCapacityBlocked(room)) return failure("VALIDATION_ERROR");
   if (lobbyOverdue(room, now)) return failure("CONFLICT");
   if (room.players.find((p) => p.profileId === actorId)?.ready === ready)
     return failure("CONFLICT");
@@ -97,7 +105,7 @@ function depart(
     role === "player" &&
     room.status === "waiting" &&
     !room.lockedRoster.length &&
-    room.players.length === room.capacity &&
+    room.players.length === effectiveRoomCapacity(room) &&
     observers.length
   ) {
     const oldest = [...observers].sort(
@@ -165,9 +173,14 @@ export function lobbyDeadlines(room: Room, nextId: () => string): Deadline[] {
   if (room.status === "waiting") {
     if (room.idlePromptedVersion === null && room.players.length)
       add("idle", room.changedAt + LOBBY_IDLE_MS);
-    if (room.holdoutDueAt !== null) add("holdout", room.holdoutDueAt);
+    if (room.holdoutDueAt !== null && !roomCapacityBlocked(room))
+      add("holdout", room.holdoutDueAt);
   }
-  if (room.status === "countdown" && room.countdownDueAt !== null)
+  if (
+    room.status === "countdown" &&
+    room.countdownDueAt !== null &&
+    !roomCapacityBlocked(room)
+  )
     add("countdown", room.countdownDueAt);
   if (!room.players.length && !room.observers.length && room.emptySince != null)
     add("empty-room", room.emptySince + EMPTY_ROOM_MS);

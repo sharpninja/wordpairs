@@ -1,0 +1,330 @@
+{
+  "atLocal": "2026-10-30T20:02:55",
+  "classification": "Authorized test-only reported bug repair and self-check, not HV",
+  "sourceHead": "c1181eb4eb01825c8b12f3521f92286080addfba",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261031T005544Z-conflict-freshness-repair",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "newPositive": 24,
+  "newExpectedNegative": 24,
+  "newUnitDelta": 48,
+  "priorCases": 162,
+  "mockNative": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/mock-20261030T200001/unit.xml",
+    "sha256": "1629553139A201D489987DE582797083AC5CBA9D942B0B92D0D61C8B60721B07",
+    "cases": 210,
+    "failed": 0,
+    "skipped": 0,
+    "expectedNegative": 105
+  },
+  "realNative": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/real-20261030T200127/unit.xml",
+    "sha256": "038D1D808FDAFF7F8B71B2369299A3E7BCFAA7063466E0D73B27C83D05BA441E",
+    "cases": 210,
+    "failed": 0,
+    "skipped": 0,
+    "expectedNegative": 105
+  },
+  "sameOracle": [
+    {
+      "path": "ui-command-freshness.contract.ts",
+      "mock": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4",
+      "real": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4",
+      "identical": true,
+      "currentMatchesReal": true
+    },
+    {
+      "path": "ui-command-freshness.test.ts",
+      "mock": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4",
+      "real": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4",
+      "identical": true,
+      "currentMatchesReal": true
+    }
+  ],
+  "protectedComparisons": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.contract.ts",
+      "before": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "retainedBeforeMatches": true,
+      "mock": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "mockMatchesBefore": true,
+      "real": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "current": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.test.ts",
+      "before": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "retainedBeforeMatches": true,
+      "mock": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "mockMatchesBefore": true,
+      "real": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "current": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+      "before": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "retainedBeforeMatches": true,
+      "mock": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "mockMatchesBefore": true,
+      "real": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "current": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+      "before": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "retainedBeforeMatches": true,
+      "mock": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "mockMatchesBefore": true,
+      "real": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "current": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+      "before": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2",
+      "retainedBeforeMatches": true,
+      "mock": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2",
+      "mockMatchesBefore": true,
+      "real": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706",
+      "current": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "before": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "retainedBeforeMatches": true,
+      "mock": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "mockMatchesBefore": true,
+      "real": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "current": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "before": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "retainedBeforeMatches": true,
+      "mock": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "mockMatchesBefore": true,
+      "real": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "current": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+      "before": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "retainedBeforeMatches": true,
+      "mock": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "mockMatchesBefore": true,
+      "real": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "current": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+      "before": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24",
+      "retainedBeforeMatches": true,
+      "mock": "D9820B57D27105F231B56B3FA454793E75AB628220CE6C55E5CD4D3425F45A24",
+      "mockMatchesBefore": true,
+      "real": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15",
+      "current": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15",
+      "currentMatchesReal": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+      "before": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460",
+      "retainedBeforeMatches": true,
+      "mock": "4DA21F36C1D7CCB2BF76DDE45CCB961CCE5F41D619C58C07C864A7B1219AC460",
+      "mockMatchesBefore": true,
+      "real": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751",
+      "current": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751",
+      "currentMatchesReal": true
+    }
+  ],
+  "mockNonNullChangedPaths": [],
+  "mockNonNullChangedPathCount": 0,
+  "old162FixtureCount": 6,
+  "old162FixtureChangedPathCount": 0,
+  "old162FixturesByteIdentical": true,
+  "sourceCheck": {
+    "atLocal": "2026-10-30T20:01:40",
+    "lintExit": 0,
+    "diffExit": 0,
+    "typecheckExit": 0,
+    "old162FixtureChanges": [
+      null
+    ],
+    "sourcePins": [
+      {
+        "path": "tests/browser/ui-command-freshness.contract.ts",
+        "sha256": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4"
+      },
+      {
+        "path": "tests/browser/ui-command-freshness.test.ts",
+        "sha256": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4"
+      },
+      {
+        "path": "tests/browser/ui-command-retirement.contract.ts",
+        "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1"
+      },
+      {
+        "path": "tests/browser/ui-command-retirement.test.ts",
+        "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE"
+      },
+      {
+        "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+        "sha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090"
+      },
+      {
+        "path": "tests/browser/ui-command-acknowledgement.test.ts",
+        "sha256": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC"
+      },
+      {
+        "path": "tests/browser/ui-command-acknowledgement.ts",
+        "sha256": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706"
+      },
+      {
+        "path": "tests/browser/ui-command-capture.contract.ts",
+        "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB"
+      },
+      {
+        "path": "tests/browser/ui-command-capture.test.ts",
+        "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779"
+      },
+      {
+        "path": "tests/browser/ui-command-capture.ts",
+        "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59"
+      },
+      {
+        "path": "tests/browser/live-player-counts.integration.spec.ts",
+        "sha256": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15"
+      },
+      {
+        "path": "tests/browser/live-multiplayer.integration.spec.ts",
+        "sha256": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751"
+      }
+    ],
+    "editChecks": [
+      {
+        "atLocal": "2026-10-30T19:58:49",
+        "file": "tests/browser/ui-command-freshness.contract.ts",
+        "sha256": "E1FC205C2C5DC2F7B0E87BF25FABD8B1C52BB48E45AF615D53B55526A41C3BE2",
+        "hookExit": 0,
+        "typecheckExit": 0,
+        "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/edit-verification/20261030T195844-ui-command-freshness.contract.ts.log"
+      },
+      {
+        "atLocal": "2026-10-30T19:59:07",
+        "file": "tests/browser/ui-command-freshness.contract.ts",
+        "sha256": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4",
+        "hookExit": 0,
+        "typecheckExit": 0,
+        "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/edit-verification/20261030T195900-ui-command-freshness.contract.ts.log"
+      },
+      {
+        "atLocal": "2026-10-30T19:59:32",
+        "file": "tests/browser/ui-command-freshness.test.ts",
+        "sha256": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4",
+        "hookExit": 0,
+        "typecheckExit": 0,
+        "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/edit-verification/20261030T195927-ui-command-freshness.test.ts.log"
+      },
+      {
+        "atLocal": "2026-10-30T20:00:36",
+        "file": "tests/browser/ui-command-acknowledgement.ts",
+        "sha256": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706",
+        "hookExit": 0,
+        "typecheckExit": 0,
+        "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/edit-verification/20261030T200031-ui-command-acknowledgement.ts.log"
+      },
+      {
+        "atLocal": "2026-10-30T20:00:57",
+        "file": "tests/browser/live-player-counts.integration.spec.ts",
+        "sha256": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15",
+        "hookExit": 0,
+        "typecheckExit": 0,
+        "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/edit-verification/20261030T200051-live-player-counts.integration.spec.ts.log"
+      },
+      {
+        "atLocal": "2026-10-30T20:01:21",
+        "file": "tests/browser/live-multiplayer.integration.spec.ts",
+        "sha256": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751",
+        "hookExit": 0,
+        "typecheckExit": 0,
+        "log": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/edit-verification/20261030T200115-live-multiplayer.integration.spec.ts.log"
+      }
+    ],
+    "logs": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/20261030T200136-source-check"
+  },
+  "filePins": [
+    {
+      "path": "plan.md",
+      "sha256": "AC048FFB1F3AA3B3E0566FECA889E9036D1C3FC97571739F9EB04E39F75E405C"
+    },
+    {
+      "path": "effective-requirements.json",
+      "sha256": "F06B4D6FFC661EB1A7692C4C13F61DC47D0B17CDB9F787865D51800109B6AA81"
+    },
+    {
+      "path": "protected-source.json",
+      "sha256": "5D4E788BD5903CC7938EE6D93C0A5FA72DBA8E42BDF3B14168DA79DCD668AEBF"
+    },
+    {
+      "path": "source-check.json",
+      "sha256": "D14C05EF0FBC507959A9F39F95D821899B872D0BF53F1F35F5420BE29D8191D5"
+    },
+    {
+      "path": "mock-20261030T200001/receipt.json",
+      "sha256": "B9EA544B0DF9E940358E3456C0EB22919BA946261D7B04E0EF9933F7164B859F"
+    },
+    {
+      "path": "mock-20261030T200001/unit.log",
+      "sha256": "418BF95D02D341C90AB29713A4048985CA7718B9384AD1E779484069AD1FEA32"
+    },
+    {
+      "path": "real-20261030T200127/receipt.json",
+      "sha256": "09113886881B6553BA22EE57E085AFF152EC2B99055C4076FD9BDE091B4531C0"
+    },
+    {
+      "path": "real-20261030T200127/unit.log",
+      "sha256": "1578541C8494DE823B6654E288599FB27BC4860056CE5CA46ADA666546B789FC"
+    }
+  ],
+  "producerCopies": [
+    {
+      "source": "/tmp/SaveWordpairsFreshnessReceipt.ps1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/SaveWordpairsFreshnessReceipt.ps1",
+      "sha256": "C0EDAA25F9A90B74541F5D4B8B0BCDCF087A09DAF640ABE3CC188FC24207B0BB"
+    },
+    {
+      "source": "/tmp/WordpairsFreshnessChecks.ps1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/WordpairsFreshnessChecks.ps1",
+      "sha256": "0E441E895B219E2A0AAE176ACAE3491E868D5355A99430CD28F920537332D77A"
+    },
+    {
+      "source": "/tmp/ReadWordpairsFreshnessRequirements.ps1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/ReadWordpairsFreshnessRequirements.ps1",
+      "sha256": "9ADF17CC10F2A212119880DAFF64B6C7E2C9B40444A23A13D9FF4B690E173F9D"
+    },
+    {
+      "source": "/tmp/WordpairsFreshnessSession.ps1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-freshness/WordpairsFreshnessSession.ps1",
+      "sha256": "CB8945F5E93128F95F132AE9A894C470E1A4AD5C3F557374391EAE8D84AB976F"
+    }
+  ],
+  "metadataQualification": "Original mock protectedSourceChanges and source-check old162FixtureChanges each serialize [null] from an empty PowerShell member projection. Originals retained byte-for-byte. Independently counted NONNULL mock changes0 and direct before/copy/mock hashes allmatch; six old162 fixture source files remain byte-identical.",
+  "behavior": "Actual409 first; validate captured expectedVersion and explicit minimum before probes; floor max(minimum,expectedVersion+1), idle/pending-free same perspective; preserve all existing bounds and assertion paths. Both commandAcknowledgements observers add only numeric safe expectedVersion or null.",
+  "limitations": [
+    "Historical native13 rejected expectedVersion and409 bodies absent; exact server conflict cause not proven.",
+    "No actual UI/browser/build/fullsuite/provider/HV run by this agent. Root owns fresh full frozen validation; isolated oracle is not DOM/push/load evidence.",
+    "No server numeric latency SLA or causal resource measurement established; no latency fix claimed.",
+    "Actual observer field pushes are source-checked; isolated observer assertions prove exact captured Request/version attribution, not DOM execution."
+  ],
+  "warnings": "Scoped Biome exited0 with15 preexisting warnings; no fixes applied. Every6 edit hook/directtsc event0; no intermediate failure. PowerShell producers parser/PSSA0 and WhatIf before actual mutations.",
+  "accuracy": 99,
+  "completeness": 98,
+  "releaseComplete": false
+}

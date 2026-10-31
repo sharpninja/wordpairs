@@ -1,0 +1,148 @@
+diff --git i/tests/browser/live-multiplayer.integration.spec.ts w/tests/browser/live-multiplayer.integration.spec.ts
+index 334002f..c40b412 100644
+--- i/tests/browser/live-multiplayer.integration.spec.ts
++++ w/tests/browser/live-multiplayer.integration.spec.ts
+@@ -9,6 +9,7 @@ import seed from "../../src/infrastructure/catalog-seed.json" with {
+ import { cleanupOwnedRoom } from "./owned-room-cleanup";
+ import { bodies as trackResponseBodies } from "./request-diagnostics";
+ import type { BodyHandle } from "./request-diagnostics.contract";
++import { captureUiCommand } from "./ui-command-capture";
+ 
+ type Notice = {
+   eventId: string;
+@@ -60,21 +61,23 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+       .toBe(true);
+   };
+   async function command(page: Page, click: () => Promise<unknown>) {
+-    const response = page.waitForResponse((r) => r.request().method() === "POST" && r.url().includes(`/api/rooms/`));
+-    await click();
+-    const result = await response;
++    const result = await captureUiCommand(
++      () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/`)),
++      click,
++    );
+     expect(result.status()).toBe(200);
+-    return (await result.json()).version as number;
++    return (await result.json() as { version: number }).version;
+   }
+   async function answer(page: Page, value: string) {
+     for (let attempt = 0; attempt < 4; attempt++) {
+       await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+       const before = Number(await page.locator(".game-panel").getAttribute("data-match-version"));
+       await page.getByLabel("Your answer", { exact: true }).fill(value);
+-      const response = page.waitForResponse((r) => r.request().method() === "POST" && r.url().endsWith("/match") && r.request().postDataJSON()?.action === "answer");
+-      await page.getByRole("button", { name: "Submit answer", exact: true }).click();
+-      const result = await response;
+-      if (result.ok()) { const solved = await result.json(); expect(solved.correct).toBe(true); return solved.version as number; }
++      const result = await captureUiCommand(
++        () => page.waitForRequest((r) => r.method() === "POST" && r.url().endsWith("/match") && r.postDataJSON()?.action === "answer"),
++        () => page.getByRole("button", { name: "Submit answer", exact: true }).click(),
++      );
++      if (result.ok()) { const solved = await result.json() as { correct: boolean; version: number }; expect(solved.correct).toBe(true); return solved.version; }
+       expect(result.status()).toBe(409);
+       await expect.poll(async () => Number(await page.locator(".game-panel").getAttribute("data-match-version"))).toBeGreaterThan(before);
+     }
+diff --git i/tests/browser/live-player-counts.integration.spec.ts w/tests/browser/live-player-counts.integration.spec.ts
+index 84d8e9c..cdc7eb1 100644
+--- i/tests/browser/live-player-counts.integration.spec.ts
++++ w/tests/browser/live-player-counts.integration.spec.ts
+@@ -6,6 +6,7 @@ import { cleanupOwnedRoom } from "./owned-room-cleanup";
+ import { attach as attachRequestDiagnostics } from "./request-diagnostics";
+ import type { DiagnosticHandle, DiagnosticState } from "./request-diagnostics.contract";
+ import { readyAfterBarrier } from "./readiness-barrier";
++import { captureUiCommand, commitUiCommand } from "./ui-command-capture";
+ 
+ const counts = process.env.WORDPAIRS_LIVE_PLAYER_COUNTS
+   ? process.env.WORDPAIRS_LIVE_PLAYER_COUNTS.split(",").map(Number)
+@@ -33,6 +34,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+   const diagnosticHandles: DiagnosticHandle[] = [];
+   const preparedActors: string[] = [];
+   const readinessObservations: { phase: "prepared" | "ready"; player: number; expectedProfileId: string; actorId: string; uiRosterCount: number; version: number }[] = [];
++  const commandBodyFailures: { player: number; phase: string; action: string | null; commandId: string | null; expectedProfileId: string | null; status: number; pendingControl: "visible-enabled" | "not-observed-enabled" }[] = [];
+   const failureListeners: { page: Page; listener: (request: import("@playwright/test").Request) => void }[] = [];
+   const disposeDiagnostics = () => {
+     for (const handle of diagnosticHandles) handle.dispose();
+@@ -47,41 +49,30 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+     return context.request.post(path, { headers: { Origin: origin }, data });
+   }
+   async function click(page: Page, action: string, run: () => Promise<unknown>) {
+-    const [request] = await Promise.all([
+-      page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
+-      run(),
+-    ]);
+-    // A browser AbortSignal can end an uncertain request without any HTTP
+-    // response. The UI retains that command just as it does after5xx.
+-    const response = await request.response();
+-    return {
+-      ok: () => response?.ok() ?? false,
+-      status: () => response?.status() ?? 0,
+-      json: async () => response ? response.json() : null,
+-      request: () => request,
+-    };
++    return captureUiCommand(
++      () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
++      run,
++    );
+   }
+   async function commitUi(page: Page, action: string, run: () => Promise<unknown>, scope: "room" | "game" = "game") {
+-    let pendingPayload: unknown;
+-    let retryPending = false;
+-    for (let attempt = 0; attempt < 12; attempt++) {
+-      const result = await click(page, action, retryPending
++    const pending = page.getByRole("button", { name: `Retry pending ${scope} request`, exact: true });
++    return commitUiCommand<{ version: number; correct: boolean }>(action, {
++      invoke: (retryPending) => click(page, action, retryPending
+         ? () => page.getByRole("button", { name: `Retry pending ${scope} request`, exact: true }).click()
+-        : run);
+-      const payload = result.request().postDataJSON();
+-      if (retryPending) expect(payload).toEqual(pendingPayload);
+-      if (result.ok()) return result.json();
+-      if (result.status() === 0 || result.status() >= 500) {
+-        uncertainUiRetries++;
+-        pendingPayload ??= payload;
+-        retryPending = true;
+-      } else {
+-        expect(result.status()).toBe(409);
+-        retryPending = false;
+-        pendingPayload = undefined;
+-      }
+-    }
+-    throw new Error(`UI ${action} did not converge through explicit conflict/uncertain retries`);
++        : run),
++      pendingReady: async () => {
++        try { await expect(pending).toBeVisible(); await expect(pending).toBeEnabled(); return true; }
++        catch { return false; }
++      },
++      assertPayload: (payload, original) => { expect(payload).toEqual(original); },
++      uncertain: () => { uncertainUiRetries++; },
++      bodyError: ({ request, status, pending: enabled }) => {
++        const data: unknown = request.postDataJSON();
++        const payload = typeof data === "object" && data !== null ? data as Record<string, unknown> : {};
++        const uuid = (value: unknown) => typeof value === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value) ? value : null;
++        commandBodyFailures.push({ player: pages.indexOf(page), phase, action: typeof payload.action === "string" && ["ready", "leave", "choose", "answer", "continue"].includes(payload.action) ? payload.action : null, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), status, pendingControl: enabled ? "visible-enabled" : "not-observed-enabled" });
++      },
++    });
+   }
+   try {
+     for (let i = 0; i < count; i++) {
+@@ -177,9 +168,9 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+     await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+   } catch (error) {
+     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
+-    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, requestFailureTotal, requestFailures, slowResponses }, null, 2));
++    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+-    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
++    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
+     throw error;
+   } finally {
+     let cleanup = { cleanupFailures: 0, roomClosed: false, unresolvedPlayerIndices: [] as number[] };
+@@ -199,7 +190,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+       })), randomUUID);
+       disposeDiagnostics();
+       const requestDiagnostics = { failureTotal: diagnostics.failureTotal, failures: diagnostics.failures, failuresTruncated: diagnostics.failureTotal > diagnostics.failures.length, pendingAtDispose: diagnosticHandles.reduce((total, handle) => total + handle.pendingAtDispose, 0), qualification: "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown." };
+-      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
++      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
+       await info.attach("live-scale-cleanup", { body: JSON.stringify({ players: count, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, ownRoomOnly: true }), contentType: "application/json" });
+     } finally {
+       disposeDiagnostics();

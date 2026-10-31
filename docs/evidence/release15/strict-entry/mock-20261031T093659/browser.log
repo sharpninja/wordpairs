@@ -1,0 +1,36 @@
+
+Running 28 tests using 1 worker
+
+
+
+(node:3011160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct delayed-room-action
+[2/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong delayed-room-action
+[3/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct visible-loading-panel
+[4/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong visible-loading-panel
+[5/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct disabled-action
+[6/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong disabled-action
+[7/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct hidden-action
+[8/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong hidden-action
+[9/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct same-page-control
+[10/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong same-page-control
+[11/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct game-input-entry
+[12/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong game-input-entry
+[13/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct missing-perspective
+[14/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong missing-perspective
+[15/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct denied-perspective
+[16/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong denied-perspective
+[17/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct malformed-projection
+[18/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong malformed-projection
+[19/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct unknown-pending
+[20/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong unknown-pending
+[21/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct rejected-probe-attribution
+[22/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong rejected-probe-attribution
+[23/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct rejected-probe-observer-error
+[24/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong rejected-probe-observer-error
+[25/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct failure-before-cleanup
+[26/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong failure-before-cleanup
+[27/28] tests/browser/ui-command-entry.phase6.spec.ts:65:3 › UI entry correct diagnostic-failure-truthful
+[28/28] tests/browser/ui-command-entry.phase6.spec.ts:69:3 › UI entry rejects wrong diagnostic-failure-truthful
+  28 passed (6.9s)

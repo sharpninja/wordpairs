@@ -2,9 +2,11 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { type OwnProfile, PROFILE_ICONS } from "../application/identity";
+import type { Permission } from "../domain/access";
 import { guestCredential } from "./guest-credential";
 import { usePrivateDraftState } from "./private-draft";
 import { bindPrivateIdentity } from "./private-state";
+import { PwaSupport } from "./pwa-support";
 import { usePrivateIntent } from "./use-private-intent";
 
 const ICONS: Record<string, string> = {
@@ -25,52 +27,87 @@ export function ProfileIcon({ icon }: { icon: string }) {
 export function IdentityPanel({
   oidcEnabled,
   onProfile,
+  administration = false,
 }: {
   oidcEnabled: boolean;
   onProfile?: (profile: OwnProfile | null) => void;
+  administration?: boolean;
 }) {
   const [profile, setProfile] = useState<OwnProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [initialized, setInitialized] = useState(false);
+  const [signInFailed, setSignInFailed] = useState(false);
+  const [permissions, setPermissions] = useState<Permission[]>([]);
   const generation = useRef(0);
   const running = useRef(false);
+  const endpoint = administration ? "/api/admin/session" : "/api/session";
+  useEffect(() => {
+    setSignInFailed(
+      administration &&
+        new URL(window.location.href).searchParams.get("auth") === "failed",
+    );
+  }, [administration]);
   const accept = useCallback(
-    (current: OwnProfile | null, sessionGeneration?: string) => {
+    (
+      current: OwnProfile | null,
+      sessionGeneration?: string,
+      grants: Permission[] = [],
+    ) => {
       bindPrivateIdentity(current?.id ?? null, sessionGeneration);
       setProfile(current);
+      setPermissions(administration && current ? grants : []);
       onProfile?.(current);
     },
-    [onProfile],
+    [onProfile, administration],
   );
-  const load = useCallback(async () => {
-    const sequence = ++generation.current;
-    setLoading(true);
-    setError("");
-    try {
-      const response = await fetch("/api/session", {
-        cache: "no-store",
-        signal: AbortSignal.timeout(10000),
-      });
-      if (!response.ok && response.status !== 401)
-        throw new Error("Unavailable");
-      const result = response.ok ? await response.json() : null;
-      if (!response.ok) await response.text();
-      if (sequence === generation.current)
-        accept(result?.profile ?? null, result?.sessionGeneration ?? undefined);
-    } catch {
-      if (sequence === generation.current)
-        setError("Your profile is unavailable. Try again.");
-    } finally {
-      if (sequence === generation.current) {
-        setLoading(false);
-        setInitialized(true);
+  const load = useCallback(
+    async (quiet = false) => {
+      if (quiet && running.current) return;
+      const sequence = ++generation.current;
+      if (!quiet) setLoading(true);
+      setError("");
+      try {
+        const response = await fetch(endpoint, {
+          cache: "no-store",
+          signal: AbortSignal.timeout(10000),
+        });
+        if (!response.ok && response.status !== 401)
+          throw new Error("Unavailable");
+        const result = response.ok ? await response.json() : null;
+        if (!response.ok) await response.text();
+        if (sequence === generation.current)
+          accept(
+            result?.profile ?? null,
+            result?.sessionGeneration ?? undefined,
+            Array.isArray(result?.permissions) ? result.permissions : [],
+          );
+      } catch {
+        if (sequence === generation.current) {
+          setPermissions([]);
+          setError("Your profile is unavailable. Try again.");
+        }
+      } finally {
+        if (sequence === generation.current) {
+          setLoading(false);
+          setInitialized(true);
+        }
       }
-    }
-  }, [accept]);
+    },
+    [accept, endpoint],
+  );
   useEffect(() => {
     void load();
+    const timer = setInterval(() => void load(true), 15000);
+    const focus = () => {
+      if (running.current) return;
+      setPermissions([]);
+      void load();
+    };
+    window.addEventListener("focus", focus);
     return () => {
+      clearInterval(timer);
+      window.removeEventListener("focus", focus);
       generation.current++;
     };
   }, [load]);
@@ -79,13 +116,14 @@ export function IdentityPanel({
     running.current = true;
     const sequence = ++generation.current;
     setLoading(true);
+    setPermissions([]);
     setError("");
     try {
       const body =
         method === "POST"
           ? JSON.stringify({ guestCredential: await guestCredential() })
           : undefined;
-      const response = await fetch("/api/session", {
+      const response = await fetch(endpoint, {
         method,
         signal: AbortSignal.timeout(10000),
         headers: { "Content-Type": "application/json" },
@@ -93,8 +131,10 @@ export function IdentityPanel({
       });
       if (!response.ok) throw new Error("Unavailable");
       const result = method === "POST" ? await response.json() : null;
-      if (sequence === generation.current)
+      if (sequence === generation.current) {
         accept(result?.profile ?? null, result?.sessionGeneration ?? undefined);
+        if (method === "POST") await load();
+      }
     } catch {
       if (sequence === generation.current)
         setError(
@@ -115,7 +155,11 @@ export function IdentityPanel({
     >
       <p className="eyebrow">Make yourself at home</p>
       <h1 id="profile-heading">
-        {profile ? "Your player profile" : "Ready for some wordplay?"}
+        {administration
+          ? "Administration"
+          : profile
+            ? "Your player profile"
+            : "Ready for some wordplay?"}
       </h1>
       {error && (
         <p role="alert">
@@ -123,6 +167,12 @@ export function IdentityPanel({
           <button type="button" disabled={loading} onClick={() => void load()}>
             Retry profile
           </button>
+        </p>
+      )}
+      {signInFailed && !profile && (
+        <p role="alert">
+          GitHub sign-in was not accepted. Only sharpninja can administer
+          Wordpairs. Try signing in again.
         </p>
       )}
       {loading && <p role="status">Loading your profile…</p>}
@@ -142,15 +192,30 @@ export function IdentityPanel({
             <p className="admin-id">
               Profile ID: <code>{profile.id}</code>
             </p>
-            <Link href="/admin">Administration</Link>
+            {permissions.includes("moderate") && !administration && (
+              <Link href="/admin">Administration</Link>
+            )}
           </details>
-          <ProfilePreferences
-            key={profile.id}
-            profile={profile}
-            loading={loading}
-            refresh={load}
-            denied={() => accept(null)}
-          />
+          {administration && permissions.length > 0 && (
+            <nav className="admin-nav" aria-label="Administration">
+              {permissions.includes("moderate") && (
+                <Link href="/admin">Moderation</Link>
+              )}
+              {permissions.includes("manage-content") && (
+                <Link href="/admin/words">Word pairs and hints</Link>
+              )}
+            </nav>
+          )}
+          {administration && permissions.includes("moderate") && <PwaSupport />}
+          {!administration && (
+            <ProfilePreferences
+              key={profile.id}
+              profile={profile}
+              loading={loading}
+              refresh={load}
+              denied={() => accept(null)}
+            />
+          )}
           <div className="hero-actions">
             <button
               type="button"
@@ -159,43 +224,57 @@ export function IdentityPanel({
             >
               Sign out
             </button>
-            {profile.kind === "guest" && oidcEnabled && (
-              <a className="button secondary" href="/api/auth/login">
-                Sign in with ChatGPT
-              </a>
-            )}
           </div>
           {profile.kind === "guest" && (
             <p className="panel-note">
-              Guest play stays separate from a signed-in account. Clearing this
-              browser’s site data resets your guest identity.
+              Clearing this browser’s site data resets your guest identity.
             </p>
           )}
         </>
       ) : (
         <>
           <p>
-            Play as a guest in this browser, or sign in to keep your profile
-            across devices.
+            {administration
+              ? "Administration is restricted to the GitHub account sharpninja."
+              : "Play as a guest in this browser. No account is needed."}
           </p>
           <div className="hero-actions">
-            <button
-              type="button"
-              className="button"
-              disabled={loading || !initialized}
-              onClick={() => void session("POST")}
-            >
-              Continue as guest
-            </button>
-            {oidcEnabled && (
-              <a className="button secondary" href="/api/auth/login">
-                Sign in with ChatGPT
-              </a>
+            {!administration && (
+              <button
+                type="button"
+                className="button"
+                disabled={loading || !initialized}
+                onClick={() => void session("POST")}
+              >
+                Continue as guest
+              </button>
             )}
+            {administration && <AdminSignIn enabled={oidcEnabled} />}
           </div>
         </>
       )}
     </section>
+  );
+}
+function AdminSignIn({ enabled }: { enabled: boolean }) {
+  return enabled ? (
+    <a className="button secondary" href="/api/auth/github/login">
+      Sign in with GitHub
+    </a>
+  ) : (
+    <div>
+      <button
+        type="button"
+        className="button secondary"
+        disabled
+        aria-describedby="github-unavailable"
+      >
+        Sign in with GitHub
+      </button>
+      <p id="github-unavailable" className="panel-note">
+        GitHub administrator sign-in is being configured.
+      </p>
+    </div>
   );
 }
 function ProfilePreferences({

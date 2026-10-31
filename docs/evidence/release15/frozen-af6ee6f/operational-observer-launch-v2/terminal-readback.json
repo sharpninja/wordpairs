@@ -1,0 +1,63 @@
+{
+  "recordedAt": "2026-10-30T19:12:42.4180251-05:00",
+  "observer": {
+    "sha256": "4BED6295DACAC343D9B8FCE5561F6DB57C56F831D5BA61D9C758CB735672C3E0",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer/observer.json"
+  },
+  "samples": {
+    "cgroupPresent": 5,
+    "pgMissing": 2,
+    "lines": 5,
+    "pgPresent": 3,
+    "durationsMs": [
+      243.9085,
+      128.6682,
+      138.4672,
+      328.8988,
+      26.8326
+    ],
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/operational-observer/samples.jsonl",
+    "sha256": "4F3B43A18C93832C073EEF1CAC77D22F236A26CB1A3EB8544318A8A488543A0C"
+  },
+  "ownershipVerified": true,
+  "stopReason": "owned-unit-exited",
+  "sampleCount": 5,
+  "missedIntervals": 0,
+  "databaseRetiredAt": "2026-10-30T19:10:15.7824897-05:00",
+  "databaseRetirementReason": "Original owned runtime receipt disappeared; no successor discovery or DB sampling.",
+  "databaseRetiredIntervals": 1,
+  "errors": [
+    {
+      "at": "2026-10-30T19:10:14.0859937-05:00",
+      "stage": "postgres",
+      "kind": "SampleUnavailable"
+    }
+  ],
+  "nativeCount": 19,
+  "nativeFailedOrTimedOut": [
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:14.001679-05:00",
+      "finishedAt": "2026-10-30T19:10:14.0463464-05:00",
+      "durationMs": 44.6674,
+      "exitCode": 1,
+      "timedOut": false,
+      "stderrPresent": true
+    }
+  ],
+  "headUnchanged": true,
+  "manifestUnchanged": true,
+  "limits": [
+    "External operational sampling only; no tests, app/provider/DB/config mutations, SQL text, credentials, environment or process argv captured.",
+    "Cgroup/process cumulative CPU and RSS do not measure event-loop delay or prove saturation. Process CPU/RSS is sampled only for cgroup.procs membership, which may omit nested child cgroups. Docker PostgreSQL/Realtime container CPU outside that unit is not captured.",
+    "When original runtime owner receipt disappears, database sampling retires and stays retired; cgroup observation continues until unit exits and may include subsequent validation lanes. No successor runtime is discovered or queried.",
+    "PG wait/lock snapshots and query age do not measure pg-pool checkout wait, SQL execution duration or transient waits between samples. Null backend metadata/permission limits stay explicit.",
+    "Sampling itself adds docker/psql/backend and filesystem overhead. databaseReadMs includes docker startup and transport, not PostgreSQL execution alone.",
+    "Native helper process timeout15s bounds the observer subprocess only and is unrelated to HV; timed-out reads are missing samples.",
+    "Initial source file hashes are verified; final only HEAD and manifest hashes are checked. No full source immutability claim without separate replay provenance.",
+    "No numeric performance SLA or release/HV verdict is established. Exact per-command browser/server correlation remains separate."
+  ],
+  "qualification": "Partial optional operational evidence only. Observer terminated on owned unit exit; a collected unit has no surviving authoritative application exit status here. One sampling failure and missed intervals remain explicit. No attribution of latency/409/matrix failure to CPU, database or locks is established. First launch argument failure remains in original launch directory. This readback does not run tests/build/runtime/provider operations.",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T000538Z-attach-owned-runtime-observer"
+}

@@ -3,12 +3,12 @@ import { resolve } from "node:path";
 import { expect, it } from "vitest";
 
 function assertManifest(m: Record<string, any>) {
-  expect(m.id).toBe("/");
-  expect(m.scope).toBe("/");
-  expect(m.start_url).toBe("/play");
+  expect(m.id).toBe("/admin");
+  expect(m.scope).toBe("/admin");
+  expect(m.start_url).toBe("/admin");
   expect(m.display).toBe("standalone");
-  expect(m.name).toBe("Wordpairs");
-  expect(m.short_name).toBe("Wordpairs");
+  expect(m.name).toBe("Wordpairs Admin");
+  expect(m.short_name).toBe("Wordpairs Admin");
   expect(m.theme_color).toBe("#142c32");
   expect(m.background_color).toBe("#f7f5ed");
   for (const size of [192, 512]) {
@@ -30,12 +30,12 @@ function assertManifest(m: Record<string, any>) {
 }
 
 it("PWA-01 validates actual manifest and rejects weakened identity, launch and icon controls", async () => {
-  const path = resolve("src/app/manifest.ts");
+  const path = resolve("src/web/admin-manifest.ts");
   const m = (await import(path)).default();
   assertManifest(m);
   for (const invalid of [
     { ...m, display: "browser" },
-    { ...m, start_url: "/admin" },
+    { ...m, start_url: "/play" },
     { ...m, id: "/random" },
     { ...m, icons: [] },
   ]) {

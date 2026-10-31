@@ -14,7 +14,7 @@ afterEach(() => {
 const empty: LandingProjection = {
   leaderboard: [],
   lobbies: [],
-  rules: { version: "2.6", updated: "2026-10-26" },
+  rules: { version: "2.8", updated: "2026-10-31" },
 };
 describe("AC-43 anonymous landing states", () => {
   it('retains cache bypass when conflict recovery fails, and does not relabel old rows while navigating', async () => {

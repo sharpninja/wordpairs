@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="16" failures="6" errors="0" time="2.291215524">
+    <testsuite name="tests/application/capacity-policy.test.ts" timestamp="2026-10-30T19:53:42.404Z" hostname="[PRIVATE HOST]" tests="11" failures="3" errors="0" skipped="0" time="0.033985955">
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; admits each integer capacity 2 through 15 and preserves the private default" time="0.005526066">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; rejects 1,16,20,25,26 and malformed capacity inputs" time="0.000727998">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; draws the anchor from both inclusive endpoints of a frozen fifteen-player roster" time="0.000919559">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; rejects every new match above fifteen before drawing an anchor" time="0.000755388">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; admits the fifteenth player but rejects a sixteenth in a legacy capacity25 room without mutation" time="0.00291043">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; preserves the separate twenty-five-observer capacity" time="0.000594246">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; projects the effective fifteen-seat waiting limit without negative slots" time="0.009915561">
+            <failure message="expected { capacity: 15, …(2) } to match object { capacityBlocked: true, …(2) }
+(1 matching property omitted from actual)" type="AssertionError">
+AssertionError: expected { capacity: 15, …(2) } to match object { capacityBlocked: true, …(2) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    &quot;availableSlots&quot;: 0,
+    &quot;canJoinPlayer&quot;: false,
+-   &quot;capacityBlocked&quot;: true,
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:70:55
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; preserves oversized waiting members while denying readiness and automatic holdout or start" time="0.007279293">
+            <failure message="expected { ok: true, …(1) } to deeply equal { ok: false, …(1) }" type="AssertionError">
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   &quot;error&quot;: {
+-     &quot;code&quot;: &quot;VALIDATION_ERROR&quot;,
++   &quot;ok&quot;: true,
++   &quot;value&quot;: {
++     &quot;capacity&quot;: 25,
++     &quot;changedAt&quot;: 0,
++     &quot;closedAt&quot;: null,
++     &quot;code&quot;: &quot;ABCDEFGH&quot;,
++     &quot;countdownDueAt&quot;: null,
++     &quot;createdAt&quot;: 0,
++     &quot;creatorId&quot;: &quot;p1&quot;,
++     &quot;discoverable&quot;: false,
++     &quot;holdoutDueAt&quot;: 5000,
++     &quot;holdoutId&quot;: &quot;p1&quot;,
++     &quot;id&quot;: &quot;legacy&quot;,
++     &quot;idlePromptedVersion&quot;: null,
++     &quot;lockedRoster&quot;: [],
++     &quot;nextObserverSequence&quot;: 0,
++     &quot;observers&quot;: [],
++     &quot;players&quot;: [
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p1&quot;,
++         &quot;ready&quot;: true,
+        },
+-   &quot;ok&quot;: false,
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p2&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p3&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p4&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p5&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p6&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p7&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p8&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p9&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p10&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p11&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p12&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p13&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p14&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p15&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p16&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p17&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p18&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p19&quot;,
++         &quot;ready&quot;: true,
++       },
++       {
++         &quot;disconnectedAt&quot;: null,
++         &quot;joinedAt&quot;: 0,
++         &quot;lastSeenAt&quot;: 0,
++         &quot;profileId&quot;: &quot;p20&quot;,
++         &quot;ready&quot;: true,
++       },
++     ],
++     &quot;status&quot;: &quot;waiting&quot;,
++     &quot;version&quot;: 0,
++   },
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:74:49
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; blocks an old oversized countdown without removing members" time="0.001326983">
+            <failure message="expected { capacity: 15, …(2) } to match object { capacityBlocked: true, …(1) }
+(2 matching properties omitted from actual)" type="AssertionError">
+AssertionError: expected { capacity: 15, …(2) } to match object { capacityBlocked: true, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    &quot;availableSlots&quot;: 0,
+-   &quot;capacityBlocked&quot;: true,
+  }
+
+ ❯ tests/application/capacity-policy.test.ts:82:50
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; keeps Leave functional in oversized waiting and countdown rooms without promoting above fifteen" time="0.000747557">
+        </testcase>
+        <testcase classname="tests/application/capacity-policy.test.ts" name="CAP15 requirements: FR-ROOMACCESS-001 AC-01/02/24 and CAP15-LEGACY; TR-ROOM-CODES-010 &gt; preserves historical running room capacity and leaves without marking it blocked" time="0.001175602">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/application/legacy-match-capacity.test.ts" timestamp="2026-10-30T19:53:42.411Z" hostname="[PRIVATE HOST]" tests="1" failures="1" errors="0" skipped="0" time="0.013552338">
+        <testcase classname="tests/application/legacy-match-capacity.test.ts" name="CAP15-LEGACY preserves every historical twenty-five-player answer and completes eight rounds" time="0.012358287">
+            <failure message="expected [ &apos;p1&apos;, &apos;p2&apos;, &apos;p3&apos;, &apos;p4&apos;, &apos;p5&apos;, …(10) ] to deeply equal [ &apos;p1&apos;, &apos;p2&apos;, &apos;p3&apos;, &apos;p4&apos;, &apos;p5&apos;, …(20) ]" type="AssertionError">
+AssertionError: expected [ &apos;p1&apos;, &apos;p2&apos;, &apos;p3&apos;, &apos;p4&apos;, &apos;p5&apos;, …(10) ] to deeply equal [ &apos;p1&apos;, &apos;p2&apos;, &apos;p3&apos;, &apos;p4&apos;, &apos;p5&apos;, …(20) ]
+
+- Expected
++ Received
+
+@@ -12,16 +12,6 @@
+    &quot;p11&quot;,
+    &quot;p12&quot;,
+    &quot;p13&quot;,
+    &quot;p14&quot;,
+    &quot;p15&quot;,
+-   &quot;p16&quot;,
+-   &quot;p17&quot;,
+-   &quot;p18&quot;,
+-   &quot;p19&quot;,
+-   &quot;p20&quot;,
+-   &quot;p21&quot;,
+-   &quot;p22&quot;,
+-   &quot;p23&quot;,
+-   &quot;p24&quot;,
+-   &quot;p25&quot;,
+  ]
+
+ ❯ tests/application/legacy-match-capacity.test.ts:24:68
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/web/capacity-ui.test.ts" timestamp="2026-10-30T19:53:42.412Z" hostname="[PRIVATE HOST]" tests="4" failures="2" errors="0" skipped="0" time="2.243677231">
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 exposes a 2 through 15 creation input and browser validation blocks16" time="0.060350522">
+        </testcase>
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 creation sends fifteen and leaves the observer setting separate" time="0.166199839">
+        </testcase>
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 legacy waiting room explains the block and retains Leave without readiness" time="1.010737853">
+            <failure message="Unable to find role=&quot;alert&quot;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Mark ready
+      &lt;/button&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Mark ready
+      &lt;/button&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;" type="TestingLibraryElementError">
+TestingLibraryElementError: Unable to find role=&quot;alert&quot;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Mark ready
+      &lt;/button&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Mark ready
+      &lt;/button&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/web/capacity-ui.test.ts:38:22
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/capacity-ui.test.ts" name="CAP15 legacy countdown room explains the block and retains Leave without readiness" time="1.00465806">
+            <failure message="Unable to find role=&quot;alert&quot;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;" type="TestingLibraryElementError">
+TestingLibraryElementError: Unable to find role=&quot;alert&quot;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;section&gt;
+      &lt;button&gt;
+        Leave room
+      &lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/web/capacity-ui.test.ts:38:22
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

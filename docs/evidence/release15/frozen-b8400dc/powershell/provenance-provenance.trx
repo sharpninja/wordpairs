@@ -1,0 +1,74 @@
+<TestRun id="3fee0461-e3b7-48be-a82a-ab59ff604155" name="JUnit adapter: provenance.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T15:26:52.8757331-05:00" finish="2026-10-30T15:26:52.8757331-05:00" queuing="2026-10-30T15:26:52.8757331-05:00" start="2026-10-30T15:26:52.8757331-05:00" />
+  <Results>
+    <UnitTestResult testId="2ba3149a-4a5b-30cc-98cd-40f5639aa0b8" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.accepts a complete matching chain" executionId="22be0aa9-5270-41fd-afcd-c46709904afc" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.2500000" relativeResultsDirectory="22be0aa9-5270-41fd-afcd-c46709904afc" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="12010e4e-b76c-3352-6216-4395083e8626" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.accepts an aggregate-run report without a producer receipt" executionId="97939c09-df9b-452b-8ddd-c28a47dfacb2" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0160000" relativeResultsDirectory="97939c09-df9b-452b-8ddd-c28a47dfacb2" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="a1a208b5-a02e-b200-f346-15e803b5dc50" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects a different parent run" executionId="2deae306-3c55-4523-b4d1-71b9e5c6beac" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0160000" relativeResultsDirectory="2deae306-3c55-4523-b4d1-71b9e5c6beac" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="bb59db44-dd67-5515-7c3c-75f36948a16f" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects a different revision" executionId="cd9ca59c-b4b4-45b7-a772-fe02764b77fb" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0130000" relativeResultsDirectory="cd9ca59c-b4b4-45b7-a772-fe02764b77fb" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="5659afdc-596e-b091-3a11-af7a6a1ef7d4" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects a nonzero exit" executionId="14ac493c-4779-4ec2-a9e0-43b71d416816" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0110000" relativeResultsDirectory="14ac493c-4779-4ec2-a9e0-43b71d416816" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="1ac3ca0d-8bfa-3d53-9e4a-201fc7a5c4a5" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects a different JUnit report" executionId="fa5fc227-8dc9-4658-9fff-0b0f50e0757b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0180000" relativeResultsDirectory="fa5fc227-8dc9-4658-9fff-0b0f50e0757b" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="e3257737-158e-e065-0d6e-8d08f3691ff0" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects an unlinked producer receipt" executionId="3559dbde-4c90-47ef-972e-424d874acf59" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0090000" relativeResultsDirectory="3559dbde-4c90-47ef-972e-424d874acf59" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="d54e3024-31a1-3851-b3c8-9b6db12d10de" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects different producer bytes" executionId="dd10ef51-e63e-4e93-8195-a3af6b2ca470" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0090000" relativeResultsDirectory="dd10ef51-e63e-4e93-8195-a3af6b2ca470" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+    <UnitTestResult testId="c52f4ae9-6368-1313-3e53-1329a4251f91" outcome="Passed" computerName="[PRIVATE HOST]" testName="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1 :: Review evidence provenance.rejects a modified producer receipt" executionId="9639298e-f870-4cf4-bbc7-678427dea769" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0120000" relativeResultsDirectory="9639298e-f870-4cf4-bbc7-678427dea769" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest id="2ba3149a-4a5b-30cc-98cd-40f5639aa0b8" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.accepts a complete matching chain">
+      <Execution id="22be0aa9-5270-41fd-afcd-c46709904afc" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.accepts a complete matching chain" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="12010e4e-b76c-3352-6216-4395083e8626" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.accepts an aggregate-run report without a producer receipt">
+      <Execution id="97939c09-df9b-452b-8ddd-c28a47dfacb2" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.accepts an aggregate-run report without a producer receipt" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="a1a208b5-a02e-b200-f346-15e803b5dc50" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects a different parent run">
+      <Execution id="2deae306-3c55-4523-b4d1-71b9e5c6beac" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects a different parent run" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="bb59db44-dd67-5515-7c3c-75f36948a16f" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects a different revision">
+      <Execution id="cd9ca59c-b4b4-45b7-a772-fe02764b77fb" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects a different revision" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="5659afdc-596e-b091-3a11-af7a6a1ef7d4" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects a nonzero exit">
+      <Execution id="14ac493c-4779-4ec2-a9e0-43b71d416816" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects a nonzero exit" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="1ac3ca0d-8bfa-3d53-9e4a-201fc7a5c4a5" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects a different JUnit report">
+      <Execution id="fa5fc227-8dc9-4658-9fff-0b0f50e0757b" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects a different JUnit report" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="e3257737-158e-e065-0d6e-8d08f3691ff0" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects an unlinked producer receipt">
+      <Execution id="3559dbde-4c90-47ef-972e-424d874acf59" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects an unlinked producer receipt" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="d54e3024-31a1-3851-b3c8-9b6db12d10de" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects different producer bytes">
+      <Execution id="dd10ef51-e63e-4e93-8195-a3af6b2ca470" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects different producer bytes" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+    <UnitTest id="c52f4ae9-6368-1313-3e53-1329a4251f91" storage="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" name="Review evidence provenance.rejects a modified producer receipt">
+      <Execution id="9639298e-f870-4cf4-bbc7-678427dea769" />
+      <TestMethod codeBase="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" name="Review evidence provenance.rejects a modified producer receipt" className="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2ba3149a-4a5b-30cc-98cd-40f5639aa0b8" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="22be0aa9-5270-41fd-afcd-c46709904afc" />
+    <TestEntry testId="12010e4e-b76c-3352-6216-4395083e8626" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="97939c09-df9b-452b-8ddd-c28a47dfacb2" />
+    <TestEntry testId="a1a208b5-a02e-b200-f346-15e803b5dc50" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="2deae306-3c55-4523-b4d1-71b9e5c6beac" />
+    <TestEntry testId="bb59db44-dd67-5515-7c3c-75f36948a16f" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="cd9ca59c-b4b4-45b7-a772-fe02764b77fb" />
+    <TestEntry testId="5659afdc-596e-b091-3a11-af7a6a1ef7d4" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="14ac493c-4779-4ec2-a9e0-43b71d416816" />
+    <TestEntry testId="1ac3ca0d-8bfa-3d53-9e4a-201fc7a5c4a5" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="fa5fc227-8dc9-4658-9fff-0b0f50e0757b" />
+    <TestEntry testId="e3257737-158e-e065-0d6e-8d08f3691ff0" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="3559dbde-4c90-47ef-972e-424d874acf59" />
+    <TestEntry testId="d54e3024-31a1-3851-b3c8-9b6db12d10de" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="dd10ef51-e63e-4e93-8195-a3af6b2ca470" />
+    <TestEntry testId="c52f4ae9-6368-1313-3e53-1329a4251f91" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="9639298e-f870-4cf4-bbc7-678427dea769" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="JUnit cases" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters completed="9" notExecuted="0" total="9" executed="9" disconnected="0" inProgress="0" failed="0" pending="0" timeout="0" inconclusive="0" error="0" passedButRunAborted="0" notRunnable="0" passed="9" aborted="0" />
+    <RunInfos>
+      <RunInfo outcome="Completed" computerName="[PRIVATE HOST]" timestamp="2026-10-30T15:26:52.8757331-05:00">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/release15/frozen-b8400dc/powershell/provenance/provenance.xml; SHA256=F7966DC1D0232E796671B00135EDD7EEC2BDABE04BB753B1873CA74AAAF9752E; reviewed revision=b8400dc6f7aeb42a991861ac98e36f297eae8bb3</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

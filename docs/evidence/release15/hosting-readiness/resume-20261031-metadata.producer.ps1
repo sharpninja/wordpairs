@@ -1,0 +1,3794 @@
+#Requires -Version 7.0
+[CmdletBinding(SupportsShouldProcess)]
+param()
+$ErrorActionPreference='Stop'
+$workspace='<repo>'
+$target=Join-Path $workspace 'docs/evidence/release15/hosting-readiness/resume-20261031-metadata.json'
+$inputData=@'
+{
+  "observationBoundsLocal": {
+    "earliest": "2026-10-31T09:30:48-05:00",
+    "latest": "2026-10-31T09:32:36-05:00",
+    "qualification": "Measured enclosing bounds; individual exact request times not retained. Provider observed_at timestamps remain native UTC fields."
+  },
+  "query": "begin transaction read only;\nselect jsonb_build_object(\n'relations',(select jsonb_agg(jsonb_build_object('schema',n.nspname,'name',c.relname,'kind',c.relkind,'rls',c.relrowsecurity,'forceRls',c.relforcerowsecurity) order by n.nspname,c.relname) from pg_class c join pg_namespace n on n.oid=c.relnamespace where c.relkind in ('r','p') and (n.nspname in ('wordpairs','wordpairs_hosting') or (n.nspname='realtime' and c.relname='messages'))),\n'policies',(select jsonb_agg(jsonb_build_object('schema',schemaname,'table',tablename,'name',policyname,'roles',roles,'cmd',cmd,'qual',qual,'check',with_check) order by schemaname,tablename,policyname) from pg_policies where schemaname in ('wordpairs','wordpairs_hosting') or (schemaname='realtime' and tablename='messages' and policyname='wordpairs_own_notifications')),\n'roleFlags',(select jsonb_agg(jsonb_build_object('name',rolname,'login',rolcanlogin,'super',rolsuper,'bypassRls',rolbypassrls) order by rolname) from pg_roles where rolname in ('anon','authenticated','service_role','wordpairs_app')),\n'schemaPrivileges',(select jsonb_agg(jsonb_build_object('schema',n.nspname,'role',r.rolname,'usage',has_schema_privilege(r.oid,n.oid,'USAGE'),'create',has_schema_privilege(r.oid,n.oid,'CREATE')) order by n.nspname,r.rolname) from pg_namespace n cross join pg_roles r where n.nspname in ('wordpairs','wordpairs_hosting','vault','net') and r.rolname in ('anon','authenticated','service_role','wordpairs_app')),\n'tablePrivileges',(select jsonb_agg(jsonb_build_object('schema',n.nspname,'table',c.relname,'role',r.rolname,'select',has_table_privilege(r.oid,c.oid,'SELECT'),'insert',has_table_privilege(r.oid,c.oid,'INSERT'),'update',has_table_privilege(r.oid,c.oid,'UPDATE'),'delete',has_table_privilege(r.oid,c.oid,'DELETE')) order by n.nspname,c.relname,r.rolname) from pg_class c join pg_namespace n on n.oid=c.relnamespace cross join pg_roles r where c.relkind in ('r','p','v','m') and n.nspname in ('wordpairs','wordpairs_hosting') and r.rolname in ('anon','authenticated')),\n'tickFunction',(select jsonb_build_object('owner',pg_get_userbyid(p.proowner),'securityDefiner',p.prosecdef,'config',p.proconfig,'bodyMd5',md5(p.prosrc),'anonExecute',has_function_privilege('anon',p.oid,'EXECUTE'),'authenticatedExecute',has_function_privilege('authenticated',p.oid,'EXECUTE'),'serviceExecute',has_function_privilege('service_role',p.oid,'EXECUTE'),'appExecute',has_function_privilege('wordpairs_app',p.oid,'EXECUTE')) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='wordpairs_hosting' and p.proname='tick'),\n'cronJobs',(select jsonb_agg(jsonb_build_object('id',jobid,'name',jobname,'schedule',schedule,'active',active,'username',username,'database',database,'expectedCommand',command='select wordpairs_hosting.tick();') order by jobid) from cron.job where jobname='wordpairs-hosted-tick'),\n'scheduler',(select jsonb_agg(jsonb_build_object('enabled',enabled,'endpoint',endpoint,'lastStatus',last_status,'failures',failures,'hasPendingRequest',last_request is not null,'lastSent',last_sent,'retryAfter',retry_after)) from wordpairs_hosting.scheduler),\n'vaultSecretPresence',(select count(*)=1 from vault.secrets where name='wordpairs_scheduler_secret'),\n'extensions',(select jsonb_agg(jsonb_build_object('name',extname,'version',extversion) order by extname) from pg_extension where extname in ('pg_cron','pg_net')),\n'sqlSessionSchemaSettingPresent',current_setting('pgrst.db_schemas',true) is not null\n) as metadata;\ncommit;",
+  "environments": [
+    {
+      "logical": "staging",
+      "supabaseProject": {
+        "id": "jshjkaigwbxsbnnogfxs",
+        "ref": "jshjkaigwbxsbnnogfxs",
+        "organization_id": "ddhtdrecsubwkbwgsqcp",
+        "organization_slug": "ddhtdrecsubwkbwgsqcp",
+        "name": "wordpairs-staging",
+        "region": "us-east-1",
+        "status": "ACTIVE_HEALTHY",
+        "database": {
+          "host": "db.jshjkaigwbxsbnnogfxs.supabase.co",
+          "version": "17.11.0.003",
+          "postgres_engine": "17",
+          "release_channel": "ga"
+        },
+        "created_at": "2026-10-28T03:12:34.423415Z"
+      },
+      "migrations": [
+        {
+          "version": "20261028043237",
+          "name": "wordpairs_001_foundation"
+        },
+        {
+          "version": "20261028043240",
+          "name": "wordpairs_002_public_reads"
+        },
+        {
+          "version": "20261028043311",
+          "name": "wordpairs_003_identity"
+        },
+        {
+          "version": "20261028043317",
+          "name": "wordpairs_004_rooms"
+        },
+        {
+          "version": "20261028043320",
+          "name": "wordpairs_005_outbox"
+        },
+        {
+          "version": "20261028043323",
+          "name": "wordpairs_006_lobby_deadlines"
+        },
+        {
+          "version": "20261028043432007",
+          "name": "wordpairs_007_matches"
+        },
+        {
+          "version": "20261028043435",
+          "name": "wordpairs_008_content"
+        },
+        {
+          "version": "20261028043436",
+          "name": "wordpairs_009_reactions"
+        },
+        {
+          "version": "20261028043438",
+          "name": "wordpairs_010_access_control"
+        },
+        {
+          "version": "20261028043440",
+          "name": "wordpairs_011_content_review_states"
+        },
+        {
+          "version": "20261028045345",
+          "name": "wordpairs_hosted_scheduler"
+        },
+        {
+          "version": "20261028045501",
+          "name": "wordpairs_private_realtime"
+        }
+      ],
+      "vercelProject": {
+        "id": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+        "name": "wordpairs",
+        "framework": "nextjs",
+        "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+        "createdAt": 1793160294422,
+        "updatedAt": 1793232171920,
+        "nodeVersion": "24.x",
+        "live": false,
+        "latestDeployment": {
+          "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+          "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+          "createdAt": 1793227936301,
+          "readyState": "READY",
+          "target": "production"
+        },
+        "domains": [
+          "wordpairs.vercel.app",
+          "wordpairs-sharp-ninja1.vercel.app",
+          "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+        ],
+        "passwordProtection": {
+          "enabled": false,
+          "deploymentType": null
+        },
+        "ssoProtection": {
+          "enabled": true,
+          "deploymentType": "all_except_custom_domains"
+        },
+        "trustedIps": {
+          "enabled": false,
+          "deploymentType": null,
+          "addresses": [],
+          "protectionMode": null
+        }
+      },
+      "deployments": {
+        "deployments": {
+          "pagination": {
+            "count": 3,
+            "prev": 1793227936301
+          },
+          "deployments": [
+            {
+              "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+              "name": "wordpairs",
+              "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+              "created": 1793227936301,
+              "state": "READY",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs/4unZq3queczsyf23J95UTVyF4mcJ",
+              "isRollbackCandidate": true
+            },
+            {
+              "id": "dpl_6mqUf72TEyMRA9Yc6T8yMoamKrQE",
+              "name": "wordpairs",
+              "url": "wordpairs-e5gp6g5jq-sharp-ninja1.vercel.app",
+              "created": 1793227623425,
+              "state": "ERROR",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs/6mqUf72TEyMRA9Yc6T8yMoamKrQE",
+              "isRollbackCandidate": false
+            },
+            {
+              "id": "dpl_HaeF93w3RW5UMKFxvRt2f9dE5i3F",
+              "name": "wordpairs",
+              "url": "wordpairs-pns04pboa-sharp-ninja1.vercel.app",
+              "created": 1793227612194,
+              "state": "CANCELED",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "main",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs/HaeF93w3RW5UMKFxvRt2f9dE5i3F",
+              "isRollbackCandidate": false
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "cronJobs": [
+          {
+            "id": 1,
+            "name": "wordpairs-hosted-tick",
+            "active": true,
+            "database": "postgres",
+            "schedule": "1 second",
+            "username": "postgres",
+            "expectedCommand": true
+          }
+        ],
+        "policies": [
+          {
+            "cmd": "SELECT",
+            "name": "wordpairs_own_notifications",
+            "qual": "((extension = 'broadcast'::text) AND (realtime.topic() = ('wordpairs-profile:'::text || ((current_setting('request.jwt.claims'::text, true))::jsonb ->> 'sub'::text))))",
+            "check": null,
+            "roles": [
+              "authenticated"
+            ],
+            "table": "messages",
+            "schema": "realtime"
+          },
+          {
+            "cmd": "ALL",
+            "name": "server_aggregate_access",
+            "qual": "true",
+            "check": "true",
+            "roles": [
+              "service_role"
+            ],
+            "table": "aggregates",
+            "schema": "wordpairs"
+          }
+        ],
+        "relations": [
+          {
+            "rls": true,
+            "kind": "p",
+            "name": "messages",
+            "schema": "realtime",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "accepted_answers",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "access_audit",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "access_commands",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "access_state",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "aggregates",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "audit_events",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "catalog_exclusions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "catalog_revision",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "categories",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "code_attempts",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "deadline_jobs",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "guest_credentials",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "idempotency_records",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "login_challenges",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "match_players",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "matches",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "moderation_cases",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "nominations",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "outbox_events",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "profile_match_awards",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "profile_roles",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "profiles",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "public_revisions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "quick_assignments",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "room_invitations",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "room_members",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "rooms",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "rounds",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "sessions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "submissions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "word_pairs",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "scheduler",
+            "schema": "wordpairs_hosting",
+            "forceRls": false
+          }
+        ],
+        "roleFlags": [
+          {
+            "name": "anon",
+            "login": false,
+            "super": false,
+            "bypassRls": false
+          },
+          {
+            "name": "authenticated",
+            "login": false,
+            "super": false,
+            "bypassRls": false
+          },
+          {
+            "name": "service_role",
+            "login": false,
+            "super": false,
+            "bypassRls": true
+          },
+          {
+            "name": "wordpairs_app",
+            "login": true,
+            "super": false,
+            "bypassRls": false
+          }
+        ],
+        "scheduler": [
+          {
+            "enabled": true,
+            "endpoint": "https://wordpairs.vercel.app/api/internal/deadlines",
+            "failures": 0,
+            "lastSent": "2026-10-29T04:07:16.025429+00:00",
+            "lastStatus": 200,
+            "retryAfter": null,
+            "hasPendingRequest": false
+          }
+        ],
+        "extensions": [
+          {
+            "name": "pg_cron",
+            "version": "1.6.4"
+          },
+          {
+            "name": "pg_net",
+            "version": "0.20.4"
+          }
+        ],
+        "tickFunction": {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog"
+          ],
+          "bodyMd5": "569c4ab656ad27259af32e3835e9dd46",
+          "appExecute": false,
+          "anonExecute": false,
+          "serviceExecute": false,
+          "securityDefiner": false,
+          "authenticatedExecute": false
+        },
+        "tablePrivileges": [
+          {
+            "role": "anon",
+            "table": "accepted_answers",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "accepted_answers",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "access_audit",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "access_audit",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "access_commands",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "access_commands",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "access_state",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "access_state",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "aggregates",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "aggregates",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "audit_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "audit_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "catalog_exclusions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "catalog_exclusions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "catalog_revision",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "catalog_revision",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "categories",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "categories",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "code_attempts",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "code_attempts",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "deadline_jobs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "deadline_jobs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "guest_credentials",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "guest_credentials",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "idempotency_records",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "idempotency_records",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "login_challenges",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "login_challenges",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "match_players",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "match_players",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "matches",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "matches",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "moderation_cases",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "moderation_cases",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "nominations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "nominations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "outbox_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "outbox_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "profile_match_awards",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "profile_match_awards",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "profile_roles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "profile_roles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "profiles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "profiles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "public_revisions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "public_revisions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "quick_assignments",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "quick_assignments",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "room_invitations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "room_invitations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "room_members",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "room_members",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "rooms",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "rooms",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "rounds",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "rounds",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "sessions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "sessions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "submissions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "submissions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "word_pairs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "word_pairs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "scheduler",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs_hosting",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "scheduler",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs_hosting",
+            "select": false,
+            "update": false
+          }
+        ],
+        "schemaPrivileges": [
+          {
+            "role": "anon",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "authenticated",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "service_role",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "anon",
+            "usage": false,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "authenticated",
+            "usage": false,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "service_role",
+            "usage": true,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": true,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "anon",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "authenticated",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "service_role",
+            "usage": true,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": true,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "anon",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          },
+          {
+            "role": "authenticated",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          },
+          {
+            "role": "service_role",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          }
+        ],
+        "vaultSecretPresence": true,
+        "sqlSessionSchemaSettingPresent": false
+      },
+      "security": {
+        "lints": [
+          {
+            "name": "rls_enabled_no_policy",
+            "title": "RLS Enabled No Policy",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "count": 31,
+            "findings": [
+              {
+                "detail": "Table \\`wordpairs.accepted_answers\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "accepted_answers",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_audit\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_commands\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "access_commands",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_state\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "access_state",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.audit_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "audit_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.catalog_exclusions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "catalog_exclusions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.catalog_revision\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "catalog_revision",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.categories\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "categories",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.code_attempts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "code_attempts",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.deadline_jobs\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.guest_credentials\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "guest_credentials",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.idempotency_records\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "idempotency_records",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.login_challenges\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "login_challenges",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.match_players\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.matches\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.moderation_cases\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.nominations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.outbox_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "outbox_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profile_match_awards\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profile_roles\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "profile_roles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profiles\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "profiles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.public_revisions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "public_revisions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.quick_assignments\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_invitations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_members\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rooms\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rounds\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.sessions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.submissions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.word_pairs\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Table \\`wordpairs_hosting.scheduler\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "scheduler",
+                  "type": "table",
+                  "schema": "wordpairs_hosting"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              }
+            ]
+          },
+          {
+            "name": "function_search_path_mutable",
+            "title": "Function Search Path Mutable",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects functions where the search_path parameter is not set.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable",
+            "count": 7,
+            "findings": [
+              {
+                "detail": "Function \\`wordpairs.check_membership_capacity\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "check_membership_capacity",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.freeze_live_alternatives\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "freeze_live_alternatives",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.assign_retention_room\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "assign_retention_room",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.prune_retained_data\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "prune_retained_data",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.reject_content_edit\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "reject_content_edit",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.lock_round_content\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "lock_round_content",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.freeze_category\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "freeze_category",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:30.574Z"
+              }
+            ]
+          }
+        ]
+      },
+      "performance": {
+        "lints": [
+          {
+            "name": "unindexed_foreign_keys",
+            "title": "Unindexed foreign keys",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+            "count": 20,
+            "findings": [
+              {
+                "detail": "Table \\`wordpairs.access_audit\\` has a foreign key \\`access_audit_actor_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_actor_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_audit\\` has a foreign key \\`access_audit_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_profile_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.aggregates\\` has a foreign key \\`aggregates_retention_room_kind_retention_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "aggregates",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "aggregates_retention_room_kind_retention_room_id_fkey",
+                  "fkey_columns": [
+                    7,
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.deadline_jobs\\` has a foreign key \\`deadline_jobs_aggregate_kind_aggregate_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "deadline_jobs_aggregate_kind_aggregate_id_fkey",
+                  "fkey_columns": [
+                    2,
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.match_players\\` has a foreign key \\`match_players_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "match_players_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.matches\\` has a foreign key \\`matches_anchor_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_anchor_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.matches\\` has a foreign key \\`matches_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.moderation_cases\\` has a foreign key \\`moderation_cases_reviewer_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "moderation_cases_reviewer_id_fkey",
+                  "fkey_columns": [
+                    6
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.nominations\\` has a foreign key \\`nominations_round_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "nominations_round_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profile_match_awards\\` has a foreign key \\`profile_match_awards_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "profile_match_awards_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.quick_assignments\\` has a foreign key \\`quick_assignments_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "quick_assignments_room_id_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_invitations\\` has a foreign key \\`room_invitations_inviter_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_inviter_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_invitations\\` has a foreign key \\`room_invitations_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_members\\` has a foreign key \\`room_members_followed_player_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_followed_player_id_fkey",
+                  "fkey_columns": [
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_members\\` has a foreign key \\`room_members_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rooms\\` has a foreign key \\`rooms_creator_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rooms_creator_id_fkey",
+                  "fkey_columns": [
+                    5
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rounds\\` has a foreign key \\`rounds_pair_id_pair_version_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rounds_pair_id_pair_version_fkey",
+                  "fkey_columns": [
+                    3,
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.sessions\\` has a foreign key \\`sessions_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "sessions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.submissions\\` has a foreign key \\`submissions_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "submissions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.word_pairs\\` has a foreign key \\`word_pairs_category_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "word_pairs_category_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              }
+            ]
+          },
+          {
+            "name": "auth_rls_initplan",
+            "title": "Auth RLS Initialization Plan",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Detects if calls to \\`current_setting()\\` and \\`auth.<function>()\\` in RLS policies are being unnecessarily re-evaluated for each row",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan",
+            "count": 1,
+            "findings": [
+              {
+                "detail": "Table \\`realtime.messages\\` has a row level security policy \\`wordpairs_own_notifications\\` that re-evaluates current_setting() or auth.<function>() for each row. This produces suboptimal query performance at scale. Resolve the issue by replacing \\`auth.<function>()\\` with \\`(select auth.<function>())\\`. See [docs](https://supabase.com/docs/guides/database/postgres/row-level-security#call-functions-with-select) for more info.",
+                "metadata": {
+                  "name": "messages",
+                  "type": "table",
+                  "schema": "realtime"
+                },
+                "observed_at": "2026-10-31T14:31:36.281Z"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "logical": "production",
+      "supabaseProject": {
+        "id": "krdcuuhcynmdfcjlpbsf",
+        "ref": "krdcuuhcynmdfcjlpbsf",
+        "organization_id": "ddhtdrecsubwkbwgsqcp",
+        "organization_slug": "ddhtdrecsubwkbwgsqcp",
+        "name": "wordpairs-production",
+        "region": "us-east-1",
+        "status": "ACTIVE_HEALTHY",
+        "database": {
+          "host": "db.krdcuuhcynmdfcjlpbsf.supabase.co",
+          "version": "17.11.0.003",
+          "postgres_engine": "17",
+          "release_channel": "ga"
+        },
+        "created_at": "2026-10-28T03:13:27.799525Z"
+      },
+      "migrations": [
+        {
+          "version": "20261028230936",
+          "name": "wordpairs_001_foundation"
+        },
+        {
+          "version": "20261028230938",
+          "name": "wordpairs_002_public_reads"
+        },
+        {
+          "version": "20261028230940",
+          "name": "wordpairs_003_identity"
+        },
+        {
+          "version": "20261028230942",
+          "name": "wordpairs_004_rooms"
+        },
+        {
+          "version": "20261028230944",
+          "name": "wordpairs_005_outbox"
+        },
+        {
+          "version": "20261028230946",
+          "name": "wordpairs_006_lobby_deadlines"
+        },
+        {
+          "version": "20261028230950",
+          "name": "wordpairs_007_matches"
+        },
+        {
+          "version": "20261028230952",
+          "name": "wordpairs_008_content"
+        },
+        {
+          "version": "20261028230954",
+          "name": "wordpairs_009_reactions"
+        },
+        {
+          "version": "20261028230956",
+          "name": "wordpairs_010_access_control"
+        },
+        {
+          "version": "20261028230959",
+          "name": "wordpairs_011_content_review_states"
+        },
+        {
+          "version": "20261028231028",
+          "name": "wordpairs_hosted_scheduler"
+        },
+        {
+          "version": "20261028231046",
+          "name": "wordpairs_private_realtime"
+        }
+      ],
+      "vercelProject": {
+        "id": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+        "name": "wordpairs-j9jf",
+        "framework": "nextjs",
+        "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+        "createdAt": 1793160706654,
+        "updatedAt": 1793232173237,
+        "nodeVersion": "24.x",
+        "live": false,
+        "latestDeployment": {
+          "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+          "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+          "createdAt": 1793227612147,
+          "readyState": "CANCELED",
+          "target": "production"
+        },
+        "domains": [
+          "wordpairs-j9jf-sharp-ninja1.vercel.app",
+          "wordpairs-j9jf-git-main-sharp-ninja1.vercel.app"
+        ],
+        "passwordProtection": {
+          "enabled": false,
+          "deploymentType": null
+        },
+        "ssoProtection": {
+          "enabled": true,
+          "deploymentType": "all_except_custom_domains"
+        },
+        "trustedIps": {
+          "enabled": false,
+          "deploymentType": null,
+          "addresses": [],
+          "protectionMode": null
+        }
+      },
+      "deployments": {
+        "deployments": {
+          "pagination": {
+            "count": 1,
+            "prev": 1793227612147
+          },
+          "deployments": [
+            {
+              "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+              "name": "wordpairs-j9jf",
+              "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+              "created": 1793227612147,
+              "state": "CANCELED",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "main",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs-j9jf/D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+              "isRollbackCandidate": false
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "cronJobs": [
+          {
+            "id": 1,
+            "name": "wordpairs-hosted-tick",
+            "active": false,
+            "database": "postgres",
+            "schedule": "1 second",
+            "username": "postgres",
+            "expectedCommand": true
+          }
+        ],
+        "policies": [
+          {
+            "cmd": "SELECT",
+            "name": "wordpairs_own_notifications",
+            "qual": "((extension = 'broadcast'::text) AND (realtime.topic() = ('wordpairs-profile:'::text || ((current_setting('request.jwt.claims'::text, true))::jsonb ->> 'sub'::text))))",
+            "check": null,
+            "roles": [
+              "authenticated"
+            ],
+            "table": "messages",
+            "schema": "realtime"
+          },
+          {
+            "cmd": "ALL",
+            "name": "server_aggregate_access",
+            "qual": "true",
+            "check": "true",
+            "roles": [
+              "service_role"
+            ],
+            "table": "aggregates",
+            "schema": "wordpairs"
+          }
+        ],
+        "relations": [
+          {
+            "rls": true,
+            "kind": "p",
+            "name": "messages",
+            "schema": "realtime",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "accepted_answers",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "access_audit",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "access_commands",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "access_state",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "aggregates",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "audit_events",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "catalog_exclusions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "catalog_revision",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "categories",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "code_attempts",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "deadline_jobs",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "guest_credentials",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "idempotency_records",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "login_challenges",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "match_players",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "matches",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "moderation_cases",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "nominations",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "outbox_events",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "profile_match_awards",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "profile_roles",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "profiles",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "public_revisions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "quick_assignments",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "room_invitations",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "room_members",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "rooms",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "rounds",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "sessions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "submissions",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "word_pairs",
+            "schema": "wordpairs",
+            "forceRls": false
+          },
+          {
+            "rls": true,
+            "kind": "r",
+            "name": "scheduler",
+            "schema": "wordpairs_hosting",
+            "forceRls": false
+          }
+        ],
+        "roleFlags": [
+          {
+            "name": "anon",
+            "login": false,
+            "super": false,
+            "bypassRls": false
+          },
+          {
+            "name": "authenticated",
+            "login": false,
+            "super": false,
+            "bypassRls": false
+          },
+          {
+            "name": "service_role",
+            "login": false,
+            "super": false,
+            "bypassRls": true
+          },
+          {
+            "name": "wordpairs_app",
+            "login": true,
+            "super": false,
+            "bypassRls": false
+          }
+        ],
+        "scheduler": [
+          {
+            "enabled": false,
+            "endpoint": "https://wordpairs-j9jf.vercel.app/api/internal/deadlines",
+            "failures": 0,
+            "lastSent": null,
+            "lastStatus": null,
+            "retryAfter": null,
+            "hasPendingRequest": false
+          }
+        ],
+        "extensions": [
+          {
+            "name": "pg_cron",
+            "version": "1.6.4"
+          },
+          {
+            "name": "pg_net",
+            "version": "0.20.4"
+          }
+        ],
+        "tickFunction": {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog"
+          ],
+          "bodyMd5": "569c4ab656ad27259af32e3835e9dd46",
+          "appExecute": false,
+          "anonExecute": false,
+          "serviceExecute": false,
+          "securityDefiner": false,
+          "authenticatedExecute": false
+        },
+        "tablePrivileges": [
+          {
+            "role": "anon",
+            "table": "accepted_answers",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "accepted_answers",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "access_audit",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "access_audit",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "access_commands",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "access_commands",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "access_state",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "access_state",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "aggregates",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "aggregates",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "audit_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "audit_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "catalog_exclusions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "catalog_exclusions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "catalog_revision",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "catalog_revision",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "categories",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "categories",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "code_attempts",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "code_attempts",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "deadline_jobs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "deadline_jobs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "guest_credentials",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "guest_credentials",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "idempotency_records",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "idempotency_records",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "login_challenges",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "login_challenges",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "match_players",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "match_players",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "matches",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "matches",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "moderation_cases",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "moderation_cases",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "nominations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "nominations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "outbox_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "outbox_events",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "profile_match_awards",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "profile_match_awards",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "profile_roles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "profile_roles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "profiles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "profiles",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "public_revisions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "public_revisions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "quick_assignments",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "quick_assignments",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "room_invitations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "room_invitations",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "room_members",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "room_members",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "rooms",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "rooms",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "rounds",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "rounds",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "sessions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "sessions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "submissions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "submissions",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "word_pairs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "word_pairs",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "anon",
+            "table": "scheduler",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs_hosting",
+            "select": false,
+            "update": false
+          },
+          {
+            "role": "authenticated",
+            "table": "scheduler",
+            "delete": false,
+            "insert": false,
+            "schema": "wordpairs_hosting",
+            "select": false,
+            "update": false
+          }
+        ],
+        "schemaPrivileges": [
+          {
+            "role": "anon",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "authenticated",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "service_role",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": true,
+            "create": false,
+            "schema": "net"
+          },
+          {
+            "role": "anon",
+            "usage": false,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "authenticated",
+            "usage": false,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "service_role",
+            "usage": true,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": true,
+            "create": false,
+            "schema": "vault"
+          },
+          {
+            "role": "anon",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "authenticated",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "service_role",
+            "usage": true,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": true,
+            "create": false,
+            "schema": "wordpairs"
+          },
+          {
+            "role": "anon",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          },
+          {
+            "role": "authenticated",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          },
+          {
+            "role": "service_role",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          },
+          {
+            "role": "wordpairs_app",
+            "usage": false,
+            "create": false,
+            "schema": "wordpairs_hosting"
+          }
+        ],
+        "vaultSecretPresence": true,
+        "sqlSessionSchemaSettingPresent": false
+      },
+      "security": {
+        "lints": [
+          {
+            "name": "rls_enabled_no_policy",
+            "title": "RLS Enabled No Policy",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "count": 31,
+            "findings": [
+              {
+                "detail": "Table \\`wordpairs.accepted_answers\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "accepted_answers",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_audit\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_commands\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "access_commands",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_state\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "access_state",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.audit_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "audit_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.catalog_exclusions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "catalog_exclusions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.catalog_revision\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "catalog_revision",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.categories\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "categories",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.code_attempts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "code_attempts",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.deadline_jobs\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.guest_credentials\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "guest_credentials",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.idempotency_records\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "idempotency_records",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.login_challenges\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "login_challenges",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.match_players\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.matches\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.moderation_cases\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.nominations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.outbox_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "outbox_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profile_match_awards\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profile_roles\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "profile_roles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profiles\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "profiles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.public_revisions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "public_revisions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.quick_assignments\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_invitations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_members\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rooms\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rounds\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.sessions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.submissions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.word_pairs\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Table \\`wordpairs_hosting.scheduler\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "scheduler",
+                  "type": "table",
+                  "schema": "wordpairs_hosting"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              }
+            ]
+          },
+          {
+            "name": "function_search_path_mutable",
+            "title": "Function Search Path Mutable",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects functions where the search_path parameter is not set.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable",
+            "count": 7,
+            "findings": [
+              {
+                "detail": "Function \\`wordpairs.assign_retention_room\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "assign_retention_room",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.prune_retained_data\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "prune_retained_data",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.check_membership_capacity\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "check_membership_capacity",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.reject_content_edit\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "reject_content_edit",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.freeze_live_alternatives\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "freeze_live_alternatives",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.lock_round_content\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "lock_round_content",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              },
+              {
+                "detail": "Function \\`wordpairs.freeze_category\\` has a role mutable search_path",
+                "metadata": {
+                  "name": "freeze_category",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.316Z"
+              }
+            ]
+          }
+        ]
+      },
+      "performance": {
+        "lints": [
+          {
+            "name": "unindexed_foreign_keys",
+            "title": "Unindexed foreign keys",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+            "count": 20,
+            "findings": [
+              {
+                "detail": "Table \\`wordpairs.access_audit\\` has a foreign key \\`access_audit_actor_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_actor_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.access_audit\\` has a foreign key \\`access_audit_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_profile_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.aggregates\\` has a foreign key \\`aggregates_retention_room_kind_retention_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "aggregates",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "aggregates_retention_room_kind_retention_room_id_fkey",
+                  "fkey_columns": [
+                    7,
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.deadline_jobs\\` has a foreign key \\`deadline_jobs_aggregate_kind_aggregate_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "deadline_jobs_aggregate_kind_aggregate_id_fkey",
+                  "fkey_columns": [
+                    2,
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.match_players\\` has a foreign key \\`match_players_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "match_players_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.matches\\` has a foreign key \\`matches_anchor_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_anchor_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.matches\\` has a foreign key \\`matches_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.moderation_cases\\` has a foreign key \\`moderation_cases_reviewer_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "moderation_cases_reviewer_id_fkey",
+                  "fkey_columns": [
+                    6
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.nominations\\` has a foreign key \\`nominations_round_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "nominations_round_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.profile_match_awards\\` has a foreign key \\`profile_match_awards_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "profile_match_awards_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.quick_assignments\\` has a foreign key \\`quick_assignments_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "quick_assignments_room_id_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_invitations\\` has a foreign key \\`room_invitations_inviter_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_inviter_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_invitations\\` has a foreign key \\`room_invitations_room_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_members\\` has a foreign key \\`room_members_followed_player_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_followed_player_id_fkey",
+                  "fkey_columns": [
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.room_members\\` has a foreign key \\`room_members_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rooms\\` has a foreign key \\`rooms_creator_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rooms_creator_id_fkey",
+                  "fkey_columns": [
+                    5
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.rounds\\` has a foreign key \\`rounds_pair_id_pair_version_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rounds_pair_id_pair_version_fkey",
+                  "fkey_columns": [
+                    3,
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.sessions\\` has a foreign key \\`sessions_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "sessions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.submissions\\` has a foreign key \\`submissions_profile_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "submissions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Table \\`wordpairs.word_pairs\\` has a foreign key \\`word_pairs_category_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "word_pairs_category_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              }
+            ]
+          },
+          {
+            "name": "auth_rls_initplan",
+            "title": "Auth RLS Initialization Plan",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Detects if calls to \\`current_setting()\\` and \\`auth.<function>()\\` in RLS policies are being unnecessarily re-evaluated for each row",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan",
+            "count": 1,
+            "findings": [
+              {
+                "detail": "Table \\`realtime.messages\\` has a row level security policy \\`wordpairs_own_notifications\\` that re-evaluates current_setting() or auth.<function>() for each row. This produces suboptimal query performance at scale. Resolve the issue by replacing \\`auth.<function>()\\` with \\`(select auth.<function>())\\`. See [docs](https://supabase.com/docs/guides/database/postgres/row-level-security#call-functions-with-select) for more info.",
+                "metadata": {
+                  "name": "messages",
+                  "type": "table",
+                  "schema": "realtime"
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              }
+            ]
+          },
+          {
+            "name": "unused_index",
+            "title": "Unused Index",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "PERFORMANCE"
+            ],
+            "description": "Detects if an index has never been used and may be a candidate for removal.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+            "count": 5,
+            "findings": [
+              {
+                "detail": "Index \\`due_deadlines\\` on table \\`wordpairs.deadline_jobs\\` has not been used",
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Index \\`public_ranking_order\\` on table \\`wordpairs.profiles\\` has not been used",
+                "metadata": {
+                  "name": "profiles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Index \\`public_room_order\\` on table \\`wordpairs.rooms\\` has not been used",
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Index \\`sessions_expiry\\` on table \\`wordpairs.sessions\\` has not been used",
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              },
+              {
+                "detail": "Index \\`code_attempt_window\\` on table \\`wordpairs.code_attempts\\` has not been used",
+                "metadata": {
+                  "name": "code_attempts",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-31T14:31:36.838Z"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "productionReadyDeployments": {
+    "deployments": {
+      "pagination": {
+        "count": 0
+      },
+      "deployments": []
+    }
+  },
+  "noProviderMutation": true,
+  "noPrivateValuesSelected": true,
+  "noSourceGateOrHostedRuntimeAcceptance": true
+}
+'@|ConvertFrom-Json -Depth 60 -AsHashtable
+if(-not $PSCmdlet.ShouldProcess($target,'Persist exact public-safe connected metadata and qualifications')){return}
+if(Test-Path -LiteralPath $target){throw 'Preserve prior metadata'}
+$state=Get-Content -LiteralPath /tmp/wordpairs-hosting-resume-20261031/session-state.yaml -Raw|ConvertFrom-Yaml
+$turn=Get-Content -LiteralPath /tmp/wordpairs-hosting-resume-20261031/current-turn.yaml -Raw|ConvertFrom-Yaml
+$inputData['recordedAtLocal']=[DateTimeOffset]::Now.ToString('o')
+$inputData['sessionId']=$state.sessionId;$inputData['requestId']=$turn.turnRequestId
+$inputData['parentSessionId']='Codex-20261027T100516Z-plugin-session';$inputData['parentRequestId']='req-20261031T142639Z-release-resume'
+$inputData['limits']=@('Current13 migration names/order only. Historical canonical-body preflight remains separate; migration012/013 still absent.','Selected33 tables all RLS enabled and64 browser-role CRUD privilege records deny all; no whole-managed-project security recertification.','Private Realtime predicate and scheduler bodyMd5/owners/grants are metadata, not delivery or autonomous due-work acceptance.','Vault secret presence only, not validity. No secret values queried. SQL-session schema setting null does not prove Data API exposure.','Staging historical last_status200 is not a current tick invocation. Production remains inactive/disabled. No cron change.','Vercel connector omits global Ignored Build Step/build overrides. Historical browser guard observation remains separate and must be refreshed before rollout.','Advisors retained in full. No remediation, missing-index performance causation, unused-index removability or source change inferred.','Both project origins, latest deployment SHA and READY-filtered production absence apply only to observed request bounds. Effective public access and canonical runtime not inferred.','Read-only provider metadata slice only. Separate authorized staging application probe has data effects recorded in its own receipt.')
+$producer=Join-Path (Split-Path -Parent $target) 'resume-20261031-metadata.producer.ps1'
+Copy-Item -LiteralPath $PSCommandPath -Destination $producer
+if((Get-FileHash -LiteralPath $producer).Hash -cne (Get-FileHash -LiteralPath $PSCommandPath).Hash){throw 'Producer retention mismatch'}
+$inputData['producer']=@{path=$producer;sha256=(Get-FileHash -LiteralPath $producer).Hash}
+$inputData|ConvertTo-Json -Depth 70|Set-Content -LiteralPath $target
+[pscustomobject]@{path=$target;sha256=(Get-FileHash -LiteralPath $target).Hash;bytes=(Get-Item -LiteralPath $target).Length;producerSha256=(Get-FileHash -LiteralPath $producer).Hash;sessionId=$state.sessionId;requestId=$turn.turnRequestId}|ConvertTo-Json
+

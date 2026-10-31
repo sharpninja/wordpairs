@@ -1,0 +1,33 @@
+{
+  "createdAt": "2026-10-30T16:07:33.4990793-05:00",
+  "area": "DESIGNHOSTILEREVIEW",
+  "acceptanceCriteria": [
+    {
+      "id": "TR-35-C01",
+      "text": "Architecture, moderation, deployment and administration design agree with the implemented role matrix, bootstrap, transaction ordering, retry semantics and immutable content behavior.",
+      "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+      "isSatisfied": true
+    },
+    {
+      "id": "TR-35-C02",
+      "text": "Independent hostile validation uses the reviewer tool, model and effort selected by the latest explicit operator direction. The current selection is Cline with Beam and High effort until Monday, 2 November 2026; no cutoff hour is specified and no later reviewer is inferred. Before accepting a tracked completion claim, OverallVerdict is AGREE with accuracy at least 98/100, completeness at least 98/100, and no unresolved material findings. Retain the full request and response JSONL, complete verdict and findings in the reviewer's own durable MCP session turn with readback, and the reviewed source manifest with exact revision/worktree/source and evidence identity. Supply all applicable unit and scoped integration TRX evidence under the operator review policy; the reviewer does not build code or run tests. Runtime model and effort selection receipts must support the selected reviewer without implying unverifiable provider-internal reasoning.",
+      "evidence": "",
+      "isSatisfied": false
+    },
+    {
+      "id": "TR-35-C03",
+      "text": "Distinguish agent visual inspection, automated fixtures, real database evidence and hosted operations. Human feedback is optional; do not invent personal sign-off gates or claim unperformed human testing.",
+      "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md",
+      "isSatisfied": true
+    }
+  ],
+  "description": "Update design documentation for requested behavior and obtain independent hostile validation with exact source identity, evidence boundaries, findings/corrections and final disposition.",
+  "status": "in_progress",
+  "priority": "high",
+  "title": "Verify Design documentation and independent hostile validation",
+  "updatedAt": "2026-10-30T16:07:33.4991063-05:00",
+  "id": "TEST-DESIGNHOSTILEREVIEW-135",
+  "testType": "unit",
+  "scopeStartLayerKey": "layer-1",
+  "notes": "New verification/extension import key: TEST-WP-135; canonical MCP ID: TEST-DESIGNHOSTILEREVIEW-135. Actual test sources: tests/application/access.test.ts, tests/application/catalog-admin.test.ts, tests/web/admin-api.test.ts, tests/integration/admin.integration.ts, tests/integration/multiplayer.integration.ts, tests/browser/admin.phase6.spec.ts. Match the applicable suite to this requirement; do not claim all suites prove every boundary. Former provisional MCP ID: TEST-WP-135. Replaced at user request with a subject-identifying ID.\n\nHISTORICAL C02 reviewer gate before the operator-authorized amendment of 30 October 2026. Retained evidence below does not satisfy the amended criterion.\nOriginal criterion snapshot (JSON):\n{\n  \"isSatisfied\": true,\n  \"id\": \"TR-35-C02\",\n  \"text\": \"An independent GPT-6 Astra/high reviewer reaches at least98/100 accuracy and completeness, with no unresolved material findings; retain its complete report and reviewed source manifest.\",\n  \"evidence\": \"docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\"\n}\nOriginal criterion evidence (verbatim):\ndocs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md\nEnd HISTORICAL C02 evidence.\n"
+}

@@ -1,0 +1,135 @@
+{
+  "players": 2,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 16,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "readinessObservations": [
+    {
+      "phase": "prepared",
+      "player": 1,
+      "expectedProfileId": "d273752f-bd71-420c-a50c-a80e773ffd9f",
+      "actorId": "d273752f-bd71-420c-a50c-a80e773ffd9f",
+      "uiRosterCount": 2,
+      "version": 1
+    },
+    {
+      "phase": "prepared",
+      "player": 0,
+      "expectedProfileId": "ee44b551-d981-45cb-a81c-272086e701f4",
+      "actorId": "ee44b551-d981-45cb-a81c-272086e701f4",
+      "uiRosterCount": 2,
+      "version": 1
+    },
+    {
+      "phase": "ready",
+      "player": 0,
+      "expectedProfileId": "ee44b551-d981-45cb-a81c-272086e701f4",
+      "actorId": "ee44b551-d981-45cb-a81c-272086e701f4",
+      "uiRosterCount": 2,
+      "version": 2
+    },
+    {
+      "phase": "ready",
+      "player": 1,
+      "expectedProfileId": "d273752f-bd71-420c-a50c-a80e773ffd9f",
+      "actorId": "d273752f-bd71-420c-a50c-a80e773ffd9f",
+      "uiRosterCount": 2,
+      "version": 3
+    }
+  ],
+  "commandBodyFailures": [],
+  "requestFailureTotal": 2,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1531,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1543,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 43.531,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 45.27,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 32.514,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 27.344,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 34.456,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.139,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.175,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/86930b13-dce4-4562-ad30-335ab1f81719/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 32.074,
+      "action": "answer"
+    }
+  ],
+  "requestDiagnostics": {
+    "failureTotal": 0,
+    "failures": [],
+    "failuresTruncated": false,
+    "pendingAtDispose": 2,
+    "qualification": "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown."
+  },
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

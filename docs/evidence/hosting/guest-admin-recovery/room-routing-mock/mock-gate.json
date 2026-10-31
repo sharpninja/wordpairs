@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-29T11:46:24",
+  "testSha256": "59EB9D91A72AB0E0E17720AF8BF6D0800416DB6FACD24DD4F44A66090ECFAA67",
+  "runs": [
+    {
+      "fixture": "correct",
+      "exitCode": 0,
+      "cases": 2,
+      "failed": 0,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/room-routing-mock/correct.xml",
+      "reportSha256": "52F2CC6E321AD6618FF41E5A9344E467A65198C6877ED18D93797D9D00F3A7C4"
+    },
+    {
+      "fixture": "wrong",
+      "exitCode": 1,
+      "cases": 2,
+      "failed": 1,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/room-routing-mock/wrong.xml",
+      "reportSha256": "822EF8E061E276F67FF36C5C2E558D8FF3BE83C2254CA1E91AFBC7AE7DD6E93B"
+    }
+  ],
+  "qualification": "Rework mock gate; the initial implementation before this gate is retained separately."
+}

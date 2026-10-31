@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
 vi.mock("../../src/infrastructure/runtime", () => ({
   getIdentityService: () => mocks,
   getProfileStore: () => ({}),
-  oidcAvailable: () => true,
+  oidcAvailable: () => false,
   deliverOutbox: async () => undefined,
 }));
 
@@ -141,10 +141,32 @@ it("derives command identity from the verified session and omits server actor ro
   );
   expect(await session.json()).toEqual({
     profile,
-    oidcAvailable: true,
+    permissions: [],
+    oidcAvailable: false,
     sessionGeneration: null,
   });
 });
+it.each([
+  ["player", []],
+  ["moderator", []],
+  ["senior-moderator", []],
+  ["admin", []],
+])(
+  "public %s session never projects administration privileges",
+  async (role, expected) => {
+    mocks.session.mockResolvedValue(
+      success({ profile, actor: { profileId: "p1", roles: [role] } }),
+    );
+    const response = await GET(
+      new Request("https://wordpairs.example.test/api/session"),
+    );
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    const body = await response.json();
+    expect(body.permissions).toEqual(expected);
+    expect(body.actor).toBeUndefined();
+    expect(body.roles).toBeUndefined();
+  },
+);
 it("rejects a profile mutation from a tab whose displayed identity differs from the current shared session", async () => {
   mocks.session.mockResolvedValue(
     success({
@@ -184,20 +206,11 @@ it("bounds untrusted JSON and clears only a confirmed revoked session", async ()
     ),
   ).toContain("Max-Age=0");
 });
-it("uses the browser-bound challenge once and redirects failed callbacks without provider details", async () => {
-  mocks.completeLogin.mockResolvedValue(failure("NOT_AUTHENTICATED"));
-  const result = await callback(
-    new Request(
-      "https://wordpairs.example.test/api/auth/callback?code=c&state=s",
-      { headers: { Cookie: `wp_login=${"b".repeat(43)}` } },
-    ),
-  );
-  expect(mocks.completeLogin).toHaveBeenCalledWith("b".repeat(43), "c", "s");
-  expect(result.headers.get("Location")).toBe(
-    "https://wordpairs.example.test/play?auth=failed",
-  );
-  expect(result.headers.get("Set-Cookie")).toContain("wp_login=;");
-  expect(result.headers.get("Set-Cookie")).not.toContain("wp_session");
+it("disabled public OpenAI callback cannot exchange credentials or issue cookies", async () => {
+  const result = await callback(new Request("https://wordpairs.example.test/api/auth/callback?code=c&state=s"));
+  expect(result.status).toBe(404);
+  expect(mocks.completeLogin).not.toHaveBeenCalled();
+  expect(result.headers.has("Set-Cookie")).toBe(false);
 });
 it("verified same-profile sessions expose stable purpose-separated non-credential generations", async () => {
   mocks.session.mockResolvedValue(

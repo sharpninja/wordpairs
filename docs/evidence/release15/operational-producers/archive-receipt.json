@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-10-30T16:23:15",
+  "purpose": "Reproducible, source-pinned operational validation composition and receipt generation, not additional application behavior.",
+  "originalsRetained": true,
+  "files": [
+    {
+      "path": "docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "sha256": "A1399A2B7BA3B72485EE3C6D9697E579E9A3BDC74792376C40A36908779E1AC6",
+      "parserErrors": 0,
+      "analyzerWarningsAndErrors": 0
+    },
+    {
+      "path": "docs/evidence/release15/operational-producers/InitializeNextWordpairsEvidence.ps1",
+      "sha256": "39FC9683CFC5ABE7243BFE458498527B040F36D4C0366FE588D7F94626B63674",
+      "parserErrors": 0,
+      "analyzerWarningsAndErrors": 0
+    },
+    {
+      "path": "docs/evidence/release15/operational-producers/RunNextWordpairsEvidenceChain.ps1",
+      "sha256": "4AB13CB58BED65D04998BA0290D14D5F48B5BD4266FE4B1F7556C1A5CF1D1EAE",
+      "parserErrors": 0,
+      "analyzerWarningsAndErrors": 0
+    }
+  ],
+  "qualification": "Commit these bytes before invocation. These scripts compose existing project validators and do not establish successful execution or hostile approval."
+}

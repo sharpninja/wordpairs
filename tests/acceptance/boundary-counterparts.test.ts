@@ -12,13 +12,13 @@ import {
   TransactionFake,
 } from "./fixtures";
 
-it("AC-02/24/27/28/51 maximum 25 players plus 25 observers keep capacity, locked roster, scoring and perspectives under competing commands", async () => {
-  let room = value(newRoom("r", "p1", 25, "ABCDEFGH", 0));
-  const players = Array.from({ length: 25 }, (_, i) => `p${i + 1}`);
+it("AC-02/24/27/28/51 maximum 10 players plus 25 observers keep capacity, locked roster, scoring and perspectives under competing commands", async () => {
+  let room = value(newRoom("r", "p1", 10, "ABCDEFGH", 0));
+  const players = Array.from({ length: 10 }, (_, i) => `p${i + 1}`);
   for (const id of players.slice(1))
     room = value(joinRoom(room, id, "player", null, 0));
   for (let i = 1; i <= 25; i++)
-    room = value(joinRoom(room, `o${i}`, "observer", `p${i}`, 0));
+    room = value(joinRoom(room, `o${i}`, "observer", players[(i - 1) % players.length], 0));
   const before = structuredClone(room);
   expect(joinRoom(room, "overflow", "player", null, 0).ok).toBe(false);
   expect(joinRoom(room, "overflow", "observer", "p1", 0).ok).toBe(false);
@@ -55,17 +55,17 @@ it("AC-02/24/27/28/51 maximum 25 players plus 25 observers keep capacity, locked
   expect(first.filter((r) => r.ok)).toHaveLength(1);
   expect(
     first.filter((r) => !r.ok && r.error.code === "CONFLICT"),
-  ).toHaveLength(24);
+  ).toHaveLength(9);
   for (const id of players.slice(1)) value(await h.answer(id));
-  expect(h.store.state.rounds[0].solves).toHaveLength(25);
+  expect(h.store.state.rounds[0].solves).toHaveLength(10);
   expect(h.store.state.status).toBe("summary");
   expect(await h.service.act(commands[0], action)).toEqual(first[0]);
-  expect(h.store.state.rounds[0].solves).toHaveLength(25);
+  expect(h.store.state.rounds[0].solves).toHaveLength(10);
   for (let i = 1; i <= 25; i++) {
-    const player = value(await h.service.view(room, `p${i}`));
+    const player = value(await h.service.view(room, players[(i - 1) % players.length]));
     const observer = value(await h.service.view(room, `o${i}`));
     expect(observer).toEqual(player);
-    expect(observer.scorecard).toHaveLength(25);
+    expect(observer.scorecard).toHaveLength(10);
     expect(observer.standings.every((s) => s.points === 5)).toBe(true);
     expect((await h.act(action, `o${i}`)).ok).toBe(false);
   }
@@ -89,7 +89,7 @@ it("AC-02/24/27/28/51 maximum 25 players plus 25 observers keep capacity, locked
     ),
   );
   expect(new Set(roomStore.commits[0].transition.events[0].audience)).toEqual(
-    new Set([...players, ...players.map((_, i) => `o${i + 1}`)]),
+    new Set([...players, ...Array.from({length:25}, (_, i) => `o${i + 1}`)]),
   );
 });
 
@@ -126,8 +126,8 @@ it("AC-16 primary/supplemental counterpart rejects each incomplete catalog field
   ).toBe(true);
 });
 
-it("AC-02/04/24 fills capacities 2/8/25 without mutation on overflow and maps every inclusive anchor index", () => {
-  for (const capacity of [2, 8, 25]) {
+it("AC-02/04/24 fills capacities 2/8/10 without mutation on overflow and maps every inclusive anchor index", () => {
+  for (const capacity of [2, 8, 10]) {
     let room = value(newRoom("r", "p1", capacity, "ABCDEFGH", 0));
     for (let i = 2; i <= capacity; i++)
       room = value(joinRoom(room, `p${i}`, "player", null, 0));

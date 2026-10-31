@@ -1,0 +1,2475 @@
+{
+  "schemaVersion": 1,
+  "recordedAtLocal": "2026-10-30T15:27:32",
+  "scope": "Read-only provider preflight for staging-before-production rollout; not deployment, hostile approval, free-tier eligibility approval, backup certification or game completion.",
+  "parent": {
+    "requestId": "req-20261030T194626Z-finish-wordpairs",
+    "sessionId": "Codex-20261027T100516Z-plugin-session"
+  },
+  "agent": {
+    "identity": "Codex",
+    "plugin": "mcpserver-codex-plugin",
+    "requestId": "req-20261030T201842Z-hosting-preflight",
+    "sessionId": "Codex-20261030T200118Z-plugin-session",
+    "pluginVersion": "1.121.0"
+  },
+  "source": {
+    "pins": [
+      {
+        "sha256": "f002924a2f673f39a4b3260965d32486988ea71ee32f8402c27ba74725773da0",
+        "path": "scripts/HostingSchemaPlanner.psm1"
+      },
+      {
+        "sha256": "d47914412511dad25df438a74fc8d8c0296a327f2e06467e751bc2dfc90ef689",
+        "path": "scripts/hosting-schema.ps1"
+      },
+      {
+        "sha256": "adc454269563dc6c5d3507f303a67061110023e3e3b8914afe4fb64aa7ea415d",
+        "path": "src/infrastructure/runtime.ts"
+      },
+      {
+        "sha256": "b85bec54713448ed2052ab802ae147839d52d37e7ac653fa5be2595eda339c7f",
+        "path": "src/infrastructure/migrations/012_guest_public_profiles.sql"
+      },
+      {
+        "sha256": "cbe351b1f8343a42aa9a3e5611d515710be2e1e004c9e8848ad89b0ca124c5f2",
+        "path": "src/infrastructure/migrations/013_player_capacity.sql"
+      },
+      {
+        "sha256": "bb6b22fec2469e3d662eac01e39826367b6432fb845ff1562014812ca1f08585",
+        "path": "src/infrastructure/hosting/001_scheduler.sql"
+      },
+      {
+        "sha256": "0d64cefc30fe90e133a337fd2bb0ac20e6bf332c05c1e3cbe1601513cfb71cab",
+        "path": "src/infrastructure/hosting/002_realtime_policy.sql"
+      },
+      {
+        "sha256": "a6c6b567f17492e3ce79758398c8b04e399d381d2d9c2cfea1e6d28d4b6c4176",
+        "path": "docs/deployment_plan.md"
+      },
+      {
+        "sha256": "b9589fb5fef6b91b1c58585a484be96def9ef21d932610ca5d8095e0c46ccaaa",
+        "path": "docs/hosting_execution.md"
+      }
+    ],
+    "qualification": "Current active local files identified by hashes; frozen-release source validation remains separate.",
+    "normalization": "Get-HostingSchemaBody: normalize CRLF to LF, trim and remove outer BEGIN/COMMIT, then ordinal compare complete statement bodies. Get-HostingSchemaPending verifies ordered names and exactly one statement per history row. Provider version strings are retained as observed, not rewritten to synthetic local versions.",
+    "head": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3"
+  },
+  "supabaseOrganization": {
+    "plan": "free",
+    "id": "ddhtdrecsubwkbwgsqcp",
+    "tier": "tier_free",
+    "activeProjectCount": 2,
+    "name": "Word Pairs"
+  },
+  "environments": [
+    {
+      "scheduler": {
+        "credentialValueRead": false,
+        "control": [
+          {
+            "enabled": true,
+            "endpoint": "https://wordpairs.vercel.app/api/internal/deadlines",
+            "failures": 0,
+            "lastStatus": 200,
+            "retryAfter": null
+          }
+        ],
+        "cron": [
+          {
+            "name": "wordpairs-hosted-tick",
+            "active": true,
+            "schedule": "1 second"
+          }
+        ],
+        "vaultSchedulerCredentialPresent": true
+      },
+      "advisors": {
+        "security": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "count": 31,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "accepted_answers",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_commands",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_state",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "audit_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "catalog_exclusions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "catalog_revision",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "categories",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "code_attempts",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "guest_credentials",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "idempotency_records",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "login_challenges",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "outbox_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "profile_roles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "profiles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "public_revisions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "scheduler",
+                  "type": "table",
+                  "schema": "wordpairs_hosting"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              }
+            ]
+          },
+          {
+            "name": "function_search_path_mutable",
+            "level": "WARN",
+            "count": 7,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "check_membership_capacity",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "freeze_live_alternatives",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "assign_retention_room",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "prune_retained_data",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "reject_content_edit",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "lock_round_content",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              },
+              {
+                "metadata": {
+                  "name": "freeze_category",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:18.565Z"
+              }
+            ]
+          }
+        ],
+        "performance": [
+          {
+            "name": "unindexed_foreign_keys",
+            "level": "INFO",
+            "count": 20,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_actor_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_profile_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "aggregates",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "aggregates_retention_room_kind_retention_room_id_fkey",
+                  "fkey_columns": [
+                    7,
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "deadline_jobs_aggregate_kind_aggregate_id_fkey",
+                  "fkey_columns": [
+                    2,
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "match_players_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_anchor_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "moderation_cases_reviewer_id_fkey",
+                  "fkey_columns": [
+                    6
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "nominations_round_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "profile_match_awards_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "quick_assignments_room_id_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_inviter_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_followed_player_id_fkey",
+                  "fkey_columns": [
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rooms_creator_id_fkey",
+                  "fkey_columns": [
+                    5
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rounds_pair_id_pair_version_fkey",
+                  "fkey_columns": [
+                    3,
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "sessions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "submissions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              },
+              {
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "word_pairs_category_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              }
+            ]
+          },
+          {
+            "name": "auth_rls_initplan",
+            "level": "WARN",
+            "count": 1,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "messages",
+                  "type": "table",
+                  "schema": "realtime"
+                },
+                "observed_at": "2026-10-30T20:19:18.515Z"
+              }
+            ]
+          }
+        ]
+      },
+      "securityContext": {
+        "privateSchemas": [
+          {
+            "name": "wordpairs",
+            "anonUsage": false,
+            "runtimeUsage": true,
+            "authenticatedUsage": false
+          },
+          {
+            "name": "net",
+            "anonUsage": true,
+            "runtimeUsage": true,
+            "authenticatedUsage": true
+          },
+          {
+            "name": "wordpairs_hosting",
+            "anonUsage": false,
+            "runtimeUsage": false,
+            "authenticatedUsage": false
+          },
+          {
+            "name": "vault",
+            "anonUsage": false,
+            "runtimeUsage": true,
+            "authenticatedUsage": false
+          }
+        ],
+        "advisedFunctions": [
+          {
+            "name": "assign_retention_room",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "check_membership_capacity",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "freeze_category",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "freeze_live_alternatives",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "lock_round_content",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "prune_retained_data",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "reject_content_edit",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          }
+        ],
+        "specialExtensions": []
+      },
+      "logicalEnvironment": "staging",
+      "supabase": {
+        "id": "jshjkaigwbxsbnnogfxs",
+        "name": "wordpairs-staging",
+        "region": "us-east-1",
+        "status": "ACTIVE_HEALTHY",
+        "postgresVersion": "17.11.0.003"
+      },
+      "schema": {
+        "publicRpcSignatureCount": 35,
+        "allPublicRpcSearchPathsFixed": true,
+        "gameTableCount": 31,
+        "realtimeMessagesRls": true,
+        "extensions": [
+          {
+            "name": "pg_cron",
+            "version": "1.6.4"
+          },
+          {
+            "name": "pg_net",
+            "version": "0.20.4"
+          },
+          {
+            "name": "pgcrypto",
+            "version": "1.3"
+          },
+          {
+            "name": "supabase_vault",
+            "version": "0.3.1"
+          }
+        ],
+        "runtimeRole": {
+          "name": "wordpairs_app",
+          "login": true,
+          "bypassRls": false,
+          "superuser": false,
+          "serviceRoleMember": true
+        },
+        "currentGuestOnlyLeaderboardFilterPresent": false,
+        "allOwnedTablesRlsEnabled": true,
+        "currentNewPlayerCapTriggers": [],
+        "realtimePolicies": [
+          {
+            "name": "wordpairs_own_notifications",
+            "qual": "((extension = 'broadcast'::text) AND (realtime.topic() = ('wordpairs-profile:'::text || ((current_setting('request.jwt.claims'::text, true))::jsonb ->> 'sub'::text))))",
+            "check": null,
+            "roles": [
+              "authenticated"
+            ],
+            "command": "SELECT"
+          }
+        ],
+        "expectedPendingBehavior": "012 applies guest-only leaderboard SQL;013 adds15-player guards and effective-cap public discovery. Neither is claimed installed here.",
+        "browserCallablePublicRpcCount": 0,
+        "databaseBytes": 14825139,
+        "hostingTableCount": 1
+      },
+      "vercel": {
+        "id": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+        "name": "wordpairs",
+        "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+        "framework": "nextjs",
+        "variables": [
+          {
+            "key": "WORDPAIRS_GITHUB_CLIENT_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_GITHUB_CLIENT_ID",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_DATABASE_CA",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_DATABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_INVITE_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_SCHEDULER_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_SUPABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_SUPABASE_ANON_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_ORIGIN",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_URL",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_PRISMA_URL",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_URL_NON_POOLING",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_USER",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_HOST",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_PASSWORD",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_DATABASE",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_JWT_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_ANON_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_SERVICE_ROLE_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_PUBLISHABLE_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_SECRET_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "NEXT_PUBLIC_SUPABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          }
+        ],
+        "plan": "hobby",
+        "planReadFailure": {
+          "operation": "get_team",
+          "status": 403,
+          "scope": "sharp-ninja1"
+        },
+        "ignoreBuildGuard": {
+          "value": "exit 0",
+          "verification": "Parent root reports both dashboard settings verified; not independently verified by this connector response. No update attempted by preflight agent."
+        },
+        "planEvidence": {
+          "qualification": "Relayed parent observation, not independently read by this agent. Connector get_team403/list_teams empty are retained as access limitations.",
+          "observation": "SharpNinja header explicitly displayed Hobby on both project settings pages.",
+          "observedAtLocal": "2026-10-30T15:06",
+          "source": "Parent root read-only authenticated Vercel dashboard"
+        }
+      },
+      "bindings": {
+        "publicOriginMatchesExpected": true,
+        "publicSupabaseUrlMatchesExpected": true,
+        "githubClientIdRecordPresent": true,
+        "githubSecretRecordPresent": true,
+        "jwtFallbackRecordPresent": true,
+        "serviceRoleFallbackRecordPresent": true,
+        "allEnvironmentRecordsProductionOnly": true,
+        "secretValuesVerified": false
+      },
+      "migrations": {
+        "canonicalCatalogCount": 15,
+        "appliedCount": 13,
+        "applied": [
+          {
+            "normalizedBodySha256": "9cde6b58289565da61034fbc467abb46e1d69964218e43e9390a40fe29bfe8e2",
+            "name": "wordpairs_001_foundation",
+            "localCanonicalNormalizedSha256": "9cde6b58289565da61034fbc467abb46e1d69964218e43e9390a40fe29bfe8e2",
+            "providerVersion": "20261028043237",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "71da46fbfbcd934d1078d0c6d2aec5d5ce6d996d0f0a8ba6ae403a3b91d211dd",
+            "name": "wordpairs_002_public_reads",
+            "localCanonicalNormalizedSha256": "71da46fbfbcd934d1078d0c6d2aec5d5ce6d996d0f0a8ba6ae403a3b91d211dd",
+            "providerVersion": "20261028043240",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "64419a3206b5a19af261bda9308f37cf1a816ddc1ff2e03f74327a9eacd954c6",
+            "name": "wordpairs_003_identity",
+            "localCanonicalNormalizedSha256": "64419a3206b5a19af261bda9308f37cf1a816ddc1ff2e03f74327a9eacd954c6",
+            "providerVersion": "20261028043311",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "0626fd41b91947547e516cb85466350ee882da69cfadbf6fad7b918c8f7409eb",
+            "name": "wordpairs_004_rooms",
+            "localCanonicalNormalizedSha256": "0626fd41b91947547e516cb85466350ee882da69cfadbf6fad7b918c8f7409eb",
+            "providerVersion": "20261028043317",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "5e66016bd34c78cf298359d62af21c8c849130180042ebbfb63f0d3a661cd0db",
+            "name": "wordpairs_005_outbox",
+            "localCanonicalNormalizedSha256": "5e66016bd34c78cf298359d62af21c8c849130180042ebbfb63f0d3a661cd0db",
+            "providerVersion": "20261028043320",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "1c7da59a12502146ebb879221b747e94e4f14db9b8e1b7d18e6eb0f5a03b4afa",
+            "name": "wordpairs_006_lobby_deadlines",
+            "localCanonicalNormalizedSha256": "1c7da59a12502146ebb879221b747e94e4f14db9b8e1b7d18e6eb0f5a03b4afa",
+            "providerVersion": "20261028043323",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "06e4b8a329e9c9b512fe8c28a7c0372fb6fc68c7c56deb2ee42be18f1fa58976",
+            "name": "wordpairs_007_matches",
+            "localCanonicalNormalizedSha256": "06e4b8a329e9c9b512fe8c28a7c0372fb6fc68c7c56deb2ee42be18f1fa58976",
+            "providerVersion": "20261028043432007",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "f7fbf57f3cdf5f9cadd6e844d716c09ba7786389e7a309e302ae6c9cea276e2f",
+            "name": "wordpairs_008_content",
+            "localCanonicalNormalizedSha256": "f7fbf57f3cdf5f9cadd6e844d716c09ba7786389e7a309e302ae6c9cea276e2f",
+            "providerVersion": "20261028043435",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "1c239d0c18c5e33d3da0fdebd8e6646e7edb24c160537c39278b89c873b60c29",
+            "name": "wordpairs_009_reactions",
+            "localCanonicalNormalizedSha256": "1c239d0c18c5e33d3da0fdebd8e6646e7edb24c160537c39278b89c873b60c29",
+            "providerVersion": "20261028043436",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "afba25486990403dacac13e25c761c79a71ee20e19fd39ddb1f2999f489608c9",
+            "name": "wordpairs_010_access_control",
+            "localCanonicalNormalizedSha256": "afba25486990403dacac13e25c761c79a71ee20e19fd39ddb1f2999f489608c9",
+            "providerVersion": "20261028043438",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "0b1024fd76e182bfefc3b5e4d29cc0919a4ba01c2353a29fa0b66a346cf05d05",
+            "name": "wordpairs_011_content_review_states",
+            "localCanonicalNormalizedSha256": "0b1024fd76e182bfefc3b5e4d29cc0919a4ba01c2353a29fa0b66a346cf05d05",
+            "providerVersion": "20261028043440",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "531647ae3e7cc553896985ea92dc7b8ade5b79945b535a5cbc669265ad450e7a",
+            "name": "wordpairs_hosted_scheduler",
+            "localCanonicalNormalizedSha256": "531647ae3e7cc553896985ea92dc7b8ade5b79945b535a5cbc669265ad450e7a",
+            "providerVersion": "20261028045345",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "3a3c99d55f8a5f3525d83fa1abcecd9513ac24bd1349010c6b7b34ec61d37031",
+            "name": "wordpairs_private_realtime",
+            "localCanonicalNormalizedSha256": "3a3c99d55f8a5f3525d83fa1abcecd9513ac24bd1349010c6b7b34ec61d37031",
+            "providerVersion": "20261028045501",
+            "bodyMatches": true
+          }
+        ],
+        "pending": [
+          {
+            "name": "wordpairs_012_guest_public_profiles",
+            "version": "20261027000012",
+            "normalizedBodySha256": "5ed51a5028100e7909d5f105d9bf1e6fd03919e998998c501ff1fdcf7dd7576a"
+          },
+          {
+            "name": "wordpairs_013_player_capacity",
+            "version": "20261027000013",
+            "normalizedBodySha256": "5ae763ce2c1e555404cd80bd14b45bed485043a7266f6009871af791823bbbe2"
+          }
+        ],
+        "environment": "staging",
+        "allAppliedBodiesMatch": true
+      }
+    },
+    {
+      "scheduler": {
+        "credentialValueRead": false,
+        "control": [
+          {
+            "enabled": false,
+            "endpoint": "https://wordpairs-j9jf.vercel.app/api/internal/deadlines",
+            "failures": 0,
+            "lastStatus": null,
+            "retryAfter": null
+          }
+        ],
+        "cron": [
+          {
+            "name": "wordpairs-hosted-tick",
+            "active": false,
+            "schedule": "1 second"
+          }
+        ],
+        "vaultSchedulerCredentialPresent": true
+      },
+      "advisors": {
+        "security": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "count": 31,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "accepted_answers",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_commands",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_state",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "audit_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "catalog_exclusions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "catalog_revision",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "categories",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "code_attempts",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "guest_credentials",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "idempotency_records",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "login_challenges",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "outbox_events",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "profile_roles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "profiles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "public_revisions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "scheduler",
+                  "type": "table",
+                  "schema": "wordpairs_hosting"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              }
+            ]
+          },
+          {
+            "name": "function_search_path_mutable",
+            "level": "WARN",
+            "count": 7,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "assign_retention_room",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "prune_retained_data",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "check_membership_capacity",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "reject_content_edit",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "freeze_live_alternatives",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "lock_round_content",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              },
+              {
+                "metadata": {
+                  "name": "freeze_category",
+                  "type": "function",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.935Z"
+              }
+            ]
+          }
+        ],
+        "performance": [
+          {
+            "name": "unindexed_foreign_keys",
+            "level": "INFO",
+            "count": 20,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_actor_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "access_audit",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "access_audit_profile_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "aggregates",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "aggregates_retention_room_kind_retention_room_id_fkey",
+                  "fkey_columns": [
+                    7,
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "deadline_jobs_aggregate_kind_aggregate_id_fkey",
+                  "fkey_columns": [
+                    2,
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "match_players",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "match_players_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_anchor_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "matches",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "matches_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "moderation_cases",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "moderation_cases_reviewer_id_fkey",
+                  "fkey_columns": [
+                    6
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "nominations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "nominations_round_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "profile_match_awards",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "profile_match_awards_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "quick_assignments",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "quick_assignments_room_id_fkey",
+                  "fkey_columns": [
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_inviter_id_fkey",
+                  "fkey_columns": [
+                    3
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_invitations",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_invitations_room_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_followed_player_id_fkey",
+                  "fkey_columns": [
+                    8
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "room_members",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "room_members_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rooms_creator_id_fkey",
+                  "fkey_columns": [
+                    5
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "rounds",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "rounds_pair_id_pair_version_fkey",
+                  "fkey_columns": [
+                    3,
+                    4
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "sessions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "submissions",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "submissions_profile_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "word_pairs",
+                  "type": "table",
+                  "schema": "wordpairs",
+                  "fkey_name": "word_pairs_category_id_fkey",
+                  "fkey_columns": [
+                    2
+                  ]
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              }
+            ]
+          },
+          {
+            "name": "auth_rls_initplan",
+            "level": "WARN",
+            "count": 1,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "messages",
+                  "type": "table",
+                  "schema": "realtime"
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              }
+            ]
+          },
+          {
+            "name": "unused_index",
+            "level": "INFO",
+            "count": 5,
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+            "findings": [
+              {
+                "metadata": {
+                  "name": "deadline_jobs",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "profiles",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "rooms",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "sessions",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              },
+              {
+                "metadata": {
+                  "name": "code_attempts",
+                  "type": "table",
+                  "schema": "wordpairs"
+                },
+                "observed_at": "2026-10-30T20:19:21.865Z"
+              }
+            ]
+          }
+        ]
+      },
+      "securityContext": {
+        "privateSchemas": [
+          {
+            "name": "wordpairs",
+            "anonUsage": false,
+            "runtimeUsage": true,
+            "authenticatedUsage": false
+          },
+          {
+            "name": "net",
+            "anonUsage": true,
+            "runtimeUsage": true,
+            "authenticatedUsage": true
+          },
+          {
+            "name": "wordpairs_hosting",
+            "anonUsage": false,
+            "runtimeUsage": false,
+            "authenticatedUsage": false
+          },
+          {
+            "name": "vault",
+            "anonUsage": false,
+            "runtimeUsage": true,
+            "authenticatedUsage": false
+          }
+        ],
+        "advisedFunctions": [
+          {
+            "name": "assign_retention_room",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "check_membership_capacity",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "freeze_category",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "freeze_live_alternatives",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "lock_round_content",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "prune_retained_data",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          },
+          {
+            "name": "reject_content_edit",
+            "anonExecute": false,
+            "securityDefiner": false,
+            "authenticatedExecute": false
+          }
+        ],
+        "specialExtensions": []
+      },
+      "logicalEnvironment": "production",
+      "supabase": {
+        "id": "krdcuuhcynmdfcjlpbsf",
+        "name": "wordpairs-production",
+        "region": "us-east-1",
+        "status": "ACTIVE_HEALTHY",
+        "postgresVersion": "17.11.0.003"
+      },
+      "schema": {
+        "publicRpcSignatureCount": 35,
+        "allPublicRpcSearchPathsFixed": true,
+        "gameTableCount": 31,
+        "realtimeMessagesRls": true,
+        "extensions": [
+          {
+            "name": "pg_cron",
+            "version": "1.6.4"
+          },
+          {
+            "name": "pg_net",
+            "version": "0.20.4"
+          },
+          {
+            "name": "pgcrypto",
+            "version": "1.3"
+          },
+          {
+            "name": "supabase_vault",
+            "version": "0.3.1"
+          }
+        ],
+        "runtimeRole": {
+          "name": "wordpairs_app",
+          "login": true,
+          "bypassRls": false,
+          "superuser": false,
+          "serviceRoleMember": true
+        },
+        "currentGuestOnlyLeaderboardFilterPresent": false,
+        "allOwnedTablesRlsEnabled": true,
+        "currentNewPlayerCapTriggers": [],
+        "realtimePolicies": [
+          {
+            "name": "wordpairs_own_notifications",
+            "qual": "((extension = 'broadcast'::text) AND (realtime.topic() = ('wordpairs-profile:'::text || ((current_setting('request.jwt.claims'::text, true))::jsonb ->> 'sub'::text))))",
+            "check": null,
+            "roles": [
+              "authenticated"
+            ],
+            "command": "SELECT"
+          }
+        ],
+        "expectedPendingBehavior": "012 applies guest-only leaderboard SQL;013 adds15-player guards and effective-cap public discovery. Neither is claimed installed here.",
+        "browserCallablePublicRpcCount": 0,
+        "databaseBytes": 12670643,
+        "hostingTableCount": 1
+      },
+      "vercel": {
+        "id": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+        "name": "wordpairs-j9jf",
+        "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+        "framework": "nextjs",
+        "variables": [
+          {
+            "key": "WORDPAIRS_GITHUB_CLIENT_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_GITHUB_CLIENT_ID",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_DATABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_INVITE_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_SCHEDULER_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_DATABASE_CA",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_SUPABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_SUPABASE_ANON_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "WORDPAIRS_ORIGIN",
+            "target": [
+              "production"
+            ],
+            "type": "plain",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_URL",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_PRISMA_URL",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_URL_NON_POOLING",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_USER",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_HOST",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_PASSWORD",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "POSTGRES_DATABASE",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_JWT_SECRET",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_ANON_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_SERVICE_ROLE_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_PUBLISHABLE_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "SUPABASE_SECRET_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "sensitive",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "NEXT_PUBLIC_SUPABASE_URL",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          },
+          {
+            "key": "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+            "target": [
+              "production"
+            ],
+            "type": "encrypted",
+            "recordPresent": true,
+            "valueVerified": false
+          }
+        ],
+        "plan": "hobby",
+        "planReadFailure": {
+          "operation": "get_team",
+          "status": 403,
+          "scope": "sharp-ninja1"
+        },
+        "ignoreBuildGuard": {
+          "value": "exit 0",
+          "verification": "Parent root reports both dashboard settings verified; not independently verified by this connector response. No update attempted by preflight agent."
+        },
+        "planEvidence": {
+          "qualification": "Relayed parent observation, not independently read by this agent. Connector get_team403/list_teams empty are retained as access limitations.",
+          "observation": "SharpNinja header explicitly displayed Hobby on both project settings pages.",
+          "observedAtLocal": "2026-10-30T15:06",
+          "source": "Parent root read-only authenticated Vercel dashboard"
+        }
+      },
+      "bindings": {
+        "publicOriginMatchesExpected": true,
+        "publicSupabaseUrlMatchesExpected": true,
+        "githubClientIdRecordPresent": true,
+        "githubSecretRecordPresent": true,
+        "jwtFallbackRecordPresent": true,
+        "serviceRoleFallbackRecordPresent": true,
+        "allEnvironmentRecordsProductionOnly": true,
+        "secretValuesVerified": false
+      },
+      "migrations": {
+        "canonicalCatalogCount": 15,
+        "appliedCount": 13,
+        "applied": [
+          {
+            "normalizedBodySha256": "9cde6b58289565da61034fbc467abb46e1d69964218e43e9390a40fe29bfe8e2",
+            "name": "wordpairs_001_foundation",
+            "localCanonicalNormalizedSha256": "9cde6b58289565da61034fbc467abb46e1d69964218e43e9390a40fe29bfe8e2",
+            "providerVersion": "20261028230936",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "71da46fbfbcd934d1078d0c6d2aec5d5ce6d996d0f0a8ba6ae403a3b91d211dd",
+            "name": "wordpairs_002_public_reads",
+            "localCanonicalNormalizedSha256": "71da46fbfbcd934d1078d0c6d2aec5d5ce6d996d0f0a8ba6ae403a3b91d211dd",
+            "providerVersion": "20261028230938",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "64419a3206b5a19af261bda9308f37cf1a816ddc1ff2e03f74327a9eacd954c6",
+            "name": "wordpairs_003_identity",
+            "localCanonicalNormalizedSha256": "64419a3206b5a19af261bda9308f37cf1a816ddc1ff2e03f74327a9eacd954c6",
+            "providerVersion": "20261028230940",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "0626fd41b91947547e516cb85466350ee882da69cfadbf6fad7b918c8f7409eb",
+            "name": "wordpairs_004_rooms",
+            "localCanonicalNormalizedSha256": "0626fd41b91947547e516cb85466350ee882da69cfadbf6fad7b918c8f7409eb",
+            "providerVersion": "20261028230942",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "5e66016bd34c78cf298359d62af21c8c849130180042ebbfb63f0d3a661cd0db",
+            "name": "wordpairs_005_outbox",
+            "localCanonicalNormalizedSha256": "5e66016bd34c78cf298359d62af21c8c849130180042ebbfb63f0d3a661cd0db",
+            "providerVersion": "20261028230944",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "1c7da59a12502146ebb879221b747e94e4f14db9b8e1b7d18e6eb0f5a03b4afa",
+            "name": "wordpairs_006_lobby_deadlines",
+            "localCanonicalNormalizedSha256": "1c7da59a12502146ebb879221b747e94e4f14db9b8e1b7d18e6eb0f5a03b4afa",
+            "providerVersion": "20261028230946",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "06e4b8a329e9c9b512fe8c28a7c0372fb6fc68c7c56deb2ee42be18f1fa58976",
+            "name": "wordpairs_007_matches",
+            "localCanonicalNormalizedSha256": "06e4b8a329e9c9b512fe8c28a7c0372fb6fc68c7c56deb2ee42be18f1fa58976",
+            "providerVersion": "20261028230950",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "f7fbf57f3cdf5f9cadd6e844d716c09ba7786389e7a309e302ae6c9cea276e2f",
+            "name": "wordpairs_008_content",
+            "localCanonicalNormalizedSha256": "f7fbf57f3cdf5f9cadd6e844d716c09ba7786389e7a309e302ae6c9cea276e2f",
+            "providerVersion": "20261028230952",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "1c239d0c18c5e33d3da0fdebd8e6646e7edb24c160537c39278b89c873b60c29",
+            "name": "wordpairs_009_reactions",
+            "localCanonicalNormalizedSha256": "1c239d0c18c5e33d3da0fdebd8e6646e7edb24c160537c39278b89c873b60c29",
+            "providerVersion": "20261028230954",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "afba25486990403dacac13e25c761c79a71ee20e19fd39ddb1f2999f489608c9",
+            "name": "wordpairs_010_access_control",
+            "localCanonicalNormalizedSha256": "afba25486990403dacac13e25c761c79a71ee20e19fd39ddb1f2999f489608c9",
+            "providerVersion": "20261028230956",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "0b1024fd76e182bfefc3b5e4d29cc0919a4ba01c2353a29fa0b66a346cf05d05",
+            "name": "wordpairs_011_content_review_states",
+            "localCanonicalNormalizedSha256": "0b1024fd76e182bfefc3b5e4d29cc0919a4ba01c2353a29fa0b66a346cf05d05",
+            "providerVersion": "20261028230959",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "531647ae3e7cc553896985ea92dc7b8ade5b79945b535a5cbc669265ad450e7a",
+            "name": "wordpairs_hosted_scheduler",
+            "localCanonicalNormalizedSha256": "531647ae3e7cc553896985ea92dc7b8ade5b79945b535a5cbc669265ad450e7a",
+            "providerVersion": "20261028231028",
+            "bodyMatches": true
+          },
+          {
+            "normalizedBodySha256": "3a3c99d55f8a5f3525d83fa1abcecd9513ac24bd1349010c6b7b34ec61d37031",
+            "name": "wordpairs_private_realtime",
+            "localCanonicalNormalizedSha256": "3a3c99d55f8a5f3525d83fa1abcecd9513ac24bd1349010c6b7b34ec61d37031",
+            "providerVersion": "20261028231046",
+            "bodyMatches": true
+          }
+        ],
+        "pending": [
+          {
+            "name": "wordpairs_012_guest_public_profiles",
+            "version": "20261027000012",
+            "normalizedBodySha256": "5ed51a5028100e7909d5f105d9bf1e6fd03919e998998c501ff1fdcf7dd7576a"
+          },
+          {
+            "name": "wordpairs_013_player_capacity",
+            "version": "20261027000013",
+            "normalizedBodySha256": "5ae763ce2c1e555404cd80bd14b45bed485043a7266f6009871af791823bbbe2"
+          }
+        ],
+        "environment": "production",
+        "allAppliedBodiesMatch": true
+      }
+    }
+  ],
+  "advisoryInterpretation": [
+    "All listed notices are retained. RLS-without-policy is informational for these private tables; browser schema/RPC permissions are inspected separately, and no public-table grants were added.",
+    "Seven mutable-search-path functions are invokers with anon/authenticated execution denied. This contextualizes the warning and does not assert that the advisory has been fixed.",
+    "The Realtime initplan warning and missing-FK-index notices remain observations. No indexing, function, policy or provider configuration was changed in this preflight."
+  ],
+  "backupRestore": {
+    "searchScopes": [
+      "repository filenames:backup/restore/dump/encryptedSQL, excluding dependencies/git/build",
+      "owned private wordpairs-local filenames under the same exclusions",
+      "repository documentation/script references to pg_dump/pg_restore/restore-check/encrypted backup"
+    ],
+    "repositoryBackupOrRestoreArtifactMatches": 0,
+    "ownedPrivateWorkspaceCandidateCount": 1,
+    "existingEntryPoint": "scripts/hosting-schema.ps1 supports plan/status/apply, not backup/restore-check",
+    "exportCreated": false,
+    "credentialsCreated": false,
+    "candidateQualification": "The only matching private file was an unrelated requirements-ID backup, not a game database export or restore receipt. Its contents were not read.",
+    "sourceReferences": [
+      "docs/deployment_plan.md:102",
+      "docs/deployment_plan.md:157",
+      "docs/deployment_plan.md:197",
+      "docs/hosting_execution.md:77"
+    ],
+    "missingProof": [
+      "Encrypted operator-controlled hosted database export with checksum and schema identity",
+      "Successful restoration of that export to a disposable local/staging target",
+      "Recorded backup cadence, retention and expected recovery data-loss window"
+    ],
+    "privateDatabaseContentsRead": false,
+    "status": "unknown_not_located"
+  },
+  "gaps": [
+    {
+      "detail": "Both environments await012guestprivacy and013capacity. Apply staging first after frozen source review and read back exact history/behavior before production.",
+      "kind": "known_rollout_work",
+      "id": "PREFLIGHT-PENDING-MIGRATIONS"
+    },
+    {
+      "detail": "Project metadata reports the direct database hostname and us-east-1, but not the exact session-pooler hostname. The existing source guard expects aws-N-us-east-1.pooler.supabase.com port5432 and postgres.<projectref>; N was not guessed. This agent CUA inventory has no browser and Edge creation returns Browser is not available: edge, so parent must inspect connection metadata with the authenticated browser it can access.",
+      "kind": "unknown",
+      "id": "PREFLIGHT-SESSION-POOLER"
+    },
+    {
+      "detail": "The provider tools and queried pg_db_role_setting expose no DataAPI schema allowlist. net has managed anon/authenticated schemaUSAGE; Vault denies browser schemaUSAGE. Dashboard confirmation that net/Vault are excluded from exposed schemas remains necessary for that plan claim.",
+      "kind": "unknown",
+      "id": "PREFLIGHT-EXPOSED-SCHEMAS"
+    },
+    {
+      "detail": "No hosted encrypted database backup/checksum/restore proof located in inspected scopes. Do not infer it is absent everywhere or replace it with a local fixture database recreation.",
+      "kind": "unknown_not_located",
+      "id": "PREFLIGHT-BACKUP-RESTORE"
+    },
+    {
+      "detail": "Database size and current Free organization allocation were read. Current monthly egress, Realtime messages/peak connections and Vercel CPU/memory/invocation use were not available from these queries. Published limits do not establish remaining quota.",
+      "kind": "unknown",
+      "id": "PREFLIGHT-METERED-USAGE"
+    },
+    {
+      "detail": "Both projects have required production-only variable records, including GitHub credentials and Supabase JWT/service-role fallbacks. Secret values were not decrypted or verified. Public origin and Supabase URL binding comparisons matched without recording their env values.",
+      "kind": "runtime_verification_required",
+      "id": "PREFLIGHT-SECRET-VALIDITY"
+    },
+    {
+      "detail": "Parent reports both dashboard ignored-build guards already exit0. The connected get_project response omits this setting, so this agent does not independently verify it and made no attempt to change it after parent automatic-review rejection.",
+      "kind": "parent_observation",
+      "id": "PREFLIGHT-IGNORE-BUILD"
+    },
+    {
+      "detail": "Official Hobby documentation still restricts personal/non-commercial use. No provider ruling about contest prize eligibility was obtained by this read-only preflight; existing qualification remains.",
+      "kind": "existing_interpretation_unknown",
+      "id": "PREFLIGHT-HOBBY-CONTEST-ELIGIBILITY"
+    }
+  ],
+  "currentOfficialReferences": [
+    {
+      "url": "https://supabase.com/pricing",
+      "observation": "Free allocation includes two active projects,500MBdatabase/project,5GBegress,200peakRealtimeconnections and2millionRealtime messages/month. Automatic backups/PITR are not included. Published limits are not current account usage."
+    },
+    {
+      "url": "https://supabase.com/docs/guides/platform/backups",
+      "observation": "Free users are advised to retain off-site logical exports; managed daily backups are documented for paid plans. No backup operation was performed."
+    },
+    {
+      "url": "https://vercel.com/docs/plans/hobby",
+      "observation": "Hobby is free for personal/non-commercial use. This documentation does not prove the connected account plan or contest eligibility."
+    },
+    {
+      "observation": "Fetched200asmarkdown throughPowerShell after webreader rejected markdown content type. Relevant upcoming HTTP TLS and PostgreSQL17.11 notices inspected.",
+      "localContentSha256": "8795766b5b7f91161cc4622114b341ed507b9f32e85e52aad6b4be917c719e0e",
+      "url": "https://supabase.com/changelog.md"
+    },
+    {
+      "url": "https://supabase.com/changelog/cbc-tls-ciphers-deprecated",
+      "observation": "CBC TLS1.2 deprecation is scheduled no earlier than10November2026for project HTTP APIs; direct/pooler PostgreSQL is excluded. No certificate weakening or TLS change was made."
+    },
+    {
+      "url": "https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes",
+      "observation": "Projects report17.11.0.003; neither ltree nor btree_gist extension is installed. No claim was made that arbitrary legacy pgcrypto ciphertext or custom operators were exhaustively audited."
+    }
+  ],
+  "privacy": {
+    "receiptOnlyRepositoryChange": true,
+    "databaseExportsCreated": false,
+    "secretOrTestDataIncluded": false,
+    "providerWritesPerformed": false,
+    "sourceOrRequirementsModified": false,
+    "outputCorrection": "An initial metadata display missed the result wrapper and exposed plain public configuration values; private connector values were empty/redacted. Extraction was corrected before persistence; no env values are in this receipt.",
+    "environmentValuesPersisted": false,
+    "credentialValuesReadOrDecrypted": false
+  },
+  "browserReadAttempt": {
+    "inventory": {
+      "browsers": 0,
+      "apps": 0
+    },
+    "changesPerformed": false,
+    "atLocal": "2026-10-30T15:26:41",
+    "remainingBrowserFacts": [
+      "DataAPI exposed schema allowlist",
+      "Exact session-pooler hostname and displayed administrator username"
+    ],
+    "edgeResult": "Browser is not available: edge"
+  },
+  "assessment": {
+    "completenessPercent": 88,
+    "accuracyBasis": "Source-normalized body comparisons, successful live metadata queries and explicit unknowns; no adjacent-runtime inference.",
+    "completenessBasis": "Requested migration/schema/advisor/configuration preflight obtained; current Hobby plan relayed from parent dashboard. Billing/usage, DataAPI allowlist, exact pooler metadata and retained recovery proof remain unavailable/not located.",
+    "accuracyPercent": 99
+  }
+}

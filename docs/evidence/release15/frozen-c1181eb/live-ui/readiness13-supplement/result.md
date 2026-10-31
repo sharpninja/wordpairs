@@ -1,0 +1,9 @@
+2026-10-30T19:54:53 - The retained13-player failure is12 distinct409 readiness commands from player11, each retired on the unchanged rendered room version32. All13 snapshots remain connected with a full roster; eleven players are ready. Player11 displays the product instruction to refresh and try again. The matrix has11passes,1failure,2unrun cases; strict is unrun.
+
+Observed source defect: the matrix passes retirement minimum0, so the shared helper accepts idle/pending-free state without fresh projection. RoomScreen mints a fresh command from the current rendered version after409 and does not automatically refresh this ordinary lobby conflict. Strict already requires version advancement. This supports repairing the test boundary with a captured expectedVersion+1 floor, independently discriminated before implementation, without increasing attempt limits or changing product behavior.
+
+Qualification: historic submitted versions and409 bodies were not retained, so the exact server conflict cause is not proven. Slow/cancelled requests lack actor/command joins. Latency cause and full15-player success remain unresolved. No tests, builds, source edits, providers or requirement mutations occurred in this diagnosis.
+
+Receipts: docs/evidence/release15/frozen-c1181eb/live-ui/readiness13-supplement/diagnosis.json; preservation manifest SHA544004513F2F223D4595713EBF6B9B0E8F26B25E0CCE1572BB94E5DA2A31EDA6,38 copied/hash-verified originals retained. Own turn Codex-20261030T200118Z-plugin-session / req-20261031T005003Z-readiness13-diagnosis, linked to parent203656Z.
+
+Accuracy99%: exact joined command/state facts plus qualified inference. Completeness98% for bounded read-only diagnosis; missing historic payload/error and latency proof remain explicit. This is not HV or release completion.

@@ -1,0 +1,219 @@
+{
+  "recordedAt": "2026-10-30T18:17:43.2983949-05:00",
+  "kind": "read-only-bounded-successor-source-and-retained-gate-check-not-HV",
+  "sourceBase": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "sourceDirty": true,
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T225743Z-turn-d224",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "gates": [
+    {
+      "name": "mock-20261030T180830",
+      "receiptPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-20261030T180830/receipt.json",
+        "sha256": "3C3A497ABDE9E208C9D8445E8BC7E249D02494C7BE1E69E59B80323BDE04C4B5"
+      },
+      "startedAt": "2026-10-30T18:08:30",
+      "finishedAt": "2026-10-30T18:08:31",
+      "binding": "mock",
+      "cases": 56,
+      "positive": 28,
+      "expectedNegativeControls": 28,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "helperAbsent": true,
+      "unchangedPreDeltaHelperSha256": null,
+      "junitPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-20261030T180830/unit.xml",
+        "sha256": "5E49D2986C633C6CF47515FF93ED9C50DEF97303FB2638F3A521DB78818F3BDA"
+      },
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "expected": "1840A7DB7BCF4AB505E6725F7787CE7C194B7BDF7FDA56520B50D321164818B1",
+          "copyMatches": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "expected": "A6AFB2DB7E6A37CE4732AB588AE3C6D2DDE3DEF62652FB61F0D8B05BCF96E7CA",
+          "copyMatches": true,
+          "currentMatches": false
+        }
+      ]
+    },
+    {
+      "name": "real-20261030T180943",
+      "receiptPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-20261030T180943/receipt.json",
+        "sha256": "B59DC85797B42DCE44309D1EC4C428668B571C95126D6CF721165783883DDC9A"
+      },
+      "startedAt": "2026-10-30T18:09:43",
+      "finishedAt": "2026-10-30T18:09:44",
+      "binding": "real",
+      "cases": 56,
+      "positive": 28,
+      "expectedNegativeControls": 28,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": null,
+      "junitPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-20261030T180943/unit.xml",
+        "sha256": "FE63E0A805266BF344D9E60F133E7A908F8D06FE1DC2B5FD9E56483D645A9165"
+      },
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "expected": "1840A7DB7BCF4AB505E6725F7787CE7C194B7BDF7FDA56520B50D321164818B1",
+          "copyMatches": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "expected": "A6AFB2DB7E6A37CE4732AB588AE3C6D2DDE3DEF62652FB61F0D8B05BCF96E7CA",
+          "copyMatches": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "expected": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D",
+          "copyMatches": true,
+          "currentMatches": false
+        }
+      ]
+    },
+    {
+      "name": "mock-v2-20261030T181321",
+      "receiptPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-v2-20261030T181321/receipt.json",
+        "sha256": "05024C4F830030034F7001FFC2A066BB0BFCB1EBFAD0535ED8A79065B80B4D26"
+      },
+      "startedAt": "2026-10-30T18:13:21",
+      "finishedAt": "2026-10-30T18:13:22",
+      "binding": "mock",
+      "cases": 58,
+      "positive": 29,
+      "expectedNegativeControls": 29,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D",
+      "junitPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-v2-20261030T181321/unit.xml",
+        "sha256": "BCBEC82D24A1203C282955C9A07E55775A0CA6CC9BA1AD39EE2C33C3B3EF9AEA"
+      },
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "expected": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "copyMatches": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "expected": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "copyMatches": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "expected": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D",
+          "copyMatches": true,
+          "currentMatches": false
+        }
+      ]
+    },
+    {
+      "name": "real-v2-20261030T181423",
+      "receiptPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/receipt.json",
+        "sha256": "4DDAE7087E6A6FDD902D4FCABA2FBA00050FE1D1E7F769E503921287C8B47226"
+      },
+      "startedAt": "2026-10-30T18:14:23",
+      "finishedAt": "2026-10-30T18:14:24",
+      "binding": "real",
+      "cases": 58,
+      "positive": 29,
+      "expectedNegativeControls": 29,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": null,
+      "junitPin": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/unit.xml",
+        "sha256": "A150B153F59B3C29E13748B7797476637C6799286A129C7756390215C06EB459"
+      },
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "expected": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "copyMatches": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "expected": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "copyMatches": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "expected": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+          "copyMatches": true,
+          "currentMatches": true
+        }
+      ]
+    }
+  ],
+  "v2SameOracleVerified": true,
+  "helperPin": {
+    "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+    "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF"
+  },
+  "inspectedPins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/command-capture/plan.md",
+      "sha256": "6E5E9061E746C617B976B9F317A92CE751D7EBE07FA136B44B1FCC21F91F1C54"
+    }
+  ],
+  "conclusions": [
+    "V2 retains both original cached body failure and action failure in deterministic body-then-action AggregateError after all started work drains.",
+    "Matrix actual adapter waits on same-page exact pending button visibility and enabled state; absent/disabled/inaccessible control surfaces original body error. Subsequent pending request must deep-equal original payload including command ID.",
+    "Safe new attribution binds original Request to actual player index, action/status and allowlisted UUID identity only. No answer/raw payload/token is added to diagnostic evidence.",
+    "Strict adopts eager capture only and retains four-conflict loop; no blind successful-status retry is added.",
+    "Native oracle recount58 positive+negative checks per V2 binding is focused helper evidence. No additional blocking issue found within this bounded ownership/adoption read; application transport cause and successor full-game execution remain unresolved."
+  ],
+  "unknowns": [
+    "Exact underlying cause of original body lookup failure.",
+    "Exact original failing Request to UI pending actor linkage; original snapshot also cannot establish button enabled state.",
+    "Successor full14-game/119-participation/952-solve matrix and strict push outcome, all full gates and independent HV acceptance."
+  ],
+  "qualifications": [
+    "Original failed7pass/1fail/6skip native matrix preserved; V1 mock56/real56 retained as historical.",
+    "No tests/build/browser/model/provider/requirements writes or source edits by this checking agent.",
+    "Current source hashes are dirty successor pins before parent freeze, not an attestation of a deployed release.",
+    "A real runtime matrix remains necessary; eager body capture and conditional pending retry cannot prove the original transport cause."
+  ]
+}

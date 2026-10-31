@@ -1,0 +1,33 @@
+{
+  "acceptanceCriteria": [
+    {
+      "isSatisfied": true,
+      "id": "TR-35-C01",
+      "text": "Architecture, moderation, deployment and administration design agree with the implemented role matrix, bootstrap, transaction ordering, retry semantics and immutable content behavior.",
+      "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+    },
+    {
+      "isSatisfied": true,
+      "id": "TR-35-C02",
+      "text": "An independent GPT-6 Astra/high reviewer reaches at least98/100 accuracy and completeness, with no unresolved material findings; retain its complete report and reviewed source manifest.",
+      "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+    },
+    {
+      "isSatisfied": true,
+      "id": "TR-35-C03",
+      "text": "Distinguish agent visual inspection, automated fixtures, real database evidence and hosted operations. Human feedback is optional; do not invent personal sign-off gates or claim unperformed human testing.",
+      "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+    }
+  ],
+  "id": "TEST-DESIGNHOSTILEREVIEW-135",
+  "updatedAt": "2026-10-30T21:02:39.0634798+00:00",
+  "priority": "high",
+  "status": "completed",
+  "description": "Update design documentation for requested behavior and obtain independent hostile validation with exact source identity, evidence boundaries, findings/corrections and final disposition.",
+  "title": "Verify Design documentation and independent hostile validation",
+  "createdAt": "2026-10-30T21:02:39.0634587+00:00",
+  "scopeStartLayerKey": "layer-1",
+  "testType": "unit",
+  "notes": "New verification/extension import key: TEST-WP-135; canonical MCP ID: TEST-DESIGNHOSTILEREVIEW-135. Actual test sources: tests/application/access.test.ts, tests/application/catalog-admin.test.ts, tests/web/admin-api.test.ts, tests/integration/admin.integration.ts, tests/integration/multiplayer.integration.ts, tests/browser/admin.phase6.spec.ts. Match the applicable suite to this requirement; do not claim all suites prove every boundary. Former provisional MCP ID: TEST-WP-135. Replaced at user request with a subject-identifying ID.",
+  "area": "DESIGNHOSTILEREVIEW"
+}

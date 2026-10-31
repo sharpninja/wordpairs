@@ -1,0 +1,10 @@
+{
+  "deploymentId": "dpl_6mqUf72TEyMRA9Yc6T8yMoamKrQE",
+  "sourceCommit": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+  "outcome": "build_failed",
+  "diagnosticSource": "Authenticated Vercel dashboard build log",
+  "failure": "React.act is not a function in component tests; inherited NODE_ENV=production selected production React test utilities",
+  "correction": "Apply NODE_ENV=test only to npm test in hosted build command; leave application build/runtime production",
+  "logAccess": "Connected API logs denied team scope; authenticated dashboard supplied observed build errors",
+  "productionDeployed": false
+}

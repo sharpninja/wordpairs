@@ -1,3 +1,7 @@
+[CmdletBinding(SupportsShouldProcess)]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseApprovedVerbs','',Justification='Container-Exists, Random-Secret and Private-File are private helpers, not exported commands.')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns','',Justification='Container-Exists is a private predicate for an exact container identifier.')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions','',Justification='Start-OwnedContainer is a private lifecycle helper; the entry point gates the complete owned-runtime operation.')]
 param(
     [Parameter(Mandatory)][string]$RuntimePath,
     [Parameter(Mandatory)][string]$Origin,
@@ -6,6 +10,7 @@ param(
     [switch]$VolatileTestStorage,
     [switch]$Stop
 )
+if(-not $PSCmdlet.ShouldProcess('owned local Realtime resources','Start or stop the isolated runtime')){return}
 $ErrorActionPreference='Stop'
 $repo=Split-Path $PSScriptRoot
 $local=Split-Path (Resolve-Path $RuntimePath)

@@ -1,0 +1,21 @@
+{
+  "atLocal": "2026-10-30T20:23:24.0325905-05:00",
+  "method": "workflow.agenthelp.submitTurn",
+  "helpSessionId": "help-20261031012225-ba0679997a004be8ab58299b7a686dea",
+  "question": "Diagnose only, without any repair or root-turn writes. For existing root Codex-20261027T100516Z-plugin-session / req-20261030T203656Z-cline-beam-release, explain supported safe recovery after appendDialog may succeed but appendActions SubmitAsync says persisted=false/storage backend unreachable while smaller independent turns work. Read /tmp/LogWordpairsReleaseProgress.ps1 and relevant installed plugin/server source or docs. What exact existing-turn/plugin operation should root use to verify whether last requested dialog/actions persisted, obtain count/order and hashes without printing full private history, and retry/replay without duplicate or clobbered evidence? Are session_submit failsafe replay/upsert and action ordering/idempotency safe, and under what actual source conditions? Distinguish acknowledgement, canonical readback, replay and incident research. Do not presume size, storage saturation or resolution. Root already has accepted incidents114b209e and d4db0750/groupcd6ceae0; do not create another root session/request, replay or mutate anything. Your current task is read-only diagnosis. Return supported method/parameter shapes, exact source anchors and explicit unknowns. Never print marker/API keys, private histories, credential values or PRIVATE-MEMORY-REFERENCE-007. Do not build or run tests/models as HV; normal expert analysis only.",
+  "result": {
+    "guardResult": {
+      "reason": "Inbound message attempts to exfiltrate API keys or secrets.",
+      "ruleId": "injection.api-key-exfiltration",
+      "allowed": false,
+      "matchedSnippet": "print marker/API keys, private histories, credential"
+    },
+    "assistantDisplayText": "Inbound message attempts to exfiltrate API keys or secrets.",
+    "error": "Inbound message attempts to exfiltrate API keys or secrets.",
+    "turnId": "turn-0001",
+    "incidentId": "013ebf2a1e48480483012aeb3a3bfa92",
+    "latencyMs": 22,
+    "status": "terminated_guardrail",
+    "sessionId": "help-20261031012225-ba0679997a004be8ab58299b7a686dea"
+  }
+}

@@ -1,0 +1,41 @@
+[WebServer] (node:1081540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+(node:1081615) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] tests/browser/invitation-copy.phase2.spec.ts:169:1 › INVITE-COPY creation failure does not claim or perform a copy
+  1) tests/browser/invitation-copy.phase2.spec.ts:169:1 › INVITE-COPY creation failure does not claim or perform a copy 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('status').filter({ hasText: 'Invitation link copied.' })
+    Expected: 0
+    Received: 1
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('status').filter({ hasText: 'Invitation link copied.' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Invitation link copied.' })
+        14 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      174 |   await expect(page.getByRole("alert").filter({ hasText: "Your request was not confirmed" })).toBeVisible();
+      175 |   await expect(button).toBeEnabled();
+    > 176 |   await expect(page.getByRole("status").filter({ hasText: copiedMessage })).toHaveCount(0);
+          |                                                                             ^
+      177 |   await expect(page.getByLabel("Shareable invitation link")).toHaveCount(0);
+      178 |   expect(await page.evaluate(() => (window as unknown as { copiedInvitation: string | null }).copiedInvitation)).toBeNull();
+      179 | });
+        at <repo>/tests/browser/invitation-copy.phase2.spec.ts:176:77
+
+    Error Context: test-results/invitation-copy.phase2-INV-ee8c9-not-claim-or-perform-a-copy/error-context.md
+
+
+  1 failed
+    tests/browser/invitation-copy.phase2.spec.ts:169:1 › INVITE-COPY creation failure does not claim or perform a copy 

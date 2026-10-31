@@ -37,7 +37,11 @@ export function ContentScreen({
   const [profile, setProfile] = useState<OwnProfile | null>(null);
   return (
     <>
-      <IdentityPanel oidcEnabled={oidcEnabled} onProfile={setProfile} />
+      <IdentityPanel
+        oidcEnabled={oidcEnabled}
+        onProfile={setProfile}
+        administration={administration}
+      />
       {profile && (
         <ContentPanel
           key={`${profile.id}:${privateIdentityRevision()}`}
@@ -283,16 +287,14 @@ function ContentPanel({
                 </label>
               </div>
             )}
-            <h2>
-              {view.canModerate
-                ? "Review queue and your submissions"
-                : "Your submissions"}
-            </h2>
+            <h2>{view.canModerate ? "Review queue" : "Your submissions"}</h2>
             {!visibleCases.length && (
               <p role="status">
                 {view.cases.length
                   ? "No submissions match these filters. Change the search or status."
-                  : "No submissions yet. Refresh submissions or return to play to earn suggestion access."}
+                  : administration
+                    ? "No submissions to review. Refresh the queue or manage word pairs and hints."
+                    : "No submissions yet. Refresh submissions or return to play to earn suggestion access."}
               </p>
             )}
             {visibleCases.map((item) => (

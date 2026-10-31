@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<testsuites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="junit_schema_4.xsd" name="Pester" tests="6" errors="0" failures="0" disabled="0" time="0.165">
+  <testsuite name="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" tests="6" errors="0" failures="0" hostname="[PRIVATE HOST]" id="0" skipped="0" disabled="0" package="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" time="0.165">
+    <properties>
+      <property name="os-version" value="7.2.5-3-omarchy" />
+      <property name="platform" value="Linux" />
+      <property name="cwd" value="<repo>" />
+      <property name="framework-version" value="5.9.1" />
+      <property name="user" value="sharpninja" />
+      <property name="machine-name" value="[PRIVATE HOST]" />
+      <property name="user-domain" value="" />
+      <property name="junit-version" value="4" />
+      <property name="clr-version" value="10.0.13" />
+    </properties>
+    <testcase name="hosting migration prefix contract.proposes only 012 after the recorded thirteen-migration hosted prefix" status="Passed" classname="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" assertions="0" time="0.026" />
+    <testcase name="hosting migration prefix contract.proposes the whole catalog for an empty history" status="Passed" classname="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" assertions="0" time="0.010" />
+    <testcase name="hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 after core 001 through 011" status="Passed" classname="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" assertions="0" time="0.019" />
+    <testcase name="hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" status="Passed" classname="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" assertions="0" time="0.016" />
+    <testcase name="hosting migration prefix contract.rejects source drift at an otherwise matching migration" status="Passed" classname="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" assertions="0" time="0.017" />
+    <testcase name="hosting migration prefix contract.rejects history longer than the declared migration set" status="Passed" classname="<repo>/tests/powershell/HostingSchemaPlanner.Tests.ps1" assertions="0" time="0.013" />
+  </testsuite>
+</testsuites>

@@ -1,0 +1,332 @@
+tests/browser/live-multiplayer.integration.spec.ts:27:18 lint/style/noNonNullAssertion ━━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    25 │   browser,
+    26 │ }, info) => {
+  > 27 │   const origin = process.env.WORDPAIRS_LIVE_ORIGIN!;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    28 │   const runtimePath = process.env.WORDPAIRS_LIVE_RUNTIME_PATH;
+    29 │   if (!runtimePath)
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:209:9 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    207 │       ).toBeVisible();
+    208 │       aliases.push(
+  > 209 │         (await page.locator(".profile-alias strong").textContent())!.trim(),
+        │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    210 │       );
+    211 │       profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    207 207 │         ).toBeVisible();
+    208 208 │         aliases.push(
+    209     │ - ········(await·page.locator(".profile-alias·strong").textContent())!.trim(),
+        209 │ + ········(await·page.locator(".profile-alias·strong").textContent())?.trim(),
+    210 210 │         );
+    211 211 │         profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:217:14 lint/style/noNonNullAssertion ━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    215 │     await a.getByRole("button", { name: "Create room", exact: true }).click();
+    216 │     await a.waitForURL(/\/rooms\//);
+  > 217 │     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+        │              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    218 │     const code = (await a.locator(".room-code strong").textContent())!.trim();
+    219 │     await expect(
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:218:18 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    216 │     await a.waitForURL(/\/rooms\//);
+    217 │     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+  > 218 │     const code = (await a.locator(".room-code strong").textContent())!.trim();
+        │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    219 │     await expect(
+    220 │       a.getByText("● Live updates connected", { exact: true }),
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    216 216 │       await a.waitForURL(/\/rooms\//);
+    217 217 │       roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+    218     │ - ····const·code·=·(await·a.locator(".room-code·strong").textContent())!.trim();
+        218 │ + ····const·code·=·(await·a.locator(".room-code·strong").textContent())?.trim();
+    219 219 │       await expect(
+    220 220 │         a.getByText("● Live updates connected", { exact: true }),
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:314:22 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    312 │         await expect(pages[i].locator(".game-prompt")).toBeVisible();
+    313 │       }
+  > 314 │       const prompt = (await a.locator(".game-prompt").textContent())!.trim();
+        │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    315 │       const pair = seed.pairs.find(
+    316 │         (p) => p.categoryId === "opposites" && p.prompt === prompt,
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    312 312 │           await expect(pages[i].locator(".game-prompt")).toBeVisible();
+    313 313 │         }
+    314     │ - ······const·prompt·=·(await·a.locator(".game-prompt").textContent())!.trim();
+        314 │ + ······const·prompt·=·(await·a.locator(".game-prompt").textContent())?.trim();
+    315 315 │         const pair = seed.pairs.find(
+    316 316 │           (p) => p.categoryId === "opposites" && p.prompt === prompt,
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:394:18 lint/style/noNonNullAssertion ━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    392 │           .toBeGreaterThan(originalExpiry + 1000);
+    393 │         for (let i = 0; i < 3; i++)
+  > 394 │           expect(expiries[i].at(-1)!).toBeGreaterThan(expiries[i][0]);
+        │                  ^^^^^^^^^^^^^^^^^^^
+    395 │         milestones.tokenRenewedPastOriginalLifetime = true;
+    396 │         const reopened = a.waitForEvent("websocket");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:22:18 lint/style/noNonNullAssertion ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    20 │ for (const count of counts) test(`LIVE-SCALE ${count} real browser players complete eight UI rounds`, async ({ browser }, info) => {
+    21 │   test.setTimeout(600000);
+  > 22 │   const origin = process.env.WORDPAIRS_LIVE_ORIGIN!;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    23 │   const contexts: BrowserContext[] = [];
+    24 │   const pages: Page[] = [];
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:171:23 lint/style/noNonNullAssertion ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    169 │       console.log(`LIVE_SCALE players=${count} round=${round}`);
+    170 │       await expect.poll(async () => (await Promise.all(pages.map((p) => p.getByRole("button", { name: "Opposites", exact: true }).isVisible()))).filter(Boolean).length, { timeout: 20000 }).toBe(1);
+  > 171 │       const chooser = (await Promise.all(pages.map(async (p) => (await p.getByRole("button", { name: "Opposites", exact: true }).isVisible()) ? p : null))).find((p) => p)!;
+        │                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    172 │       const chosen = await commitUi(chooser, "choose", () => chooser.getByRole("button", { name: "Opposites", exact: true }).click());
+    173 │       const categoryVersion = chosen.version;
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:179:22 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    177 │         await expect(p.locator(".answer-reveal")).toHaveCount(0);
+    178 │       }));
+  > 179 │       const prompt = (await pages[0].locator(".game-prompt").textContent())!.trim();
+        │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    180 │       const pair = seed.pairs.find((p) => p.categoryId === "opposites" && p.prompt === prompt);
+    181 │       if (!pair) throw new Error("The seeded Opposites catalog is required for live UI answer lookup");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    177 177 │           await expect(p.locator(".answer-reveal")).toHaveCount(0);
+    178 178 │         }));
+    179     │ - ······const·prompt·=·(await·pages[0].locator(".game-prompt").textContent())!.trim();
+        179 │ + ······const·prompt·=·(await·pages[0].locator(".game-prompt").textContent())?.trim();
+    180 180 │         const pair = seed.pairs.find((p) => p.categoryId === "opposites" && p.prompt === prompt);
+    181 181 │         if (!pair) throw new Error("The seeded Opposites catalog is required for live UI answer lookup");
+  
+
+tests/browser/live-player-counts.integration.spec.ts:160:70 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    158 │       expect(room.players).toHaveLength(count);
+    159 │       preparedActors[player] = room.actorId;
+  > 160 │       aliases[player] = (await page.locator(".profile-alias strong").innerText()).trim();
+        │                                                                      ^^^^^^^^^
+    161 │       readinessObservations.push({ phase: "prepared", player, expectedProfileId: ids[player], actorId: room.actorId, uiRosterCount: await page.locator(".roster > li").count(), version: room.version });
+    162 │     }, async (page, player) => {
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    158 158 │         expect(room.players).toHaveLength(count);
+    159 159 │         preparedActors[player] = room.actorId;
+    160     │ - ······aliases[player]·=·(await·page.locator(".profile-alias·strong").innerText()).trim();
+        160 │ + ······aliases[player]·=·(await·page.locator(".profile-alias·strong").textContent()).trim();
+    161 161 │         readinessObservations.push({ phase: "prepared", player, expectedProfileId: ids[player], actorId: room.actorId, uiRosterCount: await page.locator(".roster > li").count(), version: room.version });
+    162 162 │       }, async (page, player) => {
+  
+
+tests/browser/live-player-counts.integration.spec.ts:207:184 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    205 │     await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, commandAcknowledgements, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    206 │   } catch (error) {
+  > 207 │     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
+        │                                                                                                                                                                                        ^^^^^^^^^
+    208 │     await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    209 │     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    205 205 │       await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, commandAcknowledgements, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    206 206 │     } catch (error) {
+    207     │ - ····const·uiStates·=·await·Promise.all(pages.map(async·(page,·player)·=>·({·player,·closed:·page.isClosed(),·browserConnected:·browser.isConnected(),·body:·await·page.locator("body").innerText({·timeout:·2000·}).catch((problem:·unknown)·=>·`Page·unavailable:·${problem·instanceof·Error·?·problem.message.slice(0,·500)·:·"Unknown·error"}`)·})));
+        207 │ + ····const·uiStates·=·await·Promise.all(pages.map(async·(page,·player)·=>·({·player,·closed:·page.isClosed(),·browserConnected:·browser.isConnected(),·body:·await·page.locator("body").textContent({·timeout:·2000·}).catch((problem:·unknown)·=>·`Page·unavailable:·${problem·instanceof·Error·?·problem.message.slice(0,·500)·:·"Unknown·error"}`)·})));
+    208 208 │       await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    209 209 │       await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+  
+
+tests/browser/ui-command-acknowledgement.ts:109:52 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    107 │   await expect(row).toHaveCount(1);
+    108 │   await expect(row).toContainText("✓ Solved");
+  > 109 │   const header = (await row.getByRole("rowheader").innerText()).trim();
+        │                                                    ^^^^^^^^^
+    110 │   const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    111 │   assertOwnRoundSolve({
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    107 107 │     await expect(row).toHaveCount(1);
+    108 108 │     await expect(row).toContainText("✓ Solved");
+    109     │ - ··const·header·=·(await·row.getByRole("rowheader").innerText()).trim();
+        109 │ + ··const·header·=·(await·row.getByRole("rowheader").textContent()).trim();
+    110 110 │     const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    111 111 │     assertOwnRoundSolve({
+  
+
+tests/browser/ui-command-acknowledgement.ts:110:51 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    108 │   await expect(row).toContainText("✓ Solved");
+    109 │   const header = (await row.getByRole("rowheader").innerText()).trim();
+  > 110 │   const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+        │                                                   ^^^^^^^^^
+    111 │   assertOwnRoundSolve({
+    112 │     actorAlias: (await page.locator(".profile-alias strong").innerText()).trim(),
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    108 108 │     await expect(row).toContainText("✓ Solved");
+    109 109 │     const header = (await row.getByRole("rowheader").innerText()).trim();
+    110     │ - ··const·caption·=·(await·table.locator("caption").innerText()).match(/^Round·(\d+)·scorecard$/);
+        110 │ + ··const·caption·=·(await·table.locator("caption").textContent()).match(/^Round·(\d+)·scorecard$/);
+    111 111 │     assertOwnRoundSolve({
+    112 112 │       actorAlias: (await page.locator(".profile-alias strong").innerText()).trim(),
+  
+
+tests/browser/ui-command-acknowledgement.ts:112:62 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    110 │   const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    111 │   assertOwnRoundSolve({
+  > 112 │     actorAlias: (await page.locator(".profile-alias strong").innerText()).trim(),
+        │                                                              ^^^^^^^^^
+    113 │     rowAlias: header.endsWith(alias) ? alias : header,
+    114 │     round: caption ? Number(caption[1]) : Number.NaN,
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    110 110 │     const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    111 111 │     assertOwnRoundSolve({
+    112     │ - ····actorAlias:·(await·page.locator(".profile-alias·strong").innerText()).trim(),
+        112 │ + ····actorAlias:·(await·page.locator(".profile-alias·strong").textContent()).trim(),
+    113 113 │       rowAlias: header.endsWith(alias) ? alias : header,
+    114 114 │       round: caption ? Number(caption[1]) : Number.NaN,
+  
+
+tests/browser/ui-command-acknowledgement.ts:115:24 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    113 │     rowAlias: header.endsWith(alias) ? alias : header,
+    114 │     round: caption ? Number(caption[1]) : Number.NaN,
+  > 115 │     solved: (await row.innerText()).includes("✓ Solved"),
+        │                        ^^^^^^^^^
+    116 │   }, alias, round);
+    117 │ }
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    113 113 │       rowAlias: header.endsWith(alias) ? alias : header,
+    114 114 │       round: caption ? Number(caption[1]) : Number.NaN,
+    115     │ - ····solved:·(await·row.innerText()).includes("✓·Solved"),
+        115 │ + ····solved:·(await·row.textContent()).includes("✓·Solved"),
+    116 116 │     }, alias, round);
+    117 117 │   }
+  
+
+Checked 5 files in 33ms. No fixes applied.
+Found 15 warnings.

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-28T23:10:41.938558+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "role": "independent hostile reviewer"
+  },
+  "request": "Continue user-requested hostile validation. Read-only review current auth/navigation diff and staging operational evidence; preserve raw receipt docs/evidence/hosting/auth-navigation-review-round1.json. User reports ChatGPT login absent, admin links visible to everyone. Fix projects current server-session permissions (not roles/admin allowlist) in GET /api/session; IdentityPanel shows authorized profile/admin navigation, polls fresh roles 15s and on focus, clears grants on failed refresh/signout. Removed unconditional layout links. Retains existing moderator/content role matrix, user directory admin-only. Unconfigured sign-in visible disabled honest message; OpenAI website requires approved client, no registration exists and official interest form currently disabled/unsubmitted; do not claim real OIDC success. Source files src/web/identity-panel.tsx, src/web/admin-panel.tsx, src/web/content-panel.tsx, src/app/admin/layout.tsx, src/app/api/session/route.ts; tests/web/identity-api.test.ts and new tests/browser/auth-navigation.phase6.spec.ts. Formatting/hooks ongoing, one browser fixture assertion narrowed after route-announcer collision (9/10 passed first run). Independently assess race/role loss/navigation correctness and new tests, request concrete changes if needed; no live writes/source changes. Staging on exact old commit 8e2f624 READY, worker403withoutsecret/200withsecret, scheduler enabled and real live-multiplayer integration passed 1/1 (2.6m) including all8rounds/privateWebSocket/offline autonomous progress/renewal/reconnect; docs/evidence/hosting/staging-live-ui-observations.json. Newsource not deployed yet. Keep all receipts, no claim new source hosted. Review staging security advisory notes in summary if accessible: 7private invoker/triggerfunc mutable search_path, publicEXECUTE revoked, existing RPCfixedsearchpath; don\u2019t claim advisoryclean. Avoid altering live state.",
+  "scope": "Undeployed authentication/navigation UI and session projection; read-only inspection of staging gameplay evidence for the earlier deployed commit.",
+  "verdict": "changes_required",
+  "accuracyScore": 97,
+  "completenessScore": 96,
+  "rubric": {
+    "threshold": "99/99 and no unresolved material finding for source approval",
+    "accuracy": "Navigation reflects verified server permissions without exposing raw authority or claiming unsupported OIDC success.",
+    "completeness": "Role matrix, revocation, failed refresh, session transitions and concurrent response ownership are verified. Staging evidence is scoped to the deployed source.",
+    "scores": "Reviewer judgments, not probabilities."
+  },
+  "findings": [
+    {
+      "id": "AUTH-NAV-HV-001",
+      "priority": "P2",
+      "file": "src/web/identity-panel.tsx",
+      "line": 93,
+      "relatedLines": [
+        57,
+        58,
+        107,
+        123
+      ],
+      "title": "Defer focus refresh while a session mutation owns the state",
+      "problem": "Only quiet loads respect running.current. Focus invokes load() with quiet=false, increments the same generation as POST/DELETE, and supersedes the mutation completion. A GET started before the mutation commits can therefore become the authoritative response even after the mutation succeeds.",
+      "reproduction": [
+        "Display an authenticated admin profile; hold DELETE /api/session before it resolves.",
+        "Dispatch window focus. Let its GET capture the old profile/permissions but delay that GET response.",
+        "Resolve DELETE successfully. session() skips accept(null) because the GET incremented generation.",
+        "Resolve the stale GET: old profile and administration links are displayed despite completed sign-out, until a subsequent refresh.",
+        "Analogous guest-entry case: focus GET captures 401 while POST is pending; successful POST is discarded and the UI remains signed out."
+      ],
+      "impact": "Client session/navigation becomes inconsistent with the committed cookie/server session. Existing backend authorization still protects private mutations; this is not a demonstrated server privilege bypass.",
+      "requiredChange": "Skip or queue external focus/refresh requests during POST/DELETE, retain mutation ownership, and perform at most one authoritative post-mutation refresh. Preserve invalidation of reads that began before the mutation. Add delayed GET/DELETE and GET/POST tests in both relevant completion orders.",
+      "evidenceType": "Source-derived deterministic interleaving, not independently browser-executed in this review."
+    }
+  ],
+  "positiveAssessment": [
+    "GET /api/session derives its allowlisted permissions from the freshly verified actor, retains no-store and omits raw actor roles and configured admin allowlist.",
+    "Unconditional admin layout navigation is removed. Moderator/content and administrator user-directory navigation use the existing permission matrix. Backend authorization remains the actual security boundary.",
+    "Unavailable ChatGPT sign-in is now discoverable and honestly disabled. No configured client or successful real OpenAI OIDC flow is claimed.",
+    "Sequential role revocation, failed refresh and sign-out scenarios are covered in the new browser fixture; the outstanding gap is concurrent refresh/mutation ownership."
+  ],
+  "independentChecks": [
+    {
+      "command": "npx vitest run tests/web/identity-api.test.ts",
+      "result": "11/11 passed, 1 file, 348 ms"
+    },
+    {
+      "inspection": "Read requested source diff, domain permission matrix, IdentityService.session, repository session path and SQL live-role projection."
+    },
+    {
+      "inspection": "Read new browser tests; these use real page rendering with mocked session/content HTTP ports and are not hosted OIDC or hosted authorization evidence."
+    }
+  ],
+  "stagingEvidence": {
+    "sourceCommitReportedByParent": "8e2f624",
+    "newNavigationSourceDeployed": false,
+    "independentlyReadLog": {
+      "path": "../wordpairs-local/hosted-staging-ui.log",
+      "result": "1/1 real two-player plus observer UI integration passed in 2.6 minutes"
+    },
+    "observations": {
+      "path": "docs/evidence/hosting/staging-live-ui-observations.json",
+      "sha256": "04ebb5792f93b5d82b5464615febdde41755483c0d55941066995eaa7855333f",
+      "milestones": {
+        "periodicPollsSuppressed": true,
+        "httpMocks": false,
+        "joinDeliveredByWebSocket": true,
+        "schedulerStartsMatchWithAllBrowsersOffline": true,
+        "countdownBySchedulerAndOnlineResume": true,
+        "hintsRemainPerspectivePrivate": true,
+        "reactionDeliveredByPush": true,
+        "schedulerAdvancesWithAllBrowsersOffline": true,
+        "tokenRenewedPastOriginalLifetime": true,
+        "forcedSocketReconnectThenPushVerified": true,
+        "fullEightRoundUiGame": true,
+        "privateTransportDenialsVerified": true
+      },
+      "metadataNoticeCounts": [
+        87,
+        83,
+        79
+      ],
+      "elapsedMs": 151992,
+      "qualification": "Read stored evidence, not a newly performed reviewer live run. No request-failure total is inferred from absent fields."
+    },
+    "parentReportedOperationalChecks": [
+      "Deployment READY on the earlier commit.",
+      "Worker rejects missing secret with403 and accepts authorized request with200.",
+      "Scheduler enabled."
+    ],
+    "interpretation": "Evidence supports the tested earlier staging build: private push, eight rounds, autonomous offline progression, renewal/reconnect and transport denials. It neither validates the new navigation source nor completes the outstanding full2..25 live UI matrix."
+  },
+  "advisoryQualification": {
+    "status": "Not advisory-clean",
+    "parentReported": "Seven private invoker/trigger functions have mutable search_path findings; public EXECUTE revoked; existing exposed RPCs use fixed search_path.",
+    "reviewerEvidence": "Related migration declarations/revocations were inspected, but no complete live advisor response was independently retrieved. Do not convert these mitigations into a claim that the seven advisories are absent or automatically harmless."
+  },
+  "snapshot": {
+    "localHead": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+    "files": [
+      {
+        "path": "src/web/identity-panel.tsx",
+        "sha256": "1a3c135a2c4f801dfa0d07f31515f936f69a2c8b84b853b24592f66a86a4cc5b",
+        "bytes": 14633
+      },
+      {
+        "path": "src/web/admin-panel.tsx",
+        "sha256": "a56f2c06b8e95d8048f530aef1ae7c6096058527ccb0bbc555b554e747a2f921",
+        "bytes": 21641
+      },
+      {
+        "path": "src/web/content-panel.tsx",
+        "sha256": "e5cb27e1f4f919b2304adcbbeda028ce2c79a12f829999598a9e1a03699f8a25",
+        "bytes": 27849
+      },
+      {
+        "path": "src/app/admin/layout.tsx",
+        "sha256": "0d712bfdc562c3ebbfdc130d4729a1aeb55c513b58deda9cce3420ea9201f0d9",
+        "bytes": 519
+      },
+      {
+        "path": "src/app/api/session/route.ts",
+        "sha256": "9cb37915f862be56f7f6c7da41b397aa43bac47d7870c4690f22db9ea9226dce",
+        "bytes": 2519
+      },
+      {
+        "path": "tests/web/identity-api.test.ts",
+        "sha256": "fb56d9c4c24337b18417b946796c29b3bdfb2e296a21a9d01c630cda10d498db",
+        "bytes": 7959
+      },
+      {
+        "path": "tests/browser/auth-navigation.phase6.spec.ts",
+        "sha256": "f26c5c6399978bad7cd979b418079fd7cd4dece57b329bc7c79632a7297e40e0",
+        "bytes": 4272
+      }
+    ]
+  },
+  "limits": [
+    "No browser/server process started, live data modified, source edited or credentials requested. Only this new receipt written.",
+    "No independent provider registration/form verification in this round; provider availability assertions remain reported context.",
+    "No source deployment, production acceptance, contest compliance or advisory-clean certification.",
+    "Current docs/hosting_execution.md still contains earlier no-deployment/disabled-scheduler checkpoint prose; update the operational record separately to avoid presenting that historical state as current."
+  ],
+  "disposition": "Hold auth/navigation source approval until AUTH-NAV-HV-001 is repaired and delayed-response regressions pass. Preserve prior hosting source reviews and the independently scoped staging evidence."
+}

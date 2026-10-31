@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-31T13:10:43",
+  "parentRevision": "f6b65ca19a2043a30e61477bcfd4c05c9c0fcd77",
+  "originalTestSha256": "40F41B16D0096DEF853B02205A705C730EF09FDB831AD96F3D388FF62326EB15",
+  "currentTestSha256": "4430641B84518164379F8F745D7601409A620742092108FB615668C050EB4322",
+  "reviewedNoticePins": {
+    "docs/ATTRIBUTIONS.md": "C7215F7738C1E092F15C4908C50CB477D21F70460CF9355CF2D7952E8A73BE79",
+    "docs/word_association_round_flow.svg": "DA03873D53E31A9E7D84D772CAB14BBFCD47BFDF0C285580A468DC39822C2BB0",
+    "LICENSE": "AAF135472F81C5B4A0DCA9367E5BB5E9750032B5BEBE5442B36E4C0A47430DF3"
+  },
+  "sourceChange": "tests/ac-contracts/oracle-supplemental-validation.test.ts",
+  "failedNativeJUnit": "docs/evidence/release10/frozen-f6b65ca-20261031T130221/full/unit.xml",
+  "failedNativeSha256": "AE125EEFAD1E1280653480CB07F550C9FD1C0F2E72046B23B2EB0D3A09CB3C29",
+  "failures": 1,
+  "passes": 982,
+  "skipped": 0,
+  "decision": "Correct the independent reviewed-document pin after inspecting truthful AI-art provenance and preserved dependency/font notices. Do not derive expectations inside the test, alter the validator or weaken any negative control. Historical notice hashes remain history.",
+  "qualification": "Test metadata correction only. No legal rights clearance, current test pass, independent review, push or hosted claim."
+}

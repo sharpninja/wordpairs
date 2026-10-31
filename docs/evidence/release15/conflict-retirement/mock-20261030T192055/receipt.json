@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-10-30T19:20:55",
+  "finishedAt": "2026-10-30T19:20:56",
+  "binding": "mock",
+  "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+  "dirtyTestSource": true,
+  "hostName": "[PRIVATE HOST]",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "vitest",
+    "--",
+    "run",
+    "tests/browser/ui-command-retirement.test.ts",
+    "tests/browser/ui-command-acknowledgement.test.ts",
+    "tests/browser/ui-command-capture.test.ts",
+    "--maxWorkers=4",
+    "--reporter=default",
+    "--reporter=junit",
+    "--outputFile.junit=\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/unit.xml"
+  ],
+  "exitCode": 0,
+  "cases": 162,
+  "failed": 0,
+  "skipped": 0,
+  "newPositive": 19,
+  "newExpectedNegative": 19,
+  "priorCases": 124,
+  "negativeControls": 81,
+  "sourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-retirement.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.test.ts",
+      "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-retirement.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-acknowledgement.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-acknowledgement.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-acknowledgement.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-capture.contract.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-capture.test.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+      "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-capture.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/live-player-counts.integration.spec.ts"
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+      "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/live-multiplayer.integration.spec.ts"
+    }
+  ],
+  "producerSha256": "0CEF8C00E2E7B9C567E361FE18954DB814843896CEEC7E0905CC200738A7BCC8",
+  "junit": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/unit.xml",
+  "junitSha256": "24D0884A236F5FFDC27F8B91B604FE5746F37FDEA64BA9F304723551D27548C4",
+  "qualification": "Isolated SAME wait/classifier/coordinator oracle, not actual DOM/network/runtime capacity. Original124 cases retained; existing contract type changes, if any, are separately disclosed."
+}

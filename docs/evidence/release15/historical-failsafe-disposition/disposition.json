@@ -1,0 +1,178 @@
+{
+  "recordedAt": "2026-10-30T19:45:51",
+  "classification": "Optional read-only factual evidence reconciliation, not HV or a release gate",
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261031T003421Z-failsafe-disposition",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "originalVerdict": {
+    "path": "\u003Crepo\u003E/docs/receipts/hv/20261029T102510-admin-pwa-source-round6.verdict.json",
+    "sha256": "C35328448C4BB34D981A1CA25D589E670393B0F516A5F86E5FC84C55A8E9A2D2"
+  },
+  "originalFinding": {
+    "id": "S1-20",
+    "surface": "requested-claims",
+    "status": "UNKNOWN",
+    "claim": "Carried round3 S1-19, round4 S1-20, round5 S1-20: the fate of Claude triage failsafe 20261029T042440Z-triage-report-5ca5.yaml remains unverifiable; plugin status now reports failsafeCount 0 and failsafeQuarantineCount 0. Not represented as persisted.",
+    "anchors": [
+      "docs/receipts/hv/claude-opus-round6-tools/session-params/status-20261029T102737.out.txt",
+      "round5 verdict S1-20"
+    ],
+    "finding": ""
+  },
+  "originalVerdictUnchanged": true,
+  "originalFateFindingStillUnknown": true,
+  "queued": {
+    "qualification": "The retained creation result confirms a local queue write and readback in that historical run. Current original YAML bytes are unavailable.",
+    "recordedFileSha256": "2154F3574CC200C1D1DA606E4382C4117CA8378CB2B22F96141FC228B01DBA0F",
+    "line": 547,
+    "source": {
+      "path": "\u003Crepo\u003E/docs/receipts/hv/20261028T230220-admin-pwa-source-round3.public.response.jsonl",
+      "sha256": "949DCA0478DBB233AD59F355E7C473D3823FDA4202E2462B599452E3F9492F05"
+    },
+    "confirmed": true,
+    "filename": "20261029T042440Z-triage-report-5ca5.yaml"
+  },
+  "localSearch": {
+    "path": "\u003Crepo\u003E/.mcpServer/failsafe",
+    "qualification": "Current absence is not proof of replay, deletion cause or loss.",
+    "filesInspected": 0,
+    "recursiveForce": true,
+    "exactFilenameMatches": 0
+  },
+  "originalProducer": {
+    "literalDedupeKey": "wordpairs-health-timeout-20261028",
+    "literalTitle": "MCP server /health hangs; plugin trust bootstrap and triage submit time out",
+    "literalSummary": "The wordpairs workspace MCP server process is alive but GET /health?nonce=... does not answer (5 s, 30 s and 90 s client timeouts), workflow.triage.report times out in qbrain-ai-repl after 30 s, and the plugin writes no failsafe record for the failed triage submit. A hostile-validation reviewer therefore cannot load memories, read QBrain or write its session-log turn.",
+    "executedBytesQualification": "Retained producer source is inspected, not re-executed or claimed byte-bound to the unavailable original YAML.",
+    "source": {
+      "path": "\u003Crepo\u003E/docs/receipts/hv/claude-opus-round3-tools/R3-04-StopReceipts.ps1",
+      "sha256": "18B3A9B5E545D0B5CF959995479150625164F161AAE3B099C12DA18A56C141A5"
+    }
+  },
+  "durableMatchingIncident": {
+    "titleExactMatch": true,
+    "qualification": "A server-retained research input proves this matching report existed and was grouped. No native record shown contains the original failsafe filename/hash or its dedupe key, so byte-specific replay identity is not established.",
+    "canonicalReportSnapshotVerified": true,
+    "groupId": "triage-group-c198e07edd07ee87",
+    "summaryExactMatch": true,
+    "reportId": "triage-report-3e0873bbca604ad8bc8d467921de01e9",
+    "dedupeExposedByReadModel": false,
+    "effectiveWorkspacePath": "\u003Chome\u003E/github/McpServer",
+    "reportStatusInResearchSnapshot": "grouped",
+    "createdUtc": "2026-10-28T23:36:37.9883837-05:00",
+    "originalWorkspacePath": "\u003Crepo\u003E"
+  },
+  "research": {
+    "completedUtc": {
+      "year": 2026,
+      "dayOfYear": 302,
+      "utcDateTime": "2026-10-29T04:52:19.4652875Z",
+      "timeOfDay": "04:52:19.4652875",
+      "totalOffsetMinutes": 0,
+      "millisecond": 465,
+      "localDateTime": "2026-10-28T23:52:19.4652875-05:00",
+      "minute": 52,
+      "microsecond": 287,
+      "utcTicks": 639288463394652875,
+      "nanosecond": 500,
+      "hour": 4,
+      "second": 19,
+      "ticks": 639288463394652875,
+      "dateTime": "2026-10-29T04:52:19.4652875",
+      "month": 10,
+      "dayOfWeek": "Thursday",
+      "date": "2026-10-29T00:00:00",
+      "offset": "00:00:00",
+      "day": 29
+    },
+    "groupCurrentCatalogStatus": "failed",
+    "createdTodoId": null,
+    "startedUtc": {
+      "year": 2026,
+      "dayOfYear": 302,
+      "utcDateTime": "2026-10-29T04:52:18.736033Z",
+      "timeOfDay": "04:52:18.7360330",
+      "totalOffsetMinutes": 0,
+      "millisecond": 736,
+      "localDateTime": "2026-10-28T23:52:18.736033-05:00",
+      "minute": 52,
+      "microsecond": 33,
+      "utcTicks": 639288463387360330,
+      "nanosecond": 0,
+      "hour": 4,
+      "second": 18,
+      "ticks": 639288463387360330,
+      "dateTime": "2026-10-29T04:52:18.736033",
+      "month": 10,
+      "dayOfWeek": "Thursday",
+      "date": "2026-10-29T00:00:00",
+      "offset": "00:00:00",
+      "day": 29
+    },
+    "qualification": "Research failed after intake. It does not establish failed submission, loss, repair or incident resolution.",
+    "runId": "triage-run-83e3ef59534d4daf880788b62c2ce201",
+    "agentExitCode": 1,
+    "status": "failed"
+  },
+  "disposition": {
+    "missingDependency": "An authoritative replay/intake acknowledgement joining this exact filename and recorded2154F357... file hash to the accepted report ID, or equivalent exact origin provenance. Matching title/summary and timing cannot distinguish replay from an identical independent submission.",
+    "incidentResolved": "UNPROVED",
+    "exactFailsafeSubmittedOrReplayed": "UNKNOWN",
+    "queued": "CONFIRMED",
+    "exactFailsafeAccepted": "UNKNOWN",
+    "matchingIncidentDurablyGrouped": "CONFIRMED"
+  },
+  "supportedOperations": [
+    "workflow.triage.queryGroups unfiltered and explicit McpServer workspace",
+    "workflow.triage.queryRuns explicit workspace and exact groupId",
+    "client.Context.SearchAsync exact filename",
+    "client.SessionLog.QueryAsync ClaudeCode limit100/offset0",
+    "workflow.triage.getGroup exact catalog ID in Wordpairs returned notfound; not retried around scope/trust"
+  ],
+  "scopeQualification": "Local supported client/workflow source shows queryGroups/queryRuns accept workspacePath, getGroup/getReport accept ID only. Local service source explains filtered query override versus current-context detail lookup, and queryGroups omits detailed reports. This is explanatory source inspection, not deployed-version attestation; no context/authentication bypass was used.",
+  "incidentalTriage": {
+    "accepted": true,
+    "status": "collecting",
+    "groupId": "triage-group-e3532663a55520c2",
+    "qualification": "Separate narrowly qualified scope/documentation observation, submitted before the expected-scope explanation was fully inspected. Not a confirmed server defect, not repair work, and not original5ca5 fate evidence.",
+    "reportId": "triage-report-ea2cd13ccc5c48c4be8e9020c0bca80c"
+  },
+  "originalEvidencePreserved": true,
+  "applicationTestsRequirementsGuidesEdited": false,
+  "testsBuildModelsProviderMutationsRun": false,
+  "rawRestUsed": false,
+  "accuracy": 99,
+  "completeness": 98,
+  "ratingQualification": "Scoped factual inquiry with explicit unresolved origin dependency, not acceptance of the original review or release.",
+  "evidence": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/query-groups.json",
+      "sha256": "FE631721D1230D6C931D49DEE8B0EDF3DD9EE79D3C275331BC4B22C644124DE8"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/query-groups-mcpserver.json",
+      "sha256": "37DB737596805003690FBE0AB0F48F01D85A3EFC318A915B1794CE48B02A159D"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/catalog-report.json",
+      "sha256": "1D6FE8247EF20446F867F21B2D28516254F17B7F4A86D93A98B24B05A1074B16"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/research-readback.json",
+      "sha256": "B760C63642EA2AEA81F26DC23B56FF6BEC48F674DEECDCABCA7E63C5075A43F8"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/cross-reference-readback.json",
+      "sha256": "680B7CCF45AD4E39D51F8E0515BF704D93992EA8310C896040B5C81F4A632590"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/scope-read-failsafe.yaml",
+      "sha256": "446ED6D26C4C24114EDA41851A61AA2CA482EC2271207D09C73DD9F1B117A5BD"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/historical-failsafe-disposition/scope-read-triage-submission.yaml",
+      "sha256": "7C284BA93F1F1CAFFF77F144E3209EEE46025748EE9E97E1B39F4ADA982F5558"
+    }
+  ]
+}

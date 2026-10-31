@@ -1,0 +1,10 @@
+[31;1mException: [0m<repo>/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1:77[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m  77 | [0m if($code){[36;1mthrow "$Lane returned exit code $code; failure receipts ret[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mlive-ui returned exit code 1; failure receipts retained[0m
+[31;1mException: [0m<repo>/docs/evidence/release15/operational-producers/RunNextWordpairsEvidenceChain.ps1:65[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m  65 | [0m if($failure){[36;1mthrow $failure[0m}[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m              ~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mValidation lane live-ui failed; retained all available receipts[0m

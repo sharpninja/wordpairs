@@ -1,0 +1,140 @@
+{
+  "kind": "read-only-current-diagnostics-what-if-propagation-supplement",
+  "timestamp": "2026-10-30T17:14:56",
+  "revision": "131269a590046a3c1c83314d11ff79f2b731799c",
+  "runId": "114bd03b-2479-42b4-a2da-4665bd548f59",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T220352Z-launcher-diagnostics-selfreview",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "priorAudit": {
+    "scope": {
+      "axesPerRecord": 8,
+      "uncoveredCriterionReferences": [],
+      "testRecords": 21,
+      "records": 45,
+      "totalRecordAxes": 360,
+      "criteria": 207,
+      "familyCount": 36
+    },
+    "historical": true,
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/pre-hv-what-if.json",
+    "revision": "0fb37e621d16fcc56a27abff3fe73b2e66cdcca2",
+    "fullPriorAuditRecertified": false,
+    "sha256": "CF3CF2504307E5D931A4562B8353820A6B42A056EC1585B3693A55A4413C3A79"
+  },
+  "sourceComparison": {
+    "changedOrAdded": [
+      {
+        "path": "tests/browser/live-multiplayer.integration.spec.ts",
+        "sha256": "91DDCE4F77598432ED973FEA2DC3E0548DF2CBD30D45BBA14AA79E5BF533648E",
+        "kind": "modified",
+        "priorSha256": "D982F29F5134A563D7D0BEB489D4E45AFB8701106A8912FBAAB14A55956ED709"
+      },
+      {
+        "path": "tests/browser/live-player-counts.integration.spec.ts",
+        "sha256": "F522AA7DC8619D51D12A12C11F03FFA059AC1C5563198070059516618AD27895",
+        "kind": "modified",
+        "priorSha256": "3266B2B5D51D6F1FCC4CD74F8E7FF9A0CA1318F4A5B82D8AC3590508F7F0D2AA"
+      },
+      {
+        "path": "tests/browser/request-diagnostics.contract.ts",
+        "sha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+        "kind": "added"
+      },
+      {
+        "path": "tests/browser/request-diagnostics.test.ts",
+        "sha256": "45627E32328574C0B8F8075DDEE1CA8A61C24B02DA4CB869E37B08B5B01550B4",
+        "kind": "added"
+      },
+      {
+        "path": "tests/browser/request-diagnostics.ts",
+        "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28",
+        "kind": "added"
+      }
+    ],
+    "priorPaths": 339,
+    "allCurrentFrozenHashesMatch": true,
+    "removed": 0,
+    "unchangedPaths": 337,
+    "currentPaths": 342
+  },
+  "focusedEvidence": [
+    {
+      "binding": "mock",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/mock-20261030T164914/receipt.json",
+      "receiptSha256": "280B8379CA0E75957B453E8597E37A4D4E47254418D1C228CE3C5E1621CD945B",
+      "nativeJUnitSha256": "DFA37394BAF2C0F9EDA2B0011D0AF20FF460E9D944A7C3FC34BAF38A5D935AE6",
+      "cases": 22,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControlCases": 11,
+      "oracleSha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+      "qualification": "Retained focused receipt read, no execution by this self-review; not full frozen browser proof."
+    },
+    {
+      "binding": "real",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/real-20261030T165032/receipt.json",
+      "receiptSha256": "3EB385BC9EFF89F6621548C3F8E2F07AF716E7C820182B0C707A4C8BA81AE282",
+      "nativeJUnitSha256": "1D3BD853221581CDFB6C406EDB12312F836B7AD5068B6C070975E20A1AAD2E9A",
+      "cases": 22,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControlCases": 11,
+      "oracleSha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+      "qualification": "Retained focused receipt read, no execution by this self-review; not full frozen browser proof."
+    }
+  ],
+  "axesAssessed": [
+    "crash/restart/replay",
+    "ordering/concurrency",
+    "boundary/malformed",
+    "host/plugin",
+    "lifecycle",
+    "isolation",
+    "legacy/upgrade",
+    "operator-visible output"
+  ],
+  "note": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-131269a/diagnostics-selfreview.md",
+    "sha256": "B2A83D8BF3F69A78959F6A9C43A5F07ED8AF2D94E3351E5638E7E1E72C32F4B3"
+  },
+  "launcherReviewed": {
+    "path": "/tmp/InvokeWordpairsClineHv.ps1",
+    "sha256": "C4F8E4BBFAF1B79E98F6FB46E15F7F84A34755803817C7C1CC77DBC1744535CB",
+    "status": "Static inspection only; no launch or acceptance performed; root may subsequently revise and must re-pin."
+  },
+  "briefReviewed": {
+    "path": "/tmp/wordpairs-cline-review-brief-template.md",
+    "sha256": "2274089319156540A1F6271329F50AEF226B6AFBD28113728BC6D6B00C583A47",
+    "status": "Draft remains intentionally unlaunchable until root fills it."
+  },
+  "expectedCollectedCounts": {
+    "strict": 1,
+    "browser": 86,
+    "unit": 662,
+    "matrix": 14,
+    "realtime": 4,
+    "postgres": 63
+  },
+  "executionStatus": "New frozen chain started; this supplement does not claim chain completion or acceptance. Re-read actual native/TRX/provenance after completion.",
+  "lifecycleLimit": "Never-settling browser body can defer custom disposal until Playwright timeout and runner closure; test fails closed, but forced-timeout per-case evidence/pool cleanup ordering was not exercised by22 focused cases. Not an observed indefinite whole-validation hang or game defect.",
+  "preservedHistoricalFailure": {
+    "passed": 6,
+    "failed": 1,
+    "approved": false,
+    "skipped": 7,
+    "revision": "0fb37e621d16fcc56a27abff3fe73b2e66cdcca2"
+  },
+  "pending": [
+    "Complete current frozen full/PowerShell/Realtime/14-game/strict chain and all12TRX/native provenance.",
+    "Final populated brief plus actual selected reviewer model/High/runtime and complete verdict/98-98 scores/ownMCPreadback/postreviewbinding.",
+    "Exact staging-first/production migrations and hosted behaviors.",
+    "Physical installation/standalone OAuth continuity and manual mission/Work/conduct provenance."
+  ],
+  "accuracy": 99,
+  "completeness": 98,
+  "assessmentScope": "Narrow source/receipt/lifecycle delta only; not independent HV or transfer of prior audit approval.",
+  "noTestBuildModelExecution": true,
+  "noSourceRequirementsProviderMutation": true
+}

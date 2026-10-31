@@ -1,0 +1,5357 @@
+{
+  "schema": "wordpairs-supabase-readonly-readiness-v1",
+  "recordedAt": "2026-10-30T20:10:06.3565775-05:00",
+  "classification": "Operator-directed read-only operational metadata inspection, not HV or rollout acceptance",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T005850Z-turn-491c",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "profile": {
+    "files": 1,
+    "globalMemories": 9,
+    "workspaceMemories": 0,
+    "excluded": "PRIVATE-MEMORY-REFERENCE-007",
+    "reloadedAfterCompaction": true
+  },
+  "reviewerPreference": "ClineCLI/Beam/High until Mondayafternoon2November2026 America/Chicago; exact afternoonhour unspecified; no reviewer invoked",
+  "targets": [
+    {
+      "logical": "staging",
+      "projectRef": "jshjkaigwbxsbnnogfxs",
+      "projectName": "wordpairs-staging",
+      "organizationId": "ddhtdrecsubwkbwgsqcp",
+      "canonicalOrigin": "https://wordpairs.vercel.app"
+    },
+    {
+      "logical": "production",
+      "projectRef": "krdcuuhcynmdfcjlpbsf",
+      "projectName": "wordpairs-production",
+      "organizationId": "ddhtdrecsubwkbwgsqcp",
+      "canonicalOrigin": "https://wordpairs-j9jf.vercel.app"
+    }
+  ],
+  "observations": {
+    "observedWindowLocal": {
+      "start": "2026-10-30T19:59:00-05:00",
+      "end": "2026-10-30T20:03:50-05:00",
+      "qualification": "Tool-call observations were gathered during this interval; individual provider result objects do not carry a common transaction timestamp."
+    },
+    "projectAndMigrationMetadata": [
+      {
+        "logical": "staging",
+        "projectRef": "jshjkaigwbxsbnnogfxs",
+        "kind": "project",
+        "isError": false,
+        "returnedFields": [
+          "id",
+          "ref",
+          "organization_id",
+          "organization_slug",
+          "name",
+          "region",
+          "status",
+          "database",
+          "created_at"
+        ],
+        "id": "jshjkaigwbxsbnnogfxs",
+        "name": "wordpairs-staging",
+        "status": "ACTIVE_HEALTHY",
+        "region": "us-east-1",
+        "organizationId": "ddhtdrecsubwkbwgsqcp",
+        "databaseVersion": "17.11.0.003"
+      },
+      {
+        "logical": "staging",
+        "projectRef": "jshjkaigwbxsbnnogfxs",
+        "kind": "migrationNames",
+        "isError": false,
+        "returnedFields": [
+          "migrations"
+        ],
+        "migrations": [
+          {
+            "version": "20261028043237",
+            "name": "wordpairs_001_foundation"
+          },
+          {
+            "version": "20261028043240",
+            "name": "wordpairs_002_public_reads"
+          },
+          {
+            "version": "20261028043311",
+            "name": "wordpairs_003_identity"
+          },
+          {
+            "version": "20261028043317",
+            "name": "wordpairs_004_rooms"
+          },
+          {
+            "version": "20261028043320",
+            "name": "wordpairs_005_outbox"
+          },
+          {
+            "version": "20261028043323",
+            "name": "wordpairs_006_lobby_deadlines"
+          },
+          {
+            "version": "20261028043432007",
+            "name": "wordpairs_007_matches"
+          },
+          {
+            "version": "20261028043435",
+            "name": "wordpairs_008_content"
+          },
+          {
+            "version": "20261028043436",
+            "name": "wordpairs_009_reactions"
+          },
+          {
+            "version": "20261028043438",
+            "name": "wordpairs_010_access_control"
+          },
+          {
+            "version": "20261028043440",
+            "name": "wordpairs_011_content_review_states"
+          },
+          {
+            "version": "20261028045345",
+            "name": "wordpairs_hosted_scheduler"
+          },
+          {
+            "version": "20261028045501",
+            "name": "wordpairs_private_realtime"
+          }
+        ]
+      },
+      {
+        "logical": "production",
+        "projectRef": "krdcuuhcynmdfcjlpbsf",
+        "kind": "project",
+        "isError": false,
+        "returnedFields": [
+          "id",
+          "ref",
+          "organization_id",
+          "organization_slug",
+          "name",
+          "region",
+          "status",
+          "database",
+          "created_at"
+        ],
+        "id": "krdcuuhcynmdfcjlpbsf",
+        "name": "wordpairs-production",
+        "status": "ACTIVE_HEALTHY",
+        "region": "us-east-1",
+        "organizationId": "ddhtdrecsubwkbwgsqcp",
+        "databaseVersion": "17.11.0.003"
+      },
+      {
+        "logical": "production",
+        "projectRef": "krdcuuhcynmdfcjlpbsf",
+        "kind": "migrationNames",
+        "isError": false,
+        "returnedFields": [
+          "migrations"
+        ],
+        "migrations": [
+          {
+            "version": "20261028230936",
+            "name": "wordpairs_001_foundation"
+          },
+          {
+            "version": "20261028230938",
+            "name": "wordpairs_002_public_reads"
+          },
+          {
+            "version": "20261028230940",
+            "name": "wordpairs_003_identity"
+          },
+          {
+            "version": "20261028230942",
+            "name": "wordpairs_004_rooms"
+          },
+          {
+            "version": "20261028230944",
+            "name": "wordpairs_005_outbox"
+          },
+          {
+            "version": "20261028230946",
+            "name": "wordpairs_006_lobby_deadlines"
+          },
+          {
+            "version": "20261028230950",
+            "name": "wordpairs_007_matches"
+          },
+          {
+            "version": "20261028230952",
+            "name": "wordpairs_008_content"
+          },
+          {
+            "version": "20261028230954",
+            "name": "wordpairs_009_reactions"
+          },
+          {
+            "version": "20261028230956",
+            "name": "wordpairs_010_access_control"
+          },
+          {
+            "version": "20261028230959",
+            "name": "wordpairs_011_content_review_states"
+          },
+          {
+            "version": "20261028231028",
+            "name": "wordpairs_hosted_scheduler"
+          },
+          {
+            "version": "20261028231046",
+            "name": "wordpairs_private_realtime"
+          }
+        ]
+      }
+    ],
+    "catalogs": [
+      {
+        "logical": "staging",
+        "kind": "securityCatalog",
+        "isError": false,
+        "data": {
+          "roles": [
+            {
+              "role": "anon",
+              "canLogin": false,
+              "bypassRls": false,
+              "superuser": false
+            },
+            {
+              "role": "authenticated",
+              "canLogin": false,
+              "bypassRls": false,
+              "superuser": false
+            },
+            {
+              "role": "service_role",
+              "canLogin": false,
+              "bypassRls": true,
+              "superuser": false
+            },
+            {
+              "role": "wordpairs_app",
+              "canLogin": true,
+              "bypassRls": false,
+              "superuser": false
+            }
+          ],
+          "policies": [
+            {
+              "name": "wordpairs_own_notifications",
+              "roles": [
+                "authenticated"
+              ],
+              "table": "messages",
+              "schema": "realtime",
+              "command": "SELECT",
+              "qualMd5": "201ea031c427029e7493be46e73157e1",
+              "checkMd5": "d41d8cd98f00b204e9800998ecf8427e",
+              "mentionsSubject": true,
+              "mentionsOwnTopic": true,
+              "mentionsBroadcast": true
+            },
+            {
+              "name": "server_aggregate_access",
+              "roles": [
+                "service_role"
+              ],
+              "table": "aggregates",
+              "schema": "wordpairs",
+              "command": "ALL",
+              "qualMd5": "b326b5062b2f0e69046810717534cb09",
+              "checkMd5": "b326b5062b2f0e69046810717534cb09",
+              "mentionsSubject": false,
+              "mentionsOwnTopic": false,
+              "mentionsBroadcast": false
+            }
+          ],
+          "relations": [
+            {
+              "table": "messages",
+              "schema": "realtime",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "accepted_answers",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "access_audit",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "access_commands",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "access_state",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "aggregates",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "audit_events",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "catalog_exclusions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "catalog_revision",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "categories",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "code_attempts",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "deadline_jobs",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "guest_credentials",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "idempotency_records",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "login_challenges",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "match_players",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "matches",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "moderation_cases",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "nominations",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "outbox_events",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "profile_match_awards",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "profile_roles",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "profiles",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "public_revisions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "quick_assignments",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "room_invitations",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "room_members",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "rooms",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "rounds",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "sessions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "submissions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "word_pairs",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "scheduler",
+              "schema": "wordpairs_hosting",
+              "rlsForced": false,
+              "rlsEnabled": true
+            }
+          ],
+          "tickFunction": {
+            "exists": true,
+            "definitionMd5": "72d8eff212902987e147ee3a6490e475",
+            "securityDefiner": false,
+            "searchPathIsPgCatalog": true
+          },
+          "tablePrivileges": [
+            {
+              "role": "anon",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "anon",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "authenticated",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "service_role",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "service_role",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            }
+          ],
+          "schemaPrivileges": [
+            {
+              "role": "anon",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "anon",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "anon",
+              "usage": false,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "anon",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "anon",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            },
+            {
+              "role": "authenticated",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "authenticated",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "authenticated",
+              "usage": false,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "authenticated",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "authenticated",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "service_role",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            }
+          ],
+          "tickExecutePrivileges": [
+            {
+              "role": "anon",
+              "execute": false
+            },
+            {
+              "role": "authenticated",
+              "execute": false
+            },
+            {
+              "role": "service_role",
+              "execute": false
+            },
+            {
+              "role": "wordpairs_app",
+              "execute": false
+            }
+          ],
+          "sqlSessionSchemaSettingPresent": false
+        }
+      },
+      {
+        "logical": "staging",
+        "kind": "workerCatalog",
+        "isError": false,
+        "data": {
+          "cronJobs": [
+            {
+              "id": 1,
+              "name": "wordpairs-hosted-tick",
+              "active": true,
+              "schedule": "1 second",
+              "expectedCommand": true
+            }
+          ],
+          "schedulerControls": [
+            {
+              "enabled": true,
+              "failures": 0,
+              "singleton": true,
+              "lastStatus": 200,
+              "endpointRecognized": true,
+              "endpointMatchesEnvironment": true
+            }
+          ],
+          "schedulerSecretPresent": true
+        },
+        "query": "begin transaction read only;\nselect jsonb_build_object(\n'cronJobs',(select jsonb_agg(jsonb_build_object('id',jobid,'name',jobname,'active',active,'schedule',schedule,'expectedCommand',command='select wordpairs_hosting.tick();')) from cron.job where jobname='wordpairs-hosted-tick'),\n'schedulerControls',(select jsonb_agg(jsonb_build_object('singleton',singleton,'enabled',enabled,'endpointRecognized',endpoint in('https://wordpairs.vercel.app/api/internal/deadlines','https://wordpairs-j9jf.vercel.app/api/internal/deadlines'),'endpointMatchesEnvironment',endpoint='https://wordpairs.vercel.app/api/internal/deadlines','lastStatus',last_status,'failures',failures)) from wordpairs_hosting.scheduler),\n'schedulerSecretPresent',exists(select 1 from vault.secrets where name='wordpairs_scheduler_secret')\n) as safe_worker_metadata;\ncommit;"
+      },
+      {
+        "logical": "production",
+        "kind": "securityCatalog",
+        "isError": false,
+        "data": {
+          "roles": [
+            {
+              "role": "anon",
+              "canLogin": false,
+              "bypassRls": false,
+              "superuser": false
+            },
+            {
+              "role": "authenticated",
+              "canLogin": false,
+              "bypassRls": false,
+              "superuser": false
+            },
+            {
+              "role": "service_role",
+              "canLogin": false,
+              "bypassRls": true,
+              "superuser": false
+            },
+            {
+              "role": "wordpairs_app",
+              "canLogin": true,
+              "bypassRls": false,
+              "superuser": false
+            }
+          ],
+          "policies": [
+            {
+              "name": "wordpairs_own_notifications",
+              "roles": [
+                "authenticated"
+              ],
+              "table": "messages",
+              "schema": "realtime",
+              "command": "SELECT",
+              "qualMd5": "201ea031c427029e7493be46e73157e1",
+              "checkMd5": "d41d8cd98f00b204e9800998ecf8427e",
+              "mentionsSubject": true,
+              "mentionsOwnTopic": true,
+              "mentionsBroadcast": true
+            },
+            {
+              "name": "server_aggregate_access",
+              "roles": [
+                "service_role"
+              ],
+              "table": "aggregates",
+              "schema": "wordpairs",
+              "command": "ALL",
+              "qualMd5": "b326b5062b2f0e69046810717534cb09",
+              "checkMd5": "b326b5062b2f0e69046810717534cb09",
+              "mentionsSubject": false,
+              "mentionsOwnTopic": false,
+              "mentionsBroadcast": false
+            }
+          ],
+          "relations": [
+            {
+              "table": "messages",
+              "schema": "realtime",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "accepted_answers",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "access_audit",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "access_commands",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "access_state",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "aggregates",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "audit_events",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "catalog_exclusions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "catalog_revision",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "categories",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "code_attempts",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "deadline_jobs",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "guest_credentials",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "idempotency_records",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "login_challenges",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "match_players",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "matches",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "moderation_cases",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "nominations",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "outbox_events",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "profile_match_awards",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "profile_roles",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "profiles",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "public_revisions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "quick_assignments",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "room_invitations",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "room_members",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "rooms",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "rounds",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "sessions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "submissions",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "word_pairs",
+              "schema": "wordpairs",
+              "rlsForced": false,
+              "rlsEnabled": true
+            },
+            {
+              "table": "scheduler",
+              "schema": "wordpairs_hosting",
+              "rlsForced": false,
+              "rlsEnabled": true
+            }
+          ],
+          "tickFunction": {
+            "exists": true,
+            "definitionMd5": "72d8eff212902987e147ee3a6490e475",
+            "securityDefiner": false,
+            "searchPathIsPgCatalog": true
+          },
+          "tablePrivileges": [
+            {
+              "role": "anon",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "anon",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "anon",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "authenticated",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "authenticated",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "service_role",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "service_role",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "service_role",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "messages",
+              "delete": false,
+              "insert": true,
+              "schema": "realtime",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "accepted_answers",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "access_audit",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "access_commands",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "access_state",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "aggregates",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": true
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "audit_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "catalog_exclusions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "catalog_revision",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "categories",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "code_attempts",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "deadline_jobs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "guest_credentials",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "idempotency_records",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "login_challenges",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "match_players",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "matches",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "moderation_cases",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "nominations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "outbox_events",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "profile_match_awards",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "profile_roles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "profiles",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": true,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "public_revisions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "quick_assignments",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "room_invitations",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "room_members",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "rooms",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "rounds",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "sessions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "submissions",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "word_pairs",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs",
+              "select": false,
+              "update": false
+            },
+            {
+              "role": "wordpairs_app",
+              "table": "scheduler",
+              "delete": false,
+              "insert": false,
+              "schema": "wordpairs_hosting",
+              "select": false,
+              "update": false
+            }
+          ],
+          "schemaPrivileges": [
+            {
+              "role": "anon",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "anon",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "anon",
+              "usage": false,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "anon",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "anon",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            },
+            {
+              "role": "authenticated",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "authenticated",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "authenticated",
+              "usage": false,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "authenticated",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "authenticated",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "service_role",
+              "usage": true,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "service_role",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "net"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "realtime"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "vault"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": true,
+              "create": false,
+              "schema": "wordpairs"
+            },
+            {
+              "role": "wordpairs_app",
+              "usage": false,
+              "create": false,
+              "schema": "wordpairs_hosting"
+            }
+          ],
+          "tickExecutePrivileges": [
+            {
+              "role": "anon",
+              "execute": false
+            },
+            {
+              "role": "authenticated",
+              "execute": false
+            },
+            {
+              "role": "service_role",
+              "execute": false
+            },
+            {
+              "role": "wordpairs_app",
+              "execute": false
+            }
+          ],
+          "sqlSessionSchemaSettingPresent": false
+        }
+      },
+      {
+        "logical": "production",
+        "kind": "workerCatalog",
+        "isError": false,
+        "data": {
+          "cronJobs": [
+            {
+              "id": 1,
+              "name": "wordpairs-hosted-tick",
+              "active": false,
+              "schedule": "1 second",
+              "expectedCommand": true
+            }
+          ],
+          "schedulerControls": [
+            {
+              "enabled": false,
+              "failures": 0,
+              "singleton": true,
+              "lastStatus": null,
+              "endpointRecognized": true,
+              "endpointMatchesEnvironment": true
+            }
+          ],
+          "schedulerSecretPresent": true
+        },
+        "query": "begin transaction read only;\nselect jsonb_build_object(\n'cronJobs',(select jsonb_agg(jsonb_build_object('id',jobid,'name',jobname,'active',active,'schedule',schedule,'expectedCommand',command='select wordpairs_hosting.tick();')) from cron.job where jobname='wordpairs-hosted-tick'),\n'schedulerControls',(select jsonb_agg(jsonb_build_object('singleton',singleton,'enabled',enabled,'endpointRecognized',endpoint in('https://wordpairs.vercel.app/api/internal/deadlines','https://wordpairs-j9jf.vercel.app/api/internal/deadlines'),'endpointMatchesEnvironment',endpoint='https://wordpairs-j9jf.vercel.app/api/internal/deadlines','lastStatus',last_status,'failures',failures)) from wordpairs_hosting.scheduler),\n'schedulerSecretPresent',exists(select 1 from vault.secrets where name='wordpairs_scheduler_secret')\n) as safe_worker_metadata;\ncommit;"
+      }
+    ],
+    "securityMetadataQuery": "begin transaction read only;\nselect jsonb_build_object(\n 'relations',(select jsonb_agg(jsonb_build_object('schema',n.nspname,'table',c.relname,'rlsEnabled',c.relrowsecurity,'rlsForced',c.relforcerowsecurity) order by n.nspname,c.relname) from pg_class c join pg_namespace n on n.oid=c.relnamespace where c.relkind in('r','p') and (n.nspname in('wordpairs','wordpairs_hosting') or (n.nspname='realtime' and c.relname='messages'))),\n 'policies',(select jsonb_agg(jsonb_build_object('schema',schemaname,'table',tablename,'name',policyname,'command',cmd,'roles',roles,'qualMd5',md5(coalesce(qual,'')),'checkMd5',md5(coalesce(with_check,'')),'mentionsOwnTopic',position('wordpairs-profile:' in coalesce(qual,''))>0,'mentionsSubject',position('request.jwt.claims' in coalesce(qual,''))>0 and position('sub' in coalesce(qual,''))>0,'mentionsBroadcast',position('broadcast' in coalesce(qual,''))>0) order by schemaname,tablename,policyname) from pg_policies where schemaname in('wordpairs','wordpairs_hosting') or(schemaname='realtime' and tablename='messages')),\n 'schemaPrivileges',(select jsonb_agg(jsonb_build_object('role',r.rolname,'schema',n.nspname,'usage',has_schema_privilege(r.oid,n.oid,'USAGE'),'create',has_schema_privilege(r.oid,n.oid,'CREATE')) order by r.rolname,n.nspname) from pg_roles r cross join pg_namespace n where r.rolname in('anon','authenticated','service_role','wordpairs_app') and n.nspname in('wordpairs','wordpairs_hosting','realtime','vault','net')),\n 'tablePrivileges',(select jsonb_agg(jsonb_build_object('role',r.rolname,'schema',n.nspname,'table',c.relname,'select',has_table_privilege(r.oid,c.oid,'SELECT'),'insert',has_table_privilege(r.oid,c.oid,'INSERT'),'update',has_table_privilege(r.oid,c.oid,'UPDATE'),'delete',has_table_privilege(r.oid,c.oid,'DELETE')) order by r.rolname,n.nspname,c.relname) from pg_roles r cross join pg_class c join pg_namespace n on n.oid=c.relnamespace where r.rolname in('anon','authenticated','service_role','wordpairs_app') and c.relkind in('r','p') and(n.nspname in('wordpairs','wordpairs_hosting') or(n.nspname='realtime' and c.relname='messages'))),\n 'roles',(select jsonb_agg(jsonb_build_object('role',rolname,'superuser',rolsuper,'bypassRls',rolbypassrls,'canLogin',rolcanlogin) order by rolname) from pg_roles where rolname in('anon','authenticated','service_role','wordpairs_app')),\n 'tickFunction',(select jsonb_build_object('exists',true,'securityDefiner',p.prosecdef,'definitionMd5',md5(pg_get_functiondef(p.oid)),'searchPathIsPgCatalog',p.proconfig @> array['search_path=pg_catalog']) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='wordpairs_hosting' and p.proname='tick' and p.pronargs=0),\n 'tickExecutePrivileges',(select jsonb_agg(jsonb_build_object('role',r.rolname,'execute',has_function_privilege(r.oid,p.oid,'EXECUTE')) order by r.rolname) from pg_roles r cross join pg_proc p join pg_namespace n on n.oid=p.pronamespace where r.rolname in('anon','authenticated','service_role','wordpairs_app') and n.nspname='wordpairs_hosting' and p.proname='tick' and p.pronargs=0),\n 'sqlSessionSchemaSettingPresent',current_setting('pgrst.db_schemas',true) is not null\n) as safe_security_metadata;\ncommit;",
+    "advisors": [
+      {
+        "logical": "staging",
+        "type": "security",
+        "isError": false,
+        "groups": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "count": 31,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "accepted_answers",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_audit",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_commands",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_state",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "audit_events",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "catalog_exclusions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "catalog_revision",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "categories",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "code_attempts",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "deadline_jobs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "guest_credentials",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "idempotency_records",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "login_challenges",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "match_players",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "matches",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "moderation_cases",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "nominations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "outbox_events",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profile_match_awards",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profile_roles",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profiles",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "public_revisions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "quick_assignments",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_invitations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_members",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rooms",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rounds",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "sessions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "submissions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "word_pairs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs_hosting",
+                "name": "scheduler",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+          },
+          {
+            "name": "function_search_path_mutable",
+            "level": "WARN",
+            "count": 7,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "check_membership_capacity",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "freeze_live_alternatives",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "assign_retention_room",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "prune_retained_data",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "reject_content_edit",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "lock_round_content",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "freeze_category",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+          }
+        ]
+      },
+      {
+        "logical": "staging",
+        "type": "performance",
+        "isError": false,
+        "groups": [
+          {
+            "name": "unindexed_foreign_keys",
+            "level": "INFO",
+            "count": 20,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "access_audit",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_audit",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "aggregates",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "deadline_jobs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "match_players",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "matches",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "matches",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "moderation_cases",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "nominations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profile_match_awards",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "quick_assignments",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_invitations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_invitations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_members",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_members",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rooms",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rounds",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "sessions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "submissions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "word_pairs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+          },
+          {
+            "name": "auth_rls_initplan",
+            "level": "WARN",
+            "count": 1,
+            "findings": [
+              {
+                "schema": "realtime",
+                "name": "messages",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+          }
+        ]
+      },
+      {
+        "logical": "production",
+        "type": "security",
+        "isError": false,
+        "groups": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "count": 31,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "accepted_answers",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_audit",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_commands",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_state",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "audit_events",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "catalog_exclusions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "catalog_revision",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "categories",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "code_attempts",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "deadline_jobs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "guest_credentials",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "idempotency_records",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "login_challenges",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "match_players",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "matches",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "moderation_cases",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "nominations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "outbox_events",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profile_match_awards",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profile_roles",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profiles",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "public_revisions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "quick_assignments",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_invitations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_members",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rooms",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rounds",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "sessions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "submissions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "word_pairs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs_hosting",
+                "name": "scheduler",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+          },
+          {
+            "name": "function_search_path_mutable",
+            "level": "WARN",
+            "count": 7,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "assign_retention_room",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "prune_retained_data",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "check_membership_capacity",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "reject_content_edit",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "freeze_live_alternatives",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "lock_round_content",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "freeze_category",
+                "type": "function",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+          }
+        ]
+      },
+      {
+        "logical": "production",
+        "type": "performance",
+        "isError": false,
+        "groups": [
+          {
+            "name": "unindexed_foreign_keys",
+            "level": "INFO",
+            "count": 20,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "access_audit",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "access_audit",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "aggregates",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "deadline_jobs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "match_players",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "matches",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "matches",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "moderation_cases",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "nominations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profile_match_awards",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "quick_assignments",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_invitations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_invitations",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_members",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "room_members",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rooms",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rounds",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "sessions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "submissions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "word_pairs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema",
+                  "fkey_name",
+                  "fkey_columns"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+          },
+          {
+            "name": "auth_rls_initplan",
+            "level": "WARN",
+            "count": 1,
+            "findings": [
+              {
+                "schema": "realtime",
+                "name": "messages",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+          },
+          {
+            "name": "unused_index",
+            "level": "INFO",
+            "count": 5,
+            "findings": [
+              {
+                "schema": "wordpairs",
+                "name": "deadline_jobs",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "profiles",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "rooms",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "sessions",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              },
+              {
+                "schema": "wordpairs",
+                "name": "code_attempts",
+                "type": "table",
+                "metadataFields": [
+                  "name",
+                  "type",
+                  "schema"
+                ]
+              }
+            ],
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+          }
+        ]
+      }
+    ],
+    "supportedTools": [
+      {
+        "name": "mcp__codex_apps__supabase_apply_migration",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_confirm_cost",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_create_branch",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_create_project",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_delete_branch",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_delete_feedback",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_deploy_edge_function",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_execute_sql",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_generate_typescript_types",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_advisors",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_cost",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_edge_function",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_organization",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_project",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_project_url",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_get_publishable_keys",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_branches",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_edge_functions",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_extensions",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_migrations",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_organizations",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_projects",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_list_tables",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_merge_branch",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_pause_project",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_query_logs",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_rebase_branch",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_reset_branch",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_restore_project",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_search_docs",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      },
+      {
+        "name": "mcp__codex_apps__supabase_submit_feedback",
+        "description": "Manage and query databases\n\nMCP server instructions: Here are guidelines for using Supabase tools effectively:\n\n- Before making schema changes, inspect the existing tables so you understand the curren"
+      }
+    ],
+    "documentation": [
+      {
+        "title": "Gets project's PostgREST config",
+        "href": "https://supabase.com/docs/reference/api/v1-get-postgrest-service-config",
+        "observation": "Supported Management API documentation describes GET /v1/projects/{ref}/postgrest. No enabled connected tool exposes this read in the current inventory."
+      },
+      {
+        "title": "Using custom schemas",
+        "href": "https://supabase.com/docs/guides/api/using-custom-schemas",
+        "observation": "Data API exposed schemas are configured separately from schema/table grants and RLS."
+      },
+      {
+        "title": "Supabase changelog",
+        "href": "https://supabase.com/changelog",
+        "observation": "Markdown changelog request returned unsupported content type; HTML index was read. Current project metadata reports17.11.0.003. No upgrade or compatibility certification was performed."
+      }
+    ],
+    "baselineQualification": "Fresh migration-name/catalog/advisor reads do not repeat the accepted13 normalized-body comparison. Prior remote-body-preflight-20261030T183437.json plus its qualification remain authoritative for that historical body comparison.",
+    "actualDataApiExposedSchemas": {
+      "verified": false,
+      "staging": null,
+      "production": null,
+      "reason": "Current connector lacks a PostgREST-config read surface. The documented management endpoint was not invoked through an unapproved generic/authenticated REST route. No Dashboard/browser/CDP bypass or key retrieval was attempted."
+    }
+  },
+  "summaries": [
+    {
+      "logical": "staging",
+      "projectRef": "jshjkaigwbxsbnnogfxs",
+      "projectStatus": "ACTIVE_HEALTHY",
+      "databaseVersion": "17.11.0.003",
+      "migrationNameCount": 13,
+      "selectedRelationCount": 33,
+      "selectedRlsEnabledCount": 33,
+      "privateRealtimePolicy": {
+        "name": "wordpairs_own_notifications",
+        "roles": [
+          "authenticated"
+        ],
+        "table": "messages",
+        "schema": "realtime",
+        "command": "SELECT",
+        "qualMd5": "201ea031c427029e7493be46e73157e1",
+        "checkMd5": "d41d8cd98f00b204e9800998ecf8427e",
+        "mentionsSubject": true,
+        "mentionsOwnTopic": true,
+        "mentionsBroadcast": true
+      },
+      "browserApplicationPrivilegeRows": 64,
+      "browserApplicationCrudAllowedRows": 0,
+      "tickFunction": {
+        "exists": true,
+        "definitionMd5": "72d8eff212902987e147ee3a6490e475",
+        "securityDefiner": false,
+        "searchPathIsPgCatalog": true
+      },
+      "worker": {
+        "cronJobs": [
+          {
+            "id": 1,
+            "name": "wordpairs-hosted-tick",
+            "active": true,
+            "schedule": "1 second",
+            "expectedCommand": true
+          }
+        ],
+        "schedulerControls": [
+          {
+            "enabled": true,
+            "failures": 0,
+            "singleton": true,
+            "lastStatus": 200,
+            "endpointRecognized": true,
+            "endpointMatchesEnvironment": true
+          }
+        ],
+        "schedulerSecretPresent": true
+      },
+      "sqlSessionSchemaSettingPresent": false,
+      "actualDataApiExposureVerified": false
+    },
+    {
+      "logical": "production",
+      "projectRef": "krdcuuhcynmdfcjlpbsf",
+      "projectStatus": "ACTIVE_HEALTHY",
+      "databaseVersion": "17.11.0.003",
+      "migrationNameCount": 13,
+      "selectedRelationCount": 33,
+      "selectedRlsEnabledCount": 33,
+      "privateRealtimePolicy": {
+        "name": "wordpairs_own_notifications",
+        "roles": [
+          "authenticated"
+        ],
+        "table": "messages",
+        "schema": "realtime",
+        "command": "SELECT",
+        "qualMd5": "201ea031c427029e7493be46e73157e1",
+        "checkMd5": "d41d8cd98f00b204e9800998ecf8427e",
+        "mentionsSubject": true,
+        "mentionsOwnTopic": true,
+        "mentionsBroadcast": true
+      },
+      "browserApplicationPrivilegeRows": 64,
+      "browserApplicationCrudAllowedRows": 0,
+      "tickFunction": {
+        "exists": true,
+        "definitionMd5": "72d8eff212902987e147ee3a6490e475",
+        "securityDefiner": false,
+        "searchPathIsPgCatalog": true
+      },
+      "worker": {
+        "cronJobs": [
+          {
+            "id": 1,
+            "name": "wordpairs-hosted-tick",
+            "active": false,
+            "schedule": "1 second",
+            "expectedCommand": true
+          }
+        ],
+        "schedulerControls": [
+          {
+            "enabled": false,
+            "failures": 0,
+            "singleton": true,
+            "lastStatus": null,
+            "endpointRecognized": true,
+            "endpointMatchesEnvironment": true
+          }
+        ],
+        "schedulerSecretPresent": true
+      },
+      "sqlSessionSchemaSettingPresent": false,
+      "actualDataApiExposureVerified": false
+    }
+  ],
+  "advisorBaseline": {
+    "pin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-preflight.json",
+      "sha256": "AA970FF342BB1F0F680310B1BC5B4C57D170C012CFBBD68E022C76009EB7F063",
+      "bytes": 86082
+    },
+    "recordedAtLocal": "2026-10-30T15:27:32",
+    "comparison": [
+      {
+        "logical": "staging",
+        "type": "security",
+        "groupSetEqual": true,
+        "groups": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "currentCount": 31,
+            "priorCount": 31,
+            "classCountAndSelectedEntityMultisetEqual": true
+          },
+          {
+            "name": "function_search_path_mutable",
+            "level": "WARN",
+            "currentCount": 7,
+            "priorCount": 7,
+            "classCountAndSelectedEntityMultisetEqual": true
+          }
+        ]
+      },
+      {
+        "logical": "staging",
+        "type": "performance",
+        "groupSetEqual": true,
+        "groups": [
+          {
+            "name": "unindexed_foreign_keys",
+            "level": "INFO",
+            "currentCount": 20,
+            "priorCount": 20,
+            "classCountAndSelectedEntityMultisetEqual": true
+          },
+          {
+            "name": "auth_rls_initplan",
+            "level": "WARN",
+            "currentCount": 1,
+            "priorCount": 1,
+            "classCountAndSelectedEntityMultisetEqual": true
+          }
+        ]
+      },
+      {
+        "logical": "production",
+        "type": "security",
+        "groupSetEqual": true,
+        "groups": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "currentCount": 31,
+            "priorCount": 31,
+            "classCountAndSelectedEntityMultisetEqual": true
+          },
+          {
+            "name": "function_search_path_mutable",
+            "level": "WARN",
+            "currentCount": 7,
+            "priorCount": 7,
+            "classCountAndSelectedEntityMultisetEqual": true
+          }
+        ]
+      },
+      {
+        "logical": "production",
+        "type": "performance",
+        "groupSetEqual": true,
+        "groups": [
+          {
+            "name": "unindexed_foreign_keys",
+            "level": "INFO",
+            "currentCount": 20,
+            "priorCount": 20,
+            "classCountAndSelectedEntityMultisetEqual": true
+          },
+          {
+            "name": "auth_rls_initplan",
+            "level": "WARN",
+            "currentCount": 1,
+            "priorCount": 1,
+            "classCountAndSelectedEntityMultisetEqual": true
+          },
+          {
+            "name": "unused_index",
+            "level": "INFO",
+            "currentCount": 5,
+            "priorCount": 5,
+            "classCountAndSelectedEntityMultisetEqual": true
+          }
+        ]
+      }
+    ],
+    "qualification": "Class/count/schema-type-name multiset comparison only. Individual FK constraint/index identity and exact definitions were not retained in this new projection."
+  },
+  "currentSourcePins": [
+    {
+      "path": "\u003Crepo\u003E/src/infrastructure/hosting/001_scheduler.sql",
+      "sha256": "BB6B22FEC2469E3D662EAC01E39826367B6432FB845FF1562014812CA1F08585",
+      "bytes": 4904
+    },
+    {
+      "path": "\u003Crepo\u003E/src/infrastructure/hosting/002_realtime_policy.sql",
+      "sha256": "0D64CEFC30FE90E133A337FD2BB0AC20E6BF332C05C1E3CBE1601513CFB71CAB",
+      "bytes": 719
+    }
+  ],
+  "historicalBodyPreflight": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437.json",
+      "sha256": "D1D58ABE31425885D51F4E1C9684294D8A30ED214664DF936C61B4B47958FC04",
+      "bytes": 17759
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/remote-body-preflight-20261030T183437.qualification.json",
+      "sha256": "1843A9E4982DA103DA384ED32F53597C08EA8D291DA073FC1CCFECD0B1D18110",
+      "bytes": 979
+    }
+  ],
+  "guardedProcedure": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/guarded-rollout-procedure.md",
+    "sha256": "0E780BB4D129313BA9F4EC69ABE3CBE0611A53B86E8AEDDB9EC4BC6CF3A2CBD2",
+    "bytes": 13951
+  },
+  "findings": [
+    {
+      "id": "PROJECT-IDENTITIES",
+      "status": "PASS",
+      "outcome": "Exact two requested references/name/organization metadata verified, both ACTIVE_HEALTHY,regionus-east-1,PostgreSQL17.11.0.003."
+    },
+    {
+      "id": "MIGRATION-NAMES",
+      "status": "PASS",
+      "outcome": "Both return the13 canonical baseline names in order;012and013 are absent. Unusual existing staging007 version preserved verbatim. This is name/order evidence only."
+    },
+    {
+      "id": "SELECTED-RLS",
+      "status": "PASS",
+      "outcome": "All33 selected relations haveRLSenabled:31wordpairs,onewordpairs_hosting.scheduler,onerealtime.messages. No claim about every table in the managed project."
+    },
+    {
+      "id": "PRIVATE-REALTIME-POLICY",
+      "status": "PASS",
+      "outcome": "Selected policy exists forSELECT/authenticated; predicate hashes and own-topic/subject/broadcast token-presence retained. Semantic/runtime authorization is not recertified."
+    },
+    {
+      "id": "SELECTED-GRANTS",
+      "status": "PASS",
+      "outcome": "Selected anon/authenticated application schemas/tables deny applicationCRUD; realtime.messages grants and service-role bypass flags are retained separately fromRLS. ActualAPIexposure remains unknown."
+    },
+    {
+      "id": "WORKER-CONTROLS",
+      "status": "PASS",
+      "outcome": "ExistingcronID1 at1second retained both; stagingactive/controlenabled,lastStatus200/failures0; productioninactive/controldisabled,lastStatusnull/failures0. Exact-environment endpoint checks and Vault secret-presence true both, without values."
+    },
+    {
+      "id": "RETAINED-ADVISORS",
+      "status": "WARN",
+      "outcome": "Both:31RLSwithoutpolicyINFO,sevenmutable-search-pathWARN,20unindexedFKINFO,oneRealtimeinitplanWARN; production additionallyfiveunused-indexINFO. Known class/count/selected-entity projection compared with152732 baseline; no advisory remediation or runtime safety conclusion."
+    },
+    {
+      "id": "DATA-API-EXPOSURE",
+      "status": "UNKNOWN",
+      "outcome": "Actual Data API exposed-schema allowlists for both projects remain UNKNOWN. SQL current_setting null, schema/table grants and RLS do not reveal the PostgREST process configuration. Documentation supports GET /v1/projects/{ref}/postgrest, but the current connector inventory has no config-read tool. No Dashboard/browser/CDP, authenticated generic REST or key-retrieval bypass was used. In particular, this check cannot prove vault/net are unexposed."
+    },
+    {
+      "id": "HOSTED-RUNTIME",
+      "status": "UNKNOWN",
+      "outcome": "Actual private Realtime authorization/delivery, worker due-work/autonomous progression, purpose-secret validity and current application compatibility were not exercised. Policy hashes/token-presence, grants, role flags, cron/control flags, existing lastStatus200 and Vault presence are metadata, not runtime acceptance or secret-value validation. Neither workers nor any provider controls were changed."
+    },
+    {
+      "id": "SOURCE-VERCEL-ACCEPTANCE",
+      "status": "UNKNOWN",
+      "outcome": "Accepted source/HV/hosted deployment and physical owner OAuth/admin-PWA checks remain separate. Current Vercel global exit0 guards/build/Git-source and effective public access remain qualified in vercel-readiness-20261030T195558.json; no new hosted-current or completed-game claim is made."
+    },
+    {
+      "id": "FRESH-FULL-DEFINITIONS",
+      "status": "UNKNOWN",
+      "outcome": "This task freshly read13 migration names and selected catalog metadata, not remote migration bodies/full definitions. The accepted183437 body preflight and explicit normalization qualification remain historical evidence; forward012/013 are still absent. Advisor comparison covers class/count and selected schema/type/name identity multisets only, not full constraint/index identity, definition semantics or performance impact."
+    }
+  ],
+  "counts": {
+    "pass": 6,
+    "fail": 0,
+    "warn": 1,
+    "unknown": 4
+  },
+  "unknowns": [
+    "Actual Data API exposed-schema allowlists for both projects remain UNKNOWN. SQL current_setting null, schema/table grants and RLS do not reveal the PostgREST process configuration. Documentation supports GET /v1/projects/{ref}/postgrest, but the current connector inventory has no config-read tool. No Dashboard/browser/CDP, authenticated generic REST or key-retrieval bypass was used. In particular, this check cannot prove vault/net are unexposed.",
+    "Actual private Realtime authorization/delivery, worker due-work/autonomous progression, purpose-secret validity and current application compatibility were not exercised. Policy hashes/token-presence, grants, role flags, cron/control flags, existing lastStatus200 and Vault presence are metadata, not runtime acceptance or secret-value validation. Neither workers nor any provider controls were changed.",
+    "Accepted source/HV/hosted deployment and physical owner OAuth/admin-PWA checks remain separate. Current Vercel global exit0 guards/build/Git-source and effective public access remain qualified in vercel-readiness-20261030T195558.json; no new hosted-current or completed-game claim is made.",
+    "This task freshly read13 migration names and selected catalog metadata, not remote migration bodies/full definitions. The accepted183437 body preflight and explicit normalization qualification remain historical evidence; forward012/013 are still absent. Advisor comparison covers class/count and selected schema/type/name identity multisets only, not full constraint/index identity, definition semantics or performance impact."
+  ],
+  "noProviderSchemaResourceEnvironmentGuardOrWorkerMutation": true,
+  "noApplicationRowsOrSecretValuesSelected": true,
+  "noBuildTestModelInvocation": true,
+  "noBrowserCdpOrGenericAuthenticatedRestBypass": true,
+  "noNewKeysOrAccounts": true,
+  "readinessVerdict": "INCOMPLETE_METADATA_NOT_ROLLOUT_ACCEPTANCE",
+  "overallVerdict": "NOT_HV",
+  "accuracy": 99,
+  "completeness": 92,
+  "ratingQualification": "Exact safe selected metadata and preserved current advisories; critical exposure/config/runtime/acceptance unknowns prevent full readiness. No claim of independent hostile approval."
+}

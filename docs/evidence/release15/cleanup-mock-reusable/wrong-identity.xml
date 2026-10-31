@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="10" failures="3" errors="0" time="0.018114558">
+    <testsuite name="tests/application/live-scale-cleanup.test.ts" timestamp="2026-10-30T20:15:55.446Z" hostname="[PRIVATE HOST]" tests="10" failures="3" errors="0" skipped="0" time="0.018114558">
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; confirms absence after a successful leave instead of trusting the write response" time="0.010198046">
+            <failure message="expected [ { expectedVersion: 1, …(1) } ] to deeply equal [ { expectedVersion: 1, …(1) } ]" type="AssertionError">
+AssertionError: expected [ { expectedVersion: 1, …(1) } ] to deeply equal [ { expectedVersion: 1, …(1) } ]
+
+- Expected
++ Received
+
+  [
+    {
+-     &quot;commandId&quot;: &quot;cleanup-1&quot;,
++     &quot;commandId&quot;: &quot;cleanup-2&quot;,
+      &quot;expectedVersion&quot;: 1,
+    },
+  ]
+
+ ❯ tests/application/live-scale-cleanup.test.ts:31:28
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; reports a membership still present after every successful leave response" time="0.001062451">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; reports repeated server failures and preserves the exact uncertain command" time="0.001264985">
+            <failure message="expected false to be true // Object.is equality" type="AssertionError">
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/application/live-scale-cleanup.test.ts:44:108
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; retries transport uncertainty with the same command before verified absence" time="0.001393567">
+            <failure message="expected [ { expectedVersion: 1, …(1) }, …(1) ] to deeply equal [ { expectedVersion: 1, …(1) }, …(1) ]" type="AssertionError">
+AssertionError: expected [ { expectedVersion: 1, …(1) }, …(1) ] to deeply equal [ { expectedVersion: 1, …(1) }, …(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     &quot;commandId&quot;: &quot;cleanup-1&quot;,
++     &quot;commandId&quot;: &quot;cleanup-2&quot;,
+      &quot;expectedVersion&quot;: 1,
+    },
+    {
+-     &quot;commandId&quot;: &quot;cleanup-1&quot;,
++     &quot;commandId&quot;: &quot;cleanup-3&quot;,
+      &quot;expectedVersion&quot;: 1,
+    },
+  ]
+
+ ❯ tests/application/live-scale-cleanup.test.ts:49:28
+            </failure>
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; bounds conflicts and does not silently accept exhausted retries" time="0.000430429">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; does not treat lost authentication or malformed reads as removed membership" time="0.00052416">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; accepts an authenticated empty membership or missing owned room without a write" time="0.000345517">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; preserves a completed closed room and requires the expected actor identity" time="0.000289776">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; cleans only supplied actors in reverse order and reports exact unresolved indices" time="0.000376577">
+        </testcase>
+        <testcase classname="tests/application/live-scale-cleanup.test.ts" name="TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup &gt; also verifies observer departure if an owned actor&apos;s membership changed" time="0.000372227">
+        </testcase>
+    </testsuite>
+</testsuites>

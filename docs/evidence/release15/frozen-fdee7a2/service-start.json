@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-10-30T18:20:59",
+  "revision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "runId": "0f337bfa-39c7-4650-b35d-6ee8d698be0f",
+  "unit": "wordpairs-release15-fdee7a2-chain",
+  "executable": "systemd-run",
+  "arguments": [
+    "--user",
+    "--collect",
+    "--unit=wordpairs-release15-fdee7a2-chain",
+    "--property",
+    "WorkingDirectory=\u003Crepo\u003E",
+    "--property",
+    "StandardOutput=append:\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/service.stdout.log",
+    "--property",
+    "StandardError=append:\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2/service.stderr.log",
+    "--",
+    "/usr/bin/pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunNextWordpairsEvidenceChain.ps1",
+    "-Directory",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-fdee7a2"
+  ],
+  "exitCode": 0,
+  "output": [
+    "Running as unit: wordpairs-release15-fdee7a2-chain.service; invocation ID: 02af7a06baf549b593197a7d51b01336"
+  ],
+  "qualification": "Launch acknowledgement only. Native lane receipts and chain completion establish results."
+}

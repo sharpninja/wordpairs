@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-10-29T12:39:52",
+  "testSha256": "AAEFC16B934FEBF7F1CB8501C4757541BB55E171C12198C29D9F6F64B641A5D0",
+  "runs": [
+    {
+      "fixture": "correct",
+      "exitCode": 0,
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/game-social-mock/correct.xml",
+      "reportSha256": "51F30EC910FBFCA8AB5495B8583C55B666CB1C3B8557C323B3A01EAD35224554"
+    },
+    {
+      "fixture": "wrong-key",
+      "exitCode": 1,
+      "cases": 3,
+      "failed": 2,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/game-social-mock/wrong-key.xml",
+      "reportSha256": "1DE25C3C6A253263CF7A38AEF1CF70EEFA6F51536E546C2A7498D4A576AD8B3F"
+    },
+    {
+      "fixture": "wrong-round",
+      "exitCode": 1,
+      "cases": 3,
+      "failed": 1,
+      "skipped": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/game-social-mock/wrong-round.xml",
+      "reportSha256": "012BE270247213492E08E1F7286A7EE9645FFF404A835075E13C6FD49CCC2A4D"
+    }
+  ]
+}

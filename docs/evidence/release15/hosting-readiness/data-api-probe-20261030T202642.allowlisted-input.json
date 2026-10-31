@@ -1,0 +1,73 @@
+{
+  "connectedProjectMetadata": [
+    {
+      "logical": "production",
+      "ref": "krdcuuhcynmdfcjlpbsf",
+      "projectUrl": "https://krdcuuhcynmdfcjlpbsf.supabase.co",
+      "keyLookupSucceeded": true,
+      "urlLookupSucceeded": true,
+      "keys": [
+        {
+          "id": "anon",
+          "type": "legacy",
+          "name": "anon",
+          "disabled": false,
+          "valueRetainedInReceipt": false
+        },
+        {
+          "id": "e9c83905-5a71-45ef-8ab6-cf70770bcb55",
+          "type": "publishable",
+          "name": "default",
+          "disabled": false,
+          "valueRetainedInReceipt": false
+        }
+      ]
+    },
+    {
+      "logical": "staging",
+      "ref": "jshjkaigwbxsbnnogfxs",
+      "projectUrl": "https://jshjkaigwbxsbnnogfxs.supabase.co",
+      "keyLookupSucceeded": true,
+      "urlLookupSucceeded": true,
+      "keys": [
+        {
+          "id": "anon",
+          "type": "legacy",
+          "name": "anon",
+          "disabled": false,
+          "valueRetainedInReceipt": false
+        },
+        {
+          "id": "a3afebf1-7b86-4e90-8cad-0b402582bee8",
+          "type": "publishable",
+          "name": "default",
+          "disabled": false,
+          "valueRetainedInReceipt": false
+        }
+      ]
+    }
+  ],
+  "documentation": [
+    {
+      "title": "PostgREST schemas",
+      "href": "https://docs.postgrest.org/en/v13/references/api/schemas.html",
+      "verifiedBehavior": "GET/HEAD use Accept-Profile. A schema outside db-schemas is rejected with PGRST106 and a message listing permitted schemas; schema selection also applies to OpenAPI."
+    },
+    {
+      "title": "Supabase API keys",
+      "href": "https://supabase.com/docs/guides/getting-started/api-keys",
+      "verifiedBehavior": "Publishable keys and legacyanon keys have low privileges; modern publishable keys belong in apikey headers, not Bearer JWTs. Grants and RLS are distinct from schema selection."
+    }
+  ],
+  "documentationFetchLimit": "PostgREST errors page returned429; schemas page directly documented PGRST106 and was read successfully. Connected Supabase searchDocs for PGRST106 returned no matches; official PostgREST page supplied the primary protocol documentation.",
+  "nativeTransport": {
+    "execCommandSupportsPrivateStdin": false,
+    "writeStdinWouldPutKeyInToolArguments": true,
+    "applyPatchWouldPutKeyInToolArguments": true,
+    "functionsRuntimeFetchAvailable": false,
+    "functionsRuntimeCryptoAvailable": false,
+    "directNativeBridgeFromConnectedResultAvailable": false
+  },
+  "actualProbeCount": 0,
+  "actualConfiguredSchemaAllowlist": null
+}

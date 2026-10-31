@@ -1,6 +1,14 @@
 # Restore end-to-end live multiplayer in the local runtime
 
-Status: revised plan independently approved99/99, implementation in progress, 27 October 2026. The user explicitly rejected a lobby-polling-only fix; no implementation from that narrower plan was made. Restore actual authenticated Supabase Realtime and server-driven game progression. Faster polling is supplementary recovery, not the success criterion.
+Status: current release in progress, 31 October 2026. The original transport plan received historical 99/99 approval; the changed source and current player range still require fresh verification and review. The user explicitly rejected a lobby-polling-only fix. Actual authenticated private Realtime and server-driven progression remain required; faster polling is supplementary recovery.
+
+## Current release scope
+
+Rules v2.8 and [the approved completion plan](release15-completion-plan.md) require new games with every player count 2 through 10. The full matrix is 9 eight-round games, 54 player participations and 432 accepted UI solves, with at most two simultaneous answer UIs. The separate limit remains 25 observers, giving a maximum audience of 35 for the new release. Existing larger running matches and stored results survive; above-limit legacy waiting/countdown rooms keep Leave and a compatibility notice, block oversized new starts/admission and do not evict players merely to reduce the count.
+
+Run the matrix after a frozen production build with `pwsh -NoProfile -NonInteractive -File scripts/run-local-ui-integration.ps1 -PlayerCounts '2,3,4,5,6,7,8,9,10'`. Run `-StrictPush` separately for the two-player/inviter-bound-observer journey with periodic UI reads suppressed. Preserve per-run reports and actual source identity. Public play is guest-only; installation is confined to the owner GitHub admin PWA in [the release contract](admin_pwa_release.md).
+
+The isolated 15-player run in `docs/evidence/hosting/guest-admin-recovery/round7-scale-15/` completed eight rounds/120 UI solves with seven recorded request failures and no uncertain retries or cleanup failures. It used a dirty build and does not approve the changed committed source or hosted release. The failed 20/25-player investigations remain historical. No current pass of all 9 counts or hosted rollout is claimed here.
 
 ## Evidence and cause
 
@@ -39,7 +47,7 @@ The narrower SYNC-01..03 are recovery contracts; add these primary live-delivery
 
 The user additionally requires repeatable UI integration tests, not service-only tests. Add `tests/browser/live-multiplayer.integration.spec.ts`, a dedicated Playwright config and `npm run test:live-ui` requiring an explicit target origin. It uses real browser UI, session cookies, database-backed room/game endpoints and private WebSockets, without HTTP route fixtures. Each run creates its own profiles/room and leaves its room in cleanup. The suite runs two players plus an inviter-bound observer and checks code entry, join, readiness, countdown, category/answer/hint/score/reveal/reactions, token renewal beyond120seconds and disconnect/reconnect. Suppress periodic room/game/social reads, record actual incoming changed frames before remote assertions and retain event-driven authorized reads. Add a no-browser-read scheduler probe and private subscription denial for anonymous/cross-profile clients plus client-publish denial checks. Document setup and a repeatable command; live ngrok tests are a separate operational tier from the default deterministic suite.
 
-LIVE-05 covers coalesced room/game reads and cancellation after deferred authentication. LIVE-06 covers renewal beyond the initial token expiry and actual socket closure followed by a new socket and another push-driven transition. LIVE-07 extends repeatable browser play across configured player counts2 through25. Test status and scope must match retained execution evidence.
+LIVE-05 covers coalesced room/game reads and cancellation after deferred authentication. LIVE-06 covers renewal beyond the initial token expiry and actual socket closure followed by a new socket and another push-driven transition. LIVE-07 now requires repeatable browser play at every configured count 2 through 10 under the 31 October amendment; the former 2 through 25 scope is historical. Test status and scope must match retained execution evidence.
 
 Write deterministic regression tests before code changes; run the existing actual Realtime integration against disposable services as the baseline transport/privacy contract. Add a real HTTPS two-player/observer browser run and server scheduler check for the current operational runtime. Run focused and affected regression suites, type/lint/build, and independent hostile validation. The earlier fallback-only review is superseded; do not present its approval as approving this expanded architecture or a working game.
 
@@ -47,9 +55,33 @@ Write deterministic regression tests before code changes; run the existing actua
 
 Independent hostile plan approval99/99 precedes implementation; final review follows execution evidence. Keep the user’s current tunnel URL and database intact. Replace the production app behind it with the corrected build after tests, preserving the configured HTTPS origin and original one-hour tunnel expiry. Sessions and rooms are persisted in PostgreSQL; a server restart does not reset them. Rollback restores the prior runtime/gateway configuration and a compatible application build. No commit/push, new paid service, new human gate or extension of the public tunnel lifetime is implied.
 
-## Implementation and review findings
+## Historical implementation and review findings
 
 Hostile review found four defects before final approval: foreground calls joined a worker publication batch; GamePanel dropped refresh requests during an in-flight GET; channel setup could subscribe after unmount while authentication was pending; and an older cleanup watcher could operate on replacement state. Focused regressions first reproduced the source races. Foreground requests now return without joining an active publication batch; game reads coalesce a follow-up; channel setup checks cancellation; cleanup captures the lease generation, exact container IDs/labels and process start tokens. Linux process identity uses `/proc/<pid>/stat` start ticks because repeated .NET start-time conversions varied by fractions of a millisecond.
+
+The later deadline-worker review found a separate in-flight batch: foreground
+requests joined deadline dispatch even though the publication path had been
+fixed. The local candidate returns without joining an existing deadline batch;
+the protected worker waits for its actual outcome, and an idle foreground
+request still starts and awaits catch-up. Worker failures reach worker callers
+and a later invocation can retry. The independent correct and wrong fixture
+receipts are under `docs/evidence/hosting/guest-admin-recovery/deadline-worker-mock-v2/`
+and `deadline-route-mock/`. This source change is uncommitted and is not proof
+that the 25-player UI case or hosted rollout works.
+
+The later local candidate separates game and reaction refresh keys: a match
+notification refreshes the game without automatically rereading reactions;
+room and reaction notifications still refresh the room and both views. The
+social view also refetches when an active round becomes a summary, including
+for observers. Independent fixture controls precede this change in
+`docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock-v2/`,
+`game-social-mock/` and `social-transition-mock/`. Twenty-two focused tests
+passed against the implementation. The 25-player case remains unverified;
+this is an uncommitted candidate, not a hosted result. The subsequent
+local strict-push test passed for two players and an observer through eight
+rounds, including reactions, token renewal and reconnect. Its receipt is
+`docs/evidence/hosting/guest-admin-recovery/round7-strict-social-push/`; it
+does not establish 25-player or hosted performance.
 
 The gateway initially returned empty200 responses for the public Host because its site was bound to the localhost hostname. It now accepts Host routing on its configured port while explicitly binding the listener to127.0.0.1. Gateway configuration is validated before launch. The public play page and denied tenant-management path are checked separately.
 
@@ -73,7 +105,7 @@ The strict no-poll game passes, but subsequent real UI matrix runs with default 
 
 Pass the actual live subscription status from RoomSession to GamePanel and SocialPanel. Connected clients retain event-driven authorized reads and poll only every15seconds as a safety check; disconnected clients retain one-second game/social recovery. Keep display/reaction expiry clocks independent. Split timer cleanup from request-lifetime invalidation so a cadence transition never overlaps or drops an in-flight GET or its coalesced follow-up. Verify that lifecycle with a deferred React regression before implementation, run affected suites/build, then rerun strict and player-count UI integration. This is a hypothesis about redundant-read pressure; classify it as resolved only after execution evidence improves. Waiting-room disconnected cadence remains15seconds as explicitly deferred above.
 
-## Private repeatable UI integration harness (initial shared-cluster plan, superseded below)
+## Historical private UI harness plan (shared cluster, later superseded)
 
 Use a private loopback HTTPS harness for the full2..25 UI matrix, alongside the separately passing real HTTPS/ngrok phone-path test. The matrix currently depends on remote tunnel latency and aborted requests even at small counts. A private harness removes that environmental dependency without mocking browser HTTP, database transactions or Realtime. It does not prove25-player public-tunnel/provider capacity; keep those qualifications explicit and preserve the failures.
 
@@ -89,7 +121,7 @@ The isolated plan received hostile approval99/99. Implementation review then req
 
 The first private full matrix completed counts2..11, then Chromium crashed a page during round5 at12players. Its database and services cleaned up successfully; the failure log/receipt are retained. The runner had used shared tmpfs `/tmp` despite this host's earlier scratch failures. At inspection that filesystem had3.5GiB free and system memory about6.7GiB available; no core dump or kernel OOM entry was found, so the crash cause is not confirmed. Browser scratch now uses a fresh short workspace directory, and the remaining counts run independently. Do not report the aborted matrix as a complete pass.
 
-## Storage-isolated UI execution plan
+## Historical storage-isolated UI execution plan
 
 The monitored14-player rerun passed countdown and progressed into gameplay. It also captured the same COMMIT in IO/WalSync over7.075seconds, with query age reaching9.259seconds and two aggregate-lock requests queued behind it (monitor lines94..99, then release at100). Query age is not a direct wait-duration counter. Independent host I/O pressure was substantial. This proves a multi-second flush bottleneck in that run, not a deadlock or a definitive cause for every earlier timeout. Do not increase the pool, weaken fsync/synchronous_commit, or relax game assertions.
 
@@ -102,7 +134,7 @@ Retain actual UI/API/private WebSockets, all8round/solve/ranking/canonical retry
 
 Storage-isolated implementation received scoped hostile approval99/99, including an independent rerun of eight startup/failure/collision contracts. The monitored14-player disk-backed run eventually passed all112UI solves, with155 mixed failed requests and5canonical uncertain retries. Its complete failure total and explicit100-detail truncation flag remain retained. No change to database pool size, fsync, synchronous_commit,20-second chooser assertion or solve/ranking criteria was made. The new storage-isolated matrix remains pending; its volatile storage is not production durability evidence. WAL sizing is a soft target ([PostgreSQL17 documentation](https://www.postgresql.org/docs/17/runtime-config-wal.html)); usage/error artifacts capture the hard tmpfs capacity separately.
 
-## Heartbeat response-body repair plan
+## Historical heartbeat response-body repair plan
 
 An independent real-Chromium loopback diagnostic confirmed a client lifecycle defect: a completed23-byte200 JSON response left unread emitted requestfailed ERR_ABORTED at the AbortSignal deadline in3/3trials, while consuming the body emitted requestfinished with no failures in3/3controls. RoomSession's presence path currently leaves its response body unread. This explains that mechanism, not every prior failure. The first storage-isolated25-player game failed round1 after18solves; that gap remains open and its249failed-request total/100-detail cap are retained.
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="4" failures="0" errors="0" time="5.908926749">
+    <testsuite name="tests/integration/transport.realtime.integration.ts" timestamp="2026-10-31T00:08:46.657Z" hostname="[PRIVATE HOST]" tests="4" failures="0" errors="0" skipped="0" time="5.908926749">
+        <testcase classname="tests/integration/transport.realtime.integration.ts" name="TR Realtime rejects a private subscription to another profile’s channel" time="5.102833462">
+        </testcase>
+        <testcase classname="tests/integration/transport.realtime.integration.ts" name="TR committed room/observer transitions reach their actual private recipients through durable outbox delivery, without payload leakage" time="0.156650555">
+        </testcase>
+        <testcase classname="tests/integration/transport.realtime.integration.ts" name="TR committed match changes notify players and their observer without sending private answers or hints" time="0.214448196">
+        </testcase>
+        <testcase classname="tests/integration/transport.realtime.integration.ts" name="TR reaction notifications reach the actual room players/observer, exclude outsiders and refetch only visible allowlisted reactions" time="0.091887485">
+        </testcase>
+    </testsuite>
+</testsuites>

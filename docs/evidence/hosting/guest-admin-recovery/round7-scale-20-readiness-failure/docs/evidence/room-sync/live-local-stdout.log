@@ -1,0 +1,38 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 1 test using 1 worker
+
+  ✘  1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 20 real browser players complete eight UI rounds (1.4m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 20 real browser players complete eight UI rounds 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 55
+    Received:   0
+
+    Call Log:
+    - Timeout 20000ms exceeded while waiting on the predicate
+
+      80 |         const versionAttribute = scope === "room" ? "data-room-version" : "data-match-version";
+      81 |         if (scope === "room") await page.getByRole("button", { name: "Refresh room", exact: true }).click();
+    > 82 |         await expect.poll(async () => Number(await panel.getAttribute(versionAttribute)), { timeout: 20000 }).toBeGreaterThan(previousVersion);
+         |                                                                                                               ^
+      83 |       }
+      84 |     }
+      85 |     throw new Error(`UI ${action} did not converge through explicit conflict/uncertain retries`);
+        at commitUi (<home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:82:111)
+        at <home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:149:7
+        at <home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:147:5
+
+    Error Context: test-results/live-local/live-player-counts.integra-7ff6a-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 20 real browser players complete eight UI rounds 
+  1 error was not a part of any test, see above for details
+

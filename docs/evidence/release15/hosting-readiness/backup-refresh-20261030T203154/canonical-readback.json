@@ -1,0 +1,52 @@
+{
+  "asOfLocal": "2026-10-30T20:41:22.9811541-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T013147Z-app-backup-refresh",
+  "status": "completed",
+  "responseExact": true,
+  "response": "2026-10-30T20:40:33 - Fresh APP logical backup index \u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/index.json SHA256 B79C168AAE1A426E21D0711AAB03A810A0E576534AE6E05CB482F1FA464905B4. Staging backup-20261030T203552-fc7d1e8a snapshot/run bounds 10/30/2026 20:35:52..10/30/2026 20:36:13, 33 tables/473 rows; receipt SHA256 54A76F9E3EE94391EA8CDCFD479C03AB748FCC7B1E45986442182DE43FAF54DF. Production backup-20261030T203702-7e86e564 bounds 10/30/2026 20:37:02..10/30/2026 20:37:26, 33 tables/123 rows; receipt SHA256 CD6A9603B6B514F9B9304FC91960AC0DC529FE52009AF6BB4BF4C937872AE0AD. Both exact per-table row/hash sets, eight projected schema sections and sequence values match isolated restores; source sequence state stayed stable. Each dump/encrypt/sourceRead/decrypt/restore exit0. Four owned container absences recorded. Ciphertext hashes and modes600/private directories700 verified; full native stdout/stderr retained privately600. Original48EACDF6 retained; adapted B4BA7382 changes only unique safe public receipt output, pinned before hosted read; parser/PSSA0 and both native WhatIf0 before actual sequential staging then production. Existing configs, verify-full TLS, existing age SSH recipient and pinned PG17 image used; no new key, plaintext dump, hosted schema/config/provider write, app/test edit, build/test/model/HV/preparer run. Two fresh attempts succeeded with zero failed attempts; all historical proofs/ciphertexts unchanged. Source snapshot wall clock is bounded by run times, not separately recorded; no accepted RPO SLA or lost-transaction measurement. APP logical recovery excludes Auth/Storage/Vault/cron/net/Realtime/external provider/global-role configuration, off-site independence and physical crash durability. Namespace/default ACL and standalone view/type/sequence definitions were not independently compared; ownership normalized. Current documentation checked: https://www.postgresql.org/docs/17/app-pgdump.html and https://supabase.com/docs/guides/platform/backups . Accuracy99%, completeness99% for bounded operational APP scope. Own Codex-20261030T194802Z-plugin-session / req-20261031T013147Z-app-backup-refresh; parent root req-20261030T203656Z-cline-beam-release.",
+  "processingDialog": [
+    {
+      "timestamp": "2026-10-31T01:40:33.0989641+00:00",
+      "category": "decision",
+      "role": "model",
+      "content": "Refresh only the operator-held APP logical snapshots, preserving the reviewed baseline and changing exactly one public receipt destination. Staging must verify before production. Record schema/data/sequence matching from the same exported read-only source snapshot and five native stages separately from timestamp bounds, managed-platform exclusions, off-site storage and disk durability. No RPO SLA or current deployment/HV/game acceptance follows. Retain originals, protected ciphertext/native streams and every attempt."
+    },
+    {
+      "timestamp": "2026-10-31T01:40:33.1013375+00:00",
+      "category": "observation",
+      "role": "model",
+      "content": "2026-10-30T20:40:33 - Fresh APP logical backup index \u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/index.json SHA256 B79C168AAE1A426E21D0711AAB03A810A0E576534AE6E05CB482F1FA464905B4. Staging backup-20261030T203552-fc7d1e8a snapshot/run bounds 10/30/2026 20:35:52..10/30/2026 20:36:13, 33 tables/473 rows; receipt SHA256 54A76F9E3EE94391EA8CDCFD479C03AB748FCC7B1E45986442182DE43FAF54DF. Production backup-20261030T203702-7e86e564 bounds 10/30/2026 20:37:02..10/30/2026 20:37:26, 33 tables/123 rows; receipt SHA256 CD6A9603B6B514F9B9304FC91960AC0DC529FE52009AF6BB4BF4C937872AE0AD. Both exact per-table row/hash sets, eight projected schema sections and sequence values match isolated restores; source sequence state stayed stable. Each dump/encrypt/sourceRead/decrypt/restore exit0. Four owned container absences recorded. Ciphertext hashes and modes600/private directories700 verified; full native stdout/stderr retained privately600. Original48EACDF6 retained; adapted B4BA7382 changes only unique safe public receipt output, pinned before hosted read; parser/PSSA0 and both native WhatIf0 before actual sequential staging then production. Existing configs, verify-full TLS, existing age SSH recipient and pinned PG17 image used; no new key, plaintext dump, hosted schema/config/provider write, app/test edit, build/test/model/HV/preparer run. Two fresh attempts succeeded with zero failed attempts; all historical proofs/ciphertexts unchanged. Source snapshot wall clock is bounded by run times, not separately recorded; no accepted RPO SLA or lost-transaction measurement. APP logical recovery excludes Auth/Storage/Vault/cron/net/Realtime/external provider/global-role configuration, off-site independence and physical crash durability. Namespace/default ACL and standalone view/type/sequence definitions were not independently compared; ownership normalized. Current documentation checked: https://www.postgresql.org/docs/17/app-pgdump.html and https://supabase.com/docs/guides/platform/backups . Accuracy99%, completeness99% for bounded operational APP scope. Own Codex-20261030T194802Z-plugin-session / req-20261031T013147Z-app-backup-refresh; parent root req-20261030T203656Z-cline-beam-release."
+    }
+  ],
+  "actions": [
+    {
+      "status": "completed",
+      "description": "Read full reviewed248-line baseline and current official backup/snapshot guidance; preserve original and adapt only unique receipt destination with parser/analyzer0 before provider read.",
+      "type": "read",
+      "filePath": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+      "order": 1
+    },
+    {
+      "status": "completed",
+      "description": "Native WhatIf0 then sequential staging/production encrypted read-only source snapshots and isolated owned PG17 logical restores; retain all original/private streams and receipts.",
+      "type": "create",
+      "filePath": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154",
+      "order": 2
+    },
+    {
+      "status": "completed",
+      "description": "Verify current ciphertext/private modes, producer/native hashes, per-table row hashes, eight schema-section hashes and sequence readback; five native stages0 each and owned cleanup proof.",
+      "type": "read",
+      "filePath": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/index.json",
+      "order": 3
+    },
+    {
+      "status": "completed",
+      "description": "Refresh only the operator-held APP logical snapshots, preserving the reviewed baseline and changing exactly one public receipt destination. Staging must verify before production. Record schema/data/sequence matching from the same exported read-only source snapshot and five native stages separately from timestamp bounds, managed-platform exclusions, off-site storage and disk durability. No RPO SLA or current deployment/HV/game acceptance follows. Retain originals, protected ciphertext/native streams and every attempt.",
+      "type": "design_decision",
+      "filePath": "",
+      "order": 4
+    }
+  ]
+}

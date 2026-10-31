@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   )
     return errorResponse(failure("NOT_AUTHORIZED"));
   // A deadline failure must not starve independently committed notifications.
-  const deadlines = await advanceLobbyDeadlines().catch(() => null);
+  const deadlines = await advanceLobbyDeadlines(true).catch(() => null);
   const published = await deliverOutbox(25).catch(() => undefined);
   const result = {
     deadlines: deadlines?.ok

@@ -2,11 +2,13 @@ import { lobbyDeadlines } from "../domain/lobby";
 import type { Room } from "../domain/model";
 import { failure, type Result, success } from "../domain/result";
 import {
+  effectiveRoomCapacity,
   isRoomId,
   joinRoom,
   newRoom,
   normalizeRoomCode,
   ROOM_ALPHABET,
+  roomCapacityBlocked,
   roomRole,
 } from "../domain/rooms";
 import { executeCommand } from "./command";
@@ -48,14 +50,22 @@ export function roomProjection(
     return { id, alias: row?.alias ?? "Player", icon: row?.icon ?? "owl" };
   };
   const observer = room.observers.find((row) => row.profileId === actorId);
+  const capacityBlocked = roomCapacityBlocked(room);
+  const capacity =
+    room.status === "playing" || room.status === "closed" || capacityBlocked
+      ? room.capacity
+      : effectiveRoomCapacity(room);
   return {
     roomId: room.id,
     version: room.version,
-    capacity: room.capacity,
+    capacity,
+    ...(capacityBlocked ? { capacityBlocked: true } : {}),
     status: room.status,
     discoverable: room.discoverable,
     availableSlots:
-      room.status === "waiting" ? room.capacity - room.players.length : 0,
+      room.status === "waiting"
+        ? Math.max(0, effectiveRoomCapacity(room) - room.players.length)
+        : 0,
     ...(role === "player" ? { code: room.code } : {}),
     role,
     followedPlayerId: observer?.followedPlayerId ?? null,
@@ -78,11 +88,15 @@ export function roomProjection(
         })),
     observerCount: room.observers.length,
     canJoinPlayer:
-      !role && room.status === "waiting" && room.players.length < room.capacity,
+      !role &&
+      room.status === "waiting" &&
+      room.players.length < effectiveRoomCapacity(room),
     canObserve:
       !role &&
+      !capacityBlocked &&
       room.status !== "closed" &&
-      (room.players.length === room.capacity || room.status !== "waiting") &&
+      (room.players.length === effectiveRoomCapacity(room) ||
+        room.status !== "waiting") &&
       room.observers.length < 25,
   };
 }

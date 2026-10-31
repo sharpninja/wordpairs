@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T23:23:36.734Z",
+  "project": "krdcuuhcynmdfcjlpbsf",
+  "operation": "migration history metadata canonicalization only",
+  "status": "committed",
+  "version": "20261028230959",
+  "name": "wordpairs_011_content_review_states",
+  "sourceCommit": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+  "sourcePath": "src/infrastructure/migrations/011_content_review_states.sql",
+  "sourceSha256": "2f4188a6835986c48268346ddd4f2d25e493d8e8dd236dd49caaff9e6beb56dd",
+  "originalExecutedStatement": "-- Forward-only extension: keep historical pending/appeal rows and evidence.\n\nalter table wordpairs.moderation_cases\n  drop constraint moderation_cases_status_check;\nalter table wordpairs.moderation_cases\n  add constraint moderation_cases_status_check check (\n    status in ('collecting', 'pending', 'pending_review', 'changes_requested',\n               'on_hold', 'approved', 'rejected', 'appealed')\n  );\ndrop index wordpairs.one_open_suggestion;\ncreate unique index one_open_suggestion\n  on wordpairs.moderation_cases(proposer_id)\n  where kind = 'suggestion' and\n    status in ('collecting', 'pending', 'pending_review', 'changes_requested', 'appealed');\n",
+  "originalExecutedSha256": "573df977f76b5a331c34cd04e016091880435c3182f4409fb702e39264c10132",
+  "canonicalStatementSha256": "eb53ff8d3c40404edc4275ee3ebc39ee623ff1158c5bae6f480812196d9dd8bd",
+  "removedUtf8ByteCount": 1,
+  "removedCharacter": "LF at leading-comment/removed-transaction-wrapper boundary",
+  "databaseDdlReapplied": false,
+  "qualification": "Executed SQL contained one additional blank line. Corrected metadata is canonical provenance, not a claim of originally byte-identical execution.",
+  "review": "Independent hostile reviewer approved this exact minimal metadata-only repair; surrounding statements and migration version/name remain unchanged."
+}

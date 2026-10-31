@@ -1,5 +1,9 @@
 # TEST-PLAYERLIMIT-002 - AC-02: Player limit
 
+Current amendment persistence: [19-record QBrain readback](../../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
+
+Current rules v2.8 amendment (31 October 2026): new rooms and matches support 2 through 10 players. [Legacy compatibility](../../../release15-completion-plan.md) preserves existing larger running matches and prevents oversized waiting/countdown starts/admission without forced eviction. Original design/receipt provenance remains historical.
+
 Linked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.
 
 | Field | Specification |
@@ -13,7 +17,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | Priority | high |
 | Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |
 | Preconditions/roles | A waiting room already contains exactly its configured player count. |
-| Test data | Capacity examples 2, 8, 25; independent extra profile Eve. |
+| Test data | Capacity examples 2, 8, 10; independent extra profile Eve. |
 | Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |
 | Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |
 | Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |
@@ -33,7 +37,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 Feature: AC-02: Player limit
   Scenario: TEST-PLAYERLIMIT-002 design verification
     Given A waiting room already contains exactly its configured player count.
-    And the fixture data is Capacity examples 2, 8, 25; independent extra profile Eve.
+    And the fixture data is Capacity examples 2, 8, 10; independent extra profile Eve.
     When As Eve attempt a player join.
     Then Player admission is rejected; existing roster and configured capacity are unchanged.
     When Reopen the room as an existing player.
@@ -42,6 +46,6 @@ Feature: AC-02: Player limit
 
 ## Boundaries
 
-Invited observer entry is tested separately; rejection must not be confused with read-only observer admission.
+Invited observer entry retains its separate limit of 25; player rejection must not be confused with read-only observer admission. Repeat full-seat rejection through code, deep-link, browse and quick-match entry, and test concurrent final-seat commands at capacity 10. Under `FR-ROOMACCESS-001#CAP15-LEGACY`, an existing waiting/countdown room above 10 rejects new oversized admission/start, explains the limit and keeps Leave; a larger running match remains finishable and its existing results survive.
 
 Criterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.

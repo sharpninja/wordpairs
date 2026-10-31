@@ -1,0 +1,26 @@
+
+> wordpairs@0.1.0 lint
+> biome check src tests/architecture
+
+src/web/room-screen.tsx format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    287 287 │           copyResult = navigator.clipboard
+    288 288 │             .write([new ClipboardItem({ "text/plain": content })])
+    289     │ - ··········.then(()·=>·true,·()·=>·false);
+        289 │ + ··········.then(
+        290 │ + ············()·=>·true,
+        291 │ + ············()·=>·false,
+        292 │ + ··········);
+    290 293 │         } catch {
+    291 294 │           abortCopy?.();
+  
+
+Checked 94 files in 83ms. No fixes applied.
+Found 1 error.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

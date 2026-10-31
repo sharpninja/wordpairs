@@ -1,13 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { PwaSupport } from "../web/pwa-support";
+import { LegacyPwaCleanup } from "../web/pwa-support";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Wordpairs",
   description: "A real-time word association game.",
   applicationName: "Wordpairs",
-  appleWebApp: { capable: true, title: "Wordpairs", statusBarStyle: "default" },
+  appleWebApp: {
+    capable: false,
+    title: "Wordpairs",
+    statusBarStyle: "default",
+  },
   icons: {
     icon: "/icons/icon-192.png",
     apple: "/icons/apple-touch-icon.png",
@@ -28,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <PwaSupport />
+        <LegacyPwaCleanup />
       </body>
     </html>
   );

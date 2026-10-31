@@ -1,0 +1,535 @@
+{
+  "atLocal": "2026-10-31T09:36:12.7440041-05:00",
+  "classification": "Operational prerequisite observations and one authorized owned staging app smoke, not HV or release acceptance",
+  "sessionId": "Codex-20261031T143030Z-plugin-session",
+  "requestId": "req-20261031T143033Z-hosting-resume",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261031T142639Z-release-resume",
+  "localHead": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "metadata": {
+    "path": "docs/evidence/release15/hosting-readiness/resume-20261031-metadata.json",
+    "sha256": "724F4CBB7F5C32951FE70E5F247CFEBFA502F2AD2A29F3DCC16EFC15CE550A61",
+    "bytes": 130121
+  },
+  "probe": {
+    "path": "docs/evidence/release15/hosting-readiness/dataapi-staging-20261031T093253/receipt.json",
+    "sha256": "22576D3A52E02CF90C3E7E69F4D02A998C6747857778C83715D091845D67D246",
+    "bytes": 4396
+  },
+  "probeProducer": {
+    "path": "docs/evidence/release15/hosting-readiness/dataapi-staging-20261031T093253/ProbeWordpairsStagingDataApi.ps1",
+    "sha256": "2C5115BD14A63949E5D5B0825267D44578AC73C46B4EFADCC692DF9CEC98A61B",
+    "bytes": 18038
+  },
+  "probeAnalysis": {
+    "path": "docs/evidence/release15/hosting-readiness/dataapi-staging-20261031T093253/analysis.json",
+    "sha256": "19772F621BD5AFEBFFEE1E62F2B32CC42EA42382C793F30BA6C2A89380D62D9A",
+    "bytes": 539
+  },
+  "summaries": [
+    {
+      "environment": "staging",
+      "projectRef": "jshjkaigwbxsbnnogfxs",
+      "projectStatus": "ACTIVE_HEALTHY",
+      "databaseVersion": "17.11.0.003",
+      "migrationNames": [
+        "wordpairs_001_foundation",
+        "wordpairs_002_public_reads",
+        "wordpairs_003_identity",
+        "wordpairs_004_rooms",
+        "wordpairs_005_outbox",
+        "wordpairs_006_lobby_deadlines",
+        "wordpairs_007_matches",
+        "wordpairs_008_content",
+        "wordpairs_009_reactions",
+        "wordpairs_010_access_control",
+        "wordpairs_011_content_review_states",
+        "wordpairs_hosted_scheduler",
+        "wordpairs_private_realtime"
+      ],
+      "migrationCount": 13,
+      "selectedRelations": 33,
+      "selectedRlsEnabled": 33,
+      "browserCrudPrivilegeRecords": 64,
+      "browserCrudAllowedRecords": 0,
+      "realtimePolicy": [
+        {
+          "cmd": "SELECT",
+          "name": "wordpairs_own_notifications",
+          "qual": "((extension = 'broadcast'::text) AND (realtime.topic() = ('wordpairs-profile:'::text || ((current_setting('request.jwt.claims'::text, true))::jsonb ->> 'sub'::text))))",
+          "check": null,
+          "roles": [
+            "authenticated"
+          ],
+          "table": "messages",
+          "schema": "realtime"
+        }
+      ],
+      "tickFunction": {
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "bodyMd5": "569c4ab656ad27259af32e3835e9dd46",
+        "appExecute": false,
+        "anonExecute": false,
+        "serviceExecute": false,
+        "securityDefiner": false,
+        "authenticatedExecute": false
+      },
+      "cronJobs": [
+        {
+          "id": 1,
+          "name": "wordpairs-hosted-tick",
+          "active": true,
+          "database": "postgres",
+          "schedule": "1 second",
+          "username": "postgres",
+          "expectedCommand": true
+        }
+      ],
+      "scheduler": [
+        {
+          "enabled": true,
+          "endpoint": "https://wordpairs.vercel.app/api/internal/deadlines",
+          "failures": 0,
+          "lastSent": "2026-10-28T23:07:16.025429-05:00",
+          "lastStatus": 200,
+          "retryAfter": null,
+          "hasPendingRequest": false
+        }
+      ],
+      "vaultPresence": true,
+      "latestDeployment": {
+        "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+        "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+        "createdAt": 1793227936301,
+        "readyState": "READY",
+        "target": "production"
+      },
+      "deployments": {
+        "deployments": {
+          "pagination": {
+            "count": 3,
+            "prev": 1793227936301
+          },
+          "deployments": [
+            {
+              "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+              "name": "wordpairs",
+              "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+              "created": 1793227936301,
+              "state": "READY",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs/4unZq3queczsyf23J95UTVyF4mcJ",
+              "isRollbackCandidate": true
+            },
+            {
+              "id": "dpl_6mqUf72TEyMRA9Yc6T8yMoamKrQE",
+              "name": "wordpairs",
+              "url": "wordpairs-e5gp6g5jq-sharp-ninja1.vercel.app",
+              "created": 1793227623425,
+              "state": "ERROR",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs/6mqUf72TEyMRA9Yc6T8yMoamKrQE",
+              "isRollbackCandidate": false
+            },
+            {
+              "id": "dpl_HaeF93w3RW5UMKFxvRt2f9dE5i3F",
+              "name": "wordpairs",
+              "url": "wordpairs-pns04pboa-sharp-ninja1.vercel.app",
+              "created": 1793227612194,
+              "state": "CANCELED",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "main",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs/HaeF93w3RW5UMKFxvRt2f9dE5i3F",
+              "isRollbackCandidate": false
+            }
+          ]
+        }
+      },
+      "securityAdvisories": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 31,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "function_search_path_mutable",
+          "level": "WARN",
+          "count": 7,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+        }
+      ],
+      "performanceAdvisories": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 20,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 1,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        }
+      ]
+    },
+    {
+      "environment": "production",
+      "projectRef": "krdcuuhcynmdfcjlpbsf",
+      "projectStatus": "ACTIVE_HEALTHY",
+      "databaseVersion": "17.11.0.003",
+      "migrationNames": [
+        "wordpairs_001_foundation",
+        "wordpairs_002_public_reads",
+        "wordpairs_003_identity",
+        "wordpairs_004_rooms",
+        "wordpairs_005_outbox",
+        "wordpairs_006_lobby_deadlines",
+        "wordpairs_007_matches",
+        "wordpairs_008_content",
+        "wordpairs_009_reactions",
+        "wordpairs_010_access_control",
+        "wordpairs_011_content_review_states",
+        "wordpairs_hosted_scheduler",
+        "wordpairs_private_realtime"
+      ],
+      "migrationCount": 13,
+      "selectedRelations": 33,
+      "selectedRlsEnabled": 33,
+      "browserCrudPrivilegeRecords": 64,
+      "browserCrudAllowedRecords": 0,
+      "realtimePolicy": [
+        {
+          "cmd": "SELECT",
+          "name": "wordpairs_own_notifications",
+          "qual": "((extension = 'broadcast'::text) AND (realtime.topic() = ('wordpairs-profile:'::text || ((current_setting('request.jwt.claims'::text, true))::jsonb ->> 'sub'::text))))",
+          "check": null,
+          "roles": [
+            "authenticated"
+          ],
+          "table": "messages",
+          "schema": "realtime"
+        }
+      ],
+      "tickFunction": {
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "bodyMd5": "569c4ab656ad27259af32e3835e9dd46",
+        "appExecute": false,
+        "anonExecute": false,
+        "serviceExecute": false,
+        "securityDefiner": false,
+        "authenticatedExecute": false
+      },
+      "cronJobs": [
+        {
+          "id": 1,
+          "name": "wordpairs-hosted-tick",
+          "active": false,
+          "database": "postgres",
+          "schedule": "1 second",
+          "username": "postgres",
+          "expectedCommand": true
+        }
+      ],
+      "scheduler": [
+        {
+          "enabled": false,
+          "endpoint": "https://wordpairs-j9jf.vercel.app/api/internal/deadlines",
+          "failures": 0,
+          "lastSent": null,
+          "lastStatus": null,
+          "retryAfter": null,
+          "hasPendingRequest": false
+        }
+      ],
+      "vaultPresence": true,
+      "latestDeployment": {
+        "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+        "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+        "createdAt": 1793227612147,
+        "readyState": "CANCELED",
+        "target": "production"
+      },
+      "deployments": {
+        "deployments": {
+          "pagination": {
+            "count": 1,
+            "prev": 1793227612147
+          },
+          "deployments": [
+            {
+              "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+              "name": "wordpairs-j9jf",
+              "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+              "created": 1793227612147,
+              "state": "CANCELED",
+              "target": "production",
+              "creator": {
+                "uid": "VV93A2bSGE5BNLrOX4BGzWXF",
+                "username": "sharpninja"
+              },
+              "meta": {
+                "githubCommitRef": "main",
+                "githubCommitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+                "githubCommitMessage": "feat: prepare isolated hosted deployments",
+                "githubRepo": "wordpairs",
+                "githubOrg": "sharpninja"
+              },
+              "inspectorUrl": "https://vercel.com/sharp-ninja1/wordpairs-j9jf/D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+              "isRollbackCandidate": false
+            }
+          ]
+        }
+      },
+      "securityAdvisories": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 31,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "function_search_path_mutable",
+          "level": "WARN",
+          "count": 7,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+        }
+      ],
+      "performanceAdvisories": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 20,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 1,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 5,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "PROJECT-IDENTITIES",
+      "status": "PASS",
+      "detail": "Connected tools freshly returned both exact Vercel project/account identities and Supabase project/name/organization bindings."
+    },
+    {
+      "id": "MIGRATION-STATE",
+      "status": "PASS",
+      "detail": "Both return13 canonical baseline names/order; forward012/013 absent. Name freshness only, not fresh complete bodies."
+    },
+    {
+      "id": "SELECTED-RLS",
+      "status": "PASS",
+      "detail": "All33 selected relations have RLS enabled on each project."
+    },
+    {
+      "id": "SELECTED-BROWSER-GRANTS",
+      "status": "PASS",
+      "detail": "64 anon/authenticated application-table privilege records deny all CRUD on each project. Application schemas deny USAGE for browser roles."
+    },
+    {
+      "id": "PRIVATE-POLICY-METADATA",
+      "status": "PASS",
+      "detail": "Exact private own-profile broadcast SELECT/authenticated predicate returned both. This is metadata only."
+    },
+    {
+      "id": "WORKER-CONTROL-METADATA",
+      "status": "PASS",
+      "detail": "One existing jobID1/wordpairs-hosted-tick/1second/postgres-owned/exact command per environment. Staging active+enabled/lastStatus200; production inactive+disabled/lastStatusnull; Vault named-secret presence true both. No invocation or credential validity inferred."
+    },
+    {
+      "id": "OWNED-STAGING-APP-FLOW",
+      "status": "PASS",
+      "detail": "One guestPOST200 and RealtimeGET200, exact project/profile binding, then owned-sessionDELETE204. Credentials never logged, authenticated Realtime token unused. No room or production traffic."
+    },
+    {
+      "id": "ANONYMOUS-DATAAPI-PROBE",
+      "status": "FAIL",
+      "detail": "The one unsupported-schema GET with the app-returned legacy role=anon key returnedHTTP401 with no supported error code. The branch stopped without retry. This is a failed probe, not proof of broad data inaccessibility or a particular cause."
+    },
+    {
+      "id": "DATAAPI-ALLOWLIST",
+      "status": "UNKNOWN",
+      "detail": "Exact exposed schemas, including vault/net exclusion, remain unverified for staging and production. Missing dependency: supported current PostgREST configuration observation or successful explicitly authorized anonymous-role schema-selection response."
+    },
+    {
+      "id": "FORWARD-MIGRATIONS",
+      "status": "UNKNOWN",
+      "detail": "012privacy/013cap15 rollout not executed. Dependency: source acceptance, current RPO decision/backup, staging-first authorized migration and exact definition/history readback."
+    },
+    {
+      "id": "HOSTED-GAME-ACCEPTANCE",
+      "status": "UNKNOWN",
+      "detail": "Private Realtime delivery, autonomous deadline/outbox progress and full hosted game not exercised. Dependency: accepted exact SHA deployment and owned hosted UI acceptance."
+    },
+    {
+      "id": "CURRENT-GLOBAL-BUILD-GUARDS",
+      "status": "UNKNOWN",
+      "detail": "Connector does not expose current Ignored Build Step. Yesterday browser observation remains historical; root must refresh both exit0 guards before guarded one-invocation redeploy. No configuration change made."
+    },
+    {
+      "id": "DEPLOYMENT",
+      "status": "UNKNOWN",
+      "detail": "Staging READY latest remains old8e2f624; production latestCANCELED and READY target-production filtered list empty. Accepted new candidate not deployed."
+    },
+    {
+      "id": "FRESH-BACKUP-RPO",
+      "status": "UNKNOWN",
+      "detail": "Oct30 encrypted application snapshot/restore receipts retained but not refreshed today. Missing decision: acceptable pre-migration RPO, with fresh export if required. No new backup operation executed."
+    }
+  ],
+  "counts": {
+    "pass": 7,
+    "unknown": 6,
+    "fail": 1
+  },
+  "warnings": [
+    "Both projects retain31 RLS-without-policy INFO,7 mutable-function-search-path WARN,20 unindexed-FK INFO and1 Realtime auth-initplan WARN; production adds5 unused-index INFO. Full native details retained in metadata receipt. No remediation or security/performance acceptance inferred."
+  ],
+  "sideEffects": "Guest POST normally creates profile, aggregate, credential, session and outbox event and deletes globally expired sessions. Realtime GET may deliver and mark oldest pending event. HTTP alone does not prove exact DB row effects or which event was delivered. Logout removes only owned session; guest profile/aggregate/credential/outbox remain without direct SQL cleanup.",
+  "probeFailure": {
+    "phase": "dataapi-schema-get",
+    "exceptionType": "System.InvalidOperationException",
+    "qualification": "Exact branch stopped. No exception message, response body, header, cookie, key or token is retained."
+  },
+  "probeKeyClassification": "legacy-anon-jwt-role-classified-not-independently-verified",
+  "probeSteps": [
+    {
+      "atLocal": "2026-10-31T09:33:02.6013202-05:00",
+      "phase": "guest-post",
+      "status": 200
+    },
+    {
+      "atLocal": "2026-10-31T09:33:03.2409678-05:00",
+      "phase": "realtime-get",
+      "status": 200
+    },
+    {
+      "atLocal": "2026-10-31T09:33:03.5242148-05:00",
+      "phase": "owned-session-logout",
+      "status": 204
+    }
+  ],
+  "probeSchemaResponses": [
+    {
+      "atLocal": "2026-10-31T09:33:03.4052228-05:00",
+      "method": "GET",
+      "path": "/rest/v1/",
+      "acceptProfile": "wordpairs_release_probe_20261031",
+      "status": 401,
+      "errorCode": null,
+      "reportedSchemaAllowlist": [],
+      "anonymousApplicationKeyOnly": true,
+      "authenticatedRealtimeTokenUsed": false
+    }
+  ],
+  "scopeLimits": [
+    "Current13 migration names/order only. Historical canonical-body preflight remains separate; migration012/013 still absent.",
+    "Selected33 tables all RLS enabled and64 browser-role CRUD privilege records deny all; no whole-managed-project security recertification.",
+    "Private Realtime predicate and scheduler bodyMd5/owners/grants are metadata, not delivery or autonomous due-work acceptance.",
+    "Vault secret presence only, not validity. No secret values queried. SQL-session schema setting null does not prove Data API exposure.",
+    "Staging historical last_status200 is not a current tick invocation. Production remains inactive/disabled. No cron change.",
+    "Vercel connector omits global Ignored Build Step/build overrides. Historical browser guard observation remains separate and must be refreshed before rollout.",
+    "Advisors retained in full. No remediation, missing-index performance causation, unused-index removability or source change inferred.",
+    "Both project origins, latest deployment SHA and READY-filtered production absence apply only to observed request bounds. Effective public access and canonical runtime not inferred.",
+    "Read-only provider metadata slice only. Separate authorized staging application probe has data effects recorded in its own receipt."
+  ],
+  "processNotes": [
+    "An initial beginTurn on a new empty own cache was rejected before documented session-start bootstrap. Corrected by own Codex session-start, then began the canonical turn before provider or app work. This was invocation ordering, not evidence of a service incident.",
+    "No previous probe receipt folder/locator existed at preflight, and only inspection pwsh process was live. This run was the first actual staging probe under this branch.",
+    "PowerShell scripts parsed and PSScriptAnalyzer Warning/Error checked before actual operation; WhatIf executed. Retained original producer is unchanged; adapted producer bound only own cache/audit IDs, one unsupported schema and fresh changelog qualification.",
+    "No application source/tests/builds/models/HV, migrations, deployments, cron changes, provider settings, new keys/resources, production app traffic, denied Dashboard fallback or SQL data cleanup."
+  ],
+  "noSecretValuesInArtifacts": true,
+  "readiness": "INCOMPLETE",
+  "overallVerdict": "NOT_HV",
+  "accuracy": 99,
+  "completeness": 96,
+  "ratingQualification": "Accurate exact bounded observations with full explicit failure/unknown register. Whole hosted readiness remains unproved.",
+  "sourceImplications": {
+    "sourcePins": [
+      {
+        "path": "src/infrastructure/realtime.ts",
+        "sha256": "7B2030BA8616FDDFA4ADD530804E2D2F3E5784018105447730A5286FDC878A82",
+        "bytes": 3654
+      },
+      {
+        "path": "src/infrastructure/runtime.ts",
+        "sha256": "ADC454269563DC6C5D3507F303A67061110023E3E3B8914AFE4FB64AA7EA415D",
+        "bytes": 9612
+      },
+      {
+        "path": "src/web/use-room-updates.ts",
+        "sha256": "E6E58C64855EF455565F9BA489059B5DEDF3466B0FF3718D8EC2C56518297EF1",
+        "bytes": 4726
+      },
+      {
+        "path": "src/app/api/realtime/route.ts",
+        "sha256": "8FEA2BF272D582C7FC17933E2D35B92B38534C4C6AF27090FBE1DE910047FB1E",
+        "bytes": 858
+      }
+    ],
+    "observed": [
+      "Source realtimeSettings accepts a public key by sb_publishable_ prefix or decoded role=anon; it does not verify signature, expiry, provider key activation or actual endpoint acceptance. The realtime.ts file has no diff from deployed8e2f624.",
+      "Runtime reads WORDPAIRS_SUPABASE_URL/ANON_KEY and server service/JWT settings. GET/api/realtime requires configuration plus valid application session and returns settings with a separate app-minted authenticated120second token.200 does not prove usable provider credentials.",
+      "The browser hook passes returned URL+anonKey to createClient, then supplies the separate authenticated token to realtime.setAuth and a private own-profile channel. Exact URL/profile binding was observed in this probe; legacy decoded role and ref classification are not cryptographic proof.",
+      "The anonymous PostgRESTGET used apikey and Bearer containing only the returned legacy public key. ActualHTTP401 and null safe errorcode were retained; response body discarded by design."
+    ],
+    "inference": "Potential hosted public-key or transport/configuration problem merits explicit acceptance verification. This probe does not establish the rejection cause or whether Realtime gateway/private-channel authorization also fails; HTTPREST and Realtime paths are distinct. The authenticated application token was neither used for this probe nor validated against the provider.",
+    "missingEvidence": [
+      "Current effective provider validation of the configured public key, without exposing it.",
+      "Actual private Realtime handshake/notification and token-renewal outcome on the deployed accepted candidate.",
+      "Safe response cause classification if separately authorized. No retry, env change, key creation or new hosted request in this task."
+    ]
+  }
+}

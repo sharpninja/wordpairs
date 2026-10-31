@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="3" failures="1" errors="0" time="0.01418595">
+    <testsuite name="tests/integration/capacity.integration.ts" timestamp="2026-10-30T20:05:56.803Z" hostname="[PRIVATE HOST]" tests="3" failures="1" errors="0" skipped="0" time="0.01418595">
+        <testcase classname="tests/integration/capacity.integration.ts" name="CAP15 SQL accepts15 and rejects16 at service, direct insert/update and new-match boundaries" time="0.011235038">
+            <failure message="expected { new15: true, new16: false, …(10) } to deeply equal { new15: true, new16: false, …(10) }" type="AssertionError">
+AssertionError: expected { new15: true, new16: false, …(10) } to deeply equal { new15: true, new16: false, …(10) }
+
+- Expected
++ Received
+
+@@ -5,11 +5,11 @@
+    &quot;finalSeatWinners&quot;: 1,
+    &quot;new15&quot;: true,
+    &quot;new16&quot;: false,
+    &quot;newMatch16Rejected&quot;: true,
+    &quot;observer26Rejected&quot;: true,
+-   &quot;observers&quot;: 25,
++   &quot;observers&quot;: 15,
+    &quot;players&quot;: 15,
+    &quot;publicRows&quot;: [
+      {
+        &quot;capacity&quot;: 15,
+        &quot;id&quot;: &quot;cap15-upgrade-partial&quot;,
+
+ ❯ tests/integration/capacity.integration.ts:88:135
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/capacity.integration.ts" name="CAP15-LEGACY forward upgrade preserves oversized waiting membership and Leave" time="0.000520509">
+        </testcase>
+        <testcase classname="tests/integration/capacity.integration.ts" name="CAP15-LEGACY forward upgrade preserves actual stored25-player scoring, replay and final awards" time="0.000387197">
+        </testcase>
+    </testsuite>
+</testsuites>

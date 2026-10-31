@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-10-30T14:59:24",
+  "gate": "preimplementation-sql-and-public-rules",
+  "inputs": [
+    {
+      "path": "tests/application/capacity-public.test.ts",
+      "sha256": "D7D41FDD6FBF2F7DF29EB8832728EC29E1405D10B7B888ADD80B500C7FAA25F5"
+    },
+    {
+      "path": "tests/integration/capacity.integration.ts",
+      "sha256": "B27F03E43A92EEB388EAC8DD83041EA33F82EA65B79F9216A058A3AD4FDB6BCE"
+    }
+  ],
+  "runs": [
+    {
+      "fixture": "correct",
+      "lane": "public",
+      "cases": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-sql-public-mock/correct-public.xml",
+      "sha256": "9CC070EEA3D4CF4F091F39396D4F8F1B1CF9EE597433B1729B2993C74CEC4D67"
+    },
+    {
+      "fixture": "correct",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-sql-public-mock/correct-sql.xml",
+      "sha256": "0426EDB431C72B44D4A6ADB18BDD969E2635B128D37F73C74E94B95CBEA4DCF7"
+    },
+    {
+      "fixture": "wrong-player-limit",
+      "lane": "public",
+      "cases": 1,
+      "failed": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-sql-public-mock/wrong-player-limit-public.xml",
+      "sha256": "39DE0E59D4814D3D21B761DE6BA8D69B9A4DFA0F938643AFB4686446B49B4C62"
+    },
+    {
+      "fixture": "wrong-player-limit",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-sql-public-mock/wrong-player-limit-sql.xml",
+      "sha256": "055697E622C1A6D6AFFDF4FEB48082776D1073DDC515B9A6C5C6C0B512D55EF6"
+    },
+    {
+      "fixture": "wrong-legacy",
+      "lane": "public",
+      "cases": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-sql-public-mock/wrong-legacy-public.xml",
+      "sha256": "6154C2C81AD413560BEF0345B55A36596FE8F98F42A71FBBAC5BFEAE05474AE8"
+    },
+    {
+      "fixture": "wrong-legacy",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 2,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-sql-public-mock/wrong-legacy-sql.xml",
+      "sha256": "F717D540F34438889F5936EE338AA6DA929927E0EDD8CA9B97EFAF6797B8B586"
+    }
+  ]
+}

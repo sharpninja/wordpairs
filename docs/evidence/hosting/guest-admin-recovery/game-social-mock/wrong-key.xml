@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="3" failures="2" errors="0" time="2.061369949">
+    <testsuite name="tests/web/game-social-routing.test.ts" timestamp="2026-10-29T17:39:49.025Z" hostname="[PRIVATE HOST]" tests="3" failures="2" errors="0" skipped="0" time="2.061369949">
+        <testcase classname="tests/web/game-social-routing.test.ts" name="match refreshes do not change the reaction refresh key" time="1.040193497">
+            <failure message="expected &apos;0&apos; to be &apos;7&apos; // Object.is equality
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div
+        data-key=&quot;0&quot;
+        data-round=&quot;round-1&quot;
+        data-testid=&quot;social-view&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;" type="AssertionError">
+AssertionError: expected &apos;0&apos; to be &apos;7&apos; // Object.is equality
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div
+        data-key=&quot;0&quot;
+        data-round=&quot;round-1&quot;
+        data-testid=&quot;social-view&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+Expected: &quot;7&quot;
+Received: &quot;0&quot;
+
+ ❯ tests/web/game-social-routing.test.ts:35:92
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ MutationObserver.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+ ❯ MutationObserver.invokeTheCallbackFunction node_modules/jsdom/lib/generated/idl/MutationCallback.js:19:26
+ ❯ notifyMutationObservers node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:194:22
+ ❯ node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:165:5
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/game-social-routing.test.ts" name="room or moderation refreshes advance the reaction refresh key" time="1.0070193">
+            <failure message="expected &apos;0&apos; to be &apos;7&apos; // Object.is equality
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div
+        data-key=&quot;0&quot;
+        data-round=&quot;round-1&quot;
+        data-testid=&quot;social-view&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;" type="AssertionError">
+AssertionError: expected &apos;0&apos; to be &apos;7&apos; // Object.is equality
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div
+        data-key=&quot;0&quot;
+        data-round=&quot;round-1&quot;
+        data-testid=&quot;social-view&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+Expected: &quot;7&quot;
+Received: &quot;0&quot;
+
+ ❯ tests/web/game-social-routing.test.ts:43:92
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ MutationObserver.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+ ❯ MutationObserver.invokeTheCallbackFunction node_modules/jsdom/lib/generated/idl/MutationCallback.js:19:26
+ ❯ notifyMutationObservers node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:194:22
+ ❯ node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:165:5
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/game-social-routing.test.ts" name="leaving an active round triggers a social refresh for the summary" time="0.012231059">
+        </testcase>
+    </testsuite>
+</testsuites>

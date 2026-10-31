@@ -1,0 +1,46 @@
+
+> wordpairs@0.1.0 test:live-ui
+> playwright test --config=playwright.live.config.ts live-player-counts.integration.spec.ts --output=test-results/live-local --workers=1 --fully-parallel --max-failures=1
+
+
+Running 1 test using 1 worker
+
+LIVE_SCALE players=25 round=1
+LIVE_SCALE players=25 round=2
+  ✘  1 tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 25 real browser players complete eight UI rounds (3.3m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 25 real browser players complete eight UI rounds 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByLabel('Your answer', { exact: true })
+    Expected: enabled
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByLabel('Your answer', { exact: true }) with timeout 30000ms
+      - waiting for getByLabel('Your answer', { exact: true })
+
+
+      167 |       const submissions = await Promise.allSettled(pages.slice(batch, batch + 2).map(async (page) => {
+      168 |         const solved = await commitUi(page, "answer", async () => {
+    > 169 |           await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+          |                                                                         ^
+      170 |           await page.getByLabel("Your answer", { exact: true }).fill(pair.target);
+      171 |           await page.getByRole("button", { name: "Submit answer", exact: true }).click();
+      172 |         });
+        at run (<home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:169:73)
+        at click (<home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:46:11)
+        at commitUi (<home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:64:28)
+        at <home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:168:24
+        at <home>/github/WordGame/.mcpServer/wordpairs-scale-review-20261029/tests/browser/live-player-counts.integration.spec.ts:167:27
+
+    Error Context: test-results/live-local/live-player-counts.integra-3ac8b-rs-complete-eight-UI-rounds/error-context.md
+
+  1 failed
+    tests/browser/live-player-counts.integration.spec.ts:12:29 › LIVE-SCALE 25 real browser players complete eight UI rounds 
+  1 error was not a part of any test, see above for details
+

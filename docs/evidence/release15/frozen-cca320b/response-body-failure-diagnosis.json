@@ -1,0 +1,310 @@
+{
+  "recordedAt": "2026-10-30T18:16:12.5837858-05:00",
+  "kind": "read-only-native-failure-diagnosis-not-HV",
+  "sourceHead": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "runId": "cdfa9899-c115-4621-aae2-fa8c51035d5c",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T225743Z-turn-d224",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "native": {
+    "pin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/live-ui.xml",
+      "sha256": "0412D6F1280AA1ACE8FFC5D8FDBC536E3A93B306FA5AE48E2ABEDC2FE88EA030",
+      "bytes": 6108
+    },
+    "cases": 14,
+    "passed": 7,
+    "failed": 1,
+    "skipped": 6,
+    "failurePlayers": 9,
+    "failureSeconds": 66.72,
+    "originalStackAnchors": [
+      "tests/browser/live-player-counts.integration.spec.ts:60:45 Object.json",
+      "tests/browser/live-player-counts.integration.spec.ts:73:38 commitUi",
+      "tests/browser/live-player-counts.integration.spec.ts:157:24 answer callback"
+    ],
+    "message": "response.json: Protocol error (Network.getResponseBody): No data found for resource with given identifier"
+  },
+  "observedRuntime": {
+    "pin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/runtime-receipts/live-scale-9.json",
+      "sha256": "78952E424A42F586FAF5189B2BD5FED3E0D9CFC145729F2A6C9504A2F47003E6",
+      "bytes": 15432
+    },
+    "uiPin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/runtime-receipts/live-scale-9-failure-ui.json",
+      "sha256": "02E32DDFE1842250E2433B7ACE67765A4A18B4E969DC8E14DBF17693A58A73B8",
+      "bytes": 36988
+    },
+    "phase": "UI round 2",
+    "completed": false,
+    "rounds": null,
+    "uiConfirmedSolves": 16,
+    "uncertainUiRetries": 0,
+    "cleanupFailures": 0,
+    "unresolvedPlayerIndices": [],
+    "requestFailureTotal": 17,
+    "diagnosticFailureTotal": 0,
+    "pendingAtDiagnosticDispose": 1,
+    "safeUi": [
+      {
+        "player": 0,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 1,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 2,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 3,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 4,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 5,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 6,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": true,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 7,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      },
+      {
+        "player": 8,
+        "closed": false,
+        "browserConnected": true,
+        "liveConnected": true,
+        "pendingGameRetryText": false,
+        "pendingRoomRetryText": false,
+        "roomNotFound": false,
+        "roster": "9 / 9 players",
+        "rounds": [
+          "Round 2",
+          "Round 2",
+          "Round 2"
+        ]
+      }
+    ],
+    "pendingControlEnabled": "UNKNOWN: innerText snapshot cannot establish enabled state",
+    "exactFailedRequestToPendingActorJoin": "UNKNOWN: original diagnostics do not join actor/command IDs to failing body Request",
+    "nearbyAnswerAbort": {
+      "method": "POST",
+      "action": "answer",
+      "elapsedMs": 63776,
+      "error": "net::ERR_ABORTED",
+      "sameFailingRequestEstablished": false
+    },
+    "solvesQualification": "16 is successful UI-response confirmations, not a snapshot count of all database accepted solves."
+  },
+  "sourceChain": {
+    "originalSourcePins": [
+      {
+        "originalPath": "\u003Crepo\u003E/src/web/game-panel.tsx",
+        "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/retained/src/web/game-panel.tsx",
+        "sha256": "3B99A07B9F6B21A099728FB1C94875776BD323489849D3A1B871F9D25D55D821"
+      },
+      {
+        "originalPath": "\u003Crepo\u003E/src/web/room-screen.tsx",
+        "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/retained/src/web/room-screen.tsx",
+        "sha256": "CE7776E139F132D03E6BA522939D7EFE07A406E8CF7F4AC6EEB860264925C951"
+      },
+      {
+        "originalPath": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+        "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/retained/tests/browser/live-multiplayer.integration.spec.ts",
+        "sha256": "91DDCE4F77598432ED973FEA2DC3E0548DF2CBD30D45BBA14AA79E5BF533648E"
+      },
+      {
+        "originalPath": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+        "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/retained/tests/browser/live-player-counts.integration.spec.ts",
+        "sha256": "4578B449F82E83430CAC300360C0CBBE204F216B4A70EB4F36C8516BA5F68C05"
+      },
+      {
+        "originalPath": "\u003Crepo\u003E/tests/browser/request-diagnostics.ts",
+        "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/retained/tests/browser/request-diagnostics.ts",
+        "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28"
+      }
+    ],
+    "matrix": "Original capture waited for both request and UI action, then awaited request.response and deferred response.json; successful-body failure escaped before pending retry classification.",
+    "frontend": "game-panel.tsx173-240 sets canonical pending input before fetch; response.json precedes pending clear; catch preserves pending input. Retry button579-585 reuses send() with pending object and is disabled while busy.",
+    "strict": "Original command/answer helpers also deferred body consumption. Approved successor changes capture timing only; strict retains four-conflict-only semantics.",
+    "driver": {
+      "package": "playwright-core",
+      "version": "1.64.1",
+      "pin": {
+        "path": "\u003Crepo\u003E/node_modules/playwright-core/lib/coreBundle.js",
+        "sha256": "829521B67ED7BE90C7D6D6098FF39F2241562D47E4AD7CCAB13710924A56001D",
+        "bytes": 3585406
+      },
+      "anchors": [
+        "internalBody14539-14552 awaits _finishedPromise before body lookup",
+        "createResponseBodyCallback37797-37805 issues Network.getResponseBody for original request ID"
+      ],
+      "conclusion": "Navigation advice is appended for protocol error type error without verifying navigation. Waiting for finished alone does not repair this lookup failure."
+    }
+  },
+  "conclusions": [
+    {
+      "status": "CONFIRMED",
+      "claim": "Deferred successful-response body lookup failed. Actual UI pending command text exists on one actor; user-visible uncertainty cannot be classified as instrumentation-only."
+    },
+    {
+      "status": "UNKNOWN",
+      "claim": "Whether actual navigation, cache eviction, browser/backend resource pressure or an aborted transport body caused the exact body lookup failure."
+    },
+    {
+      "status": "SUPPORTED_CURRENT_CONTRACT",
+      "claim": "Bounded same-page UI pending retry may cover successful-status body loss only after actual visible and enabled control observation and full next-payload equality. No API replay, synthetic success, new command ID or blind successful-status retry."
+    },
+    {
+      "status": "CONFIRMED_TEST_HELPER_V1_GAP",
+      "claim": "V1 cached body rejection plus simultaneous action rejection loses body error because CapturedCommand is fulfilled. Root verified sibling finding requires separate V2 same-oracle positive and wrong-provider control before correction."
+    }
+  ],
+  "requirements": {
+    "freshReadSnapshotPin": {
+      "path": "/tmp/wordpairs-response-recovery-effective.json",
+      "sha256": "083F4B3740806726E5807D6EDCC773684F61CC5A3D55D700B5D5C40050DE54B0",
+      "bytes": 869675
+    },
+    "support": [
+      "TR-CONNECTION-RECOVERY-009#TR-09-C01",
+      "TEST-CONNECTIONRECOVERY-109#VERIFY-TR-09",
+      "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C02"
+    ],
+    "stillUnsatisfied": [
+      "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C01",
+      "TEST-MULTIPLAYERINTEGRATION-134#TR-34-C01",
+      "TR-ROOM-SYNCRECOVERY-038#LIVE-07",
+      "TEST-ROOMSYNC-139#LIVE-07"
+    ],
+    "qualification": "Read current effective layer1 through matching Codex plugin. No requirements writes or satisfaction changes. LIVE05 applies specifically to presence body errors and is not substituted for game-command coverage."
+  },
+  "approvedRepair": {
+    "owner": "/root/release_selfcheck",
+    "plan": "docs/evidence/release15/command-capture/plan.md",
+    "scope": "Test-only shared eager response/body capture plus matrix existing canonical UI pending recovery. Preserve actual Request/status, cached value/original error, drain all started action/capture work; simultaneous failures retain both originals.",
+    "oracle": "Independent correct/wrong providers first; same real-binding assertions afterward. Preserve V1 historical receipts and distinct V2 body-plus-action delta gate.",
+    "pending": "Parent must freeze successor source and rerun every required full lane, complete14game119participation952solve matrix and strict push lane before actual Cline/Beam/High HV."
+  },
+  "preservation": {
+    "manifestPin": {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/manifest.json",
+      "sha256": "598F09CBBE5CBE12E3DD4C3085ECD949731DC43C9E7696EEE4E063A1E1D5E6AF",
+      "bytes": 18507
+    },
+    "verifiedRetainedCopies": 36,
+    "allRetainedCopyHashesMatch": true,
+    "allOriginalPathsStillExist": true,
+    "qualification": "Original mutable spec paths now belong to successor edits. Retained copies, not current source equality, establish original failed-version bytes."
+  },
+  "limits": [
+    "No source/test/script/config/application/requirements changes by this agent; only diagnostic receipt output.",
+    "No new build/test/browser/model/HV/provider operation by this agent.",
+    "This diagnosis does not prove successor runtime recovery, hosted behavior or release completion.",
+    "Original failed and skipped native cases remain visible; focused helper gates do not establish full-game success."
+  ],
+  "ratings": {
+    "accuracyPercent": 99,
+    "completenessPercent": 95,
+    "qualification": "Source-pinned bounded diagnosis; exact underlying transport cause and actual failing actor are unproved. This is self-review, not independent HV or a done-state score."
+  }
+}

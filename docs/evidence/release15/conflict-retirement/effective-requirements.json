@@ -1,0 +1,377 @@
+{
+  "readAtLocal": "2026-10-30T19:17:08",
+  "workspace": "\u003Crepo\u003E",
+  "currentLayer": {
+    "name": "Layer 1",
+    "key": "layer-1",
+    "order": 1,
+    "createdAtUtc": {
+      "dayOfWeek": "Tuesday",
+      "date": "2026-10-27T00:00:00.0000000",
+      "dayOfYear": 300,
+      "second": 25,
+      "year": 2026,
+      "microsecond": 499,
+      "month": 10,
+      "localDateTime": "2026-10-27T05:10:25.4404993-05:00",
+      "minute": 10,
+      "millisecond": 440,
+      "totalOffsetMinutes": 0,
+      "utcTicks": 639286926254404993,
+      "dateTime": "2026-10-27T10:10:25.4404993",
+      "timeOfDay": "10:10:25.4404993",
+      "hour": 10,
+      "offset": "00:00:00",
+      "day": 27,
+      "utcDateTime": "2026-10-27T10:10:25.4404993Z",
+      "nanosecond": 300,
+      "ticks": 639286926254404993
+    },
+    "workspaceId": "\u003Crepo\u003E",
+    "updatedAtUtc": {
+      "dayOfWeek": "Tuesday",
+      "date": "2026-10-27T00:00:00.0000000",
+      "dayOfYear": 300,
+      "second": 25,
+      "year": 2026,
+      "microsecond": 499,
+      "month": 10,
+      "localDateTime": "2026-10-27T05:10:25.4404993-05:00",
+      "minute": 10,
+      "millisecond": 440,
+      "totalOffsetMinutes": 0,
+      "utcTicks": 639286926254404993,
+      "dateTime": "2026-10-27T10:10:25.4404993",
+      "timeOfDay": "10:10:25.4404993",
+      "hour": 10,
+      "offset": "00:00:00",
+      "day": 27,
+      "utcDateTime": "2026-10-27T10:10:25.4404993Z",
+      "nanosecond": 300,
+      "ticks": 639286926254404993
+    }
+  },
+  "sessionId": "Codex-20261030T200118Z-plugin-session",
+  "requestId": "req-20261031T001418Z-conflict-retirement-repair",
+  "records": [
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": true,
+          "text": "Pending reads expose accessible loading feedback; empty results are distinct from unavailable results and offer an allowed next action.",
+          "id": "UI-FEEDBACK-01",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Pending mutations show busy feedback and prevent duplicate submission while preserving entered data.",
+          "id": "UI-FEEDBACK-02",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Failures show a user-safe explanation and valid Retry action while retaining safe drafts; raw errors, credentials and private data are not exposed.",
+          "id": "UI-FEEDBACK-03",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "An uncertain-write retry uses identical command identity/payload; conflicts refresh authoritative state without silently replaying a changed command or claiming success.",
+          "id": "UI-FEEDBACK-04",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Authorization denial clears privileged data/drafts and rejects stale response restoration; connection recovery retains accepted state without duplicate writes.",
+          "id": "UI-FEEDBACK-05",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        }
+      ],
+      "body": "Specify loading, empty, failed, uncertain-write, conflict and denied UI outcomes without losing safe user input or duplicating commands.",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "FR-REQUESTFEEDBACK-030",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Accessible request feedback and safe retry",
+      "status": "completed",
+      "notes": "Specified by operator instruction \"Fill gaps\", 27October2026. Design: docs/testing/ui/decisions.md. Original documentation-only snapshot retained in docs/testing/ui/archive/design-20261027/; implementation now has the separately scoped evidence below.\n\nBEGIN UI-IMPLEMENTATION FR-REQUESTFEEDBACK-030\nImplemented UI-DEC behavior. Exact source inventory: docs/testing/ui/implementation-manifest.json. Evidence: docs/testing/ui/implementation-receipt.json; docs/evidence/ui-gaps/unit-safe-errors-final.log (542 tests), browser-safe-errors-final.log (61 journeys including malformed room GET/POST), browser-seats-tagged.log (5 refined recovery cases), postgres.log (68 real SQL tests), build-safe-errors-final.log, lint-safe-errors.log and typecheck-safe-errors.log. Browser HTTP/persistence/time ports are isolated fixtures around actual React/application/domain services; do not treat them as real Realtime/physical-phone/OIDC/public-origin evidence. Criterion-level procedures: matching UI TEST notes/cases. Historical148baseline criteria/evidence and TEST-ROOMSYNC-139 / LIVE-07 are preserved.\nEND UI-IMPLEMENTATION FR-REQUESTFEEDBACK-030",
+      "priority": "high"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": true,
+          "text": "Simulate lost response, reconnect, expiry and stale commands; assert same-command canonical retry, unchanged committed state and authoritative recovery.",
+          "id": "VERIFY-TR-09",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+          "id": "TR-09-C01",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+          "id": "DEC-17",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        }
+      ],
+      "status": "completed",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TEST-CONNECTIONRECOVERY-109",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Verify TR-09: Connection handling",
+      "condition": "Simulate lost response, reconnect, expiry and stale commands; assert same-command canonical retry, unchanged committed state and authoritative recovery.",
+      "notes": "New verification/extension import key: TEST-WP-109; canonical MCP ID: TEST-CONNECTIONRECOVERY-109. Technical/integration or operational evidence only. Source TR-09. Existing commands and evidence limits: docs/testing.md; docs/phase6_execution.md; docs/deployment_plan.md. Former provisional MCP ID: TEST-WP-109. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-CONNECTIONRECOVERY-109\n# TEST-CONNECTIONRECOVERY-109 - Verify TR-09: Connection handling\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Verify TR-09: Connection handling. |\n| QBrain reference/scope | \u0060TEST-CONNECTIONRECOVERY-109\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06, SCREEN-SERVICE, STATE-SERVICE-01, STATE-SERVICE-02; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-CONNECTION-RECOVERY-009#DEC-17\u0060; \u0060TR-CONNECTION-RECOVERY-009#TR-09-C01\u0060; \u0060TR-ROOM-CODES-010#DEC-17\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Alice has an accepted score and a room membership; a separate client Bob remains connected. |\n| Test data | Accepted score 5; disconnected durations below and above 120-second grace; uncertain submission fixture. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Disconnect Alice, reconnect within grace and reopen the room. | Membership and accepted score persist; no duplicate submission is recorded. |\n| 2 | Repeat beyond grace and observe the normal departure rule for the current room phase. | Expired membership departs without corrupting scores; retry of an uncertain command retains its original command ID. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Verify TR-09: Connection handling\n  Scenario: TEST-CONNECTIONRECOVERY-109 design verification\n    Given Alice has an accepted score and a room membership; a separate client Bob remains connected.\n    And the fixture data is Accepted score 5; disconnected durations below and above 120-second grace; uncertain submission fixture.\n    When Disconnect Alice, reconnect within grace and reopen the room.\n    Then Membership and accepted score persist; no duplicate submission is recorded.\n    When Repeat beyond grace and observe the normal departure rule for the current room phase.\n    Then Expired membership departs without corrupting scores; retry of an uncertain command retains its original command ID.\n\u0060\u0060\u0060\n\n## Boundaries\n\nNetwork readiness and authoritative grace expiry are conditions; do not substitute a fixed sleep. Generic recovery copy is not specified.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-CONNECTIONRECOVERY-109",
+      "priority": "high"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": false,
+          "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+          "id": "TR-34-C01",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+          "id": "TR-34-C02",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database.",
+          "id": "TR-34-C03",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+          "id": "DEC-02",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Match length and stage timer: Eight rounds. Each of the four answer stages has a 20-second deadline; a stage closes early when all unsolved players submit.",
+          "id": "DEC-01",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        }
+      ],
+      "status": "in_progress",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TEST-MULTIPLAYERINTEGRATION-134",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Verify Integration games for every supported player count",
+      "condition": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..15, using disposable infrastructure.",
+      "notes": "New verification/extension import key: TEST-WP-134; canonical MCP ID: TEST-MULTIPLAYERINTEGRATION-134. Actual test sources: tests/application/access.test.ts, tests/application/catalog-admin.test.ts, tests/web/admin-api.test.ts, tests/integration/admin.integration.ts, tests/integration/multiplayer.integration.ts, tests/browser/admin.phase6.spec.ts. Match the applicable suite to this requirement; do not claim all suites prove every boundary. Former provisional MCP ID: TEST-WP-134. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "priority": "high"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": true,
+          "text": "Pending reads expose accessible loading feedback; empty results are distinct from unavailable results and offer an allowed next action.",
+          "id": "UI-FEEDBACK-01",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Pending mutations show busy feedback and prevent duplicate submission while preserving entered data.",
+          "id": "UI-FEEDBACK-02",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Failures show a user-safe explanation and valid Retry action while retaining safe drafts; raw errors, credentials and private data are not exposed.",
+          "id": "UI-FEEDBACK-03",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "An uncertain-write retry uses identical command identity/payload; conflicts refresh authoritative state without silently replaying a changed command or claiming success.",
+          "id": "UI-FEEDBACK-04",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Authorization denial clears privileged data/drafts and rejects stale response restoration; connection recovery retains accepted state without duplicate writes.",
+          "id": "UI-FEEDBACK-05",
+          "evidence": "docs/testing/ui/implementation-receipt.json; matching criterion procedure in docs/testing/ui/cases/; exact snapshot docs/testing/ui/implementation-manifest.json. Isolated UI + real application/domain; SQL tier separately identified."
+        }
+      ],
+      "status": "completed",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TEST-REQUESTFEEDBACK-143",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Loading, empty, failure and canonical retry feedback",
+      "condition": "Verify the documented UI behavior: Loading, empty, failure and canonical retry feedback.",
+      "notes": "Specified by operator instruction \u0022Fill gaps\u0022, 27October2026. Design: docs/testing/ui/decisions.md. Original documentation-only snapshot retained in docs/testing/ui/archive/design-20261027/; implementation now has the separately scoped evidence below.\n\nBEGIN UI-CASE TEST-REQUESTFEEDBACK-143\n# TEST-REQUESTFEEDBACK-143 - Loading, empty, failure and canonical retry feedback\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json). Current implementation evidence is in [implementation-receipt.json](../implementation-receipt.json); the original documentation-only snapshot is retained under archive/design-20261027/.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Loading, empty, failure and canonical retry feedback. |\n| QBrain reference/scope | \u0060TEST-REQUESTFEEDBACK-143\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [decisions.md](../decisions.md) |\n| Frame/element identifiers | GAP-FLOW-REQUESTFEEDBACK, GAP-TRANS-REQUESTFEEDBACK-01, GAP-TRANS-REQUESTFEEDBACK-02, GAP-TRANS-REQUESTFEEDBACK-03, GAP-TRANS-REQUESTFEEDBACK-04; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060FR-REQUESTFEEDBACK-030#UI-FEEDBACK-01\u0060; \u0060FR-REQUESTFEEDBACK-030#UI-FEEDBACK-02\u0060; \u0060FR-REQUESTFEEDBACK-030#UI-FEEDBACK-03\u0060; \u0060FR-REQUESTFEEDBACK-030#UI-FEEDBACK-04\u0060; \u0060FR-REQUESTFEEDBACK-030#UI-FEEDBACK-05\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | An isolated fixture controls pending reads, empty results, denied reads and mutation outcomes for Alice. |\n| Test data | Draft Space; command C-1 with fixed payload; outcomes pending, unavailable, committed-response-lost, conflict, forbidden. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Automated isolated browser integration and supporting application/SQL checks executed; operational boundaries remain separate. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Executed applicable UI-DEC variants in Chromium with real React and isolated HTTP/application/domain fixtures; real disposable PostgreSQL covers persistence/audit. See [execution receipt](../implementation-receipt.json). |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Hold a read pending, then resolve empty and unavailable in separate examples. | Accessible loading feedback changes to distinct empty/allowed-action or unavailable/Retry states without a false success. |\n| 2 | Hold a form submission pending and attempt another submit; then fail it. | Busy feedback prevents duplicate submission; the safe draft remains and a user-safe error/valid Retry appears. |\n| 3 | Retry a committed-response-lost C-1, then exercise conflict in another fixture. | The uncertain retry sends identical C-1/payload and displays one committed result; conflict refreshes state without silently replaying a changed command. |\n| 4 | Deny authorization while an older read is pending, then complete that older read. | Privileged records/drafts clear and the older response cannot restore them; no raw errors or credentials are shown. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Loading, empty, failure and canonical retry feedback\n  Scenario: TEST-REQUESTFEEDBACK-143 design verification\n    Given An isolated fixture controls pending reads, empty results, denied reads and mutation outcomes for Alice.\n    And the fixture data is Draft Space; command C-1 with fixed payload; outcomes pending, unavailable, committed-response-lost, conflict, forbidden.\n    When Hold a read pending, then resolve empty and unavailable in separate examples.\n    Then Accessible loading feedback changes to distinct empty/allowed-action or unavailable/Retry states without a false success.\n    When Hold a form submission pending and attempt another submit; then fail it.\n    Then Busy feedback prevents duplicate submission; the safe draft remains and a user-safe error/valid Retry appears.\n    When Retry a committed-response-lost C-1, then exercise conflict in another fixture.\n    Then The uncertain retry sends identical C-1/payload and displays one committed result; conflict refreshes state without silently replaying a changed command.\n    When Deny authorization while an older read is pending, then complete that older read.\n    Then Privileged records/drafts clear and the older response cannot restore them; no raw errors or credentials are shown.\n\u0060\u0060\u0060\n\n## Boundaries\n\nSpecified gap behavior is implemented and verified within the execution receipt\u0027s isolated UI/application/SQL scope. The original design-only snapshot remains historical.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\n## Implementation evidence\n\n[Implementation snapshot and tiered results](../implementation.md), [hashed source inventory](../implementation-manifest.json), and [raw execution logs](../../../evidence/ui-gaps/) bind this case to the current tested implementation. Browser journeys use actual pages and real application/domain services behind isolated HTTP/persistence/time ports. They do not establish physical screen-reader behavior, native phone install, real OIDC, deployed availability or real private-push2..25UI delivery. Reflow at400% is the documented320CSS-pixel equivalent, not a physical browser-zoom certification.\n\nFinal hostile-review regression: malformed200room GET and POST bodies containing a private sentinel render only controlled room errors; the sentinel/parser/network text is absent and explicit Refresh restores authoritative room access. Both paths are included in the final61-browser run.\n\nEND UI-CASE TEST-REQUESTFEEDBACK-143\n\nBEGIN UI-IMPLEMENTATION TEST-REQUESTFEEDBACK-143\nImplemented UI-DEC behavior. Exact source inventory: docs/testing/ui/implementation-manifest.json. Evidence: docs/testing/ui/implementation-receipt.json; docs/evidence/ui-gaps/unit-safe-errors-final.log (542 tests), browser-safe-errors-final.log (61 journeys including malformed room GET/POST), browser-seats-tagged.log (5 refined recovery cases), postgres.log (68 real SQL tests), build-safe-errors-final.log, lint-safe-errors.log and typecheck-safe-errors.log. Browser HTTP/persistence/time ports are isolated fixtures around actual React/application/domain services; do not treat them as real Realtime/physical-phone/OIDC/public-origin evidence. Criterion-level procedures: matching UI TEST notes/cases. Historical148baseline criteria/evidence and TEST-ROOMSYNC-139 / LIVE-07 are preserved.\nEND UI-IMPLEMENTATION TEST-REQUESTFEEDBACK-143",
+      "priority": "high"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": true,
+          "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied.",
+          "id": "LIVE-01",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed.",
+          "id": "LIVE-02",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch.",
+          "id": "LIVE-03",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement.",
+          "id": "LIVE-04",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+          "id": "LIVE-05",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition.",
+          "id": "LIVE-06",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": false,
+          "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+          "id": "LIVE-07",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json."
+        }
+      ],
+      "status": "in_progress",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TEST-ROOMSYNC-139",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Real browser multiplayer, private push and recovery integration",
+      "condition": "Run repeatable UI integration against an explicitly selected actual database-backed runtime with real private WebSockets and no HTTP fixtures, plus focused concurrency, lifecycle, scheduler and negative authorization regressions. Exercise2 through15 players and an observer, retain evidence and distinguish local runtime proof from hosted deployment.",
+      "notes": "Confirmed user requirements: actual live gameplay, repeatable UI integration at2..15, design updates and independent hostile validation. Source: phone stale-roster report and corrections,27October2026. SDK token callback, coalescing, lifecycle, independent worker and owned cleanup are implemented. New presence-body defect independently reproduced in Chromium;2red React tests now pass, real heartbeat browser regression passes with unread negative control and production-only body drain.532unit/acceptance tests, lint and production build pass. Updated strict game is rerunning; full2..15 remains pending. Prior25-player round1 failure and measured shared-cluster WAL stalls are retained. Volatile TLS harness preserves fsync/synchronous_commit but proves neither power-loss durability nor public capacity. Faster waiting-room fallback and hosted Phase7 remain outside this extension.\n\nBEGIN UI-CASE TEST-ROOMSYNC-139\n# TEST-ROOMSYNC-139 - Real browser multiplayer, private push and recovery integration\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Real browser multiplayer, private push and recovery integration. |\n| QBrain reference/scope | \u0060TEST-ROOMSYNC-139\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | MSG-M03, MSG-M04, MSG-M05, MSG-M27, MSG-M28, MSG-M29, MSG-FLOW, SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-02\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-03\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-07\u0060 |\n| Priority | critical |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities. |\n| Test data | Player counts every integer 2..15; one inviter-bound observer; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; all no-hint correct solves yield 5 per round and 40 per player. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Partial: full actual-runtime UI fixture, seed control and independent observer are required; current execution state remains the existing QBrain in_progress record. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Join by UI room code and ready each player without manual refresh, with periodic application refresh suppressed. | All clients see the same roster, countdown and category chooser through actual private updates. |\n| 2 | Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients. | All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points. |\n| 3 | Repeat each player count and perform offline/reconnect, token-renewal and socket-recovery variants. | Autonomous progression and authorized recovery work; no polling-only pass or service-only result is accepted. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Real browser multiplayer, private push and recovery integration\n  Scenario: TEST-ROOMSYNC-139 design verification\n    Given Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities.\n    And the fixture data is Player counts every integer 2..15; one inviter-bound observer; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; all no-hint correct solves yield 5 per round and 40 per player.\n    When Join by UI room code and ready each player without manual refresh, with periodic application refresh suppressed.\n    Then All clients see the same roster, countdown and category chooser through actual private updates.\n    When Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients.\n    Then All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points.\n    When Repeat each player count and perform offline/reconnect, token-renewal and socket-recovery variants.\n    Then Autonomous progression and authorized recovery work; no polling-only pass or service-only result is accepted.\n\u0060\u0060\u0060\n\n## Boundaries\n\nThis documents the outstanding matrix obligation; it does not claim that all counts passed. Private-frame privacy and worker ownership/fault contracts remain separate LIVE criteria.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-ROOMSYNC-139\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator\u0027s latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply \u0027Set the cap to15 (recommended)\u0027 and docs/release15-completion-plan.md.\n\n\u003C!-- CURRENT-RELEASE15-UI-CASE --\u003E\nCurrent linked case export: docs/testing/ui/cases/TEST-ROOMSYNC-139.md\nSource SHA256: 91CB79D29BFDDA280585D9553B336D490079350CD030216FA1A3A2892643C141\nScope:30October2026 cap15 amendment. This case documentation is not execution evidence and does not satisfy an AC. QBrain remains authoritative; prior notes and execution evidence are preserved above.\n\n# TEST-ROOMSYNC-139 - Real browser multiplayer, private push and recovery integration\n\nCurrent rules v2.7 amendment (30 October 2026): new games use every count 2 through 15. The full matrix is 14 games, 119 player participations and 952 accepted round solves. The separate observer limit remains 25 and the new-release audience is at most 40. Original design/receipt provenance remains historical; [the completion plan](../../../release15-completion-plan.md) governs fresh evidence.\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Real browser multiplayer, private push and recovery integration. |\n| QBrain reference/scope | \u0060TEST-ROOMSYNC-139\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | MSG-M03, MSG-M04, MSG-M05, MSG-M27, MSG-M28, MSG-M29, MSG-FLOW, SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-02\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-03\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-07\u0060 |\n| Priority | critical |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities. |\n| Test data | Every player count 2 through 15 for the matrix; two players plus one inviter-bound observer for the separate strict-push journey; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; no-hint correct solves yield 5 per round and 40 per player. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Partial: full actual-runtime UI fixture, seed control and independent observer are required; current execution state remains the existing QBrain in_progress record. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Arrange independent matrix identities/membership using real APIs, then ready every player through browser controls without manual refresh. In the separate strict-push journey, join by UI room code and suppress periodic UI reads. | All expected players see the same roster, countdown and category chooser; the strict journey correlates actual private notifications with authorized reads. |\n| 2 | Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients. | All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points. |\n| 3 | Complete all 14 matrix games with at most two simultaneous answer UIs, and separately run strict observer/offline/reconnect/token-renewal/socket-recovery variants. | Matrix reports record eight rounds per game, 119 participations and 952 accepted UI solves with matching final rankings and truthful cleanup; strict observations prove autonomous progression and private recovery without periodic-read substitution. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Real browser multiplayer, private push and recovery integration\n  Scenario: TEST-ROOMSYNC-139 design verification\n    Given Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities.\n    And the matrix contains every player count 2 through 15\n    And the separate strict-push game has two players and an inviter-bound observer\n    When I arrange matrix membership through real APIs and ready every player through the UI\n    Then all expected players see the same roster, countdown and category chooser\n    When Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients.\n    Then All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points.\n    When I complete all 14 matrix games with at most two simultaneous answer UIs\n    Then 119 player participations produce 952 accepted UI solves and matching rankings\n    When I run the strict observer game with periodic UI reads suppressed\n    Then actual private notifications cause authorized state updates\n    And autonomous deadlines, reconnect and token renewal remain observable\n\u0060\u0060\u0060\n\n## Boundaries\n\nThis documents the current matrix obligation, not a claim that all counts passed. Preserve the older 2 through 25 attempts with their original source and outcomes. The 29 October 15-player dirty-build pass is historical until the changed committed candidate is rerun. Private-frame privacy, maximum observer audience, legacy-match compatibility and worker ownership/fault contracts retain their separately mapped criteria.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n",
+      "priority": "critical"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": true,
+          "text": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+          "id": "TR-09-C01",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+          "id": "DEC-17",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        }
+      ],
+      "body": "A disconnect must not corrupt accepted scores or duplicate a submission. Reconnecting players retain membership for a two-minute grace interval; after it expires the room applies the normal departure rules. Client retries reuse the original command ID.",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TR-CONNECTION-RECOVERY-009",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Connection handling",
+      "status": "completed",
+      "notes": "Original v2.6 document ID: TR-09; canonical MCP ID: TR-CONNECTION-RECOVERY-009. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: TR-WP-GAME-009. Replaced at user request with a subject-identifying ID.",
+      "priority": "high"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": false,
+          "text": "Run14 complete games with119 player participations and952 accepted round solves; every game reaches shared final standings.",
+          "id": "TR-34-C01",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json."
+        },
+        {
+          "isSatisfied": true,
+          "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+          "id": "TR-34-C02",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database.",
+          "id": "TR-34-C03",
+          "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+        }
+      ],
+      "body": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..15, using disposable infrastructure.",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TR-MULTIPLAYER-INTEGRATION-034",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Integration games for every supported player count",
+      "status": "in_progress",
+      "notes": "New verification/extension import key: TR-34; canonical MCP ID: TR-MULTIPLAYER-INTEGRATION-034. Confirmed extension requirement; source docs/admin_acl_design.md, docs/admin_acl_review_receipt.json, tests/integration/multiplayer.integration.ts and user conversation. Former provisional MCP ID: TR-WP-GAME-034. Replaced at user request with a subject-identifying ID.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "priority": "high"
+    },
+    {
+      "acceptanceCriteria": [
+        {
+          "isSatisfied": true,
+          "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied.",
+          "id": "LIVE-01",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed.",
+          "id": "LIVE-02",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch.",
+          "id": "LIVE-03",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement.",
+          "id": "LIVE-04",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+          "id": "LIVE-05",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": true,
+          "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition.",
+          "id": "LIVE-06",
+          "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+        },
+        {
+          "isSatisfied": false,
+          "text": "Repeatable browser integration plays real eight-round games at every player count2 through15, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+          "id": "LIVE-07",
+          "evidence": "Changed release scope30October2026; pending fresh cap15 validation and independent review. Prior criterion/evidence retained in docs/evidence/release15/qbrain-before.json."
+        }
+      ],
+      "body": "Configure authenticated Realtime and an independent durable deadline/outbox worker. Game state must propagate end to end to players and bound observers without relying on periodic browser reads. Preserve authority, privacy, idempotency and owned temporary-runtime cleanup.",
+      "workspaceId": "\u003Crepo\u003E",
+      "id": "TR-ROOM-SYNCRECOVERY-038",
+      "scopeStartLayerKey": "layer-1",
+      "title": "Private live multiplayer delivery and autonomous progression",
+      "status": "in_progress",
+      "notes": "Confirmed user requirements: actual live gameplay, repeatable UI integration at2..15, design updates and independent hostile validation. Source: phone stale-roster report and corrections,27October2026. SDK token callback, coalescing, lifecycle, independent worker and owned cleanup are implemented. New presence-body defect independently reproduced in Chromium;2red React tests now pass, real heartbeat browser regression passes with unread negative control and production-only body drain.532unit/acceptance tests, lint and production build pass. Updated strict game is rerunning; full2..15 remains pending. Prior25-player round1 failure and measured shared-cluster WAL stalls are retained. Volatile TLS harness preserves fsync/synchronous_commit but proves neither power-loss durability nor public capacity. Faster waiting-room fallback and hosted Phase7 remain outside this extension.\n\nLocal 29 October 2026 diagnostic: a 25-player attempt failed during UI readiness before simultaneous-answer testing. Captured UI showed 24 players playing and the final participant unable to access the room; a five-second holdout removal is consistent with the observed roster but not proven by a retained deadline event. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-simultaneous/. A separate earlier 25-player run failed during gameplay: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-failure/. Current routing source and these exploratory tests are uncommitted; neither establishes 25-player capacity, public hosting capacity, or completion of LIVE-07.\n\nLocal 29 October 2026 strict-push browser integration passed for two players and one observer through eight rounds, token renewal and reconnect with periodic UI reads suppressed. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-strict-push/. It used an uncommitted candidate build and isolated TLS database/private Realtime; it does not establish deployed behavior or LIVE-07 capacity.\n\nLocal 29 October 2026 follow-up diagnostic readied the last two players together and reached round one with 25 players but failed after nine recorded solves, with 15 uncertain retries and 453 request failures (only the first 100 failure details retained). The captured scorecard shows the round deadline elapsed; the cause of the delay is unproven. This exploratory run permitted 25 concurrent answers, outside the LIVE-07 limit of two. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-ready-together/. The candidate remains uncommitted and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 diagnostic with the last two players readying together and at most two simultaneous answers failed at 25 players in round one after two recorded solves, one uncertain retry and 396 request failures (only the first 100 failure details retained). The answer control was absent when the test attempted to submit. Cleanup reported no errors; the cause remains unproven. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-bounded/. This local uncommitted candidate has not satisfied LIVE-07 or established hosted capacity.\n\nLocal 29 October 2026 diagnostic with per-phase request measurement failed during readiness before gameplay. During the test readiness phase, 1,563 room reads started, 24 readiness responses succeeded, and completed room reads reached approximately 9.1 seconds. The captured roster had 24 players. These local observations do not establish the source of the delay or public-host capacity. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-metrics/. The candidate is uncommitted and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 diagnostic suppressed browser safety-read timers while preserving real push and presence. All 25 readiness actions succeeded, but the category chooser did not appear before timeout; 22 captured clients were still loading the game. Request totals recorded after cleanup include cleanup traffic and cannot establish the cause. This altered-timer run is not an acceptance test. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-no-safety-polls/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 normal-polling 25-player diagnostic failed during readiness; its pre-cleanup snapshot recorded 881 room reads started. An independent monitor sampled the isolated database 36 times: three idle connections appeared in 35 samples, and no database lock wait was sampled. Sampling can miss brief waits and does not establish the cause. The first monitor started before PostgreSQL was ready and captured no samples; the corrected monitor attached after startup. Receipt and samples: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-db-monitored/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 candidate addresses a separate LIVE-03 gap: foreground calls no longer join an in-flight deadline batch, while the protected worker waits for its actual result; idle foreground catch-up and worker error/retry behavior remain. Before implementation, four assertions passed with the correct fixture and rejected the wrong fixture; the worker route fixture likewise passed and rejected its wrong control. Focused production-bound suite: 29 passed. Receipts: docs/evidence/hosting/guest-admin-recovery/deadline-worker-mock-v2/ and deadline-route-mock/. Source remains uncommitted; this does not establish 25-player or hosted behavior, and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 post-deadline-fix 25-player UI test completed round one but failed in round two after 45 recorded solves. Its pre-cleanup round-two metrics recorded 33 answer conflicts, 20 successful answer responses, and 1,896 reaction, 1,467 room and 1,171 match reads started. The monitor sampled 103 database snapshots and observed lock waits in three; sampling cannot establish contribution to the failure. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-post-deadline-fix/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 candidate separates game and reaction refresh keys: match notifications no longer automatically reread reactions, room and reaction notifications still refresh both, and active-round to summary transitions refresh the observer social view. Before implementation, independent correct and wrong controls passed their mock gates; 22 focused tests passed against the implementation. Receipts: docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock-v2/, game-social-mock/ and social-transition-mock/. The paired source edits had a late per-edit verification hook; both subsequently verified successfully. Candidate remains uncommitted and requires actual push and 25-player verification; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 updated candidate passed the real strict-push browser test for two players and an observer through eight rounds, reactions, token renewal and reconnect, with polling suppressed and no cleanup errors. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-strict-social-push/. The build is uncommitted and the result does not establish the 25-player matrix or hosted performance; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 25-player UI run after separating game and reaction refresh keys failed in round two after 29 recorded solves. It recorded 304 reaction reads in round one versus 826 in the preceding diagnostic; timing and conditions differed, so the comparison does not establish a capacity improvement. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-post-social-fix/. The build is uncommitted; LIVE-07 remains unsatisfied.\n\n30October2026 approved release amendment: player cap15, observer cap25 unchanged. New scope supersedes historical25-player release obligations. Prior bodies, criteria, satisfaction and evidence are retained in docs/evidence/release15/qbrain-before.json. Updated criteria remain unsatisfied until fresh validation and independent HV. The operator's latest reviewer selection is Cline with model Beam and High effort until Monday, 2 November 2026, with no exact cutoff hour specified; it supersedes the pending Cursor/Grok and Claude Opus selections for that interval. CAP15-LEGACY applies where present. Source: operator reply 'Set the cap to15 (recommended)' and docs/release15-completion-plan.md.",
+      "priority": "critical"
+    }
+  ],
+  "qualification": "Fresh supported effective requirement read only; existing satisfaction retained; no requirement/status mutation."
+}

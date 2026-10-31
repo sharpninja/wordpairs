@@ -1,0 +1,62 @@
+<TestRun id="1cad138b-6b75-4afa-8b4e-77365a874b73" name="JUnit adapter: privacy-unit.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times start="2026-10-28T20:46:34.0245624-05:00" creation="2026-10-28T20:46:34.0245624-05:00" queuing="2026-10-28T20:46:34.0245624-05:00" finish="2026-10-28T20:46:34.0245624-05:00" />
+  <Results>
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0024602" executionId="3512d031-46f6-4567-9f4e-025d8ccf0b1c" testId="94c1a1bf-5d3f-5c7b-9aaa-82b5d56abb0d" computerName="[PRIVATE HOST]" testName="tests/ac-contracts/admin-profile-privacy.test.ts :: GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows" outcome="Passed" relativeResultsDirectory="3512d031-46f6-4567-9f4e-025d8ccf0b1c" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0068973" executionId="0f0e3690-4d19-4624-86e0-fcc19e976ac4" testId="9267273c-9c6d-45ee-352a-41768a95cd71" computerName="[PRIVATE HOST]" testName="tests/ac-contracts/admin-profile-privacy.test.ts :: GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft" outcome="Passed" relativeResultsDirectory="0f0e3690-4d19-4624-86e0-fcc19e976ac4" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0016195" executionId="f98b27d9-b02b-45c5-8597-9317021057b9" testId="8427b46d-8f1c-fadc-aba6-85f89756da0c" computerName="[PRIVATE HOST]" testName="tests/ac-contracts/admin-profile-privacy.test.ts :: GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection" outcome="Passed" relativeResultsDirectory="f98b27d9-b02b-45c5-8597-9317021057b9" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0053104" executionId="c3e30abb-ea85-4b14-9ef0-f3cc00b8d313" testId="a9dea0d3-3276-fbaf-622c-7808598af6ff" computerName="[PRIVATE HOST]" testName="tests/application/identity.test.ts :: AC-20/21/46 identity application boundaries &gt; GA-10 verified account profiles default private using the mock-validated oracle" outcome="Passed" relativeResultsDirectory="c3e30abb-ea85-4b14-9ef0-f3cc00b8d313" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0020033" executionId="44718a69-696e-4b99-a242-c8fcca69f4c8" testId="6f5b1c9a-c52d-8a53-d2ba-0fd3e1e658bf" computerName="[PRIVATE HOST]" testName="tests/application/identity.test.ts :: AC-20/21/46 identity application boundaries &gt; passes only verified identities to profile association and refuses invalid browser credentials" outcome="Passed" relativeResultsDirectory="44718a69-696e-4b99-a242-c8fcca69f4c8" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0028358" executionId="52e1ed18-d5cc-47cc-bde8-a1218ff33566" testId="ca51e220-8bbc-169d-254f-71ed680ff0c9" computerName="[PRIVATE HOST]" testName="tests/application/identity.test.ts :: AC-20/21/46 identity application boundaries &gt; creates a generated opt-out guest and never returns provider claims in the profile" outcome="Passed" relativeResultsDirectory="52e1ed18-d5cc-47cc-bde8-a1218ff33566" />
+    <UnitTestResult testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" duration="00:00:00.0010219" executionId="447d776f-a878-438c-94be-ca07de5fa3c0" testId="1451aadc-4a38-99a6-9f34-079af280eb8f" computerName="[PRIVATE HOST]" testName="tests/application/identity.test.ts :: AC-20/21/46 identity application boundaries &gt; rejects forged profile authority and arbitrary icons before persistence" outcome="Passed" relativeResultsDirectory="447d776f-a878-438c-94be-ca07de5fa3c0" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest storage="tests/ac-contracts/admin-profile-privacy.test.ts" id="94c1a1bf-5d3f-5c7b-9aaa-82b5d56abb0d" name="GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows">
+      <Execution id="3512d031-46f6-4567-9f4e-025d8ccf0b1c" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; accepts a private member draft and guest-only public rows" codeBase="tests/ac-contracts/admin-profile-privacy.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/ac-contracts/admin-profile-privacy.test.ts" id="9267273c-9c6d-45ee-352a-41768a95cd71" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft">
+      <Execution id="0f0e3690-4d19-4624-86e0-fcc19e976ac4" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects a published member draft" codeBase="tests/ac-contracts/admin-profile-privacy.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/ac-contracts/admin-profile-privacy.test.ts" id="8427b46d-8f1c-fadc-aba6-85f89756da0c" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection">
+      <Execution id="f98b27d9-b02b-45c5-8597-9317021057b9" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/ac-contracts/admin-profile-privacy.test.ts" name="GA-10 mock gate: independent member-privacy oracles &gt; rejects either owner or retired member leaking into the projection" codeBase="tests/ac-contracts/admin-profile-privacy.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/application/identity.test.ts" id="a9dea0d3-3276-fbaf-622c-7808598af6ff" name="AC-20/21/46 identity application boundaries &gt; GA-10 verified account profiles default private using the mock-validated oracle">
+      <Execution id="c3e30abb-ea85-4b14-9ef0-f3cc00b8d313" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; GA-10 verified account profiles default private using the mock-validated oracle" codeBase="tests/application/identity.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/application/identity.test.ts" id="6f5b1c9a-c52d-8a53-d2ba-0fd3e1e658bf" name="AC-20/21/46 identity application boundaries &gt; passes only verified identities to profile association and refuses invalid browser credentials">
+      <Execution id="44718a69-696e-4b99-a242-c8fcca69f4c8" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; passes only verified identities to profile association and refuses invalid browser credentials" codeBase="tests/application/identity.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/application/identity.test.ts" id="ca51e220-8bbc-169d-254f-71ed680ff0c9" name="AC-20/21/46 identity application boundaries &gt; creates a generated opt-out guest and never returns provider claims in the profile">
+      <Execution id="52e1ed18-d5cc-47cc-bde8-a1218ff33566" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; creates a generated opt-out guest and never returns provider claims in the profile" codeBase="tests/application/identity.test.ts" />
+    </UnitTest>
+    <UnitTest storage="tests/application/identity.test.ts" id="1451aadc-4a38-99a6-9f34-079af280eb8f" name="AC-20/21/46 identity application boundaries &gt; rejects forged profile authority and arbitrary icons before persistence">
+      <Execution id="447d776f-a878-438c-94be-ca07de5fa3c0" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" className="tests/application/identity.test.ts" name="AC-20/21/46 identity application boundaries &gt; rejects forged profile authority and arbitrary icons before persistence" codeBase="tests/application/identity.test.ts" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="3512d031-46f6-4567-9f4e-025d8ccf0b1c" testId="94c1a1bf-5d3f-5c7b-9aaa-82b5d56abb0d" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="0f0e3690-4d19-4624-86e0-fcc19e976ac4" testId="9267273c-9c6d-45ee-352a-41768a95cd71" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="f98b27d9-b02b-45c5-8597-9317021057b9" testId="8427b46d-8f1c-fadc-aba6-85f89756da0c" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="c3e30abb-ea85-4b14-9ef0-f3cc00b8d313" testId="a9dea0d3-3276-fbaf-622c-7808598af6ff" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="44718a69-696e-4b99-a242-c8fcca69f4c8" testId="6f5b1c9a-c52d-8a53-d2ba-0fd3e1e658bf" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="52e1ed18-d5cc-47cc-bde8-a1218ff33566" testId="ca51e220-8bbc-169d-254f-71ed680ff0c9" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="447d776f-a878-438c-94be-ca07de5fa3c0" testId="1451aadc-4a38-99a6-9f34-079af280eb8f" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="JUnit cases" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters notRunnable="0" passedButRunAborted="0" total="7" notExecuted="0" disconnected="0" aborted="0" inProgress="0" passed="7" inconclusive="0" error="0" completed="7" executed="7" pending="0" timeout="0" failed="0" />
+    <RunInfos>
+      <RunInfo outcome="Completed" computerName="[PRIVATE HOST]" timestamp="2026-10-28T20:46:34.0245624-05:00">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/hosting/guest-admin-recovery/privacy-unit.xml; SHA256=97FC75A1A66151D29A57E34F8D87362116A5FA6195B02279B3788A7C41FE3BAB; reviewed revision=f70e8b4caba9f5c722348f9da6e7fae0adce7922</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

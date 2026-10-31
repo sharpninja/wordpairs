@@ -1,0 +1,89 @@
+{
+  "milestones": {
+    "periodicPollsSuppressed": true,
+    "httpMocks": false
+  },
+  "notices": [
+    [
+      {
+        "aggregateId": "d114f454-c64d-4760-865c-6e925c6ccb87",
+        "aggregateType": "room",
+        "eventId": "cae627ca-8c8f-405f-a921-290f31560e8a",
+        "version": 1,
+        "receivedAt": 1793410287407
+      }
+    ],
+    [],
+    []
+  ],
+  "transport": [
+    {
+      "player": 0,
+      "at": 1793410287127,
+      "event": "socket-open"
+    },
+    {
+      "player": 0,
+      "at": 1793410287149,
+      "event": "phx_reply",
+      "status": "ok",
+      "message": ""
+    },
+    {
+      "player": 0,
+      "at": 1793410287433,
+      "event": "phx_reply",
+      "status": "ok",
+      "message": ""
+    },
+    {
+      "player": 0,
+      "at": 1793410287434,
+      "event": "phx_close",
+      "message": ""
+    }
+  ],
+  "tokenExpiries": [
+    [
+      1793410407000
+    ],
+    [],
+    []
+  ],
+  "authorizedReads": [
+    [
+      {
+        "type": "room",
+        "version": 0,
+        "receivedAt": 1793410287084
+      },
+      {
+        "type": "room",
+        "version": 0,
+        "receivedAt": 1793410287118
+      },
+      {
+        "type": "room",
+        "version": 0,
+        "receivedAt": 1793410287174
+      }
+    ],
+    [],
+    []
+  ],
+  "commandAcknowledgements": [],
+  "responseInstrumentation": {
+    "failureTotal": 0,
+    "failures": [],
+    "qualifiedReadFailureTotal": 0,
+    "qualifiedReadFailures": [],
+    "qualification": "Every response-body task is observed and drained while contexts remain open. Navigation-cancelled room reads retain their original tolerance; token/body observer failures remain explicit and fail a completed journey."
+  },
+  "cleanup": {
+    "cleanupFailures": 0,
+    "roomClosed": false,
+    "unresolvedPlayerIndices": []
+  },
+  "presenceSettled": true,
+  "elapsedMs": 3718
+}

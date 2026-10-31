@@ -1,0 +1,160 @@
+{
+  "timestamp": "2026-10-29T11:13:11",
+  "testSha256": "B7BDE744A36070C27636CEF14B2246981C8CCD19F25CF046E858CE2E87168118",
+  "runs": [
+    {
+      "fixture": "Correct",
+      "moduleSha256": "A3C084D412029F6D4A766598015598A0035ED542D8AA687B2BB5F0B455A14FF6",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "accepts a current release reference",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing current release reference",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a superseded administrator bootstrap instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a superseded public installation instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a superseded OpenAI setup instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded profile bootstrap without markdown quoting",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded grant instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a root manifest instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded public installation instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "accepts a locally qualified historical instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a bootstrap instruction after an unrelated negative sentence",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects an instruction after an unrelated historical sentence",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded OpenAI login instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a reworded phone installation instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects an unsafe instruction under an actual document name",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects an empty document inventory",
+          "result": "Passed"
+        },
+        {
+          "name": "accepts admin-only installation",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "fixture": "Wrong",
+      "moduleSha256": "924C5F4B13B138063AA159A09128E27941405A638E0C67E4B5559120D5BC5B13",
+      "passed": 3,
+      "failed": 14,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "accepts a current release reference",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a missing current release reference",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a superseded administrator bootstrap instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a superseded public installation instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a superseded OpenAI setup instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded profile bootstrap without markdown quoting",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded grant instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a root manifest instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded public installation instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "accepts a locally qualified historical instruction",
+          "result": "Passed"
+        },
+        {
+          "name": "rejects a bootstrap instruction after an unrelated negative sentence",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects an instruction after an unrelated historical sentence",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded OpenAI login instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects a reworded phone installation instruction",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects an unsafe instruction under an actual document name",
+          "result": "Failed"
+        },
+        {
+          "name": "rejects an empty document inventory",
+          "result": "Failed"
+        },
+        {
+          "name": "accepts admin-only installation",
+          "result": "Passed"
+        }
+      ]
+    }
+  ]
+}

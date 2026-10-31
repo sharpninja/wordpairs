@@ -1,0 +1,334 @@
+{
+  "atLocal": "2026-10-31T09:42:55",
+  "kind": "source repair evidence, not hostile approval",
+  "sessionId": "Codex-20261031T142809Z-plugin-session",
+  "requestId": "req-20261031T142837Z-strict-entry-finish",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261031T142639Z-release-resume",
+  "head": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "mock": {
+    "atLocal": "2026-10-31T09:37:07",
+    "binding": "mock",
+    "exitCode": 0,
+    "cases": 28,
+    "failed": 0,
+    "skipped": 0,
+    "names": [
+      "UI entry correct delayed-room-action",
+      "UI entry rejects wrong delayed-room-action",
+      "UI entry correct visible-loading-panel",
+      "UI entry rejects wrong visible-loading-panel",
+      "UI entry correct disabled-action",
+      "UI entry rejects wrong disabled-action",
+      "UI entry correct hidden-action",
+      "UI entry rejects wrong hidden-action",
+      "UI entry correct same-page-control",
+      "UI entry rejects wrong same-page-control",
+      "UI entry correct game-input-entry",
+      "UI entry rejects wrong game-input-entry",
+      "UI entry correct missing-perspective",
+      "UI entry rejects wrong missing-perspective",
+      "UI entry correct denied-perspective",
+      "UI entry rejects wrong denied-perspective",
+      "UI entry correct malformed-projection",
+      "UI entry rejects wrong malformed-projection",
+      "UI entry correct unknown-pending",
+      "UI entry rejects wrong unknown-pending",
+      "UI entry correct rejected-probe-attribution",
+      "UI entry rejects wrong rejected-probe-attribution",
+      "UI entry correct rejected-probe-observer-error",
+      "UI entry rejects wrong rejected-probe-observer-error",
+      "UI entry correct failure-before-cleanup",
+      "UI entry rejects wrong failure-before-cleanup",
+      "UI entry correct diagnostic-failure-truthful",
+      "UI entry rejects wrong diagnostic-failure-truthful"
+    ],
+    "pins": [
+      {
+        "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.contract.ts",
+        "sha256": "50EE040AD439FA98EA7FEE47935F494D5C8A964AAF8E804A1F93B4CD36500D28"
+      },
+      {
+        "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.phase6.spec.ts",
+        "sha256": "27C57EB43E4719AD60E330629EF13081C24307E41200099295901A0ADDF042E8"
+      }
+    ],
+    "ackSha256": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706",
+    "strictSha256": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751",
+    "junitSha256": "69728A9B37F481A98F19FFEC8688B7E840F03949179D876EE0DAAC5D113C1DA5"
+  },
+  "real": {
+    "atLocal": "2026-10-31T09:40:25",
+    "binding": "real",
+    "exitCode": 0,
+    "cases": 28,
+    "failed": 0,
+    "skipped": 0,
+    "names": [
+      "UI entry correct delayed-room-action",
+      "UI entry rejects wrong delayed-room-action",
+      "UI entry correct visible-loading-panel",
+      "UI entry rejects wrong visible-loading-panel",
+      "UI entry correct disabled-action",
+      "UI entry rejects wrong disabled-action",
+      "UI entry correct hidden-action",
+      "UI entry rejects wrong hidden-action",
+      "UI entry correct same-page-control",
+      "UI entry rejects wrong same-page-control",
+      "UI entry correct game-input-entry",
+      "UI entry rejects wrong game-input-entry",
+      "UI entry correct missing-perspective",
+      "UI entry rejects wrong missing-perspective",
+      "UI entry correct denied-perspective",
+      "UI entry rejects wrong denied-perspective",
+      "UI entry correct malformed-projection",
+      "UI entry rejects wrong malformed-projection",
+      "UI entry correct unknown-pending",
+      "UI entry rejects wrong unknown-pending",
+      "UI entry correct rejected-probe-attribution",
+      "UI entry rejects wrong rejected-probe-attribution",
+      "UI entry correct rejected-probe-observer-error",
+      "UI entry rejects wrong rejected-probe-observer-error",
+      "UI entry correct failure-before-cleanup",
+      "UI entry rejects wrong failure-before-cleanup",
+      "UI entry correct diagnostic-failure-truthful",
+      "UI entry rejects wrong diagnostic-failure-truthful"
+    ],
+    "pins": [
+      {
+        "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.contract.ts",
+        "sha256": "50EE040AD439FA98EA7FEE47935F494D5C8A964AAF8E804A1F93B4CD36500D28"
+      },
+      {
+        "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.phase6.spec.ts",
+        "sha256": "27C57EB43E4719AD60E330629EF13081C24307E41200099295901A0ADDF042E8"
+      },
+      {
+        "path": "\u003Crepo\u003E/tests/browser/ui-command-entry.ts",
+        "sha256": "CB4F6FE8A82A9D3394971A44A6862BA35AFAA268D3B206E786E844AA2E28F689"
+      }
+    ],
+    "ackSha256": "90FA56D65B0E815034B8959AA67ED68E3AA4C25E0B04BB6B1A8F3775051CD4D5",
+    "strictSha256": "F4B2C96B09C9824F7C681F2A818D1163FEB533F7A08A0210FA0BED26F23E76AA",
+    "junitSha256": "75D56CA916ECA6839D15F666F1FB5BF19B23E0A7CD68E37F9495D2563C56C820"
+  },
+  "prior": {
+    "atLocal": "2026-10-31T09:40:53",
+    "exitCode": 0,
+    "cases": 210,
+    "failed": 0,
+    "skipped": 0,
+    "junitSha256": "A6938F27632D1EBAF6C96BF28E1FEA42DF8DC19C8C72399E9CBD7703B4493692"
+  },
+  "checks": {
+    "atLocal": "2026-10-31T09:41:11",
+    "typecheckExit": 0,
+    "lintExit": 0,
+    "diffExit": 0
+  },
+  "sameOracleCaseNames": true,
+  "sameOracleBytes": true,
+  "negativeControlsPerBinding": 14,
+  "malformedDomVariants": 3,
+  "unknownPendingDomVariants": 4,
+  "protectedSourceComparison": [
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "before": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706",
+      "after": "90FA56D65B0E815034B8959AA67ED68E3AA4C25E0B04BB6B1A8F3775051CD4D5",
+      "retainedOriginalSha256": "B9C8EFFC6F2AA321EEBC816AAE6775D1174A7FE76B490B5D0B3AC35F524B2706"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "before": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "after": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "retainedOriginalSha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "before": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751",
+      "after": "F4B2C96B09C9824F7C681F2A818D1163FEB533F7A08A0210FA0BED26F23E76AA",
+      "retainedOriginalSha256": "93C7BBAA1CA006648A15DDAD54D5836C22DB69327CDA1A035BE3B48EACE07751"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "before": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15",
+      "after": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15",
+      "retainedOriginalSha256": "01A9FE203553B040A3348DE0B65822F912B28C9941EE40D6B24C37016D92FB15"
+    },
+    {
+      "path": "tests/browser/ui-command-freshness.contract.ts",
+      "before": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4",
+      "after": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4",
+      "retainedOriginalSha256": "605DA843895EE94D5D46BC8CA8A6223CDAD9CD89203A076E33E9D97ED3831CA4"
+    },
+    {
+      "path": "tests/browser/ui-command-freshness.test.ts",
+      "before": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4",
+      "after": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4",
+      "retainedOriginalSha256": "702C92C05817E21797D33327231F1F51B26A6E2F9665691F4FD2CC32266AB7D4"
+    },
+    {
+      "path": "tests/browser/ui-command-retirement.contract.ts",
+      "before": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "after": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "retainedOriginalSha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1"
+    },
+    {
+      "path": "tests/browser/ui-command-retirement.test.ts",
+      "before": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "after": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "retainedOriginalSha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "before": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "after": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "retainedOriginalSha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.test.ts",
+      "before": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "after": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC",
+      "retainedOriginalSha256": "F7AD2869F81382726113ED7C70498774510BB2DB967AD516E099FDF98FAB93DC"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.contract.ts",
+      "before": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "after": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "retainedOriginalSha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.test.ts",
+      "before": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "after": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "retainedOriginalSha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779"
+    }
+  ],
+  "changedProtectedSources": [
+    "tests/browser/ui-command-acknowledgement.ts",
+    "tests/browser/live-multiplayer.integration.spec.ts"
+  ],
+  "editChronology": [
+    {
+      "atLocal": "2026-10-31T09:33:04",
+      "file": "tests/browser/ui-command-entry.contract.ts",
+      "sha256": "92E259CD898517A08B24844F761352CC5E97CBDFFA0323D9441D1E3E4B628DF3",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:33:26",
+      "file": "tests/browser/ui-command-entry.phase6.spec.ts",
+      "sha256": "AF36BB7D3B1B5F67DF7189BFFE0D951BD2E482C8179819AE61FFAA89427D6267",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:36:25",
+      "file": "tests/browser/ui-command-entry.contract.ts",
+      "sha256": "50EE040AD439FA98EA7FEE47935F494D5C8A964AAF8E804A1F93B4CD36500D28",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:36:46",
+      "file": "tests/browser/ui-command-entry.phase6.spec.ts",
+      "sha256": "27C57EB43E4719AD60E330629EF13081C24307E41200099295901A0ADDF042E8",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:37:57",
+      "file": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "924C419CCD12839A6593F9532C68D70E658B857362A0F31E7EE21477F0A60B41",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:38:34",
+      "file": "tests/browser/ui-command-entry.ts",
+      "sha256": "CB4F6FE8A82A9D3394971A44A6862BA35AFAA268D3B206E786E844AA2E28F689",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:39:26",
+      "file": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "90FA56D65B0E815034B8959AA67ED68E3AA4C25E0B04BB6B1A8F3775051CD4D5",
+      "hookExit": 0,
+      "typecheckExit": 0
+    },
+    {
+      "atLocal": "2026-10-31T09:40:09",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "F4B2C96B09C9824F7C681F2A818D1163FEB533F7A08A0210FA0BED26F23E76AA",
+      "hookExit": 0,
+      "typecheckExit": 0
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "tests/browser/ui-command-entry.contract.ts",
+      "sha256": "50EE040AD439FA98EA7FEE47935F494D5C8A964AAF8E804A1F93B4CD36500D28"
+    },
+    {
+      "path": "tests/browser/ui-command-entry.phase6.spec.ts",
+      "sha256": "27C57EB43E4719AD60E330629EF13081C24307E41200099295901A0ADDF042E8"
+    },
+    {
+      "path": "tests/browser/ui-command-entry.ts",
+      "sha256": "CB4F6FE8A82A9D3394971A44A6862BA35AFAA268D3B206E786E844AA2E28F689"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "90FA56D65B0E815034B8959AA67ED68E3AA4C25E0B04BB6B1A8F3775051CD4D5"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "F4B2C96B09C9824F7C681F2A818D1163FEB533F7A08A0210FA0BED26F23E76AA"
+    },
+    {
+      "path": "playwright.ui-command.config.ts",
+      "sha256": "FB57B7F85C39B4D1BA5074A11739FE4FA5E3992B88E19767BC0BB0E4F9976B24"
+    },
+    {
+      "path": "docs/evidence/release15/strict-entry/plan.md",
+      "sha256": "0C9FB0F0664417C33984ED50AB651C60F06177174BB9365CF15BDF25C274798F"
+    }
+  ],
+  "nativeFiles": [
+    {
+      "path": "docs/evidence/release15/strict-entry/mock-20261031T093659/browser.xml",
+      "sha256": "69728A9B37F481A98F19FFEC8688B7E840F03949179D876EE0DAAC5D113C1DA5"
+    },
+    {
+      "path": "docs/evidence/release15/strict-entry/real-20261031T094017/browser.xml",
+      "sha256": "75D56CA916ECA6839D15F666F1FB5BF19B23E0A7CD68E37F9495D2563C56C820"
+    },
+    {
+      "path": "docs/evidence/release15/strict-entry/Prior-20261031T094052/unit.xml",
+      "sha256": "A6938F27632D1EBAF6C96BF28E1FEA42DF8DC19C8C72399E9CBD7703B4493692"
+    }
+  ],
+  "biomeWarnings": 19,
+  "requirementsRead": {
+    "path": "docs/evidence/release15/strict-entry/effective-current.json",
+    "sha256": "B8A80BCFC52541BC924EF95BEE9B260734D51FD709F4B4CBD63138B6AF86EF06"
+  },
+  "ordinaryBrowserDiscovery": "Existing playwright.phase6.config.ts *.phase6.spec.ts includes new spec; no config change needed.",
+  "failureHistory": [
+    "mock-20261030T205056:28 launch failures, no assertions ran; browser absence preserved",
+    "mock-20261030T205155: partial log, no native terminal receipt; no test process existed at fresh inspection",
+    "mock-20261031T093354:7passed1failed20unrun, exit130 owned parent interrupt; hidden-role fixture and object-diff defect corrected beforeimplementation"
+  ],
+  "limitations": [
+    "Isolated actual Chromium DOM only; no live strict journey, push, token renewal, reconnect, autonomous worker, hosted or physical PWA acceptance established by these tests.",
+    "Historical failure missing-versus-denied exact probe remains unknown; no reconstructed DOM.",
+    "Full source-bound five-lane release gate and independent Cline Beam High review remain required.",
+    "Retirement observer forwarding source and old210 checked; new rejected observer DOM tests exercise fresh classifier boundary.",
+    "Existing historical TypeScript-sequence failures and all prior failed gate artifacts remain preserved; this slice later green does not erase them.",
+    "PowerShell scripts received PSSA Warning/Error checks before data use; explicit standalone parser check for new verifier/finalizer scripts recorded at final receipt generation.",
+    "Three early subagent chat timestamps were estimated; correction retained in oracle-before-correction-20261031T093227/manifest.json; native measured chronology governs."
+  ]
+}

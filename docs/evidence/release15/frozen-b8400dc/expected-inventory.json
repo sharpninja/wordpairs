@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-30T15:25:11",
+  "runId": "eef46ae8-fcb5-412e-8acb-43b96ba961cd",
+  "revision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "expectedUnitCount": 632,
+  "expectedPostgresCount": 61,
+  "expectedBrowserCount": 79,
+  "expectedRealtimeCount": 4,
+  "expectedMatrixCount": 14,
+  "expectedStrictCount": 1,
+  "unitInventorySha256": "F55CC98DC4738F289DB76DB1A0707AC65452F4738B7DFE25A9905D1C99C7BE1E",
+  "postgresInventorySha256": "9BF6FD469A89B5E78A586FB50B8CCE52E4EA89DA57AF27260B98FD3477A78F5C",
+  "sourceInventory": "source-inventory.json",
+  "discoveryCommands": [
+    "npm exec vitest -- list --json=/tmp/wordpairs-unit-inventory.json --staticParse=false",
+    "npm exec vitest -- list --config vitest.postgres.config.ts --json=/tmp/wordpairs-postgres-inventory.json --staticParse=false",
+    "npm exec playwright -- test --config=playwright.pwa.config.ts --list"
+  ],
+  "qualification": "Inventory is test collection, not execution success. Actual results must match independently pinned counts and frozen source."
+}

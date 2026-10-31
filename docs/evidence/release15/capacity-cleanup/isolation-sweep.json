@@ -1,0 +1,111 @@
+{
+  "timestamp": "2026-10-30T16:04:02",
+  "sourceRevision": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "currentUnitDiscoveryCount": 640,
+  "unitDiscoveryCommand": [
+    "npm",
+    "exec",
+    "vitest",
+    "--",
+    "list",
+    "--json",
+    "--staticParse=false",
+    "--maxWorkers=4"
+  ],
+  "unitDiscoverySha256": "C2BFA94AB273E8E17B0A0A1243092E82A5313B61118F270C9FCDA77C63E48CDB",
+  "postgresExecutedCount": 63,
+  "realtimeExecutedCount": 4,
+  "lastCapacityPendingAt": "2026-10-30T15:58:06.058016-05:00",
+  "subsequentSamplesWithNoCapacityPending": 70,
+  "firstPendingTransportObserved": false,
+  "capacityFreeCheckpoint": {
+    "observedAt": "2026-10-30T15:58:06.341178-05:00",
+    "pending": [
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "old-closed",
+        "events": 1,
+        "recipients": 0
+      },
+      {
+        "aggregate_kind": "room",
+        "aggregate_id": "r1",
+        "events": 1,
+        "recipients": 1
+      }
+    ],
+    "first25": [
+      {
+        "id": "e1",
+        "kind": "room",
+        "aggregateId": "r1",
+        "audienceSize": 1
+      },
+      {
+        "id": "old-unpublished",
+        "kind": "room",
+        "aggregateId": "old-closed",
+        "audienceSize": 0
+      }
+    ]
+  },
+  "siblingSourcePins": [
+    {
+      "path": "tests/integration/admin.integration.ts",
+      "sha256": "51B5D37441C3FDACC5A63DE643D0D9C3F5F243999F28C4E52C8AA53C7BCDA63D"
+    },
+    {
+      "path": "tests/integration/content.integration.ts",
+      "sha256": "12ADEA2B6191C6198C3FB2A9602E5F88E536E95753F1EEC50A246F49E0B6D1C3"
+    },
+    {
+      "path": "tests/integration/identity.integration.ts",
+      "sha256": "1EB57B5DCD26D39BD734D792DF5033B1DD77C92432DA649F5089AA9CF730EAE6"
+    },
+    {
+      "path": "tests/integration/lobby.integration.ts",
+      "sha256": "D581DAEA63D269BD0FF0E73D659B69C34AF9DE7A762AC43591648E693456843A"
+    },
+    {
+      "path": "tests/integration/matches.integration.ts",
+      "sha256": "3DA3D7BE48DB0608779F03D2E292D80C831E22FAD51DEDA4A47121E57C72C778"
+    },
+    {
+      "path": "tests/integration/multiplayer.integration.ts",
+      "sha256": "E6ED192F67017BD9655D05EE6A02296415D760C1C66E405A993E65D455218A3D"
+    },
+    {
+      "path": "tests/integration/reactions.integration.ts",
+      "sha256": "89312FCD5C69476436B685DE3AA9AC8D90C41493BB0A6A50A18FD2816252AED6"
+    },
+    {
+      "path": "tests/integration/rooms.integration.ts",
+      "sha256": "A20CD257DCFBFB1413C21099DFCB3F6A6AA2688DCD3E4C7D9A2A981098F0E12F"
+    },
+    {
+      "path": "tests/integration/live-postgres.integration.ts",
+      "sha256": "86106F20DAF98B6E31CF8EBE3366E58CD74B83AAF6D366272334364D7BBFF2C8"
+    },
+    {
+      "path": "tests/integration/public-read.integration.ts",
+      "sha256": "154D6DC69049BAEAF74EBB16DCF70E3A654E4152B3FCE9012046E5E74F16528C"
+    },
+    {
+      "path": "tests/integration/phase1-contract.sql",
+      "sha256": "C8BAA7E0D9A0BD796A142CD8A91E587D944BEC01C9D7E7BE68FED73A26C4BA81"
+    }
+  ],
+  "findings": [
+    "Capacity pending events disappear after cleanup and do not reappear in later sampled checkpoints. The full PostgreSQL suite then all four transport assertions pass.",
+    "Other existing suites explicitly delete outbox events for their IDs; live-postgres and public-read afterAll only close pools. Public-read uses direct projection inserts. Retained phase1-contract r1/old-closed events are deliberate contract fixtures; preserve their evidence.",
+    "Exact remaining non-capacity pending fixtures are recorded in capacityFreeCheckpoint. Fast transport publications can fall between samples; this sweep does not certify every fixture as globally isolated, and no unrelated implementation was changed."
+  ],
+  "processNotes": [
+    "Preimplementation8-case oracle gate passed before helper file existed. Same oracle binds to actual PostgreSQL success/SQL-failure snapshots.",
+    "Initial real-binding typecheck found an overloaded Pool.query port mismatch; helper port was narrowed and final direct typecheck passed. Initial failure receipt retained.",
+    "Initial diagnostic summary had a percent-wildcard typo; raw observations were correct. Corrected contamination-analysis.json is independent and retains original receipt.",
+    "Optional Biome formatter inspection found baseline integration formatting differences; scoped Biome lint passes. Configured project lint targets src and tests/architecture. No formatting rewrite applied.",
+    "Vitest defaults to static list parsing, which returned296declarations. Expanded collection uses staticParse=false. Initial expanded collection hit sandbox spawnSync git EPERM; its stderr remains in unit-discovery-expanded.stderr.log. Authorized elevated collection supplies the actual expanded denominator."
+  ],
+  "qualification": "Unit discovery is collection, not execution. Current database/private transport results used the changed fixture; root must freeze and rerun release gates."
+}

@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-30T15:05:56",
+  "gate": "preimplementation-sql-and-public-rules",
+  "inputs": [
+    {
+      "path": "tests/application/capacity-public.test.ts",
+      "sha256": "7D2011E4525FFA97254B8B211757146534EBE408D3CB3E0829DFFE259B0DED13"
+    },
+    {
+      "path": "tests/integration/capacity.integration.ts",
+      "sha256": "7A45BC8A6B9608CEA4B23117C1F9E20BF2473F255629AC5F22433FD61BB9493B"
+    }
+  ],
+  "runs": [
+    {
+      "fixture": "correct",
+      "lane": "public",
+      "cases": 2,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/correct-public.xml",
+      "sha256": "DEE69B6685A2098B12622F7F8006C518EEE3F7C86DA0A5D2C24B165795352CFC"
+    },
+    {
+      "fixture": "correct",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/correct-sql.xml",
+      "sha256": "96104C6D6CB80A03E53CF5985CD9712EDA40E29C587BB11D6215CD68477AD5D8"
+    },
+    {
+      "fixture": "wrong-player-limit",
+      "lane": "public",
+      "cases": 2,
+      "failed": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/wrong-player-limit-public.xml",
+      "sha256": "28A52FF9FF83E2F88791E90F61F1965F846AFF4FBF8BDE3469BC5570563E84C6"
+    },
+    {
+      "fixture": "wrong-player-limit",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/wrong-player-limit-sql.xml",
+      "sha256": "E28B3A8B06F5479C67DA73A71F1B34B72FC3B87B9A504F753AE1A1F75D187E62"
+    },
+    {
+      "fixture": "wrong-legacy",
+      "lane": "public",
+      "cases": 2,
+      "failed": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/wrong-legacy-public.xml",
+      "sha256": "631439E44AB7BEE8D83DF517C881B177FACCA4FD0516B621135AAEA0FDC3859E"
+    },
+    {
+      "fixture": "wrong-legacy",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 3,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/wrong-legacy-sql.xml",
+      "sha256": "380FCA8866ECBF2D908FD83B7E3BA0BCF88F9B9D977484EE31D2828410BEEEE0"
+    },
+    {
+      "fixture": "wrong-observer-limit",
+      "lane": "public",
+      "cases": 2,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/wrong-observer-limit-public.xml",
+      "sha256": "19546FF9028AFF254ED7678FD0D014A2856845BF928C58A99B896AA9DE907BF5"
+    },
+    {
+      "fixture": "wrong-observer-limit",
+      "lane": "sql",
+      "cases": 3,
+      "failed": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "report": "\u003Crepo\u003E/docs/evidence/release15/capacity-discovery-mock/wrong-observer-limit-sql.xml",
+      "sha256": "795E9A60CCE06EEC48A9D58EAEAE7C68C74FE6085F90F9C614DC8C5FB064715F"
+    }
+  ]
+}

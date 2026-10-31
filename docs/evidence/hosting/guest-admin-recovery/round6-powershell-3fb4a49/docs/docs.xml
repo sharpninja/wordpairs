@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<testsuites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="junit_schema_4.xsd" name="Pester" tests="6" errors="0" failures="0" disabled="0" time="1.366">
+  <testsuite name="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" tests="6" errors="0" failures="0" hostname="[PRIVATE HOST]" id="0" skipped="0" disabled="0" package="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" time="1.366">
+    <properties>
+      <property name="user-domain" value="" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="sharpninja" />
+      <property name="os-version" value="7.2.5-3-omarchy" />
+      <property name="cwd" value="<home>/github/WordGame" />
+      <property name="clr-version" value="10.0.13" />
+      <property name="machine-name" value="[PRIVATE HOST]" />
+      <property name="platform" value="Linux" />
+      <property name="framework-version" value="5.9.1" />
+    </properties>
+    <testcase name="Current release documentation drift.accepts a current release reference" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.293" />
+    <testcase name="Current release documentation drift.rejects a missing current release reference" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.027" />
+    <testcase name="Current release documentation drift.rejects a superseded administrator bootstrap instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.009" />
+    <testcase name="Current release documentation drift.rejects a superseded public installation instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.011" />
+    <testcase name="Current release documentation drift.rejects a superseded OpenAI setup instruction" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.011" />
+    <testcase name="Current release documentation drift.checks the current operations and plan documents" status="Passed" classname="<repo>/tests/powershell/CurrentReleaseDocs.Tests.ps1" assertions="0" time="0.070" />
+  </testsuite>
+</testsuites>

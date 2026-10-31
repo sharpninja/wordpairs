@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<testsuites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="junit_schema_4.xsd" name="Pester" tests="8" errors="0" failures="7" disabled="0" time="0.489">
+  <testsuite name="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" tests="8" errors="0" failures="7" hostname="[PRIVATE HOST]" id="0" skipped="0" disabled="0" package="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" time="0.489">
+    <properties>
+      <property name="junit-version" value="4" />
+      <property name="framework-version" value="5.9.1" />
+      <property name="clr-version" value="10.0.13" />
+      <property name="machine-name" value="[PRIVATE HOST]" />
+      <property name="user" value="sharpninja" />
+      <property name="platform" value="Linux" />
+      <property name="cwd" value="<repo>" />
+      <property name="user-domain" value="" />
+      <property name="os-version" value="7.2.5-3-omarchy" />
+    </properties>
+    <testcase name="Review evidence provenance.accepts a complete matching chain" status="Passed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.014" />
+    <testcase name="Review evidence provenance.rejects a different parent run" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.176">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects a different parent run' { $case=Get-ValidCase;$case.Run.case='run';$case.Run.runId='other'; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:15
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:15</failure>
+    </testcase>
+    <testcase name="Review evidence provenance.rejects a different revision" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.012">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects a different revision' { $case=Get-ValidCase;$case.Run.case='revision';$case.Run.revision='other'; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:16
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:16</failure>
+    </testcase>
+    <testcase name="Review evidence provenance.rejects a nonzero exit" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.022">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects a nonzero exit' { $case=Get-ValidCase;$case.Run.case='exit';$case.Run.exitCode=1; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:17
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:17</failure>
+    </testcase>
+    <testcase name="Review evidence provenance.rejects a different JUnit report" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.018">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects a different JUnit report' { $case=Get-ValidCase;$case.Run.case='junit';$case.ActualJUnitSha256='other'; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:18
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:18</failure>
+    </testcase>
+    <testcase name="Review evidence provenance.rejects an unlinked producer receipt" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.017">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects an unlinked producer receipt' { $case=Get-ValidCase;$case.Run.case='parent';$case.Receipt.parentRunId='other'; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:19
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:19</failure>
+    </testcase>
+    <testcase name="Review evidence provenance.rejects different producer bytes" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.029">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects different producer bytes' { $case=Get-ValidCase;$case.Run.case='producer';$case.Receipt.producerSha256='other'; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:20
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:20</failure>
+    </testcase>
+    <testcase name="Review evidence provenance.rejects a modified producer receipt" status="Failed" classname="<repo>/tests/powershell/ReviewRunProvenance.Tests.ps1" assertions="0" time="0.029">
+      <failure message="Expected the actual value to be greater than 0, but got 0.">at It 'rejects a modified producer receipt' { $case=Get-ValidCase;$case.Run.case='receipt';$case.ActualReceiptSha256='other'; @(Get-ReviewRunProblem @case).Count | Should -BeGreaterThan 0 }, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:21
+at &lt;ScriptBlock&gt;, <repo>/tests/powershell/ReviewRunProvenance.Tests.ps1:21</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

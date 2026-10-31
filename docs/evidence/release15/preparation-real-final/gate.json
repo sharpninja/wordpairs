@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-10-30T15:14:05",
+  "runId": "6b5b4716-7447-4124-8063-011e3c8b0568",
+  "parentRunId": "",
+  "hostName": "[PRIVATE HOST]",
+  "revision": "3fb4a49a28ce5281ab91fa88c4d488458762ea27",
+  "producer": "\u003Crepo\u003E/tests/powershell/Run-ReviewEvidencePreparationGate.ps1",
+  "producerSha256": "2A957C41F7444E5A29A9817B0A7BFF35A087357B389260007431FBF755F795ED",
+  "executable": "pwsh",
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/tests/powershell/Run-ReviewEvidencePreparationGate.ps1",
+    "-ReportDirectory",
+    "docs/evidence/release15/preparation-real-final",
+    "-Mode",
+    "Real"
+  ],
+  "mode": "Real",
+  "testSha256": "34FCE77E23A3C3CC62F3183E5D75645C54A3EC1661730C418D2640BED8E9E305",
+  "runs": [
+    {
+      "binding": "Real",
+      "module": null,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "negativeControlExpected": false,
+      "tests": [
+        {
+          "result": "Passed",
+          "name": "accepts the complete independent expected inventory"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects another revision"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects an unverified path set"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects missing source entries"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects changed source bytes"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects omitted current source paths"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects zero caller expectations"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects fractional caller expectations"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects an executed count different from the expected inventory"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects failed cases"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects skipped cases"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects empty executed reports"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a missing required report"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects duplicate report identities"
+        },
+        {
+          "result": "Passed",
+          "name": "accepts real transport plus the full fourteen-case matrix and strict journey"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a missing strict journey"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a partial matrix count"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects fourteen duplicated player-count names"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects an incorrect transport count"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a failed strict journey"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects skipped matrix cases"
+        },
+        {
+          "result": "Passed",
+          "name": "rejects a mislabeled strict case"
+        }
+      ]
+    }
+  ],
+  "qualification": "Current workspace contract binding. Mock Wrong failures are expected rejection controls inside this successful gate; neither a mock gate nor a dirty-tree real binding establishes a frozen release pass."
+}

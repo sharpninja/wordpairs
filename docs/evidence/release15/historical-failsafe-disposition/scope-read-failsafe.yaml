@@ -1,0 +1,28 @@
+method: workflow.triage.report
+label: triage-scope-read
+timestamp: 20261030T193956
+params:
+  title: Triage catalog workspace filter returns group unavailable to getGroup in current context
+  summary: Supported queryGroups explicit McpServer filter returned a full groupId, but schema-valid getGroup through the same trusted Wordpairs Codex plugin context returned not found. Cross-workspace read semantics may require documented context handling; historical fate inquiry remains qualified.
+  component: McpServer triage read API
+  errorSignature: triage_filtered_group_get_not_found
+  dedupeKey: triage-filtered-group-get-workspace-context
+  evidence: 'Read-only optional historical inquiry: own trusted Codex wrapper at wordpairs workflow.triage.queryGroups params workspacePath=<home>/github/McpServer returned220 groups and triage-group-c198e07edd07ee87 matching the retained historical report title/summary, statusfailed, reportCount1. Subsequent schema-valid workflow.triage.getGroup with that exact full groupId from catalog returned method_invocation_error/McpNotFoundException group not found at2026-10-30T19:38:56. No trust or nonce error occurred. Query filter may expose a group outside current read context; exact accepted/replayed/resolved fate is unproved. Investigate or document required scope through supported plugin surfaces; do not repair Wordpairs or infer missing data.'
+  reporterAgent: Codex
+  workspacePath: <repo>
+  sessionId: Codex-20261030T200118Z-plugin-session
+  turnId: req-20261031T003421Z-failsafe-disposition
+  idempotencyKey: wordpairs-failsafe-disposition-scope-20261030
+  affectedPaths:
+    - skills/triage/SKILL.md
+    - lib/McpPluginShim.psm1
+  affectedSymbols:
+    - workflow.triage.queryGroups
+    - workflow.triage.getGroup
+  reproductionHints:
+    - Using supported plugin, queryGroups with workspacePath=<home>/github/McpServer, then getGroup on an exact catalog groupId while active workspace remains Wordpairs. Preserve scope/authorization distinctions.
+  tags:
+    - incidental
+    - read-only
+    - scope
+    - historical-evidence

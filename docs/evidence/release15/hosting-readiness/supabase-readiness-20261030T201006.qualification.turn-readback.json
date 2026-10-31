@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-10-30T20:11:30.5676675-05:00",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T005850Z-turn-491c",
+  "status": "completed",
+  "qualificationDialogMatched": true,
+  "dialogCount": 6,
+  "responseRetained": true,
+  "qualification": {
+    "recordedAt": "2026-10-30T20:11:22.3111537-05:00",
+    "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+    "ownRequestId": "req-20261031T005850Z-turn-491c",
+    "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+    "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+    "originalPath": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/supabase-readiness-20261030T201006.json",
+    "originalSha256": "08D9205F51C3E846DD7E87CE7A19208E179940C916675DCFDAC36CBDDD630E60",
+    "originalRetainedUnmodified": true,
+    "qualification": "observations.observedWindowLocal.start/end are coarse collection-window labels, not individually measured provider-call timestamps or a single consistent database snapshot. In particular,19:59:00 is a rounded label rather than a measured call start. Use the measured own-turn opening19:58:53.3655344-05:00 as the earlier audit bound and original recordedAt20:10:06 as receipt-persistence time. No statement that these independent connector reads share one snapshot is made.",
+    "producerChecks": {
+      "parserErrors": 0,
+      "pssaWarningsErrors": 0,
+      "whatIfPerformedBeforePersistence": true,
+      "producerSha256": "5E1219C13BD0B675BD0140A66FA8DD0246ADD7CA3A7BEC55A3A6D68A4925FCA9"
+    },
+    "findingsAndCountsUnchanged": true,
+    "metadataNotRolloutAcceptance": true
+  },
+  "qualificationSha256": "EF3086C76F5A76819D9F31F06BB64C869F64D14B6CCDFA372CDE941F97CA5C31",
+  "producerSha256": "1EA289AD8202F1FA65790F270A99A8700A63E8E7306977852935D9852016DB97"
+}

@@ -40,7 +40,7 @@ const capacity = proof(
     "src/domain/rooms.ts",
     "src/application/matches.ts",
   ],
-  "Populate 2, 8 and 25-player rooms, reject overflow without mutation, populate 25 bound observers and reject observer 26. Competing actual RoomService commands through a serialized port admit only one final player; stale loser conflicts and a fresh full attempt changes nothing. At maximum size, all 25 score exactly once, observers have the corresponding player projection and cannot mutate; room event audience includes all 50 profiles.",
+  "Populate 2, 8 and 10-player rooms, reject overflow without mutation, populate 25 bound observers and reject observer 26. Competing actual RoomService commands through a serialized port admit only one final player; stale loser conflicts and a fresh full attempt changes nothing. At maximum size, all 10 score exactly once, observers have the corresponding player projection and cannot mutate; room event audience includes all 35 profiles.",
   "Port fake serialization is use-case evidence only; it does not claim PostgreSQL durability.",
 );
 const gameplay = proof(
@@ -170,7 +170,7 @@ export const coverageProofs: Record<string, Proof> = {
   "AC-15": proof(
     [browser("accessibility.phase6")],
     ["src/app/globals.css", "src/web/game-panel.tsx"],
-    "At 320×568, 568×320, 390×844 and 844×390, answer/hints/scorecard are visible by normal vertical scroll, no horizontal overflow occurs, keyboard Tab/Enter and touch submit actual answers; 25-player/25-observer long roster also renders on 320-pixel phone.",
+    "At 320×568, 568×320, 390×844 and 844×390, answer/hints/scorecard are visible by normal vertical scroll, no horizontal overflow occurs, keyboard Tab/Enter and touch submit actual answers; the supported 10-player/25-observer roster renders on a 320-pixel phone, with a separate historical 25-player/25-observer scorecard fixture.",
   ),
   "AC-16": proof(
     [
@@ -247,7 +247,7 @@ export const coverageProofs: Record<string, Proof> = {
       "LICENSE",
       "third_party/unicode/CaseFolding-18.0.0.txt",
     ],
-    "Installed direct package versions/licenses match actual lock and purpose/upstream attribution rows. Original SVG Recursive font copyright/OFL text and Unicode source/license/hash are preserved; six background SVGs are original project artwork.",
+    "Installed direct package versions/licenses match actual lock and purpose/upstream attribution rows. Original SVG Recursive font copyright/OFL text and Unicode source/license/hash are preserved; six category concepts use twelve AI-generated and recomposed WebP backgrounds in portrait and landscape aspects, with prompts/provenance in docs/category-artwork-prompts.json. Generation provenance is not third-party rights clearance.",
     "Dependency versions and asset inventory are the actual locked project, not the historical example packages.",
   ),
   "AC-41": proof(

@@ -1,0 +1,213 @@
+{
+  "recordedAt": "2026-10-30T19:22:53.8136672-05:00",
+  "stage": "Before",
+  "originalOracleReadAtLocal": "2026-10-30T19:21:21",
+  "currentPinQualification": "Current source pins are observed at receipt save, not backdated to the oracle read. Protected source at mock execution is established only by retained gate copies.",
+  "classification": "read-only same-family oracle/source review; not hostile validation",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T001237Z-turn-d98a",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "originalFailure": "af6ee6f actual2passed1failed11skipped; known409 retirement used fresh guard; original failed evidence retained",
+  "plan": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/plan.md",
+    "sha256": "0FBAAFE62A7B4C718E9CE854A7532536B234DC83F7EE69CF7E3343C3CAD848A3",
+    "bytes": 7080
+  },
+  "chronologicalGates": [
+    {
+      "receipt": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/receipt.json",
+        "sha256": "7F3DBD3328028E9680D3518021F834406B069528486A439FFF71809A918C5C55",
+        "bytes": 5210
+      },
+      "junit": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/unit.xml",
+        "sha256": "24D0884A236F5FFDC27F8B91B604FE5746F37FDEA64BA9F304723551D27548C4",
+        "bytes": 35647
+      },
+      "producer": {
+        "path": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/producer.ps1",
+        "sha256": "0CEF8C00E2E7B9C567E361FE18954DB814843896CEEC7E0905CC200738A7BCC8",
+        "bytes": 4330
+      },
+      "binding": "mock",
+      "startedAt": "2026-10-30T19:20:55",
+      "finishedAt": "2026-10-30T19:20:56",
+      "cases": 162,
+      "expectedNegative": 81,
+      "failed": 0,
+      "skipped": 0,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.contract.ts",
+          "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-retirement.contract.ts",
+          "retainedVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.test.ts",
+          "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-retirement.test.ts",
+          "retainedVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-acknowledgement.contract.ts",
+          "retainedVerified": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-acknowledgement.test.ts",
+          "retainedVerified": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-acknowledgement.ts",
+          "retainedVerified": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-capture.contract.ts",
+          "retainedVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-capture.test.ts",
+          "retainedVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/ui-command-capture.ts",
+          "retainedVerified": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/live-player-counts.integration.spec.ts",
+          "retainedVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/conflict-retirement/mock-20261030T192055/live-multiplayer.integration.spec.ts",
+          "retainedVerified": true,
+          "currentMatches": true
+        }
+      ]
+    }
+  ],
+  "protectedPreimplementationSource": [
+    {
+      "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "frozenSha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+      "mockRetainedSha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+      "preimplementationBytesVerified": true
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "frozenSha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+      "mockRetainedSha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+      "preimplementationBytesVerified": true
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "frozenSha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+      "mockRetainedSha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+      "preimplementationBytesVerified": true
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "frozenSha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+      "mockRetainedSha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+      "preimplementationBytesVerified": true
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "frozenSha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+      "mockRetainedSha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+      "preimplementationBytesVerified": true
+    }
+  ],
+  "currentSourcePins": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.contract.ts",
+      "sha256": "84694EE64B570E830D0D748B816A2E08C2C0B0ADF562F0E7C567ABCADC7E86A1",
+      "bytes": 8111
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-retirement.test.ts",
+      "sha256": "EA29F37543803FD469A3D4C195FE2CDD978A317CA66CCF761D85055E1BD438AE",
+      "bytes": 4492
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "6FAC889199C411064840285DC057C6D6FA8C489D8E7ADF662F08DA0483485090",
+      "bytes": 11597
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "224465DD2B87D82D3CD5F503F666878936264C92538838B6CA25C8D1F526ABC2",
+      "bytes": 7185
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59",
+      "bytes": 3868
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+      "bytes": 18025
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+      "bytes": 25450
+    },
+    {
+      "path": "\u003Crepo\u003E/node_modules/playwright-core/lib/coreBundle.js",
+      "sha256": "829521B67ED7BE90C7D6D6098FF39F2241562D47E4AD7CCAB13710924A56001D",
+      "bytes": 3585406
+    },
+    {
+      "path": "\u003Crepo\u003E/node_modules/playwright/lib/matchers/expect.js",
+      "sha256": "0E5D49C2C2B2FB2A20F60726153CB0BD109D0124394029035F43497A82B05EED",
+      "bytes": 547222
+    }
+  ],
+  "oracleConclusions": [
+    "Full revised19-case oracle and independent correct/wrong providers read. Real binding composes retireCapturedCommand, commandUiState and shared commit, rather than accepting only a synthetic resolved retired callback.",
+    "Known409 busy+disabled and busy+absent states wait; enabled pending waits without canonical replay; stale version waits, then idle absent version qualifies. Wrong fresh/matrix mode providers are rejected by the same asserted state sequence.",
+    "Fresh guard now tests idle enabled and busy disabled/enabled pending; correct behavior rejects before a new action. Strict successful pending remains rejected and no uncertain replay is added.",
+    "Until starts an actual held condition/read and then rejects. Oracle checks outer helper remains unsettled before that read resolves; original wait failure survives, and distinct late probe failure yields ordered AggregateError[wait,probe]. Deliberately wrong providers are drained by the oracle, so expected negative controls create no abandoned work.",
+    "Coordinator409 callback receives exact CapturedCommand; next action is blocked until retirement resolves and original retirement failure prevents next invoke. Request attribution observer identity is exact, not copied or fabricated.",
+    "Installed Playwright expect.js13165 imports pollAgainstDeadline from coreBundle, calls it at13394-13404 around awaited actual callback; coreBundle4738-4773 races callback against a deadline. That supported callback-lifetime path motivates the bounded ownership control, without asserting it caused af6ee6f.",
+    "No additional bounded oracle blocker found. Fresh denial/scope/malformed/version and original error behavior remain; no arbitrary unsupported product input cases, app rules, timeouts, cap or extra approval gate introduced."
+  ],
+  "implementationQualification": "Only mock/native162 and preimplementation byte chronology are verified here. Actual helper delta/adoption, real162 and complete DOM/game evidence remain pending.",
+  "limits": [
+    "Native162 counts comprise19positive+19expected-negative new controls plus124 existing cases; these are isolated helper checks, not162 browser journeys.",
+    "No build/test/model/HV/browser/provider or requirement/source mutation performed by this diagnosing agent.",
+    "Af failure exact transient busy/visibility, failing409 actor/command and transport cause remain unknown.",
+    "The earlier source review missed known409 versus fresh phase composition. Original124 gates remain preserved as isolated historical evidence, not retroactive DOM proof."
+  ],
+  "accuracy": 99,
+  "completeness": 97,
+  "ratingsQualification": "Bounded source/native review with explicit original causal and pending runtime limits."
+}

@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-10-29T00:36:19",
+  "head": "1c2272714fb02091e390f751510341e6824e3d22",
+  "statusAtGate": [
+    " M tests/browser/invitation-copy.phase2.spec.ts"
+  ],
+  "fixture": "/tmp/wordpairs-invite-round4-isolated-final",
+  "baselineRevision": "7b20e44",
+  "baselineSha256": "72EDCB7C37E5F0E343AF3CD72FA67B8A5E4B2B630328FDD036560DF5CC801ACF",
+  "testSha256": "65419C133A3343C0CC47D0D496E4F2A056ACEC6FA8592C97DB3A2E1235BA67D5",
+  "productSha256AtStart": "14317DC65341F0A9A8DFD782FB0FFD876ABA4E429116B7D723A1EC6B5DF5CB83",
+  "reappliedSha256": "14317DC65341F0A9A8DFD782FB0FFD876ABA4E429116B7D723A1EC6B5DF5CB83",
+  "runs": [
+    {
+      "name": "correct",
+      "exitCode": 0,
+      "cases": 8,
+      "failed": 0,
+      "xml": "\u003Crepo\u003E/docs/evidence/invitation-copy/mock-gate-round4-isolated-final/correct.xml"
+    },
+    {
+      "name": "bad-request",
+      "exitCode": 1,
+      "cases": 1,
+      "failed": 1,
+      "xml": "\u003Crepo\u003E/docs/evidence/invitation-copy/mock-gate-round4-isolated-final/bad-request.xml"
+    },
+    {
+      "name": "bad-clipboard",
+      "exitCode": 1,
+      "cases": 1,
+      "failed": 1,
+      "xml": "\u003Crepo\u003E/docs/evidence/invitation-copy/mock-gate-round4-isolated-final/bad-clipboard.xml"
+    },
+    {
+      "name": "unavailable-success",
+      "exitCode": 1,
+      "cases": 1,
+      "failed": 1,
+      "xml": "\u003Crepo\u003E/docs/evidence/invitation-copy/mock-gate-round4-isolated-final/unavailable-success.xml"
+    },
+    {
+      "name": "false-success",
+      "exitCode": 1,
+      "cases": 1,
+      "failed": 1,
+      "xml": "\u003Crepo\u003E/docs/evidence/invitation-copy/mock-gate-round4-isolated-final/false-success.xml"
+    },
+    {
+      "name": "missing-url-success",
+      "exitCode": 1,
+      "cases": 1,
+      "failed": 1,
+      "xml": "\u003Crepo\u003E/docs/evidence/invitation-copy/mock-gate-round4-isolated-final/missing-url-success.xml"
+    }
+  ],
+  "qualification": "Catch-up replay in a separate fixture with the pre-invitation source copied before the fake tests and the current source copied after. The existing Next build provides only the HTTP origin; navigation is intercepted by the fake. The original product edit predates this run; this is not a backdated original gate."
+}

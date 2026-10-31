@@ -1,0 +1,43 @@
+{
+  "startedAt": "2026-10-29T00:37:40",
+  "finishedAt": "2026-10-29T00:51:35",
+  "revision": "f35b696b090985f1119bca5b1f50187997a86113",
+  "status": "passed",
+  "failure": null,
+  "steps": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "log": "typecheck.log"
+    },
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "log": "unit.log",
+      "junit": "unit.xml"
+    },
+    {
+      "name": "postgres",
+      "exitCode": 0,
+      "log": "postgres.log",
+      "junit": "postgres.xml"
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "name": "browser",
+      "exitCode": 0,
+      "log": "browser.log",
+      "junit": "browser.xml"
+    }
+  ],
+  "qualification": "Local source validation. PostgreSQL uses disposable volatile storage; browser uses built local server."
+}

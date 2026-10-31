@@ -1,0 +1,228 @@
+{
+  "players": 4,
+  "phase": "UI round 8",
+  "completed": true,
+  "rounds": 8,
+  "uiSolves": 32,
+  "uncertainUiRetries": 0,
+  "simultaneousAnswerUis": 2,
+  "cleanupFailures": 0,
+  "unresolvedPlayerIndices": [],
+  "completedRoomRetained": true,
+  "requestFailureTotal": 11,
+  "requestFailuresTruncated": false,
+  "requestFailures": [
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1088,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1089,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1089,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1090,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1107,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1109,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1111,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1122,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1122,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1129,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness",
+      "elapsedMs": 1129,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "slowResponses": [
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 350.087,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.587,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/reactions",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1097.176,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 118.146,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1069.038,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "GET",
+      "status": 200,
+      "durationMs": 1146.248,
+      "action": null
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 28.094,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.307,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 27.115,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 30.048,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 22.039,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 21.462,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 19.304,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 24.509,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 34.282,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 35.6,
+      "action": "answer"
+    },
+    {
+      "path": "/api/rooms/9c251289-e838-4e93-a1c3-bac9b01fb2cb/match",
+      "method": "POST",
+      "status": 409,
+      "durationMs": 41.578,
+      "action": "answer"
+    }
+  ],
+  "realHttp": true,
+  "apiSetup": true,
+  "qualification": "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately."
+}

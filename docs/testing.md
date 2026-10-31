@@ -1,5 +1,10 @@
 # Testing and evidence
 
+The current rules v2.8 target, dated 31 October 2026, requires the [10-player release](release15-completion-plan.md): every count 2 through 10, creation default 4, 25 observers unchanged, maximum new-release audience 35. The full matrix is 9 eight-round games, 54 player participations and 432 accepted round solves. The [authoritative amendment](evidence/release10/qbrain-update-receipt.json) verifies 19 existing records and 28 changed criteria, all still unsatisfied; no current 10-player execution or hosted acceptance is established here. Fresh evidence must identify actual source bytes and recovered request failures; historical counts below do not validate the changed candidate. Legacy oversized waiting/countdown and running-match compatibility have separate current cases.
+
+Current release scope: [guest-only game and owner-only GitHub admin PWA](admin_pwa_release.md). Configure server-only WORDPAIRS_GITHUB_CLIENT_ID/WORDPAIRS_GITHUB_CLIENT_SECRET and the exact canonical origin for administration. Public OpenAI/member sign-in, user delegation, nominations and community-submission UI are inactive. Public pages have no install metadata/controls; admin manifest/worker launch at /admin. Earlier feature counts and provider/delegation instructions below describe their historical snapshots. Current active browser tests use playwright.pwa.config.ts; superseded community cases are retained under docs/testing/historical/.
+
+
 The [UI test case index](testing/ui/index.md) links 58 design-derived specifications, source/state/transition coverage, resolved design gaps and the verified QBrain synchronization receipt. Product Word Pairs (`PROD-WORDPAIRS`) owns this workspace's requirements. New UI decisions are pending implementation and testing; documentation does not establish execution results, and historical evidence remains unchanged. Update requirements, case notes and these linked exports together under the [synchronization contract](testing/ui/persistence.md).
 
 Run commands from the repository root after `npm ci`. The default unit suite uses injected ports and local fixtures. Database and browser suites are separate commands, with their boundaries disclosed below.
@@ -11,14 +16,26 @@ Run commands from the repository root after `npm ci`. The default unit suite use
 | `npm run lint` | Biome checks for `src` and `tests/architecture`; check other changed test files explicitly with `npm exec biome -- check <paths>` |
 | `pwsh -NoProfile -NonInteractive -File tests/integration/run-phase1.ps1` | Disposable PostgreSQL, all migrations, SQL contracts, browser-role denial, final-seat races and every non-Realtime integration file |
 | `npm run test:admin` | Same disposable SQL setup plus the focused administration PostgreSQL suite |
-| `npm run test:multiplayer` | Same disposable SQL setup plus eight-round games at every size from 2 through 25 players |
+| `npm run test:multiplayer` | Same disposable SQL setup plus eight-round games at every size from 2 through 10 players |
 | `pwsh -NoProfile -NonInteractive -File tests/integration/run-phase1.ps1 -Realtime` | PostgreSQL verification followed by actual Realtime integration using disposable containers |
-| `npm exec playwright -- test --config playwright.phase6.config.ts` | All current phase 2–6 browser journeys, including administration |
+| `npm exec playwright -- test --config playwright.pwa.config.ts` | Current phase 2–6 and admin-only PWA browser journeys against the production build |
 | `npm run build` | Local Next.js production compilation and route generation |
 
 The integration runner requires Docker and PowerShell 7. It binds ephemeral database ports to loopback, owns its disposable containers by exact ID and removes them in `finally`. It does not reuse the running game's database. Do not combine the focused `-Administration` and `-Multiplayer` switches; use the unfiltered runner for both suites together.
 
-The browser config starts a development server at `http://127.0.0.1:3100`, uses one worker and can select an existing Chromium executable through `WORDPAIRS_BROWSER_PATH`. Install the matching Playwright Chromium with `npm exec playwright -- install chromium` when using the bundled browser. Stop another Next.js server using this checkout before browser/build work; development and production compilation share `.next`. Run browser verification and production builds sequentially.
+The current `playwright.pwa.config.ts` starts a production server at `http://127.0.0.1:3200` with one worker; run `npm run build` first. Select installed Chromium through `WORDPAIRS_BROWSER_PATH` or install the matching Playwright browser. Stop other Next.js servers using this checkout before browser/build work because both use `.next`. The former development-server commands below retain their historical evidence scope.
+
+## Current capacity test entrypoints and historical producers
+
+`tests/powershell/Run-Capacity15MockGate.ps1` and `Run-Capacity15SqlPublicMockGate.ps1` are retained historical15-player producers. Their fixed old case denominators are incompatible with the current tests. Replay them only with their matching historical source, such as commit `0e8d31a638e4db63e96302ca60fa7512c6accc96`; do not run them against the current checkout or reinterpret their old results as CAP10 evidence. Their original bytes and receipts remain unchanged.
+
+The current application/UI capacity suite has four test entrypoints: `tests/application/capacity-policy.test.ts`, `tests/application/legacy-match-capacity.test.ts`, `tests/application/capacity-public.test.ts` and `tests/web/capacity-ui.test.ts`. Its two independent fixture files are `tests/application/capacity-contract-fixture.ts` and `tests/web/capacity-ui-fixture.ts`. Run the same four entries with `WORDPAIRS_CAPACITY_FIXTURE=correct` for the independent correct fixture binding, then with that variable absent for the production binding. Both include expected rejected wrong-provider controls. Use a fresh report directory for each binding and preserve the native reports before another run. The retained [42-case mock producer](evidence/release10/entry-shrink-extension-20261031T124626/mock/EntryRunCap10ShrinkGate.ps1), [mock receipt](evidence/release10/entry-shrink-extension-20261031T124626/mock/receipt.json) and [same-case real receipt](evidence/release10/entry-shrink-extension-20261031T124626/real/receipt.json) document the post-implementation shrink-to-limit test extension; they do not replace the original40-case preimplementation chronology or establish whole-release acceptance.
+
+```powershell
+npm exec vitest -- run tests/application/capacity-policy.test.ts tests/application/legacy-match-capacity.test.ts tests/application/capacity-public.test.ts tests/web/capacity-ui.test.ts --maxWorkers=1
+```
+
+The current SQL assertion oracle is `tests/powershell/Run-Capacity10SqlMockGate.ps1 -ReportDirectory <fresh-directory>`. The migration-order fixture oracle is `tests/powershell/Run-Capacity10FixtureMockGate.ps1 -ReportDirectory <another-fresh-directory>`. These are mock gates, not actual PostgreSQL migration verification, the real browser matrix or independent HV. The full integration runner separately verifies actual SQL behavior in owned disposable databases.
 
 ## Host-specific browser scratch space
 
@@ -51,11 +68,17 @@ This is a host-specific workaround; choose an adequately provisioned short writa
 | Independent hostile review focused suite | 18/18 tests, 5 files |
 | Typecheck, lint and production build | Passed |
 
-The multiplayer suite contributes 24 database games, 324 player participations and 2,592 accepted round solves. It checks complete eight-round play, all hint/scoring stages, concurrent conflicts/retries, final standings and exactly-once profile awards. The first combined PostgreSQL run passed 65/66 but hit a 60-second fixture timeout at 25 players while the host was busy. Increasing that fixture's wall-clock budget to 120 seconds retained its assertions; the clean complete rerun passed 66/66. The failure and rerun completion records are retained.
+The historical multiplayer suite contributed 24 database games, 324 player participations and 2,592 accepted round solves under the former 2 through 25 scope. It checked eight-round play, hint/scoring stages, concurrent conflicts/retries, standings and profile awards. Its first combined PostgreSQL run passed 65/66 but hit a 60-second fixture timeout at 25 players. A 120-second fixture budget retained those assertions and its rerun passed 66/66. Preserve those outcomes; they do not establish the current 9-game/54-participation/432-solve matrix.
 
 The [hostile review receipt](admin_acl_review_receipt.json) identifies the exact [189-file snapshot](admin_acl_review_manifest.json), independently checked source hashes, resolved findings and evidence qualifications. Approval was 99/100 in accuracy and completeness with no unresolved material finding. [Completion logs](evidence/admin/) preserve the unit/build results, the first database failure, the passing database rerun and the production browser result. Later documentation maintenance does not alter that historical snapshot or claim review of subsequently edited documentation.
 
-## Phone PWA verification
+## Current admin PWA verification
+
+Use the current production-browser configuration above for the owner GitHub flow, separate guest/admin sessions, absence of public install controls, `/admin/manifest.webmanifest`, real worker and static-only CacheStorage. Live consent, installed-app OAuth continuity and physical OS installation need their own hosted observations. See [the release design](admin_pwa_release.md).
+
+## Historical public PWA verification
+
+The original commands and 14/516/35 counts below describe the earlier public-PWA snapshot, not current admin-only PWA approval.
 
 Run `npm test -- tests/web/pwa-manifest.test.ts tests/web/pwa-support.test.ts tests/web/pwa-worker.test.ts` for manifest/icon contracts, install-event/standalone lifecycle and service-worker privacy/update controls. These tests were authored first and failed 13/13 before implementation. Maskable artwork is checked against the circular safe area; icons are decoded to confirm dimensions and opacity.
 
@@ -86,7 +109,7 @@ npm run test:live-ui
 
 The primary game uses three isolated phone-size browser sessions: two players and an inviter-bound observer. Guest entry, code join, readiness, categories, every answer, hints, scores, reactions, reveal and final ranking use the actual UI. It suppresses periodic UI reads, correlates actual private frames and versioned authorized reads, probes autonomous deadlines with all browsers offline, waits beyond the initial token expiry and closes/reconnects a real socket. Negative transport checks reject anonymous/cross-profile subscriptions and client publication.
 
-The player-count matrix runs eight UI rounds at every size2 through25. Its initial guest/membership arrangement uses real APIs, while readiness, category selection and every answer use browser controls. Version conflicts are handled through fresh explicit UI submissions and current UI state. This is separate from the deterministic2..25 service integration. Use `npm run test:live-ui -- live-player-counts.integration.spec.ts` for the matrix or `live-multiplayer.integration.spec.ts` for the strict privacy/recovery game. Optional `WORDPAIRS_LIVE_PLAYER_COUNTS='2,25'` limits matrix execution; a subset must never be reported as all counts.
+The current matrix requires eight UI rounds at every size 2 through 10. Initial guest/membership arrangement uses real APIs; readiness, categories and every answer use browser controls. Version conflicts require fresh explicit UI submissions and current state. This is separate from service integration. Use `npm run test:live-ui -- live-player-counts.integration.spec.ts` for the matrix or `live-multiplayer.integration.spec.ts` for strict private-push/recovery. `WORDPAIRS_LIVE_PLAYER_COUNTS='2,10'` selects only two counts; never report a subset as the complete 9-game matrix. Old 2 through 25 receipts remain historical.
 
 Runs create real private guest profiles/rooms and lifetime results in the selected database. They leave only their own room in cleanup; profiles remain subject to normal retention. Prefer a dedicated validation database. They never edit the reported user room. Use fresh owned scratch storage as described above; this host has previously crashed Chromium with shared temporary storage. Artifacts are under `docs/evidence/room-sync/` and Playwright output. These checks do not claim physical-device OS installation or hosted Phase7 completion.
 
@@ -97,7 +120,7 @@ Focused regressions cover deferred game/room reads, deferred authentication clea
 After a production build, run the real browser matrix without a public tunnel or existing database:
 
 ```powershell
-pwsh -NoProfile -File scripts/run-local-ui-integration.ps1
+pwsh -NoProfile -NonInteractive -File scripts/run-local-ui-integration.ps1 -PlayerCounts '2,3,4,5,6,7,8,9,10'
 ```
 
 The runner requires Linux, PowerShell7, Docker, OpenSSL and installed Chromium (auto-detected as `chromium`, or supply `-BrowserPath`). It creates a fresh pinned PostgreSQL container, roles and migrated game database, plus its own Realtime/internal PostgreSQL/gateway set. The operator database is never contacted. Optional `-RuntimePath` copies other private server settings; database URL/CA, broker, origin and scheduler settings are always replaced with owned test configuration.
@@ -106,7 +129,7 @@ Both disposable PostgreSQL data directories use512MiB tmpfs mounts. `fsync` and 
 
 The browser targets `https://127.0.0.1:3443`, with app/gateway ports3005/3004. Use the port parameters if occupied. The one-day test certificate is trusted only by owned Node children and an explicit loopback-only browser flag; database TLS remains verified. No system trust store or public endpoint changes. The existing production build is reused. Do not rebuild its checkout while it is running. Phone/PWA installation uses its separately verified real HTTPS tier; the generated test certificate is not a physical-phone installation test.
 
-Default execution covers every count2..25 with one worker. `-PlayerCounts '2,25'` selects a subset; `-StrictPush` selects the no-periodic-read two-player/observer game instead. `-Workers 2` allows two games concurrently. Within each matrix game, at most two players submit answers simultaneously through actual UI controls. Uncertain retries must preserve the complete original command ID/payload;409 conflicts require fresh UI submissions. Every player must solve all8rounds and see the same final ranking.
+Select the complete current 2 through 10 range explicitly with the command above. `-PlayerCounts '2,10'` selects a subset; `-StrictPush` selects the no-periodic-read two-player/observer game instead. `-Workers 2` allows two games concurrently. At most two players submit answers simultaneously through actual UI controls. Uncertain retries preserve the original command ID/payload; 409 conflicts require fresh UI submissions. Every player must solve all eight rounds and see the same final ranking. Run strict recovery separately; ordinary matrix polling does not prove its no-periodic-read criterion.
 
 Browser scratch uses a fresh short workspace directory (the outer workspace when nested under `.mcpServer`), with `-ScratchRoot <short-workspace-path>` available. Successfully created directory flags protect pre-existing paths, and standalone `.wpu-*` profiles are ignored by Git. The bounded lifetime defaults to90minutes. Cleanup stops captured child process trees, confirms exact label-owned containers absent, and removes only successfully created directories. Partial startup or unconfirmed cleanup retains recovery receipts and rejects unresolved replacement.
 
@@ -121,7 +144,7 @@ pwsh -NoProfile -File tests/integration/local-ui-startup.contract.ps1
 node --test tests/integration/local-tls.contract.mjs
 ```
 
-These infrastructure fault fixtures are separate from the real game tests, which have no HTTP fixtures. The latest complete unit/acceptance regression passed530tests. Focused lifecycle regressions verify15-second connected/one-second disconnected game/social safety reads without losing pending/coalesced requests when cadence changes; display clocks remain independent.
+These infrastructure fault fixtures are separate from the real game tests, which have no HTTP fixtures. The historical unit/acceptance snapshot described here passed530tests; it is not the current-source gate. Focused lifecycle regressions verify15-second connected/one-second disconnected game/social safety reads without losing pending/coalesced requests when cadence changes; display clocks remain independent.
 
 The real heartbeat response-body regression runs with `pwsh -NoProfile -File scripts/run-local-ui-integration.ps1 -HeartbeatBody`. It preserves an actual unread-response negative control, a consumed control, and an online-triggered production heartbeat that must finish before its abort deadline without test-side body consumption. `tests/web/heartbeat-body.test.ts` separately verifies deferred-body sequencing and exact canonical retry preservation on a body-read failure. Chromium can report an unread response as aborted after200headers; do not infer mutation failure from that event alone, or use this finding to dismiss unrelated match failures.
 

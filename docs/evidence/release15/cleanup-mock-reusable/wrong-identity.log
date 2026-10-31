@@ -1,0 +1,97 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/application/live-scale-cleanup.test.ts (10 tests | 3 failed) 18ms
+   ❯ TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup (10)
+     × confirms absence after a successful leave instead of trusting the write response 10ms
+     ✓ reports a membership still present after every successful leave response 1ms
+     × reports repeated server failures and preserves the exact uncertain command 1ms
+     × retries transport uncertainty with the same command before verified absence 1ms
+     ✓ bounds conflicts and does not silently accept exhausted retries 0ms
+     ✓ does not treat lost authentication or malformed reads as removed membership 1ms
+     ✓ accepts an authenticated empty membership or missing owned room without a write 0ms
+     ✓ preserves a completed closed room and requires the expected actor identity 0ms
+     ✓ cleans only supplied actors in reverse order and reports exact unresolved indices 0ms
+     ✓ also verifies observer departure if an owned actor's membership changed 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > confirms absence after a successful leave instead of trusting the write response
+AssertionError: expected [ { expectedVersion: 1, …(1) } ] to deeply equal [ { expectedVersion: 1, …(1) } ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "commandId": "cleanup-1",
++     "commandId": "cleanup-2",
+      "expectedVersion": 1,
+    },
+  ]
+
+ ❯ tests/application/live-scale-cleanup.test.ts:31:28
+     29|     const probe = actor([member(), absent()]);
+     30|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+     31|     expect(probe.commands).toEqual([{ expectedVersion: 1, commandId: "…
+       |                            ^
+     32|     expect(probe.reads()).toBeGreaterThanOrEqual(2);
+     33|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > reports repeated server failures and preserves the exact uncertain command
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/application/live-scale-cleanup.test.ts:44:108
+     42|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+     43|     expect(probe.commands).toHaveLength(4);
+     44|     expect(probe.commands.every(command => JSON.stringify(command) ===…
+       |                                                                                                            ^
+     45|   });
+     46|   it("retries transport uncertainty with the same command before verif…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > retries transport uncertainty with the same command before verified absence
+AssertionError: expected [ { expectedVersion: 1, …(1) }, …(1) ] to deeply equal [ { expectedVersion: 1, …(1) }, …(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "commandId": "cleanup-1",
++     "commandId": "cleanup-2",
+      "expectedVersion": 1,
+    },
+    {
+-     "commandId": "cleanup-1",
++     "commandId": "cleanup-3",
+      "expectedVersion": 1,
+    },
+  ]
+
+ ❯ tests/application/live-scale-cleanup.test.ts:49:28
+     47|     const probe = actor([member(), member(), absent()], [new Error("co…
+     48|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+     49|     expect(probe.commands).toEqual([{ expectedVersion: 1, commandId: "…
+       |                            ^
+     50|   });
+     51|   it("bounds conflicts and does not silently accept exhausted retries"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 7 passed (10)
+   Start at  15:15:55
+   Duration  178ms (tests 44%, import 33%, transform 12%, worker 10%)
+
+JUNIT report written to <repo>/docs/evidence/release15/cleanup-mock-reusable/wrong-identity.xml

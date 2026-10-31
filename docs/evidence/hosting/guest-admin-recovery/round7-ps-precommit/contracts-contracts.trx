@@ -1,0 +1,38 @@
+<TestRun id="803284e2-25d4-4e92-a6f3-34f65d384de6" name="JUnit adapter: contracts.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times start="2026-10-29T10:49:28.3011222-05:00" creation="2026-10-29T10:49:28.3011222-05:00" finish="2026-10-29T10:49:28.3011222-05:00" queuing="2026-10-29T10:49:28.3011222-05:00" />
+  <Results>
+    <UnitTestResult testId="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" testName="local-script-contract :: local-live-lease.contract.ps1" relativeResultsDirectory="96b7a3c2-68ba-4f57-a326-ac0a73cc3a01" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="96b7a3c2-68ba-4f57-a326-ac0a73cc3a01" computerName="[PRIVATE HOST]" duration="00:00:00" />
+    <UnitTestResult testId="d776a9a9-34e7-5342-3982-3e7130d3e67d" testName="local-script-contract :: local-realtime-cleanup.contract.ps1" relativeResultsDirectory="14ca4b82-e8c4-4d02-9606-d84ae6c1709f" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="14ca4b82-e8c4-4d02-9606-d84ae6c1709f" computerName="[PRIVATE HOST]" duration="00:00:00" />
+    <UnitTestResult testId="f7534c18-ab04-6db9-e534-33c96ec833be" testName="local-script-contract :: local-ui-startup.contract.ps1" relativeResultsDirectory="c4a88299-dc42-416d-95d6-c3942d82c274" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" executionId="c4a88299-dc42-416d-95d6-c3942d82c274" computerName="[PRIVATE HOST]" duration="00:00:00" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="local-live-lease.contract.ps1" storage="local-script-contract" id="a3258b94-d5d7-b71e-753b-6e7fb4f0664b">
+      <Execution id="96b7a3c2-68ba-4f57-a326-ac0a73cc3a01" />
+      <TestMethod name="local-live-lease.contract.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" className="local-script-contract" codeBase="local-script-contract" />
+    </UnitTest>
+    <UnitTest name="local-realtime-cleanup.contract.ps1" storage="local-script-contract" id="d776a9a9-34e7-5342-3982-3e7130d3e67d">
+      <Execution id="14ca4b82-e8c4-4d02-9606-d84ae6c1709f" />
+      <TestMethod name="local-realtime-cleanup.contract.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" className="local-script-contract" codeBase="local-script-contract" />
+    </UnitTest>
+    <UnitTest name="local-ui-startup.contract.ps1" storage="local-script-contract" id="f7534c18-ab04-6db9-e534-33c96ec833be">
+      <Execution id="c4a88299-dc42-416d-95d6-c3942d82c274" />
+      <TestMethod name="local-ui-startup.contract.ps1" adapterTypeName="JUnit-to-TRX explicit result adapter" className="local-script-contract" codeBase="local-script-contract" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry executionId="96b7a3c2-68ba-4f57-a326-ac0a73cc3a01" testId="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestEntry executionId="14ca4b82-e8c4-4d02-9606-d84ae6c1709f" testId="d776a9a9-34e7-5342-3982-3e7130d3e67d" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestEntry executionId="c4a88299-dc42-416d-95d6-c3942d82c274" testId="f7534c18-ab04-6db9-e534-33c96ec833be" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestEntries>
+  <TestLists>
+    <TestList id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" name="JUnit cases" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters executed="3" error="0" inconclusive="0" notRunnable="0" passed="3" failed="0" aborted="0" pending="0" timeout="0" completed="3" passedButRunAborted="0" notExecuted="0" inProgress="0" total="3" disconnected="0" />
+    <RunInfos>
+      <RunInfo outcome="Completed" computerName="[PRIVATE HOST]" timestamp="2026-10-29T10:49:28.3011222-05:00">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<repo>/docs/evidence/hosting/guest-admin-recovery/round7-ps-precommit/contracts/contracts.xml; SHA256=4361D0A9ED9B3374CB426AD55C9D657A73A1097CCFA81E2D25E83FC5EACB682D; reviewed revision=3fb4a49a28ce5281ab91fa88c4d488458762ea27</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

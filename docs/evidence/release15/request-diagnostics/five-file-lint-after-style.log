@@ -1,0 +1,207 @@
+tests/browser/live-multiplayer.integration.spec.ts:23:18 lint/style/noNonNullAssertion ━━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    21 │   browser,
+    22 │ }, info) => {
+  > 23 │   const origin = process.env.WORDPAIRS_LIVE_ORIGIN!;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    24 │   const runtimePath = process.env.WORDPAIRS_LIVE_RUNTIME_PATH;
+    25 │   if (!runtimePath)
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:172:9 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    170 │       ).toBeVisible();
+    171 │       aliases.push(
+  > 172 │         (await page.locator(".profile-alias strong").textContent())!.trim(),
+        │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    173 │       );
+    174 │       profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    170 170 │         ).toBeVisible();
+    171 171 │         aliases.push(
+    172     │ - ········(await·page.locator(".profile-alias·strong").textContent())!.trim(),
+        172 │ + ········(await·page.locator(".profile-alias·strong").textContent())?.trim(),
+    173 173 │         );
+    174 174 │         profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:180:14 lint/style/noNonNullAssertion ━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    178 │     await a.getByRole("button", { name: "Create room", exact: true }).click();
+    179 │     await a.waitForURL(/\/rooms\//);
+  > 180 │     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+        │              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    181 │     const code = (await a.locator(".room-code strong").textContent())!.trim();
+    182 │     await expect(
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:181:18 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    179 │     await a.waitForURL(/\/rooms\//);
+    180 │     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+  > 181 │     const code = (await a.locator(".room-code strong").textContent())!.trim();
+        │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    182 │     await expect(
+    183 │       a.getByText("● Live updates connected", { exact: true }),
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    179 179 │       await a.waitForURL(/\/rooms\//);
+    180 180 │       roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+    181     │ - ····const·code·=·(await·a.locator(".room-code·strong").textContent())!.trim();
+        181 │ + ····const·code·=·(await·a.locator(".room-code·strong").textContent())?.trim();
+    182 182 │       await expect(
+    183 183 │         a.getByText("● Live updates connected", { exact: true }),
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:277:22 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    275 │         await expect(pages[i].locator(".game-prompt")).toBeVisible();
+    276 │       }
+  > 277 │       const prompt = (await a.locator(".game-prompt").textContent())!.trim();
+        │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    278 │       const pair = seed.pairs.find(
+    279 │         (p) => p.categoryId === "opposites" && p.prompt === prompt,
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    275 275 │           await expect(pages[i].locator(".game-prompt")).toBeVisible();
+    276 276 │         }
+    277     │ - ······const·prompt·=·(await·a.locator(".game-prompt").textContent())!.trim();
+        277 │ + ······const·prompt·=·(await·a.locator(".game-prompt").textContent())?.trim();
+    278 278 │         const pair = seed.pairs.find(
+    279 279 │           (p) => p.categoryId === "opposites" && p.prompt === prompt,
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:357:18 lint/style/noNonNullAssertion ━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    355 │           .toBeGreaterThan(originalExpiry + 1000);
+    356 │         for (let i = 0; i < 3; i++)
+  > 357 │           expect(expiries[i].at(-1)!).toBeGreaterThan(expiries[i][0]);
+        │                  ^^^^^^^^^^^^^^^^^^^
+    358 │         milestones.tokenRenewedPastOriginalLifetime = true;
+    359 │         const reopened = a.waitForEvent("websocket");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:17:18 lint/style/noNonNullAssertion ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    15 │ for (const count of counts) test(`LIVE-SCALE ${count} real browser players complete eight UI rounds`, async ({ browser }, info) => {
+    16 │   test.setTimeout(600000);
+  > 17 │   const origin = process.env.WORDPAIRS_LIVE_ORIGIN!;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    18 │   const contexts: BrowserContext[] = [];
+    19 │   const pages: Page[] = [];
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:122:23 lint/style/noNonNullAssertion ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    120 │       console.log(`LIVE_SCALE players=${count} round=${round}`);
+    121 │       await expect.poll(async () => (await Promise.all(pages.map((p) => p.getByRole("button", { name: "Opposites", exact: true }).isVisible()))).filter(Boolean).length, { timeout: 20000 }).toBe(1);
+  > 122 │       const chooser = (await Promise.all(pages.map(async (p) => (await p.getByRole("button", { name: "Opposites", exact: true }).isVisible()) ? p : null))).find((p) => p)!;
+        │                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    123 │       const chosen = await commitUi(chooser, "choose", () => chooser.getByRole("button", { name: "Opposites", exact: true }).click());
+    124 │       const categoryVersion = chosen.version;
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-player-counts.integration.spec.ts:130:22 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    128 │         await expect(p.locator(".answer-reveal")).toHaveCount(0);
+    129 │       }));
+  > 130 │       const prompt = (await pages[0].locator(".game-prompt").textContent())!.trim();
+        │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    131 │       const pair = seed.pairs.find((p) => p.categoryId === "opposites" && p.prompt === prompt);
+    132 │       if (!pair) throw new Error("The seeded Opposites catalog is required for live UI answer lookup");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    128 128 │           await expect(p.locator(".answer-reveal")).toHaveCount(0);
+    129 129 │         }));
+    130     │ - ······const·prompt·=·(await·pages[0].locator(".game-prompt").textContent())!.trim();
+        130 │ + ······const·prompt·=·(await·pages[0].locator(".game-prompt").textContent())?.trim();
+    131 131 │         const pair = seed.pairs.find((p) => p.categoryId === "opposites" && p.prompt === prompt);
+    132 132 │         if (!pair) throw new Error("The seeded Opposites catalog is required for live UI answer lookup");
+  
+
+tests/browser/live-player-counts.integration.spec.ts:157:184 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    155 │     await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    156 │   } catch (error) {
+  > 157 │     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
+        │                                                                                                                                                                                        ^^^^^^^^^
+    158 │     await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    159 │     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    155 155 │       await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    156 156 │     } catch (error) {
+    157     │ - ····const·uiStates·=·await·Promise.all(pages.map(async·(page,·player)·=>·({·player,·closed:·page.isClosed(),·browserConnected:·browser.isConnected(),·body:·await·page.locator("body").innerText({·timeout:·2000·}).catch((problem:·unknown)·=>·`Page·unavailable:·${problem·instanceof·Error·?·problem.message.slice(0,·500)·:·"Unknown·error"}`)·})));
+        157 │ + ····const·uiStates·=·await·Promise.all(pages.map(async·(page,·player)·=>·({·player,·closed:·page.isClosed(),·browserConnected:·browser.isConnected(),·body:·await·page.locator("body").textContent({·timeout:·2000·}).catch((problem:·unknown)·=>·`Page·unavailable:·${problem·instanceof·Error·?·problem.message.slice(0,·500)·:·"Unknown·error"}`)·})));
+    158 158 │       await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    159 159 │       await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+  
+
+Checked 5 files in 19ms. No fixes applied.
+Found 10 warnings.

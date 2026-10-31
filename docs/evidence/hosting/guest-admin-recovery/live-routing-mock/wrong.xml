@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="4" failures="2" errors="0" time="0.040566531">
+    <testsuite name="tests/web/live-update-routing.test.ts" timestamp="2026-10-29T16:33:24.169Z" hostname="[PRIVATE HOST]" tests="4" failures="2" errors="0" skipped="0" time="0.040566531">
+        <testcase classname="tests/web/live-update-routing.test.ts" name="routes match changes to the match refresh without rereading the room" time="0.026016746">
+            <failure message="expected &quot;vi.fn()&quot; to be called 1 times, but got 0 times" type="AssertionError">
+AssertionError: expected &quot;vi.fn()&quot; to be called 1 times, but got 0 times
+ ❯ tests/web/live-update-routing.test.ts:30:23
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/live-update-routing.test.ts" name="routes room and moderation changes to the room refresh" time="0.004576001">
+        </testcase>
+        <testcase classname="tests/web/live-update-routing.test.ts" name="ignores duplicate and unrelated notifications" time="0.004489959">
+            <failure message="expected &quot;vi.fn()&quot; to be called 1 times, but got 0 times" type="AssertionError">
+AssertionError: expected &quot;vi.fn()&quot; to be called 1 times, but got 0 times
+ ❯ tests/web/live-update-routing.test.ts:38:23
+            </failure>
+        </testcase>
+        <testcase classname="tests/web/live-update-routing.test.ts" name="falls back to the room refresh when no match callback is supplied" time="0.003868688">
+        </testcase>
+    </testsuite>
+</testsuites>

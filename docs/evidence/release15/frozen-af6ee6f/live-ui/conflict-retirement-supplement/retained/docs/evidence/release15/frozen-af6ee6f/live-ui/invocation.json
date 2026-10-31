@@ -1,0 +1,35 @@
+{
+  "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+  "reports": [
+    {
+      "name": "live-ui",
+      "kind": "live-ui",
+      "expectedCount": 14,
+      "runId": "9d00fa3e-555b-4491-8b8b-4f72d3b6177d",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-30T19:08:52",
+      "finishedAt": "2026-10-30T19:10:16",
+      "producer": "\u003Crepo\u003E/docs/evidence/release15/operational-producers/RunWordpairsRelease15Evidence.ps1",
+      "producerSha256": "21711F72407E0D786BBA70AAC18DAB32F76C585CF2A6D33E6CEF76DD8D721D0C",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "scripts/run-local-ui-integration.ps1",
+        "-PlayerCounts",
+        "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+        "-MaxMinutes",
+        "90"
+      ],
+      "exitCode": 1,
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/live-ui/live-ui.xml",
+      "junitSha256": "58345A1E348CFBF2EAFFE83D9CE59CAFA9151D41D702BED181ADF0764E80CA3E",
+      "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/live-ui/source-before.json",
+      "sourceAfter": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/live-ui/source-after.json",
+      "sourceAfterFailure": null
+    }
+  ]
+}

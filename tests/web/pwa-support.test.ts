@@ -53,11 +53,11 @@ function installEvent(outcome: "accepted" | "dismissed", reject = false) {
   });
   return { event, prompt };
 }
-it("PWA-03 registers securely at root with fresh updates; errors preserve manual guidance", async () => {
+it("PWA-03 registers securely in admin scope with fresh updates; errors preserve manual guidance", async () => {
   register.mockRejectedValueOnce(new Error("blocked"));
   await mount();
-  expect(register).toHaveBeenCalledWith("/sw.js", {
-    scope: "/",
+  expect(register).toHaveBeenCalledWith("/admin-sw.js", {
+    scope: "/admin",
     updateViaCache: "none",
   });
   expect(screen.getByRole("status").textContent).toMatch(/could not start/i);
@@ -69,16 +69,16 @@ it("PWA-04 prompts once on a click and hides after actual appinstalled", async (
   expect(event.defaultPrevented).toBe(true);
   expect(prompt).not.toHaveBeenCalled();
   await act(async () => {
-    fireEvent.click(screen.getByRole("button", { name: "Install Wordpairs" }));
+    fireEvent.click(screen.getByRole("button", { name: "Install Wordpairs Admin" }));
   });
   expect(prompt).toHaveBeenCalledTimes(1);
   expect(
-    screen.queryByRole("button", { name: "Install Wordpairs" }),
+    screen.queryByRole("button", { name: "Install Wordpairs Admin" }),
   ).toBeNull();
   act(() => {
     window.dispatchEvent(new Event("appinstalled"));
   });
-  expect(screen.queryByLabelText("Install Wordpairs")).toBeNull();
+  expect(screen.queryByLabelText("Install Wordpairs Admin")).toBeNull();
 });
 it.each([false, true])(
   "PWA-04 dismissed/rejected prompt leaves guidance and accepts only a fresh event: %s",
@@ -87,30 +87,30 @@ it.each([false, true])(
     const first = installEvent("dismissed", reject);
     await act(async () => {
       fireEvent.click(
-        screen.getByRole("button", { name: "Install Wordpairs" }),
+        screen.getByRole("button", { name: "Install Wordpairs Admin" }),
       );
     });
     expect(first.prompt).toHaveBeenCalledTimes(1);
     expect(
-      screen.queryByRole("button", { name: "Install Wordpairs" }),
+      screen.queryByRole("button", { name: "Install Wordpairs Admin" }),
     ).toBeNull();
     expect(screen.getByText(/Add to Home Screen/)).toBeTruthy();
     const fresh = installEvent("dismissed");
     expect(fresh.prompt).not.toHaveBeenCalled();
     expect(
-      screen.getByRole("button", { name: "Install Wordpairs" }),
+      screen.getByRole("button", { name: "Install Wordpairs Admin" }),
     ).toBeTruthy();
   },
 );
 it("PWA-04 hides in display-mode standalone and responds to mode changes", async () => {
   media.matches = true;
   await mount();
-  expect(screen.queryByLabelText("Install Wordpairs")).toBeNull();
+  expect(screen.queryByLabelText("Install Wordpairs Admin")).toBeNull();
   media.matches = false;
   act(() => {
     media.dispatchEvent(new Event("change"));
   });
-  expect(screen.getByLabelText("Install Wordpairs")).toBeTruthy();
+  expect(screen.getByLabelText("Install Wordpairs Admin")).toBeTruthy();
 });
 it("PWA-04 recognizes iPhone standalone and removes listeners on unmount", async () => {
   Object.defineProperty(navigator, "standalone", {
@@ -120,7 +120,7 @@ it("PWA-04 recognizes iPhone standalone and removes listeners on unmount", async
   const remove = vi.spyOn(window, "removeEventListener");
   const mediaRemove = vi.spyOn(media, "removeEventListener");
   const view = await mount();
-  expect(screen.queryByLabelText("Install Wordpairs")).toBeNull();
+  expect(screen.queryByLabelText("Install Wordpairs Admin")).toBeNull();
   view.unmount();
   expect(remove).toHaveBeenCalledWith(
     "beforeinstallprompt",
@@ -153,7 +153,7 @@ it("PWA-05 retains safe areas when installed UI is hidden and panel padding surv
   try {
     media.matches = true;
     await mount();
-    expect(screen.queryByLabelText("Install Wordpairs")).toBeNull();
+    expect(screen.queryByLabelText("Install Wordpairs Admin")).toBeNull();
     const body = getComputedStyle(document.body);
     expect([
       body.paddingTop,
@@ -165,9 +165,27 @@ it("PWA-05 retains safe areas when installed UI is hidden and panel padding surv
     act(() => {
       media.dispatchEvent(new Event("change"));
     });
-    const panel = getComputedStyle(screen.getByLabelText("Install Wordpairs"));
+    const panel = getComputedStyle(screen.getByLabelText("Install Wordpairs Admin"));
     expect([panel.paddingTop, panel.paddingBottom]).toEqual(["24px", "24px"]);
   } finally {
     style.remove();
   }
 });
+it("PWA-09 public cleanup preserves admin and unrelated registrations/caches", async () => {
+  const registrations = [
+    { scope: "https://wordpairs.test/", active: { scriptURL: "https://wordpairs.test/sw.js" }, unregister: vi.fn().mockResolvedValue(true) },
+    { scope: "https://wordpairs.test/admin", active: { scriptURL: "https://wordpairs.test/admin-sw.js" }, unregister: vi.fn() },
+    { scope: "https://wordpairs.test/other/", active: { scriptURL: "https://wordpairs.test/other/sw.js" }, unregister: vi.fn() },
+  ];
+  Object.defineProperty(navigator, "serviceWorker", { configurable: true, value: { getRegistrations: vi.fn().mockResolvedValue(registrations) } });
+  const remove = vi.fn().mockResolvedValue(true);
+  vi.stubGlobal("caches", { keys: async () => ["wordpairs-pwa-v1", "wordpairs-admin-pwa-v1", "other-app"], delete: remove });
+  const { LegacyPwaCleanup } = await import("../../src/web/pwa-support");
+  await act(async () => { render(React.createElement(LegacyPwaCleanup)); });
+  expect(registrations[0].unregister).toHaveBeenCalledOnce();
+  expect(registrations[1].unregister).not.toHaveBeenCalled();
+  expect(registrations[2].unregister).not.toHaveBeenCalled();
+  expect(remove.mock.calls).toEqual([["wordpairs-pwa-v1"]]);
+  expect(screen.queryByRole("button")).toBeNull();
+});
+

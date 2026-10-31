@@ -1,0 +1,365 @@
+{
+  "timestampLocal": "2026-10-30T18:16:21",
+  "kind": "test-only-ui-command-capture-repair-not-HV-not-full-game-acceptance",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T225947Z-command-capture",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "baselineHead": "cca320b02596d21683cec38ab604d7fe31a5c672",
+  "dirtyTestSource": true,
+  "sourceStopped": true,
+  "sourcePins": [
+    {
+      "path": "tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D"
+    }
+  ],
+  "localEvidence": [
+    {
+      "path": "docs/evidence/release15/command-capture/plan.md",
+      "sha256": "6E5E9061E746C617B976B9F317A92CE751D7EBE07FA136B44B1FCC21F91F1C54"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/assessment.md",
+      "sha256": "15A125E1058ACECC249E59AE3B8F5ECFADF7B55F2BE07494DBFD8A41DBD0772D"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/source-check.json",
+      "sha256": "4521C1F51EC733D77DC3AFDC3FC5221A4D75F015DFF81018F270A7A643B2B261"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/source-check-final.json",
+      "sha256": "1800EA51AB13544EB1A5D865E6A7DD120F66050800BE54EEDB4F6F0C86064338"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/source-lint-final.log",
+      "sha256": "CA70E3204BB9F600EDA0A7A08D3E50C6266AA05025F2928C2946F2ABFAC40D02"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/source-diff-check-final.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/integration-adoption-final.diff",
+      "sha256": "226BA4510BDC6D66EC6D34159423111DB9ECA600D2CF6EEBFAB2036B29D6E5A6"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/callsite-sweep-final.log",
+      "sha256": "9754A32C350DD7D17969A9FFEE1B951EBF3CB772F58A570BC858ECE97E8B4230"
+    }
+  ],
+  "chronologicalRuns": [
+    {
+      "path": "docs/evidence/release15/command-capture/mock-20261030T180830/receipt.json",
+      "sha256": "3C3A497ABDE9E208C9D8445E8BC7E249D02494C7BE1E69E59B80323BDE04C4B5",
+      "startedAt": "2026-10-30T18:08:30",
+      "finishedAt": "2026-10-30T18:08:31",
+      "binding": "mock",
+      "cases": 56,
+      "failed": 0,
+      "skipped": 0,
+      "positiveCases": 28,
+      "negativeControls": 28,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "1840A7DB7BCF4AB505E6725F7787CE7C194B7BDF7FDA56520B50D321164818B1",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-20261030T180830/ui-command-capture.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A6AFB2DB7E6A37CE4732AB588AE3C6D2DDE3DEF62652FB61F0D8B05BCF96E7CA",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-20261030T180830/ui-command-capture.test.ts"
+        }
+      ],
+      "junitSha256": "5E49D2986C633C6CF47515FF93ED9C50DEF97303FB2638F3A521DB78818F3BDA",
+      "helperAbsent": true,
+      "unchangedPreDeltaHelperSha256": null
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/real-20261030T180943/receipt.json",
+      "sha256": "B59DC85797B42DCE44309D1EC4C428668B571C95126D6CF721165783883DDC9A",
+      "startedAt": "2026-10-30T18:09:43",
+      "finishedAt": "2026-10-30T18:09:44",
+      "binding": "real",
+      "cases": 56,
+      "failed": 0,
+      "skipped": 0,
+      "positiveCases": 28,
+      "negativeControls": 28,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "1840A7DB7BCF4AB505E6725F7787CE7C194B7BDF7FDA56520B50D321164818B1",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-20261030T180943/ui-command-capture.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A6AFB2DB7E6A37CE4732AB588AE3C6D2DDE3DEF62652FB61F0D8B05BCF96E7CA",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-20261030T180943/ui-command-capture.test.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-20261030T180943/ui-command-capture.ts"
+        }
+      ],
+      "junitSha256": "FE63E0A805266BF344D9E60F133E7A908F8D06FE1DC2B5FD9E56483D645A9165",
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": null
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/mock-v2-20261030T181321/receipt.json",
+      "sha256": "05024C4F830030034F7001FFC2A066BB0BFCB1EBFAD0535ED8A79065B80B4D26",
+      "startedAt": "2026-10-30T18:13:21",
+      "finishedAt": "2026-10-30T18:13:22",
+      "binding": "mock",
+      "cases": 58,
+      "failed": 0,
+      "skipped": 0,
+      "positiveCases": 29,
+      "negativeControls": 29,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-v2-20261030T181321/ui-command-capture.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-v2-20261030T181321/ui-command-capture.test.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/mock-v2-20261030T181321/ui-command-capture.ts"
+        }
+      ],
+      "junitSha256": "BCBEC82D24A1203C282955C9A07E55775A0CA6CC9BA1AD39EE2C33C3B3EF9AEA",
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D"
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/real-v2-20261030T181423/receipt.json",
+      "sha256": "4DDAE7087E6A6FDD902D4FCABA2FBA00050FE1D1E7F769E503921287C8B47226",
+      "startedAt": "2026-10-30T18:14:23",
+      "finishedAt": "2026-10-30T18:14:24",
+      "binding": "real",
+      "cases": 58,
+      "failed": 0,
+      "skipped": 0,
+      "positiveCases": 29,
+      "negativeControls": 29,
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/ui-command-capture.contract.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/ui-command-capture.test.ts"
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+          "copy": "\u003Crepo\u003E/docs/evidence/release15/command-capture/real-v2-20261030T181423/ui-command-capture.ts"
+        }
+      ],
+      "junitSha256": "A150B153F59B3C29E13748B7797476637C6799286A129C7756390215C06EB459",
+      "helperAbsent": false,
+      "unchangedPreDeltaHelperSha256": null
+    }
+  ],
+  "sameV2Oracle": [
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+      "mockSha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "realSha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "matches": true
+    },
+    {
+      "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+      "mockSha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "realSha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "matches": true
+    }
+  ],
+  "v1MockBeforeImplementation": true,
+  "v2MockBeforeHelperDelta": true,
+  "editVerifications": [
+    {
+      "timestamp": "2026-10-30T18:06:39",
+      "file": "tests/browser/ui-command-capture.contract.ts",
+      "sha256": "5743164B5371EFF3A113F496A96B74B070A897FAABA7698610894C971E3CCF84",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T180634-ui-command-capture.contract.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:07:05",
+      "file": "tests/browser/ui-command-capture.contract.ts",
+      "sha256": "1840A7DB7BCF4AB505E6725F7787CE7C194B7BDF7FDA56520B50D321164818B1",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T180701-ui-command-capture.contract.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:07:58",
+      "file": "tests/browser/ui-command-capture.test.ts",
+      "sha256": "A6AFB2DB7E6A37CE4732AB588AE3C6D2DDE3DEF62652FB61F0D8B05BCF96E7CA",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T180754-ui-command-capture.test.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:09:40",
+      "file": "tests/browser/ui-command-capture.ts",
+      "sha256": "12B54038DCF92A0B4E03DB5463014C987D910C977FA4DECBD72C06F3243C909D",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T180935-ui-command-capture.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:10:37",
+      "file": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T181032-live-player-counts.integration.spec.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:10:53",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T181048-live-multiplayer.integration.spec.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:12:50",
+      "file": "tests/browser/ui-command-capture.contract.ts",
+      "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T181244-ui-command-capture.contract.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:12:58",
+      "file": "tests/browser/ui-command-capture.test.ts",
+      "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T181252-ui-command-capture.test.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    },
+    {
+      "timestamp": "2026-10-30T18:14:23",
+      "file": "tests/browser/ui-command-capture.ts",
+      "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/command-capture/edit-verification/20261030T181418-ui-command-capture.ts.log",
+      "qualification": "Known plugin project-file detection issue already triaged; direct TypeScript check is authoritative."
+    }
+  ],
+  "editVerificationCount": 9,
+  "finalLintExitCode": 0,
+  "finalSourceDiffExitCode": 0,
+  "currentUnitDelta": 58,
+  "currentEffectiveLayer": "layer-1",
+  "requirementRecords": [
+    "TR-CONNECTION-RECOVERY-009#TR-09-C01",
+    "TEST-CONNECTIONRECOVERY-109#VERIFY-TR-09",
+    "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C01/TR-34-C02",
+    "TEST-MULTIPLAYERINTEGRATION-134#TR-34-C01/TR-34-C02",
+    "TR-ROOM-SYNCRECOVERY-038#LIVE-02/LIVE-07",
+    "TEST-ROOMSYNC-139#LIVE-02/LIVE-07"
+  ],
+  "requirementsMutated": false,
+  "preservedFailure": {
+    "manifestPath": "docs/evidence/release15/frozen-cca320b/live-ui/command-capture-supplement/manifest.json",
+    "manifestSha256": "598F09CBBE5CBE12E3DD4C3085ECD949731DC43C9E7696EEE4E063A1E1D5E6AF",
+    "files": 36,
+    "bytes": 782230.0,
+    "copiesVerified": true,
+    "originalsRetained": true,
+    "nativeCases": 14,
+    "nativeFailed": 1,
+    "nativeSkipped": 6,
+    "nativePassed": 7
+  },
+  "causalLimits": "All9snapshots were open/liveconnected/fullroster/round2; onependingUI. No exact original Request-to-player attribution, no proof of navigation/cache eviction, no claim that eager capture alone establishes transport recovery.",
+  "safeAttribution": "Future matrix JSON retains original Request UUID-only command/profile IDs, player/page index, allowlisted action, actual status and enabled-pending observation; no raw payload/answer/token.",
+  "applicationDependencyDiffPaths": [],
+  "noApplicationDependencyChanges": true,
+  "noProviderSchemaConfigurationWrites": true,
+  "noBuildActualUiOrHvRun": true,
+  "noGitCommit": true,
+  "retainedProducers": [
+    {
+      "path": "docs/evidence/release15/command-capture/producers/WordpairsCommandCaptureSession.ps1",
+      "sha256": "E24D10656E4D3A0717A61BCC316896E63DFDE75B6DB22D00B87E433EF379BB29",
+      "originalRetained": true
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/producers/PrepareWordpairsCommandCapture.ps1",
+      "sha256": "6C9C7571ACC7324B4E1EF68AFC480F4A99D5AC857B93BB3C5A11AD22CD178989",
+      "originalRetained": true
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/producers/VerifyWordpairsCaptureEdit.ps1",
+      "sha256": "DF1813F5EE73252E5192C663F58C8FD51039F525393EFB8721C44AF98D62DC12",
+      "originalRetained": true
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/producers/RunWordpairsCommandCaptureGate.ps1",
+      "sha256": "69F820383B37A7576124972390D8AC4DFC61C7D3BE4EB7D22AA3F2B63679D1DB",
+      "originalRetained": true
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/producers/CheckWordpairsCommandCapture.ps1",
+      "sha256": "2606C393453F54F36BFC4D46E580EB505FBCD3C86BEB70A70C28962DAB3E86CF",
+      "originalRetained": true
+    },
+    {
+      "path": "docs/evidence/release15/command-capture/producers/SaveWordpairsCommandCaptureReceipt.ps1",
+      "sha256": "C772B5D26F5831290B1027DA8007E2E206F3C347FDCB887A9AFE100CED031034",
+      "originalRetained": true
+    }
+  ],
+  "pending": [
+    "Parent frozen full applicable suites/build/Realtime and2..15ordinary UI matrix",
+    "Parent strict full UI lane and evidence conversion/readback",
+    "Independent Cline Beam High review and source gate",
+    "Hosted staging/production and physical acceptance where pending"
+  ],
+  "accuracyPercent": 99,
+  "completenessPercent": 98,
+  "scoreQualification": "Bounded test-only repair;58/0/0isolated oracle proves discrimination/real helper, not actual browser/full game/product approval."
+}

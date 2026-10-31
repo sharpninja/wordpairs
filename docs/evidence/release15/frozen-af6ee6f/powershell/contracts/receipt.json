@@ -1,0 +1,74 @@
+{
+  "runId": "0d41fd72-ba1d-4c42-912a-56fbbfd7e9f2",
+  "parentRunId": "c4c2a78d-cbd1-4023-bc5d-f7ce1aa4f90f",
+  "hostName": "[PRIVATE HOST]",
+  "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+  "startedAt": "2026-10-30T19:06:36",
+  "finishedAt": "2026-10-30T19:06:39",
+  "producer": "\u003Crepo\u003E/scripts/Run-LocalScriptContracts.ps1",
+  "producerSha256": "233906CD86A6C85F05538A5DA9F5A6D4AD4CB8188ABB42938844A69B5F50B2E0",
+  "invocation": [
+    "pwsh",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "\u003Crepo\u003E/scripts/Run-LocalScriptContracts.ps1",
+    "-ReportDirectory",
+    "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/powershell/contracts",
+    "-ParentRunId",
+    "c4c2a78d-cbd1-4023-bc5d-f7ce1aa4f90f"
+  ],
+  "results": [
+    {
+      "name": "local-live-lease.contract.ps1",
+      "runId": "0d41fd72-ba1d-4c42-912a-56fbbfd7e9f2",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+      "startedAt": "2026-10-30T19:06:36",
+      "finishedAt": "2026-10-30T19:06:37",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/tests/integration/local-live-lease.contract.ps1"
+      ],
+      "exitCode": 0,
+      "sha256": "61876115EC086FA3A46934F6A5CB20E7605042C3A04C91099FD6FF97482AFE00"
+    },
+    {
+      "name": "local-realtime-cleanup.contract.ps1",
+      "runId": "0d41fd72-ba1d-4c42-912a-56fbbfd7e9f2",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+      "startedAt": "2026-10-30T19:06:37",
+      "finishedAt": "2026-10-30T19:06:37",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/tests/integration/local-realtime-cleanup.contract.ps1"
+      ],
+      "exitCode": 0,
+      "sha256": "F9D8591B483E3BD7B745B748CBD09272956304BA1F0AC190BCAE60AA64033FDC"
+    },
+    {
+      "name": "local-ui-startup.contract.ps1",
+      "runId": "0d41fd72-ba1d-4c42-912a-56fbbfd7e9f2",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+      "startedAt": "2026-10-30T19:06:37",
+      "finishedAt": "2026-10-30T19:06:39",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Crepo\u003E/tests/integration/local-ui-startup.contract.ps1"
+      ],
+      "exitCode": 0,
+      "sha256": "AB132B1E3F92B86C0C1EC7930D273275FE8AC4042BD8712AE6C477FF1808A4CB"
+    }
+  ]
+}

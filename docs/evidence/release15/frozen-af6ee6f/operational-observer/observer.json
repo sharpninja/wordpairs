@@ -1,0 +1,243 @@
+{
+  "startedAt": "2026-10-30T19:10:06.9156113-05:00",
+  "finishedAt": "2026-10-30T19:10:17.7762782-05:00",
+  "hostName": "[PRIVATE HOST]",
+  "runId": "9d00fa3e-555b-4491-8b8b-4f72d3b6177d",
+  "sourceHead": "af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",
+  "sourceManifest": "\u003Crepo\u003E/docs/evidence/release15/frozen-af6ee6f/source-inventory.json",
+  "sourceManifestSha256": "B31B2D799C03A0E594DDBE2EF3EB4B5368F53BD3EA5F4B798113B086A172C79D",
+  "manifestUnchanged": true,
+  "headUnchanged": true,
+  "unitName": "wordpairs-release15-af6ee6f-chain.service",
+  "systemdScope": "User",
+  "controlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/wordpairs-release15-af6ee6f-chain.service",
+  "invocationId": "581e9a893a5846afa6baf63c3794659f",
+  "initialUnit": {
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "581e9a893a5846afa6baf63c3794659f",
+    "MainPID": "1196213",
+    "Result": "success",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/wordpairs-release15-af6ee6f-chain.service"
+  },
+  "terminalUnit": {
+    "LoadState": "not-found",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "InvocationID": "",
+    "MainPID": "0",
+    "Result": "success",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ControlGroup": ""
+  },
+  "runtimeDirectory": "\u003Crepo\u003E/.mcpServer/ui-5177767d18ca43da8386ae75ee6ef06c",
+  "runtimeOwner": "5177767d18ca43da8386ae75ee6ef06c",
+  "databaseOwnerSha256": "56CE8A41A83E520D0E96DC1EB54FB4543941B394CA8C047BC855C53F161E91F2",
+  "ownershipInitiallyVerified": true,
+  "samplerPids": [
+    1240080
+  ],
+  "intervalSeconds": 2,
+  "sampleCount": 5,
+  "missedIntervals": 0,
+  "databaseRetiredAt": "2026-10-30T19:10:15.7824897-05:00",
+  "databaseRetirementReason": "Original owned runtime receipt disappeared; no successor discovery or DB sampling.",
+  "databaseRetiredIntervals": 1,
+  "stopReason": "owned-unit-exited",
+  "nativeInvocations": [
+    {
+      "executable": "git",
+      "startedAt": "2026-10-30T19:10:07.2515846-05:00",
+      "finishedAt": "2026-10-30T19:10:07.2890229-05:00",
+      "durationMs": 37.4383,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:07.6682953-05:00",
+      "finishedAt": "2026-10-30T19:10:07.6874121-05:00",
+      "durationMs": 19.1168,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:07.6967115-05:00",
+      "finishedAt": "2026-10-30T19:10:07.7074313-05:00",
+      "durationMs": 10.7198,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "getconf",
+      "startedAt": "2026-10-30T19:10:07.7517748-05:00",
+      "finishedAt": "2026-10-30T19:10:07.7546541-05:00",
+      "durationMs": 2.8793,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:07.7649074-05:00",
+      "finishedAt": "2026-10-30T19:10:07.7757950-05:00",
+      "durationMs": 10.8876,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:07.8809371-05:00",
+      "finishedAt": "2026-10-30T19:10:07.9138095-05:00",
+      "durationMs": 32.8724,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:07.9145089-05:00",
+      "finishedAt": "2026-10-30T19:10:08.0039527-05:00",
+      "durationMs": 89.4438,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:09.7677789-05:00",
+      "finishedAt": "2026-10-30T19:10:09.7815363-05:00",
+      "durationMs": 13.7574,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:09.8077868-05:00",
+      "finishedAt": "2026-10-30T19:10:09.8241415-05:00",
+      "durationMs": 16.3547,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:09.8246893-05:00",
+      "finishedAt": "2026-10-30T19:10:09.8951210-05:00",
+      "durationMs": 70.4317,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:11.7640011-05:00",
+      "finishedAt": "2026-10-30T19:10:11.7808191-05:00",
+      "durationMs": 16.818,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:11.7908367-05:00",
+      "finishedAt": "2026-10-30T19:10:11.8074614-05:00",
+      "durationMs": 16.6247,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:11.8079306-05:00",
+      "finishedAt": "2026-10-30T19:10:11.9011719-05:00",
+      "durationMs": 93.2413,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:13.7622120-05:00",
+      "finishedAt": "2026-10-30T19:10:13.7730685-05:00",
+      "durationMs": 10.8565,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:13.7856976-05:00",
+      "finishedAt": "2026-10-30T19:10:14.0011103-05:00",
+      "durationMs": 215.4127,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "docker",
+      "startedAt": "2026-10-30T19:10:14.0016790-05:00",
+      "finishedAt": "2026-10-30T19:10:14.0463464-05:00",
+      "durationMs": 44.6674,
+      "exitCode": 1,
+      "timedOut": false,
+      "stderrPresent": true
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:15.7622337-05:00",
+      "finishedAt": "2026-10-30T19:10:15.7800732-05:00",
+      "durationMs": 17.8395,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "systemctl",
+      "startedAt": "2026-10-30T19:10:17.7617253-05:00",
+      "finishedAt": "2026-10-30T19:10:17.7713566-05:00",
+      "durationMs": 9.6313,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    },
+    {
+      "executable": "git",
+      "startedAt": "2026-10-30T19:10:17.7733196-05:00",
+      "finishedAt": "2026-10-30T19:10:17.7760715-05:00",
+      "durationMs": 2.7519,
+      "exitCode": 0,
+      "timedOut": false,
+      "stderrPresent": false
+    }
+  ],
+  "errors": [
+    {
+      "at": "2026-10-30T19:10:14.0859937-05:00",
+      "stage": "postgres",
+      "kind": "SampleUnavailable"
+    }
+  ],
+  "samplesSha256": "4F3B43A18C93832C073EEF1CAC77D22F236A26CB1A3EB8544318A8A488543A0C",
+  "producerSha256": "946F92B05E1629855654E00ADB6F160C10B6096F2BE3E35107D09BEA3531B88D",
+  "limits": [
+    "External operational sampling only; no tests, app/provider/DB/config mutations, SQL text, credentials, environment or process argv captured.",
+    "Cgroup/process cumulative CPU and RSS do not measure event-loop delay or prove saturation. Process CPU/RSS is sampled only for cgroup.procs membership, which may omit nested child cgroups. Docker PostgreSQL/Realtime container CPU outside that unit is not captured.",
+    "When original runtime owner receipt disappears, database sampling retires and stays retired; cgroup observation continues until unit exits and may include subsequent validation lanes. No successor runtime is discovered or queried.",
+    "PG wait/lock snapshots and query age do not measure pg-pool checkout wait, SQL execution duration or transient waits between samples. Null backend metadata/permission limits stay explicit.",
+    "Sampling itself adds docker/psql/backend and filesystem overhead. databaseReadMs includes docker startup and transport, not PostgreSQL execution alone.",
+    "Native helper process timeout15s bounds the observer subprocess only and is unrelated to HV; timed-out reads are missing samples.",
+    "Initial source file hashes are verified; final only HEAD and manifest hashes are checked. No full source immutability claim without separate replay provenance.",
+    "No numeric performance SLA or release/HV verdict is established. Exact per-command browser/server correlation remains separate."
+  ]
+}

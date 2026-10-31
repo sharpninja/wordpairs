@@ -1,0 +1,120 @@
+{
+  "asOfLocal": "2026-10-30T20:30:25.5867197-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T012817Z-backup-metadata",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "environments": [
+    {
+      "environment": "staging",
+      "projectReference": "jshjkaigwbxsbnnogfxs",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T171009-fba382bf-staging.json",
+      "receiptSha256": "816FDFEB0406095E73143DA0E12FF005482B2629ADEEFC49F8577601131BD8CA",
+      "status": "verified_app_restore",
+      "runId": "backup-20261030T171009-fba382bf",
+      "backupStartedLocal": "2026-10-30T17:10:09",
+      "backupFinishedLocal": "2026-10-30T17:10:25",
+      "snapshotWallTimeRecorded": false,
+      "ageMinimumSeconds": 12000.5867197,
+      "ageMaximumSeconds": 12016.5867197,
+      "ageMinimum": "03:20:00.5867197",
+      "ageMaximum": "03:20:16.5867197",
+      "configPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-staging-admin.json",
+      "configExists": true,
+      "configMode": "UserWrite, UserRead",
+      "configurationValuesRead": false,
+      "producerPins": [
+        {
+          "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+          "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0"
+        },
+        {
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171009-fba382bf-staging/Invoke-WordpairsEncryptedBackup.ps1",
+          "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0"
+        },
+        {
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/Invoke-WordpairsEncryptedBackup-48EACDF6C0C5.ps1",
+          "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0"
+        }
+      ],
+      "ciphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171009-fba382bf-staging/staging.pgdump.age",
+      "ciphertextSha256": "CA0A95974FE4D792EB9A2D491A2CAE6C9ECBC689DF6F8330764813C4759B6E26",
+      "ciphertextBytes": 224446,
+      "ciphertextHashMatches": true,
+      "existingRestore": {
+        "schemaEqual": true,
+        "nativeExitCodes": {
+          "dump": 0,
+          "encrypt": 0,
+          "sourceRead": 0,
+          "decrypt": 0,
+          "restore": 0
+        },
+        "dataEqual": true,
+        "sequencesEqual": true,
+        "tables": 33
+      },
+      "qualification": "Existing selected APP logical backup/restore receipt, not a new backup, provider read or full-platform recovery."
+    },
+    {
+      "environment": "production",
+      "projectReference": "krdcuuhcynmdfcjlpbsf",
+      "receipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/backup-20261030T171025-c2196e52-production.json",
+      "receiptSha256": "E16ACB89502E13399F9D53629223933C0D308E5A2FB3FDC8368BB21BEAECD47F",
+      "status": "verified_app_restore",
+      "runId": "backup-20261030T171025-c2196e52",
+      "backupStartedLocal": "2026-10-30T17:10:25",
+      "backupFinishedLocal": "2026-10-30T17:10:38",
+      "snapshotWallTimeRecorded": false,
+      "ageMinimumSeconds": 11987.5867197,
+      "ageMaximumSeconds": 12000.5867197,
+      "ageMinimum": "03:19:47.5867197",
+      "ageMaximum": "03:20:00.5867197",
+      "configPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-production-admin.json",
+      "configExists": true,
+      "configMode": "UserWrite, UserRead",
+      "configurationValuesRead": false,
+      "producerPins": [
+        {
+          "path": "/tmp/Invoke-WordpairsEncryptedBackup.ps1",
+          "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0"
+        },
+        {
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/Invoke-WordpairsEncryptedBackup.ps1",
+          "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0"
+        },
+        {
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/Invoke-WordpairsEncryptedBackup-48EACDF6C0C5.ps1",
+          "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0"
+        }
+      ],
+      "ciphertextPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/backup-20261030T171025-c2196e52-production/production.pgdump.age",
+      "ciphertextSha256": "E954DAB355ED1EB999282C6C9490A420E8935A69ABF8214185881D4A8F1C7CB8",
+      "ciphertextBytes": 195350,
+      "ciphertextHashMatches": true,
+      "existingRestore": {
+        "schemaEqual": true,
+        "nativeExitCodes": {
+          "dump": 0,
+          "encrypt": 0,
+          "sourceRead": 0,
+          "decrypt": 0,
+          "restore": 0
+        },
+        "dataEqual": true,
+        "sequencesEqual": true,
+        "tables": 33
+      },
+      "qualification": "Existing selected APP logical backup/restore receipt, not a new backup, provider read or full-platform recovery."
+    }
+  ],
+  "producerArguments": "-Environment staging|production; supports -WhatIf",
+  "producerReceiptDestination": "Existing producer hardcodes docs/evidence/release15/frozen-0fb37e6/<new-run>-<environment>.json; any future destination adaptation is separate work.",
+  "rpoQualification": "No accepted numeric RPO objective or exact snapshot export wall time is recorded. Values are current age bounds from the existing backup execution interval, not an approved RPO SLA or measured lost-transaction count. Activity since those snapshots was not queried.",
+  "scope": "APP/game selected schemas only. Managed Auth/Storage/Vault/cron/net/Realtime/external provider/global role configuration, off-site storage and disk/crash durability remain outside prior proof.",
+  "noBackupExecuted": true,
+  "noProviderQueries": true,
+  "noCredentialsRead": true,
+  "accuracy": 99,
+  "completeness": 99
+}

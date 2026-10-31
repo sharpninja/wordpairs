@@ -93,8 +93,8 @@ it('AC-41 creates and inspects ZIP archives using the official pinned CycloneDX 
 it('AC-42 validates complete GPL and the actual Recursive-bearing SVG notice', async () => {
   const expected = {
     licenseSha256: 'aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3',
-    // Reviewed inventory distinguishes installed dependencies from future options; notices are preserved.
-    attributionSha256: 'c34b69d1c56d4df056223e1ab2b9330df239cf6773bbc1b644628bd5622444ae',
+    // Reviewed31October: accurate AI-art provenance; dependency/font notices remain intact.
+    attributionSha256: 'c7215f7738c1e092f15c4908c50cb477d21f70460cf9355cf2d7952e8a73be79',
     assetPath: 'docs/word_association_round_flow.svg',
     assetSha256: 'da03873d53e31a9e7d84d772cab14bbfcd47bfdf0c285580a468dc39822c2bb0',
     requiredAssetText: ['Copyright 2019 The Recursive Project Authors', 'SIL OPEN FONT LICENSE Version 1.1', 'PERMISSION &amp; CONDITIONS', 'TERMINATION'],

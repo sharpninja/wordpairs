@@ -1,0 +1,246 @@
+{
+  "recordedAt": "2026-10-30T18:59:35.7322990-05:00",
+  "kind": "read-only same-family diagnosis and source review; not hostile validation",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261030T233723Z-turn-a09f",
+  "failedRevision": "fdee7a2569bb4742e008977e2a9cd7d312def859",
+  "workingTestChanges": true,
+  "nativeFailedMatrix": {
+    "failed": 1,
+    "driverJsonSolves": 17,
+    "total": 14,
+    "skipped": 5,
+    "failedPlayers": 10,
+    "completed": false,
+    "passed": 8,
+    "round": 2
+  },
+  "gates": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/receipt.json",
+      "sha256": "D2297A363A284B2168C8313075DFA75F0CDA6205347421DF94663E0F54518EF2",
+      "binding": "mock",
+      "startedAt": "2026-10-30T18:53:49",
+      "finishedAt": "2026-10-30T18:53:50",
+      "nativeExit": 0,
+      "cases": 124,
+      "failed": 0,
+      "skipped": 0,
+      "expectedNewPositive": 33,
+      "expectedNewNegative": 33,
+      "priorCaptureCases": 58,
+      "negativeNamesCount": 62,
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/unit.xml",
+      "junitSha256": "FDD270ECECAE4D6216A4BDE448D302D534ED1C023086BA016288B4900FA3C20B",
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-acknowledgement.contract.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-acknowledgement.test.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-acknowledgement.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-capture.contract.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-capture.test.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "5805DACBF4589F8843D0CC4BEC63B31D44B7F117716EE13E91F82BD04F2B98BF",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/ui-command-capture.ts",
+          "copyVerified": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "AD62D7C49E8F7C028EAD5A24885122D8AE733B71E6719D010998706E30C05E22",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/live-player-counts.integration.spec.ts",
+          "copyVerified": true,
+          "currentMatches": false
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "B012DA05BD981B62A43ADDC79645525EE1EB873BC308F34C6B9B9E228F74821D",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/mock-v2-20261030T185349/live-multiplayer.integration.spec.ts",
+          "copyVerified": true,
+          "currentMatches": false
+        }
+      ],
+      "producerSha256": "658230508515D491EE0ACFFB376D59CA910FB4BF4C8C4C918392E6BB01382D0B"
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/receipt.json",
+      "sha256": "5C087889B0B453544464A3A9BC8DB8D5487A3232A2F926C03A1D79589D5C3CDA",
+      "binding": "real",
+      "startedAt": "2026-10-30T18:56:14",
+      "finishedAt": "2026-10-30T18:56:16",
+      "nativeExit": 0,
+      "cases": 124,
+      "failed": 0,
+      "skipped": 0,
+      "expectedNewPositive": 33,
+      "expectedNewNegative": 33,
+      "priorCaptureCases": 58,
+      "negativeNamesCount": 62,
+      "junit": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/unit.xml",
+      "junitSha256": "16858266C314A6037F2DB55B0830B56A8EEAECB0EE0F653E59C16CF72849C5E4",
+      "sourcePins": [
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.contract.ts",
+          "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-acknowledgement.contract.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.test.ts",
+          "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-acknowledgement.test.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-acknowledgement.ts",
+          "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-acknowledgement.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.contract.ts",
+          "sha256": "DEE880C2645FCF0D73C0290BFC9C0EF009525ACF3A8B5E0637BA467E281FADFB",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-capture.contract.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.test.ts",
+          "sha256": "A9BA9345BAA166C6EDB94134962C303E6FC43C2A7473588B93AC1FD1F4C36779",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-capture.test.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/ui-command-capture.ts",
+          "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/ui-command-capture.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-player-counts.integration.spec.ts",
+          "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/live-player-counts.integration.spec.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        },
+        {
+          "path": "\u003Crepo\u003E/tests/browser/live-multiplayer.integration.spec.ts",
+          "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8",
+          "retainedCopy": "\u003Crepo\u003E/docs/evidence/release15/ui-acknowledgement/real-v2-20261030T185614/live-multiplayer.integration.spec.ts",
+          "copyVerified": true,
+          "currentMatches": true
+        }
+      ],
+      "producerSha256": "658230508515D491EE0ACFFB376D59CA910FB4BF4C8C4C918392E6BB01382D0B"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "tests/browser/ui-command-acknowledgement.contract.ts",
+      "sha256": "655E425F129BD831325D475A745196DB9E772F1364A23B75FD5286E4433D9553"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.test.ts",
+      "sha256": "383ED3A2CD97EF909A756694AE308AABBC31121CA5AB51FF25A966922394FB3F"
+    },
+    {
+      "path": "tests/browser/ui-command-acknowledgement.ts",
+      "sha256": "125004BFA5151C3255DFB3F6BBB0AEBBC529019563735FEC64216AD5079533C5"
+    },
+    {
+      "path": "tests/browser/ui-command-capture.ts",
+      "sha256": "928C7E1B756BA5EA96904FE6DB2CD06A373C509F12C3933052AC52155127CD32"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "667FF04BD035A3D5D243D0A20C19AA02EA703AE704AC0D417A04512F38C01025"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "E3183F6EFB1D61F3FBCEF8965D8F830EE960151FBF66B921289AB82827E46DE8"
+    },
+    {
+      "path": "src/application/identity.ts",
+      "sha256": "F9922A091B03EC0514129AAC858ADC36EC2609686EA1F56DDDBEBE056F251907"
+    },
+    {
+      "path": "src/web/identity-panel.tsx",
+      "sha256": "7FF4C2B1BA82143E8501DA70A18FD891822C2ACDC77286DBC8889616A15A6B05"
+    },
+    {
+      "path": "src/web/game-panel.tsx",
+      "sha256": "3B99A07B9F6B21A099728FB1C94875776BD323489849D3A1B871F9D25D55D821"
+    }
+  ],
+  "conclusions": [
+    "Confirmed test boundary defect: prior commit returned driver HTTP JSON before requiring the submitting frontend to retire pending state. This does not establish why that frontend request became uncertain.",
+    "V1 oracle retirement event was insufficient to prove awaited completion. V2 deferred completion and original rejection cases bind the SAME real shared coordinator; wrong providers deliberately start fresh work before retirement and are rejected.",
+    "V1 wrong-scope case did not cover initial aggregate URL. V2 validates the original Request URL and wrong aggregate independently of profile/action, through the SAME real commit callback.",
+    "Current matrix preflight rejects unknown pending work, validates exact aggregate/action/profile/answer, holds a successful driver body until visible nonbusy pending-free finite-version acknowledgement, and preserves complete payload during explicit pending retries within the existing twelve-attempt bound.",
+    "Current matrix waits for submitting browser alias and intended round scorecard own-row solved before incrementing solves; shared scorecard text from other players cannot satisfy the pure own-row assertion.",
+    "Actual guest aliases are generated Guest plus one tree word plus six token characters; profile preferences only regenerate this form. ProfileIcon renders one span before direct alias text. Distinct supported aliases cannot contain another complete generated alias as a suffix. Duplicate aliases would produce multiple matching rows and fail count one. The endsWith normalizer relies on this source-pinned supported-input invariant; no arbitrary malformed DOM identity test is claimed.",
+    "Strict live adapter retains fail-only sender acknowledgement and its existing four conflict-only retries, exact request path/action/profile/answer and own-round solve checks. Existing capture ownership, action/request/body errors, readiness, two-at-a-time answers, eight rounds, final standings and owned cleanup assertions remain.",
+    "Safe acknowledgement observations are emitted after successful classification; a classifier rejection relies on native error and prior observations. Do not claim every rejected/denied snapshot was retained."
+  ],
+  "existingRequirements": [
+    "TR-CONNECTION-RECOVERY-009#TR-09-C01",
+    "TEST-CONNECTIONRECOVERY-109#VERIFY-TR-09",
+    "FR-REQUESTFEEDBACK-030#UI-FEEDBACK-02",
+    "FR-REQUESTFEEDBACK-030#UI-FEEDBACK-04",
+    "FR-REQUESTFEEDBACK-030#UI-FEEDBACK-05",
+    "TEST-REQUESTFEEDBACK-143#UI-FEEDBACK-02",
+    "TEST-REQUESTFEEDBACK-143#UI-FEEDBACK-04",
+    "TEST-REQUESTFEEDBACK-143#UI-FEEDBACK-05",
+    "FR-ANSWERSTAGES-008#AC45",
+    "FR-SCORELOCK-010#AC45",
+    "TR-MULTIPLAYER-INTEGRATION-034#TR-34-C01",
+    "TR-ROOM-SYNCRECOVERY-038#LIVE07"
+  ],
+  "limits": [
+    "No tests, builds, application/browser runtime, provider/model/HV or requirement/source edits were performed by this diagnosing agent. Focused owner-produced mock/real receipts were read and independently recounted, not rerun.",
+    "Focused124-case receipts establish only isolated test-helper/oracle behavior, not a successful actual game, hosted behavior, transport root cause or release completion. Successor full frozen suites, all fourteen actual UI games and strict push lane remain required.",
+    "Exact join of the slow200 answer response to page7 pending command remains unavailable in failed evidence. Generic input ID is room UUID, not actor. Current future diagnostic identity cannot backfill that missing historical join.",
+    "No CPU/memory/worker bottleneck, actual abort cause, body-cache cause or navigation cause is established by the historical timing. The11601ms answer200 is an unjoined observation.",
+    "Original failure artifacts, initial118 oracle history and all58 previous capture cases are preserved. No satisfaction or goal state is changed. Current reviewer remains Cline/Beam/High; this is not independent HV."
+  ],
+  "accuracy": 99,
+  "completeness": 97,
+  "ratingsQualification": "Source/oracle assertions are pinned and recounted; original causal and actor/request joins remain explicitly unknown."
+}

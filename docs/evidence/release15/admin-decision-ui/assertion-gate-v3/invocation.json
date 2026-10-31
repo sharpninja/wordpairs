@@ -1,0 +1,68 @@
+{
+  "runId": "533871c8-fbbb-48d8-a144-e43c946443ef",
+  "host": "[PRIVATE HOST]",
+  "startedAtLocal": "2026-10-30T16:16:46",
+  "finishedAtLocal": "2026-10-30T16:16:55",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "ownSessionId": "Codex-20261030T200118Z-plugin-session",
+  "ownRequestId": "req-20261030T210822Z-admin-decision-ui",
+  "executable": "npm",
+  "arguments": [
+    "exec",
+    "playwright",
+    "--",
+    "test",
+    "tests/browser/admin.phase6.spec.ts",
+    "--config=playwright.pwa.config.ts",
+    "--reporter=line,junit",
+    "--grep",
+    "FR-23-C01"
+  ],
+  "producer": "/tmp/RunWordpairsAdminDecisionUi.ps1",
+  "producerSha256": "798F114021ED92B81F62541795674D20D06E9FAC06A9A2B95EA9FEBCFCBA1BAC",
+  "source": [
+    {
+      "path": "tests/browser/admin.phase6.spec.ts",
+      "sha256": "CC5EE9309AD2F0B600508D5586FE1D8AA56DE208CD04E9065E087C9DAFAD25CD"
+    },
+    {
+      "path": "tests/browser/admin-decision-fixture.ts",
+      "sha256": "690DC0847466CB4CF9D1299E7046D1171AD654EA61CB85B8252C836520D6BA43"
+    },
+    {
+      "path": "src/web/content-panel.tsx",
+      "sha256": "47B13186DBC176A7D04CBFC29E61F7F5234CE2738A04110F90CA0CF0DF1F44F5"
+    },
+    {
+      "path": "src/domain/content.ts",
+      "sha256": "96415D3568DE91769D2C86BA5974B4D1564B1544B068316EC2905E1BBA3F9670"
+    },
+    {
+      "path": "src/application/content.ts",
+      "sha256": "DCE7440F073CB81EC247444756913F59E62512F8980B6B6A5328B1C7AA20417A"
+    }
+  ],
+  "sourceHead": "b8400dc6f7aeb42a991861ac98e36f297eae8bb3",
+  "exitCode": 0,
+  "tests": 7,
+  "failed": 0,
+  "skipped": 0,
+  "caseNames": [
+    "FR-23-C01 owner approve of an existing legacy case preserves reason and decision history",
+    "FR-23-C01 owner reject of an existing legacy case preserves reason and decision history",
+    "FR-23-C01 owner uphold of an existing legacy case preserves reason and decision history",
+    "FR-23-C01 owner overturn of an existing legacy case preserves reason and decision history",
+    "FR-23-C01 original-reviewer owner has no appeal-resolution controls or writes",
+    "FR-23-C01 proposer owner has no appeal-resolution controls or writes",
+    "FR-23-C01 rendered assertion gate rejects wrong status, reason, history and self-resolution fixtures"
+  ],
+  "negativeControls": [
+    "approve/wrong-status",
+    "reject/wrong-reason",
+    "overturn/missing-history",
+    "original-reviewer/self-resolution",
+    "proposer/self-resolution"
+  ],
+  "qualification": "Actual React UI in Chromium with independent isolated HTTP snapshots. Existing application build remains unchanged; test source is dirty and source-hashed. Not live GitHub, PostgreSQL, hosted or hostile-approval evidence."
+}

@@ -1,0 +1,54 @@
+{
+  "atLocal": "2026-10-30T20:49:12.3612417-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T014545Z-dataapi-key-input",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "originalDiscovery": {
+    "retainedUnchanged": true,
+    "sha256": "F1E8EF87AD3BD051082E4756B028E5A3B624BFD1BAB9C0DB93086A4A85039176",
+    "qualification": "Initial metadata was written, then its console-summary empty-array member projection failed under StrictMode. Original requestId anticipated the timestamp one second early; actual plugin beginTurn returned014545, corrected only in this sidecar.",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/dataapi-key-input-20261030T204544.json"
+  },
+  "credentialFiles": [
+    {
+      "path": "\u003Chome\u003E/.creds/supabase.pwd",
+      "name": "supabase.pwd",
+      "isDirectory": false,
+      "bytes": 17,
+      "mode": "OtherRead, GroupRead, UserWrite, UserRead",
+      "linkType": null,
+      "classification": "Operator-confirmed project database password, unsuitable as Data API key/PAT; contents not read."
+    }
+  ],
+  "otherSupabaseFilenameCandidates": 0,
+  "knownConfigFieldInspection": [
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-staging-admin.json",
+      "exists": true,
+      "supabaseFields": [],
+      "configurationValuesPrinted": false
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-production-admin.json",
+      "exists": true,
+      "supabaseFields": [],
+      "configurationValuesPrinted": false
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosting-production-app.json",
+      "exists": true,
+      "supabaseFields": [],
+      "configurationValuesPrinted": false
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/hosted-staging-ui-runtime.json",
+      "exists": true,
+      "supabaseFields": [],
+      "configurationValuesPrinted": false
+    }
+  ],
+  "noValuesPrinted": true,
+  "noProviderCall": true,
+  "qualification": "Only immediate Supabase credential filenames and four named existing task config field sets. Other task logs/history were inventoried by filename only, never read."
+}

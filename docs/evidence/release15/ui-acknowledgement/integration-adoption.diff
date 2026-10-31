@@ -1,0 +1,310 @@
+diff --git i/tests/browser/live-multiplayer.integration.spec.ts w/tests/browser/live-multiplayer.integration.spec.ts
+index c40b412..5579e88 100644
+--- i/tests/browser/live-multiplayer.integration.spec.ts
++++ w/tests/browser/live-multiplayer.integration.spec.ts
+@@ -10,6 +10,8 @@ import { cleanupOwnedRoom } from "./owned-room-cleanup";
+ import { bodies as trackResponseBodies } from "./request-diagnostics";
+ import type { BodyHandle } from "./request-diagnostics.contract";
+ import { captureUiCommand } from "./ui-command-capture";
++import type { CapturedCommand } from "./ui-command-capture.contract";
++import { assertPageOwnRoundSolve, awaitCommandUi } from "./ui-command-acknowledgement";
+ 
+ type Notice = {
+   eventId: string;
+@@ -42,6 +44,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+   let qualifiedReadFailureTotal = 0;
+   const qualifiedReadFailures: { player: number; path: string; qualification: string }[] = [];
+   const profileIds: string[] = [];
++  const commandAcknowledgements: { player: number; scope: "room" | "game"; action: string; commandId: string | null; expectedProfileId: string | null; roundId: string | null; status: number; responseVersion: number | null; renderedVersion: number | null; busy: string | null; pending: string; outcome: string }[] = [];
+   let presence: ReturnType<typeof setInterval> | undefined;
+   let paused = false;
+   let presenceBusy = false;
+@@ -60,26 +63,54 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+       )
+       .toBe(true);
+   };
+-  async function command(page: Page, click: () => Promise<unknown>) {
++  async function acknowledge(page: Page, scope: "room" | "game", result: CapturedCommand, version: number, action: string) {
++    const payload = result.request().postDataJSON() as Record<string, unknown>;
++    const uuid = (item: unknown) => typeof item === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(item) ? item : null;
++    let last = "";
++    await awaitCommandUi(page, scope, version, "strict", (state, outcome) => {
++      const key = `${state.version}:${state.busy}:${state.pending}:${outcome}`;
++      if (key === last) return;
++      last = key;
++      commandAcknowledgements.push({ player: pages.indexOf(page), scope, action, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), roundId: uuid(payload.roundId), status: result.status(), responseVersion: Number.isSafeInteger(version) ? version : null, renderedVersion: state.version !== null && /^\d+$/.test(state.version) ? Number(state.version) : null, busy: state.busy, pending: state.pending, outcome });
++    });
++  }
++  async function command(page: Page, action: string, scope: "room" | "game", path: string, click: () => Promise<unknown>) {
++    await awaitCommandUi(page, scope, 0, "fresh");
+     const result = await captureUiCommand(
+-      () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/`)),
++      () => page.waitForRequest((r) => r.method() === "POST" && new URL(r.url()).pathname === path && r.postDataJSON()?.action === action),
+       click,
+     );
+     expect(result.status()).toBe(200);
+-    return (await result.json() as { version: number }).version;
++    const payload = result.request().postDataJSON() as Record<string, unknown>;
++    expect(payload.action).toBe(action);
++    expect(payload.expectedProfileId).toBe(profileIds[pages.indexOf(page)]);
++    const body = await result.json() as { version: number };
++    await acknowledge(page, scope, result, body.version, action);
++    return body.version;
+   }
+-  async function answer(page: Page, value: string) {
++  async function answer(page: Page, value: string, round: number) {
+     for (let attempt = 0; attempt < 4; attempt++) {
++      await awaitCommandUi(page, "game", 0, "fresh");
+       await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+       const before = Number(await page.locator(".game-panel").getAttribute("data-match-version"));
+       await page.getByLabel("Your answer", { exact: true }).fill(value);
+       const result = await captureUiCommand(
+-        () => page.waitForRequest((r) => r.method() === "POST" && r.url().endsWith("/match") && r.postDataJSON()?.action === "answer"),
++        () => page.waitForRequest((r) => r.method() === "POST" && new URL(r.url()).pathname === `/api/rooms/${roomId}/match` && r.postDataJSON()?.action === "answer"),
+         () => page.getByRole("button", { name: "Submit answer", exact: true }).click(),
+       );
+-      if (result.ok()) { const solved = await result.json() as { correct: boolean; version: number }; expect(solved.correct).toBe(true); return solved.version; }
++      const payload = result.request().postDataJSON() as Record<string, unknown>;
++      expect(payload.expectedProfileId).toBe(profileIds[pages.indexOf(page)]);
++      expect(payload.answer).toBe(value);
++      if (result.ok()) {
++        const solved = await result.json() as { correct: boolean; version: number };
++        expect(solved.correct).toBe(true);
++        await acknowledge(page, "game", result, solved.version, "answer");
++        await assertPageOwnRoundSolve(page, aliases[pages.indexOf(page)], round);
++        return solved.version;
++      }
+       expect(result.status()).toBe(409);
+       await expect.poll(async () => Number(await page.locator(".game-panel").getAttribute("data-match-version"))).toBeGreaterThan(before);
++      await awaitCommandUi(page, "game", before, "fresh");
+     }
+     throw new Error("Explicit UI answer submissions did not converge after stage/version conflict");
+   }
+@@ -188,7 +219,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+     const hostBeforeJoin = notices[0].length;
+     await b.getByLabel("Have a room code?").fill(code);
+     await b.getByRole("button", { name: "Open room", exact: true }).click();
+-    const joinedVersion = await command(b, () => b
++    const joinedVersion = await command(b, "join", "room", `/api/rooms/${code}`, () => b
+       .getByRole("button", { name: "Join as player", exact: true })
+       .click());
+     await changed(0, hostBeforeJoin, "room", joinedVersion);
+@@ -225,7 +256,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+       observer.getByRole("button", { name: "Mark ready", exact: true }),
+     ).toHaveCount(0);
+     const beforeReady = notices[1].length;
+-    const readyVersion = await command(a, () => a.getByRole("button", { name: "Mark ready", exact: true }).click());
++    const readyVersion = await command(a, "ready", "room", `/api/rooms/${roomId}/lobby`, () => a.getByRole("button", { name: "Mark ready", exact: true }).click());
+     await changed(1, beforeReady, "room", readyVersion);
+     await expect(
+       b.locator(".roster li").filter({ hasText: aliases[0] }),
+@@ -270,7 +301,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+         ? a
+         : b;
+       const beforeCategory = notices.map((n) => n.length);
+-      const categoryVersion = await command(chooser, () => chooser
++      const categoryVersion = await command(chooser, "choose", "game", `/api/rooms/${roomId}/match`, () => chooser
+         .getByRole("button", { name: "Opposites", exact: true })
+         .click());
+       for (let i = 0; i < 3; i++) {
+@@ -320,7 +351,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+       }
+ 
+       const beforeAnswer = notices[1].length;
+-      const answerVersion = await answer(a, pair.target);
++      const answerVersion = await answer(a, pair.target, round);
+       await changed(1, beforeAnswer, "match", answerVersion);
+       await expect(
+         b
+@@ -347,7 +378,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+         milestones.hintsRemainPerspectivePrivate = true;
+         milestones.reactionDeliveredByPush = true;
+       }
+-      await answer(b, pair.target);
++      await answer(b, pair.target, round);
+       for (const page of pages)
+         await expect(page.locator(".answer-reveal")).toContainText(pair.target);
+       if (round === 2) {
+@@ -471,7 +502,7 @@ test("LIVE real two-player and observer UI: private push, all eight rounds, auto
+       })), randomUUID);
+       await Promise.all(responseObservers.map((observer) => observer.dispose()));
+       const responseInstrumentation = { failureTotal: responseObservers.reduce((total, observer) => total + observer.failureTotal, 0), failures: responseObservers.flatMap((observer, player) => observer.failures.map((failure) => ({ player, ...failure }))).slice(0, 100), qualifiedReadFailureTotal, qualifiedReadFailures, qualification: "Every response-body task is observed and drained while contexts remain open. Navigation-cancelled room reads retain their original tolerance; token/body observer failures remain explicit and fail a completed journey." };
+-      const evidence = { milestones, notices, transport, tokenExpiries: expiries, authorizedReads: reads, responseInstrumentation, cleanup, presenceSettled, elapsedMs: Date.now() - started };
++      const evidence = { milestones, notices, transport, tokenExpiries: expiries, authorizedReads: reads, commandAcknowledgements, responseInstrumentation, cleanup, presenceSettled, elapsedMs: Date.now() - started };
+       await writeFile("docs/evidence/room-sync/live-ui-observations.json", JSON.stringify(evidence, null, 2));
+       await info.attach("live-integration-evidence", { body: Buffer.from(JSON.stringify(evidence, null, 2)), contentType: "application/json" });
+     } finally {
+diff --git i/tests/browser/live-player-counts.integration.spec.ts w/tests/browser/live-player-counts.integration.spec.ts
+index cdc7eb1..6144876 100644
+--- i/tests/browser/live-player-counts.integration.spec.ts
++++ w/tests/browser/live-player-counts.integration.spec.ts
+@@ -7,6 +7,7 @@ import { attach as attachRequestDiagnostics } from "./request-diagnostics";
+ import type { DiagnosticHandle, DiagnosticState } from "./request-diagnostics.contract";
+ import { readyAfterBarrier } from "./readiness-barrier";
+ import { captureUiCommand, commitUiCommand } from "./ui-command-capture";
++import { assertPageOwnRoundSolve, awaitCommandUi } from "./ui-command-acknowledgement";
+ 
+ const counts = process.env.WORDPAIRS_LIVE_PLAYER_COUNTS
+   ? process.env.WORDPAIRS_LIVE_PLAYER_COUNTS.split(",").map(Number)
+@@ -20,6 +21,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+   const contexts: BrowserContext[] = [];
+   const pages: Page[] = [];
+   const ids: string[] = [];
++  const aliases: string[] = [];
+   const roomId = randomUUID();
+   let created = false;
+   let solves = 0;
+@@ -35,6 +37,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+   const preparedActors: string[] = [];
+   const readinessObservations: { phase: "prepared" | "ready"; player: number; expectedProfileId: string; actorId: string; uiRosterCount: number; version: number }[] = [];
+   const commandBodyFailures: { player: number; phase: string; action: string | null; commandId: string | null; expectedProfileId: string | null; status: number; pendingControl: "visible-enabled" | "not-observed-enabled" }[] = [];
++  const commandAcknowledgements: { player: number; phase: string; scope: "room" | "game"; action: string; commandId: string | null; expectedProfileId: string | null; roundId: string | null; status: number; responseVersion: number | null; renderedVersion: number | null; busy: string | null; pending: string; outcome: string; attempt: number }[] = [];
+   const failureListeners: { page: Page; listener: (request: import("@playwright/test").Request) => void }[] = [];
+   const disposeDiagnostics = () => {
+     for (const handle of diagnosticHandles) handle.dispose();
+@@ -48,18 +51,42 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+   async function post(context: BrowserContext, path: string, data: unknown) {
+     return context.request.post(path, { headers: { Origin: origin }, data });
+   }
+-  async function click(page: Page, action: string, run: () => Promise<unknown>) {
++  async function click(page: Page, action: string, path: string, run: () => Promise<unknown>) {
+     return captureUiCommand(
+-      () => page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
++      () => page.waitForRequest((r) => r.method() === "POST" && new URL(r.url()).pathname === path && r.postDataJSON()?.action === action),
+       run,
+     );
+   }
+-  async function commitUi(page: Page, action: string, run: () => Promise<unknown>, scope: "room" | "game" = "game") {
++  async function commitUi(page: Page, action: string, run: () => Promise<unknown>, scope: "room" | "game" = "game", expectedAnswer?: string) {
+     const pending = page.getByRole("button", { name: `Retry pending ${scope} request`, exact: true });
++    const player = pages.indexOf(page);
++    const path = `/api/rooms/${roomId}/${scope === "game" ? "match" : "lobby"}`;
++    let attempt = 0;
+     return commitUiCommand<{ version: number; correct: boolean }>(action, {
+-      invoke: (retryPending) => click(page, action, retryPending
++      prepare: async () => { await awaitCommandUi(page, scope, 0, "fresh"); },
++      validate: (data, request) => {
++        const payload = data as Record<string, unknown>;
++        expect(new URL((request as import("@playwright/test").Request).url()).pathname).toBe(path);
++        expect(payload.action).toBe(action);
++        expect(payload.expectedProfileId).toBe(ids[player]);
++        if (expectedAnswer !== undefined) expect(payload.answer).toBe(expectedAnswer);
++      },
++      acknowledge: async (result, value) => {
++        const body = value as { version: number };
++        const payload = result.request().postDataJSON() as Record<string, unknown>;
++        const uuid = (item: unknown) => typeof item === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(item) ? item : null;
++        let last = "";
++        return awaitCommandUi(page, scope, body.version, "matrix", (state, outcome) => {
++          const key = `${state.version}:${state.busy}:${state.pending}:${outcome}`;
++          if (key === last) return;
++          last = key;
++          commandAcknowledgements.push({ player, phase, scope, action, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), roundId: uuid(payload.roundId), status: result.status(), responseVersion: Number.isSafeInteger(body.version) ? body.version : null, renderedVersion: state.version !== null && /^\d+$/.test(state.version) ? Number(state.version) : null, busy: state.busy, pending: state.pending, outcome, attempt });
++        });
++      },
++      retired: async () => { await awaitCommandUi(page, scope, 0, "fresh"); },
++      invoke: (retryPending) => { attempt++; return click(page, action, path, retryPending
+         ? () => page.getByRole("button", { name: `Retry pending ${scope} request`, exact: true }).click()
+-        : run),
++        : run); },
+       pendingReady: async () => {
+         try { await expect(pending).toBeVisible(); await expect(pending).toBeEnabled(); return true; }
+         catch { return false; }
+@@ -122,6 +149,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+       expect(room.role).toBe("player");
+       expect(room.players).toHaveLength(count);
+       preparedActors[player] = room.actorId;
++      aliases[player] = (await page.locator(".profile-alias strong").innerText()).trim();
+       readinessObservations.push({ phase: "prepared", player, expectedProfileId: ids[player], actorId: room.actorId, uiRosterCount: await page.locator(".roster > li").count(), version: room.version });
+     }, async (page, player) => {
+       phase = "UI readiness";
+@@ -149,8 +177,9 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+           await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
+           await page.getByLabel("Your answer", { exact: true }).fill(pair.target);
+           await page.getByRole("button", { name: "Submit answer", exact: true }).click();
+-        });
++        }, "game", pair.target);
+         expect(solved.correct).toBe(true);
++        await assertPageOwnRoundSolve(page, aliases[pages.indexOf(page)], round);
+         solves++;
+       }));
+       const failed = submissions.find((r) => r.status === "rejected");
+@@ -165,12 +194,12 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+     }
+     expect(solves).toBe(count * 8);
+     completed = true;
+-    await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
++    await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, commandAcknowledgements, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+   } catch (error) {
+     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
+-    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailures, slowResponses }, null, 2));
++    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
+-    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
++    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
+     throw error;
+   } finally {
+     let cleanup = { cleanupFailures: 0, roomClosed: false, unresolvedPlayerIndices: [] as number[] };
+@@ -190,7 +219,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
+       })), randomUUID);
+       disposeDiagnostics();
+       const requestDiagnostics = { failureTotal: diagnostics.failureTotal, failures: diagnostics.failures, failuresTruncated: diagnostics.failureTotal > diagnostics.failures.length, pendingAtDispose: diagnosticHandles.reduce((total, handle) => total + handle.pendingAtDispose, 0), qualification: "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown." };
+-      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, commandBodyFailures, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
++      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
+       await info.attach("live-scale-cleanup", { body: JSON.stringify({ players: count, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, ownRoomOnly: true }), contentType: "application/json" });
+     } finally {
+       disposeDiagnostics();
+diff --git i/tests/browser/ui-command-capture.ts w/tests/browser/ui-command-capture.ts
+index e9b0485..0a8afd9 100644
+--- i/tests/browser/ui-command-capture.ts
++++ w/tests/browser/ui-command-capture.ts
+@@ -1,5 +1,6 @@
+ import assert from "node:assert/strict";
+ import type { CapturedCommand, CommandRequest, CommitOptions } from "./ui-command-capture.contract";
++import type { AckCommitOptions } from "./ui-command-acknowledgement.contract";
+ 
+ /** Own the exact command response/body while its initiating UI action is pending. */
+ export async function captureUiCommand(
+@@ -36,15 +37,18 @@ export async function captureUiCommand(
+ }
+ 
+ /** Existing matrix retry policy, with body loss gated by the actual pending UI. */
+-export async function commitUiCommand<Body = unknown>(action: string, options: CommitOptions): Promise<Body> {
++export async function commitUiCommand<Body = unknown>(action: string, options: CommitOptions & Partial<Pick<AckCommitOptions, "prepare" | "validate" | "acknowledge" | "retired">>): Promise<Body> {
++  await options.prepare?.();
+   let pendingPayload: unknown;
+   let retryPending = false;
+   for (let attempt = 0; attempt < 12; attempt++) {
+     const result = await options.invoke(retryPending);
+     const payload = result.request().postDataJSON();
+     if (retryPending) options.assertPayload(payload, pendingPayload);
++    options.validate?.(payload, result.request());
+     if (result.ok()) {
+-      try { return await result.json() as Body; }
++      let body: Body;
++      try { body = await result.json() as Body; }
+       catch (error) {
+         let pending = false;
+         try { pending = await options.pendingReady(); }
+@@ -57,6 +61,13 @@ export async function commitUiCommand<Body = unknown>(action: string, options: C
+         retryPending = true;
+         continue;
+       }
++      // Probe/denial failures are not driver JSON errors and cannot authorize
++      // body-loss recovery. Keep the exact call until its sender retires it.
++      if (await options.acknowledge?.(result, body) !== "pending") return body;
++      options.uncertain();
++      pendingPayload ??= payload;
++      retryPending = true;
++      continue;
+     }
+     if (result.status() === 0 || result.status() >= 500) {
+       options.uncertain();
+@@ -64,6 +75,7 @@ export async function commitUiCommand<Body = unknown>(action: string, options: C
+       retryPending = true;
+     } else {
+       assert.equal(result.status(), 409);
++      await options.retired?.();
+       retryPending = false;
+       pendingPayload = undefined;
+     }

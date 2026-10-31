@@ -1,0 +1,632 @@
+[
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Category selection",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-04",
+        "isSatisfied": true,
+        "text": "Given a new game with 2-25 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-11",
+        "isSatisfied": true,
+        "text": "Given at least one player solves a round, when the round ends, then the earliest accepted correct solver can select the next category.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-02",
+        "isSatisfied": true,
+        "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "FR-ANCHORSELECTION-007",
+    "notes": "Original v2.6 document ID: FR-07; canonical MCP ID: FR-ANCHORSELECTION-007. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-007. Replaced at user request with a subject-identifying ID.",
+    "body": "At game start, the service snapshots the active roster in roster order and indexes players from 1 through N. It draws a random integer from 1 through N, inclusive; the player with the matching index becomes the anchor and chooses the first round’s category. The index remains stable for the match. After each round, the first correct solver chooses the next category. The game uses the earliest accepted correct submission to identify that player.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Relationship categories",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-04",
+        "isSatisfied": true,
+        "text": "Given a new game with 2-25 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-05",
+        "isSatisfied": true,
+        "text": "Given two word pairs in the same category, when each is played, then both rounds use that category’s predefined background. A pair in another category uses that category’s background.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-16",
+        "isSatisfied": true,
+        "text": "Given a category is enabled, when the content catalog is checked, then every playable pair has a prompt, target answer, three ordered hints, accepted-answer policy, and category background.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-06",
+        "isSatisfied": true,
+        "text": "Colors category: Each Colors pair contains complementary colors.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "FR-CATEGORIES-005",
+    "notes": "Original v2.6 document ID: FR-05; canonical MCP ID: FR-CATEGORIES-005. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-005. Replaced at user request with a subject-identifying ID.",
+    "body": "The initial category set supports Heroes and Villains, Colors, Year and Event, Director and Movie, Singer and Song, and Opposites. Each pair belongs to one category.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Lobby",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-01",
+        "isSatisfied": true,
+        "text": "Given a valid room code and 2-25 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-02",
+        "isSatisfied": true,
+        "text": "Given a room has reached its configured player capacity from 2 through 25, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 25.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-24",
+        "isSatisfied": true,
+        "text": "Given a player creates a room, when they set a maximum capacity from 2 through 25, then the room stores and displays that limit. Values below 2 or above 25 are rejected.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-25",
+        "isSatisfied": true,
+        "text": "Given a player is in a room, when they share its room code or deep link, then another player can use either invitation to reach the intended room, subject to an open slot.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-26",
+        "isSatisfied": true,
+        "text": "Given a valid room deep link, when a player opens it, then the game bypasses lobby browsing and checks the room directly. If a slot is open, the player joins; if the room has no open player slot, the invitee is offered observer mode.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-27",
+        "isSatisfied": true,
+        "text": "Given an invited player follows an invitation to a full room, when they choose to observe, then they enter without consuming a player slot and are bound to the player who invited them.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-30",
+        "isSatisfied": true,
+        "text": "Given a room is full and the start countdown has not begun, when a player leaves and at least one observer is waiting, then the observer who entered observer mode earliest becomes the final player in the roster, existing players move up to close the vacancy while preserving their relative order, and any remaining observers stay observers.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-31",
+        "isSatisfied": true,
+        "text": "Given every player in the room has marked ready, when the final ready state is received, then the game start countdown begins immediately and the player roster locks. If a player leaves after the countdown begins, then no observer or other player is promoted or substituted into that player’s place.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-32",
+        "isSatisfied": true,
+        "text": "Given all but one player have marked ready, when the room enters the holdout state, then the unready player sees a five-second warning to mark ready. If they mark ready before it expires, the start countdown begins immediately. If the warning expires while they remain unready in a room with more than two players, they are removed and the start countdown begins with the remaining roster locked. If the room has exactly two players, the holdout is not removed and the lobby continues waiting; the countdown does not begin until both are ready.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-33",
+        "isSatisfied": true,
+        "text": "Given the game start countdown has not begun, when no player/observer membership or ready-state change occurs for 30 seconds, then the game prompts all players once for that room version to mark themselves ready; any membership or ready-state change resets the interval.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-14",
+        "isSatisfied": true,
+        "text": "Host authority and countdown: Creator has no special start/readiness privilege. All players have equivalent controls. All-ready starts a 10-second countdown and locks the roster.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-15",
+        "isSatisfied": true,
+        "text": "Countdown departure below minimum: Never replace a player who leaves after lock. If fewer than two original players remain at countdown expiry, abort start and close the room.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-16",
+        "isSatisfied": true,
+        "text": "Idle prompt and readiness races: The 30-second interval resets on player/observer membership or ready-state changes. Prompt once per unchanged aggregate version. Deadlines carry the expected version; stale jobs are no-ops.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "FR-LOBBYLIFECYCLE-003",
+    "notes": "Original v2.6 document ID: FR-03; canonical MCP ID: FR-LOBBYLIFECYCLE-003. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-003. Replaced at user request with a subject-identifying ID.",
+    "body": "The room view displays the room code, configured maximum capacity, available player slots, current players, and observers separately. A game cannot start with fewer than 2 players. Any player in the room can invite others by sharing its code or deep link. The room identifies the anchor player. Before the game start countdown begins, when a player leaves a full room, the oldest observer is promoted into the final player position and the remaining players move up to close the vacancy. If the lobby aggregate has no membership or readiness change for 30 seconds before the start countdown, all players are prompted once for that unchanged state version to mark themselves ready; any membership or readiness change resets the idle interval. When all but one player have marked ready, the holdout receives a five-second warning to mark ready. If they mark ready before it expires, the countdown begins immediately. If the warning expires in a lobby of more than two players and the holdout remains unready, they are removed and the countdown begins with the remaining roster locked. In an exactly two-player lobby, the holdout remains and the lobby waits without starting the countdown until both players are ready. The roster locks when the countdown begins; a player who leaves afterward is not replaced. The room creator has no special readiness or start authority; every player has the same lobby controls. Rooms are private by default; the creator may enable discovery. Quick match selects the oldest eligible room with a free seat and uses stable room ID to break ties. A 10-second countdown begins when all active players are ready. If a player leaves after countdown begins, nobody replaces them. If fewer than two original players remain when the countdown expires, the game is aborted and the room closes.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Room access",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-01",
+        "isSatisfied": true,
+        "text": "Given a valid room code and 2-25 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-02",
+        "isSatisfied": true,
+        "text": "Given a room has reached its configured player capacity from 2 through 25, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 25.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-24",
+        "isSatisfied": true,
+        "text": "Given a player creates a room, when they set a maximum capacity from 2 through 25, then the room stores and displays that limit. Values below 2 or above 25 are rejected.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-25",
+        "isSatisfied": true,
+        "text": "Given a player is in a room, when they share its room code or deep link, then another player can use either invitation to reach the intended room, subject to an open slot.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "AC-26",
+        "isSatisfied": true,
+        "text": "Given a valid room deep link, when a player opens it, then the game bypasses lobby browsing and checks the room directly. If a slot is open, the player joins; if the room has no open player slot, the invitee is offered observer mode.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "FR-ROOMACCESS-001",
+    "notes": "Original v2.6 document ID: FR-01; canonical MCP ID: FR-ROOMACCESS-001. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: FR-WP-001. Replaced at user request with a subject-identifying ID.",
+    "body": "Players can create a room and set its maximum player capacity from 2 through 25, inclusive. Players can join from their own device by room code, discoverable-lobby browsing, quick match, or a deep link containing the room code. Joining as a player requires an available slot under the room’s configured capacity. If the room is full, an invited player can choose observer mode.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Anchor assignment",
+    "acceptanceCriteria": [
+      {
+        "id": "TR-13-C01",
+        "isSatisfied": true,
+        "text": "At game start, the service snapshots and indexes the active roster from 1 through N, where N is 2-25. It draws a random integer uniformly from 1 through N, inclusive, and assigns the matching player as anchor for the match. The index remains stable for the match. The service accepts the first category selection only from the anchor and synchronizes the assignment and selected category to all room clients.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "TR-ANCHOR-RANDOMNESS-013",
+    "notes": "Original v2.6 document ID: TR-13; canonical MCP ID: TR-ANCHOR-RANDOMNESS-013. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: TR-WP-GAME-013. Replaced at user request with a subject-identifying ID.",
+    "body": "At game start, the service snapshots and indexes the active roster from 1 through N, where N is 2-25. It draws a random integer uniformly from 1 through N, inclusive, and assigns the matching player as anchor for the match. The index remains stable for the match. The service accepts the first category selection only from the anchor and synchronizes the assignment and selected category to all room clients.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "in_progress",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Free-tier operation",
+    "acceptanceCriteria": [
+      {
+        "id": "TR-21-C01",
+        "isSatisfied": false,
+        "text": "The deployment must remain on free tiers: Vercel Hobby and Supabase Free. Do not enable paid add-ons, metered upgrades, or paid external services. The product is personal and non-commercial while using Vercel Hobby. Current Supabase Free constraints include a 500 MB database, 200 concurrent Realtime connections, 100 Realtime messages per second, 2 million Realtime messages per month, and automatic pause after one week of inactivity. Treat these as capacity limits and provide graceful handling when service quotas are reached.",
+        "evidence": "Local implementation/fixtures may cover part of this obligation; Phase7 operational completion is not claimed."
+      },
+      {
+        "id": "DEC-20",
+        "isSatisfied": false,
+        "text": "Quota behavior and initial load target: Initial supported target is one full 25-player room plus up to 25 observers. Quota rejection returns a recoverable `SERVICE_LIMIT`, preserves the last committed state, and allows retry with the same command ID; no paid fallback or non-idempotent automatic retry.",
+        "evidence": "Requirement imported; operational portions remain unverified until the documented Phase7 check."
+      }
+    ],
+    "id": "TR-FREETIER-OPERATION-021",
+    "notes": "Original v2.6 document ID: TR-21; canonical MCP ID: TR-FREETIER-OPERATION-021. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: TR-WP-GAME-021. Replaced at user request with a subject-identifying ID.",
+    "body": "The deployment must remain on free tiers: Vercel Hobby and Supabase Free. Do not enable paid add-ons, metered upgrades, or paid external services. The product is personal and non-commercial while using Vercel Hobby. Current Supabase Free constraints include a 500 MB database, 200 concurrent Realtime connections, 100 Realtime messages per second, 2 million Realtime messages per month, and automatic pause after one week of inactivity. Treat these as capacity limits and provide graceful handling when service quotas are reached.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Integration games for every supported player count",
+    "acceptanceCriteria": [
+      {
+        "id": "TR-34-C01",
+        "isSatisfied": true,
+        "text": "Run24 complete games with324 player participations and2592 accepted round solves; every game reaches shared final standings.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-34-C02",
+        "isSatisfied": true,
+        "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-34-C03",
+        "isSatisfied": true,
+        "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "TR-MULTIPLAYER-INTEGRATION-034",
+    "notes": "New verification/extension import key: TR-34; canonical MCP ID: TR-MULTIPLAYER-INTEGRATION-034. Confirmed extension requirement; source docs/admin_acl_design.md, docs/admin_acl_review_receipt.json, tests/integration/multiplayer.integration.ts and user conversation. Former provisional MCP ID: TR-WP-GAME-034. Replaced at user request with a subject-identifying ID.",
+    "body": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..25, using disposable infrastructure.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "completed",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Room code handling",
+    "acceptanceCriteria": [
+      {
+        "id": "TR-10-C01",
+        "isSatisfied": true,
+        "text": "Room codes identify the intended active room and reject invalid or expired codes. Each room stores a configured capacity from 2 through 25. Room-code joins and deep-link joins use the same authoritative slot check as lobby browsing and quick match. When full, a valid invite permits the player to request observer mode instead of a player slot. Before countdown, promote the oldest observer into the last player position when a player leaves a full room; break equal observer-arrival times by stable profile ID. Use an eight-character Crockford Base32 code, valid while the room is active and expired on close; close empty rooms after 30 minutes and limit invalid-code attempts to 10 per minute per session.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-17",
+        "isSatisfied": true,
+        "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "id": "TR-ROOM-CODES-010",
+    "notes": "Original v2.6 document ID: TR-10; canonical MCP ID: TR-ROOM-CODES-010. Imported from docs/word_association_game_requirements.md v2.6, SHA256 e356a7bdce8fae59d3f9a9d48dd471c5c05ec724b5734ba9ed14bec1a754ebc2. Original document IDs are retained as source aliases; MCP requires canonical area-qualified IDs. Baseline Phase6 evidence is historical; subsequent administration regression and source identity are recorded separately. Hosted deployment/provider entitlement remains Phase7 work. Former provisional MCP ID: TR-WP-GAME-010. Replaced at user request with a subject-identifying ID.",
+    "body": "Room codes identify the intended active room and reject invalid or expired codes. Each room stores a configured capacity from 2 through 25. Room-code joins and deep-link joins use the same authoritative slot check as lobby browsing and quick match. When full, a valid invite permits the player to request observer mode instead of a player slot. Before countdown, promote the oldest observer into the last player position when a player leaves a full room; break equal observer-arrival times by stable profile ID. Use an eight-character Crockford Base32 code, valid while the room is active and expired on close; close empty rooms after 30 minutes and limit invalid-code attempts to 10 per minute per session.",
+    "priority": "high",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "status": "in_progress",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Private live multiplayer delivery and autonomous progression",
+    "acceptanceCriteria": [
+      {
+        "id": "LIVE-01",
+        "isSatisfied": true,
+        "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-02",
+        "isSatisfied": true,
+        "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-03",
+        "isSatisfied": true,
+        "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-04",
+        "isSatisfied": true,
+        "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-05",
+        "isSatisfied": true,
+        "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-06",
+        "isSatisfied": true,
+        "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-07",
+        "isSatisfied": false,
+        "text": "Repeatable browser integration plays real eight-round games at every player count2 through25, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      }
+    ],
+    "id": "TR-ROOM-SYNCRECOVERY-038",
+    "notes": "Confirmed user requirements: actual live gameplay, repeatable UI integration at2..25, design updates and independent hostile validation. Source: phone stale-roster report and corrections,27October2026. SDK token callback, coalescing, lifecycle, independent worker and owned cleanup are implemented. New presence-body defect independently reproduced in Chromium;2red React tests now pass, real heartbeat browser regression passes with unread negative control and production-only body drain.532unit/acceptance tests, lint and production build pass. Updated strict game is rerunning; full2..25 remains pending. Prior25-player round1 failure and measured shared-cluster WAL stalls are retained. Volatile TLS harness preserves fsync/synchronous_commit but proves neither power-loss durability nor public capacity. Faster waiting-room fallback and hosted Phase7 remain outside this extension.\n\nLocal 29 October 2026 diagnostic: a 25-player attempt failed during UI readiness before simultaneous-answer testing. Captured UI showed 24 players playing and the final participant unable to access the room; a five-second holdout removal is consistent with the observed roster but not proven by a retained deadline event. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-simultaneous/. A separate earlier 25-player run failed during gameplay: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-failure/. Current routing source and these exploratory tests are uncommitted; neither establishes 25-player capacity, public hosting capacity, or completion of LIVE-07.\n\nLocal 29 October 2026 strict-push browser integration passed for two players and one observer through eight rounds, token renewal and reconnect with periodic UI reads suppressed. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-strict-push/. It used an uncommitted candidate build and isolated TLS database/private Realtime; it does not establish deployed behavior or LIVE-07 capacity.\n\nLocal 29 October 2026 follow-up diagnostic readied the last two players together and reached round one with 25 players but failed after nine recorded solves, with 15 uncertain retries and 453 request failures (only the first 100 failure details retained). The captured scorecard shows the round deadline elapsed; the cause of the delay is unproven. This exploratory run permitted 25 concurrent answers, outside the LIVE-07 limit of two. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-ready-together/. The candidate remains uncommitted and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 diagnostic with the last two players readying together and at most two simultaneous answers failed at 25 players in round one after two recorded solves, one uncertain retry and 396 request failures (only the first 100 failure details retained). The answer control was absent when the test attempted to submit. Cleanup reported no errors; the cause remains unproven. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-bounded/. This local uncommitted candidate has not satisfied LIVE-07 or established hosted capacity.\n\nLocal 29 October 2026 diagnostic with per-phase request measurement failed during readiness before gameplay. During the test readiness phase, 1,563 room reads started, 24 readiness responses succeeded, and completed room reads reached approximately 9.1 seconds. The captured roster had 24 players. These local observations do not establish the source of the delay or public-host capacity. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-metrics/. The candidate is uncommitted and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 diagnostic suppressed browser safety-read timers while preserving real push and presence. All 25 readiness actions succeeded, but the category chooser did not appear before timeout; 22 captured clients were still loading the game. Request totals recorded after cleanup include cleanup traffic and cannot establish the cause. This altered-timer run is not an acceptance test. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-no-safety-polls/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 normal-polling 25-player diagnostic failed during readiness; its pre-cleanup snapshot recorded 881 room reads started. An independent monitor sampled the isolated database 36 times: three idle connections appeared in 35 samples, and no database lock wait was sampled. Sampling can miss brief waits and does not establish the cause. The first monitor started before PostgreSQL was ready and captured no samples; the corrected monitor attached after startup. Receipt and samples: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-db-monitored/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 candidate addresses a separate LIVE-03 gap: foreground calls no longer join an in-flight deadline batch, while the protected worker waits for its actual result; idle foreground catch-up and worker error/retry behavior remain. Before implementation, four assertions passed with the correct fixture and rejected the wrong fixture; the worker route fixture likewise passed and rejected its wrong control. Focused production-bound suite: 29 passed. Receipts: docs/evidence/hosting/guest-admin-recovery/deadline-worker-mock-v2/ and deadline-route-mock/. Source remains uncommitted; this does not establish 25-player or hosted behavior, and LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 post-deadline-fix 25-player UI test completed round one but failed in round two after 45 recorded solves. Its pre-cleanup round-two metrics recorded 33 answer conflicts, 20 successful answer responses, and 1,896 reaction, 1,467 room and 1,171 match reads started. The monitor sampled 103 database snapshots and observed lock waits in three; sampling cannot establish contribution to the failure. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-post-deadline-fix/. Candidate uncommitted; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 candidate separates game and reaction refresh keys: match notifications no longer automatically reread reactions, room and reaction notifications still refresh both, and active-round to summary transitions refresh the observer social view. Before implementation, independent correct and wrong controls passed their mock gates; 22 focused tests passed against the implementation. Receipts: docs/evidence/hosting/guest-admin-recovery/room-social-routing-mock-v2/, game-social-mock/ and social-transition-mock/. The paired source edits had a late per-edit verification hook; both subsequently verified successfully. Candidate remains uncommitted and requires actual push and 25-player verification; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 updated candidate passed the real strict-push browser test for two players and an observer through eight rounds, reactions, token renewal and reconnect, with polling suppressed and no cleanup errors. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-strict-social-push/. The build is uncommitted and the result does not establish the 25-player matrix or hosted performance; LIVE-07 remains unsatisfied.\n\nLocal 29 October 2026 25-player UI run after separating game and reaction refresh keys failed in round two after 29 recorded solves. It recorded 304 reaction reads in round one versus 826 in the preceding diagnostic; timing and conditions differed, so the comparison does not establish a capacity improvement. Receipt: docs/evidence/hosting/guest-admin-recovery/round7-scale-25-post-social-fix/. The build is uncommitted; LIVE-07 remains unsatisfied.",
+    "body": "Configure authenticated Realtime and an independent durable deadline/outbox worker. Game state must propagate end to end to players and bound observers without relying on periodic browser reads. Preserve authority, privacy, idempotency and owned temporary-runtime cleanup.",
+    "priority": "critical",
+    "workspaceId": "\u003Crepo\u003E"
+  },
+  {
+    "id": "TEST-ANCHORRANDOMNESS-113",
+    "condition": "Inject every random boundary/index for2,8,25-player rosters; assert uniform-source bounds and only the selected anchor may choose the first category.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Verify TR-13: Anchor assignment",
+    "acceptanceCriteria": [
+      {
+        "id": "VERIFY-TR-13",
+        "isSatisfied": true,
+        "text": "Inject every random boundary/index for2,8,25-player rosters; assert uniform-source bounds and only the selected anchor may choose the first category.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-13-C01",
+        "isSatisfied": true,
+        "text": "At game start, the service snapshots and indexes the active roster from 1 through N, where N is 2-25. It draws a random integer uniformly from 1 through N, inclusive, and assigns the matching player as anchor for the match. The index remains stable for the match. The service accepts the first category selection only from the anchor and synchronizes the assignment and selected category to all room clients.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "New verification/extension import key: TEST-WP-113; canonical MCP ID: TEST-ANCHORRANDOMNESS-113. Technical/integration or operational evidence only. Source TR-13. Existing commands and evidence limits: docs/testing.md; docs/phase6_execution.md; docs/deployment_plan.md. Former provisional MCP ID: TEST-WP-113. Replaced at user request with a subject-identifying ID.",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-CONFIGUREDCAPACITY-024",
+    "condition": "Given a player creates a room, when they set a maximum capacity from 2 through 25, then the room stores and displays that limit. Values below 2 or above 25 are rejected.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "AC-24: Configured capacity",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-24",
+        "isSatisfied": true,
+        "text": "Given a player creates a room, when they set a maximum capacity from 2 through 25, then the room stores and displays that limit. Values below 2 or above 25 are rejected.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "Original acceptance criterion: AC-24; canonical MCP ID: TEST-CONFIGUREDCAPACITY-024. Original criterion AC-24; cases AC-24-T01, AC-24-T01. Preserve all original independent expectations and semantic negative controls. Evidence docs/evidence/phase6/acceptance-mapping.json and docs/phase6_execution.md; later regression docs/admin_acl_review_receipt.json. Database/provider/deployment evidence does not substitute for AC coverage. Former provisional MCP ID: TEST-WP-024. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-CONFIGUREDCAPACITY-024\n# TEST-CONFIGUREDCAPACITY-024 - AC-24: Configured capacity\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify AC-24: Configured capacity. |\n| QBrain reference/scope | \u0060TEST-CONFIGUREDCAPACITY-024\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg) |\n| Frame/element identifiers | ROOM-FLOW, ROOM-NODE-A, ROOM-NODE-B, ROOM-TRANS-A-B, ROOM-TRANS-B-G, MSG-M01, MSG-M02, SCREEN-CREATE, STATE-CREATE-01; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060FR-LOBBYLIFECYCLE-003#AC-24\u0060; \u0060FR-ROOMACCESS-001#AC-24\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | An identified player can create a room. |\n| Test data | Capacity inputs 1, 2, 8, 25, 26. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Try creating rooms with capacities 1 and 26. | Both invalid capacities are rejected; no invalid room is created. |\n| 2 | Create separate rooms with 2, 8 and 25. | Each room stores and displays exactly its selected limit and correct open slots. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: AC-24: Configured capacity\n  Scenario: TEST-CONFIGUREDCAPACITY-024 design verification\n    Given An identified player can create a room.\n    And the fixture data is Capacity inputs 1, 2, 8, 25, 26.\n    When Try creating rooms with capacities 1 and 26.\n    Then Both invalid capacities are rejected; no invalid room is created.\n    When Create separate rooms with 2, 8 and 25.\n    Then Each room stores and displays exactly its selected limit and correct open slots.\n\u0060\u0060\u0060\n\n## Boundaries\n\n\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-CONFIGUREDCAPACITY-024",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-FIRSTCATEGORY-004",
+    "condition": "Given a new game with 2-25 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "AC-04: First category",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-04",
+        "isSatisfied": true,
+        "text": "Given a new game with 2-25 players, when the game indexes the start roster from 1 through N and draws a random integer from 1 through N inclusive, then the player with that index becomes anchor; when that player chooses a category, the first round uses the chosen category and its background.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "Original acceptance criterion: AC-04; canonical MCP ID: TEST-FIRSTCATEGORY-004. Original criterion AC-04; cases AC-04-T01, AC-04-T02, AC-04-T01. Preserve all original independent expectations and semantic negative controls. Evidence docs/evidence/phase6/acceptance-mapping.json and docs/phase6_execution.md; later regression docs/admin_acl_review_receipt.json. Database/provider/deployment evidence does not substitute for AC coverage. Former provisional MCP ID: TEST-WP-004. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-FIRSTCATEGORY-004\n# TEST-FIRSTCATEGORY-004 - AC-04: First category\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify AC-04: First category. |\n| QBrain reference/scope | \u0060TEST-FIRSTCATEGORY-004\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_round_flow.svg](../../../word_association_round_flow.svg); [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg) |\n| Frame/element identifiers | ROUND-FLOW, ROUND-NODE-B, ROUND-NODE-C, ROUND-TRANS-A-B, ROUND-TRANS-B-C, ROUND-TRANS-C-D, MSG-M07, MSG-M08, MSG-M09, MSG-M10, MSG-M11, MSG-M12, MSG-M13, MSG-FLOW, SCREEN-CHOOSER, STATE-CHOOSER-01, STATE-CHOOSER-02, STATE-CHOOSER-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060FR-ANCHORSELECTION-007#AC-04\u0060; \u0060FR-CATEGORIES-005#AC-04\u0060; \u0060TR-ANCHOR-RANDOMNESS-013#TR-13-C01\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | The start roster is Alice, Bob, Cara; all are ready; fixture controls which roster index the service selects. |\n| Test data | Controlled selected-index examples 1, 2, 3; opening category Opposites. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Let the countdown finish and inspect the announced anchor on all clients. | The player at the selected roster index is identified as anchor consistently. |\n| 2 | As a non-anchor attempt category selection, then select Opposites as the anchor. | Only the anchor\u0027s choice starts the first round; every client shows Opposites and its background. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: AC-04: First category\n  Scenario: TEST-FIRSTCATEGORY-004 design verification\n    Given The start roster is Alice, Bob, Cara; all are ready; fixture controls which roster index the service selects.\n    And the fixture data is Controlled selected-index examples 1, 2, 3; opening category Opposites.\n    When Let the countdown finish and inspect the announced anchor on all clients.\n    Then The player at the selected roster index is identified as anchor consistently.\n    When As a non-anchor attempt category selection, then select Opposites as the anchor.\n    Then Only the anchor\u0027s choice starts the first round; every client shows Opposites and its background.\n\u0060\u0060\u0060\n\n## Boundaries\n\nRepeat each selected index, including other-player branch; UI verifies consequences, not statistical uniformity. Stable-index distribution proof remains separate technical coverage.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-FIRSTCATEGORY-004",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-FREETIEROPERATION-121",
+    "condition": "Assert recoverable quota rejection with canonical retry and no paid fallback; verify one25-player/25-observer target against actual approved Free-tier resources in Phase7.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Verify TR-21: Free-tier operation",
+    "acceptanceCriteria": [
+      {
+        "id": "VERIFY-TR-21",
+        "isSatisfied": false,
+        "text": "Assert recoverable quota rejection with canonical retry and no paid fallback; verify one25-player/25-observer target against actual approved Free-tier resources in Phase7.",
+        "evidence": "Verification contract recorded; local partial evidence retained, Phase7 completion not claimed."
+      },
+      {
+        "id": "TR-21-C01",
+        "isSatisfied": false,
+        "text": "The deployment must remain on free tiers: Vercel Hobby and Supabase Free. Do not enable paid add-ons, metered upgrades, or paid external services. The product is personal and non-commercial while using Vercel Hobby. Current Supabase Free constraints include a 500 MB database, 200 concurrent Realtime connections, 100 Realtime messages per second, 2 million Realtime messages per month, and automatic pause after one week of inactivity. Treat these as capacity limits and provide graceful handling when service quotas are reached.",
+        "evidence": "Local implementation/fixtures may cover part of this obligation; Phase7 operational completion is not claimed."
+      },
+      {
+        "id": "DEC-20",
+        "isSatisfied": false,
+        "text": "Quota behavior and initial load target: Initial supported target is one full 25-player room plus up to 25 observers. Quota rejection returns a recoverable `SERVICE_LIMIT`, preserves the last committed state, and allows retry with the same command ID; no paid fallback or non-idempotent automatic retry.",
+        "evidence": "Requirement imported; operational portions remain unverified until the documented Phase7 check."
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "New verification/extension import key: TEST-WP-121; canonical MCP ID: TEST-FREETIEROPERATION-121. Technical/integration or operational evidence only. Source TR-21. Existing commands and evidence limits: docs/testing.md; docs/phase6_execution.md; docs/deployment_plan.md. Former provisional MCP ID: TEST-WP-121. Replaced at user request with a subject-identifying ID.",
+    "status": "in_progress",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-MULTIPLAYERINTEGRATION-134",
+    "condition": "Exercise the real identity/room/lobby/match/PostgreSQL services in complete eight-round games for every integer player count2..25, using disposable infrastructure.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Verify Integration games for every supported player count",
+    "acceptanceCriteria": [
+      {
+        "id": "TR-34-C01",
+        "isSatisfied": true,
+        "text": "Run24 complete games with324 player participations and2592 accepted round solves; every game reaches shared final standings.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-34-C02",
+        "isSatisfied": true,
+        "text": "Exercise all hint/scoring stages, simultaneous conflicts/retries, roster/anchor transitions and exactly-once profile awards. Keep deterministic clocks/randomness; preserve all assertions under bounded fixture wall-clock timeouts.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-34-C03",
+        "isSatisfied": true,
+        "text": "Use a disposable loopback-only database, apply every migration and remove owned containers/fixtures in finally without touching the running game database.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-02",
+        "isSatisfied": true,
+        "text": "No response and no solver: A missing answer counts as unsolved and advances to the next hint. After Hint 3 deadline the round reveals and awards zero to remaining players. If nobody solves, choose the next category uniformly from the six configured categories.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-01",
+        "isSatisfied": true,
+        "text": "Match length and stage timer: Eight rounds. Each of the four answer stages has a 20-second deadline; a stage closes early when all unsolved players submit.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "New verification/extension import key: TEST-WP-134; canonical MCP ID: TEST-MULTIPLAYERINTEGRATION-134. Actual test sources: tests/application/access.test.ts, tests/application/catalog-admin.test.ts, tests/web/admin-api.test.ts, tests/integration/admin.integration.ts, tests/integration/multiplayer.integration.ts, tests/browser/admin.phase6.spec.ts. Match the applicable suite to this requirement; do not claim all suites prove every boundary. Former provisional MCP ID: TEST-WP-134. Replaced at user request with a subject-identifying ID.",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-OBSERVERPERMISSIONS-118",
+    "condition": "Fill25 observer seats, bind inviter perspective, promote FIFO before lock and reject all observer state/scoring writes; preserve50-member audiences.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Verify TR-18: Observer perspective and permissions",
+    "acceptanceCriteria": [
+      {
+        "id": "VERIFY-TR-18",
+        "isSatisfied": true,
+        "text": "Fill25 observer seats, bind inviter perspective, promote FIFO before lock and reject all observer state/scoring writes; preserve50-member audiences.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-18-C01",
+        "isSatisfied": true,
+        "text": "An observer session is read-only, limited to 25 observers per room, and is bound to the player who invited the observer. Signed links carry inviter context; a manual room-code observer selects an active inviter from the roster. Observer queue order is transactional, with stable profile ID as tie-break. The service streams the same player-authorized game view that the inviter’s client receives, including updates as the inviter’s view changes, while rejecting guesses, category choices, and other game-affecting commands from the observer. Observers do not count toward player capacity or scoring.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-13",
+        "isSatisfied": true,
+        "text": "Observer behavior: Maximum 25 observers per room. Signed links bind the inviter. Manual room-code observers select an active player as inviter. Observer arrival order is assigned transactionally; ties use stable profile ID.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "New verification/extension import key: TEST-WP-118; canonical MCP ID: TEST-OBSERVERPERMISSIONS-118. Technical/integration or operational evidence only. Source TR-18. Existing commands and evidence limits: docs/testing.md; docs/phase6_execution.md; docs/deployment_plan.md. Former provisional MCP ID: TEST-WP-118. Replaced at user request with a subject-identifying ID.",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-PLAYERLIMIT-002",
+    "condition": "Given a room has reached its configured player capacity from 2 through 25, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 25.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "AC-02: Player limit",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-02",
+        "isSatisfied": true,
+        "text": "Given a room has reached its configured player capacity from 2 through 25, when another player attempts to join, then the game rejects the additional player without changing existing room state. This is true for any configured capacity, including 2, 8, and 25.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "Original acceptance criterion: AC-02; canonical MCP ID: TEST-PLAYERLIMIT-002. Original criterion AC-02; cases AC-02-T01, AC-02-T02, AC-02-T01. Preserve all original independent expectations and semantic negative controls. Evidence docs/evidence/phase6/acceptance-mapping.json and docs/phase6_execution.md; later regression docs/admin_acl_review_receipt.json. Database/provider/deployment evidence does not substitute for AC coverage. Former provisional MCP ID: TEST-WP-002. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-PLAYERLIMIT-002\n# TEST-PLAYERLIMIT-002 - AC-02: Player limit\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify AC-02: Player limit. |\n| QBrain reference/scope | \u0060TEST-PLAYERLIMIT-002\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg) |\n| Frame/element identifiers | DISC-FLOW, DISC-NODE-E, DISC-TRANS-D-E, DISC-TRANS-E-F, DISC-TRANS-E-B, ROOM-FLOW, ROOM-NODE-D, ROOM-NODE-H, ROOM-NODE-F, ROOM-TRANS-C-D, ROOM-TRANS-D-E, ROOM-TRANS-D-H, ROOM-TRANS-H-I, ROOM-TRANS-I-F, ROOM-TRANS-H-F, ROOM-TRANS-G-D, SCREEN-DISCOVERY, STATE-DISCOVERY-01, STATE-DISCOVERY-02, STATE-DISCOVERY-03, SCREEN-JOIN, STATE-JOIN-01, STATE-JOIN-02, STATE-JOIN-03, STATE-JOIN-04, STATE-JOIN-05; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060FR-LOBBYLIFECYCLE-003#AC-02\u0060; \u0060FR-ROOMACCESS-001#AC-02\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | A waiting room already contains exactly its configured player count. |\n| Test data | Capacity examples 2, 8, 25; independent extra profile Eve. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | As Eve attempt a player join. | Player admission is rejected; existing roster and configured capacity are unchanged. |\n| 2 | Reopen the room as an existing player. | There is no Eve player row and the roster still contains exactly the configured count. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: AC-02: Player limit\n  Scenario: TEST-PLAYERLIMIT-002 design verification\n    Given A waiting room already contains exactly its configured player count.\n    And the fixture data is Capacity examples 2, 8, 25; independent extra profile Eve.\n    When As Eve attempt a player join.\n    Then Player admission is rejected; existing roster and configured capacity are unchanged.\n    When Reopen the room as an existing player.\n    Then There is no Eve player row and the roster still contains exactly the configured count.\n\u0060\u0060\u0060\n\n## Boundaries\n\nInvited observer entry is tested separately; rejection must not be confused with read-only observer admission.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-PLAYERLIMIT-002",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-ROOMCODES-110",
+    "condition": "Test valid/invalid/expired eight-character codes,10-per-minute attempts, atomic final-slot admission, empty-room expiry and generic not-found privacy.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Verify TR-10: Room code handling",
+    "acceptanceCriteria": [
+      {
+        "id": "VERIFY-TR-10",
+        "isSatisfied": true,
+        "text": "Test valid/invalid/expired eight-character codes,10-per-minute attempts, atomic final-slot admission, empty-room expiry and generic not-found privacy.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "TR-10-C01",
+        "isSatisfied": true,
+        "text": "Room codes identify the intended active room and reject invalid or expired codes. Each room stores a configured capacity from 2 through 25. Room-code joins and deep-link joins use the same authoritative slot check as lobby browsing and quick match. When full, a valid invite permits the player to request observer mode instead of a player slot. Before countdown, promote the oldest observer into the last player position when a player leaves a full room; break equal observer-arrival times by stable profile ID. Use an eight-character Crockford Base32 code, valid while the room is active and expired on close; close empty rooms after 30 minutes and limit invalid-code attempts to 10 per minute per session.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      },
+      {
+        "id": "DEC-17",
+        "isSatisfied": true,
+        "text": "Room code, reconnect, creator departure: Use an eight-character Crockford Base32 code. Codes remain valid while the room is active and expire on close; empty rooms close after 30 minutes. Reconnect retains membership for a two-minute grace interval. Creator departure grants no special authority; remaining players retain control. Invalid/expired codes return the same generic not-found response; limit code attempts to 10 per minute per session.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "New verification/extension import key: TEST-WP-110; canonical MCP ID: TEST-ROOMCODES-110. Technical/integration or operational evidence only. Source TR-10. Existing commands and evidence limits: docs/testing.md; docs/phase6_execution.md; docs/deployment_plan.md. Former provisional MCP ID: TEST-WP-110. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-ROOMCODES-110\n# TEST-ROOMCODES-110 - Invalid and expired room-code recovery\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json). Current implementation evidence is in [implementation-receipt.json](../implementation-receipt.json); the original documentation-only snapshot is retained under archive/design-20261027/.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Invalid and expired room-code recovery. |\n| QBrain reference/scope | \u0060TEST-ROOMCODES-110\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [decisions.md](../decisions.md); [word_association_game_requirements.md](../../../word_association_game_requirements.md) |\n| Frame/element identifiers | GAP-FLOW-ROOMCODES, GAP-TRANS-ROOMCODES-01, GAP-TRANS-ROOMCODES-02; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-ROOM-CODES-010#TR-10-C01\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Alice is at room-code entry; valid active and closed-code fixtures exist. |\n| Test data | Invalid eight-character Crockford code, closed room code,10 invalid attempts in one minute and a valid generated code. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Automated isolated browser integration and supporting application/SQL checks executed; operational boundaries remain separate. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Executed applicable UI-DEC variants in Chromium with real React and isolated HTTP/application/domain fixtures; real disposable PostgreSQL covers persistence/audit. See [execution receipt](../implementation-receipt.json). This is the documented recovery variant, not a claim that every historical compound obligation was rerun. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Submit invalid/closed codes, then correct to the valid active code. | A safe error permits correction without leaking another active code; the valid code reaches the intended room. |\n| 2 | Exceed the documented invalid-attempt window and attempt another code. | Further invalid attempts are rate-limited until the window allows retry; no unauthorized membership or false success occurs. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Invalid and expired room-code recovery\n  Scenario: TEST-ROOMCODES-110 design verification\n    Given Alice is at room-code entry; valid active and closed-code fixtures exist.\n    And the fixture data is Invalid eight-character Crockford code, closed room code,10 invalid attempts in one minute and a valid generated code.\n    When Submit invalid/closed codes, then correct to the valid active code.\n    Then A safe error permits correction without leaking another active code; the valid code reaches the intended room.\n    When Exceed the documented invalid-attempt window and attempt another code.\n    Then Further invalid attempts are rate-limited until the window allows retry; no unauthorized membership or false success occurs.\n\u0060\u0060\u0060\n\n## Boundaries\n\nExisting requirement, newly explicit UI scenario; no change to historical evidence or status.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\n## Implementation evidence\n\n[Implementation snapshot and tiered results](../implementation.md), [hashed source inventory](../implementation-manifest.json), and [raw execution logs](../../../evidence/ui-gaps/) bind this case to the current tested implementation. Browser journeys use actual pages and real application/domain services behind isolated HTTP/persistence/time ports. They do not establish physical screen-reader behavior, native phone install, real OIDC, deployed availability or real private-push2..25UI delivery. Reflow at400% is the documented320CSS-pixel equivalent, not a physical browser-zoom certification.\n\nEND UI-CASE TEST-ROOMCODES-110",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-ROOMJOINING-001",
+    "condition": "Given a valid room code and 2-25 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "AC-01: Room joining",
+    "acceptanceCriteria": [
+      {
+        "id": "AC-01",
+        "isSatisfied": true,
+        "text": "Given a valid room code and 2-25 players on separate devices, when each joins, then every joined player appears in the same room with their selected icon.",
+        "evidence": "docs/phase6_execution.md; docs/admin_acl_review_receipt.json; docs/testing.md"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "Original acceptance criterion: AC-01; canonical MCP ID: TEST-ROOMJOINING-001. Original criterion AC-01; cases AC-01-T01, AC-01-T01. Preserve all original independent expectations and semantic negative controls. Evidence docs/evidence/phase6/acceptance-mapping.json and docs/phase6_execution.md; later regression docs/admin_acl_review_receipt.json. Database/provider/deployment evidence does not substitute for AC coverage. Former provisional MCP ID: TEST-WP-001. Replaced at user request with a subject-identifying ID.\n\nBEGIN UI-CASE TEST-ROOMJOINING-001\n# TEST-ROOMJOINING-001 - AC-01: Room joining\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify AC-01: Room joining. |\n| QBrain reference/scope | \u0060TEST-ROOMJOINING-001\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg); [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg) |\n| Frame/element identifiers | ID-FLOW, ID-NODE-G, ID-TRANS-F-G, DISC-FLOW, DISC-NODE-F, DISC-TRANS-E-F, ROOM-FLOW, ROOM-NODE-C, ROOM-NODE-D, ROOM-NODE-E, ROOM-TRANS-C-D, ROOM-TRANS-D-E, ROOM-TRANS-D-H, ROOM-TRANS-G-D, ROUND-FLOW, ROUND-NODE-A, ROUND-TRANS-A-B, MSG-M03, MSG-M04, MSG-M05, MSG-FLOW, SCREEN-JOIN, STATE-JOIN-01, STATE-JOIN-02, STATE-JOIN-03, STATE-JOIN-04, STATE-JOIN-05, SCREEN-LOBBY, STATE-LOBBY-01, STATE-LOBBY-02, STATE-LOBBY-03, STATE-LOBBY-04, STATE-LOBBY-05, STATE-LOBBY-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060FR-LOBBYLIFECYCLE-003#AC-01\u0060; \u0060FR-ROOMACCESS-001#AC-01\u0060; \u0060TR-REALTIME-SYNC-002#TR-02-C01\u0060 |\n| Priority | high |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Alice has a waiting room; Bob has an independent browser profile and no room membership. |\n| Test data | Generated active room code, Alice owl icon, Bob fox icon; repeat for capacities 2, 8 and 25. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Ready for automation once isolated UI fixture seeding and observations are available; documentation only. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | As Bob enter the generated room code and choose player join. | Bob enters Alice\u0027s room with the fox icon. |\n| 2 | Observe Alice\u0027s room without manually refreshing. | The same room roster includes Alice and Bob, each once, with their selected icons. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: AC-01: Room joining\n  Scenario: TEST-ROOMJOINING-001 design verification\n    Given Alice has a waiting room; Bob has an independent browser profile and no room membership.\n    And the fixture data is Generated active room code, Alice owl icon, Bob fox icon; repeat for capacities 2, 8 and 25.\n    When As Bob enter the generated room code and choose player join.\n    Then Bob enters Alice\u0027s room with the fox icon.\n    When Observe Alice\u0027s room without manually refreshing.\n    Then The same room roster includes Alice and Bob, each once, with their selected icons.\n\u0060\u0060\u0060\n\n## Boundaries\n\nRun separate-device browser contexts; extend the fixture to all counts 2..25 under TEST-MULTIPLAYERINTEGRATION-134. This case alone does not establish every count or a live latency bound.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-ROOMJOINING-001",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "id": "TEST-ROOMSYNC-139",
+    "condition": "Run repeatable UI integration against an explicitly selected actual database-backed runtime with real private WebSockets and no HTTP fixtures, plus focused concurrency, lifecycle, scheduler and negative authorization regressions. Exercise2 through25 players and an observer, retain evidence and distinguish local runtime proof from hosted deployment.",
+    "scopeStartLayerKey": "layer-1",
+    "title": "Real browser multiplayer, private push and recovery integration",
+    "acceptanceCriteria": [
+      {
+        "id": "LIVE-01",
+        "isSatisfied": true,
+        "text": "Actual private WebSocket subscriptions deliver only event/aggregate/version metadata to authenticated per-profile audiences; anonymous, cross-profile subscriptions and client publication are denied.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-02",
+        "isSatisfied": true,
+        "text": "Repeatable browser integration creates real guests and room membership, enters a code, readies players, plays eight UI rounds, and verifies remote category, solve, hints, scores, reveal, reactions and final standings through actual private notifications and authorized reads while periodic UI polling is suppressed.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-03",
+        "isSatisfied": true,
+        "text": "An authenticated server worker advances countdown and hint deadlines with all browsers offline, drains bounded durable outbox batches, reports deadline and publication failures separately, and preserves failed events for retry. Foreground requests never wait for an active worker batch.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-04",
+        "isSatisfied": true,
+        "text": "The temporary HTTPS gateway serves app and Realtime paths while rejecting tenant management paths; private credentials and internal ports remain private. Cleanup acts only on its captured lease generation and owned resource identities. A separate-broker harness must own a separate strict-TLS game database/outbox; partial startup or unconfirmed cleanup preserves recovery identities and blocks replacement.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-05",
+        "isSatisfied": true,
+        "text": "Focus, visibility and online recovery trigger authorized reads; concurrent reads coalesce one follow-up, older responses cannot lose newer notifications, and unmount/account changes prevent obsolete subscriptions after deferred authentication. Connected game/social safety reads use15seconds and disconnected recovery uses1second; cadence changes preserve in-flight/coalesced reads and independent display clocks. Presence responses are fully consumed before clearing canonical retries and refreshing; a body-read failure retains the exact retry command.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-06",
+        "isSatisfied": true,
+        "text": "Real UI integration proves token renewal beyond the original120-second expiry and actual WebSocket close/reconnect followed by another push-driven game transition.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      },
+      {
+        "id": "LIVE-07",
+        "isSatisfied": false,
+        "text": "Repeatable browser integration plays real eight-round games at every player count2 through25, with UI readiness/categories/every answer and identical final rankings, using a separately owned TLS game database and private Realtime outbox. At most two UI answers are submitted simultaneously; local results do not establish public-tunnel capacity. Cleanup is truthful and bounded.",
+        "evidence": "docs/evidence/room-sync/live-ui-final.log; docs/evidence/room-sync/live-ui-observations.json; docs/evidence/room-sync/runtime-health.json; docs/evidence/room-sync/auth-callback-green.log; docs/evidence/room-sync/lease-contract.log; docs/evidence/room-sync/unit-regression-final.log; tests/browser/live-player-counts.integration.spec.ts (matrix pending)"
+      }
+    ],
+    "workspaceId": "\u003Crepo\u003E",
+    "notes": "Confirmed user requirements: actual live gameplay, repeatable UI integration at2..25, design updates and independent hostile validation. Source: phone stale-roster report and corrections,27October2026. SDK token callback, coalescing, lifecycle, independent worker and owned cleanup are implemented. New presence-body defect independently reproduced in Chromium;2red React tests now pass, real heartbeat browser regression passes with unread negative control and production-only body drain.532unit/acceptance tests, lint and production build pass. Updated strict game is rerunning; full2..25 remains pending. Prior25-player round1 failure and measured shared-cluster WAL stalls are retained. Volatile TLS harness preserves fsync/synchronous_commit but proves neither power-loss durability nor public capacity. Faster waiting-room fallback and hosted Phase7 remain outside this extension.\n\nBEGIN UI-CASE TEST-ROOMSYNC-139\n# TEST-ROOMSYNC-139 - Real browser multiplayer, private push and recovery integration\n\nLinked specification for the matching authoritative QBrain TEST record. Persistence is reported by [receipt.json](../receipt.json); this documentation run executed no application tests.\n\n| Field | Specification |\n| --- | --- |\n| Objective | Verify Real browser multiplayer, private push and recovery integration. |\n| QBrain reference/scope | \u0060TEST-ROOMSYNC-139\u0060; Word Pairs / \u0060PROD-WORDPAIRS\u0060; workspace \u0060\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs\u0060; layer \u0060layer-1\u0060 |\n| Source revision | Original designs at \u00603273c121de6517aec34503d8c769b0159e9e52df\u0060; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |\n| Source links | [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg); [room_sync_fix.md](../../../room_sync_fix.md) |\n| Frame/element identifiers | MSG-M03, MSG-M04, MSG-M05, MSG-M27, MSG-M28, MSG-M29, MSG-FLOW, SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |\n| FR/TR \u2192 specific AC references | \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-02\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-03\u0060; \u0060TR-ROOM-SYNCRECOVERY-038#LIVE-07\u0060 |\n| Priority | critical |\n| Platform/viewport | Phone Chromium/Android and Safari/iPhone where applicable; project matrix320x568,390x844,844x390;1280px at400%zoom and200%text enlargement. OS-native installation is a separate physical-device dependency. |\n| Preconditions/roles | Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities. |\n| Test data | Player counts every integer 2..25; one inviter-bound observer; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; all no-hint correct solves yield 5 per round and 40 per player. |\n| Synchronization | Await the explicit observable conditions and source-defined deadlines below; no fixed sleeps. Harness timeouts do not create a product response-time SLA. |\n| Cleanup | Close case-owned contexts and reset only isolated fixture accounts, rooms or content, including after failure. Preserve shared catalog and real profile data. |\n| Automation readiness | Partial: full actual-runtime UI fixture, seed control and independent observer are required; current execution state remains the existing QBrain in_progress record. |\n| Basis | Specified by cited designs/QBrain; new gap behavior is specified by UI-DEC-01..08. Synthetic fixture identities/data are test configurations. |\n| Execution | Not run here. Existing historical status/evidence remains unchanged; new obligations remain pending/unsatisfied. |\n\n## Ordered actions and observable results\n\n| Step | Action / condition | Observable expected result |\n| --- | --- | --- |\n| 1 | Join by UI room code and ready each player without manual refresh, with periodic application refresh suppressed. | All clients see the same roster, countdown and category chooser through actual private updates. |\n| 2 | Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients. | All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points. |\n| 3 | Repeat each player count and perform offline/reconnect, token-renewal and socket-recovery variants. | Autonomous progression and authorized recovery work; no polling-only pass or service-only result is accepted. |\n\n## Scenario\n\n\u0060\u0060\u0060gherkin\nFeature: Real browser multiplayer, private push and recovery integration\n  Scenario: TEST-ROOMSYNC-139 design verification\n    Given Actual isolated TLS runtime has database, private notifications and autonomous deadline worker; separate UI contexts have real guest identities.\n    And the fixture data is Player counts every integer 2..25; one inviter-bound observer; controlled pairs Hot/Cold, Up/Down, Left/Right, In/Out, Day/Night, Open/Closed, Big/Small, Fast/Slow; all no-hint correct solves yield 5 per round and 40 per player.\n    When Join by UI room code and ready each player without manual refresh, with periodic application refresh suppressed.\n    Then All clients see the same roster, countdown and category chooser through actual private updates.\n    When Select category and submit answers through UI for eight rounds; observe hints, scorecard, reactions and summaries from remote clients.\n    Then All clients converge on authorized state and identical final ranking; accepted UI solves correspond to expected round points.\n    When Repeat each player count and perform offline/reconnect, token-renewal and socket-recovery variants.\n    Then Autonomous progression and authorized recovery work; no polling-only pass or service-only result is accepted.\n\u0060\u0060\u0060\n\n## Boundaries\n\nThis documents the outstanding matrix obligation; it does not claim that all counts passed. Private-frame privacy and worker ownership/fault contracts remain separate LIVE criteria.\n\nCriterion references identify intended verification. Non-UI transaction, distribution, release/deployment and native OS guarantees retain separate technical/operational tests; this document is not a claim that a compound criterion passed.\n\nEND UI-CASE TEST-ROOMSYNC-139",
+    "status": "in_progress",
+    "priority": "critical"
+  }
+]

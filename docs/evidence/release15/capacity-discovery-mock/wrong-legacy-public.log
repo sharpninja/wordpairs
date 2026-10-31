@@ -1,0 +1,52 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/application/capacity-public.test.ts (2 tests | 1 failed) 14ms
+   ✓ CAP15 publishes the same fifteen-player rules with release2.7 metadata 4ms
+   × CAP15 public discovery hides legacy rooms at fifteen and advertises only effective free seats 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/capacity-public.test.ts > CAP15 public discovery hides legacy rooms at fifteen and advertises only effective free seats
+AssertionError: expected [ { roomId: 'legacy-14', …(4) }, …(2) ] to deeply equal [ { roomId: 'legacy-14', …(4) } ]
+
+- Expected
++ Received
+
+  [
+    {
+      "ageSeconds": 1,
+-     "capacity": 15,
++     "capacity": 25,
+      "playerCount": 14,
+      "roomId": "legacy-14",
++     "state": "waiting",
++   },
++   {
++     "ageSeconds": 1,
++     "capacity": 25,
++     "playerCount": 15,
++     "roomId": "legacy-15",
++     "state": "waiting",
++   },
++   {
++     "ageSeconds": 1,
++     "capacity": 25,
++     "playerCount": 20,
++     "roomId": "legacy-20",
+      "state": "waiting",
+    },
+  ]
+
+ ❯ tests/application/capacity-public.test.ts:15:18
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  15:05:53
+   Duration  216ms (import 33%, tests 31%, transform 26%, worker 9%)
+
+JUNIT report written to <repo>/docs/evidence/release15/capacity-discovery-mock/wrong-legacy-public.xml

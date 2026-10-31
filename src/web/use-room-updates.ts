@@ -6,6 +6,7 @@ export function useRoomUpdates(
   profileId: string | null,
   roomId: string | null,
   refresh: () => Promise<void>,
+  refreshMatch?: () => Promise<void>,
 ) {
   const [live, setLive] = useState(false);
   useEffect(() => {
@@ -97,10 +98,10 @@ export function useRoomUpdates(
             if (seen.size >= 256)
               seen.delete(seen.values().next().value as string);
             seen.add(event.eventId);
-            if (
-              ["room", "match", "moderation"].includes(event.aggregateType) &&
-              event.aggregateId === roomId
-            )
+            if (event.aggregateId !== roomId) return;
+            if (event.aggregateType === "match")
+              void (refreshMatch ?? refresh)();
+            else if (["room", "moderation"].includes(event.aggregateType))
               void refresh();
           })
           .subscribe((status) => {
@@ -126,6 +127,6 @@ export function useRoomUpdates(
       setLive(false);
       void client?.removeAllChannels();
     };
-  }, [profileId, roomId, refresh]);
+  }, [profileId, roomId, refresh, refreshMatch]);
   return live;
 }

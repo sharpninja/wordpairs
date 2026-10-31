@@ -1,0 +1,443 @@
+tests/browser/live-multiplayer.integration.spec.ts:29:18 lint/style/noNonNullAssertion ━━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    27 │   browser,
+    28 │ }, info) => {
+  > 29 │   const origin = process.env.WORDPAIRS_LIVE_ORIGIN!;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    30 │   const runtimePath = process.env.WORDPAIRS_LIVE_RUNTIME_PATH;
+    31 │   if (!runtimePath)
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:215:9 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    213 │       ).toBeVisible();
+    214 │       aliases.push(
+  > 215 │         (await page.locator(".profile-alias strong").textContent())!.trim(),
+        │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    216 │       );
+    217 │       profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    213 213 │         ).toBeVisible();
+    214 214 │         aliases.push(
+    215     │ - ········(await·page.locator(".profile-alias·strong").textContent())!.trim(),
+        215 │ + ········(await·page.locator(".profile-alias·strong").textContent())?.trim(),
+    216 216 │         );
+    217 217 │         profileIds.push((await (await context.request.get("/api/session")).json()).profile.id);
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:223:14 lint/style/noNonNullAssertion ━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    221 │     await a.getByRole("button", { name: "Create room", exact: true }).click();
+    222 │     await a.waitForURL(/\/rooms\//);
+  > 223 │     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+        │              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    224 │     const code = (await a.locator(".room-code strong").textContent())!.trim();
+    225 │     await expect(
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:224:18 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    222 │     await a.waitForURL(/\/rooms\//);
+    223 │     roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+  > 224 │     const code = (await a.locator(".room-code strong").textContent())!.trim();
+        │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    225 │     await expect(
+    226 │       a.getByText("● Live updates connected", { exact: true }),
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    222 222 │       await a.waitForURL(/\/rooms\//);
+    223 223 │       roomId = new URL(a.url()).pathname.split("/").at(-1)!;
+    224     │ - ····const·code·=·(await·a.locator(".room-code·strong").textContent())!.trim();
+        224 │ + ····const·code·=·(await·a.locator(".room-code·strong").textContent())?.trim();
+    225 225 │       await expect(
+    226 226 │         a.getByText("● Live updates connected", { exact: true }),
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:316:22 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    314 │         await expect(pages[i].locator(".game-prompt")).toBeVisible();
+    315 │       }
+  > 316 │       const prompt = (await a.locator(".game-prompt").textContent())!.trim();
+        │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    317 │       const pair = seed.pairs.find(
+    318 │         (p) => p.categoryId === "opposites" && p.prompt === prompt,
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+    314 314 │           await expect(pages[i].locator(".game-prompt")).toBeVisible();
+    315 315 │         }
+    316     │ - ······const·prompt·=·(await·a.locator(".game-prompt").textContent())!.trim();
+        316 │ + ······const·prompt·=·(await·a.locator(".game-prompt").textContent())?.trim();
+    317 317 │         const pair = seed.pairs.find(
+    318 318 │           (p) => p.categoryId === "opposites" && p.prompt === prompt,
+  
+
+tests/browser/live-multiplayer.integration.spec.ts:396:18 lint/style/noNonNullAssertion ━━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    394 │           .toBeGreaterThan(originalExpiry + 1000);
+    395 │         for (let i = 0; i < 3; i++)
+  > 396 │           expect(expiries[i].at(-1)!).toBeGreaterThan(expiries[i][0]);
+        │                  ^^^^^^^^^^^^^^^^^^^
+    397 │         milestones.tokenRenewedPastOriginalLifetime = true;
+    398 │         const reopened = a.waitForEvent("websocket");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+
+tests/browser/ui-command-acknowledgement.ts:114:52 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    112 │   await expect(row).toHaveCount(1);
+    113 │   await expect(row).toContainText("✓ Solved");
+  > 114 │   const header = (await row.getByRole("rowheader").innerText()).trim();
+        │                                                    ^^^^^^^^^
+    115 │   const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    116 │   assertOwnRoundSolve({
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    112 112 │     await expect(row).toHaveCount(1);
+    113 113 │     await expect(row).toContainText("✓ Solved");
+    114     │ - ··const·header·=·(await·row.getByRole("rowheader").innerText()).trim();
+        114 │ + ··const·header·=·(await·row.getByRole("rowheader").textContent()).trim();
+    115 115 │     const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    116 116 │     assertOwnRoundSolve({
+  
+
+tests/browser/ui-command-acknowledgement.ts:115:51 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    113 │   await expect(row).toContainText("✓ Solved");
+    114 │   const header = (await row.getByRole("rowheader").innerText()).trim();
+  > 115 │   const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+        │                                                   ^^^^^^^^^
+    116 │   assertOwnRoundSolve({
+    117 │     actorAlias: (await page.locator(".profile-alias strong").innerText()).trim(),
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    113 113 │     await expect(row).toContainText("✓ Solved");
+    114 114 │     const header = (await row.getByRole("rowheader").innerText()).trim();
+    115     │ - ··const·caption·=·(await·table.locator("caption").innerText()).match(/^Round·(\d+)·scorecard$/);
+        115 │ + ··const·caption·=·(await·table.locator("caption").textContent()).match(/^Round·(\d+)·scorecard$/);
+    116 116 │     assertOwnRoundSolve({
+    117 117 │       actorAlias: (await page.locator(".profile-alias strong").innerText()).trim(),
+  
+
+tests/browser/ui-command-acknowledgement.ts:117:62 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    115 │   const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    116 │   assertOwnRoundSolve({
+  > 117 │     actorAlias: (await page.locator(".profile-alias strong").innerText()).trim(),
+        │                                                              ^^^^^^^^^
+    118 │     rowAlias: header.endsWith(alias) ? alias : header,
+    119 │     round: caption ? Number(caption[1]) : Number.NaN,
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    115 115 │     const caption = (await table.locator("caption").innerText()).match(/^Round (\d+) scorecard$/);
+    116 116 │     assertOwnRoundSolve({
+    117     │ - ····actorAlias:·(await·page.locator(".profile-alias·strong").innerText()).trim(),
+        117 │ + ····actorAlias:·(await·page.locator(".profile-alias·strong").textContent()).trim(),
+    118 118 │       rowAlias: header.endsWith(alias) ? alias : header,
+    119 119 │       round: caption ? Number(caption[1]) : Number.NaN,
+  
+
+tests/browser/ui-command-acknowledgement.ts:120:24 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    118 │     rowAlias: header.endsWith(alias) ? alias : header,
+    119 │     round: caption ? Number(caption[1]) : Number.NaN,
+  > 120 │     solved: (await row.innerText()).includes("✓ Solved"),
+        │                        ^^^^^^^^^
+    121 │   }, alias, round);
+    122 │ }
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    118 118 │       rowAlias: header.endsWith(alias) ? alias : header,
+    119 119 │       round: caption ? Number(caption[1]) : Number.NaN,
+    120     │ - ····solved:·(await·row.innerText()).includes("✓·Solved"),
+        120 │ + ····solved:·(await·row.textContent()).includes("✓·Solved"),
+    121 121 │     }, alias, round);
+    122 122 │   }
+  
+
+tests/browser/ui-command-entry.contract.ts:33:12 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    31 │     expect(final.ok).toBe(false); if (!final.ok) expect(final.error).toBe(original);
+    32 │     expect(saved).toBeDefined();
+  > 33 │     expect(saved!.qualification).toBe("post-failure observation before cleanup");
+       │            ^^^^^^
+    34 │     if (name === "failure-before-cleanup") {
+    35 │       expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+     31  31 │       expect(final.ok).toBe(false); if (!final.ok) expect(final.error).toBe(original);
+     32  32 │       expect(saved).toBeDefined();
+     33     │ - ····expect(saved!.qualification).toBe("post-failure·observation·before·cleanup");
+         33 │ + ····expect(saved?.qualification).toBe("post-failure·observation·before·cleanup");
+     34  34 │       if (name === "failure-before-cleanup") {
+     35  35 │         expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+  
+
+tests/browser/ui-command-entry.contract.ts:35:49 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    33 │     expect(saved!.qualification).toBe("post-failure observation before cleanup");
+    34 │     if (name === "failure-before-cleanup") {
+  > 35 │       expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+       │                                                 ^^^^^^
+    36 │       expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+    37 │       await page.close();
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+     33  33 │       expect(saved!.qualification).toBe("post-failure observation before cleanup");
+     34  34 │       if (name === "failure-before-cleanup") {
+     35     │ - ······expect(savedWhileOpen).toBe(true);·expect(saved!.uiStates[0].body).toContain("Retained·before·cleanup");
+         35 │ + ······expect(savedWhileOpen).toBe(true);·expect(saved?.uiStates[0].body).toContain("Retained·before·cleanup");
+     36  36 │         expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+     37  37 │         await page.close();
+  
+
+tests/browser/ui-command-entry.contract.ts:36:14 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    34 │     if (name === "failure-before-cleanup") {
+    35 │       expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+  > 36 │       expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+       │              ^^^^^^
+    37 │       await page.close();
+    38 │     } else { expect(saved!.uiStates[0].closed).toBe(true); expect(saved!.diagnosticFailures).toEqual([{ player: 0, operation: "page-unavailable" }]); }
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+     34  34 │       if (name === "failure-before-cleanup") {
+     35  35 │         expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+     36     │ - ······expect(saved!.uiStates[0].room?.version).toBe("12");·expect(saved!.diagnosticFailures).toEqual([]);
+         36 │ + ······expect(saved?.uiStates[0].room?.version).toBe("12");·expect(saved!.diagnosticFailures).toEqual([]);
+     37  37 │         await page.close();
+     38  38 │       } else { expect(saved!.uiStates[0].closed).toBe(true); expect(saved!.diagnosticFailures).toEqual([{ player: 0, operation: "page-unavailable" }]); }
+  
+
+tests/browser/ui-command-entry.contract.ts:36:67 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    34 │     if (name === "failure-before-cleanup") {
+    35 │       expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+  > 36 │       expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+       │                                                                   ^^^^^^
+    37 │       await page.close();
+    38 │     } else { expect(saved!.uiStates[0].closed).toBe(true); expect(saved!.diagnosticFailures).toEqual([{ player: 0, operation: "page-unavailable" }]); }
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+     34  34 │       if (name === "failure-before-cleanup") {
+     35  35 │         expect(savedWhileOpen).toBe(true); expect(saved!.uiStates[0].body).toContain("Retained before cleanup");
+     36     │ - ······expect(saved!.uiStates[0].room?.version).toBe("12");·expect(saved!.diagnosticFailures).toEqual([]);
+         36 │ + ······expect(saved!.uiStates[0].room?.version).toBe("12");·expect(saved?.diagnosticFailures).toEqual([]);
+     37  37 │         await page.close();
+     38  38 │       } else { expect(saved!.uiStates[0].closed).toBe(true); expect(saved!.diagnosticFailures).toEqual([{ player: 0, operation: "page-unavailable" }]); }
+  
+
+tests/browser/ui-command-entry.contract.ts:38:21 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    36 │       expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+    37 │       await page.close();
+  > 38 │     } else { expect(saved!.uiStates[0].closed).toBe(true); expect(saved!.diagnosticFailures).toEqual([{ player: 0, operation: "page-unavailable" }]); }
+       │                     ^^^^^^
+    39 │     return;
+    40 │   }
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+     36  36 │         expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+     37  37 │         await page.close();
+     38     │ - ····}·else·{·expect(saved!.uiStates[0].closed).toBe(true);·expect(saved!.diagnosticFailures).toEqual([{·player:·0,·operation:·"page-unavailable"·}]);·}
+         38 │ + ····}·else·{·expect(saved?.uiStates[0].closed).toBe(true);·expect(saved!.diagnosticFailures).toEqual([{·player:·0,·operation:·"page-unavailable"·}]);·}
+     39  39 │       return;
+     40  40 │     }
+  
+
+tests/browser/ui-command-entry.contract.ts:38:67 lint/style/noNonNullAssertion  FIXABLE  ━━━━━━━━━━━
+
+  ! Forbidden non-null assertion.
+  
+    36 │       expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+    37 │       await page.close();
+  > 38 │     } else { expect(saved!.uiStates[0].closed).toBe(true); expect(saved!.diagnosticFailures).toEqual([{ player: 0, operation: "page-unavailable" }]); }
+       │                                                                   ^^^^^^
+    39 │     return;
+    40 │   }
+  
+  i A non-null assertion tells TypeScript to ignore a possible null or undefined value. If the value is missing at runtime, the code fails with an error that the compiler could not catch.
+  
+  i Check that the value is defined before using it, for example with an if statement or optional chaining, instead of asserting it.
+  
+  i Unsafe fix: Replace with optional chain operator ?. This operator includes runtime checks, so it is safer than the compile-only non-null assertion operator
+  
+     36  36 │         expect(saved!.uiStates[0].room?.version).toBe("12"); expect(saved!.diagnosticFailures).toEqual([]);
+     37  37 │         await page.close();
+     38     │ - ····}·else·{·expect(saved!.uiStates[0].closed).toBe(true);·expect(saved!.diagnosticFailures).toEqual([{·player:·0,·operation:·"page-unavailable"·}]);·}
+         38 │ + ····}·else·{·expect(saved!.uiStates[0].closed).toBe(true);·expect(saved?.diagnosticFailures).toEqual([{·player:·0,·operation:·"page-unavailable"·}]);·}
+     39  39 │       return;
+     40  40 │     }
+  
+
+tests/browser/ui-command-entry.phase6.spec.ts:4:22 lint/correctness/noUnusedImports  FIXABLE  ━━━━━━━━━━
+
+  ! Several of these imports are unused.
+  
+    2 │ import { expect, test, type Page } from "@playwright/test";
+    3 │ import { commandUiState, readCommandUi } from "./ui-command-acknowledgement";
+  > 4 │ import type { Scope, UiCommandState } from "./ui-command-acknowledgement.contract";
+      │                      ^^^^^^^^^^^^^^
+    5 │ import { assertEntryCase, entryCases, type EntryBinding, type EntryCase, type FailureUi, type RejectedProbe } from "./ui-command-entry.contract";
+    6 │ 
+  
+  i Unused imports might be the result of an incomplete refactoring.
+  
+  i Unsafe fix: Remove the unused imports.
+  
+    4 │ import·type·{·Scope,·UiCommandState·}·from·"./ui-command-acknowledgement.contract";
+      │                      ---------------                                               
+
+tests/browser/ui-command-entry.phase6.spec.ts:43:94 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    41 │           value.uiStates.push({ player, closed: true, body: null, room: null, game: null });
+    42 │           if (wrong !== "diagnostic-failure-truthful") value.diagnosticFailures.push({ player, operation: "page-unavailable" });
+  > 43 │         } else value.uiStates.push({ player, closed: false, body: await page.locator("body").innerText(), room: await readCommandUi(page, "room"), game: await readCommandUi(page, "game") });
+       │                                                                                              ^^^^^^^^^
+    44 │       }
+    45 │       await save(value); throw original;
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    41 41 │             value.uiStates.push({ player, closed: true, body: null, room: null, game: null });
+    42 42 │             if (wrong !== "diagnostic-failure-truthful") value.diagnosticFailures.push({ player, operation: "page-unavailable" });
+    43    │ - ········}·else·value.uiStates.push({·player,·closed:·false,·body:·await·page.locator("body").innerText(),·room:·await·readCommandUi(page,·"room"),·game:·await·readCommandUi(page,·"game")·});
+       43 │ + ········}·else·value.uiStates.push({·player,·closed:·false,·body:·await·page.locator("body").textContent(),·room:·await·readCommandUi(page,·"room"),·game:·await·readCommandUi(page,·"game")·});
+    44 44 │         }
+    45 45 │         await save(value); throw original;
+  
+
+tests/browser/ui-command-entry.ts:28:52 lint/performance/useDomNodeTextContent  FIXABLE  ━━━━━━━━━━━
+
+  ! innerText is not recommended for reading DOM node text.
+  
+    26 │     value.uiStates.push(state);
+    27 │     if (state.closed) { value.diagnosticFailures.push({ player, operation: "page-unavailable" }); continue; }
+  > 28 │     try { state.body = (await page.locator("body").innerText()).replace(/https?:\/\/\S+/g, "[URL omitted]"); }
+       │                                                    ^^^^^^^^^
+    29 │     catch { value.diagnosticFailures.push({ player, operation: "body-read" }); }
+    30 │     for (const scope of ["room", "game"] as const) {
+  
+  i innerText depends on rendered layout and CSS, so it can be slower and produce different results from the DOM tree's text content.
+  
+  i Use textContent when you want the node's text without rendered-text behavior.
+  
+  i Unsafe fix: Use textContent instead.
+  
+    26 26 │       value.uiStates.push(state);
+    27 27 │       if (state.closed) { value.diagnosticFailures.push({ player, operation: "page-unavailable" }); continue; }
+    28    │ - ····try·{·state.body·=·(await·page.locator("body").innerText()).replace(/https?:\/\/\S+/g,·"[URL·omitted]");·}
+       28 │ + ····try·{·state.body·=·(await·page.locator("body").textContent()).replace(/https?:\/\/\S+/g,·"[URL·omitted]");·}
+    29 29 │       catch { value.diagnosticFailures.push({ player, operation: "body-read" }); }
+    30 30 │       for (const scope of ["room", "game"] as const) {
+  
+
+Checked 6 files in 35ms. No fixes applied.
+Found 19 warnings.

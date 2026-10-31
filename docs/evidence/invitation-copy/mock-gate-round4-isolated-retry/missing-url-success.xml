@@ -1,0 +1,40 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="8.391534">
+<testsuite name="invitation-copy.phase2.spec.ts" timestamp="2026-10-29T05:17:16.134Z" hostname="" tests="1" failures="1" skipped="0" time="5.709" errors="0">
+<testcase name="INVITE-COPY missing invitation URL does not claim or perform a copy" classname="invitation-copy.phase2.spec.ts" time="5.709">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../../../../../../../../../tmp/wordpairs-invite-round4-isolated-retry/test-results/invitation-copy.phase2-INV-6f893-not-claim-or-perform-a-copy/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  invitation-copy.phase2.spec.ts:181:1 › INVITE-COPY missing invitation URL does not claim or perform a copy 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  getByRole('alert')
+    Expected: visible
+    Received: hidden
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeVisible" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+        14 × locator resolved to <div role="alert"></div>
+           - unexpected value "hidden"
+
+
+      184 |   const button = page.getByRole("button", { name: "Copy Invitation Link", exact: true });
+      185 |   await button.click();
+    > 186 |   await expect(page.getByRole("alert")).toBeVisible();
+          |                                         ^
+      187 |   await expect(button).toBeEnabled();
+      188 |   await expect(page.getByLabel("Shareable invitation link")).toHaveCount(0);
+      189 |   await expect(page.getByRole("status").filter({ hasText: copiedMessage })).toHaveCount(0);
+        at /tmp/wordpairs-invite-round4-isolated-retry/tests/browser/invitation-copy.phase2.spec.ts:186:41
+
+    Error Context: ../../test-results/invitation-copy.phase2-INV-6f893-not-claim-or-perform-a-copy/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

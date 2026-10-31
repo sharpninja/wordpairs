@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="3" failures="1" errors="0" time="1.100889574">
+    <testsuite name="tests/web/game-social-routing.test.ts" timestamp="2026-10-29T17:39:52.459Z" hostname="[PRIVATE HOST]" tests="3" failures="1" errors="0" skipped="0" time="1.100889574">
+        <testcase classname="tests/web/game-social-routing.test.ts" name="match refreshes do not change the reaction refresh key" time="0.068946703">
+        </testcase>
+        <testcase classname="tests/web/game-social-routing.test.ts" name="room or moderation refreshes advance the reaction refresh key" time="0.010079543">
+        </testcase>
+        <testcase classname="tests/web/game-social-routing.test.ts" name="leaving an active round triggers a social refresh for the summary" time="1.019859473">
+            <failure message="expected &apos;round-1&apos; to be &apos;none&apos; // Object.is equality
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div
+        data-key=&quot;7&quot;
+        data-round=&quot;round-1&quot;
+        data-testid=&quot;social-view&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;" type="AssertionError">
+AssertionError: expected &apos;round-1&apos; to be &apos;none&apos; // Object.is equality
+
+Ignored nodes: comments, script, style
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div
+        data-key=&quot;7&quot;
+        data-round=&quot;round-1&quot;
+        data-testid=&quot;social-view&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+Expected: &quot;none&quot;
+Received: &quot;round-1&quot;
+
+ ❯ tests/web/game-social-routing.test.ts:51:94
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:97:7
+ ❯ waitFor node_modules/@testing-library/dom/dist/wait-for.js:36:10
+ ❯ node_modules/@testing-library/dom/dist/wait-for.js:164:54
+ ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:164:35
+ ❯ tests/web/game-social-routing.test.ts:51:9
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

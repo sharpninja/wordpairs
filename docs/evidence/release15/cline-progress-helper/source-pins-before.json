@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-30T20:34:00.4158129-05:00",
+  "cliVersion": "3.0.71",
+  "pins": [
+    {
+      "path": "/tmp/GetWordpairsClineProgress.ps1",
+      "sha256": "3DD083E247001E242DF59E01016DD26889FC3822FF64EB49F38C9D644DC8E2B8",
+      "bytes": 2820
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/cline-progress-helper/GetWordpairsClineProgress.original.ps1",
+      "sha256": "3DD083E247001E242DF59E01016DD26889FC3822FF64EB49F38C9D644DC8E2B8",
+      "bytes": 2820
+    },
+    {
+      "path": "\u003Chome\u003E/.local/share/mise/installs/npm-cline/latest/node_modules/.mise/@cline\u002Bcli-linux-x64@3.0.71/node_modules/@cline/cli-linux-x64/bin/cline",
+      "sha256": "8562EDA595D5766D253154053A0B386E0CFA1EF3ABCE928AE6FF63F594A61047",
+      "bytes": 132335072
+    },
+    {
+      "path": "\u003Chome\u003E/.local/share/mise/installs/npm-cline/latest/node_modules/.mise/@cline\u002Bshared@0.0.93/node_modules/@cline/shared/dist/agents/types.d.ts",
+      "sha256": "9A58347A3343FFA993D1FFF9C1B7239DFD483DA20953948663337148FEE23B03",
+      "bytes": 42309
+    }
+  ],
+  "nativeAnchors": [
+    "97271411:;if(o.length<=t)return o;return[...o.slice(0,t),`... ${o.length-t} more lines`]}function tS(e,t){if(eg()===\"json\"){En(\"stdout\",{type:\"agent_event\",event:e});return}switch(e.type){case\"iteration_start\":d();break;case\"iteration_end\":d();break;case\"content_start\":switch(e.contentType){case\"text\":if(c!==\"text\"){if(d(),k)ge(`"
+  ],
+  "typeAnchors": "agents/types.d.ts:30-80 defines content_start/content_end,text or accumulated versus reasoning/tool; CLI binarybyte97271439 emits{type:agent_event,event:e}",
+  "scope": "Installed source only;no model or live stream invocation"
+}

@@ -15,3 +15,8 @@ AGENTS-README-FIRST.yaml
 /mcp.db*
 # Server-managed export working tree; exact returned ZIP is kept under docs/requirements/.
 /docs/Project/wiki/
+# Protected originals retain private operator/bootstrap context locally.
+# Public review event exports, verdicts, requests and privacy manifests are kept.
+/docs/receipts/hv/*-source-round?.response.jsonl
+/docs/receipts/hv/*.stderr.txt
+/docs/receipts/hv/claude-opus-round*-tools/

@@ -1,0 +1,782 @@
+{
+  "schema": "wordpairs-vercel-readonly-readiness-v1",
+  "recordedAt": "2026-10-30T19:55:58.5353468-05:00",
+  "classification": "Operator-directed operational metadata inspection, not a deployment or hostile approval",
+  "ownSessionId": "Codex-20261030T194703Z-plugin-session",
+  "ownRequestId": "req-20261031T004748Z-turn-4682",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "targets": [
+    {
+      "logical": "staging",
+      "projectId": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+      "projectName": "wordpairs",
+      "canonicalDomain": "wordpairs.vercel.app",
+      "accountId": "team_bWASsr4U8yJQls10eWgbkxKH"
+    },
+    {
+      "logical": "production",
+      "projectId": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+      "projectName": "wordpairs-j9jf",
+      "canonicalDomain": "wordpairs-j9jf.vercel.app",
+      "accountId": "team_bWASsr4U8yJQls10eWgbkxKH"
+    }
+  ],
+  "candidateContext": {
+    "parentNamedCandidate": "c1181eb4eb01825c8b12f3521f92286080addfba",
+    "qualification": "Parent said this candidate was not pushed or reviewed at delegation. This check makes no current source/deployment acceptance claim."
+  },
+  "profile": {
+    "files": 1,
+    "globalMemories": 9,
+    "workspaceMemories": 0,
+    "excluded": "PRIVATE-MEMORY-REFERENCE-007"
+  },
+  "applicableSkills": [
+    "\u003Chome\u003E/.agents/skills/add-profile/SKILL.md",
+    "\u003Chome\u003E/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/deployments-cicd/SKILL.md",
+    "\u003Chome\u003E/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/vercel-cli/SKILL.md",
+    "\u003Chome\u003E/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/env-vars/SKILL.md"
+  ],
+  "guardedProcedure": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/guarded-rollout-procedure.md",
+    "sha256": "0E780BB4D129313BA9F4EC69ABE3CBE0611A53B86E8AEDDB9EC4BC6CF3A2CBD2",
+    "bytes": 13951
+  },
+  "connectedObservations": {
+    "observationQualification": "Connected Vercel read-only allowlist projections only. Environment values were never rendered or persisted. Explicit teamId queries returned403; implicit account queries for the exact immutable project IDs report the expected accountId.",
+    "implicitScopeObservations": [
+      {
+        "logical": "staging",
+        "kind": "project",
+        "isError": false,
+        "returnedFields": [
+          "id",
+          "name",
+          "framework",
+          "accountId",
+          "createdAt",
+          "updatedAt",
+          "nodeVersion",
+          "live",
+          "latestDeployment",
+          "domains",
+          "passwordProtection",
+          "ssoProtection",
+          "trustedIps"
+        ],
+        "id": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+        "name": "wordpairs",
+        "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+        "framework": "nextjs",
+        "nodeVersion": "24.x",
+        "domains": [
+          "wordpairs.vercel.app",
+          "wordpairs-sharp-ninja1.vercel.app",
+          "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+        ],
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "latestDeployment": {
+          "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+          "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+          "target": "production",
+          "readyState": "READY"
+        },
+        "buildSettingsFieldsPresent": []
+      },
+      {
+        "logical": "staging",
+        "kind": "domains",
+        "isError": false,
+        "returnedFields": [
+          "domains",
+          "pagination"
+        ],
+        "domains": [
+          {
+            "name": "wordpairs.vercel.app",
+            "verified": true,
+            "gitBranch": null,
+            "redirect": null
+          }
+        ],
+        "pagination": {
+          "next": null,
+          "count": 1
+        }
+      },
+      {
+        "logical": "staging",
+        "kind": "environmentNames",
+        "isError": false,
+        "returnedFields": [
+          "envs",
+          "hiddenProductionEnvCount"
+        ],
+        "variables": [
+          {
+            "name": "WORDPAIRS_GITHUB_CLIENT_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_GITHUB_CLIENT_ID",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_DATABASE_CA",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_DATABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_INVITE_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_SCHEDULER_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_SUPABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_SUPABASE_ANON_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_ORIGIN",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_PRISMA_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_URL_NON_POOLING",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_USER",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_HOST",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_PASSWORD",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_DATABASE",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_JWT_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_ANON_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_SERVICE_ROLE_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_PUBLISHABLE_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_SECRET_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "NEXT_PUBLIC_SUPABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+            "targets": [
+              "production"
+            ]
+          }
+        ],
+        "qualification": "All values discarded without rendering or persistence; decrypt=false requested."
+      },
+      {
+        "logical": "staging",
+        "kind": "canonicalDeployment",
+        "isError": false,
+        "returnedFields": [
+          "id",
+          "name",
+          "url",
+          "type",
+          "state",
+          "createdAt",
+          "creator",
+          "project",
+          "meta",
+          "alias",
+          "target",
+          "regions",
+          "buildingAt",
+          "ready",
+          "readyState",
+          "aliasError"
+        ],
+        "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+        "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+        "target": "production",
+        "readyState": "READY",
+        "state": "READY",
+        "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+        "alias": [
+          "wordpairs.vercel.app",
+          "wordpairs-sharp-ninja1.vercel.app",
+          "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+        ],
+        "aliasErrorPresent": false
+      },
+      {
+        "logical": "production",
+        "kind": "project",
+        "isError": false,
+        "returnedFields": [
+          "id",
+          "name",
+          "framework",
+          "accountId",
+          "createdAt",
+          "updatedAt",
+          "nodeVersion",
+          "live",
+          "latestDeployment",
+          "domains",
+          "passwordProtection",
+          "ssoProtection",
+          "trustedIps"
+        ],
+        "id": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+        "name": "wordpairs-j9jf",
+        "accountId": "team_bWASsr4U8yJQls10eWgbkxKH",
+        "framework": "nextjs",
+        "nodeVersion": "24.x",
+        "domains": [
+          "wordpairs-j9jf-sharp-ninja1.vercel.app",
+          "wordpairs-j9jf-git-main-sharp-ninja1.vercel.app"
+        ],
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "latestDeployment": {
+          "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+          "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+          "target": "production",
+          "readyState": "CANCELED"
+        },
+        "buildSettingsFieldsPresent": []
+      },
+      {
+        "logical": "production",
+        "kind": "domains",
+        "isError": false,
+        "returnedFields": [
+          "domains",
+          "pagination"
+        ],
+        "domains": [
+          {
+            "name": "wordpairs-j9jf.vercel.app",
+            "verified": true,
+            "gitBranch": null,
+            "redirect": null
+          }
+        ],
+        "pagination": {
+          "next": null,
+          "count": 1
+        }
+      },
+      {
+        "logical": "production",
+        "kind": "environmentNames",
+        "isError": false,
+        "returnedFields": [
+          "envs",
+          "hiddenProductionEnvCount"
+        ],
+        "variables": [
+          {
+            "name": "WORDPAIRS_GITHUB_CLIENT_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_GITHUB_CLIENT_ID",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_DATABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_INVITE_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_SCHEDULER_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_DATABASE_CA",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_SUPABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_SUPABASE_ANON_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "WORDPAIRS_ORIGIN",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_PRISMA_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_URL_NON_POOLING",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_USER",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_HOST",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_PASSWORD",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "POSTGRES_DATABASE",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_JWT_SECRET",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_ANON_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_SERVICE_ROLE_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_PUBLISHABLE_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "SUPABASE_SECRET_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "NEXT_PUBLIC_SUPABASE_URL",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+            "targets": [
+              "production"
+            ]
+          },
+          {
+            "name": "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+            "targets": [
+              "production"
+            ]
+          }
+        ],
+        "qualification": "All values discarded without rendering or persistence; decrypt=false requested."
+      },
+      {
+        "logical": "production",
+        "kind": "canonicalDeployment",
+        "isError": true,
+        "errorCode": "not_found",
+        "errorStatus": 404
+      }
+    ],
+    "actualProtectionAndReadyHistory": [
+      {
+        "logical": "staging",
+        "kind": "protectionActualFlags",
+        "isError": false,
+        "passwordProtection": {
+          "enabled": false,
+          "deploymentType": null
+        },
+        "trustedIps": {
+          "enabled": false,
+          "deploymentType": null,
+          "protectionMode": null
+        },
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        }
+      },
+      {
+        "logical": "staging",
+        "kind": "readyProductionDeployments",
+        "isError": false,
+        "deployments": [
+          {
+            "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+            "name": "wordpairs",
+            "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+            "target": "production",
+            "state": "READY",
+            "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf"
+          }
+        ],
+        "pagination": {
+          "count": 1
+        }
+      },
+      {
+        "logical": "production",
+        "kind": "protectionActualFlags",
+        "isError": false,
+        "passwordProtection": {
+          "enabled": false,
+          "deploymentType": null
+        },
+        "trustedIps": {
+          "enabled": false,
+          "deploymentType": null,
+          "protectionMode": null
+        },
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        }
+      },
+      {
+        "logical": "production",
+        "kind": "readyProductionDeployments",
+        "isError": false,
+        "deployments": [],
+        "pagination": {
+          "count": 0
+        }
+      }
+    ],
+    "environmentVisibility": [
+      {
+        "logical": "staging",
+        "kind": "environmentVisibility",
+        "isError": false,
+        "returnedNames": 25,
+        "hiddenProductionEnvCount": 0,
+        "valueHandling": "decrypt=false; values discarded before output or storage"
+      },
+      {
+        "logical": "production",
+        "kind": "environmentVisibility",
+        "isError": false,
+        "returnedNames": 25,
+        "hiddenProductionEnvCount": 0,
+        "valueHandling": "decrypt=false; values discarded before output or storage"
+      }
+    ],
+    "immutableDeployments": [
+      {
+        "logical": "staging",
+        "kind": "immutableDeploymentIdentity",
+        "isError": false,
+        "id": "dpl_4unZq3queczsyf23J95UTVyF4mcJ",
+        "name": "wordpairs",
+        "project": {
+          "id": "prj_bHGxyZfZU6gsvEOBA5CKljyKq73w",
+          "name": "wordpairs"
+        },
+        "target": "production",
+        "readyState": "READY",
+        "state": "READY",
+        "url": "wordpairs-b5408nz1e-sharp-ninja1.vercel.app",
+        "alias": [
+          "wordpairs.vercel.app",
+          "wordpairs-sharp-ninja1.vercel.app",
+          "wordpairs-git-8e2f62417e0fe46cefd884e8a6102-b07d7e-sharp-ninja1.vercel.app"
+        ],
+        "aliasErrorPresent": false,
+        "gitSourcePresent": false,
+        "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+        "returnedFields": [
+          "id",
+          "name",
+          "url",
+          "type",
+          "state",
+          "createdAt",
+          "creator",
+          "project",
+          "meta",
+          "alias",
+          "target",
+          "regions",
+          "buildingAt",
+          "ready",
+          "readyState",
+          "aliasError"
+        ]
+      },
+      {
+        "logical": "production",
+        "kind": "immutableDeploymentIdentity",
+        "isError": false,
+        "id": "dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic",
+        "name": "wordpairs-j9jf",
+        "project": {
+          "id": "prj_DuOPJUyewR9XfrapB6whbNEyNRxh",
+          "name": "wordpairs-j9jf"
+        },
+        "target": "production",
+        "readyState": "CANCELED",
+        "state": "CANCELED",
+        "url": "wordpairs-j9jf-3s83msgfn-sharp-ninja1.vercel.app",
+        "alias": [
+          "wordpairs-j9jf-sharp-ninja1.vercel.app",
+          "wordpairs-j9jf-git-main-sharp-ninja1.vercel.app"
+        ],
+        "gitSourcePresent": false,
+        "reportedGitSha": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+        "returnedFields": [
+          "id",
+          "name",
+          "url",
+          "type",
+          "state",
+          "createdAt",
+          "creator",
+          "project",
+          "meta",
+          "alias",
+          "target",
+          "regions",
+          "buildingAt",
+          "ready",
+          "readyState",
+          "source",
+          "errorLink"
+        ],
+        "aliasErrorQualification": "Provider projection omits aliasError; absence is not proof of a successful alias assignment."
+      }
+    ],
+    "explicitTeamQueryFailure": {
+      "errorCode": "forbidden",
+      "httpStatus": 403,
+      "teamId": "team_bWASsr4U8yJQls10eWgbkxKH",
+      "qualification": "Initial explicit-team queries failed. They prove neither absent configuration nor current hosted failure. Exact project IDs were subsequently read under default connector scope and expected accountId verified."
+    },
+    "localFallback": {
+      "cliFound": false,
+      "checked": "PATH, standard user/global bins, mise/node installations, npm global root and npm npx cache package metadata",
+      "cuaInventoryBrowsers": 0,
+      "qualification": "No CLI installed in checked routes. No browser was available in this agent inventory; parent separately observed Vercel login and performed no login/action."
+    },
+    "formattingObservations": [
+      "A response projection initially treated protection object presence as configuration; actual enabled fields were read and retained instead. Only actual flags are authoritative.",
+      "The deployment-list wrapper nests an array under deployments.deployments. A formatter rejected that first shape; the corrected allowlist read is retained. No provider operation failed or changed because of this local formatting error."
+    ]
+  },
+  "findings": [
+    {
+      "id": "PROJECT-IDENTITIES",
+      "status": "verified_metadata",
+      "outcome": "Exact immutable project IDs and names report the expected accountId under the default connector account scope."
+    },
+    {
+      "id": "CANONICAL-DOMAIN-CONFIG",
+      "status": "verified_metadata",
+      "outcome": "Both expected canonical domains are configured, verified, nonredirecting and not branch-specific in project-domain reads."
+    },
+    {
+      "id": "NODE-FRAMEWORK",
+      "status": "verified_metadata",
+      "outcome": "Both projects report framework nextjs and nodeVersion24.x."
+    },
+    {
+      "id": "ENV-NAMES-SCOPES",
+      "status": "verified_metadata",
+      "outcome": "Both projects return25 variable names, each scoped only to production, hiddenProductionEnvCount0. No values are retained."
+    },
+    {
+      "id": "CURRENT-STAGING-DEPLOYMENT",
+      "status": "verified_provider_metadata",
+      "outcome": "Canonical staging resolves dpl_4unZq3queczsyf23J95UTVyF4mcJ, targetproduction,READY, reported oldSHA8e2f62417e0fe46cefd884e8a61024b12860a2cf. It is not current c118 candidate proof."
+    },
+    {
+      "id": "CURRENT-PRODUCTION-DEPLOYMENT",
+      "status": "observed_not_ready",
+      "outcome": "Latest observed dpl_D5W8WwEN3CqxV31kCwBsXq3X1Eic is CANCELED; configured canonical hostname has no resolved deployment in the connector and READY-production query is empty."
+    },
+    {
+      "id": "GLOBAL-GUARDS-BUILD",
+      "status": "unverified",
+      "outcome": "Provider projection omits exact exit0 guards and build settings. Historical procedure is policy, not fresh setting evidence."
+    }
+  ],
+  "unknowns": [
+    "Both current global Ignored Build Step commands are unverified. Connected project projections omit commandForIgnoringBuildStep. Required unchanged policy is exit 0 on both projects; no persistent setting or per-project override was changed.",
+    "Actual build/install commands, root/output directory and production Git branch are unverified because the connected project projection omits them; installed CLI and authenticated browser fallback were unavailable in this bounded check.",
+    "Actual provider gitSource is omitted even with withGitRepoInfo=true. The old full8e2f62417e0fe46cefd884e8a61024b12860a2cf is metadata reported by both observed deployments, not sufficient accepted-source provenance. No c1181eb hosted-current claim is made.",
+    "Production canonical deployment lookup returns not_found404 while the domain is configured/verified and the READY production deployment query is empty. These are provider observations, not an HTTP-origin availability test or proof of a known rollback deployment.",
+    "Effective anonymous/member access through SSO protection is untested. Actual configured SSO deploymentType is all_except_custom_domains; password and trusted-IP enabled flags are false on both projects. No protection was weakened or share-link bypass created.",
+    "Environment values, connection/TLS correctness, OAuth secret validity and scheduler purpose-secret validity were intentionally not read or tested. Twenty-five names per project are visible, all production-scoped, with hiddenProductionEnvCount0.",
+    "The one-time Dashboard Redeploy ignore-step checkbox route is not freshly inspected. Root separately observed the Vercel login screen and performed no login/action. No CLI installation, project linking or authentication mutation was attempted by this agent.",
+    "Accepted source, complete frozen validation/HV, hosted migration/schema/worker acceptance, owner OAuth, physical admin PWA and contest submission remain separate execution evidence. This operational check does not approve them."
+  ],
+  "globalIgnoredBuildPolicy": {
+    "required": "exit 0",
+    "currentStagingValue": null,
+    "currentProductionValue": null,
+    "verified": false,
+    "changed": false,
+    "qualification": "Never replace current-read evidence with old receipt/policy; no global guard mutation or saved projectSettings override."
+  },
+  "noProviderOrEnvironmentOrGuardMutation": true,
+  "noBuildTestModelInvocation": true,
+  "noSecretValueRenderedOrPersisted": true,
+  "noShareLinkCreated": true,
+  "readinessVerdict": "INCOMPLETE_READ_ONLY_METADATA_NOT_ROLLOUT_ACCEPTANCE",
+  "accuracy": 99,
+  "completeness": 90,
+  "ratingQualification": "Exact successful safe projections are retained. Missing guard/build/Git-source/authenticated-access and current hosted acceptance proof prevent full readiness verification."
+}

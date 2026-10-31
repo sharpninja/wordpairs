@@ -98,6 +98,17 @@ export function uiContentFixture() {
     let session = 1;
     let readHandler: ((route: Route, data: unknown) => Promise<void>) | null =
       null;
+    // Isolated trusted admin-session transport. Real fixed-owner GitHub validation
+    // and cookie/digest separation have their own provider/HTTP/runtime tests.
+    await context.route("**/api/admin/session", (r) =>
+      r.fulfill({ json: {
+        sessionGeneration: `${id}-admin-session-${session}`,
+        permissions: ["moderate", "manage-content", "resolve-appeals"],
+        profile: { id, version: 0, kind: "member", alias: `Admin ${id}`,
+          icon: "owl", publicLeaderboard: false, wins: 20, points: 0,
+          earliestWinAt: null },
+      } }),
+    );
     await context.route("**/api/session", (r) =>
       r.fulfill({
         json: {

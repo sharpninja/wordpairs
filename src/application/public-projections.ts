@@ -1,4 +1,5 @@
 import type { Profile, Room } from "../domain/model";
+import { MAX_ROOM_PLAYERS } from "../domain/rooms";
 
 export type PublicProfileSource = Pick<
   Profile,
@@ -10,8 +11,8 @@ export type PublicRoomSource = Pick<
 > & { playerCount: number };
 
 export const RULES_METADATA = {
-  version: "2.6",
-  updated: "2026-10-26",
+  version: "2.8",
+  updated: "2026-10-31",
 } as const;
 export const LOBBY_REFRESH_MS = 15000;
 export const LEADERBOARD_REFRESH_MS = 300000;
@@ -19,7 +20,7 @@ export const GAMEPLAY_RULES = [
   "Join or create a room",
   "Mark ready",
   "Solve with fewer hints for more points",
-  "Play eight rounds with 2–25 players. Each answer stage lasts 20 seconds.",
+  `Play eight rounds with 2–${MAX_ROOM_PLAYERS} players. Each answer stage lasts 20 seconds.`,
   "Score 5 points before hints, then 3, 2 or 1 after each hint. Unsolved rounds score zero.",
   "The first correct solver chooses the next category. Highest total points wins; lower total answer time breaks a tie.",
 ] as const;
@@ -50,7 +51,7 @@ export function publicLobbies(
       (room) =>
         room.discoverable &&
         room.status === "waiting" &&
-        count(room) < room.capacity,
+        count(room) < Math.min(room.capacity, MAX_ROOM_PLAYERS),
     )
     .sort(
       (a, b) =>
@@ -59,7 +60,7 @@ export function publicLobbies(
     .map((room) => ({
       roomId: room.id,
       playerCount: count(room),
-      capacity: room.capacity,
+      capacity: Math.min(room.capacity, MAX_ROOM_PLAYERS),
       state: "waiting" as const,
       ageSeconds: Math.max(0, Math.floor((now - room.createdAt) / 1000)),
     }));

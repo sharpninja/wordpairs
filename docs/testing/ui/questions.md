@@ -1,5 +1,9 @@
 # Design questions and dependencies
 
+Current amendment persistence: [19-record QBrain readback](../../evidence/release10/qbrain-update-receipt.json) confirms the current cap10 requirement amendment, stable IDs/native mappings and 28 changed criteria still unsatisfied. Original design provenance, case synchronization receipts, v2.7 before copies and execution history remain retained; current case/export reconciliation and exact-source execution are separate obligations. `CAP15-LEGACY` retains its historical ID with current10-player text. Documentation does not satisfy criteria or establish a passing game.
+
+Current release scope is [rules v2.8 and the 10-player amendment](../../release15-completion-plan.md), with 25 observers unchanged. [Guest-only public play and owner GitHub admin-only PWA](../../admin_pwa_release.md) supersede the original public identity/install and community decisions. The historical issue register below preserves its original dispositions; its old OpenAI prerequisites do not block the current release.
+
 The operator instructed "Fill gaps" and "The documentation should be kept in sync with reqs." [UI-DEC-01..08](decisions.md) resolve the design gaps without claiming the original diagrams already specified them.
 
 | Prior ID | Resolution / exact remaining dependency | Canonical record/case |
@@ -12,9 +16,9 @@ The operator instructed "Fill gaps" and "The documentation should be kept in syn
 | Q-A11Y-01 | Resolved: explicit quantitative contrast, focus/name/announcement and project44px touch-target criteria; no certification claim. | TR-UI-ACCESSIBILITYDETAILS-039 / TEST-ACCESSIBILITYDETAILS-144 |
 | Q-RESP-01 | Resolved: minimum-width/orientation/zoom/text-enlargement configurations and state retention. | TR-UI-RESPONSIVEMATRIX-040 / TEST-RESPONSIVEMATRIX-145 |
 | Q-ROUND-01 | Resolved UI documentation: explicit zero-solver reveal and autonomous next configured category; probability proof stays technical. | FR-ANCHORSELECTION-007#DEC-02 / TEST-NOSOLVERFALLBACK-146 |
-| Q-OIDC-01 | Execution dependency: real provider registration/entitlement and safe OpenAI OIDC test identities remain necessary. This does not block requirement documentation. | TEST-OPENAIOIDCPROFILE-020 |
-| Q-PWA-01 | Execution dependency: physical phones and HTTPS origin remain necessary for actual OS home-screen installation. Emulation does not close this dependency. | TEST-PWAINSTALL-137 |
+| Q-OIDC-01 | Historical/inactive public OpenAI flow. Current private owner GitHub consent and separate admin-session behavior require their own current evidence. | TEST-OPENAIOIDCPROFILE-020 (historical); TEST-GITHUBADMIN-149 (current) |
+| Q-PWA-01 | Current admin-only execution dependency: physical phones and HTTPS origin are needed for actual OS installation and installed GitHub sign-in continuity. Emulation does not establish those observations. | TEST-PWAINSTALL-137 |
 
-The13UI gap records and49criterion entries now have scoped implementation evidence; their historical pending state is archived. Contest readiness adds10unsatisfied entries. The live2..25 matrix remains an existing uncompleted execution obligation; no result was inferred from this documentation run. Non-UI database, release, legal, deployment and statistical obligations retain separate verification coverage.
+The original 13 UI gap records and 49 criterion entries have scoped historical implementation evidence. Current changed criteria retain their own pending evidence. The live 2 through 10 matrix requires 9 eight-round games, 54 player participations and 432 accepted round solves; the former 2 through 25 scope is historical. Non-UI database, release, legal, deployment and statistical obligations retain separate verification coverage. No execution or current persistence is inferred from this edit.
 
 Contest release dependencies and operator eligibility attestation are tracked in [the submission checklist](../../submission/README.md); unavailable conduct text is not invented or treated as reviewed.

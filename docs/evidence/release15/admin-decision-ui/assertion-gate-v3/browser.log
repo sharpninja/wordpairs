@@ -1,0 +1,18 @@
+
+[WebServer] (node:614435) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+
+(node:614464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/7] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner approve of an existing legacy case preserves reason and decision history
+[2/7] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner reject of an existing legacy case preserves reason and decision history
+[3/7] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner uphold of an existing legacy case preserves reason and decision history
+[4/7] tests/browser/admin.phase6.spec.ts:332:3 › FR-23-C01 owner overturn of an existing legacy case preserves reason and decision history
+[5/7] tests/browser/admin.phase6.spec.ts:337:3 › FR-23-C01 original-reviewer owner has no appeal-resolution controls or writes
+[6/7] tests/browser/admin.phase6.spec.ts:337:3 › FR-23-C01 proposer owner has no appeal-resolution controls or writes
+[7/7] tests/browser/admin.phase6.spec.ts:341:1 › FR-23-C01 rendered assertion gate rejects wrong status, reason, history and self-resolution fixtures
+  7 passed (8.0s)

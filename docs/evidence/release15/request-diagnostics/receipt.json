@@ -1,0 +1,176 @@
+{
+  "timestamp": "2026-10-30T16:54:52",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261030T214428Z-request-diagnostics-lifecycle",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "baseRevision": "0fb37e621d16fcc56a27abff3fe73b2e66cdcca2",
+  "classification": "Browser test instrumentation lifecycle bug; not observed gameplay failure",
+  "priorFailure": {
+    "failed": 1,
+    "completed": true,
+    "passed": 6,
+    "preserved": true,
+    "failedNames": [
+      "LIVE-SCALE 8 real browser players complete eight UI rounds"
+    ],
+    "rounds": 8,
+    "skipped": 7,
+    "eightPlayerReceipt": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/live-ui/runtime-receipts/live-scale-8.json",
+    "cases": 14,
+    "junit": "\u003Crepo\u003E/docs/evidence/release15/frozen-0fb37e6/live-ui/live-ui.xml",
+    "uiSolves": 64,
+    "cleanupFailures": 0,
+    "eightPlayerReceiptSha256": "42B97D67205A90394903231B4CFB5E07689648AEE93C1C3E3046D69D59045954",
+    "players": 8,
+    "junitSha256": "4AFC4B49958F512590B69E045A535FD44DEE09D2BD401C9BA179B9E9649920D2"
+  },
+  "mockGate": {
+    "skipped": 0,
+    "finishedAt": "2026-10-30T16:49:15",
+    "failed": 0,
+    "helperAbsent": true,
+    "sha256": "280B8379CA0E75957B453E8597E37A4D4E47254418D1C228CE3C5E1621CD945B",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/mock-20261030T164914/receipt.json",
+    "cases": 22
+  },
+  "realGate": {
+    "skipped": 0,
+    "finishedAt": "2026-10-30T16:50:34",
+    "failed": 0,
+    "sha256": "3EB385BC9EFF89F6621548C3F8E2F07AF716E7C820182B0C707A4C8BA81AE282",
+    "path": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/real-20261030T165032/receipt.json",
+    "cases": 22
+  },
+  "sameOracleSha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+  "bindingOnlyChange": "Default selects real unless explicitly mock; oracle and fixtures unchanged",
+  "files": [
+    {
+      "path": "tests/browser/request-diagnostics.contract.ts",
+      "sha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B"
+    },
+    {
+      "path": "tests/browser/request-diagnostics.test.ts",
+      "sha256": "45627E32328574C0B8F8075DDEE1CA8A61C24B02DA4CB869E37B08B5B01550B4"
+    },
+    {
+      "path": "tests/browser/request-diagnostics.ts",
+      "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28"
+    },
+    {
+      "path": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "F522AA7DC8619D51D12A12C11F03FFA059AC1C5563198070059516618AD27895"
+    },
+    {
+      "path": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "BB381AEADCC8FF5AE43DCAB1DE7658BFED9D2CD2F90B1BD5B2344D6D0C0D0F81"
+    }
+  ],
+  "editVerifications": [
+    {
+      "timestamp": "2026-10-30T16:47:57",
+      "file": "tests/browser/request-diagnostics.contract.ts",
+      "sha256": "42FD2E372E34D00F0DBF0542283A502C78B872EB871B25510DC6614831E1013B",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T164752-request-diagnostics.contract.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:48:43",
+      "file": "tests/browser/request-diagnostics.test.ts",
+      "sha256": "D5C6D290491CE35C12DE93FD5A85529C7B940E30F0EF0BAB7B301BAAEC701C7B",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T164838-request-diagnostics.test.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:50:04",
+      "file": "tests/browser/request-diagnostics.ts",
+      "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T164958-request-diagnostics.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:50:24",
+      "file": "tests/browser/request-diagnostics.test.ts",
+      "sha256": "45627E32328574C0B8F8075DDEE1CA8A61C24B02DA4CB869E37B08B5B01550B4",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165018-request-diagnostics.test.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:51:36",
+      "file": "tests/browser/live-player-counts.integration.spec.ts",
+      "sha256": "F522AA7DC8619D51D12A12C11F03FFA059AC1C5563198070059516618AD27895",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165131-live-player-counts.integration.spec.ts.log"
+    },
+    {
+      "timestamp": "2026-10-30T16:51:56",
+      "file": "tests/browser/live-multiplayer.integration.spec.ts",
+      "sha256": "BB381AEADCC8FF5AE43DCAB1DE7658BFED9D2CD2F90B1BD5B2344D6D0C0D0F81",
+      "hookExitCode": 0,
+      "typecheckExitCode": 0,
+      "log": "\u003Crepo\u003E/docs/evidence/release15/request-diagnostics/edit-verification/20261030T165152-live-multiplayer.integration.spec.ts.log"
+    }
+  ],
+  "configuredLint": {
+    "exitCode": 0,
+    "filesChecked": 94,
+    "command": [
+      "npm",
+      "run",
+      "lint"
+    ]
+  },
+  "newHelperLint": {
+    "exitCode": 0,
+    "filesChecked": 3,
+    "command": [
+      "npm",
+      "exec",
+      "biome",
+      "--",
+      "lint",
+      "tests/browser/request-diagnostics.contract.ts",
+      "tests/browser/request-diagnostics.test.ts",
+      "tests/browser/request-diagnostics.ts"
+    ]
+  },
+  "broadenedOptionalLint": {
+    "qualification": "Unchanged existing live-spec noNonNullAssertion/innerText warnings and active.forEach(socket=>socket.close()) callback-return error, verified present at HEAD. Configured lint and new helper lint pass; no unrelated assertions changed.",
+    "errors": 1,
+    "warnings": 10,
+    "exitCode": 1
+  },
+  "ownedSourceDiffCheckExit": 0,
+  "globalDiffCheckQualification": "Two trailing whitespace lines in retained failed-run stdout evidence; not changed or normalized",
+  "remainingRawAsyncPageResponseListeners": [],
+  "contextSweep": [
+    "Only the two raw async page event listener sites were found in this class; both now use owned synchronous/tracked helpers.",
+    "Other Request.response calls are awaited inside active test/command scope, not unowned event listeners.",
+    "Strict presence interval and synchronous WebSocket assertions were not altered or certified by this bounded fix."
+  ],
+  "semanticsPreserved": [
+    "HTTP status>=400",
+    "Completed responseEnd duration>1000ms",
+    "Exactly100slow-detail cap and original100request-failure cap",
+    "SameURL requests separated by actual Request object identity",
+    "Missing active response evidence explicit; pending diagnostics qualified at disposal",
+    "No asynchronous Request.response lookup from diagnostic events",
+    "Tracked response-body tasks settle before contexts close",
+    "Original navigation-cancelled room-read tolerance retained with bounded explicit evidence",
+    "Unexpected active body failures recorded and fail a completed journey",
+    "All existing game/network assertions, retry loops, polling intervals and timeouts retained"
+  ],
+  "notRun": [
+    "Full unit/PostgreSQL/browser suites after this change",
+    "Live2through15matrix or strict browser journey",
+    "Build",
+    "Provider/model/hostile validation"
+  ],
+  "next": "Root commits/freezes and independently recollects actual inventory, then reruns full applicable chain including all2through15cases and strict journey. Expected added unit cases22; do not substitute estimate for collection.",
+  "qualification": "Focused mock and real contract evidence establishes listener behavior only; no full release or live game completion claim."
+}

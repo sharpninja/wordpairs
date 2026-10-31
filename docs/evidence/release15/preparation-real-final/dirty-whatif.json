@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-10-30T15:14:42",
+  "qualification": "Intentional invalid dirty-source CLI controls; dummy expectations are not the release inventory. A valid frozen-source WhatIf remains required before real conversion.",
+  "runs": [
+    {
+      "kind": "base",
+      "script": "scripts/Prepare-ReviewEvidence.ps1",
+      "exitCode": 1,
+      "dirtySourceRejected": true,
+      "outputCreated": false,
+      "arguments": [
+        "-ReportDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round7j-full-precommit",
+        "-PowerShellDirectory",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-powershell-3fb4a49",
+        "-ExpectedUnitCount",
+        "2",
+        "-ExpectedPostgresCount",
+        "1",
+        "-ExpectedBrowserCount",
+        "1",
+        "-SourceInventoryPath",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-frozen-evidence-3fb4a49/candidate-source-manifest.json",
+        "-OutputDirectory",
+        "/tmp/wordpairs-preparation-whatif-fb8c74514f6d4feabceb4ebae51c2c5f",
+        "-WhatIf"
+      ],
+      "scriptSha256": "895A0F77F2E3EAEBE7BD007F3AA1A86879D501343B2FA24446B2B4FCF614513C"
+    },
+    {
+      "kind": "supplemental",
+      "script": "scripts/Prepare-ReviewSupplementalEvidence.ps1",
+      "exitCode": 1,
+      "dirtySourceRejected": true,
+      "outputCreated": false,
+      "arguments": [
+        "-InvocationManifestPath",
+        "/tmp/intentionally-not-read.json",
+        "-ExpectedRealtimeCount",
+        "1",
+        "-SourceInventoryPath",
+        "\u003Crepo\u003E/docs/evidence/hosting/guest-admin-recovery/round6-frozen-evidence-3fb4a49/candidate-source-manifest.json",
+        "-OutputDirectory",
+        "/tmp/wordpairs-preparation-whatif-9350369b33c045e2bb7c45d25e7b8da1",
+        "-WhatIf"
+      ],
+      "scriptSha256": "02E2AB93462B03D6863E4BD3FA012F66C627413BDAAF4A26FFB11DC4130A330D"
+    }
+  ]
+}

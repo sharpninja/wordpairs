@@ -21,6 +21,7 @@ export async function GET(request: Request) {
     ? Response.json(
         {
           profile: result.value.profile,
+          permissions: [],
           oidcAvailable: oidcAvailable(),
           sessionGeneration: uiSessionGeneration(cookie(request, "wp_session")),
         },

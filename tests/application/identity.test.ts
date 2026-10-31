@@ -1,6 +1,7 @@
 import {describe,expect,it,vi} from 'vitest';
 import {IdentityService,type IdentityRepository} from '../../src/application/identity';
 import {failure,success} from '../../src/domain/result';
+import {assertPrivateMemberProfile} from '../ac-contracts/admin-profile-privacy';
 const setup=()=>{
   const repository:IdentityRepository={guest:vi.fn(async(_hash,profile)=>success(profile)),member:vi.fn(async(_identity,profile)=>success(profile)),session:vi.fn(async()=>failure('NOT_AUTHENTICATED')),revoke:vi.fn(async()=>success(undefined)),saveChallenge:vi.fn(async()=>success(undefined)),takeChallenge:vi.fn(async()=>success({state:'expected',nonce:'nonce',pkceVerifier:'v'.repeat(43)}))};
   const oidc={authorization:vi.fn(async()=>success('https://issuer.test/auth')),verify:vi.fn(async()=>failure('NOT_AUTHENTICATED'))};
@@ -9,6 +10,15 @@ const setup=()=>{
   return {service,repository,oidc};
 };
 describe('AC-20/21/46 identity application boundaries',()=>{
+  it('GA-10 verified account profiles default private using the mock-validated oracle',async()=>{
+    const {repository}=setup();
+    const provider={authorization:async()=>success('https://issuer.test/auth'),verify:async()=>success({issuer:'https://github.com',subject:'16146732'})};
+    const service=new IdentityService(repository,{token:()=> 'x'.repeat(43),hash:value=>`HASH:${value}`},{next:()=> 'private-owner'},{integer:min=>min},{now:()=>1000},provider);
+    const result=await service.completeLogin('b'.repeat(43),'code','expected');
+    if(!result.ok)throw new Error('Fixture login failed');
+    assertPrivateMemberProfile(result.value.profile);
+    expect(repository.member).toHaveBeenCalledWith({issuer:'https://github.com',subject:'16146732'},expect.objectContaining({publicLeaderboard:false}),expect.any(String),1000);
+  });
   it('passes only verified identities to profile association and refuses invalid browser credentials',async()=>{
     const {service,repository,oidc}=setup();
     expect(await service.guest('untrusted')).toEqual(failure('VALIDATION_ERROR'));

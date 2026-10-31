@@ -2,12 +2,20 @@ import { randomBytes, randomUUID } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 import { test, expect, type BrowserContext, type Page } from "@playwright/test";
 import seed from "../../src/infrastructure/catalog-seed.json" with { type: "json" };
+import { cleanupOwnedRoom } from "./owned-room-cleanup";
+import { attach as attachRequestDiagnostics } from "./request-diagnostics";
+import type { DiagnosticHandle, DiagnosticState } from "./request-diagnostics.contract";
+import { readyAfterBarrier } from "./readiness-barrier";
+import { captureUiCommand, commitUiCommand } from "./ui-command-capture";
+import { assertPageOwnRoundSolve, awaitCommandRetirement, awaitCommandUi } from "./ui-command-acknowledgement";
+import type { AckOutcome, UiCommandState } from "./ui-command-acknowledgement.contract";
+import type { CapturedCommand } from "./ui-command-capture.contract";
 
 const counts = process.env.WORDPAIRS_LIVE_PLAYER_COUNTS
   ? process.env.WORDPAIRS_LIVE_PLAYER_COUNTS.split(",").map(Number)
-  : Array.from({ length: 24 }, (_, i) => i + 2);
-if (counts.some((n) => !Number.isInteger(n) || n < 2 || n > 25) || new Set(counts).size !== counts.length)
-  throw new Error("WORDPAIRS_LIVE_PLAYER_COUNTS must contain unique player counts from2 through25");
+  : Array.from({ length: 9 }, (_, i) => i + 2);
+if (counts.some((n) => !Number.isInteger(n) || n < 2 || n > 10) || new Set(counts).size !== counts.length)
+  throw new Error("WORDPAIRS_LIVE_PLAYER_COUNTS must contain unique player counts from2 through10");
 
 for (const count of counts) test(`LIVE-SCALE ${count} real browser players complete eight UI rounds`, async ({ browser }, info) => {
   test.setTimeout(600000);
@@ -15,6 +23,7 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
   const contexts: BrowserContext[] = [];
   const pages: Page[] = [];
   const ids: string[] = [];
+  const aliases: string[] = [];
   const roomId = randomUUID();
   let created = false;
   let solves = 0;
@@ -25,6 +34,17 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
   let requestFailureTotal = 0;
   const requestFailures: { path: string; method: string; action: string | null; phase: string; elapsedMs: number; error: string | null }[] = [];
   const slowResponses: { path: string; method: string; status: number; durationMs: number; action: string | null }[] = [];
+  const diagnostics: DiagnosticState = { details: slowResponses, failures: [], failureTotal: 0 };
+  const diagnosticHandles: DiagnosticHandle[] = [];
+  const preparedActors: string[] = [];
+  const readinessObservations: { phase: "prepared" | "ready"; player: number; expectedProfileId: string; actorId: string; uiRosterCount: number; version: number }[] = [];
+  const commandBodyFailures: { player: number; phase: string; action: string | null; commandId: string | null; expectedProfileId: string | null; status: number; pendingControl: "visible-enabled" | "not-observed-enabled" }[] = [];
+  const commandAcknowledgements: { player: number; phase: string; scope: "room" | "game"; action: string; commandId: string | null; expectedProfileId: string | null; roundId: string | null; expectedVersion: number | null; status: number; responseVersion: number | null; renderedVersion: number | null; busy: string | null; pending: string; outcome: string; attempt: number }[] = [];
+  const failureListeners: { page: Page; listener: (request: import("@playwright/test").Request) => void }[] = [];
+  const disposeDiagnostics = () => {
+    for (const handle of diagnosticHandles) handle.dispose();
+    for (const { page, listener } of failureListeners) page.off("requestfailed", listener);
+  };
   const actionOf = (r: import("@playwright/test").Request): string | null => {
     try { const action = r.postDataJSON()?.action; return typeof action === "string" && ["ready", "presence", "leave", "choose", "answer", "continue"].includes(action) ? action : null; } catch { return null; }
   };
@@ -33,42 +53,61 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
   async function post(context: BrowserContext, path: string, data: unknown) {
     return context.request.post(path, { headers: { Origin: origin }, data });
   }
-  async function click(page: Page, action: string, run: () => Promise<unknown>) {
-    const [request] = await Promise.all([
-      page.waitForRequest((r) => r.method() === "POST" && r.url().includes(`/api/rooms/${roomId}`) && r.postDataJSON()?.action === action),
-      run(),
-    ]);
-    // A browser AbortSignal can end an uncertain request without any HTTP
-    // response. The UI retains that command just as it does after5xx.
-    const response = await request.response();
-    return {
-      ok: () => response?.ok() ?? false,
-      status: () => response?.status() ?? 0,
-      json: async () => response ? response.json() : null,
-      request: () => request,
-    };
+  async function click(page: Page, action: string, path: string, run: () => Promise<unknown>) {
+    return captureUiCommand(
+      () => page.waitForRequest((r) => r.method() === "POST" && new URL(r.url()).pathname === path && r.postDataJSON()?.action === action),
+      run,
+    );
   }
-  async function commitUi(page: Page, action: string, run: () => Promise<unknown>, scope: "room" | "game" = "game") {
-    let pendingPayload: unknown;
-    let retryPending = false;
-    for (let attempt = 0; attempt < 12; attempt++) {
-      const result = await click(page, action, retryPending
+  async function commitUi(page: Page, action: string, run: () => Promise<unknown>, scope: "room" | "game" = "game", expectedAnswer?: string) {
+    const pending = page.getByRole("button", { name: `Retry pending ${scope} request`, exact: true });
+    const player = pages.indexOf(page);
+    const path = `/api/rooms/${roomId}/${scope === "game" ? "match" : "lobby"}`;
+    let attempt = 0;
+    const observeCommand = (result: CapturedCommand, responseVersion: number | null) => {
+      const payload = result.request().postDataJSON() as Record<string, unknown>;
+      const uuid = (item: unknown) => typeof item === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(item) ? item : null;
+      let last = "";
+      return (state: UiCommandState, outcome: AckOutcome) => {
+        const key = `${state.version}:${state.busy}:${state.pending}:${outcome}`;
+        if (key === last) return;
+        last = key;
+        commandAcknowledgements.push({ player, phase, scope, action, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), roundId: uuid(payload.roundId), expectedVersion: typeof payload.expectedVersion === "number" && Number.isSafeInteger(payload.expectedVersion) && payload.expectedVersion >= 0 ? payload.expectedVersion : null, status: result.status(), responseVersion, renderedVersion: state.version !== null && /^\d+$/.test(state.version) ? Number(state.version) : null, busy: state.busy, pending: state.pending, outcome, attempt });
+      };
+    };
+    return commitUiCommand<{ version: number; correct: boolean }>(action, {
+      prepare: async () => { await awaitCommandUi(page, scope, 0, "fresh"); },
+      validate: (data, request) => {
+        const payload = data as Record<string, unknown>;
+        expect(new URL((request as import("@playwright/test").Request).url()).pathname).toBe(path);
+        expect(payload.action).toBe(action);
+        expect(payload.expectedProfileId).toBe(ids[player]);
+        if (expectedAnswer !== undefined) expect(payload.answer).toBe(expectedAnswer);
+      },
+      acknowledge: async (result, value) => {
+        const body = value as { version: number };
+        return awaitCommandUi(page, scope, body.version, "matrix", observeCommand(result, Number.isSafeInteger(body.version) ? body.version : null));
+      },
+      retired: async (result) => {
+        const observe = observeCommand(result, null);
+        await awaitCommandRetirement(page, scope, result, 0, ({ state, outcome }) => observe(state, outcome));
+      },
+      invoke: (retryPending) => { attempt++; return click(page, action, path, retryPending
         ? () => page.getByRole("button", { name: `Retry pending ${scope} request`, exact: true }).click()
-        : run);
-      const payload = result.request().postDataJSON();
-      if (retryPending) expect(payload).toEqual(pendingPayload);
-      if (result.ok()) return result.json();
-      if (result.status() === 0 || result.status() >= 500) {
-        uncertainUiRetries++;
-        pendingPayload ??= payload;
-        retryPending = true;
-      } else {
-        expect(result.status()).toBe(409);
-        retryPending = false;
-        pendingPayload = undefined;
-      }
-    }
-    throw new Error(`UI ${action} did not converge through explicit conflict/uncertain retries`);
+        : run); },
+      pendingReady: async () => {
+        try { await expect(pending).toBeVisible(); await expect(pending).toBeEnabled(); return true; }
+        catch { return false; }
+      },
+      assertPayload: (payload, original) => { expect(payload).toEqual(original); },
+      uncertain: () => { uncertainUiRetries++; },
+      bodyError: ({ request, status, pending: enabled }) => {
+        const data: unknown = request.postDataJSON();
+        const payload = typeof data === "object" && data !== null ? data as Record<string, unknown> : {};
+        const uuid = (value: unknown) => typeof value === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value) ? value : null;
+        commandBodyFailures.push({ player: pages.indexOf(page), phase, action: typeof payload.action === "string" && ["ready", "leave", "choose", "answer", "continue"].includes(payload.action) ? payload.action : null, commandId: uuid(payload.commandId), expectedProfileId: uuid(payload.expectedProfileId), status, pendingControl: enabled ? "visible-enabled" : "not-observed-enabled" });
+      },
+    });
   }
   try {
     for (let i = 0; i < count; i++) {
@@ -88,26 +127,43 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
       const joined = await post(contexts[i], `/api/rooms/${code}`, { action: "join", mode: "player", expectedVersion: room.version, expectedProfileId: ids[i], commandId: randomUUID() });
       expect(joined.status()).toBe(200);
     }
-    // Bound simultaneous navigations rather than create25 renderer loads at once.
+    // Bound simultaneous navigations across the supported ten-player room.
     for (let i = 0; i < count; i += 4) {
       const batch = await Promise.all(contexts.slice(i, i + 4).map(async (context) => {
         const page = await context.newPage();
-        page.on("requestfailed", (r) => { requestFailureTotal++; if (requestFailures.length < 100) requestFailures.push({ path: new URL(r.url()).pathname, method: r.method(), action: actionOf(r), phase, elapsedMs: Date.now() - started, error: r.failure()?.errorText ?? null }); });
-        page.on("requestfinished", async (r) => {
-          if (slowResponses.length >= 100 || !new URL(r.url()).pathname.startsWith("/api/")) return;
-          const durationMs = r.timing().responseEnd;
-          const response = await r.response();
-          if (response && (response.status() >= 400 || durationMs > 1000)) slowResponses.push({ path: new URL(r.url()).pathname, method: r.method(), status: response.status(), durationMs, action: actionOf(r) });
-        });
+        const failureListener = (r: import("@playwright/test").Request) => { requestFailureTotal++; if (requestFailures.length < 100) requestFailures.push({ path: new URL(r.url()).pathname, method: r.method(), action: actionOf(r), phase, elapsedMs: Date.now() - started, error: r.failure()?.errorText ?? null }); };
+        page.on("requestfailed", failureListener);
+        failureListeners.push({ page, listener: failureListener });
+        diagnosticHandles.push(attachRequestDiagnostics(page, diagnostics));
         await page.goto(`/rooms/${roomId}`); return page;
       }));
       pages.push(...batch);
     }
-    for (const page of pages) {
-      phase = "UI readiness";
+    // A slow final connection must not become the sole unready holdout while
+    // earlier pages are readied. Complete actual UI preparation for everyone.
+    phase = "UI readiness barrier";
+    await readyAfterBarrier(pages, async (page, player) => {
       await expect(page.getByText("● Live updates connected", { exact: true })).toBeVisible();
-      await commitUi(page, "ready", () => page.getByRole("button", { name: "Mark ready", exact: true }).click(), "room");
-    }
+      await expect(page.locator(".roster > li")).toHaveCount(count);
+      const ready = page.getByRole("button", { name: "Mark ready", exact: true });
+      await expect(ready).toBeVisible();
+      await expect(ready).toBeEnabled();
+      // Attribute UI setup to its real same-context actor, without readiness
+      // injection or an additional diagnostic read between ready commands.
+      const response = await contexts[player].request.get(`/api/rooms/${roomId}`);
+      expect(response.status()).toBe(200);
+      const room = await response.json();
+      expect(room.actorId).toBe(ids[player]);
+      expect(room.role).toBe("player");
+      expect(room.players).toHaveLength(count);
+      preparedActors[player] = room.actorId;
+      aliases[player] = (await page.locator(".profile-alias strong").innerText()).trim();
+      readinessObservations.push({ phase: "prepared", player, expectedProfileId: ids[player], actorId: room.actorId, uiRosterCount: await page.locator(".roster > li").count(), version: room.version });
+    }, async (page, player) => {
+      phase = "UI readiness";
+      const ready = await commitUi(page, "ready", () => page.getByRole("button", { name: "Mark ready", exact: true }).click(), "room");
+      readinessObservations.push({ phase: "ready", player, expectedProfileId: ids[player], actorId: preparedActors[player], uiRosterCount: await page.locator(".roster > li").count(), version: ready.version });
+    });
     for (let round = 1; round <= 8; round++) {
       phase = `UI round ${round}`;
       console.log(`LIVE_SCALE players=${count} round=${round}`);
@@ -129,8 +185,9 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
           await expect(page.getByLabel("Your answer", { exact: true })).toBeEnabled();
           await page.getByLabel("Your answer", { exact: true }).fill(pair.target);
           await page.getByRole("button", { name: "Submit answer", exact: true }).click();
-        });
+        }, "game", pair.target);
         expect(solved.correct).toBe(true);
+        await assertPageOwnRoundSolve(page, aliases[pages.indexOf(page)], round);
         solves++;
       }));
       const failed = submissions.find((r) => r.status === "rejected");
@@ -145,31 +202,40 @@ for (const count of counts) test(`LIVE-SCALE ${count} real browser players compl
     }
     expect(solves).toBe(count * 8);
     completed = true;
-    await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
+    await info.attach("live-scale-result", { body: JSON.stringify({ players: count, rounds: 8, uiSolves: solves, uncertainUiRetries, commandAcknowledgements, simultaneousAnswerUis: 2, realHttp: true, realPrivateWebSockets: true, apiSetup: true }), contentType: "application/json" });
   } catch (error) {
     const uiStates = await Promise.all(pages.map(async (page, player) => ({ player, closed: page.isClosed(), browserConnected: browser.isConnected(), body: await page.locator("body").innerText({ timeout: 2000 }).catch((problem: unknown) => `Page unavailable: ${problem instanceof Error ? problem.message.slice(0, 500) : "Unknown error"}`) })));
-    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, requestFailureTotal, requestFailures, slowResponses }, null, 2));
+    await writeFile(`docs/evidence/room-sync/live-scale-${count}-failure-ui.json`, JSON.stringify({ players: count, phase, uiStates, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailures, slowResponses }, null, 2));
     await pages[0]?.screenshot({ path: info.outputPath("failure-ui.png"), fullPage: true, timeout: 5000 }).catch(() => {});
-    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
+    await info.attach("live-scale-failure", { body: JSON.stringify({ players: count, phase, uiSolves: solves, uncertainUiRetries, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailures, slowResponses }), contentType: "application/json" });
     throw error;
   } finally {
-    let cleanupFailures = 0;
-    let roomClosed = false;
-    if (created) for (let i = count - 1; i >= 0; i--) {
-      try {
-      for (let attempt = 0; attempt < 4; attempt++) {
-        const room = await (await contexts[i].request.get(`/api/rooms/${roomId}`)).json();
-        if (room.status === "closed") { roomClosed = true; break; }
-        if (room.role !== "player") break;
-        const left = await post(contexts[i], `/api/rooms/${roomId}/lobby`, { action: "leave", expectedProfileId: ids[i], expectedVersion: room.version, commandId: randomUUID() });
-        if (left.ok()) break;
-        if (left.status() !== 409) break;
-      }
-      } catch { cleanupFailures++; }
-      if (roomClosed) break;
+    let cleanup = { cleanupFailures: 0, roomClosed: false, unresolvedPlayerIndices: [] as number[] };
+    try {
+      if (created) cleanup = await cleanupOwnedRoom(contexts.map((context, index) => ({
+        profileId: ids[index],
+        read: async () => {
+          const response = await context.request.get(`/api/rooms/${roomId}`);
+          const body = await response.text();
+          return { status: response.status(), body: response.ok() ? JSON.parse(body) : undefined };
+        },
+        leave: async command => {
+          const response = await post(context, `/api/rooms/${roomId}/lobby`, { action: "leave", expectedProfileId: ids[index], ...command });
+          await response.body();
+          return { status: response.status() };
+        },
+      })), randomUUID);
+      disposeDiagnostics();
+      const requestDiagnostics = { failureTotal: diagnostics.failureTotal, failures: diagnostics.failures, failuresTruncated: diagnostics.failureTotal > diagnostics.failures.length, pendingAtDispose: diagnosticHandles.reduce((total, handle) => total + handle.pendingAtDispose, 0), qualification: "Response headers keyed by Request identity; timing captured at completion. Pending requests at diagnostic disposal are excluded before context shutdown." };
+      await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, completedRoomRetained: cleanup.roomClosed, readinessObservations, commandBodyFailures, commandAcknowledgements, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, requestDiagnostics, realHttp: true, apiSetup: true, qualification: "Actual network and private WebSockets with ordinary safety/presence reads enabled. Strict push-only behavior is verified separately." }, null, 2));
+      await info.attach("live-scale-cleanup", { body: JSON.stringify({ players: count, cleanupFailures: cleanup.cleanupFailures, unresolvedPlayerIndices: cleanup.unresolvedPlayerIndices, ownRoomOnly: true }), contentType: "application/json" });
+    } finally {
+      disposeDiagnostics();
+      await Promise.allSettled(contexts.map((context) => context.close()));
     }
-    await writeFile(`docs/evidence/room-sync/live-scale-${count}.json`, JSON.stringify({ players: count, phase, completed, rounds: completed ? 8 : null, uiSolves: solves, uncertainUiRetries, simultaneousAnswerUis: 2, cleanupFailures, completedRoomRetained: roomClosed, requestFailureTotal, requestFailuresTruncated: requestFailureTotal > requestFailures.length, requestFailures, slowResponses, realHttp: true, apiSetup: true }, null, 2));
-    await info.attach("live-scale-cleanup", { body: JSON.stringify({ players: count, cleanupFailures, ownRoomOnly: true }), contentType: "application/json" });
-    await Promise.allSettled(contexts.map((context) => context.close()));
+    if (completed) {
+      expect(cleanup.cleanupFailures, "Owned room cleanup must be verified").toBe(0);
+      expect(diagnostics.failureTotal, "Active request instrumentation must retain complete response evidence").toBe(0);
+    }
   }
 });

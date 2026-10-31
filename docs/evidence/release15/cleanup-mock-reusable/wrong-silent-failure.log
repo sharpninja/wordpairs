@@ -1,0 +1,181 @@
+
+ RUN  v5.0.5 <repo>
+
+ ❯ tests/application/live-scale-cleanup.test.ts (10 tests | 6 failed) 20ms
+   ❯ TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup (10)
+     ✓ confirms absence after a successful leave instead of trusting the write response 3ms
+     × reports a membership still present after every successful leave response 8ms
+     × reports repeated server failures and preserves the exact uncertain command 1ms
+     ✓ retries transport uncertainty with the same command before verified absence 0ms
+     × bounds conflicts and does not silently accept exhausted retries 1ms
+     × does not treat lost authentication or malformed reads as removed membership 1ms
+     ✓ accepts an authenticated empty membership or missing owned room without a write 0ms
+     × preserves a completed closed room and requires the expected actor identity 1ms
+     × cleans only supplied actors in reverse order and reports exact unresolved indices 1ms
+     ✓ also verifies observer departure if an owned actor's membership changed 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > reports a membership still present after every successful leave response
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:36:53
+     34|   it("reports a membership still present after every successful leave …
+     35|     const probe = actor([member()]);
+     36|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+       |                                                     ^
+     37|     expect(probe.commands).toHaveLength(4);
+     38|     expect(probe.reads()).toBeGreaterThanOrEqual(5);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > reports repeated server failures and preserves the exact uncertain command
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:42:53
+     40|   it("reports repeated server failures and preserves the exact uncerta…
+     41|     const probe = actor([member()], [{ status: 503 }]);
+     42|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+       |                                                     ^
+     43|     expect(probe.commands).toHaveLength(4);
+     44|     expect(probe.commands.every(command => JSON.stringify(command) ===…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > bounds conflicts and does not silently accept exhausted retries
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:53:53
+     51|   it("bounds conflicts and does not silently accept exhausted retries"…
+     52|     const probe = actor([member()], [{ status: 409 }]);
+     53|     expect(await cleanup([probe.transport], ids())).toEqual({ cleanupF…
+       |                                                     ^
+     54|     expect(probe.commands).toHaveLength(4);
+     55|     expect(new Set(probe.commands.map(command => command.commandId)).s…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > does not treat lost authentication or malformed reads as removed membership
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:60:55
+     58|     for (const read of [{ status: 401 }, { status: 403 }, { status: 50…
+     59|       const probe = actor([read]);
+     60|       expect(await cleanup([probe.transport], ids())).toEqual({ cleanu…
+       |                                                       ^
+     61|       expect(probe.commands).toEqual([]);
+     62|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > preserves a completed closed room and requires the expected actor identity
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:76:61
+     74|     expect(closed.commands).toEqual([]);
+     75|     const wrongIdentity = actor([absent("other")]);
+     76|     expect(await cleanup([wrongIdentity.transport], ids())).toEqual({ …
+       |                                                             ^
+     77|   });
+     78|   it("cleans only supplied actors in reverse order and reports exact u…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/application/live-scale-cleanup.test.ts > TEST-ROOMSYNC-139 LIVE-07: truthful bounded cleanup > cleans only supplied actors in reverse order and reports exact unresolved indices
+AssertionError: expected { cleanupFailures: +0, …(2) } to deeply equal { cleanupFailures: 1, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "cleanupFailures": 1,
++   "cleanupFailures": 0,
+    "roomClosed": false,
+-   "unresolvedPlayerIndices": [
+-     0,
+-   ],
++   "unresolvedPlayerIndices": [],
+  }
+
+ ❯ tests/application/live-scale-cleanup.test.ts:83:71
+     81|     const order: string[] = [];
+     82|     for (const probe of [first, second]) { const read = probe.transpor…
+     83|     expect(await cleanup([first.transport, second.transport], ids())).…
+       |                                                                       ^
+     84|     expect(order[0]).toBe("p2");
+     85|     expect(second.commands).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 4 passed (10)
+   Start at  15:15:53
+   Duration  186ms (tests 47%, import 29%, transform 12%, worker 11%)
+
+JUNIT report written to <repo>/docs/evidence/release15/cleanup-mock-reusable/wrong-silent-failure.xml

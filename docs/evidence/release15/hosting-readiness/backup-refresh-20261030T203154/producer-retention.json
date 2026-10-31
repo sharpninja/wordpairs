@@ -1,0 +1,47 @@
+{
+  "atLocal": "2026-10-30T20:33:44.4384545-05:00",
+  "sessionId": "Codex-20261030T194802Z-plugin-session",
+  "requestId": "req-20261031T013147Z-app-backup-refresh",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261030T203656Z-cline-beam-release",
+  "sourceRevision": "6063acd9d6869fd71a33f75ee5c940c736c99124",
+  "sourceManifest": {
+    "path": "\u003Crepo\u003E/docs/evidence/release15/frozen-6063acd/source-inventory.json",
+    "sha256": "93718503684EDDA092F48F299999D9251752CE2F36DC6433261BF5AC243F7255"
+  },
+  "baseline": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/backups/recovery-tools/Invoke-WordpairsEncryptedBackup-48EACDF6C0C5.ps1",
+  "baselineSha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+  "adaptation": "Exactly one public receipt destination string changed. All backup/source/restore/encryption/cleanup behavior retained byte-for-byte after reversing that one replacement.",
+  "producers": [
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/Invoke-WordpairsEncryptedBackup-original.ps1",
+      "sha256": "48EACDF6C0C5CC8BAFEA237E89D5DE0CB22C5805853DCFCAABC4043C864C95C0",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/Invoke-WordpairsEncryptedBackup-refresh.ps1",
+      "sha256": "B4BA738228AF74ADF82E6642F11BB3305C38DAA6B48DAE07E4DF7185727979F9",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    },
+    {
+      "path": "\u003Crepo\u003E/docs/evidence/release15/hosting-readiness/backup-refresh-20261030T203154/PrepareWordpairsBackupRefresh.ps1",
+      "sha256": "E6CC1FD1B64E39D478B8C02A6DB01304F4D689EE93A2D773ED22250C26DFC078",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    }
+  ],
+  "recipientPublicSha256": "B97FFDDACA958E2FFFE3A98C10EBC03D5E6B82D535D17AE21E589389E62980A2",
+  "ageBinarySha256": "EB7DD1B518F0A307C99CD97782623C5321DA049154B04ACD2D98D21AA7BC9B2C",
+  "powerShell": "7.6.7",
+  "analyzer": "1.25.0",
+  "documentation": [
+    "https://supabase.com/changelog",
+    "https://supabase.com/docs/guides/platform/backups",
+    "https://www.postgresql.org/docs/17/app-pgdump.html"
+  ],
+  "docsQualification": "Public changelog.md fetch returned unsupported markdown content type; HTML changelog and current backup documentation plus connected Supabase search_docs inspected. No provider settings queried or changed.",
+  "noHostedReadYet": true,
+  "noCredentialValueReadYet": true
+}

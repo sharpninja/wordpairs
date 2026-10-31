@@ -1,6 +1,4 @@
-import { oidcAvailable } from "../../../infrastructure/runtime";
-import { AdminScreen } from "../../../web/admin-panel";
-export const dynamic = "force-dynamic";
+import { redirect } from "next/navigation";
 export default function UsersPage() {
-  return <AdminScreen page="users" oidcEnabled={oidcAvailable()} />;
+  redirect("/admin");
 }

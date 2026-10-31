@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MAX_ROOM_PLAYERS } from "../domain/rooms";
 import { getPublicService } from "../infrastructure/runtime";
 import { LandingBoard } from "../web/landing-board";
 
@@ -46,7 +47,9 @@ export default async function HomePage({
               Learn the rules
             </Link>
           </div>
-          <p className="hero-meta">2–25 players · 8 rounds · Free to play</p>
+          <p className="hero-meta">
+            2–{MAX_ROOM_PLAYERS} players · 8 rounds · Free to play
+          </p>
         </div>
         <div className="word-art" aria-hidden="true">
           <div className="tiles">
