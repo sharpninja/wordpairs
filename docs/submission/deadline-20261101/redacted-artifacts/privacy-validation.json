@@ -37,5 +37,13 @@
     "analyzerWarningsAndErrors": 0
   },
   "conservativeCandidatePolicy": "Three unmatched credential-pattern literals were conservatively masked without asserting they were actual credentials. No literal values or key fingerprints are published.",
-  "qualification": "Originals remain unchanged. Derivatives preserve inventoried top-level event order/count with explicit redactions. Static checks and canary fixtures do not prove absence of every possible private identifier; they establish the documented pattern/known-value and structural checks for this exact manifest. No new review acceptance is claimed."
+  "qualification": "Originals remain unchanged. Derivatives preserve inventoried top-level event order/count with explicit redactions. Static checks and canary fixtures do not prove absence of every possible private identifier; they establish the documented pattern/known-value and structural checks for this exact manifest. No new review acceptance is claimed.",
+  "publicationCorrections": [
+    {
+      "receipt": "docs/receipts/hv/20261101T150909-operator-context-publication-correction.json",
+      "beforeCurrentBindingSha256": "D6E779DCE5AA4E12F812E2FC90033D293D4C7127E3BAEA8680509BFE0C260FC4",
+      "originalBytesRetainedPrivately": true,
+      "qualification": "Current published derivative bindings were updated after the privacy correction. Historical original hashes and historical review or validation outcomes retain their original meaning. This creates no new execution, independent review acceptance, or requirement satisfaction."
+    }
+  ]
 }

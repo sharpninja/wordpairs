@@ -1,0 +1,360 @@
+title = "Wordpairs public evidence privacy checks"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "private-operator-context"
+description = "Private host, account, network, key-location and coordination metadata"
+regex = '''(?:10\.4[2]\.0\.|L[A]B-O[M]ARCHY|PAYTON-LEG[I]ON2|LEG[I]ON2|k[i]ngd|id_ed25[5]19|authorized_[k]eys|cred-leg[i]on2|leg[i]on2-github|MEMORY-(?:INFR[A]|PROCEDUR[E]|PROCES[S])-)'''
+
+[[rules]]
+id = "private-agent-home"
+description = "Absolute private agent or SSH home directory"
+regex = '''/home/[a-z]+/(\.(?:claude|codex|ssh)/)'''
+secretGroup = 1
+
+[[rules]]
+id = "private-network-in-documentation"
+description = "Private IPv4 addresses in published documentation"
+path = '''(?:^|/)docs/'''
+regex = '''\b(?:10(?:\.[0-9]{1,3}){3}|172\.(?:1[6-9]|2[0-9]|3[01])(?:\.[0-9]{1,3}){2}|192\.168(?:\.[0-9]{1,3}){2})\b'''
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/phase6/source-hashes\.json$''']
+regexTarget = "match"
+regexes = [
+  '''^content-api\.test\.ts":[ ]"ffe14e5a3ce39039e60d761dfe1680bd880a41e58fa8619212235f2ae609f76f"$''',
+  '''^guest-credential\.ts":[ ]"d9d86461a48df271eab38887e096a8e6dc6bfca0469ab759b84a4337b9356b1c"$''',
+  '''^identity-api\.test\.ts":[ ]"92ed87a490e06eff74b0542d27f01c1db0353ce0b589f3b5f4c89747554348f5"$''',
+  '''^landing-api\.test\.ts":[ ]"72376c50a2297526d01731da2847386d1b840a8897003dd3ad8a29bedc1d2360"$''',
+  '''^lobby-api\.test\.ts":[ ]"c874ff43ba8727fe72f6c52170d281e4bd2f60b31738fce979e8b408b64dd775"$''',
+  '''^matches-api\.test\.ts":[ ]"eb45477809deaa2e726be73f0c674738e665a4718a4a23010ae73d5d483bde69"$''',
+  '''^reactions-api\.test\.ts":[ ]"dbc5c417ac2ea2370193037ec129ac46933532434e77db088743e317b903772c"$''',
+  '''^rooms-api\.test\.ts":[ ]"6c0f6e30efd15fd054ea190005b8dd7025bf7619e9f859f07fd103af8e83f435"$''',
+  '''^secrets\.ts":[ ]"f9ed04b1a0605dbf00dfefc729bcae01d4de8f2a03978b8f0e1cd6960dcee4b7"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/evidence/phase6/source-hashes\.json$''']
+regexTarget = "match"
+regexes = [
+  '''^content-api\.test\.ts":[ ]"ffe14e5a3ce39039e60d761dfe1680bd880a41e58fa8619212235f2ae609f76f"$''',
+  '''^guest-credential\.ts":[ ]"d9d86461a48df271eab38887e096a8e6dc6bfca0469ab759b84a4337b9356b1c"$''',
+  '''^identity-api\.test\.ts":[ ]"92ed87a490e06eff74b0542d27f01c1db0353ce0b589f3b5f4c89747554348f5"$''',
+  '''^landing-api\.test\.ts":[ ]"72376c50a2297526d01731da2847386d1b840a8897003dd3ad8a29bedc1d2360"$''',
+  '''^lobby-api\.test\.ts":[ ]"c874ff43ba8727fe72f6c52170d281e4bd2f60b31738fce979e8b408b64dd775"$''',
+  '''^matches-api\.test\.ts":[ ]"eb45477809deaa2e726be73f0c674738e665a4718a4a23010ae73d5d483bde69"$''',
+  '''^reactions-api\.test\.ts":[ ]"dbc5c417ac2ea2370193037ec129ac46933532434e77db088743e317b903772c"$''',
+  '''^rooms-api\.test\.ts":[ ]"6c0f6e30efd15fd054ea190005b8dd7025bf7619e9f859f07fd103af8e83f435"$''',
+  '''^secrets\.ts":[ ]"f9ed04b1a0605dbf00dfefc729bcae01d4de8f2a03978b8f0e1cd6960dcee4b7"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase6_review_receipt\.jsonl$''']
+regexTarget = "match"
+regexes = [
+  '''^content-api\.test\.ts":"ffe14e5a3ce39039e60d761dfe1680bd880a41e58fa8619212235f2ae609f76f"$''',
+  '''^guest-credential\.ts":"d9d86461a48df271eab38887e096a8e6dc6bfca0469ab759b84a4337b9356b1c"$''',
+  '''^identity-api\.test\.ts":"92ed87a490e06eff74b0542d27f01c1db0353ce0b589f3b5f4c89747554348f5"$''',
+  '''^landing-api\.test\.ts":"72376c50a2297526d01731da2847386d1b840a8897003dd3ad8a29bedc1d2360"$''',
+  '''^lobby-api\.test\.ts":"c874ff43ba8727fe72f6c52170d281e4bd2f60b31738fce979e8b408b64dd775"$''',
+  '''^matches-api\.test\.ts":"eb45477809deaa2e726be73f0c674738e665a4718a4a23010ae73d5d483bde69"$''',
+  '''^reactions-api\.test\.ts":"dbc5c417ac2ea2370193037ec129ac46933532434e77db088743e317b903772c"$''',
+  '''^rooms-api\.test\.ts":"6c0f6e30efd15fd054ea190005b8dd7025bf7619e9f859f07fd103af8e83f435"$''',
+  '''^secrets\.ts":"f9ed04b1a0605dbf00dfefc729bcae01d4de8f2a03978b8f0e1cd6960dcee4b7"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/design-20261027/receipt\.json$''']
+regexTarget = "match"
+regexes = [
+  '''^TEST-ACCESSIBLEGAMECONTROLS-044":[ ]"681f60b31c88f7069074e43b0d05fe049fe48c52b3bfc69256e3f0aedbcec292"$''',
+  '''^TEST-OIDCTOKENVALIDATION-046":[ ]"e0a2120dd944d5c737ba1df193ae0d67d64b1a8a0221f023138281f7bf6ad393"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/receipt\.json$''']
+regexTarget = "match"
+regexes = [
+  '''^TEST-ACCESSIBLEGAMECONTROLS-044":[ ]"681f60b31c88f7069074e43b0d05fe049fe48c52b3bfc69256e3f0aedbcec292"$''',
+  '''^TEST-OIDCTOKENVALIDATION-046":[ ]"e0a2120dd944d5c737ba1df193ae0d67d64b1a8a0221f023138281f7bf6ad393"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/phase6_review_receipt\.jsonl$''']
+regexTarget = "match"
+regexes = [
+  '''^content-api\.test\.ts":"ffe14e5a3ce39039e60d761dfe1680bd880a41e58fa8619212235f2ae609f76f"$''',
+  '''^guest-credential\.ts":"d9d86461a48df271eab38887e096a8e6dc6bfca0469ab759b84a4337b9356b1c"$''',
+  '''^identity-api\.test\.ts":"92ed87a490e06eff74b0542d27f01c1db0353ce0b589f3b5f4c89747554348f5"$''',
+  '''^landing-api\.test\.ts":"72376c50a2297526d01731da2847386d1b840a8897003dd3ad8a29bedc1d2360"$''',
+  '''^lobby-api\.test\.ts":"c874ff43ba8727fe72f6c52170d281e4bd2f60b31738fce979e8b408b64dd775"$''',
+  '''^matches-api\.test\.ts":"eb45477809deaa2e726be73f0c674738e665a4718a4a23010ae73d5d483bde69"$''',
+  '''^reactions-api\.test\.ts":"dbc5c417ac2ea2370193037ec129ac46933532434e77db088743e317b903772c"$''',
+  '''^rooms-api\.test\.ts":"6c0f6e30efd15fd054ea190005b8dd7025bf7619e9f859f07fd103af8e83f435"$''',
+  '''^secrets\.ts":"f9ed04b1a0605dbf00dfefc729bcae01d4de8f2a03978b8f0e1cd6960dcee4b7"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/testing/ui/archive/design-20261027/receipt\.json$''']
+regexTarget = "match"
+regexes = [
+  '''^TEST-ACCESSIBLEGAMECONTROLS-044":[ ]"681f60b31c88f7069074e43b0d05fe049fe48c52b3bfc69256e3f0aedbcec292"$''',
+  '''^TEST-OIDCTOKENVALIDATION-046":[ ]"e0a2120dd944d5c737ba1df193ae0d67d64b1a8a0221f023138281f7bf6ad393"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/testing/ui/receipt\.json$''']
+regexTarget = "match"
+regexes = [
+  '''^TEST-ACCESSIBLEGAMECONTROLS-044":[ ]"681f60b31c88f7069074e43b0d05fe049fe48c52b3bfc69256e3f0aedbcec292"$''',
+  '''^TEST-OIDCTOKENVALIDATION-046":[ ]"e0a2120dd944d5c737ba1df193ae0d67d64b1a8a0221f023138281f7bf6ad393"$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-0fb37e6/client-boundary\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ][ ]"revision":[ ]"0fb37e621d16fcc56a27abff3fe73b2e66cdcca2",\r?\n?$''',
+  '''^\n?[ ][ ][ ][ ][ ][ ]"revision":[ ]"0fb37e621d16fcc56a27abff3fe73b2e66cdcca2",\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-131269a/client-boundary\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ][ ]"revision":[ ]"131269a590046a3c1c83314d11ff79f2b731799c",\r?\n?$''',
+  '''^\n?[ ][ ][ ][ ][ ][ ]"revision":[ ]"131269a590046a3c1c83314d11ff79f2b731799c",\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-6063acd/client-boundary-producers/InspectWordpairsCompiledClientBoundary-6063acd\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'6063acd9d6869fd71a33f75ee5c940c736c99124'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-6063acd/client-boundary-producers/InspectWordpairsCompiledClientBoundary-c1181eb-original\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'c1181eb4eb01825c8b12f3521f92286080addfba'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-6063acd/client-boundary-producers/InspectWordpairsCompiledClientBoundary-original\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'131269a590046a3c1c83314d11ff79f2b731799c'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-6063acd/client-boundary-producers/PrepareWordpairs606ClientInspection\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ]foreach\(\$pair[ ]in[ ]@\(@\('frozen-c1181eb','frozen-6063acd'\),@\('c1181eb4eb01825c8b12f3521f92286080addfba',\$revision\),@\('c37a6139-186d-4a40-9136-d0a49e2f52a3',\$nativeRun\),@\('169e6d93-632f-423c-8572-be3cccb96a00',\$groupRun\),@\('ne[ ]353','ne[ ]355'\)\)\)\{if\(-not[ ]\$text\.Contains\(\$pair\[0],\[StringComparison]::Ordinal\)\)\{throw[ ]'Exact[ ]adaptation[ ]anchor[ ]absent'};\$text=\$text\.Replace\(\$pair\[0],\$pair\[1]\)}\r?\n?$''',
+  '''^\n?\$revision='6063acd9d6869fd71a33f75ee5c940c736c99124'\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-6063acd/client-boundary\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ][ ]"revision":[ ]"6063acd9d6869fd71a33f75ee5c940c736c99124",\r?\n?$''',
+  '''^\n?[ ][ ][ ][ ][ ][ ]"revision":[ ]"6063acd9d6869fd71a33f75ee5c940c736c99124",\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-af6ee6f/client-boundary-producers/InspectWordpairsCompiledClientBoundary-af6ee6f\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'af6ee6fe0c4a288ac23f570a4fa6a94d697d8127'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-af6ee6f/client-boundary-producers/InspectWordpairsCompiledClientBoundary-fdee7a2-original\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'fdee7a2569bb4742e008977e2a9cd7d312def859'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-af6ee6f/client-boundary-producers/InspectWordpairsCompiledClientBoundary-original\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'131269a590046a3c1c83314d11ff79f2b731799c'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-af6ee6f/client-boundary-producers/PrepareWordpairsAf6ClientInspection\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ]\$data=\[ordered]@\{recordedAt=\[DateTimeOffset]::Now\.ToString\('o'\);sourceRevision='af6ee6fe0c4a288ac23f570a4fa6a94d697d8127';sourceCount=351;nativeRunId='f8313a99-00ac-4f29-abe1-6c1443ea98fe';producerGroupRunId='9d00fa3e-555b-4491-8b8b-4f72d3b6177d';producerPins=\$pins;originalsRetained=\$true;adaptation='Only[ ]frozen[ ]directory/revision/351denominator,[ ]exact[ ]native/group[ ]run[ ]IDs[ ]and[ ]retained-original[ ]pointer[ ]changed\.[ ]Original[ ]scan[ ]algorithm,[ ]known-value[ ]boundaries[ ]and[ ]timestamp/hash[ ]fail-closed[ ]assertions[ ]preserved\.';sessionId='Codex-20261030T194802Z-plugin-session';requestId='req-20261031T001322Z-client-boundary-af6ee6f';qualification='Producer[ ]retention[ ]only,[ ]before[ ]scan\.[ ]Existing[ ]historical[ ]receipts[ ]unchanged\.'}\r?\n?$''',
+  '''^\n?[ ]foreach\(\$pair[ ]in[ ]@\(@\('frozen-fdee7a2','frozen-af6ee6f'\),@\('fdee7a2569bb4742e008977e2a9cd7d312def859','af6ee6fe0c4a288ac23f570a4fa6a94d697d8127'\),@\('b8d49829-2942-4b9d-aa8f-1d3667e4016d','f8313a99-00ac-4f29-abe1-6c1443ea98fe'\),@\('0f337bfa-39c7-4650-b35d-6ee8d698be0f','9d00fa3e-555b-4491-8b8b-4f72d3b6177d'\),@\('ne[ ]348','ne[ ]351'\),@\('/tmp/InspectWordpairsCompiledClientBoundary-fdee7a2-original\.ps1',\$originalCopy\)\)\)\{if\(-not[ ]\$text\.Contains\(\$pair\[0],\[StringComparison]::Ordinal\)\)\{throw[ ]'Expected[ ]adaptation[ ]anchor[ ]absent'};\$text=\$text\.Replace\(\$pair\[0],\$pair\[1]\)}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-af6ee6f/client-boundary\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ][ ]"revision":[ ]"af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",\r?\n?$''',
+  '''^\n?[ ][ ][ ][ ][ ][ ]"revision":[ ]"af6ee6fe0c4a288ac23f570a4fa6a94d697d8127",\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-c1181eb/client-boundary-producers/InspectWordpairsCompiledClientBoundary-c1181eb\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'c1181eb4eb01825c8b12f3521f92286080addfba'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-c1181eb/client-boundary-producers/InspectWordpairsCompiledClientBoundary-fdee7a2-original\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'fdee7a2569bb4742e008977e2a9cd7d312def859'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-c1181eb/client-boundary-producers/InspectWordpairsCompiledClientBoundary-original\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'131269a590046a3c1c83314d11ff79f2b731799c'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-c1181eb/client-boundary-producers/PrepareWordpairsC118ClientInspection\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ]foreach\(\$pair[ ]in[ ]@\(@\('frozen-fdee7a2','frozen-c1181eb'\),@\('fdee7a2569bb4742e008977e2a9cd7d312def859',\$revision\),@\('b8d49829-2942-4b9d-aa8f-1d3667e4016d',\$nativeRun\),@\('0f337bfa-39c7-4650-b35d-6ee8d698be0f',\$groupRun\),@\('ne[ ]348','ne[ ]353'\),@\('/tmp/InspectWordpairsCompiledClientBoundary-fdee7a2-original\.ps1',\$originalCopy\)\)\)\{if\(-not[ ]\$text\.Contains\(\$pair\[0],\[StringComparison]::Ordinal\)\)\{throw[ ]'Expected[ ]exact[ ]adaptation[ ]anchor[ ]absent'};\$text=\$text\.Replace\(\$pair\[0],\$pair\[1]\)}\r?\n?$''',
+  '''^\n?\$revision='c1181eb4eb01825c8b12f3521f92286080addfba'\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-c1181eb/client-boundary\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ][ ]"revision":[ ]"c1181eb4eb01825c8b12f3521f92286080addfba",\r?\n?$''',
+  '''^\n?[ ][ ][ ][ ][ ][ ]"revision":[ ]"c1181eb4eb01825c8b12f3521f92286080addfba",\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-fdee7a2/client-boundary-producers/InspectWordpairsCompiledClientBoundary-fdee7a2\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'fdee7a2569bb4742e008977e2a9cd7d312def859'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-fdee7a2/client-boundary-producers/InspectWordpairsCompiledClientBoundary\.ps1$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?if\(\$revision[ ]-cne[ ]'131269a590046a3c1c83314d11ff79f2b731799c'[ ]-or[ ]\$build\.Count[ ]-ne[ ]1[ ]-or[ ]\$build\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]\$validation\.status[ ]-cne[ ]'passed'[ ]-or[ ]\$validation\.failure[ ]-or[ ]\$validation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$source\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.revision[ ]-cne[ ]\$revision[ ]-or[ ]\$invocation\.reports\[0]\.exitCode[ ]-ne[ ]0[ ]-or[ ]-not[ ]\$invocation\.reports\[0]\.sourceUnchanged\)\{throw[ ]'Frozen[ ]build/source[ ]provenance[ ]mismatch'}\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Verified historical evidence value, exact path and exact finding context"
+targetRules = ["sourcegraph-access-token"]
+condition = "AND"
+paths = ['''(?:^|/)docs/evidence/release15/frozen-fdee7a2/client-boundary\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\n?[ ][ ]"revision":[ ]"fdee7a2569bb4742e008977e2a9cd7d312def859",\r?\n?$''',
+  '''^\n?[ ][ ][ ][ ][ ][ ]"revision":[ ]"fdee7a2569bb4742e008977e2a9cd7d312def859",\r?\n?$''',
+]
+
+[[allowlists]]
+description = "Explicit synthetic fixture values, never real keys or privacy matches"
+targetRules = ["generic-api-key"]
+regexTarget = "secret"
+regexes = ['''^fixture-secret-[A-Za-z0-9_-]+$''']
+
+[[allowlists]]
+description = "Exact CMS _key identifier field in downloaded HTML, including escaped JSON quotes"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(?:^|/)docs/submission/sources/[^/]+\.html$''']
+regexTarget = "match"
+regexes = ['''^_key\\*"\s*:\s*\\*"[A-Za-z0-9_-]+\\*"$''']
