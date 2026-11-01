@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="8" errors="0" failures="7" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-31" time="17:45:14">
+  <environment user="sharpninja" cwd="<home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348" machine-name="[PRIVATE HOST]" clr-version="10.0.13" nunit-version="2.5.8.0" os-version="7.2.5-3-omarchy" platform="Linux" user-domain="" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="0.4339" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="<home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1" executed="True" result="Failure" success="False" time="0.4339" asserts="0" description="<home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="hosting migration prefix contract" executed="True" result="Failure" success="False" time="0.2327" asserts="0" description="hosting migration prefix contract">
+            <results>
+              <test-case description="proposes 012 through 014 after the recorded thirteen-migration hosted prefix" name="hosting migration prefix contract.proposes 012 through 014 after the recorded thirteen-migration hosted prefix" time="0.1223" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected @('wordpairs_012_guest_public_profiles', 'wordpairs_013_player_capacity', 'wordpairs_014_capacity10'), but got @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...6 more).</message>
+                  <stack-trace>at $pending.name | Should -Be @('wordpairs_012_guest_public_profiles','wordpairs_013_player_capacity','wordpairs_014_capacity10'), <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:20
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:20</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="proposes the whole catalog for an empty history" name="hosting migration prefix contract.proposes the whole catalog for an empty history" time="0.0165" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="proposes hosted scheduler, private realtime, then 012 through 014 after core 001 through 011" name="hosting migration prefix contract.proposes hosted scheduler, private realtime, then 012 through 014 after core 001 through 011" time="0.0256" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected @('wordpairs_hosted_scheduler', 'wordpairs_private_realtime', 'wordpairs_012_guest_public_profiles', 'wordpairs_013_player_capacity', 'wordpairs_014_capacity10'), but got @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...6 more).</message>
+                  <stack-trace>at $pending.name | Should -Be @('wordpairs_hosted_scheduler','wordpairs_private_realtime','wordpairs_012_guest_public_profiles','wordpairs_013_player_capacity','wordpairs_014_capacity10'), <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:30
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:30</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="rejects 012 inserted before hosted 101 without opening a connection" name="hosting migration prefix contract.rejects 012 inserted before hosted 101 without opening a connection" time="0.017" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.</message>
+                  <stack-trace>at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:36
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:36</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="rejects source drift at an otherwise matching migration" name="hosting migration prefix contract.rejects source drift at an otherwise matching migration" time="0.0221" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected an exception with message like '*drift*' to be thrown, but no exception was thrown.</message>
+                  <stack-trace>at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*drift*', <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:42
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:42</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="rejects history longer than the declared migration set" name="hosting migration prefix contract.rejects history longer than the declared migration set" time="0.0172" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected an exception with message like '*Unknown migration history*' to be thrown, but no exception was thrown.</message>
+                  <stack-trace>at { Get-HostingSchemaPending -Migrations $migrations -History $history } | Should -Throw '*Unknown migration history*', <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:48
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:48</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="hosting migration filename catalog contract" executed="True" result="Failure" success="False" time="0.3748" asserts="0" description="hosting migration filename catalog contract">
+            <results>
+              <test-case description="includes digit-bearing 014 in the exact core and hosted order with original source bodies" name="hosting migration filename catalog contract.includes digit-bearing 014 in the exact core and hosted order with original source bodies" time="0.0367" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected @('wordpairs_001_core', 'wordpairs_002_core', 'wordpairs_003_core', 'wordpairs_004_core', 'wordpairs_005_core', 'wordpairs_006_core', 'wordpairs_007_core', 'wordpairs_008_core', 'wordpairs_009_core', 'wordpairs_010_core', ...6 more), but got @('wordpairs_015_bad-name', 'wordpairs_013_player_capacity', 'wordpairs_012_guest_public_profiles', 'wordpairs_private_realtime', 'wordpairs_hosted_scheduler', 'wordpairs_011_core', 'wordpairs_010_core', 'wordpairs_009_core', 'wordpairs_008_core', 'wordpairs_007_core', ...6 more).</message>
+                  <stack-trace>at $actual.name|Should -Be $script:expectedNames, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:72
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:72</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="excludes invalid filenames and nested files without losing valid migrations" name="hosting migration filename catalog contract.excludes invalid filenames and nested files without losing valid migrations" time="0.0258" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 'wordpairs_015_bad-name' to not be found in collection @('wordpairs_015_bad-name', 'wordpairs_013_player_capacity', 'wordpairs_012_guest_public_profiles', 'wordpairs_private_realtime', 'wordpairs_hosted_scheduler', 'wordpairs_011_core', 'wordpairs_010_core', 'wordpairs_009_core', 'wordpairs_008_core', 'wordpairs_007_core', ...6 more), but it was found.</message>
+                  <stack-trace>at foreach($invalid in $invalidFiles){$actual.name|Should -Not -Contain ('wordpairs_'+[IO.Path]::GetFileNameWithoutExtension($invalid))}, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:79
+at &lt;ScriptBlock&gt;, <home>/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/HostingSchemaPlanner.Tests.ps1:79</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

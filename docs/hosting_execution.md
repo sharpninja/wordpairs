@@ -1,5 +1,9 @@
 # Hosted deployment execution
 
+## 1 November 2026 stopped-work record
+
+The operator stopped product release work and deleted the recurring progress timer. The [deadline report and supporting evidence](submission/deadline-20261101/report.md) record the exact-source local success, incomplete hostile reviews, subsequent staging migration/status fix and unfinished hosted release. This document's earlier checkpoints remain dated history. Later documentation refresh, wiki publication and Git synchronization do not resume product development, tests, reviews or deployment, and do not establish contest submission or requirement satisfaction.
+
 Operator decision, 27 October 2026: use the existing Vercel project **wordpairs**
 (`prj_bHGxyZfZU6gsvEOBA5CKljyKq73w`) as logical staging and **wordpairs-j9jf**
 (`prj_DuOPJUyewR9XfrapB6whbNEyNRxh`) as production. Each uses Vercel's production
@@ -176,7 +180,7 @@ advisory report. Existing fixed-path privileged RPCs and revoked public executio
 remain in place. Provider prize-contest eligibility, physical-phone PWA checks and
 formal release packaging retain their separate qualifications above.
 
-## Current guest/admin PWA rollout in progress
+## Historical guest/admin PWA rollout checkpoint
 
 The operator replaced public OpenAI sign-in and public installation with guest-only
 play plus a fixed-owner GitHub admin PWA. The registered private GitHub App has

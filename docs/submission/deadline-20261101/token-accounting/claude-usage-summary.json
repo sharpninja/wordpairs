@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-11-01T05:45:18.2010533-06:00",
+  "periodStart": "2026-10-26T00:00:00.0000000+00:00",
+  "stopCutoff": "2026-11-01T11:31:25.6490000+00:00",
+  "scope": "Seven retained Claude Code project sessions for canonical Wordpairs workspace, bounded to release period. Attribution is project-local rather than Codex thread-spawn lineage.",
+  "method": "Keep latest usage snapshot for each requestId plus assistant message.id across all files. Repeated content-block records do not count as new model requests. Add ordinary, cache-write and cache-read inputs; thinking output is a subset of output. Do not sum usage.iterations again.",
+  "usageEvents": 1827,
+  "uniqueMessages": 702,
+  "duplicateSnapshots": 1125,
+  "changedDuplicateUsage": 0,
+  "malformedLines": 0,
+  "groups": [
+    {
+      "model": "claude-opus-5-5",
+      "serviceTier": "standard",
+      "speed": "standard",
+      "inferenceGeo": "global",
+      "messages": 702,
+      "ordinaryInput": 1404,
+      "cacheWriteInput": 2575919,
+      "cacheWrite5m": 0,
+      "cacheWrite1h": 2575919,
+      "cachedInput": 169805406,
+      "output": 700004,
+      "thinkingOutputSubset": 235606,
+      "totalInput": 172382729,
+      "totalTokens": 173082733,
+      "apiEquivalentOrdinaryInputUsd": 0.005616,
+      "apiEquivalentCache5mUsd": 0.0,
+      "apiEquivalentCache1hUsd": 20.607352,
+      "apiEquivalentCacheReadUsd": 33.9610812,
+      "apiEquivalentOutputUsd": 14.00008,
+      "apiEquivalentUsd": 68.5741292
+    }
+  ],
+  "files": [
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/09d38793-4677-4da9-bf9a-de72fb986688.jsonl",
+      "bytes": 3651532,
+      "sha256": "7652FF80B7E5D821EC2F38F64C071DAC5B6A105B32EE525B68378D1FED1B032C"
+    },
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/2c8d0493-1445-4946-a4d3-61a39db881b6.jsonl",
+      "bytes": 4433511,
+      "sha256": "D80D19F11606EEF78D277B6A76D331BC9F90036FA28BC9C887CBEE58517D9BBB"
+    },
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/3bae79b6-78e0-4eac-abdf-26de37b2f231.jsonl",
+      "bytes": 2568597,
+      "sha256": "3672663544FAF65F9D7D002043BD027A712CF3BBB94F84F7B22BE08D7323795B"
+    },
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/409955f6-ecfd-42fa-aad0-a05aaea7303b.jsonl",
+      "bytes": 3047913,
+      "sha256": "66FBA8EC6264B6BBF565782A99313CEF35BF6789C697CAB51CEDD35615851094"
+    },
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/9a3da6b7-ab3c-4bef-816f-ab644bf52a07.jsonl",
+      "bytes": 3166962,
+      "sha256": "C7CA55C740C03DF8710137067BB613726C19D0BFB0936263E29C0F0A041B806F"
+    },
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/b88c4108-1ba2-446c-b08a-ab38a620edb0.jsonl",
+      "bytes": 1393396,
+      "sha256": "B37265E22DDEBB4545828879D830B03FA8AAAE9CE82A7201EE429AA253873121"
+    },
+    {
+      "path": "\u003Chome\u003E/.claude/projects/-home-sharpninja-github-WordGame--mcpServer-wordpairs/c4e7d542-4c8a-453f-9b7b-d3a47505d9e7.jsonl",
+      "bytes": 3536697,
+      "sha256": "A37C66B9D92CB40A2E1ADF510C3C60F74D57237B43481E4E406A4FDFF5D1F8F8"
+    }
+  ],
+  "pricingSources": [
+    "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5",
+    "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+  ],
+  "qualification": "API-equivalent only at current standard global list rates; actual subscription charges and other missing reviewer/provider sessions unknown. All retained usage predates assumed Central deadline."
+}

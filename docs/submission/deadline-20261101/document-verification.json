@@ -1,0 +1,253 @@
+{
+  "atLocal": "2026-11-01T05:53:39.9406453-06:00",
+  "files": [
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/HANDOFF.md",
+      "sha256": "341CB13687679226947F1857223C5D2A1E056A2DF13227CDC6F0E06F02C83142",
+      "bytes": 11485,
+      "lines": 87
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/DEADLINE-REPORT.md",
+      "sha256": "922B57875F4745A87FA2F2CCFAD1240AC6872D6B44BDD1C1B228DC0E3255ED22",
+      "bytes": 22753,
+      "lines": 138
+    }
+  ],
+  "brokenLinks": [],
+  "timerFilePresent": false,
+  "scriptChecks": [
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/Measure-WordpairsClaudeUsage.ps1",
+      "sha256": "5256F7B79A3C183FB71BD9A949DD6ECC39F019B191E3E322DAB2FA3E9C201EAD",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/Estimate-WordpairsUsagePrices.ps1",
+      "sha256": "D2BAFBCE06FC7FE36191BBA8539684B962D907030C953605D102329A087B8E38",
+      "parserErrors": 0,
+      "analyzerIssues": 0
+    }
+  ],
+  "verifiedCodexTokens": 4790673951,
+  "verifiedCombinedTokens": 4963756684,
+  "standardApiComparisonUsd": 878.5040572000001,
+  "accountingTopLevelKeys": [
+    "atLocal",
+    "classification",
+    "rootThreadId",
+    "scopeThreads",
+    "actualStopUtc",
+    "assumedDeadlineBoundaryUtc",
+    "deadlineQualification",
+    "overall",
+    "byModelPeriod",
+    "byCentralDay",
+    "criticalIntervals",
+    "intervalBoundaries",
+    "threads",
+    "usageEventsExtracted",
+    "eventsExcludedAfterActualStop",
+    "eventsCounted",
+    "duplicateEventsIgnored",
+    "counterResetEvents",
+    "deltaVsLastMismatchEvents",
+    "nativeLastUsageCrosscheck",
+    "counterAnomalies",
+    "method",
+    "limitations",
+    "inputEvidence"
+  ],
+  "verification": {
+    "atLocal": "2026-11-01T05:49:23",
+    "accountingPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/accounting.json",
+    "accountingSha256": "66A9BBC8D7760CD4F3E6B2654FBE4F86CAE240447CB6C9E687059BF513092808",
+    "dimensionChecks": [
+      {
+        "dimension": "byModelPeriod",
+        "allCategoryTotalsExact": true
+      },
+      {
+        "dimension": "byCentralDay",
+        "allCategoryTotalsExact": true
+      },
+      {
+        "dimension": "criticalIntervals",
+        "allCategoryTotalsExact": true
+      },
+      {
+        "dimension": "threads",
+        "allCategoryTotalsExact": true
+      }
+    ],
+    "rootThread": "01a17901-193c-7163-bb57-05a12ae57269",
+    "rootCounts": {
+      "cache_write_input_tokens": 0,
+      "reasoning_output_tokens": 1770160,
+      "total_tokens": 2141515485,
+      "events": 9491,
+      "uncached_input_tokens": 23001181,
+      "output_tokens": 4230272,
+      "input_tokens": 2137285213,
+      "cached_input_tokens": 2114284032
+    },
+    "descendantThreads": 9,
+    "descendantCounts": {
+      "uncached_input_tokens": 39312586,
+      "total_tokens": 2649158466,
+      "events": 11759,
+      "output_tokens": 6492664,
+      "cache_write_input_tokens": 0,
+      "input_tokens": 2642665802,
+      "reasoning_output_tokens": 2154799,
+      "cached_input_tokens": 2603353216
+    },
+    "byNativeModelEffort": [
+      {
+        "events": 871,
+        "provider": "openai",
+        "total_tokens": 118719289,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 308013,
+        "effort": "high",
+        "model": "gpt-6-astra",
+        "input_tokens": 118411276,
+        "reasoning_output_tokens": 77586,
+        "uncached_input_tokens": 3659148,
+        "cached_input_tokens": 114752128
+      },
+      {
+        "events": 329,
+        "provider": "openai",
+        "total_tokens": 47619361,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 83901,
+        "effort": "high",
+        "model": "gpt-6-sol",
+        "input_tokens": 47535460,
+        "reasoning_output_tokens": 31862,
+        "uncached_input_tokens": 764004,
+        "cached_input_tokens": 46771456
+      },
+      {
+        "events": 2655,
+        "provider": "openai",
+        "total_tokens": 547716403,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2000786,
+        "effort": "high",
+        "model": "gpt-6.1-sol",
+        "input_tokens": 545715617,
+        "reasoning_output_tokens": 795047,
+        "uncached_input_tokens": 7658657,
+        "cached_input_tokens": 538056960
+      },
+      {
+        "events": 14702,
+        "provider": "openai",
+        "total_tokens": 3358495300,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7782072,
+        "effort": "ultra",
+        "model": "gpt-6.1-sol",
+        "input_tokens": 3350713228,
+        "reasoning_output_tokens": 2871471,
+        "uncached_input_tokens": 45369996,
+        "cached_input_tokens": 3305343232
+      },
+      {
+        "events": 2693,
+        "provider": "openai",
+        "total_tokens": 718123598,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 548164,
+        "effort": "xhigh",
+        "model": "gpt-6.1-terra",
+        "input_tokens": 717575434,
+        "reasoning_output_tokens": 148993,
+        "uncached_input_tokens": 4861962,
+        "cached_input_tokens": 712713472
+      }
+    ],
+    "cacheWriteField": {
+      "lastUsageRecordsBeforeStop": 23134,
+      "totalUsageRecordsBeforeStop": 23134,
+      "qualification": "The native totalandlast usage objects explicitlycontain cache_write_input_tokens in every extractedrecord throughactualstop,andreport0. This is native reportedusage,not a claim about unreportedproviderbilling.",
+      "reportedSum": 0,
+      "positiveReportedCacheWriteRecords": 0
+    },
+    "forkDedup": {
+      "duplicateCounterEvents": 1884.0,
+      "method": "Forkedfileshave ancestral sessionheaders,but no copied precreationtoken events wereobserved andfirsttotal=firstlast inall10threads. Countfirstlast thenunique cumulativetransitions;native lastsum independentlyexact. Do not adddatabase tokens_used orduplicate inheritedheaders.",
+      "counterResets": 0.0,
+      "uniqueUsageEvents": 21250,
+      "initialCounterBaselinesZeroForAllThreads": true,
+      "positiveDeltaVsNativeLastMismatches": 0.0,
+      "forkedRolloutFiles": 8
+    },
+    "serviceTier": {
+      "billedServiceTier": "UNKNOWN",
+      "longContextBillingTier": "UNKNOWN",
+      "observedInSelectedMetadata": false,
+      "speedOrFastTier": "UNKNOWN",
+      "qualification": "Only model/provider/effort were selectedfrom turn_context. Native schema samples showinfo total_token_usage,last_token_usage,model_context_window; no billedserviceTier evidencewasretained. Contextwindow/effort/tooltier are notbillingtier acknowledgements. No furthernative transcript scanperformed."
+    },
+    "separateProviderUsage": {
+      "cline": "Missing reliable native tokenusage remainsUNKNOWN,notzero;not included",
+      "cursor": "Not included withoutnative usageproof",
+      "claude": "Root separately accounting;not included"
+    },
+    "stopExclusion": "Actualuserstop2026-11-01T11:31:25.649Z;laterreport/handoff/timerusage excluded."
+  },
+  "producerMetadata": [
+    {
+      "name": "producers",
+      "value": [
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupTokenAccountingProbe.ps1",
+          "pssaWarningError": 0,
+          "sha256": "00E10AD6D27108BCAED91B9DC18561258C691E863E759AC12743427C54638789"
+        },
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupInspectTokenScope.ps1",
+          "pssaWarningError": 0,
+          "sha256": "F53CF57917BBFE3D52F684FCF878952AFA2BDBC25A9F3BD6C17684DD1E65DFB3"
+        },
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupCollectTokenMetadata.ps1",
+          "pssaWarningError": 0,
+          "sha256": "220A23384D0C1A23F7FB774C13C7E65F890848A8ACFB35812E1A2BAE20AF7EB3"
+        },
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupReadStopUserTimes.ps1",
+          "pssaWarningError": 0,
+          "sha256": "C00A05863F2ACCCD520275B1757E967AD9D8ED3D03937F04E38A6980809635D1"
+        },
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupReadStopUserTimesV2.ps1",
+          "pssaWarningError": 0,
+          "sha256": "FA19A9D3C43C27900CE0C2E03CC7D497BC9420C25F302EDFCEE92484B693BE44"
+        },
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupAggregateStoppedUsage.ps1",
+          "pssaWarningError": 0,
+          "sha256": "74FCFC933C0883B99CDB4703FF04DA96775FFE1E586877A4EFCC78EB70CFEE68"
+        },
+        {
+          "parserErrors": 0,
+          "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupVerifyTokenAccounting.ps1",
+          "pssaWarningError": 0,
+          "sha256": "D5E17203EB2A129EE2453064F881B2AC7C7A09703A86EC94F18EC0713BEF9695"
+        }
+      ]
+    }
+  ],
+  "qualification": "Local document/link/counter/arithmetic checks only. No builds, tests, review, live provider calls, deployment or release completion claim."
+}

@@ -1,0 +1,129 @@
+{
+  "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+  "hostName": "[PRIVATE HOST]",
+  "startedAt": "2026-10-31T17:41:42",
+  "finishedAt": "2026-10-31T17:45:07",
+  "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+  "status": "passed",
+  "failure": null,
+  "steps": [
+    {
+      "name": "typecheck",
+      "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "startedAt": "2026-10-31T17:41:42",
+      "finishedAt": "2026-10-31T17:41:50",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "log": "typecheck.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "lint",
+      "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "startedAt": "2026-10-31T17:41:50",
+      "finishedAt": "2026-10-31T17:41:51",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "log": "lint.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "unit",
+      "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "startedAt": "2026-10-31T17:41:51",
+      "finishedAt": "2026-10-31T17:42:46",
+      "executable": "npm",
+      "arguments": [
+        "exec",
+        "vitest",
+        "--",
+        "run",
+        "--maxWorkers=4",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile.junit=\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/full/unit.xml"
+      ],
+      "exitCode": 0,
+      "log": "unit.log",
+      "junit": "unit.xml",
+      "junitSha256": "AFF000AC4F819B04A91CFABEBB8770F7D88FD66B7F558E07778EB60711EC6B45"
+    },
+    {
+      "name": "postgres",
+      "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "startedAt": "2026-10-31T17:42:46",
+      "finishedAt": "2026-10-31T17:43:33",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "tests/integration/run-phase1.ps1",
+        "-ReportDirectory",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/full",
+        "-VolatileStorage"
+      ],
+      "exitCode": 0,
+      "log": "postgres.log",
+      "junit": "postgres.xml",
+      "junitSha256": "E1F239D107ADDFC9E2B0917A3E049C1AD37543E831FAD1BBA13F7E023EC666C7"
+    },
+    {
+      "name": "build",
+      "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "startedAt": "2026-10-31T17:43:33",
+      "finishedAt": "2026-10-31T17:43:38",
+      "executable": "npm",
+      "arguments": [
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "log": "build.log",
+      "junit": "",
+      "junitSha256": null
+    },
+    {
+      "name": "browser",
+      "runId": "77b22698-a345-4c31-b925-bc65f5969513",
+      "hostName": "[PRIVATE HOST]",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "startedAt": "2026-10-31T17:43:38",
+      "finishedAt": "2026-10-31T17:45:07",
+      "executable": "npm",
+      "arguments": [
+        "exec",
+        "playwright",
+        "--",
+        "test",
+        "--config=playwright.pwa.config.ts",
+        "--reporter=line,junit"
+      ],
+      "exitCode": 0,
+      "log": "browser.log",
+      "junit": "browser.xml",
+      "junitSha256": "C595514393EACA270759452DB1F264EBFFB6A9F4F181B884161CC98F950D44F1"
+    }
+  ],
+  "qualification": "Local source validation with disposable PostgreSQL and a local browser server."
+}

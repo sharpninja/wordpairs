@@ -1,0 +1,269 @@
+{
+  "at": "2026-10-31T14:09:37",
+  "classification": "Authorized bounded corrective implementation and local self-check, NOT HV",
+  "OverallVerdict": "AGREE",
+  "PASS": 5,
+  "FAIL": 0,
+  "UNKNOWN": 0,
+  "sessionId": "Codex-20261031T150618Z-plugin-session",
+  "requestId": "req-20261031T185210Z-hosting-catalog-digits-fix",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261031T171140Z-cap10-release",
+  "requirements": [
+    "TR-SCHEMA-PROVISIONING-023#TR-23-C01",
+    "TR-SCHEMA-PROVISIONING-023#TR-23-C02",
+    "TEST-SCHEMAPROVISIONING-123#TR-23-C01",
+    "TEST-SCHEMAPROVISIONING-123#TR-23-C02"
+  ],
+  "mockGate": {
+    "originalModule": "F002924A2F673F39A4B3260965D32486988EA71EE32F8402C27BA74725773DA0",
+    "correct": 8,
+    "skipped": 0,
+    "finishedAt": "2026-10-31T13:59:53",
+    "originalProducer": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/mock-first-v2/producer.ps1",
+    "expectedRejectedAssertions": 17,
+    "path": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/mock-first-v2/mock-gate.json",
+    "startedAt": "2026-10-31T13:59:49",
+    "failed": 0,
+    "sha256": "AD55ED0896E844A4A193AD8B3E0A9BB794AE26B35DF86E53941FD9F77F48AE5A"
+  },
+  "requiredTypeScriptMockGate": {
+    "outerSkipped": 0,
+    "faultyProviders": 7,
+    "expectedRejectedAssertions": 10,
+    "ownerRequest": "req-20261031T190103Z-hosting-ts-six-oracle",
+    "correctNativeCases": 6,
+    "path": "\u003Crepo\u003E/docs/evidence/release10/hosting-schema-ts-20261031T140300/mock/mock-gate.json",
+    "startedAt": "2026-10-31T14:05:06",
+    "ownerSession": "Codex-20261031T143030Z-plugin-session",
+    "outerFailed": 0,
+    "correctPassed": 6,
+    "finishedAt": "2026-10-31T14:05:35",
+    "outerPassed": 8,
+    "sha256": "E2D7B8A4448C38DFCE2148BBFF4AFCAD72124025792E4EC02B2060EB9C55B37D"
+  },
+  "module": {
+    "editObservedAt": "2026-10-31T14:06:50",
+    "change": "[a-z_] suffix class to [a-z0-9_], all other production behavior preserved",
+    "path": "scripts/HostingSchemaPlanner.psm1",
+    "after": "D6EF4CE416557FFFA8A9361D1E643279BA8A96EF4D4FF6B5D5163A627B15D119",
+    "before": "F002924A2F673F39A4B3260965D32486988EA71EE32F8402C27BA74725773DA0",
+    "rootCoordinationHoldReleasedAt": "2026-10-31T14:06:29"
+  },
+  "passes": [
+    "Current effective C01/C02 TR/TEST read and source-pinned sibling sweep; required before-file copies retained.",
+    "Eight correct PowerShell cases and17 discriminating wrong rejections precede production edit, as does separate required six-case TS mock gate.",
+    "Only minimal digit-suffix production filter change; all12 owned source files parser/analyzer0,14 SQL files byte-identical.",
+    "Complete affected PowerShell wrapper50/0/0, same planner real8/0/0 and unchanged review-preparation22/0/0, current dirty-source pins stable.",
+    "Actual local catalog16 exact ordered names and independent synthetic thirteen-source-history pending012/013/014 verified; exact native hashes/TRX counted."
+  ],
+  "failures": [],
+  "unknowns": [],
+  "native": [
+    {
+      "name": "planner-mock",
+      "cases": 8,
+      "failed": 0,
+      "skipped": 0,
+      "producerRunId": "7c7a855d-f4a1-4b69-ae29-36762e623ed8",
+      "junit": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/planner/mock.xml",
+      "junitSha256": "859241D94518FB643F5E5EB2CB448840CCA534DF7CEE6778D814A9D42E268A78",
+      "trx": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/planner-mock.trx",
+      "trxSha256": "6E25EC4CB7BA4CA4AD94A69EE28E276992C53D0673B9660914487D21506279C7"
+    },
+    {
+      "name": "planner-real",
+      "cases": 8,
+      "failed": 0,
+      "skipped": 0,
+      "producerRunId": "7c7a855d-f4a1-4b69-ae29-36762e623ed8",
+      "junit": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/planner/real.xml",
+      "junitSha256": "D91C715ABBF6C1F6767D62C802AD949F8F7ABF4A2BF5D719CABA1EC497D0644E",
+      "trx": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/planner-real.trx",
+      "trxSha256": "A88F28B4A5B24C03F6A4F381AD63B53444B156E8D6F6F22D18F643020A6F96BC"
+    },
+    {
+      "name": "contracts-contracts",
+      "cases": 3,
+      "failed": 0,
+      "skipped": 0,
+      "producerRunId": "f2e8f631-c884-480f-9e28-b31f69fbcae3",
+      "junit": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/contracts/contracts.xml",
+      "junitSha256": "4361D0A9ED9B3374CB426AD55C9D657A73A1097CCFA81E2D25E83FC5EACB682D",
+      "trx": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/contracts-contracts.trx",
+      "trxSha256": "0B9671FD36FCD143D848F8D12D080EF06102B6014967778435C62EE95A322EB5"
+    },
+    {
+      "name": "docs-docs",
+      "cases": 22,
+      "failed": 0,
+      "skipped": 0,
+      "producerRunId": "2c6b82c4-ea7b-4d01-a7f5-816d52e68bbd",
+      "junit": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/docs/docs.xml",
+      "junitSha256": "9CD97243CA43F40FC63899B543D5695CA6980A33D2EB26FEAEF6D7622098C5AD",
+      "trx": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/docs-docs.trx",
+      "trxSha256": "259572B56FDE8AF83D95FEAC0B8190E5166FFBF152A93C19CF1F56FA1DE2C12E"
+    },
+    {
+      "name": "provenance-provenance",
+      "cases": 9,
+      "failed": 0,
+      "skipped": 0,
+      "producerRunId": "81e6f95c-1a2d-4ed9-81bf-056c5a5f9eb6",
+      "junit": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/provenance/provenance.xml",
+      "junitSha256": "E72960434104E8FCA71C28D660B76CDB54088144E42DD8F300D3B64470210A9D",
+      "trx": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/powershell/provenance-provenance.trx",
+      "trxSha256": "572FFC3E58CEFE66165604C97B49603BF2A2CD5BEE1293BBFB84D789EDD80D6F"
+    }
+  ],
+  "realCheck": {
+    "cases": 50,
+    "preparationExitCode": 0,
+    "preparationCases": 22,
+    "finishedAt": "2026-10-31T14:07:21",
+    "pending": [
+      "wordpairs_012_guest_public_profiles",
+      "wordpairs_013_player_capacity",
+      "wordpairs_014_capacity10"
+    ],
+    "path": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/real-provenance.json",
+    "sqlUnchanged": 14,
+    "startedAt": "2026-10-31T14:07:02",
+    "exitCode": 0,
+    "catalogCount": 16,
+    "sha256": "116A8BCE43A082F35D95BA982534701C6969F5DB7EDFB9C1E62B020E0BC5DF34"
+  },
+  "sources": [
+    {
+      "path": "scripts/HostingSchemaPlanner.psm1",
+      "sha256": "D6EF4CE416557FFFA8A9361D1E643279BA8A96EF4D4FF6B5D5163A627B15D119",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/scripts/HostingSchemaPlanner.psm1"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.Tests.ps1",
+      "sha256": "1F5D0D8CA8795F07A465897200FAD0F3C09C0660638F2B908F5EFCB13F62E2A6",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/HostingSchemaPlanner.Tests.ps1"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.CatalogFixture.psm1",
+      "sha256": "C94D872A5C6A0F751695D4342EE455217D74C015D5404687E53DAB5ABC209983",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/HostingSchemaPlanner.CatalogFixture.psm1"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockCorrect.psm1",
+      "sha256": "564AEAC94236EA0A53BE8D127C45AE1B3D0B0C4F7B0CB9227C18C6AB5E21D637",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/HostingSchemaPlanner.MockCorrect.psm1"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockWrong.psm1",
+      "sha256": "B47FF46F404CB295A34C0E57CF7FC07B47AEB3DBDA5F6CA39201955BF67FCC50",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/HostingSchemaPlanner.MockWrong.psm1"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockWrongEmpty.psm1",
+      "sha256": "6DBFB5328C5D16ADAC8706E30EC1FDD60A647EBAA178BFA20A937D831330223C",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/HostingSchemaPlanner.MockWrongEmpty.psm1"
+    },
+    {
+      "path": "tests/powershell/HostingSchemaPlanner.MockWrongOmitted.psm1",
+      "sha256": "5D675C52523CB819CE9FDF0DBFE4109946C08C83BB9A3734F06A19A271F47533",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/HostingSchemaPlanner.MockWrongOmitted.psm1"
+    },
+    {
+      "path": "tests/powershell/Run-HostingSchemaMockGate.ps1",
+      "sha256": "E851F5C1BA4769166EAA7C9DC79D96B641D09E76F7129BA48AA53970D3FB0F74",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/Run-HostingSchemaMockGate.ps1"
+    },
+    {
+      "path": "tests/powershell/Run-HostingSchemaRealGate.ps1",
+      "sha256": "7CB8DE79E153EA51C58507C9E5916CD85978C63F212EA5ABBD4614E61A166F62",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/tests/powershell/Run-HostingSchemaRealGate.ps1"
+    },
+    {
+      "path": "scripts/Run-HostingPlannerEvidence.ps1",
+      "sha256": "3ACCBC5B750799C03E94D401B4F2260336B999AD6A3588663CBB41B25DD68AA5",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/scripts/Run-HostingPlannerEvidence.ps1"
+    },
+    {
+      "path": "scripts/Run-ReviewPowerShellEvidence.ps1",
+      "sha256": "E8A21F19D19B4540CB2050923A75C3F486CBD09634B4CCBBC88ED8CBEA5A9319",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/scripts/Run-ReviewPowerShellEvidence.ps1"
+    },
+    {
+      "path": "scripts/Prepare-ReviewEvidence.ps1",
+      "sha256": "E4D587E6ADD990DF8CA35696AF524938F5191A48F27FA242E18B6422FFC57E8D",
+      "parserErrors": 0,
+      "pssaWarningError": 0,
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/after/scripts/Prepare-ReviewEvidence.ps1"
+    }
+  ],
+  "producers": [
+    {
+      "path": "/tmp/WordpairsBackupBeginCatalogDigitsFix.ps1",
+      "sha256": "D6B324E288E53A733858D3A6C47FE98FBDA27C125F51DAC48D8B04E8C8D1F70E",
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/producers/WordpairsBackupBeginCatalogDigitsFix.ps1"
+    },
+    {
+      "path": "/tmp/WordpairsBackupCatalogContext.ps1",
+      "sha256": "DBABA990C5D0D19EE36D681976AB86212CEF33FEB107C9634D1CF6CC7A9162D1",
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/producers/WordpairsBackupCatalogContext.ps1"
+    },
+    {
+      "path": "/tmp/WordpairsBackupRunCatalogMock.ps1",
+      "sha256": "7747E0A8CE63369A1A088FB58C927DE2177DA87CF0A42C8B25502E2CEAFFDBE2",
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/producers/WordpairsBackupRunCatalogMock.ps1"
+    },
+    {
+      "path": "/tmp/WordpairsBackupCatalogSweep.ps1",
+      "sha256": "4AE17E3073F46D80D50334317FC547FFA3A739133ADEC2DD7838EA238122E6C9",
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/producers/WordpairsBackupCatalogSweep.ps1"
+    },
+    {
+      "path": "/tmp/WordpairsBackupRunCatalogReal.ps1",
+      "sha256": "19147812368AFB9640708A7C51CC95D4E244F4FF48F2FE8DF25E4309B23FA149",
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/producers/WordpairsBackupRunCatalogReal.ps1"
+    },
+    {
+      "path": "/tmp/WordpairsBackupCloseCatalogFix.ps1",
+      "sha256": "25DC399597AC1948E6F8E063DF31F30CE28FC478FF3F3725EE291164871B9FE0",
+      "retained": "\u003Crepo\u003E/docs/evidence/release10/hosting-catalog-digits-20261031T135700/producers/WordpairsBackupCloseCatalogFix.ps1"
+    }
+  ],
+  "reportingCorrections": [
+    "First context helper used invalid appendDialog items parameter and caller validation rejected it; documented dialogItems retry persisted on same turn, no server defect inferred.",
+    "Initial analyzer command used unsupported LiteralPath and was rejected, then actual -Path analysis returned0 before execution. Initial test PSSA cross-block-variable warnings were fixed before mocks.",
+    "Original sweep artifact accidentally described TS correction in past tense before observing its gate; retained original and explicit pending-state correction in sweep-and-validation-v2.json.",
+    "Original mock producer metadata said pre-implementation; its exact EA26 bytes are retained. Current neutral qualification avoids claiming future post-edit reruns predate implementation."
+  ],
+  "limits": [
+    "This is not independent HV, a tracked release done state, AC satisfaction, or exact committed-source acceptance. Root owns freeze/commit/full suites and review.",
+    "No hosted status/body-order/TLS/DDL/apply refresh, provider setting/data/schema/scheduler mutation, full app build, browser game, model or Git write was performed. Hosted finalstate remains UNKNOWN.",
+    "The TS agent owns the separate real six-case binding and audit. Its source and artifacts are not edited by this agent.",
+    "Ignored generated wiki exports, dependencies and Git internals are excluded from source regex sweep; historical copied producers remain unchanged."
+  ],
+  "accuracy": 99,
+  "completeness": 98,
+  "scoreQualification": "Bounded local correction evidence, full hosted/release acceptance excluded"
+}

@@ -1,5 +1,9 @@
 # Finish the guest game and admin release with10 players
 
+## 1 November 2026 stopped-work record
+
+The operator stopped product release work and deleted the recurring progress timer. The [deadline report and supporting evidence](submission/deadline-20261101/report.md) record the exact-source local success, incomplete hostile reviews, subsequent staging migration/status fix and unfinished hosted release. This document's earlier checkpoints remain dated history. Later documentation refresh, wiki publication and Git synchronization do not resume product development, tests, reviews or deployment, and do not establish contest submission or requirement satisfaction.
+
 Current operator authorization:31October2026, "Set max players to10". This supersedes the earlier15/25-player current release targets. Preserve those original plans, requirements snapshots and failed/passing receipts as dated history. The separate25-observer limit remains. QBrain is authoritative; `docs/evidence/release10/qbrain-before.json` preserves the full19-record pre-amendment state and `qbrain-update-receipt.json` records the atomic current-scope amendment/readback. Changed criteria remain unsatisfied pending fresh exact-source validation and independent review. This canonical filename stays unchanged for existing links. `CAP15-LEGACY` is a stable historical criterion ID whose current text now specifies10-player compatibility. No extra approval question is needed for this explicit implementation request.
 
 ## Intended result and scope

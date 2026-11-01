@@ -1,0 +1,38 @@
+<TestRun id="a3d965bd-e60b-4c49-9884-14ee8d69c218" name="JUnit adapter: contracts.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-31T17:55:38.6204502-05:00" queuing="2026-10-31T17:55:38.6204502-05:00" start="2026-10-31T17:55:38.6204502-05:00" finish="2026-10-31T17:55:38.6204502-05:00" />
+  <Results>
+    <UnitTestResult duration="00:00:00" testName="local-script-contract :: local-live-lease.contract.ps1" testId="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" relativeResultsDirectory="42a81e30-15fa-40e8-833a-b452800001c0" computerName="[PRIVATE HOST]" executionId="42a81e30-15fa-40e8-833a-b452800001c0" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" />
+    <UnitTestResult duration="00:00:00" testName="local-script-contract :: local-realtime-cleanup.contract.ps1" testId="d776a9a9-34e7-5342-3982-3e7130d3e67d" relativeResultsDirectory="b9eb0d54-b780-4a5f-8ffb-c81382fcdeb0" computerName="[PRIVATE HOST]" executionId="b9eb0d54-b780-4a5f-8ffb-c81382fcdeb0" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" />
+    <UnitTestResult duration="00:00:00" testName="local-script-contract :: local-ui-startup.contract.ps1" testId="f7534c18-ab04-6db9-e534-33c96ec833be" relativeResultsDirectory="1a1fac5c-1ecf-4056-a4b4-2c83589bee3b" computerName="[PRIVATE HOST]" executionId="1a1fac5c-1ecf-4056-a4b4-2c83589bee3b" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest storage="local-script-contract" id="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" name="local-live-lease.contract.ps1">
+      <Execution id="42a81e30-15fa-40e8-833a-b452800001c0" />
+      <TestMethod codeBase="local-script-contract" className="local-script-contract" adapterTypeName="JUnit-to-TRX explicit result adapter" name="local-live-lease.contract.ps1" />
+    </UnitTest>
+    <UnitTest storage="local-script-contract" id="d776a9a9-34e7-5342-3982-3e7130d3e67d" name="local-realtime-cleanup.contract.ps1">
+      <Execution id="b9eb0d54-b780-4a5f-8ffb-c81382fcdeb0" />
+      <TestMethod codeBase="local-script-contract" className="local-script-contract" adapterTypeName="JUnit-to-TRX explicit result adapter" name="local-realtime-cleanup.contract.ps1" />
+    </UnitTest>
+    <UnitTest storage="local-script-contract" id="f7534c18-ab04-6db9-e534-33c96ec833be" name="local-ui-startup.contract.ps1">
+      <Execution id="1a1fac5c-1ecf-4056-a4b4-2c83589bee3b" />
+      <TestMethod codeBase="local-script-contract" className="local-script-contract" adapterTypeName="JUnit-to-TRX explicit result adapter" name="local-ui-startup.contract.ps1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="a3258b94-d5d7-b71e-753b-6e7fb4f0664b" executionId="42a81e30-15fa-40e8-833a-b452800001c0" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="d776a9a9-34e7-5342-3982-3e7130d3e67d" executionId="b9eb0d54-b780-4a5f-8ffb-c81382fcdeb0" />
+    <TestEntry testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" testId="f7534c18-ab04-6db9-e534-33c96ec833be" executionId="1a1fac5c-1ecf-4056-a4b4-2c83589bee3b" />
+  </TestEntries>
+  <TestLists>
+    <TestList id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" name="JUnit cases" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters disconnected="0" aborted="0" total="3" timeout="0" inProgress="0" passedButRunAborted="0" completed="3" notExecuted="0" inconclusive="0" executed="3" failed="0" pending="0" notRunnable="0" error="0" passed="3" />
+    <RunInfos>
+      <RunInfo timestamp="2026-10-31T17:55:38.6204502-05:00" outcome="Completed" computerName="[PRIVATE HOST]">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<home>/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/powershell/contracts/contracts.xml; SHA256=4361D0A9ED9B3374CB426AD55C9D657A73A1097CCFA81E2D25E83FC5EACB682D; reviewed revision=042a030f0bbf56f7e4641681def62598f53cbcd8</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

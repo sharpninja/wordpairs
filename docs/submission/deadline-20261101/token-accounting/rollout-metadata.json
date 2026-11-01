@@ -1,0 +1,380 @@
+{
+  "eventsPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/usage-events.jsonl",
+  "atLocal": "2026-11-01T05:42:07",
+  "method": "Only sessionmetadata IDs/numericforkordinal,turn_context model/provider/effort,and token_count numericusage fields selected. All other payloads ignored. Inherited events older than ownthreadcreation excluded; finalcounter/dedup/reset analysis separate.",
+  "files": [
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/26/rollout-2026-10-26T11-17-57-01a17901-193c-7163-bb57-05a12ae57269.jsonl",
+      "firstUsage": "2026-10-26T16:18:15.8710000+00:00",
+      "contexts": 137,
+      "ownedTokenEventsThroughStop": 10653,
+      "databaseTokensUsed": 2145040035,
+      "lastUsage": "2026-11-01T11:31:32.3830000+00:00",
+      "eventsExcludedAfterStop": 22,
+      "bytesAtEnd": 693305300,
+      "createdAt": "2026-10-26T16:17:57.5750000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 1,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 693274139,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-terra",
+        "gpt-6.1-sol",
+        "gpt-6-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a17901-193c-7163-bb57-05a12ae57269",
+      "databaseProvider": "openai",
+      "linesRead": 77423
+    },
+    {
+      "databaseModel": "gpt-6-astra",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/26/rollout-2026-10-26T11-43-14-01a17918-3e95-75b1-b83c-3e9d393dbba6.jsonl",
+      "firstUsage": "2026-10-26T16:43:21.5240000+00:00",
+      "contexts": 95,
+      "ownedTokenEventsThroughStop": 901,
+      "databaseTokensUsed": 118719289,
+      "lastUsage": "2026-10-28T23:46:19.0010000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 39527818,
+      "createdAt": "2026-10-26T16:43:14.4530000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a17918-3e95-75b1-b83c-3e9d393dbba6",
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 39527818,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6-astra"
+      ],
+      "databaseEffort": "high",
+      "threadId": "01a17918-3e95-75b1-b83c-3e9d393dbba6",
+      "databaseProvider": "openai",
+      "linesRead": 6520
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/30/rollout-2026-10-30T14-45-39-01a18e58-af59-7713-b435-64ce19c8ba04.jsonl",
+      "firstUsage": "2026-10-30T19:45:47.1120000+00:00",
+      "contexts": 33,
+      "ownedTokenEventsThroughStop": 1075,
+      "databaseTokensUsed": 239846778,
+      "lastUsage": "2026-10-31T01:55:15.9620000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 80011645,
+      "createdAt": "2026-10-30T19:45:39.1670000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a18e58-af59-7713-b435-64ce19c8ba04",
+          "subagent_history_start_ordinal": 35,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 80011645,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-terra",
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a18e58-af59-7713-b435-64ce19c8ba04",
+      "databaseProvider": "openai",
+      "linesRead": 7871
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/30/rollout-2026-10-30T14-45-46-01a18e58-cbc3-78f3-82f6-a7c3988bb77e.jsonl",
+      "firstUsage": "2026-10-30T19:45:54.9660000+00:00",
+      "contexts": 37,
+      "ownedTokenEventsThroughStop": 999,
+      "databaseTokensUsed": 215133848,
+      "lastUsage": "2026-10-31T01:55:25.4120000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 70969250,
+      "createdAt": "2026-10-30T19:45:46.4380000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a18e58-cbc3-78f3-82f6-a7c3988bb77e",
+          "subagent_history_start_ordinal": 36,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 70969250,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-terra",
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a18e58-cbc3-78f3-82f6-a7c3988bb77e",
+      "databaseProvider": "openai",
+      "linesRead": 7301
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/30/rollout-2026-10-30T15-00-24-01a18e66-3080-7011-909e-fa0be6335f77.jsonl",
+      "firstUsage": "2026-10-30T20:00:32.2930000+00:00",
+      "contexts": 27,
+      "ownedTokenEventsThroughStop": 1011,
+      "databaseTokensUsed": 217981964,
+      "lastUsage": "2026-10-31T01:54:24.5560000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 81372207,
+      "createdAt": "2026-10-30T20:00:24.1970000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a18e66-3080-7011-909e-fa0be6335f77",
+          "subagent_history_start_ordinal": 6,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 81372207,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a18e66-3080-7011-909e-fa0be6335f77",
+      "databaseProvider": "openai",
+      "linesRead": 7339
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/31/rollout-2026-10-31T09-19-17-01a19254-3fce-7e82-8d8f-fd265684abf5.jsonl",
+      "firstUsage": "2026-10-31T14:19:24.7210000+00:00",
+      "contexts": 2,
+      "ownedTokenEventsThroughStop": 27,
+      "databaseTokensUsed": 2818517,
+      "lastUsage": "2026-10-31T14:23:23.5790000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 6460771,
+      "createdAt": "2026-10-31T14:19:17.3320000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a19254-3fce-7e82-8d8f-fd265684abf5",
+          "subagent_history_start_ordinal": 9,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 6460771,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a19254-3fce-7e82-8d8f-fd265684abf5",
+      "databaseProvider": "openai",
+      "linesRead": 178
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/31/rollout-2026-10-31T09-27-20-01a1925b-a075-7b20-ab70-6f0f002552ea.jsonl",
+      "firstUsage": "2026-10-31T14:27:27.6890000+00:00",
+      "contexts": 6,
+      "ownedTokenEventsThroughStop": 120,
+      "databaseTokensUsed": 19616387,
+      "lastUsage": "2026-10-31T15:16:08.1020000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 8049819,
+      "createdAt": "2026-10-31T14:27:20.8270000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a1925b-a075-7b20-ab70-6f0f002552ea",
+          "subagent_history_start_ordinal": 21,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 8049819,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a1925b-a075-7b20-ab70-6f0f002552ea",
+      "databaseProvider": "openai",
+      "linesRead": 877
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/31/rollout-2026-10-31T09-27-32-01a1925b-cf08-77d2-977a-c5b0463c3e6a.jsonl",
+      "firstUsage": "2026-10-31T14:27:38.8630000+00:00",
+      "contexts": 65,
+      "ownedTokenEventsThroughStop": 2918,
+      "databaseTokensUsed": 641553567,
+      "lastUsage": "2026-11-01T09:01:02.5700000+00:00",
+      "eventsExcludedAfterStop": 13,
+      "bytesAtEnd": 167794950,
+      "createdAt": "2026-10-31T14:27:32.7470000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a1925b-cf08-77d2-977a-c5b0463c3e6a",
+          "subagent_history_start_ordinal": 22,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 167789796,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a1925b-cf08-77d2-977a-c5b0463c3e6a",
+      "databaseProvider": "openai",
+      "linesRead": 20736
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/31/rollout-2026-10-31T09-27-56-01a1925c-2cf1-7a63-94b3-a58d69d8f650.jsonl",
+      "firstUsage": "2026-10-31T14:28:03.6730000+00:00",
+      "contexts": 53,
+      "ownedTokenEventsThroughStop": 2906,
+      "databaseTokensUsed": 621236947,
+      "lastUsage": "2026-11-01T05:45:35.1240000+00:00",
+      "eventsExcludedAfterStop": 0,
+      "bytesAtEnd": 146615347,
+      "createdAt": "2026-10-31T14:27:56.7890000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a1925c-2cf1-7a63-94b3-a58d69d8f650",
+          "subagent_history_start_ordinal": 23,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 146615347,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a1925c-2cf1-7a63-94b3-a58d69d8f650",
+      "databaseProvider": "openai",
+      "linesRead": 20747
+    },
+    {
+      "databaseModel": "gpt-6.1-sol",
+      "eventsExcludedBeforeThreadCreation": 0,
+      "rolloutPath": "\u003Chome\u003E/.codex/sessions/2026/10/31/rollout-2026-10-31T10-04-10-01a1927d-5731-7743-9847-7a34d8b08b5e.jsonl",
+      "firstUsage": "2026-10-31T15:04:17.5600000+00:00",
+      "contexts": 54,
+      "ownedTokenEventsThroughStop": 2525,
+      "databaseTokensUsed": 576411556,
+      "lastUsage": "2026-11-01T05:50:52.6870000+00:00",
+      "eventsExcludedAfterStop": 14,
+      "bytesAtEnd": 166983304,
+      "createdAt": "2026-10-31T15:04:10.2940000+00:00",
+      "parseFailures": 0,
+      "sessionMetadata": [
+        {
+          "id": "01a1927d-5731-7743-9847-7a34d8b08b5e",
+          "subagent_history_start_ordinal": 6,
+          "parent_thread_id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "line": 1,
+          "forked_from_id": "01a17901-193c-7163-bb57-05a12ae57269"
+        },
+        {
+          "id": "01a17901-193c-7163-bb57-05a12ae57269",
+          "parent_thread_id": null,
+          "line": 2,
+          "forked_from_id": null
+        }
+      ],
+      "bytesAtStart": 166983304,
+      "nullInfoEvents": 0,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "databaseEffort": "ultra",
+      "threadId": "01a1927d-5731-7743-9847-7a34d8b08b5e",
+      "databaseProvider": "openai",
+      "linesRead": 17922
+    }
+  ],
+  "threadCount": 10,
+  "sanitizedUsageEvents": 23135,
+  "eventsSha256": "165CA53306917AF7DD26DF54FAA2329C1EB8431080D354CA4F86086DBA9D41D1"
+}

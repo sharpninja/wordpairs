@@ -1,0 +1,704 @@
+{
+  "timestamp": "2026-10-28T21:04:05",
+  "gate": "admin-pwa-source-round2",
+  "requestReceipt": "\u003Crepo\u003E/docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl",
+  "responseReceipt": "\u003Crepo\u003E/docs/receipts/hv/20261028T204722-admin-pwa-source-round2.response.jsonl",
+  "priorVerdict": "\u003Crepo\u003E/docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json",
+  "reviewedRevision": "f70e8b4caba9f5c722348f9da6e7fae0adce7922",
+  "baseRevision": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+  "priorRevision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+  "reviewer": {
+    "agent": "ClaudeCode",
+    "model": "claude-opus-5-5",
+    "modelReceipt": "response.jsonl line 7 init event model claude-opus-5-5",
+    "effort": "high",
+    "effortReceipt": "launcher command only (--effort high); init reports per_turn_effort_active true without a value; not runtime-verified",
+    "plugin": "mcpserver-claude-code-plugin (manifest name mcpserver) version 1.121.0 from .claude-plugin/plugin.json; marker lists 1.26.0"
+  },
+  "profileLoad": {
+    "skill": "\u003Chome\u003E/.codex/skills/add-profile/SKILL.md",
+    "profileFiles": 1,
+    "profileFile": "\u003Chome\u003E/.claude/profile/PROFILE-MERGED.md",
+    "globalMemories": 3,
+    "workspaceMemories": 0,
+    "workspaceTotalCount": 0,
+    "excluded": "PRIVATE-MEMORY-REFERENCE-007 filtered from list.items before rendering; never fetched individually"
+  },
+  "session": {
+    "sessionId": "ClaudeCode-20261029T010023Z-plugin-session",
+    "requestId": "req-20261029T014733Z-prompt-4388",
+    "hookSessionTwin": "ClaudeCode-20261029T014726Z-plugin-session",
+    "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+    "parentRequestId": "req-20261029T000126Z-prompt-ee7f"
+  },
+  "classification": {
+    "productImplementation": "GA-10 recovery: identity default, migration 012, planner ordering, tests, adapter harness, docs and QBrain updates in 437c501..f70e8b4 (class 1; BDPv4 and requirements apply).",
+    "providerOperations": "GitHub App registration observation (class 2; recorded, not re-observed by the reviewer; no hosted OAuth claimed)."
+  },
+  "OverallVerdict": "DISAGREE",
+  "accuracy": 95,
+  "accuracyJustification": "Product, test and evidence claims verify mechanically; two claims are overstated: the source binding covers 229 of 264 relevant files (G2), and the recovery-slice mock-first claim does not cover the planner change (G1).",
+  "completeness": 94,
+  "completenessJustification": "Round1 F1/F3/F4/F5 are fully remediated and F2 is closed by operator decision; two medium process gaps needing operator decisions (G1, G4) and two low receipt gaps (G2, G3) remain.",
+  "counts": {
+    "PASS": 36,
+    "FAIL": 4,
+    "UNKNOWN": 0,
+    "total": 40
+  },
+  "surfaces": {
+    "requestedClaims": "FAIL (S1-06)",
+    "workspaceRules": "FAIL (S2-05, S2-06, S2-07)",
+    "requirements": "PASS",
+    "plan": "PASS (G1 also contradicts docs/deployment_plan.md:36 sequencing; counted once under S2-05)"
+  },
+  "priorFindingDisposition": {
+    "F1": "fixed (S1-09, S1-10, S1-11, S3-04)",
+    "F2": "closed by operator one-time exception (S1-14, S2-09)",
+    "F3": "fixed (S1-15, S3-05)",
+    "F4": "fixed (S1-16); analyzer receipt gap G3",
+    "F5": "fixed (S1-17)",
+    "F6": "persists, info I6",
+    "F7": "persists, info I5",
+    "F8": "persists, info I7"
+  },
+  "items": [
+    {
+      "id": "S1-01",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "HEAD is f70e8b4caba9f5c722348f9da6e7fae0adce7922; parent 437c501c; tracked tree clean (only the five TRX and round2 request/self-review untracked).",
+      "anchors": [
+        "R2-05-GitEvidence.ps1 output: HEAD, PARENT-OF-CANDIDATE, status porcelain, empty tracked diff"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-02",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "All five TRX SHA-256 values equal the request jsonl values.",
+      "anchors": [
+        "R2-05 output: trxSha256 match request=True x5"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-03",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Counts unit 587, browser 70, PostgreSQL 68, mock-gate 3, privacy-unit 7; every result Passed; failed 0; notExecuted 0; JUnit failures/errors/skipped 0.",
+      "anchors": [
+        "R2-05 output counters and junit root attributes",
+        "unit.log:97-98",
+        "postgres.log:266-267",
+        "browser.log:81"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-04",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Each TRX is individual-case and 1:1 in order with its native JUnit (0 diffs); embedded JUnit SHA-256 matches; declared revision f70e8b4; RunInfo states conversion timestamps are not execution times.",
+      "anchors": [
+        "R2-05 output nameOrderDiffs=0, trxDeclaresJUnitSha match=True x5, runInfoText"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-05",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "candidate-source-evidence.json: all 229 listed hashes equal worktree bytes and the f70e8b4 blobs; all five lane JUnit hashes match.",
+      "anchors": [
+        "R2-05 output entries=229 worktreeMismatch=0 headBlobMismatch=0",
+        "candidate-source-evidence.json:921-962"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-06",
+      "surface": "requested-claims",
+      "status": "FAIL",
+      "claim": "Claim that candidate-source-evidence.json binds current source/test bytes is overstated: 35 tracked files are omitted, including public/admin-sw.js, public/admin-offline.html, public/sw.js, next.config.ts, playwright.pwa.config.ts, vitest.config.ts and all five [reference] routes.",
+      "anchors": [
+        "R2-05 output UNLISTED list (trackedCount=261 listedCount=229 unlisted=35)",
+        "R2-09 output last-write of omitted files"
+      ],
+      "finding": "G2"
+    },
+    {
+      "id": "S1-07",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Lane coverage: unit 61 of 61 tracked tests/**/*.test.ts; PostgreSQL 10 of 11 integration files (transport.realtime unchanged, as accepted in round1); browser 14 of 17 specs (three LIVE-origin-only specs, as accepted in round1).",
+      "anchors": [
+        "R2-09-Coverage.ps1 output"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-08",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Run chronology (native start times vs last writes; mtimes are last-write only): last src edit 20:25:06; lint 20:27:47 and build 20:27:56 after it; PostgreSQL started 20:27:06 after its test files (latest 20:23:59); unit started 20:29:23 after the last test edit 20:28:47; browser 70 cases in 2.2m ending 20:31:37 (start about 20:29:24, inferred) after auth-navigation spec 20:26:44.",
+      "anchors": [
+        "R2-06-CodeDiff.ps1 chronology output",
+        "unit.log:99",
+        "postgres.log:268",
+        "browser.log:5,81",
+        "lint.log:3-5",
+        "build.log:10-11"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-09",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Round1 F1 product fix: new profiles default publicLeaderboard false; migration 012 recreates wordpairs_public_profiles byte-identical to 002 except identity_kind=guest inside the pre-paging subquery, and bumps the leaderboard revision; create or replace preserves 002 grants.",
+      "anchors": [
+        "src/application/identity.ts:100-101",
+        "src/infrastructure/migrations/012_guest_public_profiles.sql:4-18",
+        "src/infrastructure/migrations/002_public_reads.sql:16-28,44-47"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-10",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "GA-10 tests discriminate: real PostgreSQL seeds a 999-win legacy member with public flag true and asserts exclusion plus page-2 (offset1 limit1) = public-wins, which a post-paging filter would fail; owner callback asserts publicLeaderboard false and absence from the SQL projection; unit test binds the oracle to the real IdentityService; production read path is only PostgresPublicReadRepository.",
+      "anchors": [
+        "tests/integration/public-read.integration.ts:23,44-51,67-73",
+        "tests/integration/admin.integration.ts:533-535",
+        "tests/application/identity.test.ts:13-21",
+        "src/infrastructure/runtime.ts:292",
+        "postgres.log:200-203 (012 applied)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-11",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Sibling sweep of public projections: wordpairs_public_rooms returns no alias or member data; room roster alias function serves room participants only; access-control user search is admin-only and /api/admin/users returns 404; landingProjection strips ids.",
+      "anchors": [
+        "src/infrastructure/migrations/002_public_reads.sql:29-43",
+        "src/infrastructure/migrations/004_rooms.sql:50",
+        "src/infrastructure/migrations/010_access_control.sql:38-45",
+        "src/application/public-projections.ts:68-82"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-12",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Planner keeps the recorded hosted prefix (core 001..011, hosted 101/102) and appends 012; history is validated by ordered name and source hash, apply stamps later versions, so 012 cannot be misordered against the recorded history.",
+      "anchors": [
+        "scripts/hosting-schema.mjs:20-39,59-66",
+        "tests/integration/hosting-schema.test.ts:28-41"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-13",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "GA-10 privacy mock gate: oracle files last written 20:22:05/20:22:27, gate ran 20:22:37-38 with 3/3 including in-harness negative controls, before identity.ts 20:24:45 and 012 20:25:06; the same oracle is bound to the real service and PostgreSQL query. Ordering is last-write inference, not byte history.",
+      "anchors": [
+        "mock-gate.log:4-8",
+        "mock-gate-provenance.json:3-32",
+        "tests/ac-contracts/admin-profile-privacy.test.ts:4-15",
+        "privacy-unit.log:4-9"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-14",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Operator one-time exception recorded verbatim, scoped to the historical missing original mock-gate receipt only, waives no fresh test/HV/security/migration/hosted validation, and is present in live QBrain notes.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-recovery/process-exception.json:2-13",
+        "qbrain-readback/FR-GUESTADMIN-031.yaml:18",
+        "qbrain-readback/TR-GITHUB-ADMIN-043.yaml:19",
+        "docs/admin_pwa_release.md:221-228"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-15",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Round1 F3 fixed: structured copies GA-05 on TR-PWA-INSTALLATION-036/TEST-PWAINSTALL-137, GA-06/07 on TR-PWA-CACHEPRIVACY-037/TEST-PWAPRIVACY-138, GA-09 on TR-UI-RESPONSIVEMATRIX-040/TEST-ADMINUI-136 with a new native FR edge, GA-10 on TR-GITHUB-ADMIN-043/TEST-GITHUBADMIN-149; canonical PWA cross-references in notes.",
+      "anchors": [
+        "R2-10-QBrainTr040.ps1 carriage output",
+        "qbrain-readback/map-FR-GUESTADMIN-031.yaml:18-20",
+        "qbrain-readback/FR-GUESTADMIN-031.yaml:15"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-16",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Round1 F4 fixed: reproducible harness scripts/Test-JUnitToTrx.ps1 with fixtures tests/fixtures/junit-outcomes.xml (Passed/Failed/NotExecuted) and junit-empty.xml; WhatIf-no-output and empty-report rejection as negative controls; output and hashes retained; synthetic Failed/NotExecuted are not product failures.",
+      "anchors": [
+        "scripts/Test-JUnitToTrx.ps1:1-24",
+        "adapter/adapter-validation.json:1-12",
+        "adapter/fixture-b6b0dcc64de24c7797ed7ac3b2f6716b.trx",
+        "candidate-source-evidence.json:908-918"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-17",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Round1 F5 fixed: the final 70-case browser run includes all four pwa.spec.ts cases, and pwa.spec.ts is unchanged in 437c501..f70e8b4.",
+      "anchors": [
+        "browser.log:50-53",
+        "R2-05 name-status r1..head (no pwa.spec.ts)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-18",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Class-2 provider operation: saved GitHub App settings recorded from authenticated Edge observation without credential values (client ID is a public identifier); callbacks equal the release doc and planner origins; webhook and device flow off; no hosted OAuth success claimed. Reviewer did not re-observe GitHub (out of read-only scope).",
+      "anchors": [
+        "github-registration-observations.json:1-23",
+        "docs/admin_pwa_release.md:24-29",
+        "scripts/hosting-schema.mjs:10"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-19",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "No claim of live OAuth consent, standalone phone continuity, physical installation, hosted rollout or durability; VolatileStorage limitation stated.",
+      "anchors": [
+        "docs/admin_pwa_release.md:131-142,172-180,193-196",
+        "candidate-source-evidence.json:920",
+        "commit f70e8b4 body"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-20",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Round1-verified security core (provider, cookie/hash realms, public secured routes, admin worker/manifest, navigation races, card whitespace, presence fix) is untouched in 437c501..f70e8b4, so round1 items S1-12..S1-21 carry forward.",
+      "anchors": [
+        "R2-05 name-status r1..head",
+        "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json items S1-12..S1-21"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-01",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "New script tooling added this round is PowerShell (scripts/Test-JUnitToTrx.ps1); no Python.",
+      "anchors": [
+        "R2-05 name-status r1..head"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-02",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "HV request jsonl and self-review exist with evidence hashes, revision, reviewer identity and launch command; round1 request/response/verdict retained (full response.jsonl kept locally, gitignored, plus tracked redacted public copy with the same 1770 lines).",
+      "anchors": [
+        "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl:1",
+        "R2-08-StaticChecks.ps1 receipt listing",
+        ".gitignore:18-22"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-03",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Commit carries the Signed model-effort@agent line with confidence values.",
+      "anchors": [
+        "commit f70e8b4 body: Signed: gpt-6.1-sol-high@Codex | Confidence: correctness 99%, accuracy 99%, completeness 96%"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-04",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "No token or private-key patterns in the new evidence directory; GitHub observation states credentialValuesIncluded false.",
+      "anchors": [
+        "Grep token patterns over docs/evidence/hosting/guest-admin-recovery: 0",
+        "github-registration-observations.json:22"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-05",
+      "surface": "workspace-rules",
+      "status": "FAIL",
+      "claim": "BDPv4 order in the GA-10 recovery slice: the production deployment planner change (scripts/hosting-schema.mjs, last write 20:25:06) had no pre-implementation test or mock gate. The run started 20:26:59 shows hosting-schema.test.ts with 5 tests and a red length assertion; the prefix-preservation test exists only from 20:28:47 (final run shows 6). The final test bytes postdate the only TypeScript check (build 20:27:56; tsconfig includes tests). The project plan itself requires mock-first contract tests before script code.",
+      "anchors": [
+        "unit-first-failure.log:14-20,95-117",
+        "unit.log:14",
+        "R2-06 chronology output",
+        "mock-gate-provenance.json:9-32",
+        "tsconfig.json:41",
+        "build.log:10-11",
+        "docs/deployment_plan.md:36",
+        "PROFILE-MERGED.md section 5.1 steps 2-4 and 7"
+      ],
+      "finding": "G1"
+    },
+    {
+      "id": "S2-06",
+      "surface": "workspace-rules",
+      "status": "FAIL",
+      "claim": "Existing Node script tool scripts/hosting-schema.mjs was extended rather than retired; the profile allows existing Node code to be touched only to retire it and requires script tools to be PowerShell. No operator exception for this edit was found in the evidence.",
+      "anchors": [
+        "scripts/hosting-schema.mjs:20-26",
+        "PROFILE-MERGED.md section 6.1 and 6.3"
+      ],
+      "finding": "G4"
+    },
+    {
+      "id": "S2-07",
+      "surface": "workspace-rules",
+      "status": "FAIL",
+      "claim": "No parser/PSScriptAnalyzer receipt is retained for scripts/Test-JUnitToTrx.ps1 or scripts/Convert-JUnitToTrx.ps1 before they ran against fixtures and evidence. Reviewer static inspection found 0 parse errors and 0 Warning/Error findings, so the gap is the receipt, not the scripts.",
+      "anchors": [
+        "Grep ScriptAnalyzer over docs/evidence/hosting: 0 files",
+        "R2-08-StaticChecks.ps1 output",
+        "PROFILE-MERGED.md section 6.1"
+      ],
+      "finding": "G3"
+    },
+    {
+      "id": "S2-08",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Honesty: the red first run is retained, the original-slice process limit and fixture limits are disclosed, and no completion, deployment or approval is claimed.",
+      "anchors": [
+        "unit-first-failure.log",
+        "docs/admin_pwa_release.md:198-234",
+        "commit f70e8b4 body"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-09",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Round1 F2 (missing original mock-gate receipt) is resolved by the operator-approved historical exception; not counted as a fresh FAIL.",
+      "anchors": [
+        "process-exception.json",
+        "docs/admin_pwa_release.md:221-228"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-10",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Requirements live in QBrain through MCP; reviewer read them live through the Claude plugin (local readbacks support only).",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round2-tools/qbrain-readback/*.yaml"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-01",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "FR-GUESTADMIN-031 has structured GA-01..GA-10; every changed criterion is isSatisfied false; all named FR/TR/TEST records are in_progress in layer-1.",
+      "anchors": [
+        "qbrain-readback/FR-GUESTADMIN-031.yaml:19-60",
+        "R2-07-QBrain.ps1 output",
+        "qbrain-readback/layers.yaml"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-02",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Native mappings: FR-GUESTADMIN-031 to TR-GITHUB-ADMIN-043, TR-IDENTITY-AUTHENTICATION-016, TR-PWA-CACHEPRIVACY-037, TR-PWA-INSTALLATION-036, TR-UI-RESPONSIVEMATRIX-040 and TEST-ADMINUI-136, TEST-GITHUBADMIN-149, TEST-PWAINSTALL-137, TEST-PWAPRIVACY-138.",
+      "anchors": [
+        "qbrain-readback/map-FR-GUESTADMIN-031.yaml:5-33"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-03",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "GA-10 text matches the implementation and the tests (server-side exclusion regardless of stored flag, private default, unchanged guest opt-in/ordering/paging/revision behavior).",
+      "anchors": [
+        "qbrain-readback/TEST-GITHUBADMIN-149.yaml:41-44",
+        "S1-09",
+        "S1-10"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-04",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Round1 S3-04 resolved: DEC-11 now states guest opt-in/opt-out and member exclusion under GA-10, isSatisfied false, on FR-PLAYERPROFILE-002 and FR-IDENTITY-018.",
+      "anchors": [
+        "qbrain-readback/FR-PLAYERPROFILE-002.yaml:30-33",
+        "qbrain-readback/FR-IDENTITY-018.yaml:28-30"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-05",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Every GA criterion is carried by at least one TEST record; GA-01, 03-10 also by a TR record.",
+      "anchors": [
+        "R2-10-QBrainTr040.ps1 carriage output"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-06",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Preserved historical and deferred community/delegation criteria are labeled historical, not active UI claims.",
+      "anchors": [
+        "qbrain-readback/FR-PHONEINSTALL-026.yaml notes",
+        "docs/admin_pwa_release.md:78-82"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-01",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Current override is referenced from implementation, deployment, moderation, PWA, admin ACL and hosting docs; GA-10/migration 012 live only in the canonical release doc (single source of truth).",
+      "anchors": [
+        "docs/implementation_plan.md:3",
+        "docs/deployment_plan.md:3-10",
+        "docs/moderation_plan.md:3",
+        "docs/admin_pwa_release.md:169,198-234"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-02",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "No plan step, TODO or requirement is claimed done; the candidate is presented for HV before staging.",
+      "anchors": [
+        "commit f70e8b4 body",
+        "docs/admin_pwa_release.md:228"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-03",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Rollout order for 012 is staging first, verify, then production; schema, private Realtime and scheduler stay separate deployment prerequisites.",
+      "anchors": [
+        "docs/admin_pwa_release.md:168-170,210-214"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-04",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Hosting record keeps staging evidence bound to 8e2f624 and claims no changed-source rollout (wording still says uncommitted candidate; see I3).",
+      "anchors": [
+        "docs/hosting_execution.md:173-183"
+      ],
+      "finding": ""
+    }
+  ],
+  "findings": [
+    {
+      "id": "G1",
+      "severity": "medium",
+      "class": "process-bdpv4 (class-1 product implementation)",
+      "title": "Deployment planner change in the GA-10 slice has no pre-implementation test, and its final test bytes have no type-check receipt",
+      "detail": "scripts/hosting-schema.mjs was changed (last write 20:25:06) to keep the recorded hosted prefix and append 012. The first full unit run (start 20:26:59) shows hosting-schema.test.ts with 5 tests and fails toHaveLength(12) with 13; the prefix-preservation test appears only after the edit at 20:28:47 (final run: 6 tests). mock-gate-provenance.json lists only identity.ts and 012 as production files, and the GA-10 oracle covers privacy only. docs/deployment_plan.md:36 itself requires mock-first contract tests before script code. The final test bytes postdate the only TypeScript check (next build 20:27:56; tsconfig includes tests/**/*.ts). Observed from retained logs, not from FR timestamps. The operator exception covers only the historical original receipt.",
+      "requirements": [
+        "PROFILE-MERGED.md section 5.1",
+        "docs/deployment_plan.md:36",
+        "marker Rules 10 and 11"
+      ],
+      "proposedAC": "Hosting TR (new or the existing TR-20..29 deployment TR): given recorded hosted history core 001..011 then hosted 101/102, the planner proposes only later core extensions in order; a history whose order or source differs is rejected before any connection.",
+      "proposedTests": [
+        "tests/integration/hosting-schema.test.ts: keep the 13-prefix case (pending equals [012]); add negative controls: history with 012 inserted before hosted 101 is rejected as drift; history of core 001..011 only yields [hosted_scheduler, private_realtime, 012] in that order.",
+        "Supply a TypeScript check (npm run build or tsc --noEmit) log taken after the last test edit, as evidence."
+      ],
+      "operatorDecision": "Record a further one-time exception for the planner chronology in this recovery slice, or require remediation (revert the planner edit, add the mock-validated planner tests first, then re-apply)."
+    },
+    {
+      "id": "G4",
+      "severity": "medium",
+      "class": "process-rule (PowerShell only, no Node)",
+      "title": "Existing Node script tool extended instead of retired",
+      "detail": "scripts/hosting-schema.mjs is a Node script tool. This candidate adds ordering logic to it (lines 20-26). Profile sections 6.1 and 6.3 require script tools to be PowerShell and allow existing Node code to be touched only to retire it. No operator exception was found in the evidence. Observation; whether the operator already permits this deployment fallback tool is unknown to the reviewer.",
+      "requirements": [
+        "PROFILE-MERGED.md sections 6.1 and 6.3"
+      ],
+      "proposedAC": "",
+      "proposedTests": [
+        "If ported: a PowerShell planner with Pester or script tests covering the G1 cases, analyzer-clean, -WhatIf for state-changing modes."
+      ],
+      "operatorDecision": "Authorize this minimal maintenance edit of the existing Node deployment fallback, or require porting the planner to PowerShell before staging."
+    },
+    {
+      "id": "G2",
+      "severity": "low",
+      "class": "evidence-binding",
+      "title": "candidate-source-evidence.json omits 35 tracked files",
+      "detail": "Omitted: public/admin-sw.js, public/admin-offline.html, public/sw.js, public/offline.html, icons and backgrounds, next.config.ts, all playwright configs, vitest.config.ts and every [reference] route (the bracket paths suggest an unescaped PowerShell wildcard in the generator; inference, generator not tracked). Mitigation verified: every omitted file was last written before the 437c501 commit and is unchanged in 437c501..f70e8b4, so run bytes almost certainly equal committed bytes.",
+      "requirements": [
+        "PROFILE-MERGED.md section 2.4"
+      ],
+      "proposedAC": "The binding manifest lists every tracked file under src, tests, scripts, public and every root config consumed by build/test, generated from git ls-files with literal paths.",
+      "proposedTests": [
+        "Track the generator script; assert manifest path set equals git ls-files for the declared roots."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "G3",
+      "severity": "low",
+      "class": "process-rule (analyzer receipts)",
+      "title": "No analyzer receipt for the adapter scripts",
+      "detail": "Profile 6.1 requires parser and PSScriptAnalyzer (Warning, Error) results reported with the run before a script runs against data. No such receipt exists for scripts/Test-JUnitToTrx.ps1 or scripts/Convert-JUnitToTrx.ps1. Reviewer read-only static check: 0 parse errors, 0 findings for both.",
+      "requirements": [
+        "PROFILE-MERGED.md section 6.1"
+      ],
+      "proposedAC": "",
+      "proposedTests": [
+        "Retain analyzer output beside adapter.log for each script hash used."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I1",
+      "severity": "info",
+      "class": "traceability",
+      "title": "GA-02 has TEST carriage only",
+      "detail": "GA-02 is on TEST-GITHUBADMIN-149 but on no TR record, unlike GA-01 and GA-03..10. Meets the round1 bar; a TR copy (content/moderation TR) would complete the chain.",
+      "requirements": [
+        "FR-GUESTADMIN-031#GA-02"
+      ],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I2",
+      "severity": "info",
+      "class": "metadata-drift",
+      "title": "GA-10 evidence text says tests and migration pending",
+      "detail": "Five records carry evidence \"Recovery slice tests and migration pending\"; the tests and 012 now exist and passed locally. Accurate only as pending verification; update at the status change.",
+      "requirements": [
+        "GA-10"
+      ],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I3",
+      "severity": "info",
+      "class": "metadata-drift",
+      "title": "hosting_execution.md calls the candidate uncommitted",
+      "detail": "docs/hosting_execution.md:181 says \"this uncommitted candidate\"; the candidate is committed as f70e8b4.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I4",
+      "severity": "info",
+      "class": "test-depth",
+      "title": "Migration 012 revision bump not asserted",
+      "detail": "The cursor-invalidating revision bump (012_guest_public_profiles.sql:17) has no direct assertion; GA-10 does not require it.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [
+        "PostgreSQL: a revision read before 012 conflicts after 012 is applied."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I5",
+      "severity": "info",
+      "class": "evidence",
+      "title": "Round1 F7 persists: non-unique it.each names",
+      "detail": "unit.xml still has 3 duplicate-name groups (github-admin token endpoint x3, malformed transaction x3, hosted-sbom x2).",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [
+        "Interpolate case values into titles."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I6",
+      "severity": "info",
+      "class": "mcp-server",
+      "title": "Round1 F6 persists: QBrain reads return read-time createdAt",
+      "detail": "FR-GUESTADMIN-031 createdAt 2026-10-29T01:55:03Z equals the read time; already triaged as triage-report-618a93a51dd54d92b620dba566f21bfb.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I7",
+      "severity": "info",
+      "class": "reviewer-runtime",
+      "title": "Reviewer runtime and session binding",
+      "detail": "Model claude-opus-5-5 verified from the stream init event (response.jsonl line 7). Effort high is launcher-attested only (init reports per_turn_effort_active true without a value). The hook opened req-20261029T014733Z-prompt-4388 in new session ClaudeCode-20261029T014726Z-plugin-session, but the wrapper cache kept ClaudeCode-20261029T010023Z-plugin-session, so this review is persisted under that session with the same requestId; the hook-session twin stays empty. Filed triage-report-ffabffebaf164ad2a76072bfcb6269eb (group triage-group-51bee4c88d99073a). Round1 hook turn req-20261029T005811Z-prompt-88ee is likewise still in_progress.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "I8",
+      "severity": "info",
+      "class": "marker-drift",
+      "title": "Marker plugin version drift",
+      "detail": "Marker agent_plugins.Claude.plugin_version 1.26.0; plugin manifest .claude-plugin/plugin.json reports mcpserver 1.121.0 (authoritative).",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    }
+  ],
+  "missingTestsAndDecisions": [
+    "G1 operator decision: further one-time exception for the planner chronology, or remediation with mock-validated planner tests first.",
+    "G1 AC: hosting TR criterion for prefix-preserving planning and drift rejection; tests: 13-prefix pending [012], misordered history rejected, 11-core history yields hosted101, hosted102, 012 in order.",
+    "G1 evidence: a TypeScript check (build or tsc --noEmit) log taken after the last test edit.",
+    "G4 operator decision: authorize the Node fallback edit or require a PowerShell planner.",
+    "G2: regenerate the binding manifest from git ls-files with literal paths over src, tests, scripts, public and root configs; track the generator.",
+    "G3: retain parser and PSScriptAnalyzer output for each adapter script hash used.",
+    "Optional (I4): PostgreSQL assertion that a pre-012 leaderboard revision conflicts after 012."
+  ],
+  "triage": [
+    "triage-report-ffabffebaf164ad2a76072bfcb6269eb (group triage-group-51bee4c88d99073a): hook session not adopted by wrapper cache"
+  ],
+  "verdictProse": "Hostile validation verdict, admin PWA source candidate f70e8b4caba9f5c722348f9da6e7fae0adce7922, gate admin-pwa-source-round2 (staging readiness only). Timestamp 2026-10-28T21:04:05 local.\n\nOverallVerdict DISAGREE. Accuracy 95. Completeness 94. Both are below 98, and the workspace-rules surface has three FAILs and the requested-claims surface one. PASS 36, FAIL 4, UNKNOWN 0 of 40.\n\nWhat holds: the round1 product defect is fixed correctly. New profiles default private, and migration 012 recreates the public profile query with a guest-only filter inside the pre-paging subquery; otherwise it is identical to 002 and keeps its grants. The real PostgreSQL test seeds a 999-win legacy member with a public flag and proves both exclusion and pre-paging filtering (page 2 must be public-wins). The owner callback proves the admin is absent from the SQL projection. No other public projection exposes member identities. The planner keeps the recorded hosted prefix and appends 012 safely. All five TRX match the request hashes and their native JUnit case by case, with 0 failed and 0 skipped. Unit coverage is 61 of 61 files, and every lane started after the last edit relevant to it. Round1 F3, F4 and F5 are fixed: structured GA copies are on TR/TEST records with a new native edge, the adapter harness and fixtures are reproducible, and all four PWA browser cases reran. The one-time operator exception is recorded verbatim, scoped to the historical receipt only, and present in QBrain. DEC-11 is rewritten and unsatisfied. Nothing is claimed done or deployed.\n\nWhy DISAGREE:\nG1 (medium, BDPv4): the deployment planner change in the GA-10 slice had no pre-implementation test or mock gate. The 20:26:59 run shows 5 hosting-schema tests and a red length assertion; the prefix test was added at 20:28:47, after the only TypeScript check (build 20:27:56). The project's own deployment plan requires mock-first tests before script code. Operator decision needed: a further exception or remediation.\nG4 (medium, profile rule): the existing Node script tool scripts/hosting-schema.mjs was extended rather than retired, and no exception was found. Operator decision needed: authorize it or require a PowerShell port.\nG2 (low, evidence): the binding manifest omits 35 tracked files, including the admin worker, next.config.ts and every [reference] route. Mitigated: all were unchanged since 437c501.\nG3 (low, receipts): there is no analyzer receipt for the two adapter scripts; the reviewer's static check is clean.\nI1 to I8 are informational: GA-02 has TEST-only carriage, GA-10 evidence text is stale, hosting record wording is stale, the 012 revision bump is unasserted, duplicate case names persist, QBrain read-time timestamps persist, a reviewer session-binding divergence was triaged, and the marker plugin version drifts.\n\nNot claimed and still pending: applying 012 to staging and then production, live GitHub consent, standalone phone OAuth continuity, physical OS installation, hosted rollout and durability under power loss."
+}

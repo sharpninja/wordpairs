@@ -1,0 +1,44 @@
+<TestRun id="f7c2d4df-b3ba-4ce4-ae3b-8a47fbb68b7d" name="JUnit adapter: realtime.xml" runUser="sharpninja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times start="2026-10-31T17:55:45.9080406-05:00" queuing="2026-10-31T17:55:45.9080406-05:00" finish="2026-10-31T17:55:45.9080406-05:00" creation="2026-10-31T17:55:45.9080406-05:00" />
+  <Results>
+    <UnitTestResult relativeResultsDirectory="2c1860a2-d0a0-4ed7-ba8b-1a83e8b6657b" testId="ecc1f1ee-35ee-9ee5-012b-28c3ed4c76f7" duration="00:00:05.0968089" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" executionId="2c1860a2-d0a0-4ed7-ba8b-1a83e8b6657b" computerName="[PRIVATE HOST]" testName="tests/integration/transport.realtime.integration.ts :: TR Realtime rejects a private subscription to another profile’s channel" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <UnitTestResult relativeResultsDirectory="b3842d33-b61a-4294-92bf-cabaf5ac87af" testId="5b7d67c1-0548-e5c0-9f69-5fed28a06563" duration="00:00:00.1689297" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" executionId="b3842d33-b61a-4294-92bf-cabaf5ac87af" computerName="[PRIVATE HOST]" testName="tests/integration/transport.realtime.integration.ts :: TR committed room/observer transitions reach their actual private recipients through durable outbox delivery, without payload leakage" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <UnitTestResult relativeResultsDirectory="ea1ce83e-77f2-42ce-9a24-1fd08400687a" testId="d9c9fd56-c2c9-9b82-1290-2bbaee08db60" duration="00:00:00.2315065" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" executionId="ea1ce83e-77f2-42ce-9a24-1fd08400687a" computerName="[PRIVATE HOST]" testName="tests/integration/transport.realtime.integration.ts :: TR committed match changes notify players and their observer without sending private answers or hints" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <UnitTestResult relativeResultsDirectory="dc0c7ee4-2681-4288-b29b-b28d3c8d2187" testId="906a1aa6-bde2-0559-b021-14b4688919c8" duration="00:00:00.0990280" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" executionId="dc0c7ee4-2681-4288-b29b-b28d3c8d2187" computerName="[PRIVATE HOST]" testName="tests/integration/transport.realtime.integration.ts :: TR reaction notifications reach the actual room players/observer, exclude outsiders and refetch only visible allowlisted reactions" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TR Realtime rejects a private subscription to another profile’s channel" storage="tests/integration/transport.realtime.integration.ts" id="ecc1f1ee-35ee-9ee5-012b-28c3ed4c76f7">
+      <Execution id="2c1860a2-d0a0-4ed7-ba8b-1a83e8b6657b" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="TR Realtime rejects a private subscription to another profile’s channel" codeBase="tests/integration/transport.realtime.integration.ts" className="tests/integration/transport.realtime.integration.ts" />
+    </UnitTest>
+    <UnitTest name="TR committed room/observer transitions reach their actual private recipients through durable outbox delivery, without payload leakage" storage="tests/integration/transport.realtime.integration.ts" id="5b7d67c1-0548-e5c0-9f69-5fed28a06563">
+      <Execution id="b3842d33-b61a-4294-92bf-cabaf5ac87af" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="TR committed room/observer transitions reach their actual private recipients through durable outbox delivery, without payload leakage" codeBase="tests/integration/transport.realtime.integration.ts" className="tests/integration/transport.realtime.integration.ts" />
+    </UnitTest>
+    <UnitTest name="TR committed match changes notify players and their observer without sending private answers or hints" storage="tests/integration/transport.realtime.integration.ts" id="d9c9fd56-c2c9-9b82-1290-2bbaee08db60">
+      <Execution id="ea1ce83e-77f2-42ce-9a24-1fd08400687a" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="TR committed match changes notify players and their observer without sending private answers or hints" codeBase="tests/integration/transport.realtime.integration.ts" className="tests/integration/transport.realtime.integration.ts" />
+    </UnitTest>
+    <UnitTest name="TR reaction notifications reach the actual room players/observer, exclude outsiders and refetch only visible allowlisted reactions" storage="tests/integration/transport.realtime.integration.ts" id="906a1aa6-bde2-0559-b021-14b4688919c8">
+      <Execution id="dc0c7ee4-2681-4288-b29b-b28d3c8d2187" />
+      <TestMethod adapterTypeName="JUnit-to-TRX explicit result adapter" name="TR reaction notifications reach the actual room players/observer, exclude outsiders and refetch only visible allowlisted reactions" codeBase="tests/integration/transport.realtime.integration.ts" className="tests/integration/transport.realtime.integration.ts" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry executionId="2c1860a2-d0a0-4ed7-ba8b-1a83e8b6657b" testId="ecc1f1ee-35ee-9ee5-012b-28c3ed4c76f7" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestEntry executionId="b3842d33-b61a-4294-92bf-cabaf5ac87af" testId="5b7d67c1-0548-e5c0-9f69-5fed28a06563" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestEntry executionId="ea1ce83e-77f2-42ce-9a24-1fd08400687a" testId="d9c9fd56-c2c9-9b82-1290-2bbaee08db60" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestEntry executionId="dc0c7ee4-2681-4288-b29b-b28d3c8d2187" testId="906a1aa6-bde2-0559-b021-14b4688919c8" testListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="JUnit cases" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters pending="0" error="0" notRunnable="0" completed="4" failed="0" aborted="0" total="4" disconnected="0" executed="4" timeout="0" notExecuted="0" inconclusive="0" passedButRunAborted="0" passed="4" inProgress="0" />
+    <RunInfos>
+      <RunInfo outcome="Completed" computerName="[PRIVATE HOST]" timestamp="2026-10-31T17:55:45.9080406-05:00">
+        <Text>Adapted individual JUnit names, outcomes and reported durations. TRX Times are conversion timestamps, not invented original execution intervals. Source=<home>/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/realtime/realtime.xml; SHA256=73FB0D1C5457AFC168CC3E67C309557389082AB8F8C9F88919C03C110BC145CE; reviewed revision=042a030f0bbf56f7e4641681def62598f53cbcd8</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

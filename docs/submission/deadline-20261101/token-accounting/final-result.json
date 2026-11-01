@@ -1,0 +1,628 @@
+{
+  "atLocal": "2026-11-01T05:51:08",
+  "classification": "READ_ONLY_STOPPED_RELEASE_NATIVE_ACCOUNTING_NOT_HV_NOT_INVOICE",
+  "OverallVerdict": "AGREE",
+  "accuracy": 99,
+  "completeness": 98,
+  "scoreQualification": "Exactscoped native counters andselecteduser timestamps crosschecked;unreportedbilling/tier andotherproviderusage remainexplicitunknowns.",
+  "PASS": 4,
+  "FAIL": 0,
+  "UNKNOWN": 3,
+  "sessionId": "Codex-20261031T150618Z-plugin-session",
+  "requestId": "req-20261101T114002Z-stop-token-accounting",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261101T113149Z-stop-handoff-deadline-report",
+  "rootThreadId": "01a17901-193c-7163-bb57-05a12ae57269",
+  "actualStopUtc": "2026-11-01T11:31:25.6490000+00:00",
+  "assumedDeadlineBoundaryUtc": "2026-11-01T05:00:00.0000000+00:00",
+  "deadlineQualification": "User said deadlineistoday andAssumeOctober31,but didnot specify a cutoffhour/timezone. America/Chicago end-of-October31 midnight is an explicitly labeledcomparison assumption,not an assertedcontest deadline.",
+  "overall": {
+    "cache_write_input_tokens": 0,
+    "reasoning_output_tokens": 3924959,
+    "total_tokens": 4790673951,
+    "events": 21250,
+    "uncached_input_tokens": 62313767,
+    "output_tokens": 10722936,
+    "input_tokens": 4779951015,
+    "cached_input_tokens": 4717637248
+  },
+  "rootCounts": {
+    "cache_write_input_tokens": 0,
+    "reasoning_output_tokens": 1770160,
+    "total_tokens": 2141515485,
+    "events": 9491,
+    "uncached_input_tokens": 23001181,
+    "output_tokens": 4230272,
+    "input_tokens": 2137285213,
+    "cached_input_tokens": 2114284032
+  },
+  "descendantThreads": 9,
+  "descendantCounts": {
+    "uncached_input_tokens": 39312586,
+    "total_tokens": 2649158466,
+    "events": 11759,
+    "output_tokens": 6492664,
+    "cache_write_input_tokens": 0,
+    "input_tokens": 2642665802,
+    "reasoning_output_tokens": 2154799,
+    "cached_input_tokens": 2603353216
+  },
+  "byModelPeriod": [
+    {
+      "model": "gpt-6-astra",
+      "provider": "openai",
+      "period": "before-assumed-Central-midnight",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 77586,
+        "total_tokens": 118719289,
+        "events": 871,
+        "uncached_input_tokens": 3659148,
+        "output_tokens": 308013,
+        "input_tokens": 118411276,
+        "cached_input_tokens": 114752128
+      }
+    },
+    {
+      "model": "gpt-6-sol",
+      "provider": "openai",
+      "period": "before-assumed-Central-midnight",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 31862,
+        "total_tokens": 47619361,
+        "events": 329,
+        "uncached_input_tokens": 764004,
+        "output_tokens": 83901,
+        "input_tokens": 47535460,
+        "cached_input_tokens": 46771456
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "period": "after-assumed-midnight-through-actual-stop",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 102810,
+        "total_tokens": 118523995,
+        "events": 514,
+        "uncached_input_tokens": 1452166,
+        "output_tokens": 250325,
+        "input_tokens": 118273670,
+        "cached_input_tokens": 116821504
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "period": "before-assumed-Central-midnight",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3563708,
+        "total_tokens": 3787687708,
+        "events": 16843,
+        "uncached_input_tokens": 51576487,
+        "output_tokens": 9532533,
+        "input_tokens": 3778155175,
+        "cached_input_tokens": 3726578688
+      }
+    },
+    {
+      "model": "gpt-6.1-terra",
+      "provider": "openai",
+      "period": "before-assumed-Central-midnight",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 148993,
+        "total_tokens": 718123598,
+        "events": 2693,
+        "uncached_input_tokens": 4861962,
+        "output_tokens": 548164,
+        "input_tokens": 717575434,
+        "cached_input_tokens": 712713472
+      }
+    }
+  ],
+  "byNativeModelEffort": [
+    {
+      "events": 871,
+      "provider": "openai",
+      "total_tokens": 118719289,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 308013,
+      "effort": "high",
+      "model": "gpt-6-astra",
+      "input_tokens": 118411276,
+      "reasoning_output_tokens": 77586,
+      "uncached_input_tokens": 3659148,
+      "cached_input_tokens": 114752128
+    },
+    {
+      "events": 329,
+      "provider": "openai",
+      "total_tokens": 47619361,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 83901,
+      "effort": "high",
+      "model": "gpt-6-sol",
+      "input_tokens": 47535460,
+      "reasoning_output_tokens": 31862,
+      "uncached_input_tokens": 764004,
+      "cached_input_tokens": 46771456
+    },
+    {
+      "events": 2655,
+      "provider": "openai",
+      "total_tokens": 547716403,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2000786,
+      "effort": "high",
+      "model": "gpt-6.1-sol",
+      "input_tokens": 545715617,
+      "reasoning_output_tokens": 795047,
+      "uncached_input_tokens": 7658657,
+      "cached_input_tokens": 538056960
+    },
+    {
+      "events": 14702,
+      "provider": "openai",
+      "total_tokens": 3358495300,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7782072,
+      "effort": "ultra",
+      "model": "gpt-6.1-sol",
+      "input_tokens": 3350713228,
+      "reasoning_output_tokens": 2871471,
+      "uncached_input_tokens": 45369996,
+      "cached_input_tokens": 3305343232
+    },
+    {
+      "events": 2693,
+      "provider": "openai",
+      "total_tokens": 718123598,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 548164,
+      "effort": "xhigh",
+      "model": "gpt-6.1-terra",
+      "input_tokens": 717575434,
+      "reasoning_output_tokens": 148993,
+      "uncached_input_tokens": 4861962,
+      "cached_input_tokens": 712713472
+    }
+  ],
+  "byCentralDay": [
+    {
+      "model": "gpt-6-astra",
+      "provider": "openai",
+      "centralDay": "2026-10-26",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 41932,
+        "total_tokens": 48783956,
+        "events": 369,
+        "uncached_input_tokens": 1544855,
+        "output_tokens": 151997,
+        "input_tokens": 48631959,
+        "cached_input_tokens": 47087104
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "centralDay": "2026-10-26",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 266460,
+        "total_tokens": 148441702,
+        "events": 769,
+        "uncached_input_tokens": 2226800,
+        "output_tokens": 686198,
+        "input_tokens": 147755504,
+        "cached_input_tokens": 145528704
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "provider": "openai",
+      "centralDay": "2026-10-27",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 30618,
+        "total_tokens": 61976186,
+        "events": 451,
+        "uncached_input_tokens": 1776795,
+        "output_tokens": 133855,
+        "input_tokens": 61842331,
+        "cached_input_tokens": 60065536
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "centralDay": "2026-10-27",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 399253,
+        "total_tokens": 264582520,
+        "events": 1345,
+        "uncached_input_tokens": 2734156,
+        "output_tokens": 1014700,
+        "input_tokens": 263567820,
+        "cached_input_tokens": 260833664
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "provider": "openai",
+      "centralDay": "2026-10-28",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 5036,
+        "total_tokens": 7959147,
+        "events": 51,
+        "uncached_input_tokens": 337498,
+        "output_tokens": 22161,
+        "input_tokens": 7936986,
+        "cached_input_tokens": 7599488
+      }
+    },
+    {
+      "model": "gpt-6-sol",
+      "provider": "openai",
+      "centralDay": "2026-10-28",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 31862,
+        "total_tokens": 47619361,
+        "events": 329,
+        "uncached_input_tokens": 764004,
+        "output_tokens": 83901,
+        "input_tokens": 47535460,
+        "cached_input_tokens": 46771456
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "centralDay": "2026-10-28",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 129334,
+        "total_tokens": 134692181,
+        "events": 541,
+        "uncached_input_tokens": 2697701,
+        "output_tokens": 299888,
+        "input_tokens": 134392293,
+        "cached_input_tokens": 131694592
+      }
+    },
+    {
+      "model": "gpt-6.1-terra",
+      "provider": "openai",
+      "centralDay": "2026-10-28",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 33406,
+        "total_tokens": 154424102,
+        "events": 576,
+        "uncached_input_tokens": 1490680,
+        "output_tokens": 117806,
+        "input_tokens": 154306296,
+        "cached_input_tokens": 152815616
+      }
+    },
+    {
+      "model": "gpt-6.1-terra",
+      "provider": "openai",
+      "centralDay": "2026-10-29",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 115587,
+        "total_tokens": 563699496,
+        "events": 2117,
+        "uncached_input_tokens": 3371282,
+        "output_tokens": 430358,
+        "input_tokens": 563269138,
+        "cached_input_tokens": 559897856
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "centralDay": "2026-10-30",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 870713,
+        "total_tokens": 945167721,
+        "events": 4134,
+        "uncached_input_tokens": 14808582,
+        "output_tokens": 2309347,
+        "input_tokens": 942858374,
+        "cached_input_tokens": 928049792
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "centralDay": "2026-10-31",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1897948,
+        "total_tokens": 2294803584,
+        "events": 10054,
+        "uncached_input_tokens": 29109248,
+        "output_tokens": 5222400,
+        "input_tokens": 2289581184,
+        "cached_input_tokens": 2260471936
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "provider": "openai",
+      "centralDay": "2026-11-01",
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 102810,
+        "total_tokens": 118523995,
+        "events": 514,
+        "uncached_input_tokens": 1452166,
+        "output_tokens": 250325,
+        "input_tokens": 118273670,
+        "cached_input_tokens": 116821504
+      }
+    }
+  ],
+  "criticalIntervals": [
+    {
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 51884,
+        "total_tokens": 52369376,
+        "events": 216,
+        "uncached_input_tokens": 922170,
+        "output_tokens": 122918,
+        "input_tokens": 52246458,
+        "cached_input_tokens": 51324288
+      },
+      "interval": "assumed-midnight-to-just-push-message"
+    },
+    {
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1878596,
+        "total_tokens": 2260427092,
+        "events": 9812,
+        "uncached_input_tokens": 28123819,
+        "output_tokens": 5147433,
+        "input_tokens": 2255279659,
+        "cached_input_tokens": 2227155840
+      },
+      "interval": "dont-block-message-to-assumed-midnight"
+    },
+    {
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 50926,
+        "total_tokens": 66154619,
+        "events": 298,
+        "uncached_input_tokens": 529996,
+        "output_tokens": 127407,
+        "input_tokens": 66027212,
+        "cached_input_tokens": 65497216
+      },
+      "interval": "just-push-message-to-actual-stop"
+    },
+    {
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 18809,
+        "total_tokens": 33699115,
+        "events": 240,
+        "uncached_input_tokens": 659126,
+        "output_tokens": 74357,
+        "input_tokens": 33624758,
+        "cached_input_tokens": 32965632
+      },
+      "interval": "deadline-today-message-to-dont-block-message"
+    },
+    {
+      "counts": {
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1924744,
+        "total_tokens": 2378023749,
+        "events": 10684,
+        "uncached_input_tokens": 32078656,
+        "output_tokens": 5250821,
+        "input_tokens": 2372772928,
+        "cached_input_tokens": 2340694272
+      },
+      "interval": "before-deadline-today-message"
+    }
+  ],
+  "intervalBoundaries": {
+    "justPushMessageUtc": "2026-11-01T05:32:04.4330000+00:00",
+    "actualStopUtc": "2026-11-01T11:31:25.6490000+00:00",
+    "dontBlockMessageUtc": "2026-10-31T14:37:11.9030000+00:00",
+    "deadlineTodayMessageUtc": "2026-10-31T14:17:38.7070000+00:00"
+  },
+  "forkDedup": {
+    "duplicateCounterEvents": 1884.0,
+    "method": "Forkedfileshave ancestral sessionheaders,but no copied precreationtoken events wereobserved andfirsttotal=firstlast inall10threads. Countfirstlast thenunique cumulativetransitions;native lastsum independentlyexact. Do not adddatabase tokens_used orduplicate inheritedheaders.",
+    "counterResets": 0.0,
+    "uniqueUsageEvents": 21250,
+    "initialCounterBaselinesZeroForAllThreads": true,
+    "positiveDeltaVsNativeLastMismatches": 0.0,
+    "forkedRolloutFiles": 8
+  },
+  "cacheWriteField": {
+    "lastUsageRecordsBeforeStop": 23134,
+    "totalUsageRecordsBeforeStop": 23134,
+    "qualification": "The native totalandlast usage objects explicitlycontain cache_write_input_tokens in every extractedrecord throughactualstop,andreport0. This is native reportedusage,not a claim about unreportedproviderbilling.",
+    "reportedSum": 0,
+    "positiveReportedCacheWriteRecords": 0
+  },
+  "serviceTier": {
+    "billedServiceTier": "UNKNOWN",
+    "longContextBillingTier": "UNKNOWN",
+    "observedInSelectedMetadata": false,
+    "speedOrFastTier": "UNKNOWN",
+    "qualification": "Only model/provider/effort were selectedfrom turn_context. Native schema samples showinfo total_token_usage,last_token_usage,model_context_window; no billedserviceTier evidencewasretained. Contextwindow/effort/tooltier are notbillingtier acknowledgements. No furthernative transcript scanperformed."
+  },
+  "exactSelectedUserMessages": [
+    {
+      "central": "2026-10-31T09:17:38.7070000-05:00",
+      "line": 53790,
+      "role": "user",
+      "quote": "deadline is today.  How close are we to being finished?",
+      "rawLineSha256": "8F4F8F363EC573408DC326B407BB11A6F8AF42C3144BE5C90CF01C93823F2E0B",
+      "utc": "2026-10-31T14:17:38.7070000+00:00"
+    },
+    {
+      "central": "2026-10-31T09:23:57.1760000-05:00",
+      "line": 54010,
+      "role": "user",
+      "quote": "Assume October 31.",
+      "rawLineSha256": "9EAA7D541C556EE1722253EE1531A4ED9BD0237ECAF457B1866D64F4C612873F",
+      "utc": "2026-10-31T14:23:57.1760000+00:00"
+    },
+    {
+      "central": "2026-10-31T09:37:11.9030000-05:00",
+      "line": 54308,
+      "role": "user",
+      "quote": "OK, gotta go.  Will be available via the phone app and check in periodically, but please don't block on me.",
+      "rawLineSha256": "0FB2BF803C3EC7B61291E7B6627F287D0257E26A2BA79200DDEFC0938DE6233D",
+      "utc": "2026-10-31T14:37:11.9030000+00:00"
+    },
+    {
+      "central": "2026-11-01T00:32:04.4330000-05:00",
+      "line": 76099,
+      "role": "user",
+      "quote": "I need you to get it wrapped up with the bugs. As long as it's not breaking the UI, just push it",
+      "rawLineSha256": "87A23D962F4045D83B097D3943A3001294CE3EC2AE06D00FE337E23653A123F0",
+      "utc": "2026-11-01T05:32:04.4330000+00:00"
+    },
+    {
+      "central": "2026-11-01T05:31:25.6490000-06:00",
+      "line": 77264,
+      "role": "user",
+      "quote": "Stop all work.  Write handoff.  Then write a report detailing why the deadline was missed.  I need to understand where the wheels fell off.  Also estimate tokens used by price category.",
+      "rawLineSha256": "1BC1C5314EDE862C74EBEEB6BC4C71B6D614DC7490FD47F70887D74529ABC4A4",
+      "utc": "2026-11-01T11:31:25.6490000+00:00"
+    },
+    {
+      "central": "2026-11-01T05:42:04.9200000-06:00",
+      "line": 77430,
+      "role": "user",
+      "quote": "What time did I request stopping work and deploy immediately before deadline?",
+      "rawLineSha256": "96C07D172DD88BC81FC6D0FF45CA72B0D64A288706139B516180CB9E025DF4B5",
+      "utc": "2026-11-01T11:42:04.9200000+00:00"
+    }
+  ],
+  "passes": [
+    "Exactroot+9native spawn descendants scoped viaSQLite readonlyquery;23,135token events extracted numericmetadataonly. No unrelatedsession transcripts/profile/reasoningtext exported.",
+    "Actualstop filter leaves23,134records,ignores1,884duplicate countervectors andcounts21,250uniqueusageevents.0resets/0delta-lastmismatches;all10firsttotal=firstlast;8forkedfiles have0inheritedcounterbaselines and0precreationtoken events. Native-lastsumexactlyequalscumulativedelta totals.",
+    "Root/descendants,model-period,Centralday andcriticalinterval categorysums allmatch4,790,673,951total,including62,313,767uncachedinput/4,717,637,248cachedinput/10,722,936output. Reasoning3,924,959isoutputsubset,nottwicepriced.",
+    "Six exactnativeuser quotes/UTC/Central/line hashes retained inJSON+CSV. Deadlineassumption,actualstop,sourceandcounterlimitations explicit. PowerShellproducer parser/PSSA0beforedata,WhatIfbeforewrites;no releaseactivity."
+  ],
+  "failures": [],
+  "unknowns": [
+    "Native reportedusage is not a billinginvoice;failed/unreportedrequests,accountplan/subscriptioncharges orotherunscoped sessions cannotbe reconstructed.",
+    "Billedservice/Fast/longcontext pricingtier isUNKNOWN; native model/provider/effort receipts do not establish it.",
+    "Claude/Cline/Cursor usage isnot includedinCodexrows. Root separatelyaccountsClaude;Cline missingreliable nativeusage remainsUNKNOWN,notzero."
+  ],
+  "evidence": {
+    "userTimestamps": {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/user-timestamps.json",
+      "sha256": "D28E5F64624A010EFA355CF27062E1337976ED945B0BC3913E71EE2CAC521BB6"
+    },
+    "userCsv": {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/user-timestamps.csv",
+      "sha256": "8A77FB539D9D9B5DB3FAAA921B553CC65739FE9C353FDA582E3DBE428FBC696C"
+    },
+    "verification": {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/verification.json",
+      "sha256": "557B5CAA10E49B1DA6D3DC7205D75DEC05A380DF182BCB6AF82CE0324E18A69B"
+    },
+    "accounting": {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/accounting.json",
+      "sha256": "66A9BBC8D7760CD4F3E6B2654FBE4F86CAE240447CB6C9E687059BF513092808"
+    }
+  },
+  "method": [
+    "Scope is exactroot plusrecursive native thread_spawn_edges descendants,not allCodexsessions.",
+    "Only numeric token_count usage/sessionIDs/model/provider/effort/time metadata extracted;no transcript/profile/reasoningtext retained.",
+    "Within eachthread: countfirst native lastusage,then positive cumulativecounter deltas;ignore identical consecutivecounter vectors;onanynegative component use native lastusage andretainreset/anomaly metadata.",
+    "Initialtotal-minus-last baseline is retained separately toexpose inheritedforkcounts,not billedagain. Eventsbeforechildcreation excluded;allobservedinitialbaselines andforkmetadata reported.",
+    "Usageevent timestamp assigns model from preceding native turn_context,day in America/Chicago andcriticalinterval. Outputincludesreasoning;reasoningsubset isnotanadditionalpricedcategory. Uncachedinput=inputminuscachehitinput.",
+    "Actualstopuser timestamp11:31:25.649Z excludes laterhandoff/report/timeraccounting;native events afterthat are not projectreleasetotals.",
+    "Database tokens_used is a separatecurrentsnapshot,mayinclude poststopusage anddoesnot splitpricingcategories;neveraddit to rolloutusage."
+  ],
+  "limitations": [
+    "Native counters reflectreported modelusage,not a billinginvoice or guaranteedpaidcost. Missing failedrequests/unreportedusage cannotbe reconstructed.",
+    "LatestSQLite state mayadvance duringread-onlyscan. Root/activechildfilesgrew afterstop,but counting uses actualstop cutoffandretainsstart/endbytes.",
+    "Modelcontext attribution is at eventtimestamps;requestspanninga cutoffcannot be split internally without serverbillingrecords.",
+    "SeparateClaude/Cline/Cursor reviewers andotherproviders are outsideCodexnativecounts;root separatelyaccounts supported nativeproofs.",
+    "No pricing rates researched/applied bythisagent."
+  ],
+  "producers": [
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupTokenAccountingProbe.ps1",
+      "pssaWarningError": 0,
+      "sha256": "00E10AD6D27108BCAED91B9DC18561258C691E863E759AC12743427C54638789"
+    },
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupInspectTokenScope.ps1",
+      "pssaWarningError": 0,
+      "sha256": "F53CF57917BBFE3D52F684FCF878952AFA2BDBC25A9F3BD6C17684DD1E65DFB3"
+    },
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupCollectTokenMetadata.ps1",
+      "pssaWarningError": 0,
+      "sha256": "220A23384D0C1A23F7FB774C13C7E65F890848A8ACFB35812E1A2BAE20AF7EB3"
+    },
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupReadStopUserTimes.ps1",
+      "pssaWarningError": 0,
+      "sha256": "C00A05863F2ACCCD520275B1757E967AD9D8ED3D03937F04E38A6980809635D1"
+    },
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupReadStopUserTimesV2.ps1",
+      "pssaWarningError": 0,
+      "sha256": "FA19A9D3C43C27900CE0C2E03CC7D497BC9420C25F302EDFCEE92484B693BE44"
+    },
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupAggregateStoppedUsage.ps1",
+      "pssaWarningError": 0,
+      "sha256": "74FCFC933C0883B99CDB4703FF04DA96775FFE1E586877A4EFCC78EB70CFEE68"
+    },
+    {
+      "parserErrors": 0,
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/WordpairsBackupVerifyTokenAccounting.ps1",
+      "pssaWarningError": 0,
+      "sha256": "D5E17203EB2A129EE2453064F881B2AC7C7A09703A86EC94F18EC0713BEF9695"
+    }
+  ],
+  "decisions": [
+    "Stop all release activity. This task accounts native usage metadata only for the exactroot andrecursive9descendants,with no release/tests/reviewer/deploy/provider/auth/backup/publication activity.",
+    "Use the exactnative userstop11:31:25.649Z instead oflater auditrequest11:31:49Z. Exclude all laterhandoff/report/timer/accounting tokens fromprojectrelease totals.",
+    "The user suppliedOctober31 butno explicitcutoffhour/zone. Centralmidnight05:00Z is only an explicit comparisonassumption; do notpresent itas verifiedcontestdeadline.",
+    "Count thefirstnative lastusage andunique cumulativecounterincrements perthread; retain forkbaseline,duplicate/reset/mismatch receipts andcrosscheck deduplicated native lastusage. Do not sumSQLite counters again.",
+    "Native cachewritefield explicitlyreports0in everyretained record,but billedservice/Fast/longcontext tier remainsUNKNOWN. Effort andcontextwindow are not billing-tier acknowledgements.",
+    "Keep Claude separatelyaccounted byroot andCline missing nativeusage UNKNOWN,not0. No prices/invoice paidcost orentireorganization usage inferred.",
+    "Timestamp lookup firstfoundno event_msg/user_message records; actual matching humanmessages are response_item role=user. The narrowedreceipt excludes injectedgoal/skill/timeruser-role wrappers andretains6exactselected usertextlineswithlinehashes."
+  ],
+  "releaseWorkPerformed": 0,
+  "tests": 0,
+  "modelCalls": 0,
+  "providerMutations": 0,
+  "backups": 0,
+  "publication": 0,
+  "requirementsChanges": 0
+}

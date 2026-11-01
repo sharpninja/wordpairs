@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-11-01T05:53:30.8567252-06:00",
+  "classification": "LIST_RATE_COMPARISON_NOT_ACTUAL_BILL",
+  "sourceCodexSha256": "66A9BBC8D7760CD4F3E6B2654FBE4F86CAE240447CB6C9E687059BF513092808",
+  "sourceClaudeSha256": "39916D466EFE5BDD7064CDB8ED42841DA29A01955FBF936EBFA2B7F54CE98ED8",
+  "codexRows": [
+    {
+      "model": "gpt-6-astra",
+      "uncachedInput": 3659148,
+      "cachedInput": 114752128,
+      "output": 308013,
+      "ratesPerMillion": {
+        "input": 10.0,
+        "output": 50.0,
+        "creditsOutput": 1250.0,
+        "cached": 1.0,
+        "creditsInput": 250.0,
+        "creditsCached": 25.0
+      },
+      "apiEquivalentInputUsd": 36.59148,
+      "apiEquivalentCachedUsd": 114.752128,
+      "apiEquivalentOutputUsd": 15.40065,
+      "standardCreditEquivalent": 4168.60645
+    },
+    {
+      "model": "gpt-6-sol",
+      "uncachedInput": 764004,
+      "cachedInput": 46771456,
+      "output": 83901,
+      "ratesPerMillion": {
+        "input": 2.0,
+        "output": 10.0,
+        "creditsOutput": 250.0,
+        "cached": 0.2,
+        "creditsInput": 50.0,
+        "creditsCached": 5.0
+      },
+      "apiEquivalentInputUsd": 1.528008,
+      "apiEquivalentCachedUsd": 9.3542912,
+      "apiEquivalentOutputUsd": 0.83901,
+      "standardCreditEquivalent": 293.03273
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "uncachedInput": 53028653,
+      "cachedInput": 3843400192,
+      "output": 9782858,
+      "ratesPerMillion": {
+        "input": 2.0,
+        "output": 10.0,
+        "creditsOutput": 250.0,
+        "cached": 0.1,
+        "creditsInput": 50.0,
+        "creditsCached": 2.5
+      },
+      "apiEquivalentInputUsd": 106.057306,
+      "apiEquivalentCachedUsd": 384.34001920000003,
+      "apiEquivalentOutputUsd": 97.82858,
+      "standardCreditEquivalent": 14705.64763
+    },
+    {
+      "model": "gpt-6.1-terra",
+      "uncachedInput": 4861962,
+      "cachedInput": 712713472,
+      "output": 548164,
+      "ratesPerMillion": {
+        "input": 1.0,
+        "output": 5.0,
+        "creditsOutput": 125.0,
+        "cached": 0.05,
+        "creditsInput": 25.0,
+        "creditsCached": 1.25
+      },
+      "apiEquivalentInputUsd": 4.861962,
+      "apiEquivalentCachedUsd": 35.635673600000004,
+      "apiEquivalentOutputUsd": 2.74082,
+      "standardCreditEquivalent": 1080.96139
+    }
+  ],
+  "codexStandardShortContextApiEquivalentUsd": {
+    "uncachedInput": 149.038756,
+    "cachedInput": 544.082112,
+    "output": 116.80906,
+    "total": 809.9299280000001
+  },
+  "codexStandardCreditEquivalent": 20248.248199999998,
+  "claudeStandardGlobalApiEquivalentUsd": 68.5741292,
+  "combinedApiEquivalentUsd": 878.5040572000001,
+  "combinedReportedTokens": {
+    "ordinaryInput": 62315171,
+    "cachedInput": 4887442654,
+    "reportedCacheWriteInput": 2575919,
+    "output": 11422940,
+    "reasoningOrThinkingSubset": 4160565,
+    "totalTokens": 4963756684
+  },
+  "officialSources": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/models/gpt-6-sol",
+    "https://learn.chatgpt.com/docs/pricing",
+    "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5"
+  ],
+  "qualifications": [
+    "Current published rates read on 2026-11-01. Historical invoiced rates, auth billing plan, paid subscription share, speed/context premiums, API cache writes and tool/image charges are not established. This is a Standard short-context list-rate comparison, not an estimated invoice.",
+    "Codex credit billing has no separate cache-write charge. Inspected native Codex cache-write counters explicitly report zero, without establishing billing completeness. Claude cache writes are separately reported and reconcile to 1-hour lifetime.",
+    "Cline Beam, Cursor, image-generation and other provider usage not exposed by these retained native counters is unknown and excluded, not zero. Reasoning/thinking output is already within output tokens.",
+    "Project release accounting stops at original user stop timestamp 2026-11-01T11:31:25.649Z. Work preparing this handoff/report and clearing the timer is excluded."
+  ]
+}

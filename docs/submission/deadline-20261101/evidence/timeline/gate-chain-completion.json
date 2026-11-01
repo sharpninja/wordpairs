@@ -1,0 +1,140 @@
+{
+  "sourceRoot": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348",
+  "canonicalWorkspacePath": "\u003Crepo\u003E",
+  "runId": "596a9fbe-2b99-404b-9b2a-10a6e28cec7f",
+  "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+  "hostName": "[PRIVATE HOST]",
+  "producer": "\u003Crepo\u003E/docs/evidence/release10/hosting-readiness/short-scratch-gate-preparation-20261031T174057/HostingRunRelease10EvidenceChain.ps1",
+  "producerSha256": "C59473BF90CF09627A05236C9138E2D40885C9C4AF4A70CFB96DB3A059F038B8",
+  "startedAt": "2026-10-31T17:41:40",
+  "finishedAt": "2026-10-31T17:55:47",
+  "phases": [
+    {
+      "lane": "full",
+      "startedAt": "2026-10-31T17:41:40",
+      "finishedAt": "2026-10-31T17:45:09",
+      "exitCode": 0,
+      "reportDirectory": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/full"
+    },
+    {
+      "lane": "powershell",
+      "startedAt": "2026-10-31T17:45:09",
+      "finishedAt": "2026-10-31T17:45:30",
+      "exitCode": 0,
+      "reportDirectory": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/powershell"
+    },
+    {
+      "lane": "realtime",
+      "startedAt": "2026-10-31T17:45:30",
+      "finishedAt": "2026-10-31T17:46:33",
+      "exitCode": 0,
+      "reportDirectory": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/realtime"
+    },
+    {
+      "lane": "live-ui",
+      "startedAt": "2026-10-31T17:46:33",
+      "finishedAt": "2026-10-31T17:52:46",
+      "exitCode": 0,
+      "reportDirectory": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui"
+    },
+    {
+      "lane": "strict-ui",
+      "startedAt": "2026-10-31T17:52:47",
+      "finishedAt": "2026-10-31T17:55:30",
+      "exitCode": 0,
+      "reportDirectory": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/strict-ui"
+    }
+  ],
+  "preparation": [
+    {
+      "name": "core-index",
+      "startedAt": "2026-10-31T17:55:30",
+      "finishedAt": "2026-10-31T17:55:40",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/scripts/Prepare-ReviewEvidence.ps1",
+        "-ReportDirectory",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/full",
+        "-PowerShellDirectory",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/powershell",
+        "-OutputDirectory",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/core-index",
+        "-SourceInventoryPath",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/source-inventory.json",
+        "-ExpectedUnitCount",
+        "983",
+        "-ExpectedPostgresCount",
+        "58",
+        "-ExpectedBrowserCount",
+        "114"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "preparer-real",
+      "startedAt": "2026-10-31T17:55:40",
+      "finishedAt": "2026-10-31T17:55:42",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/powershell/Run-ReviewEvidencePreparationGate.ps1",
+        "-ReportDirectory",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/preparer-real",
+        "-Mode",
+        "Real",
+        "-ParentRunId",
+        "596a9fbe-2b99-404b-9b2a-10a6e28cec7f"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "preparer-trx",
+      "startedAt": "2026-10-31T17:55:42",
+      "finishedAt": "2026-10-31T17:55:43",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/scripts/Convert-JUnitToTrx.ps1",
+        "-InputPath",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/preparer-real/Real.xml",
+        "-OutputPath",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/preparer-real/Real.trx",
+        "-SourceRevision",
+        "042a030f0bbf56f7e4641681def62598f53cbcd8",
+        "-HostName",
+        "[PRIVATE HOST]"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "supplemental-index",
+      "startedAt": "2026-10-31T17:55:43",
+      "finishedAt": "2026-10-31T17:55:47",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/scripts/Prepare-ReviewSupplementalEvidence.ps1",
+        "-InvocationManifestPath",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/supplemental-invocation.json",
+        "-SourceInventoryPath",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/source-inventory.json",
+        "-OutputDirectory",
+        "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/supplemental-index",
+        "-ExpectedRealtimeCount",
+        "4"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "failure": null,
+  "qualification": "Operational validation orchestration. Neither successful local tests nor these receipts establish independent review or hosted rollout."
+}

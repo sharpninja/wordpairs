@@ -1,0 +1,4507 @@
+{
+  "schemaVersion": 1,
+  "sourceRoot": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348",
+  "canonicalWorkspace": "\u003Crepo\u003E",
+  "continuationParent": "req-20261031T214825Z-cap10-release-continuation",
+  "atLocal": "2026-10-31T17:54:40",
+  "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+  "parentRunId": "596a9fbe-2b99-404b-9b2a-10a6e28cec7f",
+  "sessionId": "Codex-20261031T143030Z-plugin-session",
+  "requestId": "req-20261031T220420Z-clean-cline-adapter-preparation",
+  "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+  "parentRequestId": "req-20261031T171140Z-cap10-release",
+  "nativeMatrix": {
+    "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/live-ui.xml",
+    "sha256": "C6949FBBB14E579042EFFD3794DB497796CF9B7CEB7B6252F27301018216BBBF",
+    "tests": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "invocation": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/invocation.json",
+    "invocationSha256": "1AB45F95FDFB73C48D48FB4386E05FC813C89F867B0FEF1070F874459549D68A",
+    "wrapper": {
+      "sourceRoot": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348",
+      "name": "live-ui",
+      "kind": "live-ui",
+      "expectedCount": 9,
+      "runId": "596a9fbe-2b99-404b-9b2a-10a6e28cec7f",
+      "hostName": "[PRIVATE HOST]",
+      "startedAt": "2026-10-31T17:46:33",
+      "finishedAt": "2026-10-31T17:52:46",
+      "producer": "\u003Crepo\u003E/docs/evidence/release10/hosting-readiness/short-scratch-gate-preparation-20261031T174057/HostingRunRelease10Evidence.ps1",
+      "producerSha256": "99448F32190C64CB8C83DCC13AB60605FECCB61CC8E74CD33EE9FD5AE2CF01BC",
+      "executable": "pwsh",
+      "arguments": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "scripts/run-local-ui-integration.ps1",
+        "-ScratchRoot",
+        "\u003Chome\u003E/github/WordGame/.wbc11739c",
+        "-PlayerCounts",
+        "2,3,4,5,6,7,8,9,10",
+        "-MaxMinutes",
+        "90"
+      ],
+      "exitCode": 0,
+      "junit": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/live-ui.xml",
+      "junitSha256": "C6949FBBB14E579042EFFD3794DB497796CF9B7CEB7B6252F27301018216BBBF",
+      "revision": "042a030f0bbf56f7e4641681def62598f53cbcd8",
+      "sourceUnchanged": true,
+      "sourceBefore": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/source-before.json",
+      "sourceAfter": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/source-after.json",
+      "sourceAfterFailure": null
+    }
+  },
+  "totalPlayerParticipations": 54.0,
+  "totalUiSolves": 432.0,
+  "completedGames": 9,
+  "roundsPerGame": 8,
+  "uncertainUiRetries": 2.0,
+  "commandBodyFailures": 0.0,
+  "cleanupFailures": 0.0,
+  "unresolvedPlayerIndices": [],
+  "readinessActorOrRosterMismatches": 0.0,
+  "acknowledgementActorMismatches": 0.0,
+  "acknowledgementObservationCount": 1317,
+  "acknowledgementObservationStatusCounts": [
+    {
+      "category": "200",
+      "count": 936
+    },
+    {
+      "category": "409",
+      "count": 381
+    }
+  ],
+  "acknowledgementObservationOutcomeCounts": [
+    {
+      "category": "acknowledged",
+      "count": 756
+    },
+    {
+      "category": "waiting",
+      "count": 561
+    }
+  ],
+  "maxObservedAttempt": 3.0,
+  "requestFailureTotal": 90.0,
+  "retainedRequestFailures": 90,
+  "anyRequestFailureTruncated": false,
+  "requestFailureCategories": [
+    {
+      "category": "GET, /, membership setup, net::ERR_ABORTED",
+      "count": 10
+    },
+    {
+      "category": "GET, /, UI readiness barrier, net::ERR_ABORTED",
+      "count": 21
+    },
+    {
+      "category": "GET, /api/rooms/<room>/match, UI round 1, net::ERR_ABORTED",
+      "count": 8
+    },
+    {
+      "category": "GET, /api/rooms/<room>/reactions, UI round 1, net::ERR_ABORTED",
+      "count": 14
+    },
+    {
+      "category": "GET, /api/session, UI round 1, net::ERR_ABORTED",
+      "count": 5
+    },
+    {
+      "category": "GET, /play, membership setup, net::ERR_ABORTED",
+      "count": 7
+    },
+    {
+      "category": "GET, /play, UI readiness barrier, net::ERR_ABORTED",
+      "count": 20
+    },
+    {
+      "category": "POST, /api/rooms/<room>/lobby, UI round 1, net::ERR_ABORTED",
+      "count": 3
+    },
+    {
+      "category": "POST, /api/rooms/<room>/match, UI round 1, net::ERR_ABORTED",
+      "count": 2
+    }
+  ],
+  "requestFailures": [
+    {
+      "players": 2,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 890,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 2,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 891,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 2,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 927,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 2,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 928,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 2,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 928,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 2,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 929,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1080,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1150,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1158,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1158,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1160,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1211,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 3,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1211,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1298,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1298,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1336,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1343,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1350,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1353,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1354,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1377,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1377,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1377,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 4,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1381,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1326,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1326,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1327,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1328,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1329,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1332,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1343,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 5,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1344,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1461,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1467,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1468,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1894,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1905,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1920,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 1920,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33304,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33304,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33311,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33314,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33314,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "phase": "UI round 1",
+      "elapsedMs": 33315,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33322,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33325,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 33326,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "phase": "UI round 1",
+      "elapsedMs": 33326,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 7,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1869,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 7,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2604,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 7,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2630,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 7,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2630,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 7,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2703,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 7,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2705,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 8,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 1817,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 8,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2372,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 8,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2394,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 8,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2433,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 2669,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 2671,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 2675,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "membership setup",
+      "elapsedMs": 2681,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 2979,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43732,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43732,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43732,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43732,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43733,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43733,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43734,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43736,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43736,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43764,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43764,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43765,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43765,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43765,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43766,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43766,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43766,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43766,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "phase": "UI round 1",
+      "elapsedMs": 43766,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "phase": "UI round 1",
+      "elapsedMs": 48334,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "phase": "UI round 1",
+      "elapsedMs": 48335,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "phase": "UI round 1",
+      "elapsedMs": 48362,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 10,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 3214,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 10,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 3214,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 10,
+      "pathCategory": "/play",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 3216,
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "players": 10,
+      "pathCategory": "/",
+      "method": "GET",
+      "action": null,
+      "phase": "UI readiness barrier",
+      "elapsedMs": 3218,
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "responseDiagnosticCount": 275,
+  "anyResponseDiagnosticCapPotentiallyReached": true,
+  "responseDiagnosticStatusCounts": [
+    {
+      "category": "200",
+      "count": 95
+    },
+    {
+      "category": "409",
+      "count": 180
+    }
+  ],
+  "responseDiagnosticsOver1000Ms": [
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "ready",
+      "status": 200,
+      "durationMs": 2235.681
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1031.219
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1181.482
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1288.156
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1411.009
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3789.443
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3931.989
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 7599.904
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 6907.527
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3421.679
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3407.128
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3403.246
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3403.158
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3402.774
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3230.127
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2256.527
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3230.03
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2257.633
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1882.895
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3439.075
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2262.958
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3423.097
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3390.083
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2285.758
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3408.187
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3213.042
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3223.557
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3436.544
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 5038.784
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 4802.059
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4813.458
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 5327.37
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 200,
+      "durationMs": 5597.577
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1044.647
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1048.848
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1163.73
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1050.28
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1164.006
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1081.288
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1048.815
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1049.702
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1049.41
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4677.564
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4807.577
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4808.749
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4847.125
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4756.603
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4812.95
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4765.606
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4731.088
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4767.117
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4729.295
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4479.81
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4760.297
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4807.621
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4770.508
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4484.209
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 4530.859
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4485.312
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 4534.812
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4717.572
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4717.12
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4719.304
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4717.768
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4720.086
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4720.501
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4720.126
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4722.99
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4723.28
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4536.174
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4532.24
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4570.372
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4632.102
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4643.145
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4635.02
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2425.887
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2429.942
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2432.891
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2455.245
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2425.739
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2451.569
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2484.827
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2486.944
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2472.809
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 200,
+      "durationMs": 2982.066
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 9313.707
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 200,
+      "durationMs": 9464.89
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2385.712
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2390.609
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2376.428
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2359.725
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2412.555
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2481.059
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2421.849
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2465.379
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2423.511
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2509.389
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2486.671
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2486.936
+    }
+  ],
+  "responseDiagnostics": [
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 43.197
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 34.778
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.624
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.987
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.578
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.722
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.492
+    },
+    {
+      "players": 2,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 32.183
+    },
+    {
+      "players": 3,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.088
+    },
+    {
+      "players": 3,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.251
+    },
+    {
+      "players": 3,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.961
+    },
+    {
+      "players": 3,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 16.235
+    },
+    {
+      "players": 3,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 23.874
+    },
+    {
+      "players": 3,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.855
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.008
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.217
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 15.698
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 32.665
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.444
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.789
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.447
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.959
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.606
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.922
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.175
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.259
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 28.06
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 37.782
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.839
+    },
+    {
+      "players": 4,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.905
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.173
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.252
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.146
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.426
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.048
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.31
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.588
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.921
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.455
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.87
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.349
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 33.417
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.453
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 32.003
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.541
+    },
+    {
+      "players": 5,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.729
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "ready",
+      "status": 200,
+      "durationMs": 2235.681
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1031.219
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1181.482
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1288.156
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1411.009
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3789.443
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3931.989
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 7599.904
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 6907.527
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 135.32
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.385
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.238
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.387
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 124.482
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 17.768
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 42.963
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.795
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.055
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.215
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.154
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.666
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 23.879
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.011
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 21.695
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 33.874
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.651
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.422
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 35.776
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.47
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 33.341
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 39.04
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.735
+    },
+    {
+      "players": 6,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.051
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 59.16
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.452
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.793
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 50.136
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.088
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.357
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 32.508
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 21.837
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 15.729
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.565
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 16.637
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 12.648
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.014
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 15.702
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.298
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 18.5
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.43
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 32.521
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 23.12
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.147
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 35.027
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 35.373
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.8
+    },
+    {
+      "players": 7,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 41.396
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 18.371
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.205
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 16.748
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.424
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.184
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 17.816
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 21.846
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 21.467
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 15.284
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 16.226
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.687
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.245
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.996
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.644
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 17.699
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 35.64
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.173
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.955
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.03
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.134
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.982
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.183
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.97
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 33.383
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 40.2
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 37.355
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 40.376
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.145
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.234
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 50.288
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 35.008
+    },
+    {
+      "players": 8,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 35.558
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3421.679
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3407.128
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3403.246
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3403.158
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3402.774
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3230.127
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2256.527
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3230.03
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2257.633
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1882.895
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3439.075
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2262.958
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3423.097
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3390.083
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2285.758
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3408.187
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3213.042
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3223.557
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 3436.544
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 5038.784
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 4802.059
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4813.458
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 5327.37
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 200,
+      "durationMs": 5597.577
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1044.647
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1048.848
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1163.73
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1050.28
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1164.006
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1081.288
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1048.815
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1049.702
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 1049.41
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4677.564
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4807.577
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4808.749
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4847.125
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4756.603
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/session",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4812.95
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4765.606
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4731.088
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4767.117
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/reactions",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4729.295
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4479.81
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4760.297
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4807.621
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 4770.508
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4484.209
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 4530.859
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4485.312
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 4534.812
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4717.572
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4717.12
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4719.304
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4717.768
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4720.086
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4720.501
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4720.126
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4722.99
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4723.28
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4536.174
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4532.24
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4570.372
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4632.102
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4643.145
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 4635.02
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.222
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 49.39
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 17.27
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.195
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 17.479
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2425.887
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2429.942
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2432.891
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2455.245
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2425.739
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2451.569
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2484.827
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2486.944
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2472.809
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 240.302
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 34.01
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.504
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.215
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.667
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 200,
+      "durationMs": 2982.066
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 9313.707
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 200,
+      "durationMs": 9464.89
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2385.712
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2390.609
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2376.428
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2359.725
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2412.555
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2481.059
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2421.849
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2465.379
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2423.511
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2509.389
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>/lobby",
+      "method": "POST",
+      "action": "presence",
+      "status": 200,
+      "durationMs": 2486.671
+    },
+    {
+      "players": 9,
+      "pathCategory": "/api/rooms/<room>",
+      "method": "GET",
+      "action": null,
+      "status": 200,
+      "durationMs": 2486.936
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.247
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 20.575
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.127
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.898
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.178
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 25.322
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.525
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 26.729
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 22.018
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 42.786
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 15.352
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.588
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.549
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 70.947
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 16.047
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.093
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 33.65
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.606
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 18.251
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 38.008
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.885
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.611
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 39.929
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 31.386
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 18.213
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 29.622
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 36.217
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 33.983
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.082
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 32.458
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 208.102
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 19.583
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 21.833
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 27.217
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 30.36
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 42.358
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 28.278
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 39.079
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 38.367
+    },
+    {
+      "players": 10,
+      "pathCategory": "/api/rooms/<room>/match",
+      "method": "POST",
+      "action": "answer",
+      "status": 409,
+      "durationMs": 24.856
+    }
+  ],
+  "activeInstrumentationFailures": 0.0,
+  "pendingAtDispose": 12.0,
+  "games": [
+    {
+      "players": 2,
+      "nativeCase": "LIVE-SCALE 2 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 17.525,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 16,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 40,
+      "distinctObservedCommandIds": 34,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 30
+        },
+        {
+          "category": "409",
+          "count": 10
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 34
+        },
+        {
+          "category": "waiting",
+          "count": 6
+        }
+      ],
+      "preparedActorCount": 2,
+      "readyActorCount": 2,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 6,
+      "retainedRequestFailureCount": 6,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 8,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 1,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-2.json",
+      "nativeSha256": "68452786B597ADC794957673F7712DBA7AD91E6FB01B6391AA67A49F65EF3957"
+    },
+    {
+      "players": 3,
+      "nativeCase": "LIVE-SCALE 3 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 19.426,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 24,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 58,
+      "distinctObservedCommandIds": 41,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 47
+        },
+        {
+          "category": "409",
+          "count": 11
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 41
+        },
+        {
+          "category": "waiting",
+          "count": 17
+        }
+      ],
+      "preparedActorCount": 3,
+      "readyActorCount": 3,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 7,
+      "retainedRequestFailureCount": 7,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 6,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 2,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-3.json",
+      "nativeSha256": "5E6DB82A64284CEF97404884BFB61CA5E1AFDF27EA2FDEE779CDC595F900D10A"
+    },
+    {
+      "players": 4,
+      "nativeCase": "LIVE-SCALE 4 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 22.04,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 32,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 92,
+      "distinctObservedCommandIds": 60,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 61
+        },
+        {
+          "category": "409",
+          "count": 31
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 60
+        },
+        {
+          "category": "waiting",
+          "count": 32
+        }
+      ],
+      "preparedActorCount": 4,
+      "readyActorCount": 4,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 11,
+      "retainedRequestFailureCount": 11,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 16,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 1,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-4.json",
+      "nativeSha256": "EE6CDEA732458F8D9819EB170844F1770EB408713544ADC6ADD92062300F6AC1"
+    },
+    {
+      "players": 5,
+      "nativeCase": "LIVE-SCALE 5 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 24.19,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 40,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 105,
+      "distinctObservedCommandIds": 69,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 76
+        },
+        {
+          "category": "409",
+          "count": 29
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 69
+        },
+        {
+          "category": "waiting",
+          "count": 36
+        }
+      ],
+      "preparedActorCount": 5,
+      "readyActorCount": 5,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 8,
+      "retainedRequestFailureCount": 8,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 16,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 6,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-5.json",
+      "nativeSha256": "CDA0506BE4C7BC79FB5411583F1C4328F84BF641204F163B824DCD92A255EF7E"
+    },
+    {
+      "players": 6,
+      "nativeCase": "LIVE-SCALE 6 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 48.104,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 48,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 2,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 157,
+      "distinctObservedCommandIds": 86,
+      "maxObservedAttempt": 3.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 110
+        },
+        {
+          "category": "409",
+          "count": 47
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 86
+        },
+        {
+          "category": "waiting",
+          "count": 71
+        }
+      ],
+      "preparedActorCount": 6,
+      "readyActorCount": 6,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 17,
+      "retainedRequestFailureCount": 17,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 33,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 1,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-6.json",
+      "nativeSha256": "8AC40B0A7AF2C7135F20C3748B2F2717FB1A5C361924ABC09E9EE8B408FF3A3C"
+    },
+    {
+      "players": 7,
+      "nativeCase": "LIVE-SCALE 7 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 31.783,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 56,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 174,
+      "distinctObservedCommandIds": 95,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 128
+        },
+        {
+          "category": "409",
+          "count": 46
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 95
+        },
+        {
+          "category": "waiting",
+          "count": 79
+        }
+      ],
+      "preparedActorCount": 7,
+      "readyActorCount": 7,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 6,
+      "retainedRequestFailureCount": 6,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 24,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 0,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-7.json",
+      "nativeSha256": "13D7AF859EA55666F1D84FD6B6AE4C2DC1F95C16C0426352E9DF88493D54174B"
+    },
+    {
+      "players": 8,
+      "nativeCase": "LIVE-SCALE 8 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 34.92,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 64,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 207,
+      "distinctObservedCommandIds": 112,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 144
+        },
+        {
+          "category": "409",
+          "count": 63
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 112
+        },
+        {
+          "category": "waiting",
+          "count": 95
+        }
+      ],
+      "preparedActorCount": 8,
+      "readyActorCount": 8,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 4,
+      "retainedRequestFailureCount": 4,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 32,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 1,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-8.json",
+      "nativeSha256": "03357B34F155EF752B64E87E798A43EBB914588C1F3A59F501452885D7EE879F"
+    },
+    {
+      "players": 9,
+      "nativeCase": "LIVE-SCALE 9 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 109.396,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 72,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 225,
+      "distinctObservedCommandIds": 121,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 162
+        },
+        {
+          "category": "409",
+          "count": 63
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 121
+        },
+        {
+          "category": "waiting",
+          "count": 104
+        }
+      ],
+      "preparedActorCount": 9,
+      "readyActorCount": 9,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 27,
+      "retainedRequestFailureCount": 27,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 100,
+      "responseDiagnosticCapPotentiallyReached": true,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 0,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-9.json",
+      "nativeSha256": "1AFCB54B190451038CC24B8B2967081AAD2C8C0042F33CDF43FEE67FAA078969"
+    },
+    {
+      "players": 10,
+      "nativeCase": "LIVE-SCALE 10 real browser players complete eight UI rounds",
+      "nativeDurationSeconds": 42.917,
+      "completed": true,
+      "rounds": 8,
+      "uiSolves": 80,
+      "simultaneousAnswerUis": 2,
+      "uncertainUiRetries": 0,
+      "commandBodyFailureCount": 0,
+      "commandAcknowledgementObservations": 259,
+      "distinctObservedCommandIds": 138,
+      "maxObservedAttempt": 2.0,
+      "observedCommandsWithLatestStateNotAcknowledged": 0,
+      "commandObservationStatusCounts": [
+        {
+          "category": "200",
+          "count": 178
+        },
+        {
+          "category": "409",
+          "count": 81
+        }
+      ],
+      "commandObservationOutcomeCounts": [
+        {
+          "category": "acknowledged",
+          "count": 138
+        },
+        {
+          "category": "waiting",
+          "count": 121
+        }
+      ],
+      "preparedActorCount": 10,
+      "readyActorCount": 10,
+      "readinessActorOrRosterMismatchCount": 0,
+      "acknowledgementActorMismatchCount": 0,
+      "cleanupFailures": 0,
+      "unresolvedPlayerIndices": [],
+      "completedRoomRetained": true,
+      "requestFailureTotal": 4,
+      "retainedRequestFailureCount": 4,
+      "requestFailuresTruncated": false,
+      "responseDiagnosticCount": 40,
+      "responseDiagnosticCapPotentiallyReached": false,
+      "activeInstrumentationFailureTotal": 0,
+      "activeInstrumentationFailures": [],
+      "activeInstrumentationFailuresTruncated": false,
+      "pendingAtDispose": 0,
+      "realHttp": true,
+      "apiSetup": true,
+      "native": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-gate-042a030-20261031T174114/gate/live-ui/runtime-receipts/live-scale-10.json",
+      "nativeSha256": "305045C464C0A3A8E4989625537364C8E0513602D9BCC35E04D23BC49E763BB6"
+    }
+  ],
+  "assertionEvidence": [
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/browser/live-player-counts.integration.spec.ts",
+      "anchor": "for (let batch = 0; batch < pages.length; batch += 2)",
+      "fact": "Actual answer launch groups contain at most two pages and all settlements are drained before advancing; simultaneousAnswerUis=2 is declared configuration, not a measured scheduler peak.",
+      "lineNumbers": [
+        182
+      ],
+      "sha256": "F100E0C0261B1FC0084030CF94F5F1830D6A9A5B552F72337CA5F3E18FD4C0D5"
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/browser/live-player-counts.integration.spec.ts",
+      "anchor": "expect(await page.getByRole(\"table\", { name: \"Final ranking\", exact: true }).textContent()).toBe(ranking);",
+      "fact": "Each completed case asserts every page has Final standings and identical Final ranking text. Runtime JSON does not retain ranking table bytes; evidence is the frozen source assertion plus that exact passing native case, not an independent recomparison here.",
+      "lineNumbers": [
+        201
+      ],
+      "sha256": "F100E0C0261B1FC0084030CF94F5F1830D6A9A5B552F72337CA5F3E18FD4C0D5"
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/browser/live-player-counts.integration.spec.ts",
+      "anchor": "await assertPageOwnRoundSolve(page, aliases[pages.indexOf(page)], round);",
+      "fact": "Each accepted UI answer is checked for its own actor and round before uiSolves increments. This summary reads uiSolves, not the absent solves property.",
+      "lineNumbers": [
+        190
+      ],
+      "sha256": "F100E0C0261B1FC0084030CF94F5F1830D6A9A5B552F72337CA5F3E18FD4C0D5"
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/browser/request-diagnostics.ts",
+      "anchor": "if (state.details.length >= 100) return;",
+      "fact": "Response diagnostic samples cap at100 per game. status>=400 or duration>1000ms is retained; the slowResponses name does not imply every record is slow. Pending requests are excluded before context shutdown.",
+      "lineNumbers": [
+        24
+      ],
+      "sha256": "6E7B45D2530CFFDE51DA435E5B041A4D0B241AC2AEE1EDE2CE6D03DC04939F28"
+    },
+    {
+      "path": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/tests/browser/ui-command-capture.ts",
+      "anchor": "await options.retired?.(result);",
+      "fact": "409 conflicts are retired before a fresh command; uncertain response/body retries preserve the original payload. An attempt>1 is not by itself an uncertain retry or product failure. Acknowledgement state observations are not HTTP request counts.",
+      "lineNumbers": [
+        78
+      ],
+      "sha256": "C2E9BD5C834910EE6B536B5890BC1B64FF18EE7C5788B903CAE5986EB2BB0C59"
+    }
+  ],
+  "sourceBefore": {
+    "atLocal": "2026-10-31T17:54:40",
+    "checkedFiles": 368,
+    "allMatched": true
+  },
+  "qualification": "Read-only aggregation of existing actual local normal UI executions at the exact frozen source. No new execution, HV or hosted/physical-device proof. Native nine-case pass plus frozen assertions support eight rounds, per-actor solves and equal rankings; table bytes are not independently retained in runtime JSON. Ordinary safety/presence reads remain enabled; strict push is separate. ERR_ABORTED and response statuses are observations, not established cancellation or latency causes; no old83 count or historic causality is transplanted. Diagnostic sampling and disposal limits remain explicit. Full runtime originals are retained and hash-pinned.",
+  "sourceAfter": {
+    "atLocal": "2026-10-31T17:54:40",
+    "checkedFiles": 368,
+    "allMatched": true,
+    "runtimeOriginalsUnchanged": true
+  }
+}

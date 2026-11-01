@@ -1,0 +1,141 @@
+{
+  "atLocal": "2026-11-01T05:49:23",
+  "accountingPath": "\u003Chome\u003E/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/accounting.json",
+  "accountingSha256": "66A9BBC8D7760CD4F3E6B2654FBE4F86CAE240447CB6C9E687059BF513092808",
+  "dimensionChecks": [
+    {
+      "dimension": "byModelPeriod",
+      "allCategoryTotalsExact": true
+    },
+    {
+      "dimension": "byCentralDay",
+      "allCategoryTotalsExact": true
+    },
+    {
+      "dimension": "criticalIntervals",
+      "allCategoryTotalsExact": true
+    },
+    {
+      "dimension": "threads",
+      "allCategoryTotalsExact": true
+    }
+  ],
+  "rootThread": "01a17901-193c-7163-bb57-05a12ae57269",
+  "rootCounts": {
+    "cache_write_input_tokens": 0,
+    "reasoning_output_tokens": 1770160,
+    "total_tokens": 2141515485,
+    "events": 9491,
+    "uncached_input_tokens": 23001181,
+    "output_tokens": 4230272,
+    "input_tokens": 2137285213,
+    "cached_input_tokens": 2114284032
+  },
+  "descendantThreads": 9,
+  "descendantCounts": {
+    "uncached_input_tokens": 39312586,
+    "total_tokens": 2649158466,
+    "events": 11759,
+    "output_tokens": 6492664,
+    "cache_write_input_tokens": 0,
+    "input_tokens": 2642665802,
+    "reasoning_output_tokens": 2154799,
+    "cached_input_tokens": 2603353216
+  },
+  "byNativeModelEffort": [
+    {
+      "events": 871,
+      "provider": "openai",
+      "total_tokens": 118719289,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 308013,
+      "effort": "high",
+      "model": "gpt-6-astra",
+      "input_tokens": 118411276,
+      "reasoning_output_tokens": 77586,
+      "uncached_input_tokens": 3659148,
+      "cached_input_tokens": 114752128
+    },
+    {
+      "events": 329,
+      "provider": "openai",
+      "total_tokens": 47619361,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 83901,
+      "effort": "high",
+      "model": "gpt-6-sol",
+      "input_tokens": 47535460,
+      "reasoning_output_tokens": 31862,
+      "uncached_input_tokens": 764004,
+      "cached_input_tokens": 46771456
+    },
+    {
+      "events": 2655,
+      "provider": "openai",
+      "total_tokens": 547716403,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2000786,
+      "effort": "high",
+      "model": "gpt-6.1-sol",
+      "input_tokens": 545715617,
+      "reasoning_output_tokens": 795047,
+      "uncached_input_tokens": 7658657,
+      "cached_input_tokens": 538056960
+    },
+    {
+      "events": 14702,
+      "provider": "openai",
+      "total_tokens": 3358495300,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7782072,
+      "effort": "ultra",
+      "model": "gpt-6.1-sol",
+      "input_tokens": 3350713228,
+      "reasoning_output_tokens": 2871471,
+      "uncached_input_tokens": 45369996,
+      "cached_input_tokens": 3305343232
+    },
+    {
+      "events": 2693,
+      "provider": "openai",
+      "total_tokens": 718123598,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 548164,
+      "effort": "xhigh",
+      "model": "gpt-6.1-terra",
+      "input_tokens": 717575434,
+      "reasoning_output_tokens": 148993,
+      "uncached_input_tokens": 4861962,
+      "cached_input_tokens": 712713472
+    }
+  ],
+  "cacheWriteField": {
+    "lastUsageRecordsBeforeStop": 23134,
+    "totalUsageRecordsBeforeStop": 23134,
+    "qualification": "The native totalandlast usage objects explicitlycontain cache_write_input_tokens in every extractedrecord throughactualstop,andreport0. This is native reportedusage,not a claim about unreportedproviderbilling.",
+    "reportedSum": 0,
+    "positiveReportedCacheWriteRecords": 0
+  },
+  "forkDedup": {
+    "duplicateCounterEvents": 1884.0,
+    "method": "Forkedfileshave ancestral sessionheaders,but no copied precreationtoken events wereobserved andfirsttotal=firstlast inall10threads. Countfirstlast thenunique cumulativetransitions;native lastsum independentlyexact. Do not adddatabase tokens_used orduplicate inheritedheaders.",
+    "counterResets": 0.0,
+    "uniqueUsageEvents": 21250,
+    "initialCounterBaselinesZeroForAllThreads": true,
+    "positiveDeltaVsNativeLastMismatches": 0.0,
+    "forkedRolloutFiles": 8
+  },
+  "serviceTier": {
+    "billedServiceTier": "UNKNOWN",
+    "longContextBillingTier": "UNKNOWN",
+    "observedInSelectedMetadata": false,
+    "speedOrFastTier": "UNKNOWN",
+    "qualification": "Only model/provider/effort were selectedfrom turn_context. Native schema samples showinfo total_token_usage,last_token_usage,model_context_window; no billedserviceTier evidencewasretained. Contextwindow/effort/tooltier are notbillingtier acknowledgements. No furthernative transcript scanperformed."
+  },
+  "separateProviderUsage": {
+    "cline": "Missing reliable native tokenusage remainsUNKNOWN,notzero;not included",
+    "cursor": "Not included withoutnative usageproof",
+    "claude": "Root separately accounting;not included"
+  },
+  "stopExclusion": "Actualuserstop2026-11-01T11:31:25.649Z;laterreport/handoff/timerusage excluded."
+}

@@ -1,0 +1,614 @@
+{
+  "timestamp": "2026-10-28T20:13:35",
+  "gate": "admin-pwa-source-round1",
+  "requestReceipt": "\u003Crepo\u003E/docs/receipts/hv/20261028T195803-admin-pwa-source-round1.request.jsonl",
+  "responseReceipt": "\u003Crepo\u003E/docs/receipts/hv/20261028T195803-admin-pwa-source-round1.response.jsonl",
+  "reviewedRevision": "437c501c58c7dfa96ee576f445d225f2dd62a0bd",
+  "baseRevision": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+  "reviewer": {
+    "agent": "ClaudeCode",
+    "model": "claude-opus-5-5",
+    "modelReceipt": "response.jsonl line 7 init event model claude-opus-5-5",
+    "effort": "high",
+    "effortReceipt": "launcher command only (--effort high); runtime init reports per_turn_effort_active true without a value; not runtime-verified",
+    "plugin": "mcpserver-claude-code-plugin (manifest name mcpserver) version 1.121.0 from .claude-plugin/plugin.json; marker lists 1.26.0 (marker field drift)"
+  },
+  "profileLoad": {
+    "profileFiles": 1,
+    "globalMemories": 3,
+    "workspaceMemories": 0,
+    "workspaceTotalCount": 0,
+    "excluded": "PRIVATE-MEMORY-REFERENCE-007"
+  },
+  "session": {
+    "sessionId": "ClaudeCode-20261029T010023Z-plugin-session",
+    "requestId": "req-20261029T010106Z-hv-admin-pwa-source-round1",
+    "parentSessionId": "Codex-20261027T100516Z-plugin-session",
+    "parentRequestId": "req-20261029T000126Z-prompt-ee7f"
+  },
+  "classification": {
+    "productImplementation": "Source, tests, docs and QBrain changes in 8e2f624..437c501 (class 1; BDPv4 and requirements apply).",
+    "providerOperations": "GitHub App registration and callback configuration (class 2; not verified; pending staging observation)."
+  },
+  "OverallVerdict": "DISAGREE",
+  "accuracy": 92,
+  "accuracyJustification": "Most implementer claims verified mechanically; the guest-only public surface claim is contradicted by F1; two evidence claims are unverifiable (S1-06, S1-10).",
+  "completeness": 88,
+  "completenessJustification": "Security and PWA behavior complete and evidenced; one product defect (F1), missing BDPv4 receipts (F2) and criterion-level traceability gaps (F3).",
+  "counts": {
+    "PASS": 31,
+    "FAIL": 4,
+    "UNKNOWN": 3,
+    "total": 38
+  },
+  "surfaces": {
+    "requestedClaims": "FAIL",
+    "workspaceRules": "FAIL",
+    "requirements": "FAIL",
+    "plan": "PASS (one class-2 UNKNOWN)"
+  },
+  "items": [
+    {
+      "id": "S1-01",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Reviewed revision 437c501c is HEAD; parent is 8e2f6241; tracked tree clean (only untracked TRX and receipts).",
+      "anchors": [
+        "git rev-parse HEAD; git status --porcelain (Step05-GitInventory.ps1 output)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-02",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "All five TRX SHA-256 values equal the request jsonl values.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round1-tools/Step07-Evidence.ps1 output: match=True x5"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-03",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Counts unit 582, browser 69, PostgreSQL 68, admin/identity PostgreSQL 13, card 1; every result Passed; failed 0; notExecuted 0; JUnit failures/errors/skipped 0.",
+      "anchors": [
+        "Step07 output counters and junit root attributes"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-04",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Each TRX is individual-case and 1:1 in order with its native JUnit (0 name/order diffs); each TRX embeds the JUnit SHA-256 that matches the retained XML and revision 437c501c.",
+      "anchors": [
+        "Step07 output nameOrderDiffs=0, trxDeclaresJUnitSha match=True x5"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-05",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Adapter writes conversion timestamps and states so in RunInfo text.",
+      "anchors": [
+        "scripts/Convert-JUnitToTrx.ps1:28-29",
+        "scripts/Convert-JUnitToTrx.ps1:71"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-06",
+      "surface": "requested-claims",
+      "status": "UNKNOWN",
+      "claim": "Adapter fixture validation with three outcomes and two negative controls.",
+      "anchors": [
+        "docs/evidence/hosting/guest-admin-validation/trx-adapter-validation.json:1-8",
+        "adapter SHA-256 32261C10899DAE76805D5CAC0902979CA2C5E4415D93348E3C1BA77B819601F2 matches committed script"
+      ],
+      "finding": "F4"
+    },
+    {
+      "id": "S1-07",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Unit evidence covers every tracked unit test file: 60 of 60 tests/**/*.test.ts present in unit JUnit.",
+      "anchors": [
+        "vitest.config.ts:5",
+        "Step08 output UNIT trackedTestFiles=60 filesInJUnit=60"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-08",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Scoped integration lanes supplied: PostgreSQL 10 of 11 integration files (transport.realtime lane covers unchanged transport code); browser 14 of 17 specs (heartbeat/live-multiplayer/live-player-counts are LIVE-origin only).",
+      "anchors": [
+        "Step08 output PG-DIFF transport.realtime.integration.ts",
+        "tests/browser/heartbeat.integration.spec.ts:4-5",
+        "playwright.pwa.config.ts:4-11"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-09",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Inference from file mtimes: last src edit 19:25:49 precedes build log 19:27:34 and unit run 19:27:15-19:27:53; commit 19:56:16; integration test edits precede their lanes. mtimes are not byte proof.",
+      "anchors": [
+        "Step08 chronology output",
+        "docs/evidence/hosting/guest-admin-validation/build.log",
+        "run-history/guest-admin-unit-final2.log:98"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-10",
+      "surface": "requested-claims",
+      "status": "UNKNOWN",
+      "claim": "Full browser final preceded only a stronger card assertion. File-level verified (pwa.spec.ts mtime 19:46:11 after full run end 19:45:10; card case rerun 19:47:13 passed), but the other three pwa.spec.ts cases at committed bytes have no run after that edit and pre-edit bytes are not retained.",
+      "anchors": [
+        "Step08 chronology output",
+        "run-history/card-insets-final.log:12",
+        "tests/browser/pwa.spec.ts:11-117"
+      ],
+      "finding": "F5"
+    },
+    {
+      "id": "S1-11",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Failed and superseded runs retained: 13 run-history logs, 6 containing failures.",
+      "anchors": [
+        "Step09-RunHistory.ps1 output"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-12",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Provider: Authorization Code, S256 PKCE, state, exact HTTPS redirect, no scopes, login hint, allow_signup false, redirect error, 10s timeouts, strict numeric id 16146732 plus login match, tokens not retained.",
+      "anchors": [
+        "src/infrastructure/github-admin.ts:9-105",
+        "tests/integration/github-admin.test.ts:9-51"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-13",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Realm separation: admin hashes prefixed github-admin NUL; guest service guestOnly rejects non-guest and forces player role; admin session requires member kind in admin namespace.",
+      "anchors": [
+        "src/infrastructure/runtime.ts:230-260",
+        "src/application/identity.ts:137-164",
+        "src/web/admin-session.ts:6-16",
+        "tests/integration/admin-session-isolation.test.ts:14-49",
+        "tests/integration/admin.integration.ts:485-552"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-14",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Public secured routes closed: OpenAI login/callback 404, /api/admin/users 404 without storage, /content redirects to /play, /admin/users redirects to /admin, /api/content requires admin session (nominate/suggest unreachable for guests).",
+      "anchors": [
+        "src/app/api/auth/login/route.ts",
+        "src/app/api/auth/callback/route.ts",
+        "src/app/api/admin/users/route.ts",
+        "src/app/content/page.tsx",
+        "src/app/admin/users/page.tsx",
+        "src/app/api/content/route.ts:18-23"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-15",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Callback rejects duplicate code/state and error parameter, always clears wp_admin_login, sets only wp_admin on success, redirects to fixed origin.",
+      "anchors": [
+        "src/web/github-auth-http.ts:31-55",
+        "tests/web/github-admin-api.test.ts:20-38"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-16",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Admin logout requires same origin and revokes only the admin namespace; responses private/no-store.",
+      "anchors": [
+        "src/app/api/admin/session/route.ts:14-43",
+        "tests/web/github-admin-api.test.ts:39-60"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-17",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Admin manifest only on admin layout; worker scope /admin, no-store and Service-Worker-Allowed headers; worker handles only same-origin GET /admin navigations, passes HTTP errors, caches only offline page and four icons.",
+      "anchors": [
+        "src/app/admin/layout.tsx:4-12",
+        "src/web/admin-manifest.ts",
+        "src/app/admin/manifest.webmanifest/route.ts",
+        "next.config.ts:21-35",
+        "public/admin-sw.js:1-57",
+        "tests/browser/pwa.spec.ts:11-98",
+        "tests/web/pwa-worker.test.ts:68-135"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-18",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Legacy public worker retires itself; cleanup removes only exact root /sw.js registration and wordpairs-pwa-* caches.",
+      "anchors": [
+        "public/sw.js:1-11",
+        "src/web/pwa-support.tsx:114-149",
+        "tests/web/pwa-support.test.ts:174"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-19",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Navigation races: generation counter drops stale loads, focus reload suppressed during session mutation, privileged links cleared on refresh failure and logout.",
+      "anchors": [
+        "src/web/identity-panel.tsx:64-149",
+        "tests/web/identity-navigation.test.ts:11",
+        "tests/browser/auth-navigation.phase6.spec.ts:21-45"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-20",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Card whitespace clamp(1.25rem,4vw,2rem) gives 20px at 390px and 32px at 1440px; browser geometry asserts both with no overflow.",
+      "anchors": [
+        "src/app/globals.css:567",
+        "tests/browser/pwa.spec.ts:118-136",
+        "docs/evidence/pwa/admin/welcome-card-390.png",
+        "docs/evidence/pwa/admin/welcome-card-1440.png"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-21",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "Presence fix: refresh depends on stable profile.id; profile is non-null and the component is keyed by profile.id.",
+      "anchors": [
+        "src/web/room-screen.tsx:26-46",
+        "src/web/room-screen.tsx:173"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-22",
+      "surface": "requested-claims",
+      "status": "PASS",
+      "claim": "No claim of live GitHub consent or physical OS installation from fixtures.",
+      "anchors": [
+        "docs/admin_pwa_release.md:133-135",
+        "docs/admin_pwa_release.md:193-196",
+        "tests/browser/pwa.spec.ts:46"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S1-23",
+      "surface": "requested-claims",
+      "status": "FAIL",
+      "claim": "Release claim that public play is guest-only and admin identity is minimized: the owner admin member profile is created public and published on the public leaderboard/landing projection with its id and alias.",
+      "anchors": [
+        "src/application/identity.ts:100",
+        "src/application/identity.ts:221-227",
+        "src/infrastructure/migrations/002_public_reads.sql:22-24",
+        "docs/evidence/hosting/guest-admin-validation/run-history/guest-admin-postgres.log:225-243"
+      ],
+      "finding": "F1"
+    },
+    {
+      "id": "S2-01",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "New tooling is PowerShell only; no Python or Node tooling added.",
+      "anchors": [
+        "scripts/Convert-JUnitToTrx.ps1",
+        "tests/integration/run-phase1.ps1"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-02",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "HV request jsonl and self-review receipts exist with evidence hashes, revision and launch command.",
+      "anchors": [
+        "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.request.jsonl:1",
+        "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.self-review.json"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-03",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Commit carries the required Signed model-effort@agent line with confidence values.",
+      "anchors": [
+        "git log -1 437c501c body (Step05 output)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-04",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "No provider tokens or secrets in tracked product/docs; HV stream redacts the marker key.",
+      "anchors": [
+        "Grep token-shape patterns over docs/src/tests/public/scripts: 0 product hits",
+        "response.jsonl line 40 apiKey [REDACTED]"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-05",
+      "surface": "workspace-rules",
+      "status": "FAIL",
+      "claim": "BDPv4 requires a documented green mock gate before production implementation and retained chronological receipts. None exists for this slice; the self-review states none is reconstructed, and the earliest retained run (19:05) already exercises the implementation. This is absence of a required receipt, not an inference from FR timestamps.",
+      "anchors": [
+        "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.self-review.json:46",
+        "run-history/guest-admin-unit.log:111-113",
+        "PROFILE-MERGED.md section 5.1 steps 4 and 7"
+      ],
+      "finding": "F2"
+    },
+    {
+      "id": "S2-06",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Honesty: process limit disclosed, failures retained, no completion or deployment claimed.",
+      "anchors": [
+        "self-review.json:46",
+        "commit body (Step05)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S2-07",
+      "surface": "workspace-rules",
+      "status": "PASS",
+      "claim": "Requirement storage is in QBrain through MCP; records readable through the Claude plugin.",
+      "anchors": [
+        "docs/receipts/hv/claude-opus-round1-tools/qbrain-readback/*.yaml"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-01",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Named FR/TR/TEST records exist in layer-1 with structured criteria; every changed GA/PWA criterion is isSatisfied false; statuses pending/in_progress.",
+      "anchors": [
+        "qbrain-readback/FR-GUESTADMIN-031.yaml:12-49",
+        "qbrain-readback/FR-PHONEINSTALL-026.yaml:18-54"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-02",
+      "surface": "requirements",
+      "status": "PASS",
+      "claim": "Native mappings FR-GUESTADMIN-031 to TR-GITHUB-ADMIN-043, TR-IDENTITY-AUTHENTICATION-016, TR-PWA-INSTALLATION-036, TR-PWA-CACHEPRIVACY-037 and TEST-ADMINUI-136, TEST-GITHUBADMIN-149, TEST-PWAINSTALL-137, TEST-PWAPRIVACY-138.",
+      "anchors": [
+        "qbrain-readback/map-FR-GUESTADMIN-031.yaml:5-30"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S3-03",
+      "surface": "requirements",
+      "status": "FAIL",
+      "claim": "Criterion-level traceability drift: GA-09 (operator card whitespace request) is carried by no TR or TEST record; GA-05, GA-06, GA-07 appear on no TR/TEST record and restate PWA-01/03, PWA-09 (verbatim) and PWA-06/07 under second IDs.",
+      "anchors": [
+        "qbrain-readback/FR-GUESTADMIN-031.yaml:29-48",
+        "qbrain-readback/FR-PHONEINSTALL-026.yaml:51-54",
+        "Grep GA-0[5679] over readback: only FR-GUESTADMIN-031"
+      ],
+      "finding": "F3"
+    },
+    {
+      "id": "S3-04",
+      "surface": "requirements",
+      "status": "FAIL",
+      "claim": "DEC-11 (FR-PLAYERPROFILE-002 isSatisfied true; FR-IDENTITY-018) requires every user can opt out of leaderboard display; the owner admin profile is published by default and has no opt-out route (admin UI hides preferences; /api/profile uses the guest-only service).",
+      "anchors": [
+        "qbrain-readback/FR-PLAYERPROFILE-002.yaml:27-29",
+        "src/web/identity-panel.tsx:210-218",
+        "src/app/api/profile/route.ts:18"
+      ],
+      "finding": "F1"
+    },
+    {
+      "id": "S4-01",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Current override propagated: 12 files carry the 28 October override, including implementation, deployment, moderation, architecture, admin ACL and PWA designs.",
+      "anchors": [
+        "docs/implementation_plan.md:3-10",
+        "docs/deployment_plan.md:3-10"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-02",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "No plan step, TODO or requirement claimed done; candidate presented for HV before staging as the plan orders.",
+      "anchors": [
+        "docs/implementation_plan.md:6-8",
+        "commit body (Step05)"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-03",
+      "surface": "plan",
+      "status": "PASS",
+      "claim": "Deployment prerequisites (schema, private Realtime/scheduler) and reviewed-commit naming kept separate from this source gate.",
+      "anchors": [
+        "docs/admin_pwa_release.md:168-170",
+        "docs/admin_pwa_release.md:195-196"
+      ],
+      "finding": ""
+    },
+    {
+      "id": "S4-04",
+      "surface": "plan",
+      "status": "UNKNOWN",
+      "claim": "Class-2 provider operation: GitHub App registration, no permissions/webhook and exact staging/production callback URLs are asserted but not verifiable from repository evidence; pending staging observation, not scored as product implementation.",
+      "anchors": [
+        "docs/admin_pwa_release.md:17-29"
+      ],
+      "finding": ""
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "class": "product-implementation",
+      "title": "GitHub owner admin profile is published on the public leaderboard with no opt-out",
+      "detail": "IdentityService.profile sets publicLeaderboard true for member kind (identity.ts:100). completeLogin creates the owner as member (identity.ts:221-227). wordpairs_public_profiles returns id and alias for every public_leaderboard profile with no wins or kind filter (002_public_reads.sql:22-24). The admin UI hides ProfilePreferences (identity-panel.tsx:210) and /api/profile uses the guest-only service, so the owner cannot opt out. The full PostgreSQL run at 19:32 failed TR-30 with exactly one extra public row (a bare runtime UUID, unlike test-local admin- ids), and the next green run followed test cleanup changes; no product analysis was recorded (inference on the row identity).",
+      "requirements": [
+        "FR-PLAYERPROFILE-002 DEC-11",
+        "FR-IDENTITY-018 DEC-11",
+        "FR-GUESTADMIN-031 GA-01",
+        "FR-GUESTADMIN-031 GA-03"
+      ],
+      "proposedAC": "GA-10 (new, or strengthen GA-03): The verified GitHub owner profile is created non-public and never appears in public leaderboard, landing or room-discovery projections; the public surface lists guest profiles only.",
+      "proposedTests": [
+        "Unit tests/application/identity.test.ts: admin IdentityService completeLogin passes a member draft with publicLeaderboard false (negative control: true is rejected by the assertion).",
+        "PostgreSQL tests/integration/admin.integration.ts: after the owner callback, wordpairs_public_profiles and the landing route exclude owner.profile.id, without relying on cleanup order.",
+        "Browser: after an admin fixture session, the public landing/community board shows no member alias."
+      ],
+      "operatorDecision": "Whether legacy member-kind profiles from the retired OpenAI flow should also be hidden from public projections in this guest-only release."
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "class": "process",
+      "title": "No documented BDPv4 green mock gate or chronological receipts for this slice",
+      "detail": "BDPv4 steps 4 and 7 require a documented green mock gate before production implementation and retained receipts proving order. The self-review states no such receipt is reconstructed; retained runs begin at 19:05 against implementation. This is a missing-receipt finding, not an FR-timestamp inference.",
+      "requirements": [
+        "PROFILE-MERGED.md section 5.1"
+      ],
+      "proposedAC": "Operator decision required: accept a recorded process exception for this slice, or require a retroactive mock-gate evidence package before staging.",
+      "proposedTests": [],
+      "operatorDecision": "Accept documented exception or require remediation."
+    },
+    {
+      "id": "F3",
+      "severity": "medium",
+      "class": "requirements-traceability",
+      "title": "GA-05/06/07/09 not carried by any TR or TEST criterion; duplicate GA/PWA rules",
+      "detail": "GA-09 has tests (tests/browser/pwa.spec.ts:118, tests/web/pwa-support.test.ts:139) but no TR/TEST record carries it. GA-06 is verbatim PWA-09; GA-05 and GA-07 restate PWA-01/03 and PWA-06/07. Two IDs for one rule invite drift.",
+      "requirements": [
+        "FR-GUESTADMIN-031 GA-05..07, GA-09",
+        "TEST-PWAINSTALL-137",
+        "TEST-PWAPRIVACY-138"
+      ],
+      "proposedAC": "Add GA-09 to a TEST record (TEST-ADMINUI-136 or a new TEST) with the 390x844/1440x900 geometry case; either map GA-05/06/07 onto TEST-PWAINSTALL-137/TEST-PWAPRIVACY-138 criteria or replace them with references to PWA-01/03/06/07/09.",
+      "proposedTests": [
+        "Name tests/browser/pwa.spec.ts:118 and tests/web/pwa-support.test.ts:139 as the GA-09 cases in the TEST record."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F4",
+      "severity": "low",
+      "class": "evidence",
+      "title": "Adapter fixture validation is a bare summary",
+      "detail": "trx-adapter-validation.json records counts and the adapter hash only; no fixture inputs, harness or output are retained. This review compensated with a full TRX-to-JUnit cross-check of all five reports.",
+      "requirements": [
+        "PROFILE-MERGED.md section 2.4"
+      ],
+      "proposedAC": "Retain the adapter validation harness, its three outcome fixtures, two negative-control inputs and the command output.",
+      "proposedTests": [
+        "Pester or script test: Passed/Failed/NotExecuted fixtures convert exactly; empty report rejected; -WhatIf writes nothing."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F5",
+      "severity": "low",
+      "class": "evidence",
+      "title": "pwa.spec.ts edited after the full browser run",
+      "detail": "Only the card case was rerun on committed bytes. The other three pwa.spec.ts cases at committed bytes have no post-edit run, and the pre-edit bytes are not retained to prove the edit was confined to the card case.",
+      "requirements": [
+        "TEST-PWAINSTALL-137",
+        "TEST-PWAPRIVACY-138"
+      ],
+      "proposedAC": "Supply a run of all four pwa.spec.ts cases on the committed bytes, or the retained pre-edit diff.",
+      "proposedTests": [
+        "npx playwright test --config=playwright.pwa.config.ts tests/browser/pwa.spec.ts (run by the implementer, supplied as TRX plus JUnit)."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F6",
+      "severity": "info",
+      "class": "mcp-server",
+      "title": "QBrain reads return read-time createdAt/updatedAt",
+      "detail": "getFr/getTr/getTest/listMappings returned timestamps equal to the read time. Filed as triage-report-618a93a51dd54d92b620dba566f21bfb (group triage-group-55457f6e1613d9ae). Confirms FR timestamps cannot support chronology.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F7",
+      "severity": "info",
+      "class": "evidence",
+      "title": "Non-unique it.each case names",
+      "detail": "Three it.each groups emit identical names (github-admin.test.ts token endpoint x3, malformed transaction x3; hosted-sbom x2), so per-case TRX rows cannot be told apart by name.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [
+        "Add %s or $index interpolation to those titles."
+      ],
+      "operatorDecision": ""
+    },
+    {
+      "id": "F8",
+      "severity": "info",
+      "class": "reviewer-runtime",
+      "title": "Reviewer effort and hook enforcement not runtime-verified",
+      "detail": "Model claude-opus-5-5 verified from the stream init event (response.jsonl line 7). Effort high is launcher-attested only; init reports per_turn_effort_active true without a value. CLAUDE_PLUGIN_ROOT was not set for this source plugin, so hook enforcement is reported unverified; the hook-announced turn req-20261029T005811Z-prompt-88ee was absent from this plugin workspace cache, so a dedicated review turn was opened.",
+      "requirements": [],
+      "proposedAC": "",
+      "proposedTests": [],
+      "operatorDecision": ""
+    }
+  ],
+  "missingTestsAndDecisions": [
+    "F1 tests: unit owner draft publicLeaderboard false; PostgreSQL public projection excludes owner id after callback; browser public board shows no member alias.",
+    "F1 AC: GA-10 owner profile non-public and absent from public projections.",
+    "F1 operator decision: hide legacy member-kind profiles from public projections in this release or not.",
+    "F2 operator decision: accept a documented BDPv4 exception for this slice or require a retroactive mock-gate package.",
+    "F3: put GA-09 (and GA-05/06/07 or references to PWA-01/03/06/07/09) on TEST records.",
+    "F4: retain adapter validation harness, fixtures and output.",
+    "F5: supply all four pwa.spec.ts cases run on committed bytes."
+  ],
+  "verdictProse": "Hostile validation verdict, admin PWA source candidate 437c501c58c7dfa96ee576f445d225f2dd62a0bd, gate admin-pwa-source-round1 (staging readiness only).\n\nOverallVerdict DISAGREE. Accuracy 92. Completeness 88. Both are below 98, and surfaces 1, 2 and 3 each have a FAIL.\n\nWhat holds: the security core is sound and well evidenced. The GitHub provider accepts only numeric id 16146732 with login sharpninja through S256 PKCE and state, and keeps no provider tokens. Guest and admin realms are separated by a hash namespace, and copied tokens fail both ways in real PostgreSQL. Public OpenAI, delegation and community routes are closed. The admin worker caches only static public files and passes HTTP errors through. Legacy retirement is narrowly scoped, navigation races are guarded, card whitespace meets 20px and 32px, and the presence fix is correct. All five TRX files match the request hashes and their native JUnit case by case, with 0 failed and 0 skipped, and all 60 unit files are present.\n\nWhy DISAGREE:\nF1 (high, product): the verified GitHub owner profile is created as a public member and published on the public leaderboard and landing projection, with no opt-out. This contradicts DEC-11 and the guest-only public surface. The 19:32 PostgreSQL run surfaced it as an extra public row, and it was resolved by test cleanup, not product analysis.\nF2 (medium, process): there is no documented BDPv4 green mock gate or chronological receipt for this slice. This needs an operator decision.\nF3 (medium, traceability): GA-09 and GA-05/06/07 are not carried by any TR or TEST criterion, and GA/PWA rules are duplicated under second IDs.\nF4 and F5 (low, evidence): the adapter validation is not reproducible, and three pwa.spec.ts cases were not rerun on committed bytes.\nF6 to F8 are informational (QBrain read-time timestamps triaged, non-unique case names, reviewer effort and hooks not runtime-verified).\n\nNot claimed and still pending: live GitHub consent, standalone phone cookie continuity, physical OS installation, hosted deployment, and GitHub App registration (class-2 operation, UNKNOWN)."
+}
