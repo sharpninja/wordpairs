@@ -57,6 +57,12 @@ Verify live public guest-only behavior, lack of public install controls, privile
 
 The10-player cap is enforced consistently, existing data survives, every supported count completes the required real browser game, the applicable suites report zero failures/skips, QBrain/docs/wiki match, and the currently selected independent reviewer reaches98/98 AGREE. Finish staging before production and report exactly which hosted behaviors were observed. No test count, local pass or deployment URL alone establishes completion of the game or its review.
 
+##1November2026 shipment authorization
+
+The operator explicitly directed: "I need you to get it wrapped up with the bugs. As long as it's not breaking the UI, just push it". For this bug-fix shipment, proceed using the existing exact-source UI regression evidence without waiting for another hostile-review acceptance. This is a shipment-specific exception to the Step5 review prerequisite and the review portion of the exit criteria, not an accepted hostile verdict or a requirement-satisfaction claim. Preserve all previous reviews, including the latest Cline/Beam DISAGREE with accuracy70 and completeness55, and their complete receipts.
+
+Keep the staging-first rollout, forward-only migrations, existing-data preservation, guest/admin separation,10-player cap and honest hosted verification. A required provider reauthentication remains an external action; publishing Git changes does not establish a live deployment. The operational empty-pending-migration status correction changes no application UI behavior.
+
 ##31October2026 hosting catalog corrective increment
 
 Read-only hosted preparation found that the current hosting planner's filename suffix filter excluded the digit in existing `014_capacity10.sql`. Local SQL harnesses loaded all SQL files, while the hosted catalog omitted014. This disconnect must be corrected before a new frozen candidate or hosted migration status/apply. Existing `TR-SCHEMA-PROVISIONING-023#TR-23-C01/02` and `TEST-SCHEMAPROVISIONING-123#TR-23-C01/02` cover this bug; no new product requirement or satisfaction state is introduced.

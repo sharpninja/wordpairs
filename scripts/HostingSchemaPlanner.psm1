@@ -50,7 +50,7 @@ function Get-HostingSchemaPending {
 
 function Get-HostingSchemaSummary {
     [CmdletBinding()]
-    param([Parameter(Mandatory)][object[]]$Migrations)
+    param([Parameter(Mandatory)][AllowEmptyCollection()][object[]]$Migrations)
     @($Migrations | ForEach-Object {
         $digest=[Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes([string]$_.query))
         [pscustomobject]@{version=$_.version;name=$_.name;sha256=[Convert]::ToHexString($digest).ToLowerInvariant()}

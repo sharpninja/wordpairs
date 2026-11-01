@@ -17,4 +17,10 @@ function Get-HostingSchemaPending {
     }
     @($Migrations | Select-Object -Skip $ordered.Count)
 }
-Export-ModuleMember -Function Get-HostingSchemaPending,Get-HostingSchemaMigrationCatalog
+function Get-HostingSchemaSummary {
+    [CmdletBinding()]
+    param([AllowEmptyCollection()][object[]]$Migrations)
+    if($Migrations.Count -ne 0){throw 'Summary mock only supports the empty pending fixture'}
+    @()
+}
+Export-ModuleMember -Function Get-HostingSchemaPending,Get-HostingSchemaMigrationCatalog,Get-HostingSchemaSummary

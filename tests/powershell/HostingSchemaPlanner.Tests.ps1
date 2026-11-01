@@ -18,6 +18,9 @@ Describe 'hosting migration prefix contract' {
     It 'proposes 012 through 014 after the recorded thirteen-migration hosted prefix' {
         $pending=@(Get-HostingSchemaPending -Migrations $migrations -History (Get-MockHistory 13))
         $pending.name | Should -Be @('wordpairs_012_guest_public_profiles','wordpairs_013_player_capacity','wordpairs_014_capacity10')
+        $fullyApplied=@(Get-HostingSchemaPending -Migrations $migrations -History (Get-MockHistory 16))
+        $fullyApplied.Count | Should -Be 0
+        @(Get-HostingSchemaSummary -Migrations $fullyApplied).Count | Should -Be 0
     }
 
     It 'proposes the whole catalog for an empty history' {
