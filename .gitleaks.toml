@@ -6,12 +6,12 @@ useDefault = true
 [[rules]]
 id = "private-operator-context"
 description = "Private host, account, network, key-location and coordination metadata"
-regex = '''(?:10\.4[2]\.0\.|L[A]B-O[M]ARCHY|PAYTON-LEG[I]ON2|LEG[I]ON2|k[i]ngd|id_ed25[5]19|authorized_[k]eys|cred-leg[i]on2|leg[i]on2-github|MEMORY-(?:INFR[A]|PROCEDUR[E]|PROCES[S])-)'''
+regex = '''(?i:(?:10\.4[2]\.0\.|L[A]B-O[M]ARCHY|PAYTON-LEG[I]ON2|LEG[I]ON2|id_ed25[5]19|authorized_[k]eys|cred-leg[i]on2|leg[i]on2-github|MEMORY-(?:INFR[A]|PROCEDUR[E]|PROCES[S])-|Q[B]-AGENT-00[1]|(?:^|[^A-Za-z0-9_-])k[i]ngd(?:$|[^A-Za-z0-9_-])))'''
 
 [[rules]]
 id = "private-agent-home"
 description = "Absolute private agent or SSH home directory"
-regex = '''/home/[a-z]+/(\.(?:claude|codex|ssh)/)'''
+regex = '''(?i:/home/[a-z]+/(\.(?:claude|codex|ssh)/))'''
 secretGroup = 1
 
 [[rules]]

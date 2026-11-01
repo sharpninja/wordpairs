@@ -176,6 +176,43 @@ Describe 'Native privacy rule negative controls' {
             $scan.exitCode|Should -Be 0
         }
     }
+    It 'rejects case-folded host share key and coordination metadata without relying on exact capitalization' {
+        $markers=@(('lab'+'-omarchy'),('PaYtOn'+'-LeGiOn'+'2'),('legion'+'2'),('Id_Ed25'+'519'),('AuThOrIzEd_'+'KeYs'),('CrEd-LeGiOn'+'2'),('LeGiOn'+'2-GiThUb'),('memory-'+'infra-'),('MeMoRy-'+'PrOcEdUrE-'),('mEmOrY-'+'pRoCeSs-'),('qb-'+'agent-00'+'1'),('/HOME/'+'FixtureUser/'+'.CoDeX/'))
+        foreach($marker in $markers){
+            $scan=Invoke-ScanFixture -Root (Join-Path $TestDrive ([guid]::NewGuid().ToString())) -RelativeFile 'docs/casefold.json' -Text ('{"context":"'+$marker+'"}')
+            $scan.exitCode|Should -Be 1
+            @($scan.findings|Where-Object RuleID -In @('private-operator-context','private-agent-home')).Count|Should -BeGreaterThan 0
+        }
+    }
+    It 'bounds case-folded private usernames while preserving unrelated legal and programming words' {
+        foreach($text in @(('ki'+'ngd'),('Ki'+'NgD'),('/users/KI'+'NGD/'),('user="kI'+'nGd"'))){
+            $scan=Invoke-ScanFixture -Root (Join-Path $TestDrive ([guid]::NewGuid().ToString())) -RelativeFile 'docs/account.txt' -Text $text
+            @($scan.findings|Where-Object RuleID -EQ 'private-operator-context').Count|Should -BeGreaterThan 0
+        }
+        foreach($text in @('Kingdom',('king'+'dom'),'WorkingDirectory','workingdirectory','workingdir','QBrain.AI',('ki'+'ngd-user'),('ki'+'ngd_user'),('usernameki'+'ngd'))){
+            $scan=Invoke-ScanFixture -Root (Join-Path $TestDrive ([guid]::NewGuid().ToString())) -RelativeFile 'docs/legal.txt' -Text $text
+            $scan.exitCode|Should -Be 0
+        }
+    }
+    It 'finds lower and mixed-case private metadata in decoded staged JSON and compressed JSON keys' {
+        $repo=Join-Path $TestDrive 'casefold-encoded-repo'
+        [void][IO.Directory]::CreateDirectory((Join-Path $repo 'docs'))
+        Copy-Item -LiteralPath $script:config -Destination (Join-Path $repo '.gitleaks.toml')
+        $null=& git -C $repo init --quiet
+        $json='{"context":"la\u0062-'+'omarchy"}'
+        [IO.File]::WriteAllText((Join-Path $repo 'docs/context.json'),$json)
+        $null=& git -C $repo add docs/context.json
+        {& (Join-Path $RepositoryRoot 'scripts/Test-PrivateEvidence.ps1') -RepositoryRoot $repo -Staged}|Should -Throw '*Strict public-evidence*'
+        $null=& git -C $repo rm --cached --quiet docs/context.json
+        $zip=[IO.Compression.ZipFile]::Open((Join-Path $repo 'docs/encoded.zip'),[IO.Compression.ZipArchiveMode]::Create)
+        try{
+            $entry=$zip.CreateEntry('docs/context.jsonl')
+            $writer=[IO.StreamWriter]::new($entry.Open())
+            try{$writer.WriteLine('{"PaYtOn-LEgI\u004fN'+'2":"fixture"}')}finally{$writer.Dispose()}
+        }finally{$zip.Dispose()}
+        $null=& git -C $repo add docs/encoded.zip
+        {& (Join-Path $RepositoryRoot 'scripts/Test-PrivateEvidence.ps1') -RepositoryRoot $repo -Staged}|Should -Throw '*Strict public-evidence*'
+    }
     It 'does not let hash-manifest exceptions hide operator data' {
         $scan=Invoke-ScanFixture -Root (Join-Path $TestDrive ([guid]::NewGuid().ToString())) -RelativeFile 'docs/source-hashes.json' -Text ('{"source":"LAB'+'-OMARCHY"}')
         $scan.exitCode|Should -Be 1
