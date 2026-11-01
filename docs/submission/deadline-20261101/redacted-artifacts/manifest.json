@@ -1,0 +1,1550 @@
+{
+  "schema": "redacted-review-artifacts/v1",
+  "atLocal": "2026-11-01T13:20:16.1000492-06:00",
+  "scope": "Exact referenced reviewer streams, transport receipts and canonical readbacks/companions; not a claim to export every historical session.",
+  "originalPathCount": 69,
+  "uniqueOriginalCount": 57,
+  "originalsPreserved": true,
+  "artifacts": [
+    {
+      "id": "artifact-001",
+      "published": "artifacts/artifact-001.json",
+      "originalSha256": "00E34E42B7B5286A6AE4F00AF16C76A52D94E05B9B0B1F1949D0B843125DA5FE",
+      "originalBytes": 3077,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "session-history-proof.yaml",
+          "kind": "historical-canonical-history",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round1-tools"
+          ],
+          "bytes": 3077
+        }
+      ],
+      "redactedSha256": "237CF66B83BA249C6890A8D50450E0A66BA12B2F4BEA3C257EDE11CC1DC00E6B",
+      "redactedBytes": 4047,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 0,
+      "kind": "historical-canonical-history"
+    },
+    {
+      "id": "artifact-002",
+      "published": "artifacts/artifact-002.jsonl",
+      "originalSha256": "022BC03708E1E38899F266568C291F061BC130BDDFD7C6659D79D38DF2762973",
+      "originalBytes": 17194,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "requests.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 17194
+        }
+      ],
+      "redactedSha256": "B46F7F2039657FCD8EEB0ACC2499CE2C46C5BD2AB560140CB79C25B9DD80EAA4",
+      "redactedBytes": 939,
+      "originalRecords": 7,
+      "blankLines": 0,
+      "publishedRecords": 7,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-003",
+      "published": "artifacts/artifact-003.jsonl",
+      "originalSha256": "030A728AA7D7ACAA8AECF7EDEFE4B1BB2666E40228C7DF27CD94C45E5429990F",
+      "originalBytes": 19879,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "requests.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 19879
+        }
+      ],
+      "redactedSha256": "6EA8C03410AD7A8E43ABC8F07AF172CC8BAAF1C46D1885727D16A3123CB34C48",
+      "redactedBytes": 1832,
+      "originalRecords": 16,
+      "blankLines": 0,
+      "publishedRecords": 16,
+      "unparseableOriginalRecords": 0,
+      "redactions": 5,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-004",
+      "published": "artifacts/artifact-004.json",
+      "originalSha256": "05176D2855B3A30927231A245C1CA4BC4799924B339D6852E624B881450FB322",
+      "originalBytes": 3250,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "complete.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round5-tools"
+          ],
+          "bytes": 3250
+        }
+      ],
+      "redactedSha256": "259B7A77CBCBFEE69F4435F5613E7A641BF6C51807A7F266DCDC2841F96CA5D7",
+      "redactedBytes": 3251,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 1,
+      "kind": "historical-canonical-query-parameters"
+    },
+    {
+      "id": "artifact-005",
+      "published": "artifacts/artifact-005.json",
+      "originalSha256": "147DE980EFD330E25FCA93AD378C74A19218AF47749499F6269A18364DD98742",
+      "originalBytes": 8352,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "root-wrap-up-canonical.json",
+          "kind": "root-canonical-history",
+          "sourceReference": [
+            "Parent-specified canonical readback backing manifest withheld register",
+            "Bounded stop-report/publication canonical readbacks from withheld register"
+          ],
+          "bytes": 8352
+        }
+      ],
+      "redactedSha256": "C160D4112394045A0DCCF5178CC775F34F372825B06C9455A1AB2C80E741AA95",
+      "redactedBytes": 6631,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4,
+      "kind": "root-canonical-history"
+    },
+    {
+      "id": "artifact-006",
+      "published": "artifacts/artifact-006.jsonl",
+      "originalSha256": "1E8A40DE2D3636F7301BD7003717E365211B61D4E9593A485F96FD3426FE418D",
+      "originalBytes": 7865,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "approval-records.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 7865
+        }
+      ],
+      "redactedSha256": "276BD1BDFF883C62D5AB9F16C996E29921C1856F949C1E12E20A72EE192CAD97",
+      "redactedBytes": 7555,
+      "originalRecords": 2,
+      "blankLines": 0,
+      "publishedRecords": 2,
+      "unparseableOriginalRecords": 0,
+      "redactions": 23,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-007",
+      "published": "artifacts/artifact-007.jsonl",
+      "originalSha256": "20E171F63DEFAA23481C780E652FFBEEF805EA88BB589C70E10DD8A66F9C8FA4",
+      "originalBytes": 14043,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T233627-admin-pwa-source-round3.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 14043
+        }
+      ],
+      "redactedSha256": "C4DC638F1E164B16295756969197526BF46001C22BB0C9B4DFC16AB7AA721915",
+      "redactedBytes": 3449,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 22,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-008",
+      "published": "artifacts/artifact-008.json",
+      "originalSha256": "23693B60BA64C1217A31B368A8729B4BBA78C40958C0AD3D7F3AF51A98ED8F5D",
+      "originalBytes": 170402,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "session-turn-proof.yaml",
+          "kind": "historical-canonical-history",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round2-tools"
+          ],
+          "bytes": 170402
+        }
+      ],
+      "redactedSha256": "9D42932D401A33448A6D04590D927F15699C80850208AE56A2DCA6E7990E1714",
+      "redactedBytes": 75517,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 17,
+      "kind": "historical-canonical-history"
+    },
+    {
+      "id": "artifact-009",
+      "published": "artifacts/artifact-009.jsonl",
+      "originalSha256": "243494787B8866C4CACBA041C1DBE15655D670CE62B99116D96208F283B8B397",
+      "originalBytes": 486379,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "frames.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 486379
+        },
+        {
+          "name": "response.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 486379
+        }
+      ],
+      "redactedSha256": "7AD1ACA1E712B0AD5B28F428ACDF701A21AAED179010FE6BD72995F3D3CA07D2",
+      "redactedBytes": 330706,
+      "originalRecords": 308,
+      "blankLines": 0,
+      "publishedRecords": 308,
+      "unparseableOriginalRecords": 0,
+      "redactions": 475,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-010",
+      "published": "artifacts/artifact-010.jsonl",
+      "originalSha256": "299BA242714F49541E90F5013B1A01ACBB0378C736A8D952C976D54194E0C43B",
+      "originalBytes": 1843518,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T204722-admin-pwa-source-round2.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 1843518
+        }
+      ],
+      "redactedSha256": "CB346C6BF9614A8FD8B6EEFE751CA80F8C75295B6A727E8D7556482856CBC868",
+      "redactedBytes": 1352390,
+      "originalRecords": 1127,
+      "blankLines": 0,
+      "publishedRecords": 1127,
+      "unparseableOriginalRecords": 0,
+      "redactions": 3094,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-011",
+      "published": "artifacts/artifact-011.jsonl",
+      "originalSha256": "3FA95680A674FF97384A912C9DC2A2EA4998EADBB2C26313DACAFC49BF4F79E3",
+      "originalBytes": 71784,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "trace.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 71784
+        }
+      ],
+      "redactedSha256": "C77F4256BEC51CF97F877A7C814529F9016600131370F646E83CA62BFC9CBD83",
+      "redactedBytes": 71714,
+      "originalRecords": 452,
+      "blankLines": 0,
+      "publishedRecords": 452,
+      "unparseableOriginalRecords": 0,
+      "redactions": 11,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-012",
+      "published": "artifacts/artifact-012.jsonl",
+      "originalSha256": "402691C6B4B0D8C0C9FCF116F25216E2DC7427822270AAFBA74B4E779D60284E",
+      "originalBytes": 30648,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "trace.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 30648
+        }
+      ],
+      "redactedSha256": "402691C6B4B0D8C0C9FCF116F25216E2DC7427822270AAFBA74B4E779D60284E",
+      "redactedBytes": 30648,
+      "originalRecords": 184,
+      "blankLines": 0,
+      "publishedRecords": 184,
+      "unparseableOriginalRecords": 0,
+      "redactions": 1,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-013",
+      "published": "artifacts/artifact-013.json",
+      "originalSha256": "489D564F826E11400F9891D0888F69D7040FC2E0248B58B662528C2CD3A12248",
+      "originalBytes": 3394,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "complete.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round6-tools"
+          ],
+          "bytes": 3394
+        }
+      ],
+      "redactedSha256": "8A720D39473F4C169290DB4A736A3A71DB99EB204A72E881EF051FDFDE65C2C3",
+      "redactedBytes": 3396,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 1,
+      "kind": "historical-canonical-query-parameters"
+    },
+    {
+      "id": "artifact-014",
+      "published": "artifacts/artifact-014.json",
+      "originalSha256": "4EB59A8BD896AC685AEB178E2D93F848FC54E21DB501B7B1D66451C024D19DA1",
+      "originalBytes": 276472,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "session-turn-proof.yaml",
+          "kind": "historical-canonical-history",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round3-retry-tools"
+          ],
+          "bytes": 276472
+        }
+      ],
+      "redactedSha256": "4FD32A54092F9D5B4CB37F964449ADED7392FE0B2B9BC835B3714CF921D65B95",
+      "redactedBytes": 123871,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 27,
+      "kind": "historical-canonical-history"
+    },
+    {
+      "id": "artifact-015",
+      "published": "artifacts/artifact-015.jsonl",
+      "originalSha256": "502E37E606392C974E56E9ECE44501E50E4B1004C0CEC208BFE0CE2822F08532",
+      "originalBytes": 3368140,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T233627-admin-pwa-source-round3.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 3368140
+        }
+      ],
+      "redactedSha256": "139C292D5E4135182CC2E8EA2BA225445CAA3BB6079C65963E074929283EF85B",
+      "redactedBytes": 2623276,
+      "originalRecords": 2156,
+      "blankLines": 0,
+      "publishedRecords": 2156,
+      "unparseableOriginalRecords": 0,
+      "redactions": 5910,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-016",
+      "published": "artifacts/artifact-016.jsonl",
+      "originalSha256": "51C6740029F0AB7412F2FF2495EE6390A1672C7E6C57E05822641C56043AB50A",
+      "originalBytes": 416,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "requests.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 416
+        }
+      ],
+      "redactedSha256": "0DB12532EED10031FD96D3006692CA5542AF73FD5EAC7D8A9DF0BA011B64ACB2",
+      "redactedBytes": 444,
+      "originalRecords": 3,
+      "blankLines": 0,
+      "publishedRecords": 3,
+      "unparseableOriginalRecords": 0,
+      "redactions": 3,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-017",
+      "published": "artifacts/artifact-017.jsonl",
+      "originalSha256": "51EE3595DE6DA3E88F8E91FDD23F9DEE589B93F8F418ECF74BBD25276EE5D31D",
+      "originalBytes": 67594,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "trace.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 67594
+        }
+      ],
+      "redactedSha256": "A8B20CCC84BD728502CABB452BC3B51D88121DB505196AE83BD6CE93007601A7",
+      "redactedBytes": 67482,
+      "originalRecords": 419,
+      "blankLines": 0,
+      "publishedRecords": 419,
+      "unparseableOriginalRecords": 0,
+      "redactions": 17,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-018",
+      "published": "artifacts/artifact-018.jsonl",
+      "originalSha256": "67986097A6E41DD3F95CD67773730E7C88DE2C39FD4FD4B2642C97E28BDB67C9",
+      "originalBytes": 18363,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "requests.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 18363
+        }
+      ],
+      "redactedSha256": "6BA0BB042C144DBA0CF1AEE40F307D635BB187E72E662C25DDE59DEA1A15943F",
+      "redactedBytes": 1032,
+      "originalRecords": 8,
+      "blankLines": 0,
+      "publishedRecords": 8,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-019",
+      "published": "artifacts/artifact-019.json",
+      "originalSha256": "68E85C56F15F386EBA32DB1F25099482B68459D380F89749FFF94DDF5ED72967",
+      "originalBytes": 30477,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "canonical-readback.json",
+          "kind": "root-or-child-canonical-history",
+          "sourceReference": [
+            "Bounded stop-report/publication canonical readbacks from withheld register"
+          ],
+          "bytes": 30477
+        }
+      ],
+      "redactedSha256": "900B9648554E1103C766ADB3C1BBBC55E7C01530321FCD8F232035DCECAD3FDA",
+      "redactedBytes": 30361,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 1,
+      "kind": "root-or-child-canonical-history"
+    },
+    {
+      "id": "artifact-020",
+      "published": "artifacts/artifact-020.jsonl",
+      "originalSha256": "6D589D5FB515221F897AAC082DFC61A82FD0337072200D893A5883C213276D35",
+      "originalBytes": 14459,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "approval-records.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 14459
+        }
+      ],
+      "redactedSha256": "6A5BEB0693847666FEB01E145DC426B73B2B9E6285555B00A33B200A80329EAE",
+      "redactedBytes": 13993,
+      "originalRecords": 3,
+      "blankLines": 0,
+      "publishedRecords": 3,
+      "unparseableOriginalRecords": 0,
+      "redactions": 49,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-021",
+      "published": "artifacts/artifact-021.json",
+      "originalSha256": "6FA47075CDDBF39796A34A73CFB6FFE79B1DB13B20CF658171F3BA916E38BFF6",
+      "originalBytes": 257095,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "transport-result.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts;evidence-analysis/entry-evidence.json#pins"
+          ],
+          "bytes": 257095
+        }
+      ],
+      "redactedSha256": "C8FB2FD5406D1B4014DCBFD0E448BD6A5224E3B4D871E62BA8017CC774B595D5",
+      "redactedBytes": 232564,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 823,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-022",
+      "published": "artifacts/artifact-022.jsonl",
+      "originalSha256": "74FF76AE535947BD475F8CF82BBC02210B49683DE28C4BA9D7281EF63BFFB4A1",
+      "originalBytes": 8351,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261029T090008-admin-pwa-source-round4.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 8351
+        }
+      ],
+      "redactedSha256": "C1E19D33591B0A64C86B671C306E7ED3800D343EEF64A90B068513C15082A8A7",
+      "redactedBytes": 3211,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 14,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-023",
+      "published": "artifacts/artifact-023.json",
+      "originalSha256": "76D10419357C449070B02FC7DE079FEC31B27B510B226793970FD45986C34C9F",
+      "originalBytes": 35611,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "canonical-bindings.json",
+          "kind": "root-or-child-canonical-history",
+          "sourceReference": [
+            "Bounded stop-report/publication canonical readbacks from withheld register"
+          ],
+          "bytes": 35611
+        }
+      ],
+      "redactedSha256": "76D10419357C449070B02FC7DE079FEC31B27B510B226793970FD45986C34C9F",
+      "redactedBytes": 35611,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 0,
+      "kind": "root-or-child-canonical-history"
+    },
+    {
+      "id": "artifact-024",
+      "published": "artifacts/artifact-024.json",
+      "originalSha256": "800C05AA6CB97D7045629F1252381B2B77D6000D7D1A104125F6CA313B2CEA37",
+      "originalBytes": 75422,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "session-turn-proof.yaml",
+          "kind": "historical-canonical-history",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round1-tools"
+          ],
+          "bytes": 75422
+        }
+      ],
+      "redactedSha256": "F1B8360A6543F09C3928230E5631A948A8AD60396E5B13D8A3AC6390D0FCA5F6",
+      "redactedBytes": 34249,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 10,
+      "kind": "historical-canonical-history"
+    },
+    {
+      "id": "artifact-025",
+      "published": "artifacts/artifact-025.json",
+      "originalSha256": "84BD599F1BEF06EC1CE5B6F62760218A9D3DF2E9280DB44AC0395B23FB01E5F6",
+      "originalBytes": 24902,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "entry-own-canonical-readback.json",
+          "kind": "root-or-child-canonical-history",
+          "sourceReference": [
+            "Bounded stop-report/publication canonical readbacks from withheld register"
+          ],
+          "bytes": 24902
+        }
+      ],
+      "redactedSha256": "68DD945A12013DF555CE0B2D966E25AEFE2A0F31BF8A8C4FAEF457E777504D78",
+      "redactedBytes": 12644,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 3,
+      "kind": "root-or-child-canonical-history"
+    },
+    {
+      "id": "artifact-026",
+      "published": "artifacts/artifact-026.jsonl",
+      "originalSha256": "885042DCD5E832BEBE2EEA6835EF641C3003E055F319DEB24CAD1904E414AA94",
+      "originalBytes": 248,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "errors.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 248
+        }
+      ],
+      "redactedSha256": "885042DCD5E832BEBE2EEA6835EF641C3003E055F319DEB24CAD1904E414AA94",
+      "redactedBytes": 248,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 1,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-027",
+      "published": "artifacts/artifact-027.json",
+      "originalSha256": "8978B01775D6F37AFC7F28439DB527949A4C44581812EA0C7C4CA39CB6643DA9",
+      "originalBytes": 9461,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "canonical-verdict-readback.json",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/acp-batch-delivery-audit-20261101T002206/final-bindings.json",
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json",
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json",
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json",
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 9461
+        }
+      ],
+      "redactedSha256": "C643C83151EF77DC4E76EBD250FDE3A212ADCFF0385F1CA7658DC6A6E51C19A1",
+      "redactedBytes": 1633,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 7,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-028",
+      "published": "artifacts/artifact-028.json",
+      "originalSha256": "8A07F61CC839840A12F386C481F191F3FDBB569626716A967658BFA4BE41DECB",
+      "originalBytes": 7004,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "root-canonical-readback.json",
+          "kind": "root-canonical-history",
+          "sourceReference": [
+            "Parent-specified canonical readback backing manifest withheld register",
+            "Bounded stop-report/publication canonical readbacks from withheld register"
+          ],
+          "bytes": 7004
+        }
+      ],
+      "redactedSha256": "DC9112A3E72D489379E6324ED384566BEB7F039E755CC2102E9A79DED8D2B120",
+      "redactedBytes": 6974,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 2,
+      "kind": "root-canonical-history"
+    },
+    {
+      "id": "artifact-029",
+      "published": "artifacts/artifact-029.jsonl",
+      "originalSha256": "8D2A48E5A871CC452035BE4B4C8ED5E4E381AADD6579CD526C5799FDB0BF8462",
+      "originalBytes": 2902335,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261029T094325-admin-pwa-source-round5.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 2902335
+        }
+      ],
+      "redactedSha256": "331F0C41ED30B8C7AF5E650F90E9E89033CF85388A96BED59F4CB938C24904D2",
+      "redactedBytes": 1661815,
+      "originalRecords": 1506,
+      "blankLines": 0,
+      "publishedRecords": 1506,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4463,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-030",
+      "published": "artifacts/artifact-030.json",
+      "originalSha256": "91801CEE0BB9BE802FEB024A393EB091D54AB050CBB14F75D9374EB22B65EC65",
+      "originalBytes": 38,
+      "originalFormat": "txt",
+      "aliases": [
+        {
+          "name": "stderr.txt",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 38
+        },
+        {
+          "name": "stderr.txt",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 38
+        },
+        {
+          "name": "stderr.txt",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 38
+        },
+        {
+          "name": "stderr.txt",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 38
+        }
+      ],
+      "redactedSha256": "DEFDD25560B7679C5D03B933E6D4C2A09D9B9070BCA94C0FBCD4066A578E8554",
+      "redactedBytes": 42,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-031",
+      "published": "artifacts/artifact-031.jsonl",
+      "originalSha256": "9A3558D98313D01B734963D3676FB9E79861DE33DC51800922486DD1EBC70D71",
+      "originalBytes": 573186,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "frames.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 573186
+        },
+        {
+          "name": "response.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 573186
+        }
+      ],
+      "redactedSha256": "F456EC46D23134B51AF55C9078FEE33F4DD3E2A23CD63F6052C439DB6FDD2C84",
+      "redactedBytes": 353228,
+      "originalRecords": 298,
+      "blankLines": 0,
+      "publishedRecords": 298,
+      "unparseableOriginalRecords": 0,
+      "redactions": 542,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-032",
+      "published": "artifacts/artifact-032.json",
+      "originalSha256": "9AAF9798B1FF6B4D08A2DBFFB3EAA65B107416FBAA9A7CF952E714BC8F4A6495",
+      "originalBytes": 175,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "turn-readback-20261029T092310.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round4-tools"
+          ],
+          "bytes": 175
+        }
+      ],
+      "redactedSha256": "C4A1BC78EBAF107F107D65989B4712CC12336F8611FA8624DC1A5F8BE950E1C8",
+      "redactedBytes": 218,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 0,
+      "kind": "historical-canonical-query-parameters"
+    },
+    {
+      "id": "artifact-033",
+      "published": "artifacts/artifact-033.jsonl",
+      "originalSha256": "9EA3C13528955466829CDF4224863FDE39FCA3FF5619A69483C6CFE92DDF4DD4",
+      "originalBytes": 953037,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T230220-admin-pwa-source-round3.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 953037
+        }
+      ],
+      "redactedSha256": "066D93009BFBD36CFB6BFB3C21254D55FFEB5B78F5B10C68C982E07A3F002870",
+      "redactedBytes": 531113,
+      "originalRecords": 574,
+      "blankLines": 0,
+      "publishedRecords": 574,
+      "unparseableOriginalRecords": 0,
+      "redactions": 1654,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-034",
+      "published": "artifacts/artifact-034.jsonl",
+      "originalSha256": "9F5FED4CF095ED80FF32CC32E3619FD932CA183878C32C7B93A87C51D7E8A758",
+      "originalBytes": 15320,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261029T102510-admin-pwa-source-round6.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 15320
+        }
+      ],
+      "redactedSha256": "8DF34027F17ECE70D3BC0C967963C2FE1704F2B97EA6A378541EA9718A5D00EC",
+      "redactedBytes": 9994,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 50,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-035",
+      "published": "artifacts/artifact-035.jsonl",
+      "originalSha256": "A0DF14276A750F9A653996E90F721E7B942FEB3CE0284E5C96AC9C7D33DA067C",
+      "originalBytes": 687552,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "review.request.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T212918-gameplay-replacement-review/review.process-result.json"
+          ],
+          "bytes": 687552
+        }
+      ],
+      "redactedSha256": "E5858898D0A7F4075D49FDE2984653593D147940AC3425C9518847A8A7A569AA",
+      "redactedBytes": 663225,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 2063,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-036",
+      "published": "artifacts/artifact-036.jsonl",
+      "originalSha256": "A288F1D6479110F306F37D79AC0D3646D6197FA779E38DD3AAF6AAB6BA0891C2",
+      "originalBytes": 45987,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "approval-records.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 45987
+        }
+      ],
+      "redactedSha256": "8953945E36C64CD7F33159D69104A6A2FEB5475B1C5778750E77B6B0181A3161",
+      "redactedBytes": 44515,
+      "originalRecords": 10,
+      "blankLines": 0,
+      "publishedRecords": 10,
+      "unparseableOriginalRecords": 0,
+      "redactions": 145,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-037",
+      "published": "artifacts/artifact-037.jsonl",
+      "originalSha256": "A86267AFF2C6CDD3B79707089031F762286219C1BA738A6CE1A4377C408B2D7C",
+      "originalBytes": 10093,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T204722-admin-pwa-source-round2.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 10093
+        }
+      ],
+      "redactedSha256": "1B9E08268E50747A10755069B16173BDA02FA72FB45ED06A75675B0B71BE38D9",
+      "redactedBytes": 2150,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 14,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-038",
+      "published": "artifacts/artifact-038.json",
+      "originalSha256": "AAFD21FCB9A05EE599B98425FF751872E3E2536D3824468C4FE08FD545D8FC27",
+      "originalBytes": 38,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "history-20261029T092226.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round4-tools"
+          ],
+          "bytes": 38
+        },
+        {
+          "name": "history-20261029T100622.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round5-tools"
+          ],
+          "bytes": 38
+        },
+        {
+          "name": "history-20261029T104336.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round6-tools"
+          ],
+          "bytes": 38
+        }
+      ],
+      "redactedSha256": "7282877E9AB1071033A0AAA6B4E538056B63F93E1E1FE1F21B43973314FC123A",
+      "redactedBytes": 57,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 0,
+      "kind": "historical-canonical-query-parameters"
+    },
+    {
+      "id": "artifact-039",
+      "published": "artifacts/artifact-039.json",
+      "originalSha256": "AB26EB90075779CB8D1794664A03E46CAD7B3D91018C67D1E4F2C53C470FBEE2",
+      "originalBytes": 270298,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "transport-result.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts;evidence-analysis/entry-evidence.json#pins"
+          ],
+          "bytes": 270298
+        }
+      ],
+      "redactedSha256": "17201A76020BD37342A38CC4FA4E7C016B2699AAD2E0DB5FFAEA8B3B21864416",
+      "redactedBytes": 244211,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 871,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-040",
+      "published": "artifacts/artifact-040.json",
+      "originalSha256": "AF02E9921AA2FD650DFE626137EAD5C508D53145EBEBCA79DFB1A36B47A65459",
+      "originalBytes": 3519,
+      "originalFormat": "yaml",
+      "aliases": [
+        {
+          "name": "complete.yaml",
+          "kind": "historical-canonical-query-parameters",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews; claude-opus-round4-tools"
+          ],
+          "bytes": 3519
+        }
+      ],
+      "redactedSha256": "F0A84A8E503D134CFC66805492A9D3535CC496359B7249D4364E4B29D7951937",
+      "redactedBytes": 3523,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 0,
+      "kind": "historical-canonical-query-parameters"
+    },
+    {
+      "id": "artifact-041",
+      "published": "artifacts/artifact-041.jsonl",
+      "originalSha256": "B5794FD4ADDE64DED555D61BBDA90D16C4646E0BD08E3E77DD33E8454B7DCE0A",
+      "originalBytes": 2702235,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261029T090008-admin-pwa-source-round4.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 2702235
+        }
+      ],
+      "redactedSha256": "6AA709D614DFF9D816952B489430869B225EE0C2ADE992EC90D3E7D38D180DCD",
+      "redactedBytes": 1623926,
+      "originalRecords": 1369,
+      "blankLines": 0,
+      "publishedRecords": 1369,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4042,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-042",
+      "published": "artifacts/artifact-042.json",
+      "originalSha256": "B82581FC01E434F4E39370A8AD9698ADF945A130A220DA10614BC70120955FA2",
+      "originalBytes": 6450,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "canonical-verdict-readback.json",
+          "kind": "canonical-history",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts;evidence-analysis/entry-evidence.json#pins",
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T212918-gameplay-replacement-review/plugin-cache/review-context/canonical-verdict-readback.json",
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T212918-gameplay-replacement-review/review.process-result.json"
+          ],
+          "bytes": 6450
+        }
+      ],
+      "redactedSha256": "BE57979BF46B5399F6B41BD4477E05E037FBA826B64DD0FEF73EE85E55E48B52",
+      "redactedBytes": 1520,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4,
+      "kind": "canonical-history"
+    },
+    {
+      "id": "artifact-043",
+      "published": "artifacts/artifact-043.json",
+      "originalSha256": "BABE100DECFF810282FBB0981FAE46EEB5245D5521E6AC6A2DFDFF92A6DAF66D",
+      "originalBytes": 230004,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "transport-result.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts;evidence-analysis/entry-evidence.json#pins"
+          ],
+          "bytes": 230004
+        }
+      ],
+      "redactedSha256": "961EB2B85FF69AEB6847B23D28E64A2E921A8FF102E876F6F5B2422DB0D6FB2C",
+      "redactedBytes": 221855,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 818,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-044",
+      "published": "artifacts/artifact-044.jsonl",
+      "originalSha256": "C1AFA85913D57013E8668FD842D2ECC6DB766C45D2C1693A8789F7F5B0FE9369",
+      "originalBytes": 8757,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T195803-admin-pwa-source-round1.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 8757
+        }
+      ],
+      "redactedSha256": "D5979CEDCFFE5D0F3AFB669B3E3D56170367ABAACD07AA1A2293B34E294A7248",
+      "redactedBytes": 2174,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 14,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-045",
+      "published": "artifacts/artifact-045.json",
+      "originalSha256": "C2BEDA429B26EE6A1629B9573A57E07CC40E4578958136FB42DCC5FBD638459F",
+      "originalBytes": 1394,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "review.process-result.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts;evidence-analysis/entry-evidence.json#pins"
+          ],
+          "bytes": 1394
+        }
+      ],
+      "redactedSha256": "900AB687C87DD57FB6B4756AFBE776F6ECDBC790DF354C145D8E631F98A99827",
+      "redactedBytes": 1365,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 3,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-046",
+      "published": "artifacts/artifact-046.jsonl",
+      "originalSha256": "C56E8A411885C1273142239A560FB881185F9FEF5C8650CC9B6530B38BF1F132",
+      "originalBytes": 123374,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "trace.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 123374
+        }
+      ],
+      "redactedSha256": "6D43A4AD8EC1B8942690CFF669B678EE2453EA80F93D1AC0560BD2FB78286618",
+      "redactedBytes": 123017,
+      "originalRecords": 768,
+      "blankLines": 0,
+      "publishedRecords": 768,
+      "unparseableOriginalRecords": 0,
+      "redactions": 52,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-047",
+      "published": "artifacts/artifact-047.jsonl",
+      "originalSha256": "DBB5C1D508A5ECD07056443704CA458E56446B0E5791AAEEBB5C0A0E208F19C8",
+      "originalBytes": 989908,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "frames.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 989908
+        },
+        {
+          "name": "response.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 989908
+        }
+      ],
+      "redactedSha256": "FB3A0543C44EE65EF6F65F03D434BADE215FDF0DB47E65EC2F4BE19E848399EB",
+      "redactedBytes": 602451,
+      "originalRecords": 488,
+      "blankLines": 0,
+      "publishedRecords": 488,
+      "unparseableOriginalRecords": 0,
+      "redactions": 890,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-048",
+      "published": "artifacts/artifact-048.jsonl",
+      "originalSha256": "E037EF4522EEF17E9883A3588CD2E2BBE3BB4601E0F4CAC248BB401D7628145A",
+      "originalBytes": 13478,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T230220-admin-pwa-source-round3.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 13478
+        }
+      ],
+      "redactedSha256": "C589B73BD08DFAB820FD6A0941A034F4101B8E5EEA98EBA421E9A76704E758CA",
+      "redactedBytes": 3449,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 22,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-049",
+      "published": "artifacts/artifact-049.jsonl",
+      "originalSha256": "E2FB7FC794007CFE8FC92C6A18580B462C0E107E8F33B1756994444D01B84807",
+      "originalBytes": 408097,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "frames.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 408097
+        },
+        {
+          "name": "response.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 408097
+        }
+      ],
+      "redactedSha256": "2D8F7C369941C998F43C52C98D0210438081D5263249F523DE92DE85A7D4D004",
+      "redactedBytes": 254508,
+      "originalRecords": 173,
+      "blankLines": 0,
+      "publishedRecords": 173,
+      "unparseableOriginalRecords": 0,
+      "redactions": 336,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-050",
+      "published": "artifacts/artifact-050.jsonl",
+      "originalSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "originalBytes": 0,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "errors.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture-retry1/transport-result.json"
+          ],
+          "bytes": 0
+        },
+        {
+          "name": "approval-records.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/acp-continuation-capture/transport-result.json"
+          ],
+          "bytes": 0
+        },
+        {
+          "name": "errors.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T234404-gameplay-batch-resume-v81/acp-continuation-capture-batch-resume-v81/transport-result.json"
+          ],
+          "bytes": 0
+        },
+        {
+          "name": "errors.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261101T001450-gameplay-staged-profile-resume/acp-continuation-capture-staged-profile/transport-result.json"
+          ],
+          "bytes": 0
+        }
+      ],
+      "redactedSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "redactedBytes": 0,
+      "originalRecords": 0,
+      "blankLines": 0,
+      "publishedRecords": 0,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-051",
+      "published": "artifacts/artifact-051.jsonl",
+      "originalSha256": "E54783B1B55C5A4756F407B52B1B303D1DFBB8D753CEC9CF0C232E7918614870",
+      "originalBytes": 2368837,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261028T195803-admin-pwa-source-round1.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 2368837
+        }
+      ],
+      "redactedSha256": "8C2D194DE6E0C0FD8FCB9663D0B7292E215D4024AFC66B2B8A0850CF86F5E938",
+      "redactedBytes": 1779287,
+      "originalRecords": 1770,
+      "blankLines": 0,
+      "publishedRecords": 1770,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4788,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-052",
+      "published": "artifacts/artifact-052.jsonl",
+      "originalSha256": "E6E93DE1BE922A128C444767C6EF0C6898DB1EDFEA370ECCB90F9EDF85295275",
+      "originalBytes": 640966,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "review.response.jsonl",
+          "kind": "review-stream-or-canonical",
+          "sourceReference": [
+            "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T212918-gameplay-replacement-review/review.process-result.json"
+          ],
+          "bytes": 640966
+        }
+      ],
+      "redactedSha256": "81532B19EA922A59E6FAF6A6A5EF6D3131E3DA0AF60AAF77967206A7CAA7A486",
+      "redactedBytes": 407932,
+      "originalRecords": 826,
+      "blankLines": 0,
+      "publishedRecords": 826,
+      "unparseableOriginalRecords": 0,
+      "redactions": 929,
+      "kind": "review-stream-or-canonical"
+    },
+    {
+      "id": "artifact-053",
+      "published": "artifacts/artifact-053.json",
+      "originalSha256": "E76D655256BCA6BE3286C4086ED640A16A87D13338482A0526927B090E99D901",
+      "originalBytes": 17693,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "delivery.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts"
+          ],
+          "bytes": 17693
+        }
+      ],
+      "redactedSha256": "11F7E9685791FEF35C1155570ED2FEDB99AC0BE13765AC5ED53E907EA07E10E4",
+      "redactedBytes": 17635,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 8,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-054",
+      "published": "artifacts/artifact-054.json",
+      "originalSha256": "E9BA02A1D0900D90D747E3101FFF5E7E03093304E72DA637240B5449BC79D388",
+      "originalBytes": 314118,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "transport-result.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts;evidence-analysis/entry-evidence.json#pins"
+          ],
+          "bytes": 314118
+        }
+      ],
+      "redactedSha256": "B2985747244068F91A3AC3E5682276B703B9AC618A80E300FE3184181E565B7E",
+      "redactedBytes": 270918,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 911,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-055",
+      "published": "artifacts/artifact-055.json",
+      "originalSha256": "FACE8A1CCCB35D2B7C0B69934A8581698C5FBABC0701092B9DBF0D90A37E456E",
+      "originalBytes": 69252,
+      "originalFormat": "json",
+      "aliases": [
+        {
+          "name": "final-bindings.json",
+          "kind": "review-transport-or-process-receipt",
+          "sourceReference": [
+            "evidence/review-operational-projections.json#artifacts"
+          ],
+          "bytes": 69252
+        }
+      ],
+      "redactedSha256": "8F1C5B221909D480908B594D2FD461AC2F2A77AD4B61B647624E0272492E801A",
+      "redactedBytes": 68653,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 60,
+      "kind": "review-transport-or-process-receipt"
+    },
+    {
+      "id": "artifact-056",
+      "published": "artifacts/artifact-056.jsonl",
+      "originalSha256": "FAE5341693576C289F58BE4FD3E128F22F0727012ECD0E2E589116B00F3C6ABF",
+      "originalBytes": 10852,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261029T094325-admin-pwa-source-round5.request.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 10852
+        }
+      ],
+      "redactedSha256": "206E711BE044ABA7666AB752977F678310F6757B4EF173248A60F79638225B72",
+      "redactedBytes": 5800,
+      "originalRecords": 1,
+      "blankLines": 0,
+      "publishedRecords": 1,
+      "unparseableOriginalRecords": 0,
+      "redactions": 30,
+      "kind": "historical-review-stream"
+    },
+    {
+      "id": "artifact-057",
+      "published": "artifacts/artifact-057.jsonl",
+      "originalSha256": "FEE28F15F7C3CEB74F72808E784312EB9E759111F3C8878FBDE8988F0E87E096",
+      "originalBytes": 2090708,
+      "originalFormat": "jsonl",
+      "aliases": [
+        {
+          "name": "20261029T102510-admin-pwa-source-round6.response.jsonl",
+          "kind": "historical-review-stream",
+          "sourceReference": [
+            "evidence-analysis/entry-evidence.json#reviews"
+          ],
+          "bytes": 2090708
+        }
+      ],
+      "redactedSha256": "90FE589CE0EA996C4153AB86CDAF7624E2DD6413184579DE8B15886143292C99",
+      "redactedBytes": 1452562,
+      "originalRecords": 1529,
+      "blankLines": 0,
+      "publishedRecords": 1529,
+      "unparseableOriginalRecords": 0,
+      "redactions": 4387,
+      "kind": "historical-review-stream"
+    }
+  ],
+  "redactionCount": 37633,
+  "redactionLedger": "redactions.jsonl",
+  "producerSha256": "F65A416EB4C5EB2BF2451036387EDA13631151618B2770C968D106FDA4182090",
+  "transformations": [
+    "Secret/contact/host/local-path redaction; original hashes retained separately.",
+    "Entire private prompt/context/bootstrap fields and internal reasoning removed with explicit markers.",
+    "JSON records reserialized; YAML and plain text represented as JSON; embedded JSON reserialized.",
+    "JSONL record order/count retained; unparseable original records replaced with explicit metadata-only markers.",
+    "Byte-identical originals share one public derivative; aliases retained."
+  ],
+  "qualification": "These are redacted derivatives, not byte-identical originals or new review acceptance. Existing complete structured verdicts remain separately linked. Credentials, private guidance, internal reasoning and unrelated transcripts are not published."
+}

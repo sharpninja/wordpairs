@@ -1,0 +1,2214 @@
+{
+  "atLocal": "2026-11-01T00:23:54",
+  "terminalResultSha256": "E9BA02A1D0900D90D747E3101FFF5E7E03093304E72DA637240B5449BC79D388",
+  "canonicalPath": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/private-hv/20261031T222756-gameplay-acp-review/plugin-cache/review-context/canonical-verdict-readback.json",
+  "canonicalSha256": "8978B01775D6F37AFC7F28439DB527949A4C44581812EA0C7C4CA39CB6643DA9",
+  "sessionId": "Cline-20261101T040613Z-plugin-session",
+  "requestId": "req-20261101T040616Z-release10-source-review",
+  "canonicalStatus": "completed",
+  "responseBodySha256": "4F3625ECD03A62352152BBBAFFA7B9128F00301AFAB6BAD11BE24688BA1073B4",
+  "responseCharacters": 473,
+  "fullKnownWorkScopedResponse": "STEP5 source gate DISAGREE. Full profile/workspace/live-memory/evidence-index read this session. Core 10-player capacity code consistent. Unit gate 983 pass. Unread: requirement ACs/mappings, live-ui/strict-ui reports, browser integration tests, subject additional evidence, migrations. accuracy 70 completeness 55\n\nVERDICT\n{\n  \"OverallVerdict\": \"DISAGREE\",\n  \"accuracy\": 70,\n  \"completeness\": 55,\n  \"stage\": \"gameplay\",\n  \"target\": \"STEP5_SOURCE_GATE_READINESS_TO_STAGE\"\n}",
+  "sourceAttendance": [
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:skill:add-profile",
+      "expectedPages": 1,
+      "kind": "profile",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:profile:PROFILE-MERGED.md",
+      "expectedPages": 7,
+      "kind": "profile",
+      "deliveredPages": 7
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:workspace-instructions:AGENTS.md",
+      "expectedPages": 1,
+      "kind": "workspace-instructions",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:workspace-instructions:AGENTS-README-FIRST.yaml",
+      "expectedPages": 4,
+      "kind": "workspace-instructions",
+      "deliveredPages": 4
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": true,
+      "sourceId": "g4:profile-evidence-index",
+      "expectedPages": 1,
+      "kind": "current-evidence-index",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:MEMORY-FACT-007",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-001",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-001",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-005",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-006",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-007",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-009",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-010",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:memory:Global:PRIVATE-MEMORY-REFERENCE-011",
+      "expectedPages": 1,
+      "kind": "live-memory",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": true,
+      "complete": true,
+      "sourceId": "g4:requirements:current-scope",
+      "expectedPages": 1,
+      "kind": "live-scope",
+      "deliveredPages": 1
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ACCESSCONTROL-024",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ADMINPAGES-023",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ANCHORSELECTION-007",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ANSWERREVEAL-012",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ANSWERSTAGES-008",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-CANDIDATEHOLD-028",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-CATEGORIES-005",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-CATEGORYART-006",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-CATEGORYSUGGESTIONS-017",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-CURATEDPAIRS-004",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-FINALSTANDINGS-014",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-GUESTADMIN-031",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-IDENTITY-018",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-LIVESCORECARD-011",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-LOBBYDISCOVERY-019",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-LOBBYLIFECYCLE-003",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-NAVIGATIONDRAFTS-029",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-NOMINATIONS-016",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-OBSERVERS-020",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-PHONEINSTALL-026",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-PLAYERPROFILE-002",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-PUBLICLANDING-022",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-REACTIONS-021",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-REQUESTFEEDBACK-030",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-RESPONSIVEUI-015",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-REVIEWCHANGES-027",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ROOMACCESS-001",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-ROUNDSUMMARY-013",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-SCORELOCK-010",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-SCORING-009",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:FR-WORDHINTEDITOR-025",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ACCESSIBILITYDETAILS-144",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ACCESSIBLEGAMECONTROLS-044",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ACLAUTHORIZATION-132",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ADMINUI-136",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ANCHORRANDOMNESS-113",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ANSWERCONFIDENTIALITY-105",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ANSWERORDER-103",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ANSWERVALIDATION-104",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ARCHIVESWBOM-128",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ARTRENDER-107",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-AUTHORITATIVEANSWERHANDLING-045",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-BROWSEOPENLOBBIES-022",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CANDIDATEHOLD-141",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CATALOGINTEGRITY-106",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CATALOGVERSIONING-133",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CATEGORYART-005",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CATEGORYCHOICE-011",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CATEGORYSUGGESTIONUNLOCK-019",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CLOCKCONSISTENCY-108",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CONFIGUREDCAPACITY-024",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CONNECTIONRECOVERY-109",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CONTENTVALIDATION-016",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-CONTESTREADINESS-147",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-DDDTRANSACTIONS-131",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-DEEPLINKJOINANDFULLROOM-026",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-DEPENDENCYATTRIBUTION-039",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-DEPENDENCYATTRIBUTION-125",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-DEPLOYMENTNOACTIONS-124",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-DESIGNHOSTILEREVIEW-135",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-FINALSTANDINGS-013",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-FIRSTCATEGORY-004",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-FREETIEROPERATION-121",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-FREETIERQUOTAHANDLING-037",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-FULLROOMOBSERVER-027",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-GITHUBADMIN-149",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-GPL20ONLYRELEASE-042",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-GUESTPLAY-021",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-HINTPROGRESSION-009",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-HINTSCORING-007",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-HOLDOUTWARNINGANDREMOVAL-032",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-IDENTITYAUTHENTICATION-116",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-IDLELOBBYREADINESSPROMPT-033",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-INROUNDEMOJIREACTION-029",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-LANDINGPAGEPUBLICDATA-050",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-LANDINGPRIVACY-130",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-LICENSEGPL-129",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-LIVESCORECARD-010",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-LOBBYMATCHING-117",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-MOBILEINPUT-111",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-MOCKFIRSTACCEPTANCECOVERAGE-038",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-MODERATIONANDCATALOGBOUNDARY-047",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-MULTIPLAYERINTEGRATION-134",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-NAVIGATIONDRAFTS-142",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-NOHINTSOLVE-006",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-NOMINATIONELIGIBILITY-017",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-NOMINATIONMODERATION-114",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-NOMINATIONTHRESHOLDANDMODERATION-018",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-NOSOLVERFALLBACK-146",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-OBSERVERPERMISSIONS-118",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-OBSERVERPERSPECTIVEANDPERMISSIONS-028",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-OIDCTOKENVALIDATION-046",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-OPENAIOIDCPROFILE-020",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ORIENTATION-015",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-PLAYERLIMIT-002",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-POSTGRESPERSISTENCE-122",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-PRECOUNTDOWNOBSERVERPROMOTION-030",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-PROFILEICON-003",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-PUBLICGAMELANDINGPAGE-043",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-PWAINSTALL-137",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-PWAPRIVACY-138",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-QUICKMATCH-023",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-REACTIONDELIVERY-119",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-READYCOUNTDOWNANDROSTERLOCK-031",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-REALTIMESYNC-102",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-REQUESTFEEDBACK-143",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-RESPONSIVEMATRIX-145",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-REVIEWCHANGES-140",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ROOMCODES-110",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ROOMINVITATIONS-025",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ROOMJOINING-001",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ROOMSYNC-139",
+      "expectedPages": 3,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-ROUNDSUMMARY-012",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-SCHEMAPROVISIONING-123",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-STATEAUTHORITY-101",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-SUGGESTIONREVIEW-115",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-SWBOMGENERATION-127",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-SWBOMRELEASEARCHIVE-041",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-TDDACCEPTANCE-126",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-TESTABLECONCURRENCYSAFEDOMAINBOUNDARY-051",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-TIMETIEBREAK-014",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-UIACCESSIBILITY-112",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-UNSOLVEDRESULT-008",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-VERCELDEPLOYMENT-120",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TEST-WIKIPUBLISH-148",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ACL-AUTHORIZATION-032",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ANCHOR-RANDOMNESS-013",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ANSWER-CONFIDENTIALITY-005",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ANSWER-ORDER-003",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ANSWER-VALIDATION-004",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ARCHIVE-SWBOM-028",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ART-RENDER-007",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-CATALOG-INTEGRITY-006",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-CATALOG-VERSIONING-033",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-CLOCK-CONSISTENCY-008",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-CONNECTION-RECOVERY-009",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-CONTEST-READINESS-041",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-DDD-TRANSACTIONS-031",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-DEPENDENCY-ATTRIBUTION-025",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-DEPLOYMENT-NOACTIONS-024",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-DESIGN-HOSTILEREVIEW-035",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-DOCS-WIKIPUBLISH-042",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-FREETIER-OPERATION-021",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-GITHUB-ADMIN-043",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-IDENTITY-AUTHENTICATION-016",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-LANDING-PRIVACY-030",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-LICENSE-GPL-029",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-LOBBY-MATCHING-017",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-MOBILE-INPUT-011",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-MULTIPLAYER-INTEGRATION-034",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-NOMINATION-MODERATION-014",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-OBSERVER-PERMISSIONS-018",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-POSTGRES-PERSISTENCE-022",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-PWA-CACHEPRIVACY-037",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-PWA-INSTALLATION-036",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-REACTION-DELIVERY-019",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-REALTIME-SYNC-002",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ROOM-CODES-010",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-ROOM-SYNCRECOVERY-038",
+      "expectedPages": 2,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-SCHEMA-PROVISIONING-023",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-STATE-AUTHORITY-001",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-SUGGESTION-REVIEW-015",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-SWBOM-GENERATION-027",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-TDD-ACCEPTANCE-026",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-UI-ACCESSIBILITY-012",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-UI-ACCESSIBILITYDETAILS-039",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-UI-RESPONSIVEMATRIX-040",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:requirement:TR-VERCEL-DEPLOYMENT-020",
+      "expectedPages": 1,
+      "kind": "live-requirement-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ACCESSCONTROL-024",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ADMINPAGES-023",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ANCHORSELECTION-007",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ANSWERREVEAL-012",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ANSWERSTAGES-008",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-CANDIDATEHOLD-028",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-CATEGORIES-005",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-CATEGORYART-006",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-CATEGORYSUGGESTIONS-017",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-CURATEDPAIRS-004",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-FINALSTANDINGS-014",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-GUESTADMIN-031",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-IDENTITY-018",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-LIVESCORECARD-011",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-LOBBYDISCOVERY-019",
+      "expectedPages": 2,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-LOBBYLIFECYCLE-003",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-NAVIGATIONDRAFTS-029",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-NOMINATIONS-016",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-OBSERVERS-020",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-PHONEINSTALL-026",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-PLAYERPROFILE-002",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-PUBLICLANDING-022",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-REACTIONS-021",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-REQUESTFEEDBACK-030",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-RESPONSIVEUI-015",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-REVIEWCHANGES-027",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ROOMACCESS-001",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-ROUNDSUMMARY-013",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-SCORELOCK-010",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-SCORING-009",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": false,
+      "sourceId": "g4:mappings:FR-WORDHINTEDITOR-025",
+      "expectedPages": 1,
+      "kind": "live-mapping-evidence",
+      "deliveredPages": 0
+    },
+    {
+      "requiredBeforeReview": false,
+      "complete": true,
+      "sourceId": "g4:current-evidence-index",
+      "expectedPages": 10,
+      "kind": "current-evidence-index",
+      "deliveredPages": 10
+    }
+  ],
+  "sourceKinds": [
+    {
+      "kind": "current-evidence-index",
+      "complete": 2,
+      "sources": 2
+    },
+    {
+      "kind": "live-mapping-evidence",
+      "complete": 0,
+      "sources": 31
+    },
+    {
+      "kind": "live-memory",
+      "complete": 9,
+      "sources": 9
+    },
+    {
+      "kind": "live-requirement-evidence",
+      "complete": 0,
+      "sources": 168
+    },
+    {
+      "kind": "live-scope",
+      "complete": 1,
+      "sources": 1
+    },
+    {
+      "kind": "profile",
+      "complete": 2,
+      "sources": 2
+    },
+    {
+      "kind": "workspace-instructions",
+      "complete": 2,
+      "sources": 2
+    }
+  ],
+  "declaredSubjectSources": [
+    {
+      "relativePath": "src/app/api/realtime/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/realtime/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/api/rooms/[reference]/lobby/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/rooms/[reference]/lobby/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/api/rooms/[reference]/match/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/rooms/[reference]/match/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/api/rooms/[reference]/reactions/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/rooms/[reference]/reactions/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/api/rooms/[reference]/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/rooms/[reference]/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/api/rooms/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/rooms/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/api/session/route.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/api/session/route.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/globals.css",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/globals.css",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/layout.tsx",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/layout.tsx",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/page.tsx",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/page.tsx",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/app/rooms/[reference]/page.tsx",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/app/rooms/[reference]/page.tsx",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/access.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/access.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/command.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/command.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/identity.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/identity.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/index.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/index.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/lobby.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/lobby.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/matches.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/matches.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/ports.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/ports.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/reactions.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/reactions.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/application/rooms.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/application/rooms.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/catalog.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/catalog.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/index.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/index.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/lobby.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/lobby.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/match.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/match.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/model.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/model.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/reactions.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/reactions.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/result.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/result.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/domain/rooms.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/rooms.ts",
+      "complete": true,
+      "exactLines": 156
+    },
+    {
+      "relativePath": "src/domain/unicode-casefold.json",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/unicode-casefold.json",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/catalog-repository.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/catalog-repository.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/catalog-seed.json",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/catalog-seed.json",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/deadlines.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/deadlines.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/hosting/001_scheduler.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/hosting/001_scheduler.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/hosting/002_realtime_policy.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/hosting/002_realtime_policy.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/index.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/index.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/invitations.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/invitations.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/match-repository.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/match-repository.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/004_rooms.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/004_rooms.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/005_outbox.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/005_outbox.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/006_lobby_deadlines.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/006_lobby_deadlines.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/007_matches.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/007_matches.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/009_reactions.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/009_reactions.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/013_player_capacity.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/013_player_capacity.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/migrations/014_capacity10.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/migrations/014_capacity10.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/outbox.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/outbox.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/reaction-repository.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/reaction-repository.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/realtime-policy.sql",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/realtime-policy.sql",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/realtime.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/realtime.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/infrastructure/room-repository.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/infrastructure/room-repository.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/game-panel.tsx",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/game-panel.tsx",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/guest-credential.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/guest-credential.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/private-state.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/private-state.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/room-screen.tsx",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/room-screen.tsx",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/server-http.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/server-http.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/social-panel.tsx",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/social-panel.tsx",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/use-private-intent.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/use-private-intent.ts",
+      "complete": false,
+      "exactLines": 0
+    },
+    {
+      "relativePath": "src/web/use-room-updates.ts",
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/web/use-room-updates.ts",
+      "complete": false,
+      "exactLines": 0
+    }
+  ],
+  "mandatoryGuides": [
+    {
+      "complete": false,
+      "relativePath": "AGENTS.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "README.md"
+    },
+    {
+      "complete": true,
+      "relativePath": "docs/release15-completion-plan.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/admin_pwa_release.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/implementation_plan.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/deployment_plan.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/hosting_execution.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/moderation_plan.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/local_development.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/architecture_design.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/room_sync_fix.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/submission/README.md"
+    },
+    {
+      "complete": false,
+      "relativePath": "docs/submission/hv-evidence.md"
+    }
+  ],
+  "actualOriginalFileCoverage": [
+    {
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/docs/release15-completion-plan.md",
+      "exactUniqueLines": 64,
+      "completeOriginal": true,
+      "totalLines": 64,
+      "lineMismatches": 0.0
+    },
+    {
+      "path": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/installed-source-042a030-20261031T172348/src/domain/rooms.ts",
+      "exactUniqueLines": 156,
+      "completeOriginal": true,
+      "totalLines": 156,
+      "lineMismatches": 0.0
+    }
+  ],
+  "declaredScopedReportPairs": 8,
+  "allReportPairsAvailable": 14,
+  "actualOriginalReportFilesRead": 0,
+  "naturalContinuation": [
+    {
+      "failedSetupObserved": false,
+      "sessionId": "1793500789433_zypdy",
+      "ownSessionId": "Cline-20261101T040613Z-plugin-session",
+      "currentStatus": "in_progress",
+      "completeAttemptObserved": false,
+      "ownRequestId": "req-20261101T040616Z-release10-source-review"
+    }
+  ],
+  "actualPromptRequests": [
+    {
+      "id": "c4",
+      "textSha256": "5B06EFF4BB161BA995B42B18D6A4BB8BC864586356938AA28BFF60BFAAEDA4D6",
+      "sessionId": "1793500789433_zypdy"
+    },
+    {
+      "id": "c5",
+      "textSha256": "D5BCD6549444FC1B3274195A02A409A723271BC761003DB4A520C160D8AA1A30",
+      "sessionId": "1793500789433_zypdy"
+    }
+  ],
+  "promptCount": 2,
+  "controlDecision": "stop_for_root_audit",
+  "fullWireRetained": true,
+  "qualification": "Terminal actual read attendance and known full work-scoped verdict only. Index descriptors and counts are not requirement/mapping/native report body credit. No full source acceptance; original evidence source remains retained. Earlier prefix was incorrectly called live without testing terminal presence; terminal lastwrite00:18:23 preceded the00:19:51 prefix observation. The false live-status statement is preserved and corrected here; all original delivered-text facts remain exact."
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "wordpairs-redacted-artifact-privacy-summary/v1",
+  "atLocal": "2026-11-01T13:21:20.2675276-06:00",
+  "classification": "Independent operational publication privacy validation; not release hostile validation or product acceptance",
+  "verdict": "PASS",
+  "passed": true,
+  "privacyFailureCount": 0,
+  "unknownFindingCount": 0,
+  "originalPathCount": 69,
+  "uniqueDerivativeCount": 57,
+  "originalHashesVerified": 69,
+  "derivativeRecordCountsVerified": 57,
+  "originalTopLevelRecords": 14029,
+  "publishedTopLevelRecords": 14029,
+  "originalBlankLines": 0,
+  "unparseableOriginalRecords": 0,
+  "generatedFilesScanned": 59,
+  "scalarValuesScanned": 256784,
+  "manifestSha256": "475842DA07A4CDCFDB9C036F608B89AE76D77CD406461705E40DFC6C9E9EF296",
+  "producerSha256": "F65A416EB4C5EB2BF2451036387EDA13631151618B2770C968D106FDA4182090",
+  "independentScannerSha256": "DB3DF878133EFEC09EC279F77CD9680F218192BDCD438CB73D2C30F5F7A2FD72",
+  "fixtureProducerSha256": "F65A416EB4C5EB2BF2451036387EDA13631151618B2770C968D106FDA4182090",
+  "canaryFixture": {
+    "verdict": "PASS",
+    "formats": [
+      "json",
+      "jsonl",
+      "yaml"
+    ],
+    "privateCanariesRemoved": 6,
+    "findingAndScoresPreserved": true,
+    "timestampPreserved": true,
+    "jsonlRecords": 11,
+    "blankLines": 1,
+    "unparseableMarkerRecords": 1,
+    "parserErrors": 0,
+    "analyzerWarningsAndErrors": 0
+  },
+  "conservativeCandidatePolicy": "Three unmatched credential-pattern literals were conservatively masked without asserting they were actual credentials. No literal values or key fingerprints are published.",
+  "qualification": "Originals remain unchanged. Derivatives preserve inventoried top-level event order/count with explicit redactions. Static checks and canary fixtures do not prove absence of every possible private identifier; they establish the documented pattern/known-value and structural checks for this exact manifest. No new review acceptance is claimed."
+}

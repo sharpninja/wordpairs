@@ -1,0 +1,87 @@
+{
+  "atLocal": "2026-11-01T05:54:46",
+  "sessionId": "Codex-20261027T100516Z-plugin-session",
+  "originalStopRequestId": "req-20261101T113149Z-stop-handoff-deadline-report",
+  "turns": [
+    {
+      "requestId": "req-20261101T115247Z-clear-progress-timer",
+      "status": "completed",
+      "response": "Deleted app heartbeat automation wordpairs-release-progress using automation_update mode delete. Provider tool returned deleteStatus=deleted. No release work resumed; the requested handoff/report remains the only ongoing work.",
+      "designDecisions": null,
+      "actions": [
+        {
+          "order": 1,
+          "description": "Deleted app heartbeat automation wordpairs-release-progress using automation_update mode delete. Provider tool returned deleteStatus=deleted. No release work resumed; the requested handoff/report remains the only ongoing work.",
+          "type": "edit",
+          "status": "completed"
+        },
+        {
+          "order": 2,
+          "description": "Clear timer requires deleting the already-paused progress heartbeat, not restarting or merely muting it. Preserve stopped release state.",
+          "type": "design_decision",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "requestId": "req-20261101T115306Z-shipment-instruction-time",
+      "status": "completed",
+      "response": "Original user push direction: 2026-11-01T05:32:04.433Z = Nov1 00:32:04.433CDT, also Oct31 22:32:04.433PDT, root rollout line76099. Deadline urgency Oct31 09:17:38.707CDT, AssumeOctober31 09:23:57.176, do-not-block09:37:11.903. The cutoff hour/timezone was not specified; Central midnight is only an explicit comparison assumption. Under a Pacific end-of-day comparison the push direction was before cutoff. Corrected the initial overly categorical Central-only comparison in chat.",
+      "designDecisions": null,
+      "actions": [
+        {
+          "order": 1,
+          "description": "Original user push direction: 2026-11-01T05:32:04.433Z = Nov1 00:32:04.433CDT, also Oct31 22:32:04.433PDT, root rollout line76099. Deadline urgency Oct31 09:17:38.707CDT, AssumeOctober31 09:23:57.176, do-not-block09:37:11.903. The cutoff hour/timezone was not specified; Central midnight is only an explicit comparison assumption. Under a Pacific end-of-day comparison the push direction was before cutoff. Corrected the initial overly categorical Central-only comparison in chat.",
+          "type": "review",
+          "filePath": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/token-accounting/user-timestamps.json",
+          "status": "completed"
+        },
+        {
+          "order": 2,
+          "description": "Native user timestamps are authoritative for chronology. Do not infer an instruction time from a later audit request ID, or invent a deadline timezone.",
+          "type": "design_decision",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "requestId": "req-20261101T115322Z-stopped-report-continuation",
+      "status": "completed",
+      "response": "Stopped release work and deleted recurring progress timer. Wrote handoff first, then detailed deadline retrospective, original shipment-time correction and reproducible sanitized token accounting. Main finding: individual evidence/tool repairs displaced whole-chain delivery; exact-source local gate ended Oct31 17:55:47CDT, review tooling remained unresolved into midnight and hosting/auth path was exercised too late. Native counters through originalstop11:31:25.649Z: Codex4,790,673,951 plus retainedClaude173,082,733 =4,963,756,684reportedtokens. Category split ordinary62,315,171/cache-read4,887,442,654/cache-write2,575,919/output11,422,940; reasoning4,160,565subset. Standard shortcontext API comparison878.50USD, not actualbill; missingCline/Cursor/image/provider usage and actualsubscriptioncharges remainunknown. No new product changes/tests/HV/deployments/requirementdoneclaims. Final paths HANDOFF.md and DEADLINE-REPORT.md plus token-accounting outputs; script parser/analyzer and local readback/link/arithmetic verification retained. No hostile acceptance claimed.",
+      "designDecisions": null,
+      "actions": [
+        {
+          "order": 1,
+          "description": "Stopped release work and deleted recurring progress timer. Wrote handoff first, then detailed deadline retrospective, original shipment-time correction and reproducible sanitized token accounting. Main finding: individual evidence/tool repairs displaced whole-chain delivery; exact-source local gate ended Oct31 17:55:47CDT, review tooling remained unresolved into midnight and hosting/auth path was exercised too late. Native counters through originalstop11:31:25.649Z: Codex4,790,673,951 plus retainedClaude173,082,733 =4,963,756,684reportedtokens. Category split ordinary62,315,171/cache-read4,887,442,654/cache-write2,575,919/output11,422,940; reasoning4,160,565subset. Standard shortcontext API comparison878.50USD, not actualbill; missingCline/Cursor/image/provider usage and actualsubscriptioncharges remainunknown. No new product changes/tests/HV/deployments/requirementdoneclaims. Final paths HANDOFF.md and DEADLINE-REPORT.md plus token-accounting outputs; script parser/analyzer and local readback/link/arithmetic verification retained. No hostile acceptance claimed.",
+          "type": "edit",
+          "filePath": "[HOME]/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/HANDOFF.md; [HOME]/github/WordGame/.mcpServer/wordpairs-local/stop-report-20261101/DEADLINE-REPORT.md",
+          "status": "completed"
+        },
+        {
+          "order": 2,
+          "description": "The stop instruction supersedes prior release autonomy and deadline heartbeats. Only requested documents/accounting and required audit continue; no release activity is restarted.",
+          "type": "design_decision",
+          "status": "completed"
+        },
+        {
+          "order": 3,
+          "description": "Deadline comparisons must preserve the unspecified cutoff hour/timezone. Actual push was Nov1 00:32CDT/Oct31 22:32PDT; do not blame late instruction for earlier execution failures.",
+          "type": "design_decision",
+          "status": "completed"
+        },
+        {
+          "order": 4,
+          "description": "Treat native usage counts as a recoverable subtotal, deduplicate cumulative/stream snapshots and inherited fork counters, keep reasoning within output, and distinguish list-rate comparisons from subscriptions/invoices. Unknown provider usage is not zero.",
+          "type": "design_decision",
+          "status": "completed"
+        },
+        {
+          "order": 5,
+          "description": "Do not initiate hostile review to certify the stop/report operation. Preserve all historical DISAGREE/UNKNOWN evidence and leave application/requirements/release completion open.",
+          "type": "design_decision",
+          "status": "completed"
+        }
+      ]
+    }
+  ]
+}

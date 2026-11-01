@@ -1,0 +1,888 @@
+{
+  "type": "result",
+  "payload": {
+    "requestId": "req-20261029T020554Z-4ff0",
+    "result": {
+      "totalCount": 3,
+      "limit": 4,
+      "offset": 0,
+      "items": [
+        {
+          "sourceType": "ClaudeCode",
+          "sessionId": "ClaudeCode-20261029T010023Z-plugin-session",
+          "agentExecutablePath": "[HOME]/.local/bin/claude",
+          "agentExecutableVersion": "2.1.300 (Claude Code)",
+          "title": "HV: admin PWA source candidate 437c501 staging readiness (Claude Opus reviewer)",
+          "model": "claude",
+          "started": "2026-10-29T01:01:08.0000000+00:00",
+          "lastUpdated": "2026-10-29T02:05:25.0000000+00:00",
+          "status": "in_progress",
+          "turnCount": 2,
+          "turns": [
+            {
+              "requestId": "req-20261029T010106Z-hv-admin-pwa-source-round1",
+              "timestamp": "2026-10-29T01:01:08.0000000+00:00",
+              "queryText": "[REDACTED: private-or-sensitive-field]",
+              "queryTitle": "HV: admin PWA source candidate 437c501 staging readiness (Claude Opus reviewer)",
+              "response": "Hostile validation verdict, admin PWA source candidate 437c501c58c7dfa96ee576f445d225f2dd62a0bd, gate admin-pwa-source-round1 (staging readiness only).\n\nOverallVerdict DISAGREE. Accuracy 92. Completeness 88. Both are below 98, and surfaces 1, 2 and 3 each have a FAIL.\n\nWhat holds: the security core is sound and well evidenced. The GitHub provider accepts only numeric id 16146732 with login sharpninja through S256 PKCE and state, and keeps no provider tokens. Guest and admin realms are separated by a hash namespace, and copied tokens fail both ways in real PostgreSQL. Public OpenAI, delegation and community routes are closed. The admin worker caches only static public files and passes HTTP errors through. Legacy retirement is narrowly scoped, navigation races are guarded, card whitespace meets 20px and 32px, and the presence fix is correct. All five TRX files match the request hashes and their native JUnit case by case, with 0 failed and 0 skipped, and all 60 unit files are present.\n\nWhy DISAGREE:\nF1 (high, product): the verified GitHub owner profile is created as a public member and published on the public leaderboard and landing projection, with no opt-out. This contradicts DEC-11 and the guest-only public surface. The 19:32 PostgreSQL run surfaced it as an extra public row, and it was resolved by test cleanup, not product analysis.\nF2 (medium, process): there is no documented BDPv4 green mock gate or chronological receipt for this slice. This needs an operator decision.\nF3 (medium, traceability): GA-09 and GA-05/06/07 are not carried by any TR or TEST criterion, and GA/PWA rules are duplicated under second IDs.\nF4 and F5 (low, evidence): the adapter validation is not reproducible, and three pwa.spec.ts cases were not rerun on committed bytes.\nF6 to F8 are informational (QBrain read-time timestamps triaged, non-unique case names, reviewer effort and hooks not runtime-verified).\n\nNot claimed and still pending: live GitHub consent, standalone phone cookie continuity, physical OS installation, hosted deployment, and GitHub App registration (class-2 operation, UNKNOWN).\n\nReceipts: request [HOME]/github/WordGame/.mcpServer/wordpairs/docs/receipts/hv/20261028T195803-admin-pwa-source-round1.request.jsonl; response [HOME]/github/WordGame/.mcpServer/wordpairs/docs/receipts/hv/20261028T195803-admin-pwa-source-round1.response.jsonl; verdict [HOME]/github/WordGame/.mcpServer/wordpairs/docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json. Session ClaudeCode-20261029T010023Z-plugin-session turn req-20261029T010106Z-hv-admin-pwa-source-round1.",
+              "interpretation": "Independent hostile validation (class-1 product implementation; class-2 GitHub App operation noted separately) of candidate 437c501c for staging readiness across requested claims, workspace/profile rules, live QBrain requirements and the current plan.",
+              "status": "completed",
+              "planFile": "None",
+              "todoId": "None",
+              "actions": [
+                {
+                  "order": 1,
+                  "description": "Wrote final verdict JSON receipt (review receipt only).",
+                  "type": "create",
+                  "status": "completed",
+                  "filePath": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json"
+                },
+                {
+                  "order": 2,
+                  "description": "Wrote reviewer scripts and QBrain readback receipts (review audit only).",
+                  "type": "create",
+                  "status": "completed",
+                  "filePath": "docs/receipts/hv/claude-opus-round1-tools/"
+                },
+                {
+                  "order": 3,
+                  "description": "F1 [high/product-implementation] GitHub owner admin profile is published on the public leaderboard with no opt-out. Judgment: IdentityService.profile sets publicLeaderboard true for member kind (identity.ts:100). completeLogin creates the owner as member (identity.ts:221-227). wordpairs_public_profiles returns id and alias for every public_leaderboard profile with no wins or kind filter (002_public_reads.sql:22-24). The admin UI hides ProfilePreferences (identity-panel.tsx:210) and /api/profile uses the guest-only service, so the owner cannot opt out. The full PostgreSQL run at 19:32 failed TR-30 with exactly one extra public row (a bare runtime UUID, unlike test-local admin- ids), and the next green run followed test cleanup changes; no product analysis was recorded (inference on the row identity). Consequence: blocks AGREE; proposed AC: GA-10 (new, or strengthen GA-03): The verified GitHub owner profile is created non-public and never appears in public leaderboard, landing or room-discovery projections; the public surface lists guest profiles only. Proposed tests: Unit tests/application/identity.test.ts: admin IdentityService completeLogin passes a member draft with publicLeaderboard false (negative control: true is rejected by the assertion). | PostgreSQL tests/integration/admin.integration.ts: after the owner callback, wordpairs_public_profiles and the landing route exclude owner.profile.id, without relying on cleanup order. | Browser: after an admin fixture session, the public landing/community board shows no member alias. Operator decision: Whether legacy member-kind profiles from the retired OpenAI flow should also be hidden from public projections in this guest-only release.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 4,
+                  "description": "F2 [medium/process] No documented BDPv4 green mock gate or chronological receipts for this slice. Judgment: BDPv4 steps 4 and 7 require a documented green mock gate before production implementation and retained receipts proving order. The self-review states no such receipt is reconstructed; retained runs begin at 19:05 against implementation. This is a missing-receipt finding, not an FR-timestamp inference. Consequence: blocks AGREE; proposed AC: Operator decision required: accept a recorded process exception for this slice, or require a retroactive mock-gate evidence package before staging. Proposed tests:  Operator decision: Accept documented exception or require remediation.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 5,
+                  "description": "F3 [medium/requirements-traceability] GA-05/06/07/09 not carried by any TR or TEST criterion; duplicate GA/PWA rules. Judgment: GA-09 has tests (tests/browser/pwa.spec.ts:118, tests/web/pwa-support.test.ts:139) but no TR/TEST record carries it. GA-06 is verbatim PWA-09; GA-05 and GA-07 restate PWA-01/03 and PWA-06/07. Two IDs for one rule invite drift. Consequence: blocks AGREE; proposed AC: Add GA-09 to a TEST record (TEST-ADMINUI-136 or a new TEST) with the 390x844/1440x900 geometry case; either map GA-05/06/07 onto TEST-PWAINSTALL-137/TEST-PWAPRIVACY-138 criteria or replace them with references to PWA-01/03/06/07/09. Proposed tests: Name tests/browser/pwa.spec.ts:118 and tests/web/pwa-support.test.ts:139 as the GA-09 cases in the TEST record. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 6,
+                  "description": "F4 [low/evidence] Adapter fixture validation is a bare summary. Judgment: trx-adapter-validation.json records counts and the adapter hash only; no fixture inputs, harness or output are retained. This review compensated with a full TRX-to-JUnit cross-check of all five reports. Consequence: blocks AGREE; proposed AC: Retain the adapter validation harness, its three outcome fixtures, two negative-control inputs and the command output. Proposed tests: Pester or script test: Passed/Failed/NotExecuted fixtures convert exactly; empty report rejected; -WhatIf writes nothing. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 7,
+                  "description": "F5 [low/evidence] pwa.spec.ts edited after the full browser run. Judgment: Only the card case was rerun on committed bytes. The other three pwa.spec.ts cases at committed bytes have no post-edit run, and the pre-edit bytes are not retained to prove the edit was confined to the card case. Consequence: blocks AGREE; proposed AC: Supply a run of all four pwa.spec.ts cases on the committed bytes, or the retained pre-edit diff. Proposed tests: npx playwright test --config=playwright.pwa.config.ts tests/browser/pwa.spec.ts (run by the implementer, supplied as TRX plus JUnit). Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 8,
+                  "description": "F6 [info/mcp-server] QBrain reads return read-time createdAt/updatedAt. Judgment: getFr/getTr/getTest/listMappings returned timestamps equal to the read time. Filed as triage-report-618a93a51dd54d92b620dba566f21bfb (group triage-group-55457f6e1613d9ae). Confirms FR timestamps cannot support chronology. Consequence: blocks AGREE; proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 9,
+                  "description": "F7 [info/evidence] Non-unique it.each case names. Judgment: Three it.each groups emit identical names (github-admin.test.ts token endpoint x3, malformed transaction x3; hosted-sbom x2), so per-case TRX rows cannot be told apart by name. Consequence: blocks AGREE; proposed AC:  Proposed tests: Add %s or $index interpolation to those titles. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 10,
+                  "description": "F8 [info/reviewer-runtime] Reviewer effort and hook enforcement not runtime-verified. Judgment: Model claude-opus-5-5 verified from the stream init event (response.jsonl line 7). Effort high is launcher-attested only; init reports per_turn_effort_active true without a value. CLAUDE_PLUGIN_ROOT was not set for this source plugin, so hook enforcement is reported unverified; the hook-announced turn req-20261029T005811Z-prompt-88ee was absent from this plugin workspace cache, so a dedicated review turn was opened. Consequence: blocks AGREE; proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 11,
+                  "description": "OverallVerdict DISAGREE; accuracy 92; completeness 88; PASS 31 FAIL 4 UNKNOWN 3. Scores below 98 and FAILs on surfaces 1-3 require DISAGREE; candidate is not ready for staging until F1 is fixed and F2/F3 decided.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 12,
+                  "description": "S1-01 PASS [requested-claims] Reviewed revision 437c501c is HEAD; parent is 8e2f6241; tracked tree clean (only untracked TRX and receipts). Anchors: git rev-parse HEAD; git status --porcelain (Step05-GitInventory.ps1 output)",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 13,
+                  "description": "S1-02 PASS [requested-claims] All five TRX SHA-256 values equal the request jsonl values. Anchors: docs/receipts/hv/claude-opus-round1-tools/Step07-Evidence.ps1 output: match=True x5",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 14,
+                  "description": "S1-03 PASS [requested-claims] Counts unit 582, browser 69, PostgreSQL 68, admin/identity PostgreSQL 13, card 1; every result Passed; failed 0; notExecuted 0; JUnit failures/errors/skipped 0. Anchors: Step07 output counters and junit root attributes",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 15,
+                  "description": "S1-04 PASS [requested-claims] Each TRX is individual-case and 1:1 in order with its native JUnit (0 name/order diffs); each TRX embeds the JUnit SHA-256 that matches the retained XML and revision 437c501c. Anchors: Step07 output nameOrderDiffs=0, trxDeclaresJUnitSha match=True x5",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 16,
+                  "description": "S1-05 PASS [requested-claims] Adapter writes conversion timestamps and states so in RunInfo text. Anchors: scripts/Convert-JUnitToTrx.ps1:28-29; scripts/Convert-JUnitToTrx.ps1:71",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 17,
+                  "description": "S1-06 UNKNOWN [requested-claims] Adapter fixture validation with three outcomes and two negative controls. Anchors: docs/evidence/hosting/guest-admin-validation/trx-adapter-validation.json:1-8; adapter SHA-256 32261C10899DAE76805D5CAC0902979CA2C5E4415D93348E3C1BA77B819601F2 matches committed script Finding: F4",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 18,
+                  "description": "S1-07 PASS [requested-claims] Unit evidence covers every tracked unit test file: 60 of 60 tests/**/*.test.ts present in unit JUnit. Anchors: vitest.config.ts:5; Step08 output UNIT trackedTestFiles=60 filesInJUnit=60",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 19,
+                  "description": "S1-08 PASS [requested-claims] Scoped integration lanes supplied: PostgreSQL 10 of 11 integration files (transport.realtime lane covers unchanged transport code); browser 14 of 17 specs (heartbeat/live-multiplayer/live-player-counts are LIVE-origin only). Anchors: Step08 output PG-DIFF transport.realtime.integration.ts; tests/browser/heartbeat.integration.spec.ts:4-5; playwright.pwa.config.ts:4-11",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 20,
+                  "description": "S1-09 PASS [requested-claims] Inference from file mtimes: last src edit 19:25:49 precedes build log 19:27:34 and unit run [REDACTED: hardware address]; commit 19:56:16; integration test edits precede their lanes. mtimes are not byte proof. Anchors: Step08 chronology output; docs/evidence/hosting/guest-admin-validation/build.log; run-history/guest-admin-unit-final2.log:98",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 21,
+                  "description": "S1-10 UNKNOWN [requested-claims] Full browser final preceded only a stronger card assertion. File-level verified (pwa.spec.ts mtime 19:46:11 after full run end 19:45:10; card case rerun 19:47:13 passed), but the other three pwa.spec.ts cases at committed bytes have no run after that edit and pre-edit bytes are not retained. Anchors: Step08 chronology output; run-history/card-insets-final.log:12; tests/browser/pwa.spec.ts:11-117 Finding: F5",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 22,
+                  "description": "S1-11 PASS [requested-claims] Failed and superseded runs retained: 13 run-history logs, 6 containing failures. Anchors: Step09-RunHistory.ps1 output",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 23,
+                  "description": "S1-12 PASS [requested-claims] Provider: Authorization Code, S256 PKCE, state, exact HTTPS redirect, no scopes, login hint, allow_signup false, redirect error, 10s timeouts, strict numeric id 16146732 plus login match, tokens not retained. Anchors: src/infrastructure/github-admin.ts:9-105; tests/integration/github-admin.test.ts:9-51",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 24,
+                  "description": "S1-13 PASS [requested-claims] Realm separation: admin hashes prefixed github-admin NUL; guest service guestOnly rejects non-guest and forces player role; admin session requires member kind in admin namespace. Anchors: src/infrastructure/runtime.ts:230-260; src/application/identity.ts:137-164; src/web/admin-session.ts:6-16; tests/integration/admin-session-isolation.test.ts:14-49; tests/integration/admin.integration.ts:485-552",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 25,
+                  "description": "S1-14 PASS [requested-claims] Public secured routes closed: OpenAI login/callback 404, /api/admin/users 404 without storage, /content redirects to /play, /admin/users redirects to /admin, /api/content requires admin session (nominate/suggest unreachable for guests). Anchors: src/app/api/auth/login/route.ts; src/app/api/auth/callback/route.ts; src/app/api/admin[HOME] src/app/content/page.tsx; src/app/admin[HOME] src/app/api/content/route.ts:18-23",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 26,
+                  "description": "S1-15 PASS [requested-claims] Callback rejects duplicate code/state and error parameter, always clears wp_admin_login, sets only wp_admin on success, redirects to fixed origin. Anchors: src/web/github-auth-http.ts:31-55; tests/web/github-admin-api.test.ts:20-38",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 27,
+                  "description": "S1-16 PASS [requested-claims] Admin logout requires same origin and revokes only the admin namespace; responses private/no-store. Anchors: src/app/api/admin/session/route.ts:14-43; tests/web/github-admin-api.test.ts:39-60",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 28,
+                  "description": "S1-17 PASS [requested-claims] Admin manifest only on admin layout; worker scope /admin, no-store and Service-Worker-Allowed headers; worker handles only same-origin GET /admin navigations, passes HTTP errors, caches only offline page and four icons. Anchors: src/app/admin/layout.tsx:4-12; src/web/admin-manifest.ts; src/app/admin/manifest.webmanifest/route.ts; next.config.ts:21-35; public/admin-sw.js:1-57; tests/browser/pwa.spec.ts:11-98; tests/web/pwa-worker.test.ts:68-135",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 29,
+                  "description": "S1-18 PASS [requested-claims] Legacy public worker retires itself; cleanup removes only exact root /sw.js registration and wordpairs-pwa-* caches. Anchors: public/sw.js:1-11; src/web/pwa-support.tsx:114-149; tests/web/pwa-support.test.ts:174",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 30,
+                  "description": "S1-19 PASS [requested-claims] Navigation races: generation counter drops stale loads, focus reload suppressed during session mutation, privileged links cleared on refresh failure and logout. Anchors: src/web/identity-panel.tsx:64-149; tests/web/identity-navigation.test.ts:11; tests/browser/auth-navigation.phase6.spec.ts:21-45",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 31,
+                  "description": "S1-20 PASS [requested-claims] Card whitespace clamp(1.25rem,4vw,2rem) gives 20px at 390px and 32px at 1440px; browser geometry asserts both with no overflow. Anchors: src/app/globals.css:567; tests/browser/pwa.spec.ts:118-136; docs/evidence/pwa/admin/welcome-card-390.png; docs/evidence/pwa/admin/welcome-card-1440.png",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 32,
+                  "description": "S1-21 PASS [requested-claims] Presence fix: refresh depends on stable profile.id; profile is non-null and the component is keyed by profile.id. Anchors: src/web/room-screen.tsx:26-46; src/web/room-screen.tsx:173",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 33,
+                  "description": "S1-22 PASS [requested-claims] No claim of live GitHub consent or physical OS installation from fixtures. Anchors: docs/admin_pwa_release.md:133-135; docs/admin_pwa_release.md:193-196; tests/browser/pwa.spec.ts:46",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 34,
+                  "description": "S1-23 FAIL [requested-claims] Release claim that public play is guest-only and admin identity is minimized: the owner admin member profile is created public and published on the public leaderboard/landing projection with its id and alias. Anchors: src/application/identity.ts:100; src/application/identity.ts:221-227; src/infrastructure/migrations/002_public_reads.sql:22-24; docs/evidence/hosting/guest-admin-validation/run-history/guest-admin-postgres.log:225-243 Finding: F1",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 35,
+                  "description": "S2-01 PASS [workspace-rules] New tooling is PowerShell only; no Python or Node tooling added. Anchors: scripts/Convert-JUnitToTrx.ps1; tests/integration/run-phase1.ps1",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 36,
+                  "description": "S2-02 PASS [workspace-rules] HV request jsonl and self-review receipts exist with evidence hashes, revision and launch command. Anchors: docs/receipts/hv/20261028T195803-admin-pwa-source-round1.request.jsonl:1; docs/receipts/hv/20261028T195803-admin-pwa-source-round1.self-review.json",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 37,
+                  "description": "S2-03 PASS [workspace-rules] Commit carries the required Signed model-effort@agent line with confidence values. Anchors: git log -1 437c501c body (Step05 output)",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 38,
+                  "description": "S2-04 PASS [workspace-rules] No provider tokens or secrets in tracked product/docs; HV stream redacts the marker key. Anchors: Grep token-shape patterns over docs/src/tests/public/scripts: 0 product hits; response.jsonl line 40 apiKey [REDACTED]",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 39,
+                  "description": "S2-05 FAIL [workspace-rules] BDPv4 requires a documented green mock gate before production implementation and retained chronological receipts. None exists for this slice; the self-review states none is reconstructed, and the earliest retained run (19:05) already exercises the implementation. This is absence of a required receipt, not an inference from FR timestamps. Anchors: docs/receipts/hv/20261028T195803-admin-pwa-source-round1.self-review.json:46; run-history/guest-admin-unit.log:111-113; PROFILE-MERGED.md section 5.1 steps 4 and 7 Finding: F2",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 40,
+                  "description": "S2-06 PASS [workspace-rules] Honesty: process limit disclosed, failures retained, no completion or deployment claimed. Anchors: self-review.json:46; commit body (Step05)",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 41,
+                  "description": "S2-07 PASS [workspace-rules] Requirement storage is in QBrain through MCP; records readable through the Claude plugin. Anchors: docs/receipts/hv/claude-opus-round1-tools/qbrain-readback/*.yaml",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 42,
+                  "description": "S3-01 PASS [requirements] Named FR/TR/TEST records exist in layer-1 with structured criteria; every changed GA/PWA criterion is isSatisfied false; statuses pending/in_progress. Anchors: qbrain-readback/FR-GUESTADMIN-031.yaml:12-49; qbrain-readback/FR-PHONEINSTALL-026.yaml:18-54",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 43,
+                  "description": "S3-02 PASS [requirements] Native mappings FR-GUESTADMIN-031 to TR-GITHUB-ADMIN-043, TR-IDENTITY-AUTHENTICATION-016, TR-PWA-INSTALLATION-036, TR-PWA-CACHEPRIVACY-037 and TEST-ADMINUI-136, TEST-GITHUBADMIN-149, TEST-PWAINSTALL-137, TEST-PWAPRIVACY-138. Anchors: qbrain-readback/map-FR-GUESTADMIN-031.yaml:5-30",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 44,
+                  "description": "S3-03 FAIL [requirements] Criterion-level traceability drift: GA-09 (operator card whitespace request) is carried by no TR or TEST record; GA-05, GA-06, GA-07 appear on no TR/TEST record and restate PWA-01/03, PWA-09 (verbatim) and PWA-06/07 under second IDs. Anchors: qbrain-readback/FR-GUESTADMIN-031.yaml:29-48; qbrain-readback/FR-PHONEINSTALL-026.yaml:51-54; Grep GA-0[5679] over readback: only FR-GUESTADMIN-031 Finding: F3",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 45,
+                  "description": "S3-04 FAIL [requirements] DEC-11 (FR-PLAYERPROFILE-002 isSatisfied true; FR-IDENTITY-018) requires every user can opt out of leaderboard display; the owner admin profile is published by default and has no opt-out route (admin UI hides preferences; /api/profile uses the guest-only service). Anchors: qbrain-readback/FR-PLAYERPROFILE-002.yaml:27-29; src/web/identity-panel.tsx:210-218; src/app/api/profile/route.ts:18 Finding: F1",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 46,
+                  "description": "S4-01 PASS [plan] Current override propagated: 12 files carry the 28 October override, including implementation, deployment, moderation, architecture, admin ACL and PWA designs. Anchors: docs/implementation_plan.md:3-10; docs/deployment_plan.md:3-10",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 47,
+                  "description": "S4-02 PASS [plan] No plan step, TODO or requirement claimed done; candidate presented for HV before staging as the plan orders. Anchors: docs/implementation_plan.md:6-8; commit body (Step05)",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 48,
+                  "description": "S4-03 PASS [plan] Deployment prerequisites (schema, private Realtime/scheduler) and reviewed-commit naming kept separate from this source gate. Anchors: docs/admin_pwa_release.md:168-170; docs/admin_pwa_release.md:195-196",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 49,
+                  "description": "S4-04 UNKNOWN [plan] Class-2 provider operation: GitHub App registration, no permissions/webhook and exact staging/production callback URLs are asserted but not verifiable from repository evidence; pending staging observation, not scored as product implementation. Anchors: docs/admin_pwa_release.md:17-29",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                }
+              ],
+              "model": "claude",
+              "tokenCount": 0,
+              "tags": [
+                "hostile-validation",
+                "admin-pwa",
+                "reviewer-claude-opus",
+                "parent-codex",
+                "verdict-disagree",
+                "FR-GUESTADMIN-031",
+                "FR-PLAYERPROFILE-002",
+                "TR-GITHUB-ADMIN-043",
+                "TEST-GITHUBADMIN-149",
+                "triage-report-618a93a51dd54d92b620dba566f21bfb"
+              ],
+              "contextList": "[REDACTED: private-or-sensitive-field]",
+              "processingDialog": "[REDACTED: private-or-sensitive-field]"
+            },
+            {
+              "requestId": "req-20261029T014733Z-prompt-4388",
+              "timestamp": "2026-10-29T01:50:39.0000000+00:00",
+              "queryText": "[REDACTED: private-or-sensitive-field]",
+              "queryTitle": "HV round2: admin PWA source candidate f70e8b4 staging readiness (Claude Opus reviewer)",
+              "response": "Hostile validation verdict, admin PWA source candidate f70e8b4caba9f5c722348f9da6e7fae0adce7922, gate admin-pwa-source-round2 (staging readiness only). Timestamp 2026-10-28T21:04:05 local.\n\nOverallVerdict DISAGREE. Accuracy 95. Completeness 94. Both are below 98, and the workspace-rules surface has three FAILs and the requested-claims surface one. PASS 36, FAIL 4, UNKNOWN 0 of 40.\n\nWhat holds: the round1 product defect is fixed correctly. New profiles default private, and migration 012 recreates the public profile query with a guest-only filter inside the pre-paging subquery; otherwise it is identical to 002 and keeps its grants. The real PostgreSQL test seeds a 999-win legacy member with a public flag and proves both exclusion and pre-paging filtering (page 2 must be public-wins). The owner callback proves the admin is absent from the SQL projection. No other public projection exposes member identities. The planner keeps the recorded hosted prefix and appends 012 safely. All five TRX match the request hashes and their native JUnit case by case, with 0 failed and 0 skipped. Unit coverage is 61 of 61 files, and every lane started after the last edit relevant to it. Round1 F3, F4 and F5 are fixed: structured GA copies are on TR/TEST records with a new native edge, the adapter harness and fixtures are reproducible, and all four PWA browser cases reran. The one-time operator exception is recorded verbatim, scoped to the historical receipt only, and present in QBrain. DEC-11 is rewritten and unsatisfied. Nothing is claimed done or deployed.\n\nWhy DISAGREE:\nG1 (medium, BDPv4): the deployment planner change in the GA-10 slice had no pre-implementation test or mock gate. The 20:26:59 run shows 5 hosting-schema tests and a red length assertion; the prefix test was added at 20:28:47, after the only TypeScript check (build 20:27:56). The project's own deployment plan requires mock-first tests before script code. Operator decision needed: a further exception or remediation.\nG4 (medium, profile rule): the existing Node script tool scripts/hosting-schema.mjs was extended rather than retired, and no exception was found. Operator decision needed: authorize it or require a PowerShell port.\nG2 (low, evidence): the binding manifest omits 35 tracked files, including the admin worker, next.config.ts and every [reference] route. Mitigated: all were unchanged since 437c501.\nG3 (low, receipts): there is no analyzer receipt for the two adapter scripts; the reviewer's static check is clean.\nI1 to I8 are informational: GA-02 has TEST-only carriage, GA-10 evidence text is stale, hosting record wording is stale, the 012 revision bump is unasserted, duplicate case names persist, QBrain read-time timestamps persist, a reviewer session-binding divergence was triaged, and the marker plugin version drifts.\n\nNot claimed and still pending: applying 012 to staging and then production, live GitHub consent, standalone phone OAuth continuity, physical OS installation, hosted rollout and durability under power loss.\n\nReceipts: request [HOME]/github/WordGame/.mcpServer/wordpairs/docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl; response [HOME]/github/WordGame/.mcpServer/wordpairs/docs/receipts/hv/20261028T204722-admin-pwa-source-round2.response.jsonl; verdict [HOME]/github/WordGame/.mcpServer/wordpairs/docs/receipts/hv/20261028T204722-admin-pwa-source-round2.verdict.json. Session ClaudeCode-20261029T010023Z-plugin-session turn req-20261029T014733Z-prompt-4388.",
+              "interpretation": "Independent hostile validation round2 (class-1 GA-10 recovery implementation; class-2 GitHub App observation noted separately) of candidate f70e8b4 for staging readiness across requested claims, workspace/profile rules, live QBrain requirements and the current plan, including disposition of round1 F1-F8.",
+              "status": "completed",
+              "planFile": "None",
+              "todoId": "None",
+              "actions": [
+                {
+                  "order": 1,
+                  "description": "Wrote final round2 verdict JSON receipt (review receipt only).",
+                  "type": "create",
+                  "status": "completed",
+                  "filePath": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.verdict.json"
+                },
+                {
+                  "order": 2,
+                  "description": "Wrote reviewer scripts R2-01..R2-14 and live QBrain readback receipts (review audit only).",
+                  "type": "create",
+                  "status": "completed",
+                  "filePath": "docs/receipts/hv/claude-opus-round2-tools/"
+                },
+                {
+                  "order": 3,
+                  "description": "Session binding decision: the hook-announced turn req-20261029T014733Z-prompt-4388 was server-side in ClaudeCode-20261029T014726Z-plugin-session but absent from the wrapper cache; beginTurn persisted it under the sticky session ClaudeCode-20261029T010023Z-plugin-session. Consequence: the complete review lives here, the hook-session twin stays empty, and the divergence was triaged as triage-report-ffabffebaf164ad2a76072bfcb6269eb.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 4,
+                  "description": "Classification decision: GA-10 recovery code, tests, migration, planner and docs are class-1 product implementation (BDPv4 and requirements apply); GitHub App settings observation is class-2 provider operation, scored only on the recorded-without-secrets claim. Consequence: surface 3 judged on class-1 only.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 5,
+                  "description": "Chronology decision: no failure derived from FR timestamps; G1 rests on retained run logs (5 vs 6 hosting-schema tests, red length assertion) and file last-writes, labeled as last-write inference where applicable.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 6,
+                  "description": "G1 [medium/process-bdpv4 (class-1 product implementation)] Deployment planner change in the GA-10 slice has no pre-implementation test, and its final test bytes have no type-check receipt. Judgment: scripts/hosting-schema.mjs was changed (last write 20:25:06) to keep the recorded hosted prefix and append 012. The first full unit run (start 20:26:59) shows hosting-schema.test.ts with 5 tests and fails toHaveLength(12) with 13; the prefix-preservation test appears only after the edit at 20:28:47 (final run: 6 tests). mock-gate-provenance.json lists only identity.ts and 012 as production files, and the GA-10 oracle covers privacy only. docs/deployment_plan.md:36 itself requires mock-first contract tests before script code. The final test bytes postdate the only TypeScript check (next build 20:27:56; tsconfig includes tests/**/*.ts). Observed from retained logs, not from FR timestamps. The operator exception covers only the historical original receipt. Proposed AC: Hosting TR (new or the existing TR-20..29 deployment TR): given recorded hosted history core 001..011 then hosted 101/102, the planner proposes only later core extensions in order; a history whose order or source differs is rejected before any connection. Proposed tests: tests/integration/hosting-schema.test.ts: keep the 13-prefix case (pending equals [012]); add negative controls: history with 012 inserted before hosted 101 is rejected as drift; history of core 001..011 only yields [hosted_scheduler, private_realtime, 012] in that order. | Supply a TypeScript check (npm run build or tsc --noEmit) log taken after the last test edit, as evidence. Operator decision: Record a further one-time exception for the planner chronology in this recovery slice, or require remediation (revert the planner edit, add the mock-validated planner tests first, then re-apply).",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 7,
+                  "description": "G4 [medium/process-rule (PowerShell only, no Node)] Existing Node script tool extended instead of retired. Judgment: scripts/hosting-schema.mjs is a Node script tool. This candidate adds ordering logic to it (lines 20-26). Profile sections 6.1 and 6.3 require script tools to be PowerShell and allow existing Node code to be touched only to retire it. No operator exception was found in the evidence. Observation; whether the operator already permits this deployment fallback tool is unknown to the reviewer. Proposed AC:  Proposed tests: If ported: a PowerShell planner with Pester or script tests covering the G1 cases, analyzer-clean, -WhatIf for state-changing modes. Operator decision: Authorize this minimal maintenance edit of the existing Node deployment fallback, or require porting the planner to PowerShell before staging.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 8,
+                  "description": "G2 [low/evidence-binding] candidate-source-evidence.json omits 35 tracked files. Judgment: Omitted: public/admin-sw.js, public/admin-offline.html, public/sw.js, public/offline.html, icons and backgrounds, next.config.ts, all playwright configs, vitest.config.ts and every [reference] route (the bracket paths suggest an unescaped PowerShell wildcard in the generator; inference, generator not tracked). Mitigation verified: every omitted file was last written before the 437c501 commit and is unchanged in 437c501..f70e8b4, so run bytes almost certainly equal committed bytes. Proposed AC: The binding manifest lists every tracked file under src, tests, scripts, public and every root config consumed by build/test, generated from git ls-files with literal paths. Proposed tests: Track the generator script; assert manifest path set equals git ls-files for the declared roots. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 9,
+                  "description": "G3 [low/process-rule (analyzer receipts)] No analyzer receipt for the adapter scripts. Judgment: Profile 6.1 requires parser and PSScriptAnalyzer (Warning, Error) results reported with the run before a script runs against data. No such receipt exists for scripts/Test-JUnitToTrx.ps1 or scripts/Convert-JUnitToTrx.ps1. Reviewer read-only static check: 0 parse errors, 0 findings for both. Proposed AC:  Proposed tests: Retain analyzer output beside adapter.log for each script hash used. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 10,
+                  "description": "I1 [info/traceability] GA-02 has TEST carriage only. Judgment: GA-02 is on TEST-GITHUBADMIN-149 but on no TR record, unlike GA-01 and GA-03..10. Meets the round1 bar; a TR copy (content/moderation TR) would complete the chain. Proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 11,
+                  "description": "I2 [info/metadata-drift] GA-10 evidence text says tests and migration pending. Judgment: Five records carry evidence \"Recovery slice tests and migration pending\"; the tests and 012 now exist and passed locally. Accurate only as pending verification; update at the status change. Proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 12,
+                  "description": "I3 [info/metadata-drift] hosting_execution.md calls the candidate uncommitted. Judgment: docs/hosting_execution.md:181 says \"this uncommitted candidate\"; the candidate is committed as f70e8b4. Proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 13,
+                  "description": "I4 [info/test-depth] Migration 012 revision bump not asserted. Judgment: The cursor-invalidating revision bump (012_guest_public_profiles.sql:17) has no direct assertion; GA-10 does not require it. Proposed AC:  Proposed tests: PostgreSQL: a revision read before 012 conflicts after 012 is applied. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 14,
+                  "description": "I5 [info/evidence] Round1 F7 persists: non-unique it.each names. Judgment: unit.xml still has 3 duplicate-name groups (github-admin token endpoint x3, malformed transaction x3, hosted-sbom x2). Proposed AC:  Proposed tests: Interpolate case values into titles. Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 15,
+                  "description": "I6 [info/mcp-server] Round1 F6 persists: QBrain reads return read-time createdAt. Judgment: FR-GUESTADMIN-031 createdAt 2026-10-29T01:55:03Z equals the read time; already triaged as triage-report-618a93a51dd54d92b620dba566f21bfb. Proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 16,
+                  "description": "I7 [info/reviewer-runtime] Reviewer runtime and session binding. Judgment: Model claude-opus-5-5 verified from the stream init event (response.jsonl line 7). Effort high is launcher-attested only (init reports per_turn_effort_active true without a value). The hook opened req-20261029T014733Z-prompt-4388 in new session ClaudeCode-20261029T014726Z-plugin-session, but the wrapper cache kept ClaudeCode-20261029T010023Z-plugin-session, so this review is persisted under that session with the same requestId; the hook-session twin stays empty. Filed triage-report-ffabffebaf164ad2a76072bfcb6269eb (group triage-group-51bee4c88d99073a). Round1 hook turn req-20261029T005811Z-prompt-88ee is likewise still in_progress. Proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 17,
+                  "description": "I8 [info/marker-drift] Marker plugin version drift. Judgment: Marker agent_plugins.Claude.plugin_version 1.26.0; plugin manifest .claude-plugin/plugin.json reports mcpserver 1.121.0 (authoritative). Proposed AC:  Proposed tests:  Operator decision: ",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 18,
+                  "description": "OverallVerdict DISAGREE; accuracy 95; completeness 94; PASS 36 FAIL 4 UNKNOWN 0. Scores below 98 and FAILs on two surfaces require DISAGREE; candidate is not ready for staging until G1 and G4 operator decisions are made and G2/G3 receipts supplied.",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 19,
+                  "description": "S1-01 PASS [requested-claims] HEAD is f70e8b4caba9f5c722348f9da6e7fae0adce7922; parent 437c501c; tracked tree clean (only the five TRX and round2 request/self-review untracked). Anchors: R2-05-GitEvidence.ps1 output: HEAD, PARENT-OF-CANDIDATE, status porcelain, empty tracked diff",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 20,
+                  "description": "S1-02 PASS [requested-claims] All five TRX SHA-256 values equal the request jsonl values. Anchors: R2-05 output: trxSha256 match request=True x5",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 21,
+                  "description": "S1-03 PASS [requested-claims] Counts unit 587, browser 70, PostgreSQL 68, mock-gate 3, privacy-unit 7; every result Passed; failed 0; notExecuted 0; JUnit failures/errors/skipped 0. Anchors: R2-05 output counters and junit root attributes; unit.log:97-98; postgres.log:266-267; browser.log:81",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 22,
+                  "description": "S1-04 PASS [requested-claims] Each TRX is individual-case and 1:1 in order with its native JUnit (0 diffs); embedded JUnit SHA-256 matches; declared revision f70e8b4; RunInfo states conversion timestamps are not execution times. Anchors: R2-05 output nameOrderDiffs=0, trxDeclaresJUnitSha match=True x5, runInfoText",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 23,
+                  "description": "S1-05 PASS [requested-claims] candidate-source-evidence.json: all 229 listed hashes equal worktree bytes and the f70e8b4 blobs; all five lane JUnit hashes match. Anchors: R2-05 output entries=229 worktreeMismatch=0 headBlobMismatch=0; candidate-source-evidence.json:921-962",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 24,
+                  "description": "S1-06 FAIL [requested-claims] Claim that candidate-source-evidence.json binds current source/test bytes is overstated: 35 tracked files are omitted, including public/admin-sw.js, public/admin-offline.html, public/sw.js, next.config.ts, playwright.pwa.config.ts, vitest.config.ts and all five [reference] routes. Anchors: R2-05 output UNLISTED list (trackedCount=261 listedCount=229 unlisted=35); R2-09 output last-write of omitted files Finding: G2",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 25,
+                  "description": "S1-07 PASS [requested-claims] Lane coverage: unit 61 of 61 tracked tests/**/*.test.ts; PostgreSQL 10 of 11 integration files (transport.realtime unchanged, as accepted in round1); browser 14 of 17 specs (three LIVE-origin-only specs, as accepted in round1). Anchors: R2-09-Coverage.ps1 output",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 26,
+                  "description": "S1-08 PASS [requested-claims] Run chronology (native start times vs last writes; mtimes are last-write only): last src edit 20:25:06; lint 20:27:47 and build 20:27:56 after it; PostgreSQL started 20:27:06 after its test files (latest 20:23:59); unit started 20:29:23 after the last test edit 20:28:47; browser 70 cases in 2.2m ending 20:31:37 (start about 20:29:24, inferred) after auth-navigation spec 20:26:44. Anchors: R2-06-CodeDiff.ps1 chronology output; unit.log:99; postgres.log:268; browser.log:5,81; lint.log:3-5; build.log:10-11",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 27,
+                  "description": "S1-09 PASS [requested-claims] Round1 F1 product fix: new profiles default publicLeaderboard false; migration 012 recreates wordpairs_public_profiles byte-identical to 002 except identity_kind=guest inside the pre-paging subquery, and bumps the leaderboard revision; create or replace preserves 002 grants. Anchors: src/application/identity.ts:100-101; src/infrastructure/migrations/012_guest_public_profiles.sql:4-18; src/infrastructure/migrations/002_public_reads.sql:16-28,44-47",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 28,
+                  "description": "S1-10 PASS [requested-claims] GA-10 tests discriminate: real PostgreSQL seeds a 999-win legacy member with public flag true and asserts exclusion plus page-2 (offset1 limit1) = public-wins, which a post-paging filter would fail; owner callback asserts publicLeaderboard false and absence from the SQL projection; unit test binds the oracle to the real IdentityService; production read path is only PostgresPublicReadRepository. Anchors: tests/integration/public-read.integration.ts:23,44-51,67-73; tests/integration/admin.integration.ts:533-535; tests/application/identity.test.ts:13-21; src/infrastructure/runtime.ts:292; postgres.log:200-203 (012 applied)",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 29,
+                  "description": "S1-11 PASS [requested-claims] Sibling sweep of public projections: wordpairs_public_rooms returns no alias or member data; room roster alias function serves room participants only; access-control user search is admin-only and /api/admin/users returns 404; landingProjection strips ids. Anchors: src/infrastructure/migrations/002_public_reads.sql:29-43; src/infrastructure/migrations/004_rooms.sql:50; src/infrastructure/migrations/010_access_control.sql:38-45; src/application/public-projections.ts:68-82",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 30,
+                  "description": "S1-12 PASS [requested-claims] Planner keeps the recorded hosted prefix (core 001..011, hosted 101/102) and appends 012; history is validated by ordered name and source hash, apply stamps later versions, so 012 cannot be misordered against the recorded history. Anchors: scripts/hosting-schema.mjs:20-39,59-66; tests/integration/hosting-schema.test.ts:28-41",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 31,
+                  "description": "S1-13 PASS [requested-claims] GA-10 privacy mock gate: oracle files last written 20:22:05/20:22:27, gate ran 20:22:37-38 with 3/3 including in-harness negative controls, before identity.ts 20:24:45 and 012 20:25:06; the same oracle is bound to the real service and PostgreSQL query. Ordering is last-write inference, not byte history. Anchors: mock-gate.log:4-8; mock-gate-provenance.json:3-32; tests/ac-contracts/admin-profile-privacy.test.ts:4-15; privacy-unit.log:4-9",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 32,
+                  "description": "S1-14 PASS [requested-claims] Operator one-time exception recorded verbatim, scoped to the historical missing original mock-gate receipt only, waives no fresh test/HV/security/migration/hosted validation, and is present in live QBrain notes. Anchors: docs/evidence/hosting/guest-admin-recovery/process-exception.json:2-13; qbrain-readback/FR-GUESTADMIN-031.yaml:18; qbrain-readback/TR-GITHUB-ADMIN-043.yaml:19; docs/admin_pwa_release.md:221-228",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 33,
+                  "description": "S1-15 PASS [requested-claims] Round1 F3 fixed: structured copies GA-05 on TR-PWA-INSTALLATION-036/TEST-PWAINSTALL-137, GA-06/07 on TR-PWA-CACHEPRIVACY-037/TEST-PWAPRIVACY-138, GA-09 on TR-UI-RESPONSIVEMATRIX-040/TEST-ADMINUI-136 with a new native FR edge, GA-10 on TR-GITHUB-ADMIN-043/TEST-GITHUBADMIN-149; canonical PWA cross-references in notes. Anchors: R2-10-QBrainTr040.ps1 carriage output; qbrain-readback/map-FR-GUESTADMIN-031.yaml:18-20; qbrain-readback/FR-GUESTADMIN-031.yaml:15",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 34,
+                  "description": "S1-16 PASS [requested-claims] Round1 F4 fixed: reproducible harness scripts/Test-JUnitToTrx.ps1 with fixtures tests/fixtures/junit-outcomes.xml (Passed/Failed/NotExecuted) and junit-empty.xml; WhatIf-no-output and empty-report rejection as negative controls; output and hashes retained; synthetic Failed/NotExecuted are not product failures. Anchors: scripts/Test-JUnitToTrx.ps1:1-24; adapter/adapter-validation.json:1-12; adapter/fixture-b6b0dcc64de24c7797ed7ac3b2f6716b.trx; candidate-source-evidence.json:908-918",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 35,
+                  "description": "S1-17 PASS [requested-claims] Round1 F5 fixed: the final 70-case browser run includes all four pwa.spec.ts cases, and pwa.spec.ts is unchanged in 437c501..f70e8b4. Anchors: browser.log:50-53; R2-05 name-status r1..head (no pwa.spec.ts)",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 36,
+                  "description": "S1-18 PASS [requested-claims] Class-2 provider operation: saved GitHub App settings recorded from authenticated Edge observation without credential values (client ID is a public identifier); callbacks equal the release doc and planner origins; webhook and device flow off; no hosted OAuth success claimed. Reviewer did not re-observe GitHub (out of read-only scope). Anchors: github-registration-observations.json:1-23; docs/admin_pwa_release.md:24-29; scripts/hosting-schema.mjs:10",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 37,
+                  "description": "S1-19 PASS [requested-claims] No claim of live OAuth consent, standalone phone continuity, physical installation, hosted rollout or durability; VolatileStorage limitation stated. Anchors: docs/admin_pwa_release.md:131-142,172-180,193-196; candidate-source-evidence.json:920; commit f70e8b4 body",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 38,
+                  "description": "S1-20 PASS [requested-claims] Round1-verified security core (provider, cookie/hash realms, public secured routes, admin worker/manifest, navigation races, card whitespace, presence fix) is untouched in 437c501..f70e8b4, so round1 items S1-12..S1-21 carry forward. Anchors: R2-05 name-status r1..head; docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json items S1-12..S1-21",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 39,
+                  "description": "S2-01 PASS [workspace-rules] New script tooling added this round is PowerShell (scripts/Test-JUnitToTrx.ps1); no Python. Anchors: R2-05 name-status r1..head",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 40,
+                  "description": "S2-02 PASS [workspace-rules] HV request jsonl and self-review exist with evidence hashes, revision, reviewer identity and launch command; round1 request/response/verdict retained (full response.jsonl kept locally, gitignored, plus tracked redacted public copy with the same 1770 lines). Anchors: docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl:1; R2-08-StaticChecks.ps1 receipt listing; .gitignore:18-22",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 41,
+                  "description": "S2-03 PASS [workspace-rules] Commit carries the Signed model-effort@agent line with confidence values. Anchors: commit f70e8b4 body: Signed: gpt-6.1-sol-high@Codex | Confidence: correctness 99%, accuracy 99%, completeness 96%",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 42,
+                  "description": "S2-04 PASS [workspace-rules] No token or private-key patterns in the new evidence directory; GitHub observation states credentialValuesIncluded false. Anchors: Grep token patterns over docs/evidence/hosting/guest-admin-recovery: 0; github-registration-observations.json:22",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 43,
+                  "description": "S2-05 FAIL [workspace-rules] BDPv4 order in the GA-10 recovery slice: the production deployment planner change (scripts/hosting-schema.mjs, last write 20:25:06) had no pre-implementation test or mock gate. The run started 20:26:59 shows hosting-schema.test.ts with 5 tests and a red length assertion; the prefix-preservation test exists only from 20:28:47 (final run shows 6). The final test bytes postdate the only TypeScript check (build 20:27:56; tsconfig includes tests). The project plan itself requires mock-first contract tests before script code. Anchors: unit-first-failure.log:14-20,95-117; unit.log:14; R2-06 chronology output; mock-gate-provenance.json:9-32; tsconfig.json:41; build.log:10-11; docs/deployment_plan.md:36; PROFILE-MERGED.md section 5.1 steps 2-4 and 7 Finding: G1",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 44,
+                  "description": "S2-06 FAIL [workspace-rules] Existing Node script tool scripts/hosting-schema.mjs was extended rather than retired; the profile allows existing Node code to be touched only to retire it and requires script tools to be PowerShell. No operator exception for this edit was found in the evidence. Anchors: scripts/hosting-schema.mjs:20-26; PROFILE-MERGED.md section 6.1 and 6.3 Finding: G4",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 45,
+                  "description": "S2-07 FAIL [workspace-rules] No parser/PSScriptAnalyzer receipt is retained for scripts/Test-JUnitToTrx.ps1 or scripts/Convert-JUnitToTrx.ps1 before they ran against fixtures and evidence. Reviewer static inspection found 0 parse errors and 0 Warning/Error findings, so the gap is the receipt, not the scripts. Anchors: Grep ScriptAnalyzer over docs/evidence/hosting: 0 files; R2-08-StaticChecks.ps1 output; PROFILE-MERGED.md section 6.1 Finding: G3",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 46,
+                  "description": "S2-08 PASS [workspace-rules] Honesty: the red first run is retained, the original-slice process limit and fixture limits are disclosed, and no completion, deployment or approval is claimed. Anchors: unit-first-failure.log; docs/admin_pwa_release.md:198-234; commit f70e8b4 body",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 47,
+                  "description": "S2-09 PASS [workspace-rules] Round1 F2 (missing original mock-gate receipt) is resolved by the operator-approved historical exception; not counted as a fresh FAIL. Anchors: process-exception.json; docs/admin_pwa_release.md:221-228",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 48,
+                  "description": "S2-10 PASS [workspace-rules] Requirements live in QBrain through MCP; reviewer read them live through the Claude plugin (local readbacks support only). Anchors: docs/receipts/hv/claude-opus-round2-tools/qbrain-readback/*.yaml",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 49,
+                  "description": "S3-01 PASS [requirements] FR-GUESTADMIN-031 has structured GA-01..GA-10; every changed criterion is isSatisfied false; all named FR/TR/TEST records are in_progress in layer-1. Anchors: qbrain-readback/FR-GUESTADMIN-031.yaml:19-60; R2-07-QBrain.ps1 output; qbrain-readback/layers.yaml",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 50,
+                  "description": "S3-02 PASS [requirements] Native mappings: FR-GUESTADMIN-031 to TR-GITHUB-ADMIN-043, TR-IDENTITY-AUTHENTICATION-016, TR-PWA-CACHEPRIVACY-037, TR-PWA-INSTALLATION-036, TR-UI-RESPONSIVEMATRIX-040 and TEST-ADMINUI-136, TEST-GITHUBADMIN-149, TEST-PWAINSTALL-137, TEST-PWAPRIVACY-138. Anchors: qbrain-readback/map-FR-GUESTADMIN-031.yaml:5-33",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 51,
+                  "description": "S3-03 PASS [requirements] GA-10 text matches the implementation and the tests (server-side exclusion regardless of stored flag, private default, unchanged guest opt-in/ordering/paging/revision behavior). Anchors: qbrain-readback/TEST-GITHUBADMIN-149.yaml:41-44; S1-09; S1-10",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 52,
+                  "description": "S3-04 PASS [requirements] Round1 S3-04 resolved: DEC-11 now states guest opt-in/opt-out and member exclusion under GA-10, isSatisfied false, on FR-PLAYERPROFILE-002 and FR-IDENTITY-018. Anchors: qbrain-readback/FR-PLAYERPROFILE-002.yaml:30-33; qbrain-readback/FR-IDENTITY-018.yaml:28-30",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 53,
+                  "description": "S3-05 PASS [requirements] Every GA criterion is carried by at least one TEST record; GA-01, 03-10 also by a TR record. Anchors: R2-10-QBrainTr040.ps1 carriage output",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 54,
+                  "description": "S3-06 PASS [requirements] Preserved historical and deferred community/delegation criteria are labeled historical, not active UI claims. Anchors: qbrain-readback/FR-PHONEINSTALL-026.yaml notes; docs/admin_pwa_release.md:78-82",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 55,
+                  "description": "S4-01 PASS [plan] Current override is referenced from implementation, deployment, moderation, PWA, admin ACL and hosting docs; GA-10/migration 012 live only in the canonical release doc (single source of truth). Anchors: docs/implementation_plan.md:3; docs/deployment_plan.md:3-10; docs/moderation_plan.md:3; docs/admin_pwa_release.md:169,198-234",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 56,
+                  "description": "S4-02 PASS [plan] No plan step, TODO or requirement is claimed done; the candidate is presented for HV before staging. Anchors: commit f70e8b4 body; docs/admin_pwa_release.md:228",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 57,
+                  "description": "S4-03 PASS [plan] Rollout order for 012 is staging first, verify, then production; schema, private Realtime and scheduler stay separate deployment prerequisites. Anchors: docs/admin_pwa_release.md:168-170,210-214",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                },
+                {
+                  "order": 58,
+                  "description": "S4-04 PASS [plan] Hosting record keeps staging evidence bound to 8e2f624 and claims no changed-source rollout (wording still says uncommitted candidate; see I3). Anchors: docs/hosting_execution.md:173-183",
+                  "type": "design_decision",
+                  "status": "completed",
+                  "filePath": ""
+                }
+              ],
+              "model": "claude",
+              "tokenCount": 0,
+              "tags": [
+                "hostile-validation",
+                "admin-pwa",
+                "round2",
+                "reviewer-claude-opus",
+                "parent-codex",
+                "verdict-disagree",
+                "FR-GUESTADMIN-031",
+                "TR-GITHUB-ADMIN-043",
+                "TEST-GITHUBADMIN-149",
+                "triage-report-ffabffebaf164ad2a76072bfcb6269eb"
+              ],
+              "contextList": "[REDACTED: private-or-sensitive-field]",
+              "processingDialog": "[REDACTED: private-or-sensitive-field]"
+            }
+          ]
+        },
+        {
+          "sourceType": "ClaudeCode",
+          "sessionId": "ClaudeCode-20261029T014726Z-plugin-session",
+          "agentSessionId": "[REDACTED: opaque identifier]",
+          "agentExecutablePath": "[HOME]/.local/bin/claude",
+          "agentExecutableVersion": "2.1.300 (Claude Code)",
+          "title": "Independent hostile validation of the admin PWA source candi",
+          "model": "claude",
+          "started": "2026-10-29T01:47:30.0000000+00:00",
+          "lastUpdated": "2026-10-29T01:47:34.0000000+00:00",
+          "status": "in_progress",
+          "turnCount": 1,
+          "turns": [
+            {
+              "requestId": "req-20261029T014733Z-prompt-4388",
+              "timestamp": "2026-10-29T01:47:33.0000000+00:00",
+              "queryText": "[REDACTED: private-or-sensitive-field]",
+              "queryTitle": "Independent hostile validation of the admin PWA source candi",
+              "response": "(turn opened)",
+              "status": "in_progress",
+              "planFile": "None",
+              "todoId": "None",
+              "model": "claude",
+              "tokenCount": 0
+            }
+          ]
+        },
+        {
+          "sourceType": "ClaudeCode",
+          "sessionId": "ClaudeCode-20261029T005806Z-plugin-session",
+          "agentSessionId": "[REDACTED: opaque identifier]",
+          "agentExecutablePath": "[HOME]/.local/bin/claude",
+          "agentExecutableVersion": "2.1.300 (Claude Code)",
+          "title": "Independent hostile validation of the admin PWA source candi",
+          "model": "claude",
+          "started": "2026-10-29T00:58:09.0000000+00:00",
+          "lastUpdated": "2026-10-29T00:58:12.0000000+00:00",
+          "status": "in_progress",
+          "turnCount": 1,
+          "turns": [
+            {
+              "requestId": "req-20261029T005811Z-prompt-88ee",
+              "timestamp": "2026-10-29T00:58:11.0000000+00:00",
+              "queryText": "[REDACTED: private-or-sensitive-field]",
+              "queryTitle": "Independent hostile validation of the admin PWA source candi",
+              "response": "(turn opened)",
+              "status": "in_progress",
+              "planFile": "None",
+              "todoId": "None",
+              "model": "claude",
+              "tokenCount": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
