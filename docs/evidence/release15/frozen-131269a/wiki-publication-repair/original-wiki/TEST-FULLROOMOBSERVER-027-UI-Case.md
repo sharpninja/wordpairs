@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-27: Full-room observer. |
 | QBrain reference/scope | `TEST-FULLROOMOBSERVER-027`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg) |
 | Frame/element identifiers | ROOM-FLOW, ROOM-NODE-H, ROOM-NODE-I, ROOM-NODE-J, ROOM-TRANS-D-H, ROOM-TRANS-H-I, ROOM-TRANS-I-J, ROOM-TRANS-I-F, ROOM-TRANS-H-F, SCREEN-JOIN, STATE-JOIN-01, STATE-JOIN-02, STATE-JOIN-03, STATE-JOIN-04, STATE-JOIN-05, SCREEN-OBSERVER, STATE-OBSERVER-01, STATE-OBSERVER-02, STATE-OBSERVER-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYLIFECYCLE-003#AC-27`; `FR-OBSERVERS-020#AC-27`; `FR-OBSERVERS-020#DEC-13`; `TR-OBSERVER-PERMISSIONS-018#TR-18-C01` |

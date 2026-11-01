@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-25: Room invitations. |
 | QBrain reference/scope | `TEST-ROOMINVITATIONS-025`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg) |
 | Frame/element identifiers | ROOM-FLOW, ROOM-NODE-C, ROOM-NODE-G, ROOM-TRANS-C-D, ROOM-TRANS-B-G, ROOM-TRANS-G-D, MSG-M01, MSG-M02, SCREEN-JOIN, STATE-JOIN-01, STATE-JOIN-02, STATE-JOIN-03, STATE-JOIN-04, STATE-JOIN-05; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYDISCOVERY-019#AC-25`; `FR-LOBBYLIFECYCLE-003#AC-25`; `FR-ROOMACCESS-001#AC-25` |

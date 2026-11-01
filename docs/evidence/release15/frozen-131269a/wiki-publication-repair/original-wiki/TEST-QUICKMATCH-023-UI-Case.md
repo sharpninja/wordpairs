@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-23: Quick match. |
 | QBrain reference/scope | `TEST-QUICKMATCH-023`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_lobby_discovery.svg](../../../word_association_lobby_discovery.svg) |
 | Frame/element identifiers | DISC-FLOW, DISC-NODE-B, DISC-NODE-C, DISC-NODE-D, DISC-NODE-E, DISC-NODE-G, DISC-TRANS-A-B, DISC-TRANS-B-C, DISC-TRANS-C-D, DISC-TRANS-D-E, DISC-TRANS-E-F, DISC-TRANS-E-B, DISC-TRANS-C-G, SCREEN-DISCOVERY, STATE-DISCOVERY-01, STATE-DISCOVERY-02, STATE-DISCOVERY-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYDISCOVERY-019#AC-23`; `FR-LOBBYDISCOVERY-019#DEC-12`; `TR-LOBBY-MATCHING-017#TR-17-C01` |

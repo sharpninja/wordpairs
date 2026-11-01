@@ -8,7 +8,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-02: Player limit. |
 | QBrain reference/scope | `TEST-PLAYERLIMIT-002`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg) |
 | Frame/element identifiers | DISC-FLOW, DISC-NODE-E, DISC-TRANS-D-E, DISC-TRANS-E-F, DISC-TRANS-E-B, ROOM-FLOW, ROOM-NODE-D, ROOM-NODE-H, ROOM-NODE-F, ROOM-TRANS-C-D, ROOM-TRANS-D-E, ROOM-TRANS-D-H, ROOM-TRANS-H-I, ROOM-TRANS-I-F, ROOM-TRANS-H-F, ROOM-TRANS-G-D, SCREEN-DISCOVERY, STATE-DISCOVERY-01, STATE-DISCOVERY-02, STATE-DISCOVERY-03, SCREEN-JOIN, STATE-JOIN-01, STATE-JOIN-02, STATE-JOIN-03, STATE-JOIN-04, STATE-JOIN-05; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYLIFECYCLE-003#AC-02`; `FR-ROOMACCESS-001#AC-02` |

@@ -10,7 +10,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-04: First category. |
 | QBrain reference/scope | `TEST-FIRSTCATEGORY-004`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_round_flow.svg](../../../word_association_round_flow.svg); [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg) |
 | Frame/element identifiers | ROUND-FLOW, ROUND-NODE-B, ROUND-NODE-C, ROUND-TRANS-A-B, ROUND-TRANS-B-C, ROUND-TRANS-C-D, MSG-M07, MSG-M08, MSG-M09, MSG-M10, MSG-M11, MSG-M12, MSG-M13, MSG-FLOW, SCREEN-CHOOSER, STATE-CHOOSER-01, STATE-CHOOSER-02, STATE-CHOOSER-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-ANCHORSELECTION-007#AC-04`; `FR-CATEGORIES-005#AC-04`; `TR-ANCHOR-RANDOMNESS-013#TR-13-C01` |

@@ -26,7 +26,7 @@
       "title": "Include installed peer dependencies in the inventory graph",
       "problem": "Dependency-edge generation merges dependencies and optionalDependencies, plus root devDependencies, but never peerDependencies. The actual lockfile declares React as a React DOM peer and React/React DOM as Next peers. Those installed components appear in the report, yet their known relationships are absent. This conflicts with the inventory requirement to include dependency relationships available from the lockfile; schema validation cannot detect this semantic omission.",
       "independentReproduction": {
-        "command": "node scripts/generate-sbom.mjs --sha 5e4117e8ea4336013b1ac4082e255660fcab4c4a --branch main --target production --url review-fixture.vercel.app --output /tmp/wordpairs-hv-sbom.json",
+        "command": "node scripts/generate-sbom.mjs --sha 0eedb554209c9818c4bd7d3cbd2fd1067e139f2c --branch main --target production --url review-fixture.vercel.app --output /tmp/wordpairs-hv-sbom.json",
         "result": "Validated CycloneDX 1.6: 283 components",
         "observations": [
           {
@@ -130,7 +130,7 @@
     "No application deployment created and no production database writes reported."
   ],
   "snapshot": {
-    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "baseCommit": "0eedb554209c9818c4bd7d3cbd2fd1067e139f2c",
     "files": [
       {
         "path": "scripts/hosting-schema.mjs",

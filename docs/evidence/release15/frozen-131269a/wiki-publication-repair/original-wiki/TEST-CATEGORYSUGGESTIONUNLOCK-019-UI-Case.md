@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-19: Category suggestion unlock. |
 | QBrain reference/scope | `TEST-CATEGORYSUGGESTIONUNLOCK-019`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_category_suggestion.svg](../../../word_association_category_suggestion.svg) |
 | Frame/element identifiers | SUG-FLOW, SUG-NODE-A, SUG-NODE-B, SUG-NODE-C, SUG-NODE-D, SUG-TRANS-A-B, SUG-TRANS-B-C, SUG-TRANS-C-D, SUG-TRANS-D-E, SCREEN-SUGGESTION, STATE-SUGGESTION-01, STATE-SUGGESTION-02, STATE-SUGGESTION-03, STATE-SUGGESTION-04, STATE-SUGGESTION-05, STATE-SUGGESTION-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-CATEGORYSUGGESTIONS-017#AC-19`; `FR-CATEGORYSUGGESTIONS-017#DEC-09` |

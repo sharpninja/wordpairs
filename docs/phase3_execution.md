@@ -1,6 +1,6 @@
 # Phase 3 execution
 
-Status: formal Phase 3 APPROVED at remote commit `991a0d42bd26226e737591296877b953edf3a468`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. Phase 4 entry is authorized; Phases 4–6 remain required and deployment remains Phase 7.
+Status: formal Phase 3 APPROVED at remote commit `2aff9506515dbe021d37b3b1671e8acb08461239`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. Phase 4 entry is authorized; Phases 4–6 remain required and deployment remains Phase 7.
 
 3A covers AC-24–28/30/51 and TR-09/10/18/31: ordered membership, observer promotion into the final slot only after a departure from a full waiting room, stable arrival ties, compaction, two-minute reconnect retention and 30-minute empty-room expiry. Tests use deterministic clocks and interleaved commands, followed by actual Postgres persistence/race checks.
 

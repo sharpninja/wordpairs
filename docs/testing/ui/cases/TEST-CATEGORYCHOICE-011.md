@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-11: Category choice. |
 | QBrain reference/scope | `TEST-CATEGORYCHOICE-011`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_round_flow.svg](../../../word_association_round_flow.svg) |
 | Frame/element identifiers | ROUND-FLOW, ROUND-NODE-L, ROUND-TRANS-K-L, ROUND-TRANS-L-D, MSG-M36, MSG-M37, MSG-M38, MSG-M39, MSG-FLOW, SCREEN-CHOOSER, STATE-CHOOSER-01, STATE-CHOOSER-02, STATE-CHOOSER-03, SCREEN-SUMMARY, STATE-SUMMARY-01, STATE-SUMMARY-02, STATE-SUMMARY-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-ANCHORSELECTION-007#AC-11` |

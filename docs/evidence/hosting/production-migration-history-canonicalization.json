@@ -6,7 +6,7 @@
   "status": "committed",
   "version": "20261028230959",
   "name": "wordpairs_011_content_review_states",
-  "sourceCommit": "8e2f62417e0fe46cefd884e8a61024b12860a2cf",
+  "sourceCommit": "96d78801dfec5af0dd9fd599c5de5ae1e1622ef2",
   "sourcePath": "src/infrastructure/migrations/011_content_review_states.sql",
   "sourceSha256": "2f4188a6835986c48268346ddd4f2d25e493d8e8dd236dd49caaff9e6beb56dd",
   "originalExecutedStatement": "-- Forward-only extension: keep historical pending/appeal rows and evidence.\n\nalter table wordpairs.moderation_cases\n  drop constraint moderation_cases_status_check;\nalter table wordpairs.moderation_cases\n  add constraint moderation_cases_status_check check (\n    status in ('collecting', 'pending', 'pending_review', 'changes_requested',\n               'on_hold', 'approved', 'rejected', 'appealed')\n  );\ndrop index wordpairs.one_open_suggestion;\ncreate unique index one_open_suggestion\n  on wordpairs.moderation_cases(proposer_id)\n  where kind = 'suggestion' and\n    status in ('collecting', 'pending', 'pending_review', 'changes_requested', 'appealed');\n",

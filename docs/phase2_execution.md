@@ -1,6 +1,6 @@
 # Phase 2 landing, identity and rooms
 
-Status: formal Phase 2 APPROVED at remote commit `a24550cd1ae389c91d8a863b617abfca67282adf`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. All 138 remote leaf entries match the tested local tree `074b0f912ccd2e6dbd2848fd36d16f3b95f1bd24`. Phase 3 entry is authorized; Phase 3 implementation has not been evaluated. The complete request, rubric, remote verification, independent test evidence and verdict are in [`phase2_review_receipt.jsonl`](phase2_review_receipt.jsonl).
+Status: formal Phase 2 APPROVED at remote commit `5a1513555dda71f5ed835388d9d0155d497fd188`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. All 138 remote leaf entries match the tested local tree `074b0f912ccd2e6dbd2848fd36d16f3b95f1bd24`. Phase 3 entry is authorized; Phase 3 implementation has not been evaluated. The complete request, rubric, remote verification, independent test evidence and verdict are in [`phase2_review_receipt.jsonl`](phase2_review_receipt.jsonl).
 
 ## Scope and evidence
 

@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-30: Pre-countdown observer promotion. |
 | QBrain reference/scope | `TEST-PRECOUNTDOWNOBSERVERPROMOTION-030`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg); [word_association_game_requirements.md](../../../word_association_game_requirements.md) |
 | Frame/element identifiers | SCREEN-LOBBY, STATE-LOBBY-01, STATE-LOBBY-02, STATE-LOBBY-03, STATE-LOBBY-04, STATE-LOBBY-05, STATE-LOBBY-06, SCREEN-OBSERVER, STATE-OBSERVER-01, STATE-OBSERVER-02, STATE-OBSERVER-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYDISCOVERY-019#AC-30`; `FR-LOBBYLIFECYCLE-003#AC-30`; `FR-OBSERVERS-020#AC-30` |

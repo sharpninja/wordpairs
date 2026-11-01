@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-21: Guest play. |
 | QBrain reference/scope | `TEST-GUESTPLAY-021`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_identity_profile.svg](../../../word_association_identity_profile.svg) |
 | Frame/element identifiers | ID-FLOW, ID-NODE-A, ID-NODE-B, ID-NODE-E, ID-TRANS-A-B, ID-TRANS-B-C, ID-TRANS-B-E, ID-TRANS-E-F, SCREEN-ENTRY, STATE-ENTRY-01, STATE-ENTRY-02, STATE-ENTRY-03, SCREEN-PROFILE, STATE-PROFILE-01, STATE-PROFILE-02; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-IDENTITY-018#AC-21`; `FR-IDENTITY-018#DEC-11`; `FR-PLAYERPROFILE-002#AC-21`; `FR-PLAYERPROFILE-002#DEC-11` |

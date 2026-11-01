@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify Real worker offline, private traffic and update safety. |
 | QBrain reference/scope | `TEST-PWAPRIVACY-138`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [pwa_design.md](../../../pwa_design.md) |
 | Frame/element identifiers | SCREEN-OFFLINE, STATE-OFFLINE-01, STATE-OFFLINE-02, STATE-OFFLINE-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-PHONEINSTALL-026#PWA-06`; `FR-PHONEINSTALL-026#PWA-07`; `FR-PHONEINSTALL-026#PWA-08`; `TR-PWA-CACHEPRIVACY-037#PWA-06`; `TR-PWA-CACHEPRIVACY-037#PWA-07`; `TR-PWA-CACHEPRIVACY-037#PWA-08` |

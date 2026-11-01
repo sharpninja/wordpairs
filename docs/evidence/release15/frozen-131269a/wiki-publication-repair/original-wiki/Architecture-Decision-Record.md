@@ -34,4 +34,4 @@ The design keeps lobby, game, and moderation rules independently testable while 
 
 ## Approval evidence
 
-The project owner approved Phase 0 on 26 October 2026. The remote-anchored hostile review at commit `6411456f0e719dce65d31e2381765acf70f1458e` scored 99.5% accuracy and 99% completeness. The approval record is `phase0_approval_receipt.jsonl`.
+The project owner approved Phase 0 on 26 October 2026. The remote-anchored hostile review at commit `8ded5ff293928744dd8735006f3121738528fe67` scored 99.5% accuracy and 99% completeness. The approval record is `phase0_approval_receipt.jsonl`.

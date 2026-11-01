@@ -37,7 +37,7 @@
       "execution": "Authorized subprocess-capable execution; local fixture files only."
     },
     "actualLockfile": {
-      "command": "node scripts/generate-sbom.mjs --sha 5e4117e8ea4336013b1ac4082e255660fcab4c4a --branch main --target production --url review-fixture.vercel.app --output /tmp/wordpairs-hv-sbom-round5.json",
+      "command": "node scripts/generate-sbom.mjs --sha 0eedb554209c9818c4bd7d3cbd2fd1067e139f2c --branch main --target production --url review-fixture.vercel.app --output /tmp/wordpairs-hv-sbom-round5.json",
       "result": "CycloneDX 1.6 validated; 283 components",
       "metadataQualification": "review-fixture.vercel.app and base SHA supplied as diagnostic metadata only, not evidence of a deployed candidate.",
       "assertedEdges": [
@@ -72,7 +72,7 @@
   "priorRoundContinuity": "All rounds 1\u20134 are preserved. The prior disabled-installation approval and resolved scheduler, role-trust, session-pooling, history-drift and bounded-lock findings remain as recorded. Round4 peer-edge rejection is superseded only after the measured repair; it is not deleted.",
   "fullSuiteStatusAtReview": "hosting-unit-peer-final.log existed but contained only npm/vitest startup when inspected. No final full-suite pass is asserted for this newest run. Parent previously reported 553/553 before the peer-edge change; the narrow changed behavior is independently tested here.",
   "snapshot": {
-    "baseCommit": "5e4117e8ea4336013b1ac4082e255660fcab4c4a",
+    "baseCommit": "0eedb554209c9818c4bd7d3cbd2fd1067e139f2c",
     "state": "Current working-tree source, not represented as a committed/deployed immutable candidate",
     "files": [
       {

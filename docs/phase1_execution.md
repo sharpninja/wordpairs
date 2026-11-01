@@ -1,8 +1,8 @@
 # Phase 1 foundation execution
 
-Status: formal Phase 1 APPROVED at 99% accuracy and 99% completeness on [GitHub commit `7e46694adf733ee70c272f0d23e7e8fefe22dc9b`](https://github.com/sharpninja/wordpairs/commit/7e46694adf733ee70c272f0d23e7e8fefe22dc9b). The independent reviewer verified the exact remote commit and all 75 tree entries against the tested local candidate. Requirements remain v2.6. Phase 2 is now in progress. The complete final review and remote-gate addendum are recorded in [`phase1_review_receipt.jsonl`](phase1_review_receipt.jsonl).
+Status: formal Phase 1 APPROVED at 99% accuracy and 99% completeness on [GitHub commit `3b94b8b3b4b3e1b8348bd7013acb8da2759282ad`](https://github.com/sharpninja/wordpairs/commit/3b94b8b3b4b3e1b8348bd7013acb8da2759282ad). The independent reviewer verified the exact remote commit and all 75 tree entries against the tested local candidate. Requirements remain v2.6. Phase 2 is now in progress. The complete final review and remote-gate addendum are recorded in [`phase1_review_receipt.jsonl`](phase1_review_receipt.jsonl).
 
-The recovered baseline is `706e854fc07e43fb23ace2114ca2451e4a072c82`, which contains the approved global mock gate and Phase 1A shell. This execution adds Phase 1B typed domain/application ports and Phase 1C persistence foundations. The current user instruction selects **GPT-6 Astra, high reasoning**, for every phase exit, overriding the older goal document's xhigh reviewer setting. The exit threshold remains 98% accuracy and 98% completeness with no unresolved material findings.
+The recovered baseline is `2bde123dd3ec874f37e859630c77e66ea10839e9`, which contains the approved global mock gate and Phase 1A shell. This execution adds Phase 1B typed domain/application ports and Phase 1C persistence foundations. The current user instruction selects **GPT-6 Astra, high reasoning**, for every phase exit, overriding the older goal document's xhigh reviewer setting. The exit threshold remains 98% accuracy and 98% completeness with no unresolved material findings.
 
 ## Scope and evidence
 

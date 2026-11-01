@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify Discovery seat loss returns to refreshed browsing. |
 | QBrain reference/scope | `TEST-LOBBYMATCHING-117`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [decisions.md](../decisions.md); [word_association_lobby_discovery.svg](../../../word_association_lobby_discovery.svg) |
 | Frame/element identifiers | GAP-FLOW-LOBBYMATCHING, GAP-TRANS-LOBBYMATCHING-01, GAP-TRANS-LOBBYMATCHING-02; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYDISCOVERY-019#AC-23`; `TR-LOBBY-MATCHING-017#TR-17-C01` |

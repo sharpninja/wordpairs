@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify Manifest, icons and phone installation contracts. |
 | QBrain reference/scope | `TEST-PWAINSTALL-137`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [pwa_design.md](../../../pwa_design.md) |
 | Frame/element identifiers | SCREEN-INSTALL, STATE-INSTALL-01, STATE-INSTALL-02, STATE-INSTALL-03, STATE-INSTALL-04, STATE-INSTALL-05, STATE-INSTALL-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-PHONEINSTALL-026#PWA-01`; `FR-PHONEINSTALL-026#PWA-02`; `FR-PHONEINSTALL-026#PWA-03`; `FR-PHONEINSTALL-026#PWA-04`; `FR-PHONEINSTALL-026#PWA-05`; `TR-PWA-INSTALLATION-036#PWA-01`; `TR-PWA-INSTALLATION-036#PWA-02`; `TR-PWA-INSTALLATION-036#PWA-03`; `TR-PWA-INSTALLATION-036#PWA-04`; `TR-PWA-INSTALLATION-036#PWA-05` |

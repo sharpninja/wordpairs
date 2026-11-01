@@ -9,7 +9,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify Administration browser flows and private-state invalidation. |
 | QBrain reference/scope | `TEST-ADMINUI-136`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [admin_acl_design.md](../../../admin_acl_design.md) |
 | Frame/element identifiers | SCREEN-ADMIN, STATE-ADMIN-01, STATE-ADMIN-02, STATE-ADMIN-03, STATE-ADMIN-04, STATE-ADMIN-05, SCREEN-WORDS, STATE-WORDS-01, STATE-WORDS-02, STATE-WORDS-03, STATE-WORDS-04, STATE-WORDS-05, SCREEN-USERS, STATE-USERS-01, STATE-USERS-02, STATE-USERS-03, STATE-USERS-04, STATE-USERS-05; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-ADMINPAGES-023#FR-23-C01`; `FR-ADMINPAGES-023#FR-23-C02`; `FR-ADMINPAGES-023#FR-23-C03`; `FR-ADMINPAGES-023#FR-23-C04` |

@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-05: Category art. |
 | QBrain reference/scope | `TEST-CATEGORYART-005`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_round_flow.svg](../../../word_association_round_flow.svg) |
 | Frame/element identifiers | ROUND-FLOW, ROUND-NODE-D, ROUND-TRANS-C-D, ROUND-TRANS-D-E, ROUND-TRANS-L-D, MSG-M16, MSG-M17, MSG-M18, SCREEN-ROUND, STATE-ROUND-01, STATE-ROUND-02, STATE-ROUND-03, STATE-ROUND-04, STATE-ROUND-05, STATE-ROUND-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-CATEGORIES-005#AC-05`; `FR-CATEGORYART-006#AC-05`; `TR-ART-RENDER-007#TR-07-C01` |

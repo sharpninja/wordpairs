@@ -1,6 +1,6 @@
 # Phase 4 execution
 
-Status: formal Phase 4 APPROVED at remote commit `242c6a4d062507bcf1b15f1262dcf2ef3403ca1e`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. Phase 5 entry is authorized; Phases 5–6 remain required and deployment remains Phase 7.
+Status: formal Phase 4 APPROVED at remote commit `4bc242c05d63dd84798940e4afd7da62a4ecd219`, with 99% accuracy and 99% completeness from independent GPT-6 Astra/high review. Phase 5 entry is authorized; Phases 5–6 remain required and deployment remains Phase 7.
 
 4A covers AC-04/05/16: six initial categories, ten complete curated pairs each, predefined backgrounds, complete/approved catalog validation, roster snapshot, uniform inclusive 1–N anchor selection, anchor-only category choice and no pair reuse before category exhaustion. Fixed content/random fixtures precede implementation.
 

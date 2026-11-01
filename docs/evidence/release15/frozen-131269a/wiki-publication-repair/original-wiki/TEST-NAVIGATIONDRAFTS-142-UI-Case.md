@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify Back, Cancel and profile-isolated drafts. |
 | QBrain reference/scope | `TEST-NAVIGATIONDRAFTS-142`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [decisions.md](../decisions.md) |
 | Frame/element identifiers | GAP-FLOW-NAVIGATIONDRAFTS, GAP-TRANS-NAVIGATIONDRAFTS-01, GAP-TRANS-NAVIGATIONDRAFTS-02, GAP-TRANS-NAVIGATIONDRAFTS-03, GAP-TRANS-NAVIGATIONDRAFTS-04; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-NAVIGATIONDRAFTS-029#UI-NAV-01`; `FR-NAVIGATIONDRAFTS-029#UI-NAV-02`; `FR-NAVIGATIONDRAFTS-029#UI-NAV-03`; `FR-NAVIGATIONDRAFTS-029#UI-NAV-04`; `FR-NAVIGATIONDRAFTS-029#UI-NAV-05` |

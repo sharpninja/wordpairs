@@ -271,6 +271,40 @@ Describe 'Native privacy rule negative controls' {
         $null=& git -C $repo add docs/frame.svg
         {& (Join-Path $RepositoryRoot 'scripts/Test-PrivateEvidence.ps1') -RepositoryRoot $repo -Staged}|Should -Throw '*Strict public-evidence*'
     }
+    It 'preserves executable hook mode through native Git commit and fresh clone without fixture chmod' -Skip:$IsWindows {
+        $sourceMode=(& git -C $RepositoryRoot ls-files --stage -- '.githooks/pre-commit') -join ''
+        $sourceMode|Should -Match '^100755 ' -Because 'working chmod alone does not prove the committed hook is executable'
+        $seed=Join-Path $TestDrive 'clone-hook-seed'
+        $clone=Join-Path $TestDrive 'clone-hook-checkout'
+        foreach($relative in @('.githooks/pre-commit','.gitattributes','.gitleaks.toml','scripts/Invoke-PrivacyCheck.ps1','scripts/Test-PrivateEvidence.ps1')){
+            $target=Join-Path $seed $relative
+            [void][IO.Directory]::CreateDirectory((Split-Path -Parent $target))
+            Copy-Item -LiteralPath (Join-Path $RepositoryRoot $relative) -Destination $target
+        }
+        $null=& git -C $seed init --quiet
+        $null=& git -C $seed config core.filemode true
+        $null=& git -C $seed add .
+        $seedMode=(& git -C $seed ls-files --stage -- '.githooks/pre-commit') -join ''
+        $seedMode|Should -Match '^100755 '
+        $null=& git -C $seed -c core.hooksPath=.isolated-fixture-hooks -c user.name=Fixture -c user.email=fixture@example.invalid commit --quiet -m 'Executable privacy hook round-trip fixture'
+        $LASTEXITCODE|Should -Be 0
+        $null=& git clone --no-local --quiet -- $seed $clone
+        $LASTEXITCODE|Should -Be 0
+        $clonedMode=(& git -C $clone ls-files --stage -- '.githooks/pre-commit') -join ''
+        $clonedMode|Should -Match '^100755 '
+        $mode=[int](Get-Item -LiteralPath (Join-Path $clone '.githooks/pre-commit') -Force).UnixFileMode
+        ($mode -band [int][IO.UnixFileMode]::UserExecute)|Should -BeGreaterThan 0
+        $null=& git -C $clone config core.hooksPath .githooks
+        [IO.File]::WriteAllText((Join-Path $clone 'public.txt'),'public staged fixture')
+        $null=& git -C $clone add public.txt
+        $null=& git -C $clone hook run pre-commit 2>$null
+        $LASTEXITCODE|Should -Be 0
+        [void][IO.Directory]::CreateDirectory((Join-Path $clone 'docs'))
+        [IO.File]::WriteAllText((Join-Path $clone 'docs/private.txt'),('lab'+'-omarchy'))
+        $null=& git -C $clone add docs/private.txt
+        $null=& git -C $clone hook run pre-commit 2>$null
+        $LASTEXITCODE|Should -Not -Be 0
+    }
     It 'inspects compressed staged evidence entries including excluded SVG extensions' {
         $repo=Join-Path $TestDrive 'archive-repo'
         [void][IO.Directory]::CreateDirectory((Join-Path $repo 'docs'))

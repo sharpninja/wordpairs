@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-20: OpenAI OIDC profile. |
 | QBrain reference/scope | `TEST-OPENAIOIDCPROFILE-020`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_identity_profile.svg](../../../word_association_identity_profile.svg) |
 | Frame/element identifiers | ID-FLOW, ID-NODE-B, ID-NODE-C, ID-NODE-D, ID-TRANS-A-B, ID-TRANS-B-C, ID-TRANS-C-D, ID-TRANS-B-E, ID-TRANS-D-F, SCREEN-ENTRY, STATE-ENTRY-01, STATE-ENTRY-02, STATE-ENTRY-03; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-IDENTITY-018#AC-20`; `FR-IDENTITY-018#DEC-10`; `FR-PLAYERPROFILE-002#AC-20`; `TR-IDENTITY-AUTHENTICATION-016#DEC-10` |

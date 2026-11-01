@@ -135,7 +135,7 @@ production database migrations await successful staging validation.
 ## Operational update — 28October2026
 
 Staging is READY at `https://wordpairs.vercel.app` from exact source commit
-`8e2f62417e0fe46cefd884e8a61024b12860a2cf`, deployment
+`96d78801dfec5af0dd9fd599c5de5ae1e1622ef2`, deployment
 `dpl_4unZq3queczsyf23J95UTVyF4mcJ`. Its public manifest and served CycloneDX1.6
 report returned200; the inventory contains283 components and the exact source
 and lockfile identity. The first build failed because Vercel's production

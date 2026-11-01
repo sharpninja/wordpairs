@@ -8,7 +8,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify AC-01: Room joining. |
 | QBrain reference/scope | `TEST-ROOMJOINING-001`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [word_association_room_creation.svg](../../../word_association_room_creation.svg); [word_association_client_message_flow.svg](../../../word_association_client_message_flow.svg) |
 | Frame/element identifiers | ID-FLOW, ID-NODE-G, ID-TRANS-F-G, DISC-FLOW, DISC-NODE-F, DISC-TRANS-E-F, ROOM-FLOW, ROOM-NODE-C, ROOM-NODE-D, ROOM-NODE-E, ROOM-TRANS-C-D, ROOM-TRANS-D-E, ROOM-TRANS-D-H, ROOM-TRANS-G-D, ROUND-FLOW, ROUND-NODE-A, ROUND-TRANS-A-B, MSG-M03, MSG-M04, MSG-M05, MSG-FLOW, SCREEN-JOIN, STATE-JOIN-01, STATE-JOIN-02, STATE-JOIN-03, STATE-JOIN-04, STATE-JOIN-05, SCREEN-LOBBY, STATE-LOBBY-01, STATE-LOBBY-02, STATE-LOBBY-03, STATE-LOBBY-04, STATE-LOBBY-05, STATE-LOBBY-06; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-LOBBYLIFECYCLE-003#AC-01`; `FR-ROOMACCESS-001#AC-01`; `TR-REALTIME-SYNC-002#TR-02-C01` |

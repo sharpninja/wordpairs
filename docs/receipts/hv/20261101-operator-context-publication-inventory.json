@@ -1,12 +1,15 @@
 {
   "schema": "wordpairs-public-privacy-inventory/v1",
-  "recordedAt": "2026-11-01T16:30:00.9033532-06:00",
-  "sourceRevision": "bd7fbc580d74291d3bc40cd6281b147606bf6bcf",
+  "recordedAt": "2026-11-01T17:10:25.8972940-06:00",
+  "sourceRevision": "86b9216c1bd29429c152a95aaac7acb385810b94",
   "originalSourceRevision": "bd7fbc580d74291d3bc40cd6281b147606bf6bcf",
-  "nativeCommitMapSha256": null,
+  "nativeCommitMapSha256": "40D5171302A405080682A1548E90351DD7EBD0D0185CFA0691B15B232377A813",
   "sourceRevisionQualification": "Before-inventory metadata retains its original inspected revision; sourceRevision supplies the native translated commit when a completed rewrite map is provided.",
   "before": {
+    "findingRows": 119886,
     "inventorySha256": "F64BF968E0C761E1995D73FD848034B2B6E677A0978ABE0A71FC168C8CEA374A",
+    "groupedRows": 9064,
+    "patternCategoryCount": 15,
     "locations": "First25 unique locations per grouped row are public; complete original metadata remains retained privately.",
     "categories": [
       "PRIVATE-AGENT-HOME-CLAUDE",
@@ -24,10 +27,7 @@
       "PRIVATE-PROCEDURE-MEMORY",
       "PRIVATE-PROCESS-MEMORY",
       "PRIVATE-HOSTNAME-B"
-    ],
-    "patternCategoryCount": 15,
-    "findingRows": 119886,
-    "groupedRows": 9064
+    ]
   },
   "beforeInventory": [
     {
@@ -161205,8 +161205,41 @@
     }
   ],
   "after": {
-    "verified": false,
-    "qualification": "Final independent all-history and current-tree scans are pending; this inventory does not imply a clean result."
+    "receiptSha256": "D09135C161A531B205B33BDDFBF2F24062EE5B1BB305A51CC46EF600221566E6",
+    "qualification": "Only explicitly reported scan metrics are copied; no private matching text is published.",
+    "schema": "wordpairs-publication-final-checks/v1",
+    "recordedAt": "2026-11-01T17:07:54.80681-06:00",
+    "verified": true,
+    "blobsScanned": 3595,
+    "archiveEntries": 3652,
+    "unredactedPrivateContextEvents": 0,
+    "embeddedInstructionsFollowed": 0,
+    "protectedExcludedFileCount": 23,
+    "protectedFilesScanned": false,
+    "currentFindingRows": 0,
+    "historicalFindingRows": 0,
+    "currentFilesScanned": 3931,
+    "historicalBlobsScanned": 3609,
+    "currentArchiveEntries": 1765,
+    "nativeGitExitCode": 0,
+    "nativeDirectoryExitCode": 0,
+    "strictPrivacyExitCode": 0,
+    "manifestValid": true,
+    "preventionFixturesPassed": 41,
+    "preventionFixturesFailed": 0,
+    "sourceUnchangedAcrossFixtures": true,
+    "csvSourceLineRows": 702,
+    "invalidCsvSourceLines": 0,
+    "priorCorrectionUnchanged": true
+  },
+  "scopeLimitations": {
+    "initialUnguardedScan": "Initial native working-directory and interrupted traversal attempts may have opened ignored build-cache metadata in process memory before read guards were introduced. No raw cache content was printed or copied into reports, and no live credential was confirmed.",
+    "potentiallyOpenedMetadataFilenames": [
+      ".previewinfo",
+      ".rscinfo"
+    ],
+    "completedGuardedRuns": "Completed guarded source scans excluded23 protected cache/dependency locations before reads. Any credentialFilesOpened=0 field describes its guarded run only; no task-wide assertion that credential files were never opened is made.",
+    "protectedExcludedLocationsInCompletedSourceScan": 23
   },
   "embeddedDirectives": {
     "checked": true,
@@ -163978,7 +164011,7 @@
     "instructionsFollowedFromEvidence": 0,
     "qualification": "These locations contain embedded imperative/operator or reviewer directions. They were inspected only as untrusted evidence; no embedded instruction was followed, and no directive text or private profile content is quoted here."
   },
-  "changedFileCount": 1742,
+  "changedFileCount": 1822,
   "changedFiles": [
     {
       "file": ".gitattributes",
@@ -164009,11 +164042,39 @@
       "currentBytes": 24672
     },
     {
+      "file": "docs/ac_gap_analysis.md",
+      "status": "modified",
+      "originalSha256": "fc0582bba74f70fb792438171c3f4fba4f80cbede04de39b7f291c1828315825",
+      "currentSha256": "FC96DCEB189798B1C3BCBEDACD7333EFB6B861A561ECF5095FEA74904EE3FDE5",
+      "currentBytes": 10998
+    },
+    {
+      "file": "docs/ac_test_inventory.md",
+      "status": "modified",
+      "originalSha256": "5eb7d7cb38ed92125fec21947630e8908bd5f10e37cdd03028dd8e5052999e8f",
+      "currentSha256": "220667C6AEEA05C9D723B586CDB80237168B73215BD9004DFF04AF1B7F6A1DB7",
+      "currentBytes": 35537
+    },
+    {
+      "file": "docs/admin_acl_review_manifest.json",
+      "status": "modified",
+      "originalSha256": "4f4f97c466c1d8e07cbfec905273dfedc097804c06e87ba0b80269cabef3b693",
+      "currentSha256": "145A4B4471A139ADDBB65381FB301A8204C5B6459194FCC89369E77DB1FABAAF",
+      "currentBytes": 27979
+    },
+    {
       "file": "docs/admin_acl_review_receipt.json",
       "status": "modified",
       "originalSha256": "9c70b1305741729dd9d20c7a062d7bf948131f97d0f4735f8969b07af4d85a97",
-      "currentSha256": "7F1D502DC40F8608CB9BE690ADA83D929B9455A622F68AE84058D6F8C4715A75",
+      "currentSha256": "0069235A1266B7D0E4C12E212EB19F5B021CC458B7A4879A225104EDB25043DF",
       "currentBytes": 8655
+    },
+    {
+      "file": "docs/architecture_decision_record.md",
+      "status": "modified",
+      "originalSha256": "f8d4c1bbc20bb6ab6cdcff4cd4149f586c354cbad892e8371e51cab5e0d26f7d",
+      "currentSha256": "43FA752FDAE1029DA2C8FB74B6C1E2C2B1D9E5BDE6C37F6C36E83B02BE60B0D3",
+      "currentBytes": 3884
     },
     {
       "file": "docs/evidence/admin/admin-postgres-completion.log",
@@ -164075,15 +164136,36 @@
       "file": "docs/evidence/category-artwork/hostile-review.json",
       "status": "modified",
       "originalSha256": "4c2a7e39d3c4d1282677e62056f30cbe2f3a53d8ccdae6d6e4c67bf0ae21b1a6",
-      "currentSha256": "5889C9A6E468EC94620C59D6B48C155698EC8273FF0A08489FF5B6A9CCBB08CA",
+      "currentSha256": "CE9AD3C207BB2D2509F1BD42865153DB1BADB4B01A76002775056E975B1EB199",
       "currentBytes": 20610
     },
     {
       "file": "docs/evidence/category-artwork/qbrain-readback.json",
       "status": "modified",
       "originalSha256": "6cd20cce510d5daad69d00bbdace5effe4a67fc2ed2dd7bb6ca4ff131b944bc8",
-      "currentSha256": "41A458BEBA20F77BBA67D691A5C9086C4D0F9E996945CA4BCA63C253FDB6B596",
+      "currentSha256": "A6DF1DBCE6FAE4A880C289AB2D4B606678A4B220DCB166D96148EC1316F44EF2",
       "currentBytes": 19875
+    },
+    {
+      "file": "docs/evidence/category-artwork/receipt.json",
+      "status": "modified",
+      "originalSha256": "4ef9a8fd04c76996c5b28b32fcb49e841bd4feaa84f272dc99647f0d72fe7583",
+      "currentSha256": "4C748538E18EE83C4E0D80311A27086940E70FF9E62EC3B64A3BA0E01A4575B3",
+      "currentBytes": 16137
+    },
+    {
+      "file": "docs/evidence/hosting/auth-navigation-review-round1.json",
+      "status": "modified",
+      "originalSha256": "b96d88ba88cd34db294bed5153f476074a71306d56d0a2c20296f92e2a93d081",
+      "currentSha256": "9D4AF86DBBD7CF679C24272163577997766287C5CFD537A0E7915C3EF1864900",
+      "currentBytes": 10465
+    },
+    {
+      "file": "docs/evidence/hosting/auth-navigation-review-round2.json",
+      "status": "modified",
+      "originalSha256": "ae6058afcd52be10bf6cf4decc349fb2a9c5cbe264ce5bc3a6dab583085a6a5c",
+      "currentSha256": "18DB6628E609BEC2EA760FB4130A12ED4240FBF8F7D9DB165642BBA5D44A405E",
+      "currentBytes": 6877
     },
     {
       "file": "docs/evidence/hosting/guest-admin-recovery/adapter-fixture-round3/adapter-validation.json",
@@ -166389,6 +166471,13 @@
       "currentBytes": 698
     },
     {
+      "file": "docs/evidence/hosting/guest-admin-review-round1.json",
+      "status": "modified",
+      "originalSha256": "25f78f30a680284a00c7cbf2b6842857badb09c465997631366d655b78103ec5",
+      "currentSha256": "DB7445786FFE2F8747233454A23B9D9B7FA683306423C42AD8CDC5E7D1427A47",
+      "currentBytes": 13856
+    },
+    {
       "file": "docs/evidence/hosting/guest-admin-validation/admin-identity-postgres.log",
       "status": "modified",
       "originalSha256": "37c14fb7b55214e1ae778e4071f130be3179bab3dd29d50a3db09d5ea7467052",
@@ -166567,8 +166656,50 @@
       "file": "docs/evidence/hosting/plan-review-round1.json",
       "status": "modified",
       "originalSha256": "a28a8b6db6760fd45570384393776b34c5a238885aab54ac77caf1ad27232a15",
-      "currentSha256": "BE941BACB2E29E52AB0B7E817D86FEC9C9213C2AE1E8F0FDCACA16646BE8B734",
+      "currentSha256": "A03C308DF77404BB8DFA97A7A6F3AE79615EEE3CA3B42805C7BCD24D38120F70",
       "currentBytes": 16569
+    },
+    {
+      "file": "docs/evidence/hosting/plan-review-round2.json",
+      "status": "modified",
+      "originalSha256": "fba8cf74caf7330b1fa8f84cb7ade77ce28c51b37777ce4e6eb41d8e600bb97d",
+      "currentSha256": "D62EB190002F6BE2E5905A195EBA69CDE81B94034F8EA12B4414F260E3A24276",
+      "currentBytes": 12112
+    },
+    {
+      "file": "docs/evidence/hosting/plan-review-round3.json",
+      "status": "modified",
+      "originalSha256": "3c7df1a8ed28de5e36c5560280c99902fbb619ec2e2547e3973444cfd0e5e70f",
+      "currentSha256": "A3087F4D8582825E496B1D6EEFE7D49AE532807509A07262B8319430627772E1",
+      "currentBytes": 8869
+    },
+    {
+      "file": "docs/evidence/hosting/plan-review-round4.json",
+      "status": "modified",
+      "originalSha256": "ccd876166aae6156859dc840325962b7c1a6d9da9e054354f86afc04d07fb96b",
+      "currentSha256": "1B6A63634570659F3BA7DA903A063A06128A07019AEA7130BEFBFAF97E81B308",
+      "currentBytes": 12957
+    },
+    {
+      "file": "docs/evidence/hosting/plan-review-round5.json",
+      "status": "modified",
+      "originalSha256": "8cf7413e41131a397889942020d9e0e60f49ca5e8de81deb85e49b96075117a6",
+      "currentSha256": "CAFC039263C4FB8F6E27E6CDA6BDEC7F55C70E646678E1725A5DFAB445CAD326",
+      "currentBytes": 8628
+    },
+    {
+      "file": "docs/evidence/hosting/production-migration-history-canonicalization.json",
+      "status": "modified",
+      "originalSha256": "81793d960707cb564dbe2fdfb694ccb2e85705306b3b853e5b87dfd72ca8582a",
+      "currentSha256": "605DCA8671F82009D51D76EE5F2EC4AC0A4D38D6257DAD32BE209E5253AC67DF",
+      "currentBytes": 1884
+    },
+    {
+      "file": "docs/evidence/hosting/staging-first-build-failure.json",
+      "status": "modified",
+      "originalSha256": "b9a645ac1212289474da723b1df651f4f04511df9ce672602d9fa6e261678f70",
+      "currentSha256": "D06E64B777EBD79B9700E8F834CCEAD0A7B7C9B6F2A4E2C4249E44C33F8493AF",
+      "currentBytes": 615
     },
     {
       "file": "docs/evidence/invitation-copy/mock-gate-round4-isolated-final/receipt.json",
@@ -166861,14 +166992,14 @@
       "file": "docs/evidence/release15/admin-case-sync-20261030T162141/case.after.md",
       "status": "modified",
       "originalSha256": "08e1b6a3273dd3feeb422dde2b5761eedcc03593a915800b183f1c1a4691a5eb",
-      "currentSha256": "56881FCD3F339B0E7E5C66CFCB585B20344CA1D81FC6F1BF8F65BC7A4A9AE38A",
+      "currentSha256": "699838502F43CFC4DBC9B9B1565BFA069BF4F09A2B9397A884C19BD928F6F3E2",
       "currentBytes": 11800
     },
     {
       "file": "docs/evidence/release15/admin-case-sync-20261030T162141/original-case.md",
       "status": "modified",
       "originalSha256": "45500f4733515a49309a6765e2b608418cb7d6d698a68301eb250468c86de51e",
-      "currentSha256": "E5BE67A4D026EC0916AB9D077DB2D01F6534BEEEC691D9E3B9C93AA98CC05BAC",
+      "currentSha256": "516DFF410356F35704F0114E5F375AE7ECAAF55E22823A54BD7A4FE15F8D5763",
       "currentBytes": 7072
     },
     {
@@ -166882,14 +167013,14 @@
       "file": "docs/evidence/release15/admin-case-sync-20261030T162141/TEST-ADMINUI-136.after.json",
       "status": "modified",
       "originalSha256": "9d3fcddae3e5816ec4c2e45e7e00ff233fffcbdc25897a7a7962a4f8596ed619",
-      "currentSha256": "A9536D229A65D5CFF53670C9892861B45BF748D90973E2C9F116D6F35DE48921",
+      "currentSha256": "4081294DD1F1285444224BC0F9FF6B7DA79FF7276C73A5A119F491A26FF5E1AA",
       "currentBytes": 20860
     },
     {
       "file": "docs/evidence/release15/admin-case-sync-20261030T162141/TEST-ADMINUI-136.before.json",
       "status": "modified",
       "originalSha256": "a89d6cc5bbebbeaac46296ae38bc245ea1279b82c1917b952b397234cea01dd5",
-      "currentSha256": "251683712CB96AC5B74E219F2BA6A9A8EF9C642E66E23779D6D0FC29F4CD00C5",
+      "currentSha256": "49E2F0F6493E8618AC84A57E10DDCE646A05E24DB587E3461C15176B3AD9DD2C",
       "currentBytes": 15636
     },
     {
@@ -167988,7 +168119,7 @@
       "file": "docs/evidence/release15/conflict-freshness/effective-requirements.json",
       "status": "modified",
       "originalSha256": "f06b4d6ffc661eb1a7692c4c13f61dc47d0b17cdb9f787865d51800109b6aa81",
-      "currentSha256": "88F66BDCDC4EDD61D896E644C1E19CC7C5AA6503FE063552679FA1B13F2B679D",
+      "currentSha256": "0E93366BB25A6204336FFEC49D5B19138FE9FAE6764F0168905531E65BE04429",
       "currentBytes": 67334
     },
     {
@@ -168191,7 +168322,7 @@
       "file": "docs/evidence/release15/conflict-retirement/effective-requirements.json",
       "status": "modified",
       "originalSha256": "e79defea5bf99be97fb2ba1b0bcfbc926023f1f00eef3af4b12469e85ebd0bc7",
-      "currentSha256": "643900E14603765560CCECD6B7DAD2F0ADF3E2468BEA269604A3C1CC071FD0F9",
+      "currentSha256": "E752D6E5A6F7A2CBDC643F4D000E9468E374D340FAB1E650312E0E11D819B723",
       "currentBytes": 67377
     },
     {
@@ -169049,6 +169180,20 @@
       "currentBytes": 134620
     },
     {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-link-audit.json",
+      "status": "modified",
+      "originalSha256": "02c63461b9b7159d3007d4993772ab3b71b5c67ce22319704ec6348f06e644b5",
+      "currentSha256": "CE2C0BF88032BBFFE6A311E8A9159236079B96728C57AB9079C066849D9E4002",
+      "currentBytes": 760359
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/after-audit.json",
+      "status": "modified",
+      "originalSha256": "6bef380b400554122282227f4fb41a2f1cccdc0933e575eb6e3a78e6110f0ce4",
+      "currentSha256": "5684885AC4270D589F28DB2E812EBE2F78F057157217EE9FFFD2363630E655C5",
+      "currentBytes": 763223
+    },
+    {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/AuditWordpairsWikiLinks.ps1",
       "status": "modified",
       "originalSha256": "3676f69f1ba5bb1a416d957e7ace2fdaec1ff62994040020e43c9c11bf1fc720",
@@ -169070,10 +169215,38 @@
       "currentBytes": 882579
     },
     {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Acceptance-Criteria-Gap-Analysis.md",
+      "status": "modified",
+      "originalSha256": "e30fe77bf660ac1c1ea158898439300fd3b7a24587a63c454d1491a3bd2851f3",
+      "currentSha256": "842CE202046358B2F2E80CCEB7666025DE279301F5631778417ACE3194D7DD15",
+      "currentBytes": 11000
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Acceptance-Criteria-Test-Inventory.md",
+      "status": "modified",
+      "originalSha256": "ef84d36e531dc151ce6bad98ba34def4c908b6d53a2be15306a8afa2da06c109",
+      "currentSha256": "E0F8372F6CC130380955CF7947019C5BFD51D5F7FBF0019186141524B3103EBA",
+      "currentBytes": 35536
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Architecture-Decision-Record.md",
+      "status": "modified",
+      "originalSha256": "f8d4c1bbc20bb6ab6cdcff4cd4149f586c354cbad892e8371e51cab5e0d26f7d",
+      "currentSha256": "43FA752FDAE1029DA2C8FB74B6C1E2C2B1D9E5BDE6C37F6C36E83B02BE60B0D3",
+      "currentBytes": 3884
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/admin_acl_review_manifest.json",
+      "status": "modified",
+      "originalSha256": "4f4f97c466c1d8e07cbfec905273dfedc097804c06e87ba0b80269cabef3b693",
+      "currentSha256": "145A4B4471A139ADDBB65381FB301A8204C5B6459194FCC89369E77DB1FABAAF",
+      "currentBytes": 27979
+    },
+    {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/admin_acl_review_receipt.json",
       "status": "modified",
       "originalSha256": "9c70b1305741729dd9d20c7a062d7bf948131f97d0f4735f8969b07af4d85a97",
-      "currentSha256": "7F1D502DC40F8608CB9BE690ADA83D929B9455A622F68AE84058D6F8C4715A75",
+      "currentSha256": "0069235A1266B7D0E4C12E212EB19F5B021CC458B7A4879A225104EDB25043DF",
       "currentBytes": 8655
     },
     {
@@ -169129,7 +169302,7 @@
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/evidence/ui-gaps/hostile-validation.jsonl",
       "status": "modified",
       "originalSha256": "baafd5ead519766e93ceb9b7c7cc8abf07d1f035ee6d976bc2f93764a2cb6bfc",
-      "currentSha256": "8108402A9AB05121B0323A033CF02707143DDE5F1F11F27D19BB1844F3EA5876",
+      "currentSha256": "818BE8B32C1455821B2DADDDB0132FD1810ADC66C400068EF987F19A2DF2801F",
       "currentBytes": 61697
     },
     {
@@ -169168,32 +169341,88 @@
       "currentBytes": 470
     },
     {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/implementation_kickoff_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "c4969c3c5a1e0725c69ac48765cf669d5e2d94fe4d8615668fcf8743334b733e",
+      "currentSha256": "37FA54B82843DB527FE28B9ADB52262883250A1B5E1B9A731926A1CF675EA9EE",
+      "currentBytes": 22967
+    },
+    {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/maintenance_receipt.json",
       "status": "modified",
       "originalSha256": "14ddb36a06b15f7de4879e631113abf21aa277011d3060429fece78a34b3150b",
-      "currentSha256": "47C5FC0885751BDDF7D32592DDFA74DA7AAC7504A2B88804EFEA48180BA67DD3",
+      "currentSha256": "62FA43B09BFC21861E6AF9AA9005F6A8CAAD8A5340B9401AF2C19E089A462591",
       "currentBytes": 6972
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase0_approval_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "c33a5c7e8e7fff64372193716232bc23330e0a652ec22c9c9f289108b14f17fa",
+      "currentSha256": "4E2E85DE39DCF307FB12866346D46C771F90FDCED541FA7C6313533C3816B85D",
+      "currentBytes": 878
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase0_refresh_hostile_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "1834cb7f9ef69951b76d010415f5358570920af742cb5ef32fadb28f4009ce81",
+      "currentSha256": "D0C04D1B373000042EF64E7C0834E244EBA367359F4C7D1C20E30AB73C189AB4",
+      "currentBytes": 32057
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase1_review_receipt.jsonl",
       "status": "modified",
       "originalSha256": "1d973a9b5b87e8d0ec358e0ed2e0f7ec06462b74cdb02f6b102a00a1bbef618b",
-      "currentSha256": "04BB23FA2FF6328FE598F1186C45E6752CAB6AB3A1FAE70A44651510C0DFFD2B",
-      "currentBytes": 19541
+      "currentSha256": "5AA9BB4303C0C3D24E6C7F98E75CE753AA71F9CABA123722FEB5CAF6817C8CB8",
+      "currentBytes": 20464
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase2_review_receipt.jsonl",
       "status": "modified",
       "originalSha256": "f9ba03b3c882d4a51c6daf0d3a2843682166edcd08fccd08e9a39d89c0dbac6c",
-      "currentSha256": "2B1F54B9E53D682AACF8ECA87BEFC0A7D53C8927A3E18615C2DF814132DA4DEE",
-      "currentBytes": 10563
+      "currentSha256": "C7726855DE744832FA5F7CD88480C93BE421F3530CA7920CA5510B68E2129D1B",
+      "currentBytes": 11856
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase3_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "3de148d63213b9af52272c99ca5fa2d8081a37cd17794351d1293fba515f6c3e",
+      "currentSha256": "8649C4CAC3A44CA96F979E35FF2A7B4BCBEB1D636AD0E5BA5886DE4816D1467C",
+      "currentBytes": 62051
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase4_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "20cc7489f7f3fa3817f88539587ac340fd1068110c8eaf2f10c610efb1514fbd",
+      "currentSha256": "E5BE28E543842B17BB040A5F3B6B98D6827D26AA43F5B02F98BBC6241AC370F3",
+      "currentBytes": 72325
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase5_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "af74a5a2a098736c4791c6f21c148a5bf2df953d547a6ed0b23e857915ad9d6e",
+      "currentSha256": "4F42AE512BC45DA92B17C9FBE298052468C2886FABFAB5A1C6E07F8287A61DA8",
+      "currentBytes": 82266
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/phase6_review_receipt.jsonl",
       "status": "modified",
       "originalSha256": "b256a9deff5611b5749ff808845a45c8bb413450cce24f82b125b9e6a2805cbf",
-      "currentSha256": "3B88801A977F373D69CF7B98F53EDEE03D979A39563CE00B83A125F36F173785",
-      "currentBytes": 456881
+      "currentSha256": "687F14E894AC0CEF409B3952524DE0CB4EFCC626F0C7FC0473A184D63F01FF65",
+      "currentBytes": 457616
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/pwa_review_receipt.json",
+      "status": "modified",
+      "originalSha256": "cb7f5486a14ef1923d044cecf25e213764aff62067993a11da436c145e670250",
+      "currentSha256": "B932D7AE1B3EC422293050857F5543DB759F1FCEB1644478580EBACC5AB1FBE9",
+      "currentBytes": 12877
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/repo_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "f9be658b59d8172c3c0a512ec8e0c43e3ec6d3a71e086a200ebf43e13e4f53ca",
+      "currentSha256": "789A5E7FA01389C359BC61A38D2179ABFDCEA2DE2335C38183DFABF94E45C9D2",
+      "currentBytes": 179040
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/requirements/import_receipt.json",
@@ -169210,6 +169439,13 @@
       "currentBytes": 807494
     },
     {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/submission/hv-index.json",
+      "status": "modified",
+      "originalSha256": "37405ce7f32fe1d7b787db23b49ee0ee0d1fd5e765ba8fa6f4148a18030e1e1a",
+      "currentSha256": "B425297C0C8231E666F8008FB3030B0F5E9FD936AEEF5E3B731BB2EE8B262B60",
+      "currentBytes": 34987
+    },
+    {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/submission/requirements-receipt.json",
       "status": "modified",
       "originalSha256": "eccd6c5caea5b5b4f30daabcbe0d81acda142dac8e8ca355091d32f84edc01a4",
@@ -169224,6 +169460,13 @@
       "currentBytes": 259021
     },
     {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/test_execution_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "396b71e1d5397ac9f8fb878153b1b0f6671e03d146b62816ddcf06e02e8d1872",
+      "currentSha256": "DD632B9B9F5136AA5F78D7B3A3D85D1BAFF01D4476EC1502AD75792539286533",
+      "currentBytes": 44136
+    },
+    {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/design-20261027/receipt.json",
       "status": "modified",
       "originalSha256": "265c039d304a3c169c78aed3057c7f97200e622466f41d058babaaeafb32f275",
@@ -169234,15 +169477,50 @@
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/design-20261027/requirements.json",
       "status": "modified",
       "originalSha256": "285ce5a7c711d2551c02fc8ed617151859be2412c01993f593971b9b07097398",
-      "currentSha256": "55FE2F648DBED000391B75C8CA80572EA0EE7BFAD345ACBCDAE63CFDCE2DD28E",
+      "currentSha256": "DB290953D8B21538C16FB7D09C280694976F48C20741FD811013AF363F7E0A3E",
       "currentBytes": 680378
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/design-20261027/sources.json",
+      "status": "modified",
+      "originalSha256": "e1b2a3431a68c4d3656485d5b3bec43668b141dc488676dda0b5fd850be0e79f",
+      "currentSha256": "A0664AA70CFAC23D03BB5DECF9AAB86CF2646F0231681DD2673CA44ABBB91CF8",
+      "currentBytes": 4280
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/pending-import-before-product-20261027.json",
       "status": "modified",
       "originalSha256": "d417f98dec488046d785a73b9da31ff7c2f13ea1e1cc6337a18ecd9100bdc9a8",
-      "currentSha256": "6346DCBD938C0DB7AFA0976901ECD970BA56997EF05D0F76041D8D79633069B9",
+      "currentSha256": "B8E89EB2276E842E8323C29A9469CF9DECBC73697BBF1AC21B4FA41D29E4DED7",
       "currentBytes": 250429
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/pre-safe-errors-20261028/implementation-manifest.json",
+      "status": "modified",
+      "originalSha256": "fbf9b3b43ae80758aadcc6e2805bd92fceb7b6a33b9b7f78a17ffa23eb7b1526",
+      "currentSha256": "6AA1B5FC85B6CA7C1ACB21738499202E428BB02B9BF2EC3FF0BB45BD106CACED",
+      "currentBytes": 39756
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/archive/pre-safe-errors-20261028/implementation-receipt.json",
+      "status": "modified",
+      "originalSha256": "03dab769095e2eb8efc303266c1fbe80a45f1393fb1bf50e22f703265fad8f28",
+      "currentSha256": "22C1FBC4CA887D945E88CB368E9199EC5D475CC013EDB4E32484F4F89D832DA6",
+      "currentBytes": 7642
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/implementation-manifest.json",
+      "status": "modified",
+      "originalSha256": "2728c24a17214fa06d1e4de9af4742f1a466ba736e922e88bb6a6c932784b0f8",
+      "currentSha256": "9E74968D68EF0526CAD5EE14B5D39B61281A422D5D2682C7564FA7F4B2EEC3D0",
+      "currentBytes": 39956
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/implementation-receipt.json",
+      "status": "modified",
+      "originalSha256": "d26cb98efe3b78e1856c05c3c593ca07b3a42154ef1707e1b347c5ac737bcf1f",
+      "currentSha256": "3643E05F742779B7FCFAB8788A88FDCBAE8B67F9C0C0B72E68E3D048320C4DE6",
+      "currentBytes": 9454
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/product-receipt.json",
@@ -169262,420 +169540,490 @@
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/requirements.json",
       "status": "modified",
       "originalSha256": "d93866791c9043d7d1de06f20d9544a77c603d73a1b11fbd29d4f149b3c57771",
-      "currentSha256": "8D480839F18EFA4DCF5BAC03A55FEB0C68915096281AE1344082F7AE77DC15F9",
+      "currentSha256": "4637CB6777A217F60E85E36BE5D167A0368E3E6A13A739D30EB2BDD53D2D2B46",
       "currentBytes": 731359
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/assets/docs/testing/ui/sources.json",
+      "status": "modified",
+      "originalSha256": "7eb3fa0420b0d11d1cec1300ef86c4b1e66138a824a5c98c6f7c70b3b83984bb",
+      "currentSha256": "6E20C32127EF55D6EAC0966BF4ABF655E3760614B67A6BD1267E1CA204C4C17F",
+      "currentBytes": 4589
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Coding-Goal-and-Review-Agreement.md",
+      "status": "modified",
+      "originalSha256": "5c3f4eff6939f52c2ca4b2c65b49d65407bb5ec1fb4418ebeaee8941dd815d31",
+      "currentSha256": "4794E33AB755D511C297251A205804B2E4FBA54B3A58004F9D260B3472D4CD4F",
+      "currentBytes": 17548
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-0-Execution.md",
+      "status": "modified",
+      "originalSha256": "d63d6faa612c76555ade13f5122fc867c085a89308f1a57f6dcbb2612e63cef6",
+      "currentSha256": "379EBD74B9508C9AE2BCE8FDC9441578A8A8020E5E49BA71C2FE00E07A9AE801",
+      "currentBytes": 14601
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-0-Interface-and-Data-Contracts.md",
+      "status": "modified",
+      "originalSha256": "7922d3f197cd7a3788f55c558e7249fcdb9d37cad794d742a351b8e10f238606",
+      "currentSha256": "97039CF6A13962FB5E1FB029EB0A32BD502ED59FE4F4C1DC4CF5962DCCEFF03C",
+      "currentBytes": 24684
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-1-Execution.md",
+      "status": "modified",
+      "originalSha256": "551aa3f552b6d44656c8de847b50f78aef41d280e530c177812d123c47e5f5a5",
+      "currentSha256": "9820F53B3F98951E0A1DA26D2E512192DF350F690A39A61072B518D7F22EF649",
+      "currentBytes": 7684
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-1A-Execution.md",
+      "status": "modified",
+      "originalSha256": "43c5d9da75c447b906b85a2aa4a51924605df0eee99533479b0dc724d14c8989",
+      "currentSha256": "1CCABE6FA79DC4303DCEA2A850289421EB29E853841268C71D58DC2CD7B2B798",
+      "currentBytes": 3058
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-2-Execution.md",
+      "status": "modified",
+      "originalSha256": "847aa05e2d688141bb4e773990aaa438862a24da8dbbd6706891fdc419c1e244",
+      "currentSha256": "89E1C91C106273AC1B741A6C8AEBFA6063FDD74A0B1D70D3808C4CB266CBBE9E",
+      "currentBytes": 7841
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-3-Execution.md",
+      "status": "modified",
+      "originalSha256": "53d815b91a1f7ba4be2abb96f8ea7dece296dff6cb660e8f886a09690777d547",
+      "currentSha256": "CE8C0D8F1783091958AC476F648C2496B01D5D7AFCE2093CC7432DE0ACFB76D0",
+      "currentBytes": 6804
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-4-Execution.md",
+      "status": "modified",
+      "originalSha256": "f044fd65252e3000e9366554e0dba6b12b9bee35c6dbbe144e8b5f8fc797f98c",
+      "currentSha256": "BD98063588B8892B4769F1B3AA2A531340DF4425B7A124D9FC9A994CBA08F687",
+      "currentBytes": 5987
+    },
+    {
+      "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-5-Execution.md",
+      "status": "modified",
+      "originalSha256": "777f402030487fa5b8b615c7a3da71ca7b9b81b402a0dad3cc6f507f4cdf2db6",
+      "currentSha256": "67FEB65D9606ACB3FB330247761489A0933C99A5BABDA232857DEE4E13F283A1",
+      "currentBytes": 7680
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/Phase-6-Execution.md",
       "status": "modified",
       "originalSha256": "71abe31d8e9666be038a7b7ecf839662b52b07e687e6ce8eefacaf9a9e3727f9",
-      "currentSha256": "3B68C89C4306CE522B2EFD3C93677600CDF1552B94D4DBBBEC520E959EAD0C10",
+      "currentSha256": "0513069F8E63AA0083455D574CEC5A0C5486E4052EE714155CC5829CE36A41DC",
       "currentBytes": 14755
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ACCESSIBILITYDETAILS-144-UI-Case.md",
       "status": "modified",
       "originalSha256": "e5d0bc6c69eceeb613d4aa3cba1a5fe37e8d7b12cb0469a3b067270fc9f7e771",
-      "currentSha256": "1B1E750EB3A0CF7E470545BC59BF46FB7FEE9C47532AA476B4DB3363AA3B3969",
+      "currentSha256": "A43AEC965566F377731C7DEA2D340AFA93F856BDB2BD2EFF9132A9128E483AEB",
       "currentBytes": 5870
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ACCESSIBLEGAMECONTROLS-044-UI-Case.md",
       "status": "modified",
       "originalSha256": "681f60b31c88f7069074e43b0d05fe049fe48c52b3bfc69256e3f0aedbcec292",
-      "currentSha256": "A0904E89F3D9B88B88A875757E8CB65AF20ABF128B6BE28E851F140AC007D16E",
+      "currentSha256": "E574C0ADF868970280029BCC53BEB33B3E9DC657FCFB2AB3F0F8F1FEDC4AD2DE",
       "currentBytes": 3965
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ACLAUTHORIZATION-132-UI-Case.md",
       "status": "modified",
       "originalSha256": "05142b1728b1eb43be3fb7d305c5f4258bdd435ef761ed24d8084a42ab77d586",
-      "currentSha256": "DF371FFA5C2229BB930658852CE53C3CEFE48E1CC017E087692D927FE5347B74",
+      "currentSha256": "5DB5AEFB3AC736379A7095A3237932C3D426AF9C3244388F56451E0519F18C85",
       "currentBytes": 4550
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ADMINUI-136-UI-Case.md",
       "status": "modified",
       "originalSha256": "08e1b6a3273dd3feeb422dde2b5761eedcc03593a915800b183f1c1a4691a5eb",
-      "currentSha256": "56881FCD3F339B0E7E5C66CFCB585B20344CA1D81FC6F1BF8F65BC7A4A9AE38A",
+      "currentSha256": "699838502F43CFC4DBC9B9B1565BFA069BF4F09A2B9397A884C19BD928F6F3E2",
       "currentBytes": 11800
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-AUTHORITATIVEANSWERHANDLING-045-UI-Case.md",
       "status": "modified",
       "originalSha256": "0951c0f1381203441d4c8090e6c6d5b456acc6c9981bb8c9027ed1c65c710358",
-      "currentSha256": "1A1DCCE26839D9CE54B93B5DCB76F9F445ED34E08CC6212B9E79884756FDC7D4",
+      "currentSha256": "F06A59EED87003AE0A8DB66B0B1990DAAFCFD85616E0923A4663941E56326A56",
       "currentBytes": 4263
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-BROWSEOPENLOBBIES-022-UI-Case.md",
       "status": "modified",
       "originalSha256": "303a23c2322ee59702929075a27b545d9072401474f2b4c22d655d824fe30b98",
-      "currentSha256": "2D2A13EE47B923BFD60E9121102B1285C99261CF71ADA8B421BE640F3A58317A",
+      "currentSha256": "FDFA6C4CF5DA892986F0EE479139026D381BF0D7CA8043AEE8852A254808334A",
       "currentBytes": 3730
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CANDIDATEHOLD-141-UI-Case.md",
       "status": "modified",
       "originalSha256": "32421f1d7303e5ff6b0c8d1ef264d3e5d96efdb40ea6f2249ad972496d9482aa",
-      "currentSha256": "80579D1B5512F676EEFEB16C7003DD31E2FBBD25AF6CDC6B1A35F58217E62AD9",
+      "currentSha256": "774591271C00CB4AFAAA08207DE3AAA2087ED6B39A26771342D7AD5E6AFB4A23",
       "currentBytes": 5300
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CATALOGVERSIONING-133-UI-Case.md",
       "status": "modified",
       "originalSha256": "0f6e6d9e8dc7928536f8c66f6775d083954b7a3abec7bc4eee4db605d5ba1d7b",
-      "currentSha256": "BF8ACDF9C18CCCD7B32661922631ADC54CADC46DC443A93A8E3F933D3BD78A17",
+      "currentSha256": "D489B59EA76D1C244189C61F2FEE2A13FBBB207D2A5F2B1B17B60434BF085CAE",
       "currentBytes": 4550
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CATEGORYART-005-UI-Case.md",
       "status": "modified",
       "originalSha256": "67bed9013f0a66825e93028b0c2b4a55205ad9f630c3e905755b17cce7360560",
-      "currentSha256": "96D9FAB4778E0FFB426A7C91D080414CC214DB78D5B934ADC371D4E66DF12394",
+      "currentSha256": "106D63D665E41322B8229CD49637D855558071734D9DDBD2EDF09B8D8D17E93C",
       "currentBytes": 4966
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CATEGORYCHOICE-011-UI-Case.md",
       "status": "modified",
       "originalSha256": "96f48f6ca4d5cc3aa331dcdc0fbf119f63dfc759a3c954ff8b43ecb341467b0d",
-      "currentSha256": "2004233ADE18E100E77E697E23FEC046199491F56BE5D0D21D2C054154435B18",
+      "currentSha256": "727B72736140E89C4E1D86FF88279B76D85EFA8175AE192E9B6EE61C70D893C5",
       "currentBytes": 3774
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CATEGORYSUGGESTIONUNLOCK-019-UI-Case.md",
       "status": "modified",
       "originalSha256": "c143643a816f70986743b9ec89f4755492a49500ca133d224d30f3f38529b940",
-      "currentSha256": "6F5C2A39F8295B3B53EF5C667242238CEAE647833D44936B22E08950EC542A51",
+      "currentSha256": "10925B88EEBD622F690DCFF4C5B26650B5E96F9EE43580CB4CF19803D7397D65",
       "currentBytes": 4132
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CONFIGUREDCAPACITY-024-UI-Case.md",
       "status": "modified",
       "originalSha256": "db90b02b7e3e287474a7b6dda1fd8d5b601f78891857d0ed2a5a50456976318b",
-      "currentSha256": "1993D63911EB96BD9E6018B9A6D2F62757BCA5FA0D5FC0BACA6626FB6A660AFA",
+      "currentSha256": "31FE5CB9CD317B4E358DDDA3E917FB272F1ACF26CFEA078A164ACFDC522EBEB5",
       "currentBytes": 5415
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CONNECTIONRECOVERY-109-UI-Case.md",
       "status": "modified",
       "originalSha256": "2f3cac1b0e23cc18e7988ae4a7801b862e76888007acef7772fd3384a443fecb",
-      "currentSha256": "5F0E0E9A4151D04197169ADC91D33B1F176C137B3E649B06418AE677E41EBEA2",
+      "currentSha256": "08B5F350FF835747572C8CC55F7A17A37926ABEDBA5287B63D0B25D7800E2173",
       "currentBytes": 4177
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-CONTENTVALIDATION-016-UI-Case.md",
       "status": "modified",
       "originalSha256": "033e4de1ffd399cecedb07e3b7f515f4c56997b995777027fcef747c0727239a",
-      "currentSha256": "352C2C3B44F6C2E688F9D45D6D094672C087D7AF99FE65D0DC410F4642C2233C",
+      "currentSha256": "08E708B3981842A494C44EFECA85A90461E2FAF5C6B691F277B6F36FE321D865",
       "currentBytes": 5433
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-DEEPLINKJOINANDFULLROOM-026-UI-Case.md",
       "status": "modified",
       "originalSha256": "6cbe3d26c2772c1a309004caf12749b6b944244943c106e4c68859a3ef7b5a2b",
-      "currentSha256": "C794741FD736EE9B4AAFC352343B5DC2633D1F649E0D02484BAB1E7327413CA5",
+      "currentSha256": "32324C7C1E750C3C28D5128E1B6212A87B141B25C541DB47ABCC72FA9E5B7EC9",
       "currentBytes": 3717
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-FINALSTANDINGS-013-UI-Case.md",
       "status": "modified",
       "originalSha256": "10725c382d2097c72d35b6cf02c4ec15b1d65cd0d3f8da6c20e15388adee1050",
-      "currentSha256": "B86262884E5B9E97FC15706A180A12A1323763CD157AE26F8A0939F96CAC8A8F",
+      "currentSha256": "21D9C38FBB7C37A50F1F3C3CC9B6490BA86BC946EE8483F3A716DA1A60BB72B6",
       "currentBytes": 3351
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-FIRSTCATEGORY-004-UI-Case.md",
       "status": "modified",
       "originalSha256": "4fd5adfe7ebc153ba2a6cb6220d73761a6819d051517ea09e904c0f1f733b41c",
-      "currentSha256": "7921F9A57775842AC755332566E469EA1AEE575235C37F97FCB34AF72B76A089",
+      "currentSha256": "21291C32BCF160C30AAA92D2BBFD8DB93842A4860CE07DE37C63FDAB451302AD",
       "currentBytes": 4680
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-FREETIERQUOTAHANDLING-037-UI-Case.md",
       "status": "modified",
       "originalSha256": "d802f139f43daddbe2192bcef2bfe63657c72e89b0e538fd4a8c1ef46e7220b3",
-      "currentSha256": "D26D1169DF0F6175B2B8CEBA726289933BB7F336CDB376B854B20E4C1C14544B",
+      "currentSha256": "6BCC2AC659C9A4F70C1EBDB0714E0951FC9C362729C701D14F5EBD7408BF096D",
       "currentBytes": 4038
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-FULLROOMOBSERVER-027-UI-Case.md",
       "status": "modified",
       "originalSha256": "9a036398358fe4caa0c61d23c511a1a06f6b765771908eb70512621e993fd364",
-      "currentSha256": "2944CB0D6995FAD46838091A91D58906FA489C8E527D891EACBBB6C8935D46FF",
+      "currentSha256": "328C96DC825AD8DF6574D61B77B8A4CFE26C29B0841A4D21FADDBF8E7ECAD41D",
       "currentBytes": 4317
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-GUESTPLAY-021-UI-Case.md",
       "status": "modified",
       "originalSha256": "272f78fdd2d365eaea400b0b10d4e965655fdbd358aa40c96b708a44d54a4009",
-      "currentSha256": "5BD2326C3018F39FB4964376B2CDAF8818BEB8ACCF47CE37D04A98C461FFC524",
+      "currentSha256": "00D4B9C3E7D36B532C931A652DEDAE5ED313AD558E88DBE2554FA0F1EBE89CE2",
       "currentBytes": 4324
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-HINTPROGRESSION-009-UI-Case.md",
       "status": "modified",
       "originalSha256": "e51b4c61bcbda1e9be0c68ed0053b163f1f39c1f7e509b4582a003ad1a2b4780",
-      "currentSha256": "0EDE0892730F6D4ED054C690F8E97B98A6978970AF08B09320FC3C7C99204BDA",
+      "currentSha256": "2A9B82A3ECAE2D09E8CB6232E25C37C7709A873A4949C8450ADA4F10445E1A1D",
       "currentBytes": 4035
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-HINTSCORING-007-UI-Case.md",
       "status": "modified",
       "originalSha256": "2164eac30f8a30fa376bd7f781e20d5f80656774d1e41de0ddeb02ffde9cac65",
-      "currentSha256": "0AEAEA1BBA0262BFD0183B6CDD0B5D088C354B8905EAA4E12870C0EB68DECF8D",
+      "currentSha256": "6D253EB0937CD53D5009B806A3AC6BFAEA058ED50F05F299DCD8167E312C9A72",
       "currentBytes": 3817
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-HOLDOUTWARNINGANDREMOVAL-032-UI-Case.md",
       "status": "modified",
       "originalSha256": "fa3a3e2f02db0d0c46be944699d58bba6c4e45a3f8f2702ec5da42d5d6338c0b",
-      "currentSha256": "D982F33329559F627C516FE1537527ADD5D9B3C81302D8EF4683554A72F59FB6",
+      "currentSha256": "8334CD03FE8560D62863BC87C1D4C6EAA117F80522762E931E97F9B1BD87249D",
       "currentBytes": 3892
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-IDLELOBBYREADINESSPROMPT-033-UI-Case.md",
       "status": "modified",
       "originalSha256": "6ed43a83da90d475c47119e893b5fc4886b7b8ac500e63a42e1f68f069313a63",
-      "currentSha256": "59FE6E47561E9ABAEA3A78A88D68B740AFA0D2D41B80D86AAA608669386D8DA6",
+      "currentSha256": "24D5CDFD4E7A31460426BCE9997284852A6E409670DB0C10DB9AC20D603BF4D9",
       "currentBytes": 4118
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-INROUNDEMOJIREACTION-029-UI-Case.md",
       "status": "modified",
       "originalSha256": "320f89d147937e8079f08047404d1aff8ccae2063c97f6ca088d1e5d3e0effaa",
-      "currentSha256": "9407CB56BAD254FA84FFE26FC704B8E60872AB2F3976C068278BC22856109E36",
+      "currentSha256": "C425324DB39F03409D876DAB7A1B37FC5B1824EE8085F74ADC113C1C0BBBF97A",
       "currentBytes": 4447
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-LANDINGPAGEPUBLICDATA-050-UI-Case.md",
       "status": "modified",
       "originalSha256": "16c4adc5b752e74f634424d7c814d04d991e3c5a548afef4b82cc6b56b44fe88",
-      "currentSha256": "52B091E3195E2C663E29801FBA1899AC5725FA3D05774C0A93C5C682E57B7674",
+      "currentSha256": "767A9FC20CF3BDE06146F71721915E2E6D6D3C177B7A8109667F3F44F3FDE5F4",
       "currentBytes": 4129
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-LIVESCORECARD-010-UI-Case.md",
       "status": "modified",
       "originalSha256": "72b7d1c76689a42ebb0fb2553333a796c0d186ef3ecd242fdb859466d307eac0",
-      "currentSha256": "A98D078B6914E5C07D3D5786C2E6469A24F7256916FDF71D588F8849F77ECE0B",
+      "currentSha256": "9E01A943D81C49F9D18E74F11F4E2E664DAE1ABAC1A5A269EA56B7AA98971D34",
       "currentBytes": 3886
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-LOBBYMATCHING-117-UI-Case.md",
       "status": "modified",
       "originalSha256": "6a7c11755bbc1397b8410b208e46c8277aadf7b3be8c8ce42f01b2996c64a5fe",
-      "currentSha256": "5C80F1B17E590EC0091A6F42DE0FC3D2AD081216452A511173623573C19EAE77",
+      "currentSha256": "44A5A1796A8958C4E41E5F02580BA622C31B8FBCD865FA62C693C00B7AB0EAE9",
       "currentBytes": 4932
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-MODERATIONANDCATALOGBOUNDARY-047-UI-Case.md",
       "status": "modified",
       "originalSha256": "26da3360c6762a5e726c59b7a51ee97624115ab242773554e432d93616e67d86",
-      "currentSha256": "8270E4A5781087A1973E790996B1CDB4C9E726B8DAC024A7EDF2ED409B6BFE5F",
+      "currentSha256": "E2DBDDA1A37D9A5E9EDCF2E137CBEA9CBB7EA1B4F0F768A6144010671C287E56",
       "currentBytes": 4775
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-NAVIGATIONDRAFTS-142-UI-Case.md",
       "status": "modified",
       "originalSha256": "fa7f7e87142aaf7cf1009d6496387c85c8f6510e0e701bcebcf13879f7c93888",
-      "currentSha256": "0D40ED6B7B8642AE6468047A329B4D42A9A92579F1088DE666849AF29EFA9DDA",
+      "currentSha256": "33A52AF45A33CAA3B8D92AD0375FAF41B10F37CB771B21A67D3B7621B70FC1F5",
       "currentBytes": 5868
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-NOHINTSOLVE-006-UI-Case.md",
       "status": "modified",
       "originalSha256": "3321bf8d82929cff0a65c505627b725c18f9100d4f25ea391ff6b18f2459be34",
-      "currentSha256": "F4F9F584B763AA117BB939F0B59916EE40FEEE38BD33EE95F8186D1AD5612A7C",
+      "currentSha256": "3D65D3F89078B252DC8E506378B86DDA82C3B6AA42F910C55490897073D26EBE",
       "currentBytes": 3599
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-NOMINATIONELIGIBILITY-017-UI-Case.md",
       "status": "modified",
       "originalSha256": "a8957a3149cff56a229f5e92598945c85abe29e747015e85123f129a45b96be7",
-      "currentSha256": "4D75DA1BC9F56DEA711444DCB4731E2F66172866E17E097D3FFA5F15CC4A8110",
+      "currentSha256": "06BE52F13FE01ECDC8CB703E322482B88730630B1EBAC62C272FFDC109F2981F",
       "currentBytes": 3590
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-NOMINATIONMODERATION-114-UI-Case.md",
       "status": "modified",
       "originalSha256": "69e751b3e0e0194a59eda2377cbb853b9e1ca6aa1d8b9c496a445d2312ea2796",
-      "currentSha256": "5EC2609CFBA7518925E521E03FDA013D7CBEBE68C03D35D902EBE0EA8D9B50D1",
+      "currentSha256": "6AC1536A2132905BF0FCB919116966E7ACCE58D275CFA5F775B7EF7D1AFCFE73",
       "currentBytes": 4564
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-NOMINATIONTHRESHOLDANDMODERATION-018-UI-Case.md",
       "status": "modified",
       "originalSha256": "9476b24c4016be66ea0c15b5f362e1539c9976abfcff1447f81f432bcd17926b",
-      "currentSha256": "A9ED68FF381A083E66B6D1FD9D1CBD203516E9E8F2D63675F8D87CBC28F5EEF3",
+      "currentSha256": "B83C1AD91E6CBD878F5A43EA1FE4906938A3111E9E413A3D0E98229477255A7B",
       "currentBytes": 4307
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-NOSOLVERFALLBACK-146-UI-Case.md",
       "status": "modified",
       "originalSha256": "6f67c7f3f11317f5bb4c3cb935060e3f30da0b17d4c3d6f2a89faeef72ddc900",
-      "currentSha256": "2A12CC4B30B3A87E1247A2EA385AE86BF7314C333744ED858FB76D032C1B0ED4",
+      "currentSha256": "4F35296178BCB3445885BF64148FF9DD935D5290B993395796F36BFC5EE8D287",
       "currentBytes": 5030
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-OBSERVERPERSPECTIVEANDPERMISSIONS-028-UI-Case.md",
       "status": "modified",
       "originalSha256": "bb0ca5436f05d3a12b8f530136b8cca60bbaeac01893069536d8c0f0599f6d9b",
-      "currentSha256": "62160CB805D52A9E2CDA4D6B660C78C3DF596B0E4115C6BE4A8E830E96655B30",
+      "currentSha256": "D3EFF70A3D5C217B2A46F5B5A984D91486AC1D4A503A9ADC38976B2FA56D25C2",
       "currentBytes": 3844
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-OIDCTOKENVALIDATION-046-UI-Case.md",
       "status": "modified",
       "originalSha256": "e0a2120dd944d5c737ba1df193ae0d67d64b1a8a0221f023138281f7bf6ad393",
-      "currentSha256": "7269BE40429CF9564AF8827EED8EB2A08FFA3A9368ED7FDD1D34E2100A6A740D",
+      "currentSha256": "B24055B272E01D5E86C15C2B054A258953DE5079BAD8ECBD33C1C94AD80097AC",
       "currentBytes": 3801
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-OPENAIOIDCPROFILE-020-UI-Case.md",
       "status": "modified",
       "originalSha256": "2d31ed7e5a879b2f2b02a31bbd85b12a4fb618dfc5c62d6f860a5d8c6572ec2c",
-      "currentSha256": "A1ED2280C054944D769F064E2189C8BC91435A300D71F74D6115A2B809C3D533",
+      "currentSha256": "106BD6D61B22690F4547E70C3A0F6CF3684847FC5DE26783EFBECE2B9A9AB59B",
       "currentBytes": 3980
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ORIENTATION-015-UI-Case.md",
       "status": "modified",
       "originalSha256": "935089e934d644bbf98d150c33b164c55fd7dfb81acea0bde48399a4c1c8d5a3",
-      "currentSha256": "F73B14603C9A365D57DFF53D65BA4F326B1EDCAAE8F25E21456D1AFF5FC09C4A",
+      "currentSha256": "448334A850A75108495B6A71C1543E7BE3C4B7EC2156B016A673CA02C8E54168",
       "currentBytes": 3670
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-PLAYERLIMIT-002-UI-Case.md",
       "status": "modified",
       "originalSha256": "efc54eff3d488adc1ea84ab0204ddb5be54412108cf0f84061618ede4ebbffef",
-      "currentSha256": "730C17417001A09696878E327D5F8BC2092408F35096A0B74FFB85C49F8AF83C",
+      "currentSha256": "ADF9766D46D493F486459A5360B674F409B4D24C46A1A1520B8A8187876572FC",
       "currentBytes": 4616
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-PRECOUNTDOWNOBSERVERPROMOTION-030-UI-Case.md",
       "status": "modified",
       "originalSha256": "55f71dd7ea79465690b0445767469e714fe600126a3e5c917b554319aa16b238",
-      "currentSha256": "1A7C5FFFDC51366FB0B8500AC41ABBDFB231D8D85E06951A84406EFB54D90D8A",
+      "currentSha256": "E53C8D31A961EBEA07EEA9896760A468DC33682840DFCBD5CA5B001260CA44F1",
       "currentBytes": 3808
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-PROFILEICON-003-UI-Case.md",
       "status": "modified",
       "originalSha256": "e32339851c546ee155a243ee09e777a1a29cda5aede4c41536f0e83d8e7f07b8",
-      "currentSha256": "F5ABBF9DCC87945A8E961B1E36AB7D1BC8ADADC75F13FAD57FECF3F435FAECF6",
+      "currentSha256": "3F5BDEE1D3DDB948C502FAA718CF8AEB723772ECB831A04212065CC088AE8365",
       "currentBytes": 3464
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-PUBLICGAMELANDINGPAGE-043-UI-Case.md",
       "status": "modified",
       "originalSha256": "60d98170e69d17ae3c77002e64533b98f7e3c486c92e31dc3a25f06fa89fba54",
-      "currentSha256": "4D354868AEAD03672C6B8AFAA9CF0B8E1A645EA52135CC1F73FFEC6C54663346",
+      "currentSha256": "F9E4AB93094D72150DF3F733B1E03BAE1FEA29CFC3CDB67024B2BE9F962F78DE",
       "currentBytes": 4498
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-PWAINSTALL-137-UI-Case.md",
       "status": "modified",
       "originalSha256": "ef59504a65b5e62c82ae38c08e2987951a628ff89e79055e78f2cf1c43ed528c",
-      "currentSha256": "03B012CF54ACEC015624914F4331B905A1758F9AC6C1FD0A0E8A1452C08FE0C3",
+      "currentSha256": "EE66E162EBAA20D45EB67CBA75A6BE013470C82D029721334023FD118E3E3FA4",
       "currentBytes": 5518
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-PWAPRIVACY-138-UI-Case.md",
       "status": "modified",
       "originalSha256": "48c9f4a7beff846b4d53f65ce194a47cba9f54b24314fea2d3b40be0095580fa",
-      "currentSha256": "6E4E3CD677B413D4329D09B63B83764ABF5997C88647EB9D427A8673EEAD1DAC",
+      "currentSha256": "66C35156808D9F30C09810ECB1C82AD3ED29BC964B3F17703C45403F47F977E1",
       "currentBytes": 4351
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-QUICKMATCH-023-UI-Case.md",
       "status": "modified",
       "originalSha256": "81f89dcccb5e60d2d584b8c049489bc1ad310c65edb405c14d2e366c3efc4072",
-      "currentSha256": "4204821A255776EB94879216A83901D5B1200D9069F58BEEA8C1C660FBE31217",
+      "currentSha256": "E1BC69055872BB6157D08BB1D26C7A2EF439D909410BF0286ECADA0837D44B6F",
       "currentBytes": 3741
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-READYCOUNTDOWNANDROSTERLOCK-031-UI-Case.md",
       "status": "modified",
       "originalSha256": "18d6c9a3d781fd0badf66c446b05314ea5477c072f509126e05f9e4f3907ed5a",
-      "currentSha256": "E98BF051B1BBCAEB3397962530219907C1A80AD760FAA4777E4706E7D99638CA",
+      "currentSha256": "583738A3C956336D97CB0E5CC8B8CA4A2E475E89BEE3329B83EFE933B7E29911",
       "currentBytes": 4223
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-REQUESTFEEDBACK-143-UI-Case.md",
       "status": "modified",
       "originalSha256": "7bb279c28942044af3da701553d5c04f33243e0e39480915b0b9c93b38c018fa",
-      "currentSha256": "A6790B7D3BB7DFAF24225A34B71F8859381E058B22C9BA257849169DA69D3439",
+      "currentSha256": "DB2B714734AD5ABBDB818BD91752CB6459574EF742325FB34DC02D93C9FEB571",
       "currentBytes": 6475
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-RESPONSIVEMATRIX-145-UI-Case.md",
       "status": "modified",
       "originalSha256": "dd01632b69267b4207749d6b11db580ebbbebeecafcd5ae53fc20983cbe38b85",
-      "currentSha256": "B8A461BABE3F89E02D1B1C199089D0148722CFF414F17C3B32B0D1B002995C00",
+      "currentSha256": "93F08A498DEE398F6CAFA434808794D15522AE8D40C68B6F25006C42B2678FC0",
       "currentBytes": 5064
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-REVIEWCHANGES-140-UI-Case.md",
       "status": "modified",
       "originalSha256": "134dcc112466001403276352c1b40bfb9185742e3a034dae569f66a60590a237",
-      "currentSha256": "FB3F6DE2AB6C262819D76F67B5C415A6080D10A41F86F51DFFCCDD4726DADE64",
+      "currentSha256": "C47C31B423569CD42281C741968FEB17049541F39C3B0F5EF7F2DC58AFA0B913",
       "currentBytes": 6157
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ROOMCODES-110-UI-Case.md",
       "status": "modified",
       "originalSha256": "460812d7d4076b43e17761d23714fe61a644a0d1ffed0bc4eb491ab4d4b183eb",
-      "currentSha256": "1DD561BA45691D583F87C785D4775E7028B6B8F5AD7B4AB96889FF3F802033A9",
+      "currentSha256": "8E28C2672E5BE5FF730E0DF5FDDF8BC5851CFDB9DA7F5BA71BA855D49DC38C26",
       "currentBytes": 4986
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ROOMINVITATIONS-025-UI-Case.md",
       "status": "modified",
       "originalSha256": "197281c4bf2297d4c650d8d84e5a4d68fa67643396d7f763a7436c85f043f932",
-      "currentSha256": "F59E092FB1EF9531F1C2F7AFF3BAFFA56863091721B5B2BC13A2B493D0A670B8",
+      "currentSha256": "12A920B0D68EF929EDBEBAD1D074A0A89B6068C559DA18B79C48B2034C35DC60",
       "currentBytes": 6058
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ROOMJOINING-001-UI-Case.md",
       "status": "modified",
       "originalSha256": "1a342583f6abe41244d75f8f7d62821d02d9f14b6015e915b9506f882626f64a",
-      "currentSha256": "6E37D47D8679B6DC3A3B481E64DC7BB6CAA7D55A5BE8127119ADDDAC12EA6B0F",
+      "currentSha256": "B6864FC528FC3A031C2BD2AA0E4EC1B527F79FA4DD30753D2D81E51686A8BF24",
       "currentBytes": 4724
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ROOMSYNC-139-UI-Case.md",
       "status": "modified",
       "originalSha256": "91cb79d29bfdda280585d9553b336d490079350cd030216fa1a3a2892643c141",
-      "currentSha256": "6B1C182A533CE9925A1B581E451B7F160FBDD7139BBF689E2C74063F50833ADC",
+      "currentSha256": "F6B5CB96EFFCEEA8567DF0726D5935A66E9CB531FD4CD3589F0C4EBD8830C47F",
       "currentBytes": 6494
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-ROUNDSUMMARY-012-UI-Case.md",
       "status": "modified",
       "originalSha256": "f8ce40526ba6d7f9d7c6c161b32174c74c7457df302207a73491a7a8cdad7389",
-      "currentSha256": "E8D9448A11C75251CC87C84C43C40BBF7E79CA02A8AF6165F2899D89BA6B14A0",
+      "currentSha256": "9B1FF8D6C48243128E2D6F3CF77DF5F1A655ED3E7E42F6BFB26D47D15AF6ED5B",
       "currentBytes": 3479
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-SUGGESTIONREVIEW-115-UI-Case.md",
       "status": "modified",
       "originalSha256": "7209d0a733a916a56df2b23952ce4cad434631494c652efeeeb193afcd70009a",
-      "currentSha256": "6EC3554B97C46378F23906FF86CD730476AB6DDF39F19A27EF365F806A455315",
+      "currentSha256": "961388976BEE56376C084D53D8DDC4947C204E3EDAD3AD794C72375577E423C4",
       "currentBytes": 4423
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-TIMETIEBREAK-014-UI-Case.md",
       "status": "modified",
       "originalSha256": "361c6adec6b022f917377e0864042b6970aecd5de3541af8936da02fe3ea48d1",
-      "currentSha256": "A04625F7EB092374DCB7F4859D08AE9B069EB926AD619F2B6B14B830E1F36B0C",
+      "currentSha256": "B2E0482B25E5B934D0E92B4BEBD665BACB88E57974A14530B9531AE2A5EEE039",
       "currentBytes": 3703
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/original-wiki/TEST-UNSOLVEDRESULT-008-UI-Case.md",
       "status": "modified",
       "originalSha256": "a8a9c3bccfd39e98f645a30d38f11af8e4510cc187b255dfac0c90d0032882e4",
-      "currentSha256": "EB791D934F8B57278297E539154C0F42714218120DEE0735FC8A9C9D02BF2D71",
+      "currentSha256": "AFBF5D4BDD1A26CE123EBB449B5CA27204C9E28FAE3AE14C877642A667280D2F",
       "currentBytes": 3578
     },
     {
@@ -169703,14 +170051,14 @@
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/semantic-readback-normalized.json",
       "status": "modified",
       "originalSha256": "5d90b093fe1ebba688f769ca9250467cb1ebf8c5a5758708b170ea45c836f780",
-      "currentSha256": "2099870C5C7532D3B8F36063877049614F7A2427EA464AB3E066B8B8CB2B9E7B",
+      "currentSha256": "B8AB83F31A2EDB7F911C839FB5FCDB1D3D7D58820070D602CCBD8106E540DC2B",
       "currentBytes": 1114289
     },
     {
       "file": "docs/evidence/release15/frozen-131269a/wiki-publication-repair/semantic-readback.json",
       "status": "modified",
       "originalSha256": "f672ae4f67815b5e38bd670763c9db4219cdfafd299f095248af226b60d7df3b",
-      "currentSha256": "5ACE0A2CBAEE93CA4E6F6E4EEC26977B58C238CBBE7D8BCAC65DE77B495AF7F5",
+      "currentSha256": "3B8EE10FDA59155E9ACA98D2DE956DB4EFB7DD76DC83BD12C9776C7AA2B5AAAD",
       "currentBytes": 1171223
     },
     {
@@ -170144,7 +170492,7 @@
       "file": "docs/evidence/release15/frozen-6063acd/source-selfreview-effective-requirements.json",
       "status": "modified",
       "originalSha256": "e49f1cce05e4510d3bfbb3acaa006911d26b631d09f630227349ffb3652340f7",
-      "currentSha256": "14F45EB02894CEFE4AD1EBFF2E5E6F7E5B1DC9477F7E21126F33EFD83E236A2C",
+      "currentSha256": "78166E40BCC9FD83C5410E17BF27E85284C36F7C9AA3906B48BFCC0226FAEA41",
       "currentBytes": 871635
     },
     {
@@ -170200,7 +170548,7 @@
       "file": "docs/evidence/release15/frozen-6063acd/strict-ui/first-failure-supplement/effective-requirements.json",
       "status": "modified",
       "originalSha256": "62872e0c1d0b46491469010d1fd66faca90bcacbd3c51b772bde3d0e2f2b4131",
-      "currentSha256": "016453A708F6906D186EA95BD4A5F235180F29210A78A1BCFAEE339CAB40AC92",
+      "currentSha256": "CF74FA8DB9B2C5826A9C2D25D23252E56CB1D1568EB279E44B728368A9DC1BF3",
       "currentBytes": 67465
     },
     {
@@ -170403,7 +170751,7 @@
       "file": "docs/evidence/release15/frozen-af6ee6f/live-ui/conflict-retirement-supplement/effective-requirements.json",
       "status": "modified",
       "originalSha256": "c8937ac241929bb5d3a1a7f22e629cd372cfaf92185e090f12a02076ee20867e",
-      "currentSha256": "DA1220E5371DFF8748ABA338296E48207B9E97A41654DFE13188140DA8D6317E",
+      "currentSha256": "4AB10FFAFB7207B503B9E37381AF4B9F1E23C0D994F47E9B052E0F658E58C182",
       "currentBytes": 871635
     },
     {
@@ -170781,7 +171129,7 @@
       "file": "docs/evidence/release15/frozen-af6ee6f/source-selfreview-effective-requirements.json",
       "status": "modified",
       "originalSha256": "62b9c2e11ede67f63ed3d853b4529077ab4eb6142e399b508ea10699cdf94e64",
-      "currentSha256": "1B9E7682120580B68E5C15B2FFBAE579D9DC8C69ECCDB730D36249E81531FCFC",
+      "currentSha256": "EBE9EA73C8A07C7DF5FECE156243658DF2B733644601F8E0BF02ED84B28C778B",
       "currentBytes": 871635
     },
     {
@@ -171768,14 +172116,14 @@
       "file": "docs/evidence/release15/frozen-c1181eb/source-selfreview-effective-requirements.json",
       "status": "modified",
       "originalSha256": "5a505e8f8711d3a62d323968287fcc21d63eadda63a70a9ddbe46a15f6c2247b",
-      "currentSha256": "C7DE3B53323F0252BC696632F2D101583FC0126FFC21485BB9BA1D4286C8AA61",
+      "currentSha256": "6A4AC86C8AFCE33C60C75C703DF3763DBAF0DFF4509A2B54D695B4622CB17A4B",
       "currentBytes": 871635
     },
     {
       "file": "docs/evidence/release15/frozen-c1181eb/source-selfreview-history/initial-20261030T193749/source-selfreview-effective-requirements.json",
       "status": "modified",
       "originalSha256": "5a505e8f8711d3a62d323968287fcc21d63eadda63a70a9ddbe46a15f6c2247b",
-      "currentSha256": "C7DE3B53323F0252BC696632F2D101583FC0126FFC21485BB9BA1D4286C8AA61",
+      "currentSha256": "6A4AC86C8AFCE33C60C75C703DF3763DBAF0DFF4509A2B54D695B4622CB17A4B",
       "currentBytes": 871635
     },
     {
@@ -172461,7 +172809,7 @@
       "file": "docs/evidence/release15/frozen-fdee7a2/live-ui/runtime-responsiveness-effective.json",
       "status": "modified",
       "originalSha256": "7607098fcbca5d041204c0586fc93b32d3720c50cf040a43f9d7ff176104beaa",
-      "currentSha256": "5C6E42A183139AE31EABA8587E40D9210530C7FE6ED3E28DFE63C3342AF1C7B4",
+      "currentSha256": "66BCD47805139559F0220BAC23081FCEE3809738C1ADC7932F940EEB2F2D2823",
       "currentBytes": 898234
     },
     {
@@ -172755,14 +173103,14 @@
       "file": "docs/evidence/release15/frozen-fdee7a2/ui-ack-effective-requirements-related.json",
       "status": "modified",
       "originalSha256": "bdfa4b76a844eb1fc3e05906d5172abb580d0a2a47c48798c3527061ae1e6a27",
-      "currentSha256": "441562C0AF609A438B8878D658463098DB14A415699E81230F3A1485A421B5FA",
+      "currentSha256": "6B1B2796B69C0D0F63D32B6EE33586E8F8F643FA1D03833B8F3E432192E0BE6E",
       "currentBytes": 199069
     },
     {
       "file": "docs/evidence/release15/frozen-fdee7a2/ui-ack-effective-requirements.json",
       "status": "modified",
       "originalSha256": "5b7c66817d62b644f91b4d9fe1a82c41c691f682946d7287c3a1390a4b0f4c97",
-      "currentSha256": "E52BFDFCB3D8891AA91C4EFCD7ED20857263F5652538EE27055B88DCA04D1595",
+      "currentSha256": "09CF04553CC0CB8298C445882C8FF3578022B7CF4A6593CC468574F6A33FB0C8",
       "currentBytes": 188188
     },
     {
@@ -173133,8 +173481,15 @@
       "file": "docs/evidence/release15/hosting-readiness/resume-20261031-canonical-readback.json",
       "status": "modified",
       "originalSha256": "51f510f571cc4d14ecde0d6d03af2e24798b9aec3a3b3fc949b89ff35c399a7f",
-      "currentSha256": "F848D1FDBD4DEB054D6CC6B040AEC02E76331E1FC27CA7304E0E77EBBA0C613E",
+      "currentSha256": "5C95E90411DA28FC07FEF4D666A912B67E732A652EA3868C229446159FA838C5",
       "currentBytes": 95926
+    },
+    {
+      "file": "docs/evidence/release15/hosting-readiness/resume-20261031-index.json",
+      "status": "modified",
+      "originalSha256": "a7a8e3d3d4009c36926bbdf49626401d40a50919d2ff5501e48c32a45f2be8d7",
+      "currentSha256": "3A120E579B3CCA7B69956DFBA338E2A14DD009665EF2DA3ABE38160C4B59B4D5",
+      "currentBytes": 23573
     },
     {
       "file": "docs/evidence/release15/hosting-readiness/resume-20261031-index.producer.ps1",
@@ -173147,7 +173502,7 @@
       "file": "docs/evidence/release15/hosting-readiness/resume-20261031-metadata.json",
       "status": "modified",
       "originalSha256": "724f4cbb7f5c32951fe70e5f247cfebfa502f2ad2a29f3dcc16efc15ce550a61",
-      "currentSha256": "3A324BF179E4E0054FEDDB72B568B1A89CBE55A6459105BB6E211ABD2FC9E738",
+      "currentSha256": "5DF15CA755FDD547F0BE34C07AB68EB7E43A5B7488E7D0C3A9C4B00B0D100A12",
       "currentBytes": 130084
     },
     {
@@ -173200,10 +173555,17 @@
       "currentBytes": 236259
     },
     {
+      "file": "docs/evidence/release15/hosting-readiness/vercel-readiness-20261030T195558.allowlisted-input.json",
+      "status": "modified",
+      "originalSha256": "a43a77ca7a05f7a0a855b5429ad021203b036442eb40b83fc31e907070d0bf81",
+      "currentSha256": "8CC932905E362184B49BE223BC39B597AF345D9EA7C30ABF09529B704170CE83",
+      "currentBytes": 16719
+    },
+    {
       "file": "docs/evidence/release15/hosting-readiness/vercel-readiness-20261030T195558.json",
       "status": "modified",
       "originalSha256": "23ecb75f0e5318047ca78b3ff1132015ddc4a02b3a05b25fe274245dc3572f63",
-      "currentSha256": "9C818DCA4E5334663FADA1F9864B6E2DAD5F19A48B00132B0848828732B05394",
+      "currentSha256": "F7EAAA7999C92FF3EEA17A9CBEB3AEAF597B47DDE46C591C76396FA65ADF5A26",
       "currentBytes": 24701
     },
     {
@@ -173217,7 +173579,7 @@
       "file": "docs/evidence/release15/hosting-readiness/vercel-readiness-20261030T195558.turn-readback.json",
       "status": "modified",
       "originalSha256": "8531942b3fc6b9703c40625e7edf37ae8e7b260887137e193206d59ebc460ab3",
-      "currentSha256": "AB563157EC897C7D257D02210C78E1EAF8C20B2EBC759F3545E3CC1DF93B60B5",
+      "currentSha256": "F4450B0829033C5E287DC095362B5A33CC7FBD1ADC17FFD067C25E3388E37CA7",
       "currentBytes": 34810
     },
     {
@@ -173350,14 +173712,14 @@
       "file": "docs/evidence/release15/qbrain-after.json",
       "status": "modified",
       "originalSha256": "8c99d70c943bd5c40b1fdbf88e9ff95e1b35308f7d8dd5cf6864f5728aa4cd45",
-      "currentSha256": "554B3615A6CB31BF7EFE82EA84FEBA8E575E4CF41257A5E64E4DCF01F29DED76",
+      "currentSha256": "A1EC5B322A2439FC119C1BA283F2BE43864F23AB9E903CB93159B80CFCFA151E",
       "currentBytes": 871635
     },
     {
       "file": "docs/evidence/release15/qbrain-before.json",
       "status": "modified",
       "originalSha256": "d69ba5b1aeebd75d21b25e6d97157ee0c99f2b575d375a890854b5c80c634be3",
-      "currentSha256": "8CE8FBC1CD9F4C9718D8AD12641A2CA7E425335C1BE30ABD0B032C620170A6D3",
+      "currentSha256": "E0C6704942DC54BBEACB9D38CB71416B68D1C91CD1D55B8AA45D34135466A75F",
       "currentBytes": 92682
     },
     {
@@ -173651,7 +174013,7 @@
       "file": "docs/evidence/release15/reviewer-amendment-qbrain.json",
       "status": "modified",
       "originalSha256": "4a664348b53a69a7edfaec8d0e552a324dc7e959d0661b72b2c6acaba9e559c0",
-      "currentSha256": "8DD023BA250C3F0BDB71863950FB4355F083C1A2EF0D1237AC1E06FFE6192660",
+      "currentSha256": "24633063D2BBB79812C13A60C79AAB404AC94892F2D707C40B7591D9F07F32AF",
       "currentBytes": 98291
     },
     {
@@ -173728,7 +174090,7 @@
       "file": "docs/evidence/release15/strict-entry/effective-current.json",
       "status": "modified",
       "originalSha256": "b8a80bcfc52541bc924ef95bee9b260734d51fd709f4b4cbd63138b6af86ef06",
-      "currentSha256": "AB042DE1BACA035E6D2F687600D5E6DD3E8F56A410995D80F66A3BD0154AAD69",
+      "currentSha256": "05AC8A38CCD213485C67ACC32CC68C365E0D303BC17675BF8B0A351E18DF444F",
       "currentBytes": 67396
     },
     {
@@ -174505,7 +174867,7 @@
       "file": "docs/evidence/ui-gaps/hostile-validation.jsonl",
       "status": "modified",
       "originalSha256": "baafd5ead519766e93ceb9b7c7cc8abf07d1f035ee6d976bc2f93764a2cb6bfc",
-      "currentSha256": "8108402A9AB05121B0323A033CF02707143DDE5F1F11F27D19BB1844F3EA5876",
+      "currentSha256": "818BE8B32C1455821B2DADDDB0132FD1810ADC66C400068EF987F19A2DF2801F",
       "currentBytes": 61697
     },
     {
@@ -174544,6 +174906,13 @@
       "currentBytes": 470
     },
     {
+      "file": "docs/goal_hv_agreement_through_phase_6.md",
+      "status": "modified",
+      "originalSha256": "5c3f4eff6939f52c2ca4b2c65b49d65407bb5ec1fb4418ebeaee8941dd815d31",
+      "currentSha256": "4794E33AB755D511C297251A205804B2E4FBA54B3A58004F9D260B3472D4CD4F",
+      "currentBytes": 17548
+    },
+    {
       "file": "docs/handoff-20261029T125826.md",
       "status": "modified",
       "originalSha256": "b861c9a2d2df39899e3d7e8fddcd4e82501aaf0fd2210a6e0c1d005348ad0090",
@@ -174551,39 +174920,158 @@
       "currentBytes": 9465
     },
     {
+      "file": "docs/hosting_execution.md",
+      "status": "modified",
+      "originalSha256": "21595b1897b0d03b19d73024bb6727c08f22f60249237f98bca0a81bba83e80b",
+      "currentSha256": "AED92E996D3D5E2C153E66B15C2FC46740B336DBB1B2863D7577230253D78C72",
+      "currentBytes": 13777
+    },
+    {
+      "file": "docs/images/readme/capture-receipt.json",
+      "status": "modified",
+      "originalSha256": "6d012375b0fc811668b9ad80adb0ed21610a86cf06ee1b72ae40afc99751f5b5",
+      "currentSha256": "C638223C2469E4652A43FAB15C1CD0CD1D5419157679D6A8068C90714A122FC8",
+      "currentBytes": 5209
+    },
+    {
+      "file": "docs/implementation_kickoff_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "c4969c3c5a1e0725c69ac48765cf669d5e2d94fe4d8615668fcf8743334b733e",
+      "currentSha256": "37FA54B82843DB527FE28B9ADB52262883250A1B5E1B9A731926A1CF675EA9EE",
+      "currentBytes": 22967
+    },
+    {
+      "file": "docs/implementation_phase0_execution.md",
+      "status": "modified",
+      "originalSha256": "d63d6faa612c76555ade13f5122fc867c085a89308f1a57f6dcbb2612e63cef6",
+      "currentSha256": "379EBD74B9508C9AE2BCE8FDC9441578A8A8020E5E49BA71C2FE00E07A9AE801",
+      "currentBytes": 14601
+    },
+    {
       "file": "docs/maintenance_receipt.json",
       "status": "modified",
       "originalSha256": "14ddb36a06b15f7de4879e631113abf21aa277011d3060429fece78a34b3150b",
-      "currentSha256": "47C5FC0885751BDDF7D32592DDFA74DA7AAC7504A2B88804EFEA48180BA67DD3",
+      "currentSha256": "62FA43B09BFC21861E6AF9AA9005F6A8CAAD8A5340B9401AF2C19E089A462591",
       "currentBytes": 6972
+    },
+    {
+      "file": "docs/phase0_approval_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "c33a5c7e8e7fff64372193716232bc23330e0a652ec22c9c9f289108b14f17fa",
+      "currentSha256": "4E2E85DE39DCF307FB12866346D46C771F90FDCED541FA7C6313533C3816B85D",
+      "currentBytes": 878
+    },
+    {
+      "file": "docs/phase0_interface_and_data_contracts.md",
+      "status": "modified",
+      "originalSha256": "7922d3f197cd7a3788f55c558e7249fcdb9d37cad794d742a351b8e10f238606",
+      "currentSha256": "97039CF6A13962FB5E1FB029EB0A32BD502ED59FE4F4C1DC4CF5962DCCEFF03C",
+      "currentBytes": 24684
+    },
+    {
+      "file": "docs/phase0_refresh_hostile_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "1834cb7f9ef69951b76d010415f5358570920af742cb5ef32fadb28f4009ce81",
+      "currentSha256": "D0C04D1B373000042EF64E7C0834E244EBA367359F4C7D1C20E30AB73C189AB4",
+      "currentBytes": 32057
+    },
+    {
+      "file": "docs/phase1_execution.md",
+      "status": "modified",
+      "originalSha256": "551aa3f552b6d44656c8de847b50f78aef41d280e530c177812d123c47e5f5a5",
+      "currentSha256": "9820F53B3F98951E0A1DA26D2E512192DF350F690A39A61072B518D7F22EF649",
+      "currentBytes": 7684
     },
     {
       "file": "docs/phase1_review_receipt.jsonl",
       "status": "modified",
       "originalSha256": "1d973a9b5b87e8d0ec358e0ed2e0f7ec06462b74cdb02f6b102a00a1bbef618b",
-      "currentSha256": "04BB23FA2FF6328FE598F1186C45E6752CAB6AB3A1FAE70A44651510C0DFFD2B",
-      "currentBytes": 19541
+      "currentSha256": "5AA9BB4303C0C3D24E6C7F98E75CE753AA71F9CABA123722FEB5CAF6817C8CB8",
+      "currentBytes": 20464
+    },
+    {
+      "file": "docs/phase1a_execution.md",
+      "status": "modified",
+      "originalSha256": "43c5d9da75c447b906b85a2aa4a51924605df0eee99533479b0dc724d14c8989",
+      "currentSha256": "1CCABE6FA79DC4303DCEA2A850289421EB29E853841268C71D58DC2CD7B2B798",
+      "currentBytes": 3058
+    },
+    {
+      "file": "docs/phase2_execution.md",
+      "status": "modified",
+      "originalSha256": "847aa05e2d688141bb4e773990aaa438862a24da8dbbd6706891fdc419c1e244",
+      "currentSha256": "89E1C91C106273AC1B741A6C8AEBFA6063FDD74A0B1D70D3808C4CB266CBBE9E",
+      "currentBytes": 7841
     },
     {
       "file": "docs/phase2_review_receipt.jsonl",
       "status": "modified",
       "originalSha256": "f9ba03b3c882d4a51c6daf0d3a2843682166edcd08fccd08e9a39d89c0dbac6c",
-      "currentSha256": "2B1F54B9E53D682AACF8ECA87BEFC0A7D53C8927A3E18615C2DF814132DA4DEE",
-      "currentBytes": 10563
+      "currentSha256": "C7726855DE744832FA5F7CD88480C93BE421F3530CA7920CA5510B68E2129D1B",
+      "currentBytes": 11856
+    },
+    {
+      "file": "docs/phase3_execution.md",
+      "status": "modified",
+      "originalSha256": "53d815b91a1f7ba4be2abb96f8ea7dece296dff6cb660e8f886a09690777d547",
+      "currentSha256": "CE8C0D8F1783091958AC476F648C2496B01D5D7AFCE2093CC7432DE0ACFB76D0",
+      "currentBytes": 6804
+    },
+    {
+      "file": "docs/phase3_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "3de148d63213b9af52272c99ca5fa2d8081a37cd17794351d1293fba515f6c3e",
+      "currentSha256": "8649C4CAC3A44CA96F979E35FF2A7B4BCBEB1D636AD0E5BA5886DE4816D1467C",
+      "currentBytes": 62051
+    },
+    {
+      "file": "docs/phase4_execution.md",
+      "status": "modified",
+      "originalSha256": "f044fd65252e3000e9366554e0dba6b12b9bee35c6dbbe144e8b5f8fc797f98c",
+      "currentSha256": "BD98063588B8892B4769F1B3AA2A531340DF4425B7A124D9FC9A994CBA08F687",
+      "currentBytes": 5987
+    },
+    {
+      "file": "docs/phase4_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "20cc7489f7f3fa3817f88539587ac340fd1068110c8eaf2f10c610efb1514fbd",
+      "currentSha256": "E5BE28E543842B17BB040A5F3B6B98D6827D26AA43F5B02F98BBC6241AC370F3",
+      "currentBytes": 72325
+    },
+    {
+      "file": "docs/phase5_execution.md",
+      "status": "modified",
+      "originalSha256": "777f402030487fa5b8b615c7a3da71ca7b9b81b402a0dad3cc6f507f4cdf2db6",
+      "currentSha256": "67FEB65D9606ACB3FB330247761489A0933C99A5BABDA232857DEE4E13F283A1",
+      "currentBytes": 7680
+    },
+    {
+      "file": "docs/phase5_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "af74a5a2a098736c4791c6f21c148a5bf2df953d547a6ed0b23e857915ad9d6e",
+      "currentSha256": "4F42AE512BC45DA92B17C9FBE298052468C2886FABFAB5A1C6E07F8287A61DA8",
+      "currentBytes": 82266
     },
     {
       "file": "docs/phase6_execution.md",
       "status": "modified",
       "originalSha256": "71abe31d8e9666be038a7b7ecf839662b52b07e687e6ce8eefacaf9a9e3727f9",
-      "currentSha256": "3B68C89C4306CE522B2EFD3C93677600CDF1552B94D4DBBBEC520E959EAD0C10",
+      "currentSha256": "0513069F8E63AA0083455D574CEC5A0C5486E4052EE714155CC5829CE36A41DC",
       "currentBytes": 14755
     },
     {
       "file": "docs/phase6_review_receipt.jsonl",
       "status": "modified",
       "originalSha256": "b256a9deff5611b5749ff808845a45c8bb413450cce24f82b125b9e6a2805cbf",
-      "currentSha256": "3B88801A977F373D69CF7B98F53EDEE03D979A39563CE00B83A125F36F173785",
-      "currentBytes": 456881
+      "currentSha256": "687F14E894AC0CEF409B3952524DE0CB4EFCC626F0C7FC0473A184D63F01FF65",
+      "currentBytes": 457616
+    },
+    {
+      "file": "docs/pwa_review_receipt.json",
+      "status": "modified",
+      "originalSha256": "cb7f5486a14ef1923d044cecf25e213764aff62067993a11da436c145e670250",
+      "currentSha256": "B932D7AE1B3EC422293050857F5543DB759F1FCEB1644478580EBACC5AB1FBE9",
+      "currentBytes": 12877
     },
     {
       "file": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.privacy-export.json",
@@ -174596,14 +175084,14 @@
       "file": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.public.response.jsonl",
       "status": "modified",
       "originalSha256": "ca544dea6734262659414fed65662c7c442723b537cf8b0168ccd3f536cc7c50",
-      "currentSha256": "F591B68943AC0DDCC7EC99B559B7F7A77A27F8CBB7CA7581BC52806142230603",
+      "currentSha256": "9E33CF9F1D121BC7C309FE31739D5B9A569991BB651990D136705F765FEECE31",
       "currentBytes": 2056939
     },
     {
       "file": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.request.jsonl",
       "status": "modified",
       "originalSha256": "c1afa85913d57013e8668fd842d2ecc6db766c45d2c1693a8789f7f5b0fe9369",
-      "currentSha256": "7C9A7BD6C9B0AB06022C7D6B845EEFB5A753AB10F2C5DE168D97DF75F2CA7B72",
+      "currentSha256": "EA1FF87EF831C6E55A98B1A5E84692215D56C3B6196AAB6C2CCC9A30A5BF5C05",
       "currentBytes": 8591
     },
     {
@@ -174617,7 +175105,7 @@
       "file": "docs/receipts/hv/20261028T195803-admin-pwa-source-round1.verdict.json",
       "status": "modified",
       "originalSha256": "dcd8aa22b33ee794404fea7044404b26025e14051ff24d2d3f251da7e8bbecdc",
-      "currentSha256": "4CD49C14EE58340E03DF7EF2AC1FB90DC9290E0FB9C2242CE7FF2FEFC8EADD30",
+      "currentSha256": "7B321B9F21507B19875D53D7CD9E4187DE46E922551FFDC147821CA3F9A8B62E",
       "currentBytes": 29125
     },
     {
@@ -174631,14 +175119,14 @@
       "file": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.public.response.jsonl",
       "status": "modified",
       "originalSha256": "5a0c085ea4caa4fbec87f6b0139903e462dca9a4dcdb2c943fe022f570ac0aa3",
-      "currentSha256": "F2081CE678B48BDE67096FB1A231EA55BF9BDD87BFF52615134D14A8E39D09BB",
+      "currentSha256": "DFFE4CAFE4DB8A6F5CAC61FC015F238083AFC7EDC46864B916357A8D27E32933",
       "currentBytes": 1489154
     },
     {
       "file": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.request.jsonl",
       "status": "modified",
       "originalSha256": "a86267aff2c6cdd3b79707089031f762286219c1ba738a6ce1a4377c408b2d7c",
-      "currentSha256": "E9AE56AB80A0767EC811F011EDC6A9C5673161183C0333BC45BA6F23897EBFB3",
+      "currentSha256": "139C9995E894E27E1F6762527D51511B7F9531D1CD78B3D4F0CF43EE21241CEF",
       "currentBytes": 9947
     },
     {
@@ -174652,7 +175140,7 @@
       "file": "docs/receipts/hv/20261028T204722-admin-pwa-source-round2.verdict.json",
       "status": "modified",
       "originalSha256": "36fd4817e66f96137f8668ea64086764799090d83f01795757ea16dcdc57c4b3",
-      "currentSha256": "540118C0B151F4980E56CAC6D226FB829B33EF56520C3E2B1A173EE74DBA8BB6",
+      "currentSha256": "BF8F964B74A39014EF2813F5F4E8F3286932238D4D6D0FBE0C9F5C454232AEBD",
       "currentBytes": 36335
     },
     {
@@ -174673,7 +175161,7 @@
       "file": "docs/receipts/hv/20261028T230220-admin-pwa-source-round3.request.jsonl",
       "status": "modified",
       "originalSha256": "e037ef4522eef17e9883a3588cd2e2bbe3bb4601e0f4cac248bb401d7628145a",
-      "currentSha256": "D1D68389244A109BA4CCF0AC67BDD8CCF9AAFDB7014659C1B3D8717821390F51",
+      "currentSha256": "0E876D6ECD579E93ED138000DF5D5218CB3E175D8625E5DBB375B5F00891A2F1",
       "currentBytes": 13049
     },
     {
@@ -174701,14 +175189,14 @@
       "file": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.public.response.jsonl",
       "status": "modified",
       "originalSha256": "0b2f1206eaa5f266b7030e5cdb0f5bf013a7dad8d8730cac597052e4cab83da8",
-      "currentSha256": "20FF0BCDE5D70AE132072B83870903ADEAE46F5E41AB75D461248214A5493822",
+      "currentSha256": "C17AC7EF656C7DE2EC3BC623D4D5C2EA6C8128B50FFC349F7AC1F70C1FD350FB",
       "currentBytes": 2738836
     },
     {
       "file": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.request.jsonl",
       "status": "modified",
       "originalSha256": "20e171f63defaa23481c780e652ffbeef805ea88bb589c70e10dd8a66f9c8fa4",
-      "currentSha256": "F7076A38B4E13FD596FFF5D46D1431DC10A72361F7261F8BE6EA8025D16FC44D",
+      "currentSha256": "7A1ADDB8F3B6E36858005E48ADDC7EB4968642EB1865DB3D2DCEED9C111528D2",
       "currentBytes": 13614
     },
     {
@@ -174722,7 +175210,7 @@
       "file": "docs/receipts/hv/20261028T233627-admin-pwa-source-round3.verdict.json",
       "status": "modified",
       "originalSha256": "8d90beb49c6f1af30d173a82fb1daeff87632605a48b2c8dd26c67cb1ade7b4f",
-      "currentSha256": "9A903F9A32D97B32AE8BAF1935B12C554C2EFB87E427150DDC648FE062DD3086",
+      "currentSha256": "FCD0E73C19AFA50817F2CC7504CC7E11F1E3E707C4E14B2803185D148DC4FAD2",
       "currentBytes": 43133
     },
     {
@@ -174736,14 +175224,14 @@
       "file": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.public.response.jsonl",
       "status": "modified",
       "originalSha256": "3e1a90fffb22c7f1665d9327af691505a06274b02a6c7c20f09af19a2761d3d6",
-      "currentSha256": "843EFD1884B273B618E70F9DCFA146D72B98F390A6DD0CC5BA844867B3CF85E5",
+      "currentSha256": "5740E24FF774E6145BFA252F63DB643D740510C6459D39D67244B5DA0D50EDA7",
       "currentBytes": 1873577
     },
     {
       "file": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.request.jsonl",
       "status": "modified",
       "originalSha256": "74ff76ae535947bd475f8cf82bbc02210b49683de28c4ba9d7281ef63bffb4a1",
-      "currentSha256": "AFFB413312AFA2FF983289F941DC074F73AE9A4FFB086FA5687618552498DAAE",
+      "currentSha256": "EA6643C52030DF0D45EE5564139EAE489DDDE20238B3D8CD393B6CC2E2E5CBE0",
       "currentBytes": 7870
     },
     {
@@ -174757,7 +175245,7 @@
       "file": "docs/receipts/hv/20261029T090008-admin-pwa-source-round4.verdict.json",
       "status": "modified",
       "originalSha256": "f94cf1bf0961bfbea310c31597bf18327b1d13103d30f49bc05d6d27c8ff9feb",
-      "currentSha256": "C56565710BBF985AAD61FD32F56E00BDECCF646E5C6872F79D03983B39B56059",
+      "currentSha256": "573B6F8B19E44C07BD3D711F3C8ACA6ACDAAF68963CFFD0E9CC4A17444797427",
       "currentBytes": 50373
     },
     {
@@ -174771,14 +175259,14 @@
       "file": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.public.response.jsonl",
       "status": "modified",
       "originalSha256": "e30e508a09adfc4ff324c40484c6b9912e195864aed3b72ccb474cb5774a4c09",
-      "currentSha256": "2A66F4A69AB264D128A8CDF5351AB868F990F705E024A6D1A8D73D44578863FA",
+      "currentSha256": "2A2574F0C8A5528E25977347E59266F1945C294F547ED670F90CF6AE668F3BD8",
       "currentBytes": 1788767
     },
     {
       "file": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.request.jsonl",
       "status": "modified",
       "originalSha256": "fae5341693576c289f58be4fd3e128f22f0727012ecd0e2e589116b00f3c6abf",
-      "currentSha256": "BA5B64221606FF985BA2C3572A129DF248089731F61749E9865480353A3EA1C9",
+      "currentSha256": "83FCF58454DB13E79851326371510A60AA387BBB99B782FAFD2CF5F51915B41F",
       "currentBytes": 10132
     },
     {
@@ -174792,7 +175280,7 @@
       "file": "docs/receipts/hv/20261029T094325-admin-pwa-source-round5.verdict.json",
       "status": "modified",
       "originalSha256": "3db0a8433db1e0c763f28ba4c876ab41bca6efc532984036e0f1c5cb2e50ba7c",
-      "currentSha256": "2CD079023C394753CF1951BA17027A5308385005DF774E1F7811C091B491379E",
+      "currentSha256": "0C829592B2683C7D679BBAB270B9A40B4170CCC40CBF447B106D2F17180AC1F4",
       "currentBytes": 52318
     },
     {
@@ -174806,14 +175294,14 @@
       "file": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.public.response.jsonl",
       "status": "modified",
       "originalSha256": "002bce5b80a98da2595e47eaed68fb117e666d418bba3a582e153c7d6c7d7374",
-      "currentSha256": "8C340DDCAA71FD0DAB6EB4DDCA193C4EFC67A97BA0FFAAF013794B3B2AB9A303",
+      "currentSha256": "E9AAD39AAC7E66BB8A9D55613008218058A24813CBA6D204152FC70C4C9CBC80",
       "currentBytes": 1692026
     },
     {
       "file": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.request.jsonl",
       "status": "modified",
       "originalSha256": "9f5fed4cf095ed80ff32cc32e3619fd932ca183878c32c7b93a87c51d7e8a758",
-      "currentSha256": "D459AC2976A8B4D487BD55D8FB803EE92EA2355C4DE0D7B560AB3F62EADD2C3B",
+      "currentSha256": "A5D5BE30A624E1F0B74B6DED419574891989E16A9DF2F0CFBC98951005CC5606",
       "currentBytes": 14046
     },
     {
@@ -174827,15 +175315,29 @@
       "file": "docs/receipts/hv/20261029T102510-admin-pwa-source-round6.verdict.json",
       "status": "modified",
       "originalSha256": "c35328448c4bb34d981a1ca25d589e670393b0f516a5f86e5fc84c55a8e9a2d2",
-      "currentSha256": "C10440E6765E8459B34D066761EAB2CAAA0D75A5DA56E9C9E492FB5CFF9E0CB3",
+      "currentSha256": "042E603A28C5D84595AC441EE628B26FE77DB85AAE55877ABD4D9E8590A31391",
       "currentBytes": 50898
+    },
+    {
+      "file": "docs/receipts/hv/20261101-operator-context-publication-report.md",
+      "status": "new",
+      "originalSha256": null,
+      "currentSha256": "C58A3AE28A38007F5CDD3582279CF45508AB0D4E08A22AE18438A23F3A7C414D",
+      "currentBytes": 6461
+    },
+    {
+      "file": "docs/receipts/hv/20261101T150909-operator-context-commit-map.tsv",
+      "status": "new",
+      "originalSha256": null,
+      "currentSha256": "40D5171302A405080682A1548E90351DD7EBD0D0185CFA0691B15B232377A813",
+      "currentBytes": 21283
     },
     {
       "file": "docs/receipts/hv/20261101T150909-operator-context-publication-correction.json",
       "status": "new",
       "originalSha256": null,
-      "currentSha256": "BBA16FD8E05AED6E81AFF3D0E095235F028D5BA9BB1D4E940528B06D4F88ABEA",
-      "currentBytes": 23401773
+      "currentSha256": "A07F55D21C82ECA4BF77CC8BDC9291C9B96E49416E1F2D6D31ED3D715A46509E",
+      "currentBytes": 23402892
     },
     {
       "file": "docs/receipts/session-close/20261030T144202-wordpairs-closeout.json",
@@ -174843,6 +175345,13 @@
       "originalSha256": "ee1b2f3bf4d43578e29d59b7c4ef4cfe8df4cfc9878566f8154edc30074ae990",
       "currentSha256": "01249D7A304F825B2AA83621D4B513E394110006837F6DDDA24BE83AFC7F1EB2",
       "currentBytes": 753
+    },
+    {
+      "file": "docs/repo_review_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "f9be658b59d8172c3c0a512ec8e0c43e3ec6d3a71e086a200ebf43e13e4f53ca",
+      "currentSha256": "789A5E7FA01389C359BC61A38D2179ABFDCEA2DE2335C38183DFABF94E45C9D2",
+      "currentBytes": 179040
     },
     {
       "file": "docs/requirements/archive/requirements-wiki-before-ui-20261027.zip",
@@ -174918,14 +175427,14 @@
       "file": "docs/submission/deadline-20261101/evidence-manifest.json",
       "status": "modified",
       "originalSha256": "d6fbfa6a261db94e32f4f740908a2947e5dd059edbd53637b43d7066ed1b1bb7",
-      "currentSha256": "F6BC8319536C7079CD7B97EB4B9992D4C32BB127BEDA7B8B3C83FA5F653D9CFD",
+      "currentSha256": "70649EBD294464FC3C6CD8327C0D1FE0AAC7EE60F27C5876654F33AE5AF8F434",
       "currentBytes": 42032
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/hosted-command-preparation.md",
       "status": "modified",
       "originalSha256": "3fd207402e9fdd346c3a541a1472c226c9a8c06d360890376a69498bef468341",
-      "currentSha256": "2BE4814AEF88BBD33FD08DD113EA65BE65D22BC8BC1B423B9222A495326B268A",
+      "currentSha256": "3BDBB92896DDA9165A050C4438F6FA83DAE9A68366C87BB038D292E26B00D1C1",
       "currentBytes": 7049
     },
     {
@@ -174939,14 +175448,14 @@
       "file": "docs/submission/deadline-20261101/evidence/local-gate/capacity-fixture/receipt.json",
       "status": "modified",
       "originalSha256": "d7e2f9e9fdc09f3e80451235f22304a46d1be597594837ffcda7fd45695c3b48",
-      "currentSha256": "074AC107BE32D189808B8B2B793631909BF5EF4B676060A4BE77BD847D99AEDC",
+      "currentSha256": "FC86281C185F848BEDA9B146A4D3909F23FB27B0800CE570B37E355C75AD5542",
       "currentBytes": 2457
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/local-gate/chain-completion.json",
       "status": "modified",
       "originalSha256": "014c1b79a17162cae81b55631acf65625c4e8b48d0351f28cd89a89e669c7a60",
-      "currentSha256": "8CD69F3229EEFB4E6A31176E20AFE076ABF470FDE82A45B842402BA96F7B1DDB",
+      "currentSha256": "79DE7BA100DEBC12776512A2C8691090DEB1F8BC08C2CFB32FE7AA2A4264175E",
       "currentBytes": 6017
     },
     {
@@ -174967,7 +175476,7 @@
       "file": "docs/submission/deadline-20261101/evidence/local-gate/core-index/evidence-index.json",
       "status": "modified",
       "originalSha256": "65eed3c38528076e330972798c6674664cd7d065d7dd09caa3eecc29e84653a7",
-      "currentSha256": "6712EBB7FE7F1AADC2707BD174BBF4DD00172FBE18F32972A37BF0C2CD29CA15",
+      "currentSha256": "89E2CB1D43765D4D0C9ECA2BF1D9CB350C2A4F01305C3E48AFBAED6B327FFFE1",
       "currentBytes": 16818
     },
     {
@@ -175030,7 +175539,7 @@
       "file": "docs/submission/deadline-20261101/evidence/local-gate/full/validation.json",
       "status": "modified",
       "originalSha256": "4f58e1b50de1fa25a93260a33e9838c0eb959bc7780c80733a49d29428d0f2f5",
-      "currentSha256": "68A49D503DF9E42A67D4DD6318067057DB6CBE3A0E948CBC4D918A5E21C2D995",
+      "currentSha256": "92753F222F39F139C98F657E762B27EE632351CB83DABF8BB3696B85C41F41BF",
       "currentBytes": 3970
     },
     {
@@ -175058,7 +175567,7 @@
       "file": "docs/submission/deadline-20261101/evidence/local-gate/powershell/evidence.json",
       "status": "modified",
       "originalSha256": "bcd881d0f6f22919126abe7a0bf01297436abebf42e2b4e150359d882c3361f3",
-      "currentSha256": "A2F7C62B139B839F803A62A37C3A48C3AAB13EF0787A0B53D0F49A54198D568A",
+      "currentSha256": "9DBACE52C71552D7B7E0CFE819AC7995E2FCB8C56CC41878E31EAB6E0EA4F77C",
       "currentBytes": 9204
     },
     {
@@ -175170,14 +175679,14 @@
       "file": "docs/submission/deadline-20261101/evidence/local-gate/root-review-support/authority-receipt.json",
       "status": "modified",
       "originalSha256": "4f0542485069ef487c87e78187a80df1c404fec4fa275701d3fc1c9ff248b3ab",
-      "currentSha256": "C2985E8CA7F1B2E32FF958ACA544127B11BA42E4272822053D3C2DEEDE8A30D8",
+      "currentSha256": "7196782E4F155594C0C6DC4EA1EFC59AEC58FFC81761219FDA733AD92FA97546",
       "currentBytes": 1723
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/local-gate/root-review-support/matrix-current-summary.json",
       "status": "modified",
       "originalSha256": "1fa4bbd6394a49c20fbe07fffe64ab7247d4f7ae8df34b1a5910850908f0423b",
-      "currentSha256": "670130E12F4207C1BE2665D67D17C591ACBC4C85E7B207EF06BEB3264FE05305",
+      "currentSha256": "903EBBBDA7D654BACAE3C5CF8DFBD0914315A1FFD9D098ADCCD6BA4E949C43B6",
       "currentBytes": 111202
     },
     {
@@ -175205,14 +175714,14 @@
       "file": "docs/submission/deadline-20261101/evidence/local-gate/supplemental-index/supplemental-evidence-index.json",
       "status": "modified",
       "originalSha256": "e44b3d1b2bece547a4b8db0629239cab4f6a905776edcf69e2c67c8625082367",
-      "currentSha256": "6B220ECEF04809EEF12AE23317B6175F582414DAD2666D9C2CDEC9B725192201",
+      "currentSha256": "EFDDFB6DC59672B35B331139F5BDA53B5A819CF9E8233672C97BD59820C88DAD",
       "currentBytes": 7848
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/operational-timeline.json",
       "status": "modified",
       "originalSha256": "7e7f9498d765870adbf52dd6e7429c5f1d054e89fc6fa44da1bb66320e0c38fa",
-      "currentSha256": "3AE25040382B49E948644A334CCD7D8378621B16B904F4AB1C0AE28D407CD139",
+      "currentSha256": "D89C4A30EC38D626DB036B7356118CD08563C34F90FA1195CC4272AD7DD239AE",
       "currentBytes": 41066
     },
     {
@@ -175226,14 +175735,14 @@
       "file": "docs/submission/deadline-20261101/evidence/reviews/20261028T195803-admin-pwa-source-round1.verdict.json",
       "status": "modified",
       "originalSha256": "dcd8aa22b33ee794404fea7044404b26025e14051ff24d2d3f251da7e8bbecdc",
-      "currentSha256": "4CD49C14EE58340E03DF7EF2AC1FB90DC9290E0FB9C2242CE7FF2FEFC8EADD30",
+      "currentSha256": "7B321B9F21507B19875D53D7CD9E4187DE46E922551FFDC147821CA3F9A8B62E",
       "currentBytes": 29125
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/reviews/20261028T204722-admin-pwa-source-round2.verdict.json",
       "status": "modified",
       "originalSha256": "36fd4817e66f96137f8668ea64086764799090d83f01795757ea16dcdc57c4b3",
-      "currentSha256": "540118C0B151F4980E56CAC6D226FB829B33EF56520C3E2B1A173EE74DBA8BB6",
+      "currentSha256": "BF8F964B74A39014EF2813F5F4E8F3286932238D4D6D0FBE0C9F5C454232AEBD",
       "currentBytes": 36335
     },
     {
@@ -175247,28 +175756,28 @@
       "file": "docs/submission/deadline-20261101/evidence/reviews/20261028T233627-admin-pwa-source-round3.verdict.json",
       "status": "modified",
       "originalSha256": "8d90beb49c6f1af30d173a82fb1daeff87632605a48b2c8dd26c67cb1ade7b4f",
-      "currentSha256": "9A903F9A32D97B32AE8BAF1935B12C554C2EFB87E427150DDC648FE062DD3086",
+      "currentSha256": "FCD0E73C19AFA50817F2CC7504CC7E11F1E3E707C4E14B2803185D148DC4FAD2",
       "currentBytes": 43133
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/reviews/20261029T090008-admin-pwa-source-round4.verdict.json",
       "status": "modified",
       "originalSha256": "f94cf1bf0961bfbea310c31597bf18327b1d13103d30f49bc05d6d27c8ff9feb",
-      "currentSha256": "C56565710BBF985AAD61FD32F56E00BDECCF646E5C6872F79D03983B39B56059",
+      "currentSha256": "573B6F8B19E44C07BD3D711F3C8ACA6ACDAAF68963CFFD0E9CC4A17444797427",
       "currentBytes": 50373
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/reviews/20261029T094325-admin-pwa-source-round5.verdict.json",
       "status": "modified",
       "originalSha256": "3db0a8433db1e0c763f28ba4c876ab41bca6efc532984036e0f1c5cb2e50ba7c",
-      "currentSha256": "2CD079023C394753CF1951BA17027A5308385005DF774E1F7811C091B491379E",
+      "currentSha256": "0C829592B2683C7D679BBAB270B9A40B4170CCC40CBF447B106D2F17180AC1F4",
       "currentBytes": 52318
     },
     {
       "file": "docs/submission/deadline-20261101/evidence/reviews/20261029T102510-admin-pwa-source-round6.verdict.json",
       "status": "modified",
       "originalSha256": "c35328448c4bb34d981a1ca25d589e670393b0f516a5f86e5fc84c55a8e9a2d2",
-      "currentSha256": "C10440E6765E8459B34D066761EAB2CAAA0D75A5DA56E9C9E492FB5CFF9E0CB3",
+      "currentSha256": "042E603A28C5D84595AC441EE628B26FE77DB85AAE55877ABD4D9E8590A31391",
       "currentBytes": 50898
     },
     {
@@ -175296,7 +175805,7 @@
       "file": "docs/submission/deadline-20261101/evidence/status-fix/evidence.json",
       "status": "modified",
       "originalSha256": "3ea77308e2f5148fbea66a4aaa61f9a172f5836d3e3dce7b9db2eed2bc24c2f8",
-      "currentSha256": "ADE5E267974DD4B736FE7D5F71F8DADC9536E0E54C413324C5FBBB77FAE05C77",
+      "currentSha256": "85AE973229168E104348D7A1BC88C45C55F666D183D685C77D6258B87CCCBA85",
       "currentBytes": 8918
     },
     {
@@ -175401,7 +175910,7 @@
       "file": "docs/submission/deadline-20261101/evidence/timeline/gate-chain-completion.json",
       "status": "modified",
       "originalSha256": "014c1b79a17162cae81b55631acf65625c4e8b48d0351f28cd89a89e669c7a60",
-      "currentSha256": "8CD69F3229EEFB4E6A31176E20AFE076ABF470FDE82A45B842402BA96F7B1DDB",
+      "currentSha256": "79DE7BA100DEBC12776512A2C8691090DEB1F8BC08C2CFB32FE7AA2A4264175E",
       "currentBytes": 6017
     },
     {
@@ -175419,6 +175928,13 @@
       "currentBytes": 5747
     },
     {
+      "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-006.jsonl",
+      "status": "modified",
+      "originalSha256": "276bd1bdff883c62d5ab9f16c996e29921c1856f949c1e12e20a72ee192cad97",
+      "currentSha256": "64E4E7F7529715B9CEC1EA301E2E6B0D97C41DB305FC814B7B377D94AB7A20F7",
+      "currentBytes": 7555
+    },
+    {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-009.jsonl",
       "status": "modified",
       "originalSha256": "7ad1aca1e712b0ad5b28f428acdf701a21aaed179010fe6bd72995f3d3ca07d2",
@@ -175429,22 +175945,29 @@
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-010.jsonl",
       "status": "modified",
       "originalSha256": "cb346c6bf9614a8fd8b6eefe751ca80f8c75295b6a727e8d7556482856cbc868",
-      "currentSha256": "2AE55AD4BC1E10F45677CD050D7A0887BB37532A674DD2E632E53FF746A16C7A",
-      "currentBytes": 1364551
+      "currentSha256": "B57F3C230AE2446EF9E8EB0358A3DEF496C3E2134317846FBA18493FCAA4231A",
+      "currentBytes": 1365284
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-015.jsonl",
       "status": "modified",
       "originalSha256": "139c292d5e4135182cc2e8ea2ba225445caa3bb6079c65963e074929283ef85b",
-      "currentSha256": "1136DC01590000C9C024040052FAB1D51E73D81618FACDEB6B497147B72ACE55",
-      "currentBytes": 2605346
+      "currentSha256": "20BADA1DEA9605CC7EC2CBD1EACE2A45985EF7424EA6F3A2D86238BFF0E499A1",
+      "currentBytes": 2607046
+    },
+    {
+      "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-020.jsonl",
+      "status": "modified",
+      "originalSha256": "6a5beb0693847666feb01e145dc426b73b2b9e6285555b00a33b200a80329eae",
+      "currentSha256": "D67954653DFAFD57D9DB47BB44C09C0D85A537BF8A77CCE656DE2FFCD19412FE",
+      "currentBytes": 13993
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-029.jsonl",
       "status": "modified",
       "originalSha256": "331f0c41ed30b8c7af5e650f90e9e89033cf85388a96bed59f4cb938c24904d2",
-      "currentSha256": "4FDEDAD47EA9DE0724114722CA3DB890FA8DA9DEF7C783819348E254DFEC4A2B",
-      "currentBytes": 1664082
+      "currentSha256": "C8B9CBDE9586BE278EC0DD8AD78289DC364A3B4B889EA75F5AAC32ADCBDA4D3C",
+      "currentBytes": 1665018
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-031.jsonl",
@@ -175464,15 +175987,22 @@
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-035.jsonl",
       "status": "modified",
       "originalSha256": "e5858898d0a7f4075d49fde2984653593d147940ac3425c9518847a8a7a569aa",
-      "currentSha256": "4F05AD7ADE8AC99DCDED78541A8DC51A3EEA7B7C018CF6CAB023DAFB1D0746A3",
+      "currentSha256": "AE92E569437F4DB8822C0C4FD36C629CD8FCBD97D49288039C2A958BDF5D13C2",
       "currentBytes": 684301
+    },
+    {
+      "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-036.jsonl",
+      "status": "modified",
+      "originalSha256": "8953945e36c64cd7f33159d69104a6a2feb5475b1c5778750e77b6b0181a3161",
+      "currentSha256": "FE73292B47ACCE376D19A95F2A4B4F3F2DDC1F4BB47CFD527B11723383B8FC42",
+      "currentBytes": 44515
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-041.jsonl",
       "status": "modified",
       "originalSha256": "6aa709d614dff9d816952b489430869b225ee0c2ade992ec90d3e7d38d180dcd",
-      "currentSha256": "9A00C9756E485A2D047887495752C5E2D24D550DC16A3F6DD2C54AB7B65FD0DF",
-      "currentBytes": 1625008
+      "currentSha256": "DE7C696979DD207EB38B7A44B7E4ABF3FAD9058857BA2F583DE2887DE0AC1F10",
+      "currentBytes": 1625949
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-047.jsonl",
@@ -175492,8 +176022,8 @@
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-051.jsonl",
       "status": "modified",
       "originalSha256": "8c2d194de6e0c0fd8fcb9663d0b7292e215d4024afc66b2b8a0850cf86f5e938",
-      "currentSha256": "0C89632FABFD224501EA569C343021B9B98D6222FBB2730EB7469EF90D11DCE2",
-      "currentBytes": 1779619
+      "currentSha256": "73AE9CA69B4F9E9B7923C743C43BCEC920270072FB51C9EDCEE8830CBA422E88",
+      "currentBytes": 1780701
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-052.jsonl",
@@ -175513,14 +176043,14 @@
       "file": "docs/submission/deadline-20261101/redacted-artifacts/artifacts/artifact-057.jsonl",
       "status": "modified",
       "originalSha256": "90fe589ce0ea996c4153ab86cdaf7624e2dd6413184579de8b15886143292c99",
-      "currentSha256": "29C0D8CC39056FEAE0909CBA38E4DBE4BA963E2F4F2E25FE31E1BF48C1D6E6E1",
-      "currentBytes": 1453880
+      "currentSha256": "D5E9D90BAE152E8E7127398BF9C203E1C49CD933D3ACCC541C6116A638826CD0",
+      "currentBytes": 1454360
     },
     {
       "file": "docs/submission/deadline-20261101/redacted-artifacts/manifest.json",
       "status": "modified",
       "originalSha256": "475842da07a4cdcfdb9c036f608b89ae76d77cd406461705e40dfc6c9e9ef296",
-      "currentSha256": "D30898309F36403F86C47C3B736275AF28C9221E4BCEEB2B71A5F97147445887",
+      "currentSha256": "CAF6DB3FE35F8BB94C6C076EC3396E6F0480A660E7A4865D39E8C738666FBD36",
       "currentBytes": 57549
     },
     {
@@ -175534,8 +176064,15 @@
       "file": "docs/submission/deadline-20261101/redacted-artifacts/review-artifacts-redacted.zip",
       "status": "modified",
       "originalSha256": "b3329a5fe415720b35630717737cfdf1de8d4ac8fd1a1b533f89bc6c3144ca63",
-      "currentSha256": "229FCCEC30EBAFA0866207D4E0EDB1D67D4ACA93459765048B7DA23150AF5709",
-      "currentBytes": 2449943
+      "currentSha256": "623A95CF15B93DA9EC4F5B009F074A0DD222947B099D6D22DC749D28520E2859",
+      "currentBytes": 2454163
+    },
+    {
+      "file": "docs/submission/deadline-20261101/report.md",
+      "status": "modified",
+      "originalSha256": "1d978e3eea0ae7d53ca6dd1416a1ea4c06da8ac94e3938c4635d51832413a780",
+      "currentSha256": "A26372697B8459238AD10F3AFDE828D4199F68B38D6872DE99A33B70ED9CDB75",
+      "currentBytes": 23139
     },
     {
       "file": "docs/submission/deadline-20261101/token-accounting/accounting.json",
@@ -175629,6 +176166,13 @@
       "currentBytes": 1157
     },
     {
+      "file": "docs/submission/hv-index.json",
+      "status": "modified",
+      "originalSha256": "d722efc955517c4da3324fcf263bf63a8816817bf45b5deef3444c5c75da7d76",
+      "currentSha256": "7D223E44C31BE3276F240C4ADEC9A2EF29542B47D714CB1A2439403ABE2ACDAB",
+      "currentBytes": 51031
+    },
+    {
       "file": "docs/submission/requirements-receipt.json",
       "status": "modified",
       "originalSha256": "eccd6c5caea5b5b4f30daabcbe0d81acda142dac8e8ca355091d32f84edc01a4",
@@ -175648,6 +176192,13 @@
       "originalSha256": "f2303bb457eba84a59082d857fef2fb4ed1e0f8572d11d23ff8bf60746012e0f",
       "currentSha256": "B3D177D3AEE487421FDBEF70176B068936E689A53B4444DD5EE1643FBF15EC7E",
       "currentBytes": 259617
+    },
+    {
+      "file": "docs/test_execution_receipt.jsonl",
+      "status": "modified",
+      "originalSha256": "396b71e1d5397ac9f8fb878153b1b0f6671e03d146b62816ddcf06e02e8d1872",
+      "currentSha256": "DD632B9B9F5136AA5F78D7B3A3D85D1BAFF01D4476EC1502AD75792539286533",
+      "currentBytes": 44136
     },
     {
       "file": "docs/testing.md",
@@ -175674,421 +176225,456 @@
       "file": "docs/testing/ui/archive/design-20261027/requirements.json",
       "status": "modified",
       "originalSha256": "285ce5a7c711d2551c02fc8ed617151859be2412c01993f593971b9b07097398",
-      "currentSha256": "55FE2F648DBED000391B75C8CA80572EA0EE7BFAD345ACBCDAE63CFDCE2DD28E",
+      "currentSha256": "DB290953D8B21538C16FB7D09C280694976F48C20741FD811013AF363F7E0A3E",
       "currentBytes": 680378
+    },
+    {
+      "file": "docs/testing/ui/archive/design-20261027/sources.json",
+      "status": "modified",
+      "originalSha256": "e1b2a3431a68c4d3656485d5b3bec43668b141dc488676dda0b5fd850be0e79f",
+      "currentSha256": "A0664AA70CFAC23D03BB5DECF9AAB86CF2646F0231681DD2673CA44ABBB91CF8",
+      "currentBytes": 4280
     },
     {
       "file": "docs/testing/ui/archive/pending-import-before-product-20261027.json",
       "status": "modified",
       "originalSha256": "d417f98dec488046d785a73b9da31ff7c2f13ea1e1cc6337a18ecd9100bdc9a8",
-      "currentSha256": "6346DCBD938C0DB7AFA0976901ECD970BA56997EF05D0F76041D8D79633069B9",
+      "currentSha256": "B8E89EB2276E842E8323C29A9469CF9DECBC73697BBF1AC21B4FA41D29E4DED7",
       "currentBytes": 250429
+    },
+    {
+      "file": "docs/testing/ui/archive/pre-safe-errors-20261028/implementation-manifest.json",
+      "status": "modified",
+      "originalSha256": "fbf9b3b43ae80758aadcc6e2805bd92fceb7b6a33b9b7f78a17ffa23eb7b1526",
+      "currentSha256": "6AA1B5FC85B6CA7C1ACB21738499202E428BB02B9BF2EC3FF0BB45BD106CACED",
+      "currentBytes": 39756
+    },
+    {
+      "file": "docs/testing/ui/archive/pre-safe-errors-20261028/implementation-receipt.json",
+      "status": "modified",
+      "originalSha256": "03dab769095e2eb8efc303266c1fbe80a45f1393fb1bf50e22f703265fad8f28",
+      "currentSha256": "22C1FBC4CA887D945E88CB368E9199EC5D475CC013EDB4E32484F4F89D832DA6",
+      "currentBytes": 7642
     },
     {
       "file": "docs/testing/ui/cases/TEST-ACCESSIBILITYDETAILS-144.md",
       "status": "modified",
       "originalSha256": "e5d0bc6c69eceeb613d4aa3cba1a5fe37e8d7b12cb0469a3b067270fc9f7e771",
-      "currentSha256": "1B1E750EB3A0CF7E470545BC59BF46FB7FEE9C47532AA476B4DB3363AA3B3969",
+      "currentSha256": "A43AEC965566F377731C7DEA2D340AFA93F856BDB2BD2EFF9132A9128E483AEB",
       "currentBytes": 5870
     },
     {
       "file": "docs/testing/ui/cases/TEST-ACCESSIBLEGAMECONTROLS-044.md",
       "status": "modified",
       "originalSha256": "681f60b31c88f7069074e43b0d05fe049fe48c52b3bfc69256e3f0aedbcec292",
-      "currentSha256": "A0904E89F3D9B88B88A875757E8CB65AF20ABF128B6BE28E851F140AC007D16E",
+      "currentSha256": "E574C0ADF868970280029BCC53BEB33B3E9DC657FCFB2AB3F0F8F1FEDC4AD2DE",
       "currentBytes": 3965
     },
     {
       "file": "docs/testing/ui/cases/TEST-ACLAUTHORIZATION-132.md",
       "status": "modified",
       "originalSha256": "05142b1728b1eb43be3fb7d305c5f4258bdd435ef761ed24d8084a42ab77d586",
-      "currentSha256": "DF371FFA5C2229BB930658852CE53C3CEFE48E1CC017E087692D927FE5347B74",
+      "currentSha256": "5DB5AEFB3AC736379A7095A3237932C3D426AF9C3244388F56451E0519F18C85",
       "currentBytes": 4550
     },
     {
       "file": "docs/testing/ui/cases/TEST-ADMINUI-136.md",
       "status": "modified",
       "originalSha256": "08e1b6a3273dd3feeb422dde2b5761eedcc03593a915800b183f1c1a4691a5eb",
-      "currentSha256": "56881FCD3F339B0E7E5C66CFCB585B20344CA1D81FC6F1BF8F65BC7A4A9AE38A",
+      "currentSha256": "699838502F43CFC4DBC9B9B1565BFA069BF4F09A2B9397A884C19BD928F6F3E2",
       "currentBytes": 11800
     },
     {
       "file": "docs/testing/ui/cases/TEST-AUTHORITATIVEANSWERHANDLING-045.md",
       "status": "modified",
       "originalSha256": "0951c0f1381203441d4c8090e6c6d5b456acc6c9981bb8c9027ed1c65c710358",
-      "currentSha256": "1A1DCCE26839D9CE54B93B5DCB76F9F445ED34E08CC6212B9E79884756FDC7D4",
+      "currentSha256": "F06A59EED87003AE0A8DB66B0B1990DAAFCFD85616E0923A4663941E56326A56",
       "currentBytes": 4263
     },
     {
       "file": "docs/testing/ui/cases/TEST-BROWSEOPENLOBBIES-022.md",
       "status": "modified",
       "originalSha256": "303a23c2322ee59702929075a27b545d9072401474f2b4c22d655d824fe30b98",
-      "currentSha256": "2D2A13EE47B923BFD60E9121102B1285C99261CF71ADA8B421BE640F3A58317A",
+      "currentSha256": "FDFA6C4CF5DA892986F0EE479139026D381BF0D7CA8043AEE8852A254808334A",
       "currentBytes": 3730
     },
     {
       "file": "docs/testing/ui/cases/TEST-CANDIDATEHOLD-141.md",
       "status": "modified",
       "originalSha256": "32421f1d7303e5ff6b0c8d1ef264d3e5d96efdb40ea6f2249ad972496d9482aa",
-      "currentSha256": "80579D1B5512F676EEFEB16C7003DD31E2FBBD25AF6CDC6B1A35F58217E62AD9",
+      "currentSha256": "774591271C00CB4AFAAA08207DE3AAA2087ED6B39A26771342D7AD5E6AFB4A23",
       "currentBytes": 5300
     },
     {
       "file": "docs/testing/ui/cases/TEST-CATALOGVERSIONING-133.md",
       "status": "modified",
       "originalSha256": "0f6e6d9e8dc7928536f8c66f6775d083954b7a3abec7bc4eee4db605d5ba1d7b",
-      "currentSha256": "BF8ACDF9C18CCCD7B32661922631ADC54CADC46DC443A93A8E3F933D3BD78A17",
+      "currentSha256": "D489B59EA76D1C244189C61F2FEE2A13FBBB207D2A5F2B1B17B60434BF085CAE",
       "currentBytes": 4550
     },
     {
       "file": "docs/testing/ui/cases/TEST-CATEGORYART-005.md",
       "status": "modified",
       "originalSha256": "67bed9013f0a66825e93028b0c2b4a55205ad9f630c3e905755b17cce7360560",
-      "currentSha256": "96D9FAB4778E0FFB426A7C91D080414CC214DB78D5B934ADC371D4E66DF12394",
+      "currentSha256": "106D63D665E41322B8229CD49637D855558071734D9DDBD2EDF09B8D8D17E93C",
       "currentBytes": 4966
     },
     {
       "file": "docs/testing/ui/cases/TEST-CATEGORYCHOICE-011.md",
       "status": "modified",
       "originalSha256": "96f48f6ca4d5cc3aa331dcdc0fbf119f63dfc759a3c954ff8b43ecb341467b0d",
-      "currentSha256": "2004233ADE18E100E77E697E23FEC046199491F56BE5D0D21D2C054154435B18",
+      "currentSha256": "727B72736140E89C4E1D86FF88279B76D85EFA8175AE192E9B6EE61C70D893C5",
       "currentBytes": 3774
     },
     {
       "file": "docs/testing/ui/cases/TEST-CATEGORYSUGGESTIONUNLOCK-019.md",
       "status": "modified",
       "originalSha256": "c143643a816f70986743b9ec89f4755492a49500ca133d224d30f3f38529b940",
-      "currentSha256": "6F5C2A39F8295B3B53EF5C667242238CEAE647833D44936B22E08950EC542A51",
+      "currentSha256": "10925B88EEBD622F690DCFF4C5B26650B5E96F9EE43580CB4CF19803D7397D65",
       "currentBytes": 4132
     },
     {
       "file": "docs/testing/ui/cases/TEST-CONFIGUREDCAPACITY-024.md",
       "status": "modified",
       "originalSha256": "bc4bdfea9e5e58b8dc4415cb0eed9a5ca0dcb09421ca89204a1f293abb38b1b0",
-      "currentSha256": "6926655B7E28AB2C6C2B70150FA27D35F03D34A0D33B62D16ACACF257CF6ED27",
+      "currentSha256": "D96A011847CDF2EC05FF569D1B3577AECBBDB594D39B74B5C6A6648D9B3811CC",
       "currentBytes": 6006
     },
     {
       "file": "docs/testing/ui/cases/TEST-CONNECTIONRECOVERY-109.md",
       "status": "modified",
       "originalSha256": "2f3cac1b0e23cc18e7988ae4a7801b862e76888007acef7772fd3384a443fecb",
-      "currentSha256": "5F0E0E9A4151D04197169ADC91D33B1F176C137B3E649B06418AE677E41EBEA2",
+      "currentSha256": "08B5F350FF835747572C8CC55F7A17A37926ABEDBA5287B63D0B25D7800E2173",
       "currentBytes": 4177
     },
     {
       "file": "docs/testing/ui/cases/TEST-CONTENTVALIDATION-016.md",
       "status": "modified",
       "originalSha256": "033e4de1ffd399cecedb07e3b7f515f4c56997b995777027fcef747c0727239a",
-      "currentSha256": "352C2C3B44F6C2E688F9D45D6D094672C087D7AF99FE65D0DC410F4642C2233C",
+      "currentSha256": "08E708B3981842A494C44EFECA85A90461E2FAF5C6B691F277B6F36FE321D865",
       "currentBytes": 5433
     },
     {
       "file": "docs/testing/ui/cases/TEST-DEEPLINKJOINANDFULLROOM-026.md",
       "status": "modified",
       "originalSha256": "6cbe3d26c2772c1a309004caf12749b6b944244943c106e4c68859a3ef7b5a2b",
-      "currentSha256": "C794741FD736EE9B4AAFC352343B5DC2633D1F649E0D02484BAB1E7327413CA5",
+      "currentSha256": "32324C7C1E750C3C28D5128E1B6212A87B141B25C541DB47ABCC72FA9E5B7EC9",
       "currentBytes": 3717
     },
     {
       "file": "docs/testing/ui/cases/TEST-FINALSTANDINGS-013.md",
       "status": "modified",
       "originalSha256": "10725c382d2097c72d35b6cf02c4ec15b1d65cd0d3f8da6c20e15388adee1050",
-      "currentSha256": "B86262884E5B9E97FC15706A180A12A1323763CD157AE26F8A0939F96CAC8A8F",
+      "currentSha256": "21D9C38FBB7C37A50F1F3C3CC9B6490BA86BC946EE8483F3A716DA1A60BB72B6",
       "currentBytes": 3351
     },
     {
       "file": "docs/testing/ui/cases/TEST-FIRSTCATEGORY-004.md",
       "status": "modified",
       "originalSha256": "94145d193b73040502deb78a02fa69884ff3c612f7ffdf13193bc22568e72a34",
-      "currentSha256": "4840B5EB7456B408219108298A6BB3BCD6089D4DB09FCE98BE46294F7FC04C0F",
+      "currentSha256": "04E4419EBFA04DAB13296881FE09F379232B4C2C25713DEB505DC4EF356B4B6E",
       "currentBytes": 5259
     },
     {
       "file": "docs/testing/ui/cases/TEST-FREETIERQUOTAHANDLING-037.md",
       "status": "modified",
       "originalSha256": "83f20368420bf3595568e21b861d0827d19637913b45003df6a3e9a41fd1b3f0",
-      "currentSha256": "609AF766BB5C55B150B63672FFBE70DF29C7E14E12EBF717A30D85E96FD8D42F",
+      "currentSha256": "2D43F181C5D4124A95583E77A8956EC7930B435E498FCF752AD713A9874CB4AC",
       "currentBytes": 4617
     },
     {
       "file": "docs/testing/ui/cases/TEST-FULLROOMOBSERVER-027.md",
       "status": "modified",
       "originalSha256": "9a036398358fe4caa0c61d23c511a1a06f6b765771908eb70512621e993fd364",
-      "currentSha256": "2944CB0D6995FAD46838091A91D58906FA489C8E527D891EACBBB6C8935D46FF",
+      "currentSha256": "328C96DC825AD8DF6574D61B77B8A4CFE26C29B0841A4D21FADDBF8E7ECAD41D",
       "currentBytes": 4317
     },
     {
       "file": "docs/testing/ui/cases/TEST-GUESTPLAY-021.md",
       "status": "modified",
       "originalSha256": "272f78fdd2d365eaea400b0b10d4e965655fdbd358aa40c96b708a44d54a4009",
-      "currentSha256": "5BD2326C3018F39FB4964376B2CDAF8818BEB8ACCF47CE37D04A98C461FFC524",
+      "currentSha256": "00D4B9C3E7D36B532C931A652DEDAE5ED313AD558E88DBE2554FA0F1EBE89CE2",
       "currentBytes": 4324
     },
     {
       "file": "docs/testing/ui/cases/TEST-HINTPROGRESSION-009.md",
       "status": "modified",
       "originalSha256": "e51b4c61bcbda1e9be0c68ed0053b163f1f39c1f7e509b4582a003ad1a2b4780",
-      "currentSha256": "0EDE0892730F6D4ED054C690F8E97B98A6978970AF08B09320FC3C7C99204BDA",
+      "currentSha256": "2A9B82A3ECAE2D09E8CB6232E25C37C7709A873A4949C8450ADA4F10445E1A1D",
       "currentBytes": 4035
     },
     {
       "file": "docs/testing/ui/cases/TEST-HINTSCORING-007.md",
       "status": "modified",
       "originalSha256": "2164eac30f8a30fa376bd7f781e20d5f80656774d1e41de0ddeb02ffde9cac65",
-      "currentSha256": "0AEAEA1BBA0262BFD0183B6CDD0B5D088C354B8905EAA4E12870C0EB68DECF8D",
+      "currentSha256": "6D253EB0937CD53D5009B806A3AC6BFAEA058ED50F05F299DCD8167E312C9A72",
       "currentBytes": 3817
     },
     {
       "file": "docs/testing/ui/cases/TEST-HOLDOUTWARNINGANDREMOVAL-032.md",
       "status": "modified",
       "originalSha256": "fa3a3e2f02db0d0c46be944699d58bba6c4e45a3f8f2702ec5da42d5d6338c0b",
-      "currentSha256": "D982F33329559F627C516FE1537527ADD5D9B3C81302D8EF4683554A72F59FB6",
+      "currentSha256": "8334CD03FE8560D62863BC87C1D4C6EAA117F80522762E931E97F9B1BD87249D",
       "currentBytes": 3892
     },
     {
       "file": "docs/testing/ui/cases/TEST-IDLELOBBYREADINESSPROMPT-033.md",
       "status": "modified",
       "originalSha256": "6ed43a83da90d475c47119e893b5fc4886b7b8ac500e63a42e1f68f069313a63",
-      "currentSha256": "59FE6E47561E9ABAEA3A78A88D68B740AFA0D2D41B80D86AAA608669386D8DA6",
+      "currentSha256": "24D5CDFD4E7A31460426BCE9997284852A6E409670DB0C10DB9AC20D603BF4D9",
       "currentBytes": 4118
     },
     {
       "file": "docs/testing/ui/cases/TEST-INROUNDEMOJIREACTION-029.md",
       "status": "modified",
       "originalSha256": "320f89d147937e8079f08047404d1aff8ccae2063c97f6ca088d1e5d3e0effaa",
-      "currentSha256": "9407CB56BAD254FA84FFE26FC704B8E60872AB2F3976C068278BC22856109E36",
+      "currentSha256": "C425324DB39F03409D876DAB7A1B37FC5B1824EE8085F74ADC113C1C0BBBF97A",
       "currentBytes": 4447
     },
     {
       "file": "docs/testing/ui/cases/TEST-LANDINGPAGEPUBLICDATA-050.md",
       "status": "modified",
       "originalSha256": "16c4adc5b752e74f634424d7c814d04d991e3c5a548afef4b82cc6b56b44fe88",
-      "currentSha256": "52B091E3195E2C663E29801FBA1899AC5725FA3D05774C0A93C5C682E57B7674",
+      "currentSha256": "767A9FC20CF3BDE06146F71721915E2E6D6D3C177B7A8109667F3F44F3FDE5F4",
       "currentBytes": 4129
     },
     {
       "file": "docs/testing/ui/cases/TEST-LIVESCORECARD-010.md",
       "status": "modified",
       "originalSha256": "72b7d1c76689a42ebb0fb2553333a796c0d186ef3ecd242fdb859466d307eac0",
-      "currentSha256": "A98D078B6914E5C07D3D5786C2E6469A24F7256916FDF71D588F8849F77ECE0B",
+      "currentSha256": "9E01A943D81C49F9D18E74F11F4E2E664DAE1ABAC1A5A269EA56B7AA98971D34",
       "currentBytes": 3886
     },
     {
       "file": "docs/testing/ui/cases/TEST-LOBBYMATCHING-117.md",
       "status": "modified",
       "originalSha256": "6a7c11755bbc1397b8410b208e46c8277aadf7b3be8c8ce42f01b2996c64a5fe",
-      "currentSha256": "5C80F1B17E590EC0091A6F42DE0FC3D2AD081216452A511173623573C19EAE77",
+      "currentSha256": "44A5A1796A8958C4E41E5F02580BA622C31B8FBCD865FA62C693C00B7AB0EAE9",
       "currentBytes": 4932
     },
     {
       "file": "docs/testing/ui/cases/TEST-MODERATIONANDCATALOGBOUNDARY-047.md",
       "status": "modified",
       "originalSha256": "26da3360c6762a5e726c59b7a51ee97624115ab242773554e432d93616e67d86",
-      "currentSha256": "8270E4A5781087A1973E790996B1CDB4C9E726B8DAC024A7EDF2ED409B6BFE5F",
+      "currentSha256": "E2DBDDA1A37D9A5E9EDCF2E137CBEA9CBB7EA1B4F0F768A6144010671C287E56",
       "currentBytes": 4775
     },
     {
       "file": "docs/testing/ui/cases/TEST-NAVIGATIONDRAFTS-142.md",
       "status": "modified",
       "originalSha256": "fa7f7e87142aaf7cf1009d6496387c85c8f6510e0e701bcebcf13879f7c93888",
-      "currentSha256": "0D40ED6B7B8642AE6468047A329B4D42A9A92579F1088DE666849AF29EFA9DDA",
+      "currentSha256": "33A52AF45A33CAA3B8D92AD0375FAF41B10F37CB771B21A67D3B7621B70FC1F5",
       "currentBytes": 5868
     },
     {
       "file": "docs/testing/ui/cases/TEST-NOHINTSOLVE-006.md",
       "status": "modified",
       "originalSha256": "3321bf8d82929cff0a65c505627b725c18f9100d4f25ea391ff6b18f2459be34",
-      "currentSha256": "F4F9F584B763AA117BB939F0B59916EE40FEEE38BD33EE95F8186D1AD5612A7C",
+      "currentSha256": "3D65D3F89078B252DC8E506378B86DDA82C3B6AA42F910C55490897073D26EBE",
       "currentBytes": 3599
     },
     {
       "file": "docs/testing/ui/cases/TEST-NOMINATIONELIGIBILITY-017.md",
       "status": "modified",
       "originalSha256": "a8957a3149cff56a229f5e92598945c85abe29e747015e85123f129a45b96be7",
-      "currentSha256": "4D75DA1BC9F56DEA711444DCB4731E2F66172866E17E097D3FFA5F15CC4A8110",
+      "currentSha256": "06BE52F13FE01ECDC8CB703E322482B88730630B1EBAC62C272FFDC109F2981F",
       "currentBytes": 3590
     },
     {
       "file": "docs/testing/ui/cases/TEST-NOMINATIONMODERATION-114.md",
       "status": "modified",
       "originalSha256": "69e751b3e0e0194a59eda2377cbb853b9e1ca6aa1d8b9c496a445d2312ea2796",
-      "currentSha256": "5EC2609CFBA7518925E521E03FDA013D7CBEBE68C03D35D902EBE0EA8D9B50D1",
+      "currentSha256": "6AC1536A2132905BF0FCB919116966E7ACCE58D275CFA5F775B7EF7D1AFCFE73",
       "currentBytes": 4564
     },
     {
       "file": "docs/testing/ui/cases/TEST-NOMINATIONTHRESHOLDANDMODERATION-018.md",
       "status": "modified",
       "originalSha256": "9476b24c4016be66ea0c15b5f362e1539c9976abfcff1447f81f432bcd17926b",
-      "currentSha256": "A9ED68FF381A083E66B6D1FD9D1CBD203516E9E8F2D63675F8D87CBC28F5EEF3",
+      "currentSha256": "B83C1AD91E6CBD878F5A43EA1FE4906938A3111E9E413A3D0E98229477255A7B",
       "currentBytes": 4307
     },
     {
       "file": "docs/testing/ui/cases/TEST-NOSOLVERFALLBACK-146.md",
       "status": "modified",
       "originalSha256": "6f67c7f3f11317f5bb4c3cb935060e3f30da0b17d4c3d6f2a89faeef72ddc900",
-      "currentSha256": "2A12CC4B30B3A87E1247A2EA385AE86BF7314C333744ED858FB76D032C1B0ED4",
+      "currentSha256": "4F35296178BCB3445885BF64148FF9DD935D5290B993395796F36BFC5EE8D287",
       "currentBytes": 5030
     },
     {
       "file": "docs/testing/ui/cases/TEST-OBSERVERPERSPECTIVEANDPERMISSIONS-028.md",
       "status": "modified",
       "originalSha256": "bb0ca5436f05d3a12b8f530136b8cca60bbaeac01893069536d8c0f0599f6d9b",
-      "currentSha256": "62160CB805D52A9E2CDA4D6B660C78C3DF596B0E4115C6BE4A8E830E96655B30",
+      "currentSha256": "D3EFF70A3D5C217B2A46F5B5A984D91486AC1D4A503A9ADC38976B2FA56D25C2",
       "currentBytes": 3844
     },
     {
       "file": "docs/testing/ui/cases/TEST-OIDCTOKENVALIDATION-046.md",
       "status": "modified",
       "originalSha256": "e0a2120dd944d5c737ba1df193ae0d67d64b1a8a0221f023138281f7bf6ad393",
-      "currentSha256": "7269BE40429CF9564AF8827EED8EB2A08FFA3A9368ED7FDD1D34E2100A6A740D",
+      "currentSha256": "B24055B272E01D5E86C15C2B054A258953DE5079BAD8ECBD33C1C94AD80097AC",
       "currentBytes": 3801
     },
     {
       "file": "docs/testing/ui/cases/TEST-OPENAIOIDCPROFILE-020.md",
       "status": "modified",
       "originalSha256": "2d31ed7e5a879b2f2b02a31bbd85b12a4fb618dfc5c62d6f860a5d8c6572ec2c",
-      "currentSha256": "A1ED2280C054944D769F064E2189C8BC91435A300D71F74D6115A2B809C3D533",
+      "currentSha256": "106BD6D61B22690F4547E70C3A0F6CF3684847FC5DE26783EFBECE2B9A9AB59B",
       "currentBytes": 3980
     },
     {
       "file": "docs/testing/ui/cases/TEST-ORIENTATION-015.md",
       "status": "modified",
       "originalSha256": "935089e934d644bbf98d150c33b164c55fd7dfb81acea0bde48399a4c1c8d5a3",
-      "currentSha256": "F73B14603C9A365D57DFF53D65BA4F326B1EDCAAE8F25E21456D1AFF5FC09C4A",
+      "currentSha256": "448334A850A75108495B6A71C1543E7BE3C4B7EC2156B016A673CA02C8E54168",
       "currentBytes": 3670
     },
     {
       "file": "docs/testing/ui/cases/TEST-PLAYERLIMIT-002.md",
       "status": "modified",
       "originalSha256": "1b577da0f964491f9f67726efbb5ba6b18d82b433ff17fc4fb53185664eb9457",
-      "currentSha256": "4AC3364FAAB36BE4EEECED1CBA0078BCE6E59D2337A1FF58DF252CFA355237A5",
+      "currentSha256": "B2F9CA3C9EC464FFB1C740402978FAFFD4DB224A419107567FBDAAF705D2E6C3",
       "currentBytes": 5195
     },
     {
       "file": "docs/testing/ui/cases/TEST-PRECOUNTDOWNOBSERVERPROMOTION-030.md",
       "status": "modified",
       "originalSha256": "55f71dd7ea79465690b0445767469e714fe600126a3e5c917b554319aa16b238",
-      "currentSha256": "1A7C5FFFDC51366FB0B8500AC41ABBDFB231D8D85E06951A84406EFB54D90D8A",
+      "currentSha256": "E53C8D31A961EBEA07EEA9896760A468DC33682840DFCBD5CA5B001260CA44F1",
       "currentBytes": 3808
     },
     {
       "file": "docs/testing/ui/cases/TEST-PROFILEICON-003.md",
       "status": "modified",
       "originalSha256": "e32339851c546ee155a243ee09e777a1a29cda5aede4c41536f0e83d8e7f07b8",
-      "currentSha256": "F5ABBF9DCC87945A8E961B1E36AB7D1BC8ADADC75F13FAD57FECF3F435FAECF6",
+      "currentSha256": "3F5BDEE1D3DDB948C502FAA718CF8AEB723772ECB831A04212065CC088AE8365",
       "currentBytes": 3464
     },
     {
       "file": "docs/testing/ui/cases/TEST-PUBLICGAMELANDINGPAGE-043.md",
       "status": "modified",
       "originalSha256": "60d98170e69d17ae3c77002e64533b98f7e3c486c92e31dc3a25f06fa89fba54",
-      "currentSha256": "4D354868AEAD03672C6B8AFAA9CF0B8E1A645EA52135CC1F73FFEC6C54663346",
+      "currentSha256": "F9E4AB93094D72150DF3F733B1E03BAE1FEA29CFC3CDB67024B2BE9F962F78DE",
       "currentBytes": 4498
     },
     {
       "file": "docs/testing/ui/cases/TEST-PWAINSTALL-137.md",
       "status": "modified",
       "originalSha256": "ef59504a65b5e62c82ae38c08e2987951a628ff89e79055e78f2cf1c43ed528c",
-      "currentSha256": "03B012CF54ACEC015624914F4331B905A1758F9AC6C1FD0A0E8A1452C08FE0C3",
+      "currentSha256": "EE66E162EBAA20D45EB67CBA75A6BE013470C82D029721334023FD118E3E3FA4",
       "currentBytes": 5518
     },
     {
       "file": "docs/testing/ui/cases/TEST-PWAPRIVACY-138.md",
       "status": "modified",
       "originalSha256": "48c9f4a7beff846b4d53f65ce194a47cba9f54b24314fea2d3b40be0095580fa",
-      "currentSha256": "6E4E3CD677B413D4329D09B63B83764ABF5997C88647EB9D427A8673EEAD1DAC",
+      "currentSha256": "66C35156808D9F30C09810ECB1C82AD3ED29BC964B3F17703C45403F47F977E1",
       "currentBytes": 4351
     },
     {
       "file": "docs/testing/ui/cases/TEST-QUICKMATCH-023.md",
       "status": "modified",
       "originalSha256": "81f89dcccb5e60d2d584b8c049489bc1ad310c65edb405c14d2e366c3efc4072",
-      "currentSha256": "4204821A255776EB94879216A83901D5B1200D9069F58BEEA8C1C660FBE31217",
+      "currentSha256": "E1BC69055872BB6157D08BB1D26C7A2EF439D909410BF0286ECADA0837D44B6F",
       "currentBytes": 3741
     },
     {
       "file": "docs/testing/ui/cases/TEST-READYCOUNTDOWNANDROSTERLOCK-031.md",
       "status": "modified",
       "originalSha256": "18d6c9a3d781fd0badf66c446b05314ea5477c072f509126e05f9e4f3907ed5a",
-      "currentSha256": "E98BF051B1BBCAEB3397962530219907C1A80AD760FAA4777E4706E7D99638CA",
+      "currentSha256": "583738A3C956336D97CB0E5CC8B8CA4A2E475E89BEE3329B83EFE933B7E29911",
       "currentBytes": 4223
     },
     {
       "file": "docs/testing/ui/cases/TEST-REQUESTFEEDBACK-143.md",
       "status": "modified",
       "originalSha256": "7bb279c28942044af3da701553d5c04f33243e0e39480915b0b9c93b38c018fa",
-      "currentSha256": "A6790B7D3BB7DFAF24225A34B71F8859381E058B22C9BA257849169DA69D3439",
+      "currentSha256": "DB2B714734AD5ABBDB818BD91752CB6459574EF742325FB34DC02D93C9FEB571",
       "currentBytes": 6475
     },
     {
       "file": "docs/testing/ui/cases/TEST-RESPONSIVEMATRIX-145.md",
       "status": "modified",
       "originalSha256": "dd01632b69267b4207749d6b11db580ebbbebeecafcd5ae53fc20983cbe38b85",
-      "currentSha256": "B8A461BABE3F89E02D1B1C199089D0148722CFF414F17C3B32B0D1B002995C00",
+      "currentSha256": "93F08A498DEE398F6CAFA434808794D15522AE8D40C68B6F25006C42B2678FC0",
       "currentBytes": 5064
     },
     {
       "file": "docs/testing/ui/cases/TEST-REVIEWCHANGES-140.md",
       "status": "modified",
       "originalSha256": "134dcc112466001403276352c1b40bfb9185742e3a034dae569f66a60590a237",
-      "currentSha256": "FB3F6DE2AB6C262819D76F67B5C415A6080D10A41F86F51DFFCCDD4726DADE64",
+      "currentSha256": "C47C31B423569CD42281C741968FEB17049541F39C3B0F5EF7F2DC58AFA0B913",
       "currentBytes": 6157
     },
     {
       "file": "docs/testing/ui/cases/TEST-ROOMCODES-110.md",
       "status": "modified",
       "originalSha256": "460812d7d4076b43e17761d23714fe61a644a0d1ffed0bc4eb491ab4d4b183eb",
-      "currentSha256": "1DD561BA45691D583F87C785D4775E7028B6B8F5AD7B4AB96889FF3F802033A9",
+      "currentSha256": "8E28C2672E5BE5FF730E0DF5FDDF8BC5851CFDB9DA7F5BA71BA855D49DC38C26",
       "currentBytes": 4986
     },
     {
       "file": "docs/testing/ui/cases/TEST-ROOMINVITATIONS-025.md",
       "status": "modified",
       "originalSha256": "197281c4bf2297d4c650d8d84e5a4d68fa67643396d7f763a7436c85f043f932",
-      "currentSha256": "F59E092FB1EF9531F1C2F7AFF3BAFFA56863091721B5B2BC13A2B493D0A670B8",
+      "currentSha256": "12A920B0D68EF929EDBEBAD1D074A0A89B6068C559DA18B79C48B2034C35DC60",
       "currentBytes": 6058
     },
     {
       "file": "docs/testing/ui/cases/TEST-ROOMJOINING-001.md",
       "status": "modified",
       "originalSha256": "a56a1378f33a0e90907e7ea60c177a3f0ef6deb80b1ce7776d19302129df0867",
-      "currentSha256": "BD2334907918379D708153E4D0071731FCE364939A1D2D143A8910EC3526429D",
+      "currentSha256": "C70ED8A6C03F59F0E3A9707EF7C513A14495B358DEFE26639F1E1615DB50187E",
       "currentBytes": 5301
     },
     {
       "file": "docs/testing/ui/cases/TEST-ROOMSYNC-139.md",
       "status": "modified",
       "originalSha256": "f49725732f3a8b4a88fea3636af65e2420d91dea711add2a945217e4e9e8c5e9",
-      "currentSha256": "22A673AFFBC4A7835164B02AF71716CD4C022EABCDBA6F7B5C1F00FB518EEE9C",
+      "currentSha256": "FAB1B7325CFB3935380885FE7EAC7697F78AA4926CF580858FB1C4DC9E50386C",
       "currentBytes": 7067
     },
     {
       "file": "docs/testing/ui/cases/TEST-ROUNDSUMMARY-012.md",
       "status": "modified",
       "originalSha256": "f8ce40526ba6d7f9d7c6c161b32174c74c7457df302207a73491a7a8cdad7389",
-      "currentSha256": "E8D9448A11C75251CC87C84C43C40BBF7E79CA02A8AF6165F2899D89BA6B14A0",
+      "currentSha256": "9B1FF8D6C48243128E2D6F3CF77DF5F1A655ED3E7E42F6BFB26D47D15AF6ED5B",
       "currentBytes": 3479
     },
     {
       "file": "docs/testing/ui/cases/TEST-SUGGESTIONREVIEW-115.md",
       "status": "modified",
       "originalSha256": "7209d0a733a916a56df2b23952ce4cad434631494c652efeeeb193afcd70009a",
-      "currentSha256": "6EC3554B97C46378F23906FF86CD730476AB6DDF39F19A27EF365F806A455315",
+      "currentSha256": "961388976BEE56376C084D53D8DDC4947C204E3EDAD3AD794C72375577E423C4",
       "currentBytes": 4423
     },
     {
       "file": "docs/testing/ui/cases/TEST-TIMETIEBREAK-014.md",
       "status": "modified",
       "originalSha256": "361c6adec6b022f917377e0864042b6970aecd5de3541af8936da02fe3ea48d1",
-      "currentSha256": "A04625F7EB092374DCB7F4859D08AE9B069EB926AD619F2B6B14B830E1F36B0C",
+      "currentSha256": "B2E0482B25E5B934D0E92B4BEBD665BACB88E57974A14530B9531AE2A5EEE039",
       "currentBytes": 3703
     },
     {
       "file": "docs/testing/ui/cases/TEST-UNSOLVEDRESULT-008.md",
       "status": "modified",
       "originalSha256": "a8a9c3bccfd39e98f645a30d38f11af8e4510cc187b255dfac0c90d0032882e4",
-      "currentSha256": "EB791D934F8B57278297E539154C0F42714218120DEE0735FC8A9C9D02BF2D71",
+      "currentSha256": "AFBF5D4BDD1A26CE123EBB449B5CA27204C9E28FAE3AE14C877642A667280D2F",
       "currentBytes": 3578
+    },
+    {
+      "file": "docs/testing/ui/implementation-manifest.json",
+      "status": "modified",
+      "originalSha256": "2728c24a17214fa06d1e4de9af4742f1a466ba736e922e88bb6a6c932784b0f8",
+      "currentSha256": "9E74968D68EF0526CAD5EE14B5D39B61281A422D5D2682C7564FA7F4B2EEC3D0",
+      "currentBytes": 39956
+    },
+    {
+      "file": "docs/testing/ui/implementation-receipt.json",
+      "status": "modified",
+      "originalSha256": "d26cb98efe3b78e1856c05c3c593ca07b3a42154ef1707e1b347c5ac737bcf1f",
+      "currentSha256": "3643E05F742779B7FCFAB8788A88FDCBAE8B67F9C0C0B72E68E3D048320C4DE6",
+      "currentBytes": 9454
     },
     {
       "file": "docs/testing/ui/index.md",
@@ -176115,8 +176701,15 @@
       "file": "docs/testing/ui/requirements.json",
       "status": "modified",
       "originalSha256": "d93866791c9043d7d1de06f20d9544a77c603d73a1b11fbd29d4f149b3c57771",
-      "currentSha256": "8D480839F18EFA4DCF5BAC03A55FEB0C68915096281AE1344082F7AE77DC15F9",
+      "currentSha256": "4637CB6777A217F60E85E36BE5D167A0368E3E6A13A739D30EB2BDD53D2D2B46",
       "currentBytes": 731359
+    },
+    {
+      "file": "docs/testing/ui/sources.json",
+      "status": "modified",
+      "originalSha256": "7eb3fa0420b0d11d1cec1300ef86c4b1e66138a824a5c98c6f7c70b3b83984bb",
+      "currentSha256": "6E20C32127EF55D6EAC0966BF4ABF655E3760614B67A6BD1267E1CA204C4C17F",
+      "currentBytes": 4589
     },
     {
       "file": "scripts/Export-PublicReview.ps1",
@@ -176164,8 +176757,8 @@
       "file": "tests/powershell/PrivacyExport.Tests.ps1",
       "status": "new",
       "originalSha256": null,
-      "currentSha256": "873C6C0E86150700769E5131E25D9FEE090279EE3DE6C14E2EE17D1C252BE63A",
-      "currentBytes": 29027
+      "currentSha256": "AC0433EA5B0471CE69E1919BA65CCE773E8A7D3C2CEABB2ECBCA5D9DE606973D",
+      "currentBytes": 31389
     },
     {
       "file": "tests/powershell/PublishedEvidenceManifest.Tests.ps1",

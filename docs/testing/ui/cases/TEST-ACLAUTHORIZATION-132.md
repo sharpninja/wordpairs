@@ -6,7 +6,7 @@ Linked specification for the matching authoritative QBrain TEST record. Persiste
 | --- | --- |
 | Objective | Verify Verify Server-authoritative ACL transactions. |
 | QBrain reference/scope | `TEST-ACLAUTHORIZATION-132`; Word Pairs / `PROD-WORDPAIRS`; workspace `<home>/github/WordGame/.mcpServer/wordpairs`; layer `layer-1` |
-| Source revision | Original designs at `3273c121de6517aec34503d8c769b0159e9e52df`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
+| Source revision | Original designs at `435be05abac5310172cfb9a9290c9d7ea0d1cbde`; exact dirty prose/decision hashes in [sources.json](../sources.json). New UI-DEC decisions derive from the operator instruction to fill gaps. |
 | Source links | [admin_acl_design.md](../../../admin_acl_design.md) |
 | Frame/element identifiers | SCREEN-USERS, STATE-USERS-01, STATE-USERS-02, STATE-USERS-03, STATE-USERS-04, STATE-USERS-05; exact SVG anchors are listed in [coverage.md](../coverage.md) |
 | FR/TR → specific AC references | `FR-ACCESSCONTROL-024#FR-24-C01`; `FR-ACCESSCONTROL-024#FR-24-C02`; `FR-ACCESSCONTROL-024#FR-24-C03`; `FR-ACCESSCONTROL-024#FR-24-C04` |
