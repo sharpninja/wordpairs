@@ -11,3 +11,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Documentation publication
 
 For this repository, `refresh-docs` includes publishing the validated GitHub wiki export to `https://github.com/sharpninja/wordpairs.wiki.git`, as requested by the operator on27October2026. Reconcile and verify QBrain first, generate the supported wiki export, preserve unrelated existing wiki pages, publish only the intended exported pages/supporting evidence, and record/verify the pushed wiki commit. Keep all hostile-validation receipts, including rejected/superseded rounds and corrections. Never include private runtime credentials or session files. Publishing the wiki does not authorize committing/pushing the application repository or submitting the contest entry.
+
+## Local validation
+
+Do not add GitHub Actions workflows or custom Actions to this repository. Run validation with the checked-in local scripts and pre-commit hook. Deployments use the existing Vercel Git integration.
